@@ -2,7 +2,8 @@ hydrocarbon
 ====
 
 Simple board service which written in django, python.
-Originally written for `hero·comics<http://herocomics.kr/>`_.
+Originally written for `hero·comics
+<http://herocomics.kr/>`_.
 
 
 Dependency
@@ -28,4 +29,4 @@ How to install
 License
 -------
 
-see ``LICENSE``` file
+see ``LICENSE`` file
