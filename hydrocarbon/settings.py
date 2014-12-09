@@ -26,17 +26,25 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
+
 
 # Application definition
-
 INSTALLED_APPS = (
+    # local apps
+    'board',
+    ) + (
+    # third-party apps
+    'registration',
+    ) + (
+    # django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
-    'board',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,5 +88,23 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'board/static')
 
 STATIC_URL = '/static/'
+
+# Media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'board/media')
+
+MEDIA_URL = '/media/'
+
+# Password encryption method
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+)
+
+# Session backend
+SESSION_ENGINE = 'django.contrib.sessions.backends.file' # for debugging
+
+# django-registration-redux
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
