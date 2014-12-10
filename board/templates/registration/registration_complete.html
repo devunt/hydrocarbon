@@ -8,8 +8,9 @@
 {% include "include/banner.html" %}
 
 <div class="simple_notice">
-	<p>{% trans "Welcome to Herocomics!" %}</p>
-	<p>{% trans "Please check your email to complete the registration process." %}</p>
+    {% trans site.name as site_trans %}
+    <p>{% blocktrans with site_trans as name %}Welcome to {{ name }}!{% endblocktrans %}</p>
+    <p>{% trans "Please check your email to complete the registration process." %}</p>
 </div>
 
 {% endblock %}
