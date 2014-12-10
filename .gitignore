@@ -59,5 +59,8 @@ target/
 # scss
 .sass-cache/
 
+# vim
+*.sw[o-p]
+
 # database
 db.sqlite3
