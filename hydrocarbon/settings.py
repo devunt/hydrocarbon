@@ -127,6 +127,19 @@ PASSWORD_HASHERS = (
 # Session backend
 SESSION_ENGINE = 'django.contrib.sessions.backends.file' # for debugging
 
+# E-email
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.zoho.com'
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'no-reply@herocomics.kr'
+
+EMAIL_HOST_PASSWORD = '***REMOVED***'
+
+DEFAULT_FROM_EMAIL = 'no-reply@herocomics.kr'
+
 # django-registration-redux
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
