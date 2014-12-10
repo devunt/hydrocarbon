@@ -1,10 +1,16 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Activation email sent" %}{% endblock %}
+{% block title %}{% trans "Activation email sent" %} :: {% trans "Herocomics" %}{% endblock %}
 
 {% block content %}
-<p>{% trans "Please check your email to complete the registration process." %}</p>
+
+{% include "include/banner.html" %}
+<div class="simple_notice">
+	<p>{% trans "Welcome to Herocomics!" %}</p>
+	<p>{% trans "Please check your email to complete the registration process." %}</p>
+</div>
+
 {% endblock %}
 
 

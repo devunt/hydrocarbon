@@ -1,18 +1,33 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Log in" %}{% endblock %}
+{% block title %}{% trans "Log in" %} :: {% trans "Herocomics" %}{% endblock %}
 
 {% block content %}
-<form method="post" action="">
-	{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="{% trans 'Log in' %}" />
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
 
-<p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
-<p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+{% include "include/banner.html" %}
+<div id="form">
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <ul>
+            {% for field in form %}
+            <li class="field">
+                <label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
+                {{ field.errors }}
+            </li>
+            {% endfor %}
+        </ul>
+        <input class="submit" type="submit" value="{% trans 'Log in' %}" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+    
+    <div class="meta">
+        <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>
+        <a href="{% url 'auth_password_reset' %}">{% trans "Lost Password?" %}</a>
+    </div>
+</div>
+
 {% endblock %}
 
 

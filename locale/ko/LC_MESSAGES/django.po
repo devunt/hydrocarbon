@@ -18,9 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+# generics
+msgid "Herocomics"
+msgstr "히어로코믹스"
+
+
 #: board/forms.py:7
 msgid "Nickname:"
-msgstr "닉네임:"
+msgstr "별명"
 
 #: hydrocarbon/settings.py:80
 msgid "Korean"
@@ -29,3 +34,77 @@ msgstr "한국어"
 #: hydrocarbon/settings.py:81
 msgid "English"
 msgstr "영어"
+
+# forms
+
+#: contrib/auth/forms.py:79 contrib/auth/forms.py:129
+msgid "Username"
+msgstr "아이디"
+
+#: contrib/auth/models.py:367
+msgid "username"
+msgstr "아이디"
+
+#: forms.py:39
+msgid "E-mail"
+msgstr "이메일"
+
+#: forms.py:41
+msgid "Password"
+msgstr "비밀번호"
+
+#: forms.py:43
+msgid "Password (again)"
+msgstr "비밀번호 확인"
+
+#: registration_form.html:19 login.html:25
+msgid "Register"
+msgstr "회원가입"
+
+#: login.html:26
+msgid "Lost Password?"
+msgstr "비밀번호 찾기"
+
+#: logout.html:12
+msgid "Successfully logged out"
+msgstr "성공적으로 로그아웃 되었습니다"
+
+#: registration_complete.html:19
+msgid "Welcome to Herocomics!"
+msgstr "히어로코믹스 회원가입을 환영합니다!"
+
+#: registration_complete.html:19
+msgid "Please check your email to complete the registration process."
+msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다. 확인해 주세요."
+
+#: password_reset_form.html:
+msgid "Forgot your password? Enter your email in the form below and we'll send you instructions for creating a new one."
+msgstr "비밀번호를 잃어버리셨나요? 가입하실 때 사용하셨던 이메일 주소를 입력해주세요. 비밀번호를 바꿀 수 있는 방법을 보내드리겠습니다."
+
+#: password_reset_form.html:
+msgid "Reset password"
+msgstr "비밀번호 초기화"
+
+#: password_reset_done.html:
+msgid "We have sent you an email with a link to reset your password."
+msgstr "입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다."
+
+#: password_reset_done.html:
+msgid "Please check your email and click the link to continue."
+msgstr "이메일을 확인하시고 링크에 접속해 비밀번호를 초기해 주세요."
+
+#: password_change_done.html:
+msgid "Password successfully changed!"
+msgstr "성공적으로 비밀번호가 변경되었습니다!"
+
+#: contrib/auth/forms.py:287
+msgid "New password"
+msgstr "새 비밀번호"
+
+#: contrib/auth/forms.py:289
+msgid "New password confirmation"
+msgstr "새 비밀번호 확인"
+
+#: contrib/auth/forms.py:323
+msgid "Old password"
+msgstr "기존 비밀번호"
