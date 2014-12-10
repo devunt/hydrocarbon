@@ -61,13 +61,90 @@ msgstr "비밀번호 확인"
 msgid "Register"
 msgstr "회원가입"
 
+#: forms.py:67
+msgid "The two password fields didn't match."
+msgstr "비밀번호가 서로 일치하지 않습니다."
+
+
 #: login.html:26
 msgid "Lost Password?"
 msgstr "비밀번호 찾기"
 
+#: logout.html:4
+msgid "Logged out"
+msgstr "로그아웃"
+
+
 #: logout.html:12
 msgid "Successfully logged out"
 msgstr "성공적으로 로그아웃 되었습니다"
+
+
+#: password_change_done.html:4
+msgid "Password changed"
+msgstr "비밀번호 변경 완료"
+
+#: password_change_done.html:10
+msgid "Password successfully changed!"
+msgstr "성공적으로 비밀번호가 변경되었습니다!"
+
+
+#: password_reset_complete.html:4
+msgid "Password reset complete"
+msgstr "비밀번호 재설정 완료"
+
+#: password_reset_complete.html:8
+msgid "Your password has been reset!"
+msgstr "비밀번호가 재설정되었습니다!"
+
+#: password_reset_complete.html:9
+msgid "You may now"
+msgstr "이제 로그인할 수 있습니다. "
+
+
+#: password_reset_confirm.html:4
+msgid "Confirm password reset"
+msgstr "비밀번호 재설정 확인"
+
+#: password_reset_confirm.html:15
+msgid "Enter your new password below to reset your password:"
+msgstr "새로 설정할 비밀번호를 입력해주세요."
+
+#: password_reset_confirm.html:27
+msgid "Set password"
+msgstr "비밀번호 설정"
+
+
+#: password_reset_done.html:11
+msgid "We have sent you an email with a link to reset your password."
+msgstr "입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다."
+
+#: password_reset_done.html:12
+msgid "Please check your email and click the link to continue."
+msgstr "이메일을 확인하시고 링크에 접속해 비밀번호를 초기해 주세요."
+
+
+#: password_reset_form.html:4, 27
+msgid "Reset password"
+msgstr "비밀번호 재설정"
+
+#: password_reset_form.html:15
+msgid "Forgot your password? Enter your email in the form below and we'll send you instructions for creating a new one."
+msgstr "비밀번호를 잃어버리셨나요? 가입하실 때 사용하셨던 이메일 주소를 입력해주세요. 비밀번호를 바꿀 수 있는 방법을 보내드리겠습니다."
+
+
+#: registration_closed:4
+msgid "Registration is closed"
+msgstr "회원가입 불가"
+
+#: registration_closed:10
+msgid "Sorry, but registration is closed at this moment. Come back later."
+msgstr "죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 가입해 주세요."
+
+
+#: registration_complete.html:4
+msgid "Activation email sent"
+msgstr "인증 메일 발송됨"
 
 #: registration_complete.html:19
 msgid "Welcome to Herocomics!"
@@ -77,25 +154,11 @@ msgstr "히어로코믹스 회원가입을 환영합니다!"
 msgid "Please check your email to complete the registration process."
 msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다. 확인해 주세요."
 
-#: password_reset_form.html:
-msgid "Forgot your password? Enter your email in the form below and we'll send you instructions for creating a new one."
-msgstr "비밀번호를 잃어버리셨나요? 가입하실 때 사용하셨던 이메일 주소를 입력해주세요. 비밀번호를 바꿀 수 있는 방법을 보내드리겠습니다."
 
-#: password_reset_form.html:
-msgid "Reset password"
-msgstr "비밀번호 초기화"
+#: registration_form.html:4
+msgid "Register for an account"
+msgstr "회원가입"
 
-#: password_reset_done.html:
-msgid "We have sent you an email with a link to reset your password."
-msgstr "입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다."
-
-#: password_reset_done.html:
-msgid "Please check your email and click the link to continue."
-msgstr "이메일을 확인하시고 링크에 접속해 비밀번호를 초기해 주세요."
-
-#: password_change_done.html:
-msgid "Password successfully changed!"
-msgstr "성공적으로 비밀번호가 변경되었습니다!"
 
 #: contrib/auth/forms.py:287
 msgid "New password"
