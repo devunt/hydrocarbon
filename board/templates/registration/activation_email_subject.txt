@@ -1,4 +1,4 @@
-{% load i18n %}{% blocktrans %}Account activation on {{ site.name }}{% endblocktrans %}
+{% load i18n %}{% trans site.name as site_trans %}{% blocktrans with site_trans as name %}Account activation on {{ site.name }}{% endblocktrans %}
 
 
 {% comment %}

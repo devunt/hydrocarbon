@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-10 23:52+0900\n"
+"POT-Creation-Date: 2014-12-11 01:44+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,44 +22,53 @@ msgid "Nickname:"
 msgstr "별명"
 
 #: board/i18n_fake.py:3
+msgid "herocomics"
+msgstr "히어로코믹스"
+
+#: board/i18n_fake.py:4
 msgid "Username"
 msgstr "아이디"
 
-#: board/i18n_fake.py:4
+#: board/i18n_fake.py:5
 msgid "username"
 msgstr "아이디"
 
-#: board/i18n_fake.py:5
+#: board/i18n_fake.py:6
 msgid "E-mail"
 msgstr "이메일"
 
-#: board/i18n_fake.py:6
+#: board/i18n_fake.py:7
 msgid "Password"
 msgstr "비밀번호"
 
-#: board/i18n_fake.py:7
+#: board/i18n_fake.py:8
 msgid "Password (again)"
 msgstr "비밀번호 확인"
 
-#: board/i18n_fake.py:8
+#: board/i18n_fake.py:9
 msgid "The two password fields didn't match."
 msgstr "비밀번호가 서로 일치하지 않습니다."
 
-#: board/i18n_fake.py:9
+#: board/i18n_fake.py:10
 msgid "New password"
 msgstr "새 비밀번호"
 
-#: board/i18n_fake.py:10
+#: board/i18n_fake.py:11
 msgid "New password confirmation"
 msgstr "새 비밀번호 확인"
 
-#: board/i18n_fake.py:11
+#: board/i18n_fake.py:12
 msgid "Old password"
 msgstr "기존 비밀번호"
 
-#: board/templates/base.html:11 board/templates/include/nav.html:27
-msgid "herocomics"
-msgstr "히어로코믹스"
+#: board/i18n_fake.py:13
+#, python-format
+msgid ""
+"Please enter a correct %(username)s and password. Note that both fields may "
+"be case-sensitive."
+msgstr ""
+"%(username)s와 비밀번호를 정확히 입력해 주세요."
+"아이디와 비밀번호는 둘 다 대소문자를 구분합니다."
 
 #: board/templates/include/nav.html:16
 #: board/templates/registration/login.html:4
@@ -85,12 +94,11 @@ msgstr "계정이 성공적으로 활성화되었습니다."
 msgid "You can log in."
 msgstr "이제 로그인하실 수 있습니다."
 
-#: board/templates/registration/activation_email.txt:4
+#: board/templates/registration/activation_email.txt:5
 #, python-format
 msgid ""
 "\n"
-"Thank you for registering in %(name)s. If you never heard of our site "
-"and\n"
+"Thank you for registering in %(name)s. If you never heard of our site and\n"
 "someone pretending to be you used your mail account to register instead,\n"
 "please ignore this mail while we automatically remove all the information\n"
 "entered under your address within the next few days.\n"
@@ -100,7 +108,7 @@ msgstr ""
 "만일 본인이 아니라 다른 사람이 이 이메일을 사용해서 가입한 경우,\n"
 "저희가 자동으로 가입 정보를 폐기할 예정이니 따로 조치를 취하지 않으셔도 됩니다.\n"
 
-#: board/templates/registration/activation_email.txt:10
+#: board/templates/registration/activation_email.txt:11
 #, python-format
 msgid ""
 "\n"
@@ -110,7 +118,7 @@ msgstr ""
 "\n"
 "이 계정을 활성화하려면 %(expiration_days)s일 안에 아래의 링크를 눌러 주세요.\n"
 
-#: board/templates/registration/activation_email.txt:17
+#: board/templates/registration/activation_email.txt:18
 #, python-format
 msgid ""
 "\n"
@@ -192,7 +200,7 @@ msgstr "입력하신 이메일 주소로 비밀번호를 초기화할 수 있는
 
 #: board/templates/registration/password_reset_done.html:13
 msgid "Please check your email and click the link to continue."
-msgstr "이메일을 확인하시고 링크에 접속해 비밀번호를 초기해 주세요."
+msgstr "이메일을 확인하시고 링크에 접속해 비밀번호를 초기화해 주세요."
 
 #: board/templates/registration/password_reset_form.html:16
 msgid ""
@@ -214,11 +222,12 @@ msgstr "죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나�
 msgid "Activation email sent"
 msgstr "인증 메일 발송됨"
 
-#: board/templates/registration/registration_complete.html:11
+#: board/templates/registration/registration_complete.html:12
+#, python-format
 msgid "Welcome to %(name)s!"
 msgstr "%(name)s 회원가입을 환영합니다!"
 
-#: board/templates/registration/registration_complete.html:12
+#: board/templates/registration/registration_complete.html:13
 msgid "Please check your email to complete the registration process."
 msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다. 확인해 주세요."
 
