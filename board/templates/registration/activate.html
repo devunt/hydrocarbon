@@ -2,7 +2,12 @@
 {% load i18n %}
 
 {% block content %}
-<p>{% trans "Account activation failed." %}</p>
+
+{% include "include/banner.html" %}
+
+<div class="simple_notice">
+    <p>{% trans "Account activation failed." %}</p>
+</div>
 {% endblock %}
 
 

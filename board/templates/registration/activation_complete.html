@@ -1,15 +1,21 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Account Activated" %}{% endblock %}
+{% block title %}{% trans "Account Activated" %} :: {{ block.super }}{% endblock %}
 
 {% block content %}
-<p>
-    {% trans "Your account is now activated." %}
-    {% if not user.is_authenticated %}
-    {% trans "You can log in." %}
-    {% endif %}
-</p>
+
+{% include "include/banner.html" %}
+
+<div class="simple_notice">
+    <p>
+        {% trans "Your account is now activated." %}
+        {% if not user.is_authenticated %}
+        {% trans "You can log in." %}
+        {% endif %}
+    </p>
+</div>
+
 {% endblock %}
 
 

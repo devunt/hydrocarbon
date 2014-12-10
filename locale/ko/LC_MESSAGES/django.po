@@ -59,7 +59,7 @@ msgid "Old password"
 msgstr "기존 비밀번호"
 
 #: board/templates/base.html:11 board/templates/include/nav.html:27
-msgid "Herocomics"
+msgid "herocomics"
 msgstr "히어로코믹스"
 
 #: board/templates/include/nav.html:54
@@ -67,52 +67,63 @@ msgstr "히어로코믹스"
 #: board/templates/registration/login.html:23
 #: board/templates/registration/password_change_done.html:11
 msgid "Log in"
-msgstr ""
+msgstr "로그인"
 
 #: board/templates/registration/activate.html:5
 msgid "Account activation failed."
-msgstr ""
+msgstr "계정 활성화에 실패했습니다."
 
 #: board/templates/registration/activation_complete.html:4
 msgid "Account Activated"
-msgstr ""
+msgstr "계정 활성화됨"
 
 #: board/templates/registration/activation_complete.html:8
 msgid "Your account is now activated."
-msgstr ""
+msgstr "계정이 성공적으로 활성화되었습니다."
 
 #: board/templates/registration/activation_complete.html:10
 msgid "You can log in."
-msgstr ""
+msgstr "이제 로그인하실 수 있습니다."
 
 #: board/templates/registration/activation_email.txt:4
 #, python-format
 msgid ""
 "\n"
-"You (or someone pretending to be you) have asked to register an account at\n"
-"%(site.name)s.  If this wasn't you, please ignore this email\n"
-"and your address will be removed from our records.\n"
+"Thank you for registering in %(site.name)s. If you never heard of our site "
+"and\n"
+"someone pretending to be you used your mail account to register instead,\n"
+"please ignore this mail while we automatically remove all the information\n"
+"entered under your address within the next few days.\n"
 msgstr ""
+"\n"
+"%(site.name)s에 가입하신 것을 환영합니다.\n"
+"만일 본인이 아니라 다른 사람이 이 이메일을 사용해서 가입한 경우,\n"
+"저희가 자동으로 가입 정보를 폐기할 예정이니 따로 조치를 취하지 않으셔도 됩니다.\n"
 
 #: board/templates/registration/activation_email.txt:9
 #, python-format
 msgid ""
 "\n"
-"To activate this account, please click the following link within the next\n"
+"To activate this account, please go to the link below within the next\n"
 "%(expiration_days)s days:\n"
 msgstr ""
+"\n"
+"이 계정을 활성화하려면 %(expiration_days)s일 안에 아래의 링크를 눌러 주세요.\n"
 
 #: board/templates/registration/activation_email.txt:16
 #, python-format
 msgid ""
 "\n"
-"Sincerely,\n"
-"%(site.name)s Management\n"
+"Thank you, and we welcome you as our newest valued member.\n"
+"\n"
+"%(site.name)s\n"
 msgstr ""
+"\n"
+"%(site.name)s\n"
 
 #: board/templates/registration/activation_email_subject.txt:1
-msgid "Account activation on"
-msgstr ""
+msgid "Account activation on %(site.name)s"
+msgstr "%(site.name)s 계정 활성화"
 
 #: board/templates/registration/login.html:28
 #: board/templates/registration/registration_form.html:24
@@ -156,10 +167,6 @@ msgstr "비밀번호가 재설정되었습니다!"
 msgid "You may now"
 msgstr "이제 로그인할 수 있습니다. "
 
-#: board/templates/registration/password_reset_complete.html:11
-msgid "log in"
-msgstr ""
-
 #: board/templates/registration/password_reset_confirm.html:4
 msgid "Confirm password reset"
 msgstr "비밀번호 재설정 확인"
@@ -180,8 +187,7 @@ msgstr "비밀번호 재설정"
 
 #: board/templates/registration/password_reset_done.html:12
 msgid "We have sent you an email with a link to reset your password."
-msgstr ""
-"입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다."
+msgstr "입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다."
 
 #: board/templates/registration/password_reset_done.html:13
 msgid "Please check your email and click the link to continue."
@@ -201,15 +207,14 @@ msgstr "회원가입 불가"
 
 #: board/templates/registration/registration_closed.html:11
 msgid "Sorry, but registration is closed at this moment. Come back later."
-msgstr ""
-"죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 가입해 주세요."
+msgstr "죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 시도해 주세요."
 
 #: board/templates/registration/registration_complete.html:4
 msgid "Activation email sent"
 msgstr "인증 메일 발송됨"
 
 #: board/templates/registration/registration_complete.html:11
-msgid "Welcome to Herocomics!"
+msgid "Welcome to herocomics!"
 msgstr "히어로코믹스 회원가입을 환영합니다!"
 
 #: board/templates/registration/registration_complete.html:12
