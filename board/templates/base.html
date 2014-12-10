@@ -1,32 +1,33 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-	<link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
 
-	<title>{% block title %}히어로코믹스{% endblock %}</title>
+    <title>{% block title %}{% trans "Herocomics" %}{% endblock %}</title>
 </head>
 
 <body>
 
 <div id="header">
-	<nav id="nav">
-		{% include "include/nav.html" %}
-	</nav>
+    <nav id="nav">
+        {% include "include/nav.html" %}
+    </nav>
 </div>
 
 <div id="wrapper">
-	<div class="contents">
-		{% block content %}{% endblock %}
-	</div>
+    <div class="contents">
+        {% block content %}{% endblock %}
+    </div>
 </div>
 
 <footer id="footer">
-	<img src="{% static "img/footer.png" %}">
-	<p>© 2014 Herocomics All rights reserved.</p>
+    <img src="{% static "img/footer.png" %}">
+    <p>© 2014 Herocomics All rights reserved.</p>
 </footer>
 
 </body>

@@ -1,11 +1,12 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Registration is closed" %} :: {% trans "Herocomics" %}{% endblock %}
+{% block title %}{% trans "Registration is closed" %} :: {{ block.super }}{% endblock %}
 
 {% block content %}
 
 {% include "include/banner.html" %}
+
 <div class="simple_notice">
 	<p>{% trans "Sorry, but registration is closed at this moment. Come back later." %}</p>
 </div>

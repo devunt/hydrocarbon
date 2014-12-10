@@ -1,24 +1,15 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Activation email sent" %} :: {% trans "Herocomics" %}{% endblock %}
+{% block title %}{% trans "Activation email sent" %} :: {{ block.super }}{% endblock %}
 
 {% block content %}
 
 {% include "include/banner.html" %}
+
 <div class="simple_notice">
 	<p>{% trans "Welcome to Herocomics!" %}</p>
 	<p>{% trans "Please check your email to complete the registration process." %}</p>
 </div>
 
 {% endblock %}
-
-
-{% comment %}
-**registration/registration_complete.html**
-
-Used after successful completion of the registration form. This
-template has no context variables of its own, and should simply inform
-the user that an email containing account-activation information has
-been sent.
-{% endcomment %}

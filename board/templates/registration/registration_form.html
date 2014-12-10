@@ -1,11 +1,12 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Register for an account" %} :: {% trans "Herocomics" %}{% endblock %}
+{% block title %}{% trans "Register for an account" %} :: {{ block.super }}{% endblock %}
 
 {% block content %}
 
 {% include "include/banner.html" %}
+
 {{ form.non_field_errors }}
 <div id="form">
     <form method="post" action="">
@@ -25,16 +26,3 @@
 </div>
 
 {% endblock %}
-
-
-{% comment %}
-**registration/registration_form.html**
-Used to show the form users will fill out to register. By default, has
-the following context:
-
-``form``
-    The registration form. This will be an instance of some subclass
-    of ``django.forms.Form``; consult `Django's forms documentation
-    <http://docs.djangoproject.com/en/dev/topics/forms/>`_ for
-    information on how to display this in a template.
-{% endcomment %}

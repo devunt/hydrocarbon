@@ -1,11 +1,12 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Logged out" %} :: {% trans "Herocomics" %}{% endblock %}
+{% block title %}{% trans "Logged out" %} :: {{ block.super }}{% endblock %}
 
 {% block content %}
 
 {% include "include/banner.html" %}
+
 <div class="simple_notice">
 	<p>{% trans "Successfully logged out" %}.</p>
 </div>
