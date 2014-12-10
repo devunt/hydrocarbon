@@ -25,7 +25,7 @@ How to install
    $ python manage.py syncdb
    $ python manage.py migrate
    $ python manage.py compilemessages
-   $ python manager.py runserver
+   $ python manage.py runserver
 
 
 License
