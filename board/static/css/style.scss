@@ -48,6 +48,10 @@ div.right { float:right; white-space:nowrap; }
 	}
 }
 
+.contents > .errorlist {
+	li { background:#cc3d3d; color:#fff; line-height:30px; list-style:none; margin:10px 0; text-align:center; }
+}
+
 .submit {
 	height:60px; width:160px; background:#3d9ccc; border:0; border-radius:4px; color:#fff; cursor:pointer; display:block; font-size:16px; line-height:60px; margin:20px auto; text-align:center; text-decoration:none;
 

@@ -101,6 +101,14 @@ div.right {
       margin: 10px 0;
       padding: 0 10px; }
 
+.contents > .errorlist li {
+  background: #cc3d3d;
+  color: #fff;
+  line-height: 30px;
+  list-style: none;
+  margin: 10px 0;
+  text-align: center; }
+
 .submit {
   height: 60px;
   width: 160px;
