@@ -5,10 +5,19 @@ from django.db import models, migrations
 from django.conf import settings
 
 
+def siteconf_func(apps, schema_editor):
+    Site = apps.get_model('sites', 'Site')
+    db_alias = schema_editor.connection.alias
+    Site.objects.using(db_alias).create(
+        domain='herocomics.kr',
+        name='herocomics',
+    )
+
 class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('sites', '__first__'),
     ]
 
     operations = [
@@ -22,5 +31,10 @@ class Migration(migrations.Migration):
             options={
             },
             bases=(models.Model,),
+        ),
+        migrations.RunPython(
+            code=siteconf_func,
+            reverse_code=None,
+            atomic=False,
         ),
     ]
