@@ -5,7 +5,7 @@ from django.db import models
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name='profile')
     nick = models.CharField(max_length=16)
 
     def __str__(self):

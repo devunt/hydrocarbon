@@ -11,10 +11,17 @@
 	</div>
 	<div class="right">
 		<div id="login">
+			{% if user.profile.nick %}
+			<a href="/accounts/profile" class="handle">
+				<span class="button icon"></span>
+				<span class="button text">{{ user.profile.nick }}</span>
+			</a>
+			{% else %}
 			<a href="/accounts/login" class="handle">
 				<span class="button icon"></span>
-				<span class="button text">{{ user.name|default:_("Log in") }}</span>
+				<span class="button text">{% trans "Log in" %}</span>
 			</a>
+			{% endif %}
 		</div>
 	</div>
 </div>
