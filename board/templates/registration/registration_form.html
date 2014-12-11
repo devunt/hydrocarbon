@@ -9,20 +9,20 @@
 
 {{ form.non_field_errors }}
 <div id="form">
-    <form method="post" action="">
-        {% csrf_token %}
-    
-        <ul>
-            {% for field in form %}
-            <li class="field">
-                <label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
-                {{ field.errors }}
-            </li>
-            {% endfor %}
-        </ul>
-    
-        <input class="submit" type="submit" value="{% trans 'Register' %}" />
-    </form>
+	<form method="post" action="">
+		{% csrf_token %}
+
+		<ul>
+			{% for field in form %}
+			<li class="field">
+				<label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
+				{{ field.errors }}
+			</li>
+			{% endfor %}
+		</ul>
+
+		<input class="submit" type="submit" value="{% trans 'Register' %}" />
+	</form>
 </div>
 
 {% endblock %}

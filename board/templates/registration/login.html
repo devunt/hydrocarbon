@@ -9,25 +9,25 @@
 
 {{ form.non_field_errors }}
 <div id="form">
-    <form method="post" action="">
-        {% csrf_token %}
+	<form method="post" action="">
+		{% csrf_token %}
 
-        <ul>
-            {% for field in form %}
-            <li class="field">
-                <label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
-                {{ field.errors }}
-            </li>
-            {% endfor %}
-        </ul>
-        <input class="submit" type="submit" value="{% trans 'Log in' %}" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
-    
-    <div class="meta">
-        <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>
-        <a href="{% url 'auth_password_reset' %}">{% trans "Lost Password?" %}</a>
-    </div>
+		<ul>
+			{% for field in form %}
+			<li class="field">
+				<label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
+				{{ field.errors }}
+			</li>
+			{% endfor %}
+		</ul>
+		<input class="submit" type="submit" value="{% trans 'Log in' %}" />
+		<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+
+	<div class="meta">
+		<a href="{% url 'registration_register' %}">{% trans "Register" %}</a>
+		<a href="{% url 'auth_password_reset' %}">{% trans "Lost Password?" %}</a>
+	</div>
 </div>
 
 {% endblock %}

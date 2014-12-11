@@ -7,31 +7,31 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
+	<link rel="stylesheet" href="{% static "css/style.css" %}">
 
-    <title>{% block title %}{{ site_name }}{% endblock %}</title>
+	<title>{% block title %}{{ site_name }}{% endblock %}</title>
 </head>
 
 <body>
 
 <div id="header">
-    <nav id="nav">
-        {% include "include/nav.html" %}
-    </nav>
+	<nav id="nav">
+		{% include "include/nav.html" %}
+	</nav>
 </div>
 
 <div id="wrapper">
-    <div class="contents">
-        {% block content %}{% endblock %}
-    </div>
+	<div class="contents">
+		{% block content %}{% endblock %}
+	</div>
 </div>
 
 <footer id="footer">
-    <img src="{% static "img/footer.png" %}">
-    <p>© 2014 herocomics All rights reserved.</p>
+	<img src="{% static "img/footer.png" %}">
+	<p>© 2014 herocomics All rights reserved.</p>
 </footer>
 
 </body>
