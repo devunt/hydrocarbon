@@ -1,9 +1,8 @@
 {% load i18n %}
 {% load url from future %}
 
-{% trans site.name as site_trans %}
-{% blocktrans with site_trans as name %}
-Thank you for registering in {{ name }}. If you never heard of our site and
+{% blocktrans %}
+Thank you for registering in {{ site_name }}. If you never heard of our site and
 someone pretending to be you used your mail account to register instead,
 please ignore this mail while we automatically remove all the information
 entered under your address within the next few days.
@@ -15,10 +14,10 @@ To activate this account, please go to the link below within the next
 
 http://{{site.domain}}{% url 'registration_activate' activation_key %}
 
-{% blocktrans  with site_trans as name %}
+{% blocktrans %}
 Thank you, and we welcome you as our newest valued member.
 
-{{ name }}
+-- {{ site_name }}
 {% endblocktrans %}
 
 

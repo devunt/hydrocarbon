@@ -1,5 +1,8 @@
 {% load static %}
 {% load i18n %}
+
+{% trans request.site.name as site_name %}
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -8,7 +11,7 @@
 
     <link rel="stylesheet" href="{% static "css/style.css" %}">
 
-    <title>{% block title %}{% trans site.name %}{% endblock %}</title>
+    <title>{% block title %}{{ site_name }}{% endblock %}</title>
 </head>
 
 <body>

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 01:44+0900\n"
+"POT-Creation-Date: 2014-12-11 09:40+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,8 +68,8 @@ msgid ""
 "Please enter a correct %(username)s and password. Note that both fields may "
 "be case-sensitive."
 msgstr ""
-"%(username)s와 비밀번호를 정확히 입력해 주세요."
-"아이디와 비밀번호는 둘 다 대소문자를 구분합니다."
+"%(username)s와 비밀번호를 정확히 입력해 주세요.아이디와 비밀번호는 둘 다 대소"
+"문자를 구분합니다."
 
 #: board/templates/include/nav.html:16
 #: board/templates/registration/login.html:4
@@ -94,21 +95,23 @@ msgstr "계정이 성공적으로 활성화되었습니다."
 msgid "You can log in."
 msgstr "이제 로그인하실 수 있습니다."
 
-#: board/templates/registration/activation_email.txt:5
+#: board/templates/registration/activation_email.txt:4
 #, python-format
 msgid ""
 "\n"
-"Thank you for registering in %(name)s. If you never heard of our site and\n"
+"Thank you for registering in %(site_name)s. If you never heard of our site "
+"and\n"
 "someone pretending to be you used your mail account to register instead,\n"
 "please ignore this mail while we automatically remove all the information\n"
 "entered under your address within the next few days.\n"
 msgstr ""
 "\n"
-"%(name)s에 가입하신 것을 환영합니다.\n"
+"%(site_name)s에 가입하신 것을 환영합니다.\n"
 "만일 본인이 아니라 다른 사람이 이 이메일을 사용해서 가입한 경우,\n"
-"저희가 자동으로 가입 정보를 폐기할 예정이니 따로 조치를 취하지 않으셔도 됩니다.\n"
+"저희가 자동으로 가입 정보를 폐기할 예정이니 따로 조치를 취하지 않으셔도 됩니"
+"다.\n"
 
-#: board/templates/registration/activation_email.txt:11
+#: board/templates/registration/activation_email.txt:10
 #, python-format
 msgid ""
 "\n"
@@ -116,23 +119,24 @@ msgid ""
 "%(expiration_days)s days:\n"
 msgstr ""
 "\n"
-"이 계정을 활성화하려면 %(expiration_days)s일 안에 아래의 링크를 눌러 주세요.\n"
+"이 계정을 활성화하려면 %(expiration_days)s일 안에 아래의 링크를 눌러 주세"
+"요.\n"
 
-#: board/templates/registration/activation_email.txt:18
+#: board/templates/registration/activation_email.txt:17
 #, python-format
 msgid ""
 "\n"
 "Thank you, and we welcome you as our newest valued member.\n"
 "\n"
-"%(name)s\n"
+"-- %(site_name)s\n"
 msgstr ""
 "\n"
-"%(name)s\n"
+"-- %(site_name)s\n"
 
 #: board/templates/registration/activation_email_subject.txt:1
 #, python-format
-msgid "Account activation on %(name)s"
-msgstr "%(name)s 계정 활성화"
+msgid "Account activation on %(site_name)s"
+msgstr "%(site_name)s 계정 활성화"
 
 #: board/templates/registration/login.html:28
 #: board/templates/registration/registration_form.html:24
@@ -196,7 +200,8 @@ msgstr "비밀번호 재설정"
 
 #: board/templates/registration/password_reset_done.html:12
 msgid "We have sent you an email with a link to reset your password."
-msgstr "입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다."
+msgstr ""
+"입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다."
 
 #: board/templates/registration/password_reset_done.html:13
 msgid "Please check your email and click the link to continue."
@@ -216,18 +221,19 @@ msgstr "회원가입 불가"
 
 #: board/templates/registration/registration_closed.html:11
 msgid "Sorry, but registration is closed at this moment. Come back later."
-msgstr "죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 시도해 주세요."
+msgstr ""
+"죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 시도해 주세요."
 
 #: board/templates/registration/registration_complete.html:4
 msgid "Activation email sent"
 msgstr "인증 메일 발송됨"
 
-#: board/templates/registration/registration_complete.html:12
+#: board/templates/registration/registration_complete.html:11
 #, python-format
-msgid "Welcome to %(name)s!"
-msgstr "%(name)s 회원가입을 환영합니다!"
+msgid "Welcome to %(site_name)s!"
+msgstr "%(site_name)s 회원가입을 환영합니다!"
 
-#: board/templates/registration/registration_complete.html:13
+#: board/templates/registration/registration_complete.html:12
 msgid "Please check your email to complete the registration process."
 msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다. 확인해 주세요."
 
