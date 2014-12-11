@@ -19,5 +19,5 @@ http://{{site.domain}}{% url 'registration_activate' activation_key %}
 {% blocktrans %}
 Thank you, and we welcome you as our newest valued member.
 
--- {{ site_name }}
+With regards, {{ site_name }}
 {% endblocktrans %}
