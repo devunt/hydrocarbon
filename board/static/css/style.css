@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0; }
@@ -10,7 +9,7 @@
 
 body, input, textarea, button {
   color: #222;
-  font: 13px "나눔고딕";
+  font: 13px "NanumGothic";
   letter-spacing: -.07em; }
 
 input, textarea {
@@ -93,13 +92,30 @@ div.right {
     .field label.verified input {
       border-bottom-color: #3dcc61 !important; }
   .field .errorlist {
-    margin-left: 140px; }
+    margin-left: 80px; }
     .field .errorlist li {
-      width: 380px;
       color: #666;
       list-style: square inside;
-      margin: 10px 0;
+      margin: 10px 60px;
       padding: 0 10px; }
+  @media screen and (max-device-width: 599px) {
+    .field {
+      width: 100%; }
+      .field label span {
+        width: auto;
+        display: block;
+        text-align: left;
+        margin: 5px 0;
+        padding: 0 5%; }
+      .field label input {
+        max-width: 86%;
+        width: 86%;
+        margin: 0 5%;
+        padding: 0 2%; }
+      .field .errorlist {
+        margin-left: 5%; }
+        .field .errorlist li {
+          margin: 10px 2%; } }
 
 .contents > .errorlist li {
   background: #cc3d3d;
@@ -172,6 +188,9 @@ body {
     width: 720px;
     margin: 0 auto;
     position: relative; }
+    @media screen and (max-device-width: 719px) {
+      #nav > .container {
+        width: 100%; } }
   #nav .popup {
     position: absolute; }
   #nav .handle {
@@ -197,7 +216,15 @@ body {
   #menu .handle .text {
     width: 100px;
     background: url("../img/logo_kr.png") no-repeat;
-    margin: 0 5px; }
+    margin: 0 5px;
+    transition: width .2s ease, opacity .2s ease; }
+  @media screen and (max-device-width: 399px) {
+    #menu .handle {
+      padding: 0; }
+      #menu .handle .text {
+        width: 0;
+        opacity: 0;
+        margin: 0; } }
 #menu.open .handle .icon {
   background-color: rgba(61, 156, 204, 0.9);
   background-position: 0 -50px; }
@@ -225,43 +252,31 @@ body {
     font-size: 16px;
     line-height: 50px; }
 
-/*
-#login .popup { top:45px; right:0; width:220px; color:#fff; }
-#login .popup .tip { padding:0 40px; text-align:right; }
-#login .popup .tip span { border:5px solid rgba(61,156,204,.9); border-top-color:transparent; }
-#login .popup a,
-#login .popup label,
-#login .popup input { color:#fff; }
-#login .popup > .container { background:rgba(61,156,204,.9); }
-#login .popup div.close { text-align:right; }
-#login .popup div.close .close.button { height:40px; width:40px; background:url("../img/close.png") 50% 50% no-repeat; }
-#login .popup div.inputs { background:rgba(61,156,204,.9); }
-#login .popup div.inputs div { height:38px; margin:0 10px; }
-#login .popup div.inputs div.id { border-bottom:1px solid rgba(0,0,0,.05); padding-top:1px; }
-#login .popup div.inputs div.password { border-top:1px solid rgba(255,255,255,.05); padding-bottom:1px; }
-#login .popup div.inputs label { height:38px; width:50px; display:inline-block; font-size:13px; line-height:38px; text-align:right; }
-#login .popup div.inputs input { height:38px; width:140px; background:transparent; border:0; display:inline-block; font-size:13px; line-height:38px; padding:0 5px; }
-#login .popup div.persist { height:30px; font-size:13px; margin:0 10px 10px; text-align:right; }
-#login .popup div.persist .checkbox { height:30px; line-height:30px; }
-#login .popup div.submit { text-align:center; }
-#login .popup div.submit button { height:40px; width:120px; background:rgba(255,255,255,.2); border:0; border-radius:2px; color:#fff; line-height:40px; }
-#login .popup div.submit button:hover { background:rgba(255,255,255,.3); }
-#login .popup div.help { color:#c2e2f2; font-size:13px; line-height:20px; padding:25px 0; text-align:center; }
-#login .popup div.help a:hover { color:#c2e2f2; }
-*/
 #wrapper {
   width: 720px;
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   padding-top: 50px; }
+  @media screen and (max-device-width: 719px) {
+    #wrapper {
+      width: 100%; } }
 
 #banner {
   height: 150px;
   background: url("../img/logo_large.png") 50% 50% no-repeat;
-  margin: 0 50px; }
+  margin: 0 50px;
+  transition: height .2s ease, opacity .2s ease; }
   #banner span {
     visibility: hidden; }
+  @media screen and (max-device-width: 599px) {
+    #banner {
+      height: 0;
+      opacity: 0; } }
+  @media screen and (max-device-height: 399px) {
+    #banner {
+      height: 0;
+      opacity: 0; } }
 
 #form {
   padding-bottom: 30px; }
@@ -272,8 +287,6 @@ body {
     margin: 10px 40px;
     padding: 10px 50px;
     text-align: right; }
-  #form .field {
-    width: 600px; }
   #form .meta {
     margin-top: 30px;
     text-align: center; }

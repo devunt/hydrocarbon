@@ -71,6 +71,18 @@ msgstr ""
 "%(username)s와 비밀번호를 정확히 입력해 주세요.아이디와 비밀번호는 둘 다 대소"
 "문자를 구분합니다."
 
+#: board/i18n_fake.py:15
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has %"
+"(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has %"
+"(show_value)d)."
+msgstr[0] ""
+"입력하신 값은 최소 %(limit_value)d글자여야만 합니다."
+"현재 값은 %(show_value)d글자입니다."
+
 #: board/templates/include/nav.html:16
 #: board/templates/registration/login.html:4
 #: board/templates/registration/login.html:23
