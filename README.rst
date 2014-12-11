@@ -22,7 +22,6 @@ How to install
    $ git clone git://github.com.devunt/hydrocarbon.git
    $ cd hydrocarbon
    $ pip install -r requirements.txt
-   $ python manage.py syncdb
    $ python manage.py migrate
    $ python manage.py compilemessages
    $ python manage.py runserver
