@@ -140,8 +140,10 @@ msgid ""
 "\n"
 "Thank you, and we welcome you as our newest valued member.\n"
 "\n"
-"-- %(site_name)s\n"
+"With regards,\n"
+"%(site_name)s\n"
 msgstr ""
+"\n"
 "\n"
 "-- %(site_name)s\n"
 
@@ -218,6 +220,59 @@ msgstr ""
 #: board/templates/registration/password_reset_done.html:13
 msgid "Please check your email and click the link to continue."
 msgstr "이메일을 확인하시고 링크에 접속해 비밀번호를 초기화해 주세요."
+
+#: board/templates/registration/password_reset_email.html:4
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s.\n"
+msgstr ""
+"\n"
+"%(user)s님 안녕하세요.\n"
+
+#: board/templates/registration/password_reset_email.html:7
+#, python-format
+msgid ""
+"\n"
+"This mail is for a %(domain)s member who requested password reset\n"
+"or change. If you never have done that and presume that someone\n"
+" is trying to log in with your account without your permission,\n"
+" you can ignore this mail and we'll keep your account safe.\n"
+msgstr ""
+"\n"
+"이 메일은 %(domain)s 계정 비밀번호 변경을 요청하신 분께 자동으로\n"
+"발송됩니다. 만일 본인께서 요청하신 적이 없다면 이 메일은 무시해\n"
+"주시기 바랍니다.\n"
+
+#: board/templates/registration/password_reset_email.html:13
+msgid ""
+"\n"
+"To reset your password, please press the link below, or copy and paste it\n"
+"into your web browser:\n"
+msgstr ""
+"\n"
+"비밀번호를 초기화하려면 아래의 링크를 누르거나, 링크를 복사해\n"
+"브라우저의 주소창에 입력해 이동해 주세요.\n"
+
+#: board/templates/registration/password_reset_email.html:20
+#, python-format
+msgid ""
+"\n"
+"For your reminder, the ID that belongs to this mail is %(user_username)s\n"
+msgstr ""
+"\n"
+"요청하신 분의 아이디는 %(user_username)s입니다.\n"
+
+#: board/templates/registration/password_reset_email.html:24
+#, python-format
+msgid ""
+"\n"
+"With regards,\n"
+"%(site_name)s\n"
+msgstr ""
+"\n"
+"\n"
+"-- %(site_name)s\n"
 
 #: board/templates/registration/password_reset_form.html:16
 msgid ""
