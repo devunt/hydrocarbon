@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 09:40+0900\n"
+"POT-Creation-Date: 2014-12-11 12:17+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgstr "계정이 성공적으로 활성화되었습니다."
 msgid "You can log in."
 msgstr "이제 로그인하실 수 있습니다."
 
-#: board/templates/registration/activation_email.txt:4
+#: board/templates/registration/activation_email.txt:6
 #, python-format
 msgid ""
 "\n"
@@ -111,7 +111,7 @@ msgstr ""
 "저희가 자동으로 가입 정보를 폐기할 예정이니 따로 조치를 취하지 않으셔도 됩니"
 "다.\n"
 
-#: board/templates/registration/activation_email.txt:10
+#: board/templates/registration/activation_email.txt:12
 #, python-format
 msgid ""
 "\n"
@@ -122,7 +122,7 @@ msgstr ""
 "이 계정을 활성화하려면 %(expiration_days)s일 안에 아래의 링크를 눌러 주세"
 "요.\n"
 
-#: board/templates/registration/activation_email.txt:17
+#: board/templates/registration/activation_email.txt:19
 #, python-format
 msgid ""
 "\n"

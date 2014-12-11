@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 09:40+0900\n"
+"POT-Creation-Date: 2014-12-11 12:17+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,7 +92,7 @@ msgstr ""
 msgid "You can log in."
 msgstr ""
 
-#: board/templates/registration/activation_email.txt:4
+#: board/templates/registration/activation_email.txt:6
 #, python-format
 msgid ""
 "\n"
@@ -103,7 +103,7 @@ msgid ""
 "entered under your address within the next few days.\n"
 msgstr ""
 
-#: board/templates/registration/activation_email.txt:10
+#: board/templates/registration/activation_email.txt:12
 #, python-format
 msgid ""
 "\n"
@@ -111,7 +111,7 @@ msgid ""
 "%(expiration_days)s days:\n"
 msgstr ""
 
-#: board/templates/registration/activation_email.txt:17
+#: board/templates/registration/activation_email.txt:19
 #, python-format
 msgid ""
 "\n"

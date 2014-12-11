@@ -1,6 +1,8 @@
 {% load i18n %}
 {% load url from future %}
 
+{% trans site.name as site_name %}
+
 {% blocktrans %}
 Thank you for registering in {{ site_name }}. If you never heard of our site and
 someone pretending to be you used your mail account to register instead,
