@@ -24,6 +24,25 @@ a:hover { color:#999; }
 div.left { float:left; white-space:nowrap; }
 div.right { float:right; white-space:nowrap; }
 
+#overlay div { z-index:20; }
+
+.tip {
+	font-size:0; line-height:0; text-align:center;
+	span { height:0; width:0; display:inline-block;}
+	.left { border-left-color:transparent !important; }
+	.right { border-right-color:transparent !important; }
+}
+
+#tooltip {
+	display:none; opacity:0; pointer-events:none; position:absolute;
+	.tip span { border:3px solid rgba(32,32,32,.9); }
+	.tip.top span { border-top-color:transparent; }
+	.tip.bottom span { border-bottom-color:transparent; }
+	.container { background:rgba(32,32,32,.9); border-radius:4px; padding:0 8px; text-align:center;
+		p { color:#fff; line-height:25px; }
+	}
+}
+
 .checkbox {
 	display:inline-block; cursor:default;
 
@@ -72,12 +91,6 @@ div.right { float:right; white-space:nowrap; }
 	height:60px; width:160px; background:#3d9ccc; border:0; border-radius:4px; color:#fff; cursor:pointer; display:block; font-size:16px; line-height:60px; margin:20px auto; text-align:center; text-decoration:none;
 
 	&:hover { background:#2e7599; }
-}
-
-.tip {
-	span {height:0; width:0; display:inline-block; }
-	.left { border-left-color:transparent !important; }
-	.right { border-right-color:transparent !important; }
 }
 
 .label.meta {
@@ -148,7 +161,7 @@ body { background:#e5e5e5; }
 	height:150px; background:url("../img/logo_large.png") 50% 50% no-repeat; margin:0 50px; transition:height .2s ease, opacity .2s ease;
 	span { visibility:hidden; }
 	@media screen and (max-device-width: $medium - 1) { height:0; opacity:0; }
-	@media screen and (max-device-height: $small - 1) { height:0; opacity:0; }
+	@media screen and (max-device-height: $medium - 1) { height:0; opacity:0; }
 }
 
 #form {

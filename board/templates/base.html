@@ -10,6 +10,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+	<script src="{% static "js/base.js" %}"></script>
+
 	<link rel="stylesheet" href="{% static "css/style.css" %}">
 
 	<title>{% block title %}{{ site_name }}{% endblock %}</title>
@@ -31,8 +34,18 @@
 
 <footer id="footer">
 	<img src="{% static "img/footer.png" %}">
-	<p>© 2014 herocomics All rights reserved.</p>
+	<p title="Designed by SolidStud!o">© 2014 herocomics All rights reserved.</p>
 </footer>
+
+<div id="overlay">
+	<div id="tooltip">
+		<div class="tip top"><span class="left"></span><span class="right"></span></div>
+		<div class="container">
+			<p></p>
+		</div>
+		<div class="tip bottom" style="display:none"><span class="left"></span><span class="right"></span></div>
+	</div>
+</div>
 
 </body>
 

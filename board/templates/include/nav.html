@@ -12,7 +12,7 @@
 	<div class="right">
 		<div id="login">
 			{% if user.profile.nick %}
-			<a href="/accounts/profile" class="handle">
+			<a href="/accounts/profile" class="handle" title="{{ user }}">
 				<span class="button icon"></span>
 				<span class="button text">{{ user.profile.nick }}</span>
 			</a>
