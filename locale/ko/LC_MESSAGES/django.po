@@ -83,6 +83,38 @@ msgstr[0] ""
 "입력하신 값은 최소 %(limit_value)d글자여야만 합니다."
 "현재 값은 %(show_value)d글자입니다."
 
+#: board/templates/include/nav.html:21
+msgid "Home"
+msgstr "홈"
+
+#: board/templates/include/nav.html:22
+msgid "Favorites"
+msgstr "즐겨찾기"
+
+#: board/templates/include/nav.html:23
+msgid "Notices"
+msgstr "공지사항"
+
+#: board/templates/include/nav.html:24
+msgid "Scanlations"
+msgstr "번역"
+
+#: board/templates/include/nav.html:47
+msgid "Profile"
+msgstr "프로필"
+
+#: board/templates/include/nav.html:48
+msgid "Submitted"
+msgstr "작성글 보기"
+
+#: board/templates/include/nav.html:49
+msgid "Inbox"
+msgstr "쪽지함"
+
+#: board/templates/include/nav.html:50
+msgid "Log out"
+msgstr "로그아웃"
+
 #: board/templates/include/nav.html:16
 #: board/templates/registration/login.html:4
 #: board/templates/registration/login.html:23
@@ -153,13 +185,21 @@ msgid "Account activation on %(site_name)s"
 msgstr "%(site_name)s 계정 활성화"
 
 #: board/templates/registration/login.html:28
+msgid "Do you have no account?"
+msgstr "아직 계정이 없으신가요?"
+
+#: board/templates/registration/login.html:28
 #: board/templates/registration/registration_form.html:24
 msgid "Register"
 msgstr "회원가입"
 
 #: board/templates/registration/login.html:29
-msgid "Lost Password?"
-msgstr "비밀번호 찾기"
+msgid "Lost your password?"
+msgstr "비밀번호를 잃어버리셨나요?"
+
+#: board/templates/registration/login.html:29
+msgid "Click here"
+msgstr "여기를 클릭하세요."
 
 #: board/templates/registration/logout.html:4
 msgid "Logged out"
