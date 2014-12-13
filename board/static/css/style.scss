@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-$small: 400px - 1;
+$small: 420px - 1;
 $medium: 600px - 1;
 $large: 720px - 1;
 
@@ -153,10 +153,11 @@ div.right .menu .popup { right:0; }
 }
 
 #banner {
-	height:150px; background:url("../img/logo_large.png") 50% 50% no-repeat; margin:0 50px; transition:height .2s ease, opacity .2s ease;
+	height:150px; background:url("../img/logo_large.png") 50% 50% no-repeat; transition:height .2s ease, opacity .2s ease;
 	span { visibility:hidden; }
-	@media screen and (max-device-width: $medium) { height:0; opacity:0; }
+	@media screen and (max-device-width: $small - 20) { height:0; opacity:0; }
 	@media screen and (max-device-height: $medium) { height:0; opacity:0; }
+	@media screen and (max-device-height: $small) { display:none; }
 }
 
 #form {
@@ -206,12 +207,15 @@ div.right .menu .popup { right:0; }
 }
 
 #form_login {
-	margin:50px 0;
+	margin:20px 0; transition:margin .2s ease;
+	@media screen and (max-device-height: $small) { margin:0; }
+
+	#banner { margin:30px 0; }
 	form { margin:30px 0; }
 	form > ul { background:#f2f2f2; box-shadow:inset 0 2px 10px rgba(0,0,0,.05); padding:20px 0; }
 
 	.field {
-		width:400px; list-style:none; margin:0 auto; position:relative;
+		width:$small + 1; list-style:none; margin:0 auto; position:relative;
 		@media screen and (max-device-width: $small) { width:100%; }
 
 		&:first-of-type { border-bottom:1px solid rgba(0,0,0,.1); }
@@ -228,7 +232,7 @@ div.right .menu .popup { right:0; }
 			li { color:#cc3d3d; list-style:square inside; margin:5px 0; }
 		}
 	.submit { margin-top:0; border-radius:0 0 4px 4px; }
-	.meta { padding:30px 0 80px; text-align:center; }
+	.meta { padding:10px 0 50px; text-align:center; }
 	.meta p { margin:5px 0; }
 	.meta a { display:inline-block; padding:0 .5em; }
 }

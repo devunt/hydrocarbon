@@ -5,10 +5,9 @@
 
 {% block content %}
 
-
+{% include "include/banner.html" %}
+{{ form.non_field_errors }}
 <div id="form_login">
-	{% include "include/banner.html" %}
-	{{ form.non_field_errors }}
 	<form method="post" action="">
 		{% csrf_token %}
 		<ul>
