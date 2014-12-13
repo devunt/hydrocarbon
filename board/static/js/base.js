@@ -32,10 +32,72 @@ $(function() {
 			$(this).next('label').hide();
 		});
 
+	$('.vote a').on('click', function(e) {
+		e.preventDefault();
+
+		var $sibling_voted = $(this).siblings('.voted');
+
+		var vote;
+		var avote;
+		var work;
+		var button;
+		var callback;
+
+		var databox = {
+			type: null,
+			target: null,
+			recommend: null
+		}
+
+		if($(this).hasClass('vote-post')) databox.type = 'p';
+		if($(this).hasClass('vote-comment')) databox.type = 'c';
+
+		databox.target = $(this).parent('.vote').data('target-id');
+
+		if($(this).hasClass('voted')) { work = '-';
+		} else { work = '+'; }
+
+		if($(this).hasClass('upvote')) { 
+			vote = '+';
+			avote = '-';
+		}
+		if($(this).hasClass('downvote')) {
+			vote = '-';
+			avote = '+';
+		}
+
+		button = $(this);
+
+		if(work == '+' && $sibling_voted.length) {
+			$ajax_vote(databox, '-' + avote, $sibling_voted)			
+				.done(function() { $ajax_vote(databox, work + vote, button); });
+		} else { $ajax_vote(databox, work + vote, button); }
+	});
+
 });
 
 var $overlay;
 var $tooltip;
+
+var csrftoken = $.cookie('csrftoken');
+
+var funct = function() {};
+
+var browser = {
+	can : {
+		placeholder: function() { return 'placeholder' in document.creatElement('input'); }
+	}
+}
+
+function csrfSafeMethod(method) { return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)); }
+
+$.ajaxSetup({
+	beforeSend: function(xhr, settings) {
+		if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+			xhr.setRequestHeader("X-CSRFToken", csrftoken);
+		}
+	}
+});
 
 function showTooltip(e) {
 	var $target = $(e.target).closest('.th');
@@ -86,4 +148,21 @@ function hideTooltip() {
 	$tooltip
 		.stop()
 		.animate({'opacity': 0}, 100, function() { $tooltip.hide(); });
+}
+
+function $ajax_vote(databox, recommend, button) {
+	databox.recommend = recommend;
+	return $.ajax({
+			type: 'POST',
+			url: '/x/r',
+			data: databox
+		})
+			.done(function(data, status, xhr) {
+				if(databox.recommend.charAt(0) == '+') { button.addClass('voted');
+				} else { button.removeClass('voted'); }
+			})
+			.fail(function(xhr, status, error) {
+				console.log(status);
+				console.log(error);
+			});
 }
