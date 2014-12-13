@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 12:17+0900\n"
+"POT-Creation-Date: 2014-12-13 10:41+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 #: board/forms.py:7
 msgid "Nickname:"
@@ -68,11 +68,56 @@ msgid ""
 "be case-sensitive."
 msgstr ""
 
-#: board/templates/include/nav.html:16
+#: board/i18n_fake.py:15
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has %"
+"(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has %"
+"(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: board/templates/include/nav.html:11 board/templates/include/nav.html:38
+msgid "Close"
+msgstr ""
+
+#: board/templates/include/nav.html:22
+msgid "Home"
+msgstr ""
+
+#: board/templates/include/nav.html:23
+msgid "Favorites"
+msgstr ""
+
+#: board/templates/include/nav.html:24
+msgid "Notices"
+msgstr ""
+
+#: board/templates/include/nav.html:25
+msgid "Scanlations"
+msgstr ""
+
+#: board/templates/include/nav.html:49
+msgid "Profile"
+msgstr ""
+
+#: board/templates/include/nav.html:50
+msgid "Submitted"
+msgstr ""
+
+#: board/templates/include/nav.html:51
+msgid "Inbox"
+msgstr ""
+
+#: board/templates/include/nav.html:52
+msgid "Log out"
+msgstr ""
+
+#: board/templates/include/nav.html:60
 #: board/templates/registration/login.html:4
 #: board/templates/registration/login.html:23
-#: board/templates/registration/password_change_done.html:11
-#: board/templates/registration/password_reset_complete.html:11
 msgid "Log in"
 msgstr ""
 
@@ -117,7 +162,7 @@ msgid ""
 "\n"
 "Thank you, and we welcome you as our newest valued member.\n"
 "\n"
-"-- %(site_name)s\n"
+"With regards, %(site_name)s\n"
 msgstr ""
 
 #: board/templates/registration/activation_email_subject.txt:1
@@ -126,12 +171,20 @@ msgid "Account activation on %(site_name)s"
 msgstr ""
 
 #: board/templates/registration/login.html:28
+msgid "Do you have no account?"
+msgstr ""
+
+#: board/templates/registration/login.html:28
 #: board/templates/registration/registration_form.html:24
 msgid "Register"
 msgstr ""
 
 #: board/templates/registration/login.html:29
-msgid "Lost Password?"
+msgid "Lost your password?"
+msgstr ""
+
+#: board/templates/registration/login.html:29
+msgid "Click here"
 msgstr ""
 
 #: board/templates/registration/logout.html:4
@@ -159,11 +212,11 @@ msgstr ""
 msgid "Password reset complete"
 msgstr ""
 
-#: board/templates/registration/password_reset_complete.html:10
+#: board/templates/registration/password_reset_complete.html:12
 msgid "Your password has been reset!"
 msgstr ""
 
-#: board/templates/registration/password_reset_complete.html:11
+#: board/templates/registration/password_reset_complete.html:13
 msgid "You may now"
 msgstr ""
 
@@ -191,6 +244,45 @@ msgstr ""
 
 #: board/templates/registration/password_reset_done.html:13
 msgid "Please check your email and click the link to continue."
+msgstr ""
+
+#: board/templates/registration/password_reset_email.html:4
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s.\n"
+msgstr ""
+
+#: board/templates/registration/password_reset_email.html:7
+#, python-format
+msgid ""
+"\n"
+"This mail is for a %(domain)s member who requested password reset\n"
+"or change. If you never have done that and presume that someone\n"
+" is trying to log in with your account without your permission,\n"
+" you can ignore this mail and we'll keep your account safe.\n"
+msgstr ""
+
+#: board/templates/registration/password_reset_email.html:13
+msgid ""
+"\n"
+"To reset your password, please press the link below, or copy and paste it\n"
+"into your web browser:\n"
+msgstr ""
+
+#: board/templates/registration/password_reset_email.html:20
+#, python-format
+msgid ""
+"\n"
+"For your reminder, the ID that belongs to this mail is %(user_username)s\n"
+msgstr ""
+
+#: board/templates/registration/password_reset_email.html:24
+#, python-format
+msgid ""
+"\n"
+"With regards,\n"
+"%(site_name)s\n"
 msgstr ""
 
 #: board/templates/registration/password_reset_form.html:16
