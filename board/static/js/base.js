@@ -9,17 +9,28 @@ $(function() {
 	$overlay = $('#overlay');
 	$tooltip = $('#tooltip');
 
-	$('*[title]').on('mouseenter',function() {
-		var title = $(this).attr('title');
-		$(this)
-			.removeAttr('title')
-			.addClass('th')
-			.data('title', title);
-	});
+	$('.hoverable').hover(function() { $(this).addClass('hover'); },
+			function() { $(this).removeClass('hover'); });
 
-	$document.on('mouseenter', '.th', function(e) { showTooltip(e) });
-	$document.on('mouseleave', '.th', function() { hideTooltip() });
-	$document.on('scroll', function() { hideTooltip() });
+	$document
+		.on('mouseenter', '.th', showTooltip)
+		.on('mouseleave scroll', '.th', hideTooltip)
+		.on('mouseenter', '*[title]', function() {
+			$(this)
+				.data('title', $(this).attr('title'))
+				.removeAttr('title')
+				.addClass('th')
+				.trigger('mouseenter');
+		});		
+
+	$('#form_login')
+		.on('load focusin focusout', '.field input', function() {
+			if(this.value == '') { $(this).next('label').show();
+			} else { $(this).next('label').hide(); }
+		})
+		.on('keypress', '.field input', function() {
+			$(this).next('label').hide();
+		});
 
 });
 
@@ -43,6 +54,7 @@ function showTooltip(e) {
 	var width;
 
 	$tooltip.find('.container p').text($target.data('title'));
+	$tooltip.find('.tip').removeAttr('style');
 
 	top = position.top + targetHeight;
 	left = position.left + targetWidth/2;
@@ -50,8 +62,8 @@ function showTooltip(e) {
 	height = $tooltip.height();
 	width = $tooltip.width();
 
-	offsetX = $document.width() - (left + width/2);
-	offsetY = $document.height() - (top + height);
+	offsetX = $window.width() - (left + width/2);
+	offsetY = $window.height() - (top + height);
 
 	offsetX = (offsetX < 0) ? offsetX - 10 : 0;
 	offsetY = (offsetY < 0) ? -1*(height + targetHeight) - 2 : 2;

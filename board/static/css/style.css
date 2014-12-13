@@ -90,69 +90,6 @@ div.right {
   .checkbox.checked span {
     background: rgba(255, 255, 255, 0.5) url("../img/checkbox.png") 50% 50% no-repeat; }
 
-.field {
-  width: 600px;
-  list-style: none;
-  margin: 0 auto;
-  padding: 10px 0; }
-  .field label {
-    display: block;
-    font-size: 0;
-    margin: 10px 0;
-    white-space: nowrap; }
-    .field label span {
-      width: 125px;
-      color: #999;
-      display: inline-block;
-      font-size: 20px;
-      letter-spacing: -2px;
-      line-height: 30px;
-      text-align: right;
-      vertical-align: top; }
-    .field label input {
-      max-width: 380px;
-      width: 380px;
-      border: 0;
-      border-bottom: 1px solid #ddd;
-      color: #333;
-      font-size: 16px;
-      line-height: 30px;
-      margin-left: 15px;
-      padding: 0 10px; }
-      .field label input:focus {
-        border-bottom-color: #3d9ccc;
-        outline: none; }
-    .field label.error input {
-      background: #ffd;
-      border-bottom-color: #cc3d3d !important; }
-    .field label.verified input {
-      border-bottom-color: #3dcc61 !important; }
-  .field .errorlist {
-    margin-left: 80px; }
-    .field .errorlist li {
-      color: #666;
-      list-style: square inside;
-      margin: 10px 60px;
-      padding: 0 10px; }
-  @media screen and (max-device-width: 599px) {
-    .field {
-      width: 100%; }
-      .field label span {
-        width: auto;
-        display: block;
-        text-align: left;
-        margin: 5px 0;
-        padding: 0 5%; }
-      .field label input {
-        max-width: 86%;
-        width: 86%;
-        margin: 0 5%;
-        padding: 0 2%; }
-      .field .errorlist {
-        margin-left: 5%; }
-        .field .errorlist li {
-          margin: 10px 2%; } }
-
 .contents > .errorlist li {
   background: #cc3d3d;
   color: #fff;
@@ -200,6 +137,9 @@ div.right {
 body {
   background: #e5e5e5; }
 
+body.no-scroll {
+  overflow: hidden; }
+
 #header {
   top: 0;
   width: 100%;
@@ -218,23 +158,77 @@ body {
     @media screen and (max-device-width: 719px) {
       #nav > .container {
         width: 100%; } }
-  #nav .popup {
-    position: absolute; }
   #nav .handle {
     height: 50px;
     display: block; }
-  #nav .handle:hover {
-    background-color: rgba(61, 156, 204, 0.9); }
   #nav .handle span {
     height: 50px;
     vertical-align: top; }
 
-.popup {
-  display: none; }
-
-.open .popup {
+.menu.hover .popup,
+.menu.hover .popup .close {
   display: block; }
+.menu .popup {
+  display: none;
+  position: absolute; }
+  .menu .popup .close {
+    display: none; }
+  .menu .popup ul {
+    font-size: 13px;
+    list-style: none; }
+  .menu .popup li {
+    background: rgba(61, 156, 204, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .menu .popup li a {
+    color: #fff;
+    display: block;
+    padding: 0 15px; }
+  .menu .popup li a span {
+    height: 30px;
+    display: block;
+    line-height: 30px; }
+  .menu .popup li a:hover {
+    background: rgba(61, 156, 204, 0.9); }
+  @media screen and (max-device-width: 599px) {
+    .menu .popup li a {
+      font-size: 16px;
+      padding: 10px 20px; } }
+  @media screen and (max-device-width: 399px) {
+    .menu .popup {
+      top: 50px;
+      left: 0;
+      height: calc(100% - 50px);
+      width: 100%;
+      overflow: auto;
+      position: fixed; }
+      .menu .popup .close {
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        position: relative;
+        z-index: 8; }
+      .menu .popup ul {
+        top: 0;
+        height: 100%;
+        width: 70%;
+        background: rgba(61, 156, 204, 0.9);
+        position: absolute;
+        z-index: 9; }
+      .menu .popup li {
+        background: #3d9ccc;
+        border-top-color: rgba(0, 0, 0, 0.1); }
+      .menu .popup li a {
+        width: 80%;
+        padding: 10px 10%; }
+      .menu .popup li a:hover {
+        background: #2e7599; } }
 
+div.right .menu .popup {
+  right: 0; }
+
+@media screen and (max-device-width: 399px) {
+  div.right .menu .popup ul {
+    right: 0; } }
 #menu .handle {
   padding-right: 10px; }
   #menu .handle .icon {
@@ -252,22 +246,11 @@ body {
         width: 0;
         opacity: 0;
         margin: 0; } }
-#menu.open .handle .icon {
+  #menu .handle.hoverable:hover {
+    background-color: rgba(61, 156, 204, 0.9); }
+#menu.hover .handle .icon {
   background-color: rgba(61, 156, 204, 0.9);
   background-position: 0 -50px; }
-#menu .popup ul {
-  font-size: 13px;
-  list-style: none; }
-#menu .popup a {
-  height: 30px;
-  width: 60px;
-  background: rgba(61, 156, 204, 0.9);
-  color: #fff;
-  display: block;
-  line-height: 30px;
-  padding: 0 10px; }
-  #menu .popup a:hover {
-    background: #3d9ccc; }
 
 #login .handle {
   color: #fff;
@@ -278,6 +261,8 @@ body {
   #login .handle .text {
     font-size: 16px;
     line-height: 50px; }
+#login.hover .handle {
+  background-color: rgba(61, 156, 204, 0.9); }
 
 #wrapper {
   width: 720px;
@@ -307,13 +292,68 @@ body {
 
 #form {
   padding-bottom: 30px; }
-  #form h1 {
-    color: #ddd;
-    font-size: 60px;
-    font-weight: normal;
-    margin: 10px 40px;
-    padding: 10px 50px;
-    text-align: right; }
+  #form .field {
+    width: 600px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 10px 0; }
+    #form .field label {
+      display: block;
+      font-size: 0;
+      margin: 10px 0;
+      white-space: nowrap; }
+      #form .field label span {
+        width: 125px;
+        color: #999;
+        display: inline-block;
+        font-size: 20px;
+        letter-spacing: -2px;
+        line-height: 30px;
+        text-align: right;
+        vertical-align: top; }
+      #form .field label input {
+        max-width: 380px;
+        width: 380px;
+        border: 0;
+        border-bottom: 1px solid #ddd;
+        color: #333;
+        font-size: 16px;
+        line-height: 30px;
+        margin-left: 15px;
+        padding: 0 10px; }
+        #form .field label input:focus {
+          border-bottom-color: #3d9ccc;
+          outline: none; }
+      #form .field label.error input {
+        background: #ffd;
+        border-bottom-color: #cc3d3d !important; }
+      #form .field label.verified input {
+        border-bottom-color: #3dcc61 !important; }
+    #form .field .errorlist {
+      margin-left: 80px; }
+      #form .field .errorlist li {
+        color: #666;
+        list-style: square inside;
+        margin: 10px 60px;
+        padding: 0 10px; }
+    @media screen and (max-device-width: 599px) {
+      #form .field {
+        width: 100%; }
+        #form .field label span {
+          width: auto;
+          display: block;
+          text-align: left;
+          margin: 5px 0;
+          padding: 0 5%; }
+        #form .field label input {
+          max-width: 86%;
+          width: 86%;
+          margin: 0 5%;
+          padding: 0 2%; }
+        #form .field .errorlist {
+          margin-left: 5%; }
+          #form .field .errorlist li {
+            margin: 10px 2%; } }
   #form .meta {
     margin-top: 30px;
     text-align: center; }
@@ -330,6 +370,62 @@ body {
         color: #222; }
   #form .simple_notice {
     padding: 0; }
+
+#form_login {
+  margin: 50px 0; }
+  #form_login form {
+    margin: 30px 0; }
+  #form_login form > ul {
+    background: #f2f2f2;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px 0; }
+  #form_login .field {
+    width: 400px;
+    list-style: none;
+    margin: 0 auto;
+    position: relative; }
+    @media screen and (max-device-width: 399px) {
+      #form_login .field {
+        width: 100%; } }
+    #form_login .field:first-of-type {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    #form_login .field:last-of-type {
+      border-top: 1px solid rgba(255, 255, 255, 0.5); }
+    #form_login .field input, #form_login .field label {
+      height: 50px;
+      line-height: 50px; }
+    #form_login .field input {
+      width: 90%;
+      border: 0;
+      background: transparent url("../img/login_icon.png") 95% 0 no-repeat;
+      padding: 0 5%; }
+    #form_login .field #id_password {
+      background-position: 95% 100%; }
+    #form_login .field label {
+      left: 0;
+      top: 0;
+      cursor: text;
+      margin: 0 5%;
+      position: absolute; }
+    #form_login .field label span {
+      font-size: 13px; }
+  #form_login .errorlist {
+    margin: 5px 10% 20px; }
+    #form_login .errorlist li {
+      color: #cc3d3d;
+      list-style: square inside;
+      margin: 5px 0; }
+  #form_login .submit {
+    margin-top: 0;
+    border-radius: 0 0 4px 4px; }
+  #form_login .meta {
+    padding: 30px 0 80px;
+    text-align: center; }
+  #form_login .meta p {
+    margin: 5px 0; }
+  #form_login .meta a {
+    display: inline-block;
+    padding: 0 .5em; }
 
 .simple_notice {
   padding-bottom: 30px;
