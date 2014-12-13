@@ -1,6 +1,7 @@
 import datetime
 
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.db import models
 
 
@@ -16,28 +17,46 @@ class Board(models.Model):
     name = models.CharField(max_length=16)
     slug = models.SlugField()
 
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('board_post_list', kwargs={'board': self.slug})
+
 
 class Category(models.Model):
-    board = models.ForeignKey('Board')
+    board = models.ForeignKey('Board', related_name='categories')
     name = models.CharField(max_length=8)
     slug = models.SlugField()
+
+    def __str__(self):
+        return self.name
 
 
 class Tag(models.Model):
     name = models.CharField(max_length=16)
 
+    def __str__(self):
+        return self.name
+
 
 class Post(models.Model):
-    user = models.ForeignKey(User, blank=True, null=True)
+    user = models.ForeignKey(User, blank=True, null=True, related_name='posts')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
-    board = models.ForeignKey('Board')
-    category = models.ForeignKey('Category', blank=True, null=True)
+    board = models.ForeignKey('Board', related_name='posts')
+    category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')
     title = models.CharField(max_length=32)
     contents = models.TextField()
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     viewcount = models.PositiveIntegerField(default=0)
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField()
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'pk': self.id})
 
     def save(self, *args, **kwargs):
         if not kwargs.pop('auto_now', False):
@@ -46,9 +65,9 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('Post')
+    post = models.ForeignKey('Post', related_name='comments')
     comment = models.ForeignKey('self', related_name='subcomments', blank=True, null=True)
-    user = models.ForeignKey(User, blank=True, null=True)
+    user = models.ForeignKey(User, blank=True, null=True, related_name='comments')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     contents = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
@@ -61,12 +80,12 @@ class Recommendation(models.Model):
         (NOT_RECOMMEND, 'Not recommend'),
         (RECOMMEND, 'Recommend'),
     )
-    post = models.ForeignKey('Post')
-    user = models.ForeignKey(User, blank=True, null=True)
+    post = models.ForeignKey('Post', related_name='recommendations')
+    user = models.ForeignKey(User, blank=True, null=True, related_name='recommendations')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     recommend = models.PositiveSmallIntegerField(choices=RECOMMEND_CHOICES)
 
 
 class Announcement(models.Model):
-    post = models.ForeignKey('Post')
-    boards = models.ManyToManyField('Board')
+    post = models.ForeignKey('Post', related_name='announcements')
+    boards = models.ManyToManyField('Board', related_name='announcements')
