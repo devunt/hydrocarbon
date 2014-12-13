@@ -83,6 +83,106 @@ msgstr[0] ""
 "입력하신 값은 최소 %(limit_value)d글자여야만 합니다."
 "현재 값은 %(show_value)d글자입니다."
 
+#: board/templates/board/post_detail.html:16
+#, python-format
+msgid "<span>%(counter)s</span> comment"
+msgid_plural "<span>%(counter)s</span> comments"
+msgstr[0] "댓글 <span>%(counter)s</span>개"
+
+#: board/templates/board/post_detail.html:20
+#, python-format
+msgid "<span>%(counter)s</span> upvotes"
+msgstr "추천 <span>%(counter)s</span>개"
+
+#: board/templates/board/post_detail.html:31
+msgid "Upvote"
+msgstr "추천"
+
+#: board/templates/board/post_detail.html:35
+msgid "Downvote"
+msgstr "비추천"
+
+#: board/templates/board/post_detail.html:44
+#, python-format
+msgid "There is %(counter)s comment."
+msgid_plural "There are %(counter)s comments."
+msgstr[0] "%(counter)s개의 댓글이 달려있습니다."
+
+#: board/templates/board/post_detail.html:48
+msgid "Refresh"
+msgstr "새로고침"
+
+#: board/templates/board/post_detail.html:80
+msgid "Please write your reply here."
+msgstr "댓글을 달아보시는 건 어떤가요?"
+
+#: board/templates/board/post_detail.html:83
+msgid "Submit comment"
+msgstr "댓글 달기"
+
+#: board/templates/board/post_detail.html:93
+#: board/templates/board/post_list.html:46
+msgid "List"
+msgstr "목록"
+
+#: board/templates/board/post_detail.html:94
+#: board/templates/board/post_list.html:47
+msgid "Top Posts"
+msgstr "베스트"
+
+#: board/templates/board/post_detail.html:97
+msgid "Delete"
+msgstr "삭제"
+
+#: board/templates/board/post_detail.html:98
+msgid "Modify"
+msgstr "수정"
+
+#: board/templates/board/post_detail.html:99
+#: board/templates/board/post_list.html:56
+msgid "New Post"
+msgstr "글쓰기"
+
+#: board/templates/board/post_list.html:15
+msgid "Title"
+msgstr "제목"
+
+#: board/templates/board/post_list.html:16
+msgid "Author"
+msgstr "글쓴이"
+
+#: board/templates/board/post_list.html:17
+msgid "Date"
+msgstr "날짜"
+
+#: board/templates/board/post_list.html:18
+msgid "Score"
+msgstr "추천"
+
+#: board/templates/board/post_list.html:19
+msgid "Views"
+msgstr "조회"
+
+#: board/templates/board/post_list.html:46
+msgid "Search"
+msgstr "검색"
+
+#: board/templates/board/post_list.html:58
+msgid "First"
+msgstr "처음"
+
+#: board/templates/board/post_list.html:59
+msgid "Prev"
+msgstr "이전"
+
+#: board/templates/board/post_list.html:72
+msgid "Next"
+msgstr "다음"
+
+#: board/templates/board/post_list.html:73
+msgid "Last"
+msgstr "마지막"
+
 #: board/templates/include/nav.html:21
 msgid "Home"
 msgstr "홈"

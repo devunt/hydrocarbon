@@ -1,9 +1,110 @@
-{% extends 'base.html' %}
+{% extends 'board/post_list.html' %}
+{% load i18n %}
 
-{% block content %}
-{{ object.title }}
-{{ object.contents | safe }}
-{{ object.user }}
-{{ object.ipaddress }}
-{# see /board/models.py #}
-{% endblock content %}
+{% block post %}
+
+<article class="section article">
+	<header>
+		<div>
+			<span class="category">{{ post.category }}</span>
+			<h2>{{ post.title }}</h2>
+		</div>
+		<section class="meta">
+			<span class="label meta author" title="{{ post.user }}, {{ post.ipaddress }}"><span>{{ post.user.profile.nick }}</span></span>
+			<span class="label meta timestamp" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}"><span>{{ post.created_time | timesince }}</span></span>
+			<span class="label meta comments">
+				{% blocktrans count counter=post.comments.count %}<span>{{ counter }}</span> comment{% plural %}<span>{{ counter }}</span> comments{% endblocktrans %}
+
+			</span>
+			<span class="label meta score" title="+{{ post.recommendations.recommend }} / -{{ post.recommendations.not_recommend }}">
+				{% blocktrans with counter=post.recommendations.recommend | add post.recommendations.not_recommend %}<span>{{ counter }}</span> upvotes{% endblocktrans %}
+			</span>
+		</section>
+	</header>
+	<div class="article">
+		{{ post.contents | safe }}
+	</div>
+
+	<section class="vote" data-target-id="{{ post.id }}">
+		<a href="#upvote" class="upvote vote-post">
+			<span class="icon"></span>
+			<span class="text">{% trans "Upvote" %}</span>
+		</a>
+		<a href="#downvote" class="downvote vote-post">
+			<span class="icon"></span>
+			<span class="text">{% trans "Downvote" %}</span>
+		</a>
+	</section>
+
+	<footer class="clear">
+		<div class="comments">
+			<div class="left">
+				<a href="#" class="label meta comments">
+					{% blocktrans count counter=post.comments.count %}There is {{ counter }} comment.{% plural %}There are {{ counter }} comments.{% endblocktrans %}
+				</a>
+			</div>
+			<div class="right">
+				<a href="#" class="label meta refresh">{% trans "Refresh" %}</a>
+			</div>
+		</div>
+	</footer>
+
+	<section class="comments">
+		{# for #}
+		<article class="comment">
+		{# nested:  style="margin-left:20px;" #}
+			<div class="bubble">
+				<div class="vote" data-target-id="{{ comment.id }}">
+					<a href="#upvote" class="upvote vote-comment" title="{% trans "Upvote" %}">&#9650;</a>
+					<a href="#downvote" class="downvote vote-comment" title="{% trans "Downvote" %}">&#9660;</a>
+				</div>
+				<div class="container">
+					<header>
+						<span class="meta author" title="user, ipaddress">user.profile.nick</span>
+						<span class="meta timestamp" title="created_time">created_time|timesince</span>
+						<span class="meta score">+2</span>
+						<div class="right">
+							<a class="button meta report" href="#"><span>Report</span></a>
+							<a class="button meta delete" href="#"><span>Delete</span></a>
+							<a class="button meta modify" href="#"><span>Modify</span></a>
+							<a class="button meta comment" href="#"><span>Comment</span></a>
+						</div>
+					</header>
+					<div class="comment_contents">asd</div>
+				</div>
+			</div>
+		</article>
+		{# endfor #}
+
+		<article class="comment owned">
+			<div class="bubble">
+				<div class="vote">
+				</div>
+				<div class="container">
+					<div class="comment_contents">
+						<textarea>{% trans "Please write your reply here." %}</textarea>
+						<nav class="nav" style="display:block;">
+							<div class="right">
+								<a href="#" class="button blue">{% trans "Submit comment" %}</a>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</article>
+	</section>
+
+	<nav class="nav clear">
+		<div class="left">
+			<a href="{{ board.get_absolute_url }}" class="button">{% trans "List" %}</a>
+			<a href="{{ board.get_absolute_url }}best" class="button toppost">{% trans "Top Posts" %}</a>
+		</div>
+		<div class="right">
+			<a href="{{ post.get_absolute_url }}/delete" class="button">{% trans "Delete" %}</a>
+			<a href="{{ post.get_absolute_url }}/modify" class="button">{% trans "Modify" %}</a>
+			<a href="{{ board.get_absolute_url }}newpost" class="button blue">{% trans "New Post" %}</a>
+		</div>
+	</nav>
+</article>
+
+{% endblock %}

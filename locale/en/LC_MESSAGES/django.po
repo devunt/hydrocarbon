@@ -8,67 +8,66 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-13 10:41+0900\n"
+"POT-Creation-Date: 2014-12-13 22:15+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
-#: board/forms.py:7
+#: .\board\forms.py:11
 msgid "Nickname:"
 msgstr ""
 
-#: board/i18n_fake.py:3
+#: .\board\i18n_fake.py:3
 msgid "herocomics"
 msgstr ""
 
-#: board/i18n_fake.py:4
+#: .\board\i18n_fake.py:4
 msgid "Username"
 msgstr ""
 
-#: board/i18n_fake.py:5
+#: .\board\i18n_fake.py:5
 msgid "username"
 msgstr ""
 
-#: board/i18n_fake.py:6
+#: .\board\i18n_fake.py:6
 msgid "E-mail"
 msgstr ""
 
-#: board/i18n_fake.py:7
+#: .\board\i18n_fake.py:7
 msgid "Password"
 msgstr ""
 
-#: board/i18n_fake.py:8
+#: .\board\i18n_fake.py:8
 msgid "Password (again)"
 msgstr ""
 
-#: board/i18n_fake.py:9
+#: .\board\i18n_fake.py:9
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: board/i18n_fake.py:10
+#: .\board\i18n_fake.py:10
 msgid "New password"
 msgstr ""
 
-#: board/i18n_fake.py:11
+#: .\board\i18n_fake.py:11
 msgid "New password confirmation"
 msgstr ""
 
-#: board/i18n_fake.py:12
+#: .\board\i18n_fake.py:12
 msgid "Old password"
 msgstr ""
 
-#: board/i18n_fake.py:13
+#: .\board\i18n_fake.py:13
 #, python-format
 msgid ""
 "Please enter a correct %(username)s and password. Note that both fields may "
 "be case-sensitive."
 msgstr ""
 
-#: board/i18n_fake.py:15
+#: .\board\i18n_fake.py:15
 #, python-format
 msgid ""
 "Ensure this value has at least %(limit_value)d character (it has %"
@@ -79,65 +78,167 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/templates/include/nav.html:11 board/templates/include/nav.html:38
+#: .\board\templates\board\post_detail.html:16
+#, python-format
+msgid "<span>%(counter)s</span> comment"
+msgid_plural "<span>%(counter)s</span> comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\board\templates\board\post_detail.html:20
+#, python-format
+msgid "<span>%(counter)s</span> upvotes"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:31
+msgid "Upvote"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:35
+msgid "Downvote"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:44
+#, python-format
+msgid "There is %(counter)s comment."
+msgid_plural "There are %(counter)s comments."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\board\templates\board\post_detail.html:48
+msgid "Refresh"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:80
+msgid "Please write your reply here."
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:83
+msgid "Submit comment"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:93
+#: .\board\templates\board\post_list.html:46
+msgid "List"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:94
+#: .\board\templates\board\post_list.html:47
+msgid "Top Posts"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:97
+msgid "Delete"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:98
+msgid "Modify"
+msgstr ""
+
+#: .\board\templates\board\post_detail.html:99
+#: .\board\templates\board\post_list.html:56
+msgid "New Post"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:18
+msgid "Title"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:19
+msgid "Author"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:20
+msgid "Date"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:21
+msgid "Score"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:22
+msgid "Views"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:49
+msgid "Search"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:61
+msgid "First"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:62
+msgid "Prev"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:75
+msgid "Next"
+msgstr ""
+
+#: .\board\templates\board\post_list.html:76
+msgid "Last"
+msgstr ""
+
+#: .\board\templates\include\nav.html:11 .\board\templates\include\nav.html:38
 msgid "Close"
 msgstr ""
 
-#: board/templates/include/nav.html:22
+#: .\board\templates\include\nav.html:22
 msgid "Home"
 msgstr ""
 
-#: board/templates/include/nav.html:23
+#: .\board\templates\include\nav.html:23
 msgid "Favorites"
 msgstr ""
 
-#: board/templates/include/nav.html:24
+#: .\board\templates\include\nav.html:24
 msgid "Notices"
 msgstr ""
 
-#: board/templates/include/nav.html:25
+#: .\board\templates\include\nav.html:25
 msgid "Scanlations"
 msgstr ""
 
-#: board/templates/include/nav.html:49
+#: .\board\templates\include\nav.html:49
 msgid "Profile"
 msgstr ""
 
-#: board/templates/include/nav.html:50
+#: .\board\templates\include\nav.html:50
 msgid "Submitted"
 msgstr ""
 
-#: board/templates/include/nav.html:51
+#: .\board\templates\include\nav.html:51
 msgid "Inbox"
 msgstr ""
 
-#: board/templates/include/nav.html:52
+#: .\board\templates\include\nav.html:52
 msgid "Log out"
 msgstr ""
 
-#: board/templates/include/nav.html:60
-#: board/templates/registration/login.html:4
-#: board/templates/registration/login.html:23
+#: .\board\templates\include\nav.html:60
+#: .\board\templates\registration\login.html:4
+#: .\board\templates\registration\login.html:22
 msgid "Log in"
 msgstr ""
 
-#: board/templates/registration/activate.html:9
+#: .\board\templates\registration\activate.html:9
 msgid "Account activation failed."
 msgstr ""
 
-#: board/templates/registration/activation_complete.html:4
+#: .\board\templates\registration\activation_complete.html:4
 msgid "Account Activated"
 msgstr ""
 
-#: board/templates/registration/activation_complete.html:12
+#: .\board\templates\registration\activation_complete.html:12
 msgid "Your account is now activated."
 msgstr ""
 
-#: board/templates/registration/activation_complete.html:14
+#: .\board\templates\registration\activation_complete.html:14
 msgid "You can log in."
 msgstr ""
 
-#: board/templates/registration/activation_email.txt:6
+#: .\board\templates\registration\activation_email.txt:6
 #, python-format
 msgid ""
 "\n"
@@ -148,7 +249,7 @@ msgid ""
 "entered under your address within the next few days.\n"
 msgstr ""
 
-#: board/templates/registration/activation_email.txt:12
+#: .\board\templates\registration\activation_email.txt:12
 #, python-format
 msgid ""
 "\n"
@@ -156,7 +257,7 @@ msgid ""
 "%(expiration_days)s days:\n"
 msgstr ""
 
-#: board/templates/registration/activation_email.txt:19
+#: .\board\templates\registration\activation_email.txt:19
 #, python-format
 msgid ""
 "\n"
@@ -165,95 +266,95 @@ msgid ""
 "With regards, %(site_name)s\n"
 msgstr ""
 
-#: board/templates/registration/activation_email_subject.txt:1
+#: .\board\templates\registration\activation_email_subject.txt:1
 #, python-format
 msgid "Account activation on %(site_name)s"
 msgstr ""
 
-#: board/templates/registration/login.html:28
+#: .\board\templates\registration\login.html:27
 msgid "Do you have no account?"
 msgstr ""
 
-#: board/templates/registration/login.html:28
-#: board/templates/registration/registration_form.html:24
+#: .\board\templates\registration\login.html:27
+#: .\board\templates\registration\registration_form.html:24
 msgid "Register"
 msgstr ""
 
-#: board/templates/registration/login.html:29
+#: .\board\templates\registration\login.html:28
 msgid "Lost your password?"
 msgstr ""
 
-#: board/templates/registration/login.html:29
+#: .\board\templates\registration\login.html:28
 msgid "Click here"
 msgstr ""
 
-#: board/templates/registration/logout.html:4
+#: .\board\templates\registration\logout.html:4
 msgid "Logged out"
 msgstr ""
 
-#: board/templates/registration/logout.html:11
+#: .\board\templates\registration\logout.html:11
 msgid "Successfully logged out"
 msgstr ""
 
-#: board/templates/registration/password_change_done.html:4
+#: .\board\templates\registration\password_change_done.html:4
 msgid "Password changed"
 msgstr ""
 
-#: board/templates/registration/password_change_done.html:11
+#: .\board\templates\registration\password_change_done.html:11
 msgid "Password successfully changed!"
 msgstr ""
 
-#: board/templates/registration/password_change_form.html:4
-#: board/templates/registration/password_change_form.html:24
+#: .\board\templates\registration\password_change_form.html:4
+#: .\board\templates\registration\password_change_form.html:24
 msgid "Change password"
 msgstr ""
 
-#: board/templates/registration/password_reset_complete.html:4
+#: .\board\templates\registration\password_reset_complete.html:4
 msgid "Password reset complete"
 msgstr ""
 
-#: board/templates/registration/password_reset_complete.html:12
+#: .\board\templates\registration\password_reset_complete.html:12
 msgid "Your password has been reset!"
 msgstr ""
 
-#: board/templates/registration/password_reset_complete.html:13
+#: .\board\templates\registration\password_reset_complete.html:13
 msgid "You may now"
 msgstr ""
 
-#: board/templates/registration/password_reset_confirm.html:4
+#: .\board\templates\registration\password_reset_confirm.html:4
 msgid "Confirm password reset"
 msgstr ""
 
-#: board/templates/registration/password_reset_confirm.html:16
+#: .\board\templates\registration\password_reset_confirm.html:16
 msgid "Enter your new password below to reset your password:"
 msgstr ""
 
-#: board/templates/registration/password_reset_confirm.html:28
+#: .\board\templates\registration\password_reset_confirm.html:28
 msgid "Set password"
 msgstr ""
 
-#: board/templates/registration/password_reset_done.html:4
-#: board/templates/registration/password_reset_form.html:4
-#: board/templates/registration/password_reset_form.html:28
+#: .\board\templates\registration\password_reset_done.html:4
+#: .\board\templates\registration\password_reset_form.html:4
+#: .\board\templates\registration\password_reset_form.html:28
 msgid "Reset password"
 msgstr ""
 
-#: board/templates/registration/password_reset_done.html:12
+#: .\board\templates\registration\password_reset_done.html:12
 msgid "We have sent you an email with a link to reset your password."
 msgstr ""
 
-#: board/templates/registration/password_reset_done.html:13
+#: .\board\templates\registration\password_reset_done.html:13
 msgid "Please check your email and click the link to continue."
 msgstr ""
 
-#: board/templates/registration/password_reset_email.html:4
+#: .\board\templates\registration\password_reset_email.html:4
 #, python-format
 msgid ""
 "\n"
 "Hello %(user)s.\n"
 msgstr ""
 
-#: board/templates/registration/password_reset_email.html:7
+#: .\board\templates\registration\password_reset_email.html:7
 #, python-format
 msgid ""
 "\n"
@@ -263,21 +364,21 @@ msgid ""
 " you can ignore this mail and we'll keep your account safe.\n"
 msgstr ""
 
-#: board/templates/registration/password_reset_email.html:13
+#: .\board\templates\registration\password_reset_email.html:13
 msgid ""
 "\n"
 "To reset your password, please press the link below, or copy and paste it\n"
 "into your web browser:\n"
 msgstr ""
 
-#: board/templates/registration/password_reset_email.html:20
+#: .\board\templates\registration\password_reset_email.html:20
 #, python-format
 msgid ""
 "\n"
 "For your reminder, the ID that belongs to this mail is %(user_username)s\n"
 msgstr ""
 
-#: board/templates/registration/password_reset_email.html:24
+#: .\board\templates\registration\password_reset_email.html:24
 #, python-format
 msgid ""
 "\n"
@@ -285,41 +386,41 @@ msgid ""
 "%(site_name)s\n"
 msgstr ""
 
-#: board/templates/registration/password_reset_form.html:16
+#: .\board\templates\registration\password_reset_form.html:16
 msgid ""
 "Forgot your password? Enter your email in the form below and we'll send you "
 "instructions for creating a new one."
 msgstr ""
 
-#: board/templates/registration/registration_closed.html:4
+#: .\board\templates\registration\registration_closed.html:4
 msgid "Registration is closed"
 msgstr ""
 
-#: board/templates/registration/registration_closed.html:11
+#: .\board\templates\registration\registration_closed.html:11
 msgid "Sorry, but registration is closed at this moment. Come back later."
 msgstr ""
 
-#: board/templates/registration/registration_complete.html:4
+#: .\board\templates\registration\registration_complete.html:4
 msgid "Activation email sent"
 msgstr ""
 
-#: board/templates/registration/registration_complete.html:11
+#: .\board\templates\registration\registration_complete.html:11
 #, python-format
 msgid "Welcome to %(site_name)s!"
 msgstr ""
 
-#: board/templates/registration/registration_complete.html:12
+#: .\board\templates\registration\registration_complete.html:12
 msgid "Please check your email to complete the registration process."
 msgstr ""
 
-#: board/templates/registration/registration_form.html:4
+#: .\board\templates\registration\registration_form.html:4
 msgid "Register for an account"
 msgstr ""
 
-#: hydrocarbon/settings.py:93
+#: .\hydrocarbon\settings.py:94
 msgid "Korean"
 msgstr ""
 
-#: hydrocarbon/settings.py:94
+#: .\hydrocarbon\settings.py:95
 msgid "English"
 msgstr ""
