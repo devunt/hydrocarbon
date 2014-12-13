@@ -1,11 +1,13 @@
 from django.core.urlresolvers import reverse
+from django.http import JsonResponse
+from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
 
 from board.forms import PostCreateForm
 from board.mixins import BoardMixin, UserLoggingMixin
-from board.models import Board, Post
+from board.models import Board, Post, Recommendation
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
@@ -31,3 +33,64 @@ class PostListView(BoardMixin, ListView):
 
     def get_queryset(self):
         return Post.objects.filter(board=self.board).order_by('-created_time')
+
+
+class RecommendView(View):
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request):
+        target_type = request.POST.get('type')
+        target_id = request.POST.get('target', '')
+        recommend = request.POST.get('recommend')
+
+        if ((target_type not in ('p', 'c')) or
+            (not target_id.isdigit()) or
+            (recommend not in ('++', '-+', '+-', '--'))):
+            return JsonResponse({'status': 'badrequest'}, status=400)
+        target_id = int(target_id)
+
+        if target_type == 'p':
+            try:
+                post = Post.objects.get(id=target_id)
+            except Post.DoesNotExist:
+                return JsonResponse({'status': 'badrequest'}, status=400)
+            rqs = Recommendation.objects.filter(post=post)
+        else:
+            try:
+                comment = Comment.objects.get(id=target_id)
+            except Comment.DoesNotExist:
+                return JsonResponse({'status': 'badrequest'}, status=400)
+            rqs = Recommendation.objects.filter(comment=comment)
+        if request.user.is_authenticated():
+            rqs = rqs.filter(user=request.user)
+        else:
+            rqs = rqs.filter(ipaddress=request.META['REMOTE_ADDR'])
+
+        if recommend[0] == '+':
+            if rqs.exists():
+                return JsonResponse({'status': 'alreadyhave'}, status=409)
+            r = Recommendation()
+            if target_type == 'p':
+                r.post = post
+            else:
+                r.comment = comment
+            if recommend[1] == '+':
+                r.recommend = Recommendation.RECOMMEND
+            else:
+                r.recommend = Recommendation.NOT_RECOMMEND
+            if request.user.is_authenticated():
+                r.user = request.user
+            r.ipaddress = request.META['REMOTE_ADDR']
+            r.save()
+            return JsonResponse({'status': 'success'})
+        else:
+            if recommend[1] == '+':
+                rqs = rqs.filter(recommend=Recommendation.RECOMMEND)
+            else:
+                rqs = rqs.filter(recommend=Recommendation.NOT_RECOMMEND)
+            if not rqs.exists():
+                return JsonResponse({'status': 'notexists'}, status=404)
+            r = rqs.first()
+            r.delete()
+            return JsonResponse({'status': 'success'})

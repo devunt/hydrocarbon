@@ -52,6 +52,13 @@ class Post(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField()
 
+    @property
+    def recommendations(self):
+        rd = dict()
+        rd['recommend'] = self._recommendations.filter(recommend=Recommendation.RECOMMEND).count()
+        rd['not_recommend'] = self._recommendations.filter(recommend=Recommendation.NOT_RECOMMEND).count()
+        return rd
+
     def __str__(self):
         return self.title
 
@@ -80,8 +87,9 @@ class Recommendation(models.Model):
         (NOT_RECOMMEND, 'Not recommend'),
         (RECOMMEND, 'Recommend'),
     )
-    post = models.ForeignKey('Post', related_name='recommendations')
-    user = models.ForeignKey(User, blank=True, null=True, related_name='recommendations')
+    post = models.ForeignKey('Post', blank=True, null=True, related_name='_recommendations')
+    comment = models.ForeignKey('Comment', blank=True, null=True, related_name='_recommendations')
+    user = models.ForeignKey(User, blank=True, null=True, related_name='_recommendations')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     recommend = models.PositiveSmallIntegerField(choices=RECOMMEND_CHOICES)
 
