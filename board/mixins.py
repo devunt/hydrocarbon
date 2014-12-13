@@ -6,17 +6,19 @@ from board.models import Board
 
 class BoardMixin:
     def dispatch(self, request, *args, **kwargs):
-        if not Board.objects.filter(slug=kwargs['board']).exists():
+        try:
+            self.board = Board.objects.get(slug=kwargs['board'])
+        except Board.DoesNotExist:
             return render(request, 'errors/board_404.html', status=404)
-        return super().dispatch(request, *args, **kwargs)
+        else:
+            return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        board = Board.objects.get(slug=self.kwargs['board'])
-        form.instance.board = board
+        form.instance.board = self.board
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
-        kwargs['board'] = self.kwargs['board']
+        kwargs['board'] = self.board
         return super().get_context_data(**kwargs)
 
 
