@@ -14,7 +14,7 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs['slug'] = self.kwargs['board']
+        kwargs['board'] = self.board
         return kwargs
 
 

@@ -15,9 +15,9 @@ class PostCreateForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=None)
 
     def __init__(self, *args, **kwargs):
-        board_slug = kwargs.pop('slug')
+        board = kwargs.pop('board')
         super().__init__(*args, **kwargs)
-        self.fields['category'].queryset = Category.objects.filter(board__slug=board_slug)
+        self.fields['category'].queryset = Category.objects.filter(board=board)
 
     class Meta:
         model = Post
