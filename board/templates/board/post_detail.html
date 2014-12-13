@@ -17,7 +17,7 @@
 
 			</span>
 			<span class="label meta score" title="+{{ post.recommendations.recommend }} / -{{ post.recommendations.not_recommend }}">
-				{% blocktrans with counter=post.recommendations.recommend | add post.recommendations.not_recommend %}<span>{{ counter }}</span> upvotes{% endblocktrans %}
+				{% blocktrans with counter=post.recommendations %}<span>{{ counter }}</span> upvotes{% endblocktrans %}
 			</span>
 		</section>
 	</header>
