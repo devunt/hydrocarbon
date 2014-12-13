@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ object.title }}
+{{ object.contents | safe }}
+{{ object.user }}
+{{ object.ipaddress }}
+{# see /board/models.py #}
+{% endblock content %}
