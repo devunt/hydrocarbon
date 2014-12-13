@@ -2,26 +2,62 @@
 
 <div class="container">
 	<div class="left">
-		<div id="menu">
+		<div id="menu" class="menu hoverable">
 			<a href="#" class="handle">
 				<span class="button icon"></span>
 				<span class="button text"><span>{{ site_name }}</span></span>
 			</a>
+			<div class="popup">
+				<a href="#" class="close">{% trans "Close" %}</a>
+				<ul>
+					{% comment %}
+						- code for future use
+
+						{% for item in nav_menu_list %}
+							<li><a href="{{ item.absurl }}">{{ item.title }}</a></li>
+						{% endfor %}
+					{% endcomment %}
+
+					<li><a href="/"><span>{% trans "Home" %}</span></a></li>
+					<li><a href="#"><span>{% trans "Favorites" %}</span></a></li>
+					<li><a href="#"><span>{% trans "Notices" %}</span></a></li>
+					<li><a href="#"><span>{% trans "Scanlations" %}</span></a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div class="right">
-		<div id="login">
-			{% if user.profile.nick %}
-			<a href="/accounts/profile" class="handle" title="{{ user }}">
+		{% if user.profile.nick %}
+		<div id="login" class="menu hovermenu hoverable">
+			<a href="/accounts/profile" class="handle">
 				<span class="button icon"></span>
 				<span class="button text">{{ user.profile.nick }}</span>
 			</a>
-			{% else %}
+			<div class="popup">
+				<a href="#" class="close">{% trans "Close" %}</a>
+				<ul>
+					{% comment %}
+						- code for future use
+
+						{% for item in login_menu_list %}
+							<li><a href="{{ item.absurl }}">{{ item.title }}</a></li>
+						{% endfor %}
+					{% endcomment %}
+
+					<li><a href="/accounts/profile"><span>{% trans "Profile" %}</span></a></li>
+					<li><a href="#"><span>{% trans "Submitted" %}</span></a></li>
+					<li><a href="#"><span>{% trans "Inbox" %}</span></a></li>
+					<li><a href="/accounts/logout"><span>{% trans "Log out" %}</span></a></li>
+				</ul>
+			</div>
+		</div>
+		{% else %}
+		<div id="login" class="menu hoverable">
 			<a href="/accounts/login" class="handle">
 				<span class="button icon"></span>
 				<span class="button text">{% trans "Log in" %}</span>
 			</a>
-			{% endif %}
 		</div>
+		{% endif %}
 	</div>
 </div>
