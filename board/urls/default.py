@@ -2,7 +2,6 @@ from django.conf.urls import patterns, url, include
 from registration.backends.default.views import RegistrationView
 
 from board.forms import HCRegistrationForm
-from board.views import PostDetailView
 
 
 urlpatterns = patterns('',
@@ -14,5 +13,5 @@ urlpatterns = patterns('',
     url(r'^summernote/', include('django_summernote.urls')),
 
     url(r'^b/(?P<board>\w+)/', include('board.urls.board')),
-    url(r'^(?P<pk>\d+)$', PostDetailView.as_view(), name='post_detail'), 
+    url(r'^(?P<pk>\d+)/?', include('board.urls.post')),
 )
