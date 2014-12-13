@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     ) + (
     # third-party apps
     'registration',
+    'django_summernote',
     ) + (
     # django apps
     'django.contrib.admin',

@@ -45,18 +45,6 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
 
-def upload_to_func(self, instance, filename):
-    checksum = instance.checksum
-    return os.path.join(checksum[0], checksum[:1], checksum)
-
-class Attachment(models.Model):
-    post = models.ForeignKey('Post')
-    name = models.CharField(max_length=64)
-    file = models.FileField(upload_to=upload_to_func)
-    checksum = models.CharField(max_length=64)
-    dlcount = models.PositiveIntegerField(default=0)
-
-
 class Comment(models.Model):
     post = models.ForeignKey('Post')
     comment = models.ForeignKey('self', related_name='subcomments', blank=True, null=True)

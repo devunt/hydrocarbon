@@ -2,5 +2,6 @@ Django==1.7.1
 bcrypt==1.1.0
 cffi==0.8.6
 django-registration-redux==1.1
+django-summernote==0.6.0
 pycparser==2.10
 six==1.8.0
