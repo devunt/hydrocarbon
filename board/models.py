@@ -95,5 +95,5 @@ class Recommendation(models.Model):
 
 
 class Announcement(models.Model):
-    post = models.ForeignKey('Post', related_name='announcements')
+    post = models.OneToOneField('Post', related_name='announcement')
     boards = models.ManyToManyField('Board', related_name='announcements')
