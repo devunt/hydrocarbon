@@ -46,7 +46,7 @@ $(function() {
 		var databox = {
 			type: null,
 			target: null,
-			recommend: null
+			vote: null
 		}
 
 		if($(this).hasClass('vote-post')) databox.type = 'p';
@@ -69,7 +69,7 @@ $(function() {
 		button = $(this);
 
 		if(work == '+' && $sibling_voted.length) {
-			$ajax_vote(databox, '-' + avote, $sibling_voted)			
+			$ajax_vote(databox, '-' + avote, $sibling_voted)
 				.done(function() { $ajax_vote(databox, work + vote, button); });
 		} else { $ajax_vote(databox, work + vote, button); }
 	});
@@ -150,15 +150,15 @@ function hideTooltip() {
 		.animate({'opacity': 0}, 100, function() { $tooltip.hide(); });
 }
 
-function $ajax_vote(databox, recommend, button) {
-	databox.recommend = recommend;
+function $ajax_vote(databox, vote, button) {
+	databox.vote = vote;
 	return $.ajax({
 			type: 'POST',
-			url: '/x/r',
+			url: '/x/v',
 			data: databox
 		})
 			.done(function(data, status, xhr) {
-				if(databox.recommend.charAt(0) == '+') { button.addClass('voted');
+				if(databox.vote.charAt(0) == '+') { button.addClass('voted');
 				} else { button.removeClass('voted'); }
 			})
 			.fail(function(xhr, status, error) {

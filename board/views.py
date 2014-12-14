@@ -35,18 +35,18 @@ class PostListView(BoardMixin, ListView):
         return Post.objects.filter(board=self.board).order_by('-created_time')
 
 
-class RecommendView(View):
+class VoteView(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request):
         target_type = request.POST.get('type')
         target_id = request.POST.get('target', '')
-        recommend = request.POST.get('recommend')
+        vote = request.POST.get('vote')
 
         if ((target_type not in ('p', 'c')) or
             (not target_id.isdigit()) or
-            (recommend not in ('++', '-+', '+-', '--'))):
+            (vote not in ('++', '-+', '+-', '--'))):
             return JsonResponse({'status': 'badrequest'}, status=400)
         target_id = int(target_id)
 
@@ -55,40 +55,40 @@ class RecommendView(View):
                 post = Post.objects.get(id=target_id)
             except Post.DoesNotExist:
                 return JsonResponse({'status': 'badrequest'}, status=400)
-            rqs = Recommendation.objects.filter(post=post)
+            rqs = Vote.objects.filter(post=post)
         else:
             try:
                 comment = Comment.objects.get(id=target_id)
             except Comment.DoesNotExist:
                 return JsonResponse({'status': 'badrequest'}, status=400)
-            rqs = Recommendation.objects.filter(comment=comment)
+            rqs = Vote.objects.filter(comment=comment)
         if request.user.is_authenticated():
             rqs = rqs.filter(user=request.user)
         else:
             rqs = rqs.filter(ipaddress=request.META['REMOTE_ADDR'])
 
-        if recommend[0] == '+':
+        if vote[0] == '+':
             if rqs.exists():
                 return JsonResponse({'status': 'alreadyhave'}, status=409)
-            r = Recommendation()
+            r = Vote()
             if target_type == 'p':
                 r.post = post
             else:
                 r.comment = comment
-            if recommend[1] == '+':
-                r.recommend = Recommendation.UPVOTE
+            if vote[1] == '+':
+                r.vote = Vote.UPVOTE
             else:
-                r.recommend = Recommendation.DOWNVOTE
+                r.vote = Vote.DOWNVOTE
             if request.user.is_authenticated():
                 r.user = request.user
             r.ipaddress = request.META['REMOTE_ADDR']
             r.save()
             return JsonResponse({'status': 'success'})
         else:
-            if recommend[1] == '+':
-                rqs = rqs.filter(recommend=Recommendation.UPVOTE)
+            if vote[1] == '+':
+                rqs = rqs.filter(vote=Vote.UPVOTE)
             else:
-                rqs = rqs.filter(recommend=Recommendation.DOWNVOTE)
+                rqs = rqs.filter(vote=Vote.DOWNVOTE)
             if not rqs.exists():
                 return JsonResponse({'status': 'notexists'}, status=404)
             r = rqs.first()
