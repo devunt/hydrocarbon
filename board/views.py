@@ -14,6 +14,15 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
     model = Post
     form_class = PostForm
 
+    def get_success_url(self):
+        v = Vote()
+        v.user = self.object.user
+        v.ipaddress = self.object.ipaddress
+        v.post = self.object
+        v.vote = Vote.UPVOTE
+        v.save()
+        return super().get_success_url()
+
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['board'] = self.board
