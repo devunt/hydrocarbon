@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load hc %}
 {% load i18n %}
+{% load cycle from future %}
 
 {% block title %}{{ board }} :: {{ block.super }}{% endblock %}
 
@@ -37,7 +39,7 @@
 						<span class="label meta author">{{ post.author }}</span>
 					</span>
 					<span class="cell timestamp meta" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}">
-						<span class="label meta timestamp">{{ post.created_time | timesince }}</span>
+						<span class="label meta timestamp">{{ post.created_time | timesince | split_first }}</span>
 					</span>
 					<span class="cell score meta" title="+{{ post.votes.upvote }} / -{{ post.votes.downvote }}">
 						<span class="label meta score">{{ post.votes.total }}</span>
