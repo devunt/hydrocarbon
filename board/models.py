@@ -40,7 +40,17 @@ class Tag(models.Model):
         return self.name
 
 
-class Post(models.Model):
+class VotableModelMixin:
+    @property
+    def votes(self):
+        vd = dict()
+        vd['upvote'] = self._votes.filter(vote=Vote.UPVOTE).count()
+        vd['downvote'] = self._votes.filter(vote=Vote.DOWNVOTE).count()
+        vd['total'] = vd['upvote'] - vd['downvote']
+        return vd
+
+
+class Post(VotableModelMixin, models.Model):
     user = models.ForeignKey(User, blank=True, null=True, related_name='posts')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     board = models.ForeignKey('Board', related_name='posts')
@@ -51,14 +61,6 @@ class Post(models.Model):
     viewcount = models.PositiveIntegerField(default=0)
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField()
-
-    @property
-    def votes(self):
-        vd = dict()
-        vd['upvote'] = self._votes.filter(vote=Vote.UPVOTE).count()
-        vd['downvote'] = self._votes.filter(vote=Vote.DOWNVOTE).count()
-        vd['total'] = vd['upvote'] - vd['downvote']
-        return vd
 
     def __str__(self):
         return self.title
@@ -72,7 +74,7 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
 
-class Comment(models.Model):
+class Comment(VotableModelMixin, models.Model):
     post = models.ForeignKey('Post', related_name='comments')
     comment = models.ForeignKey('self', related_name='subcomments', blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, related_name='comments')
