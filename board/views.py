@@ -3,20 +3,30 @@ from django.http import JsonResponse
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
-from board.forms import PostCreateForm
+from board.forms import PostForm
 from board.mixins import BoardMixin, UserLoggingMixin
 from board.models import Board, Post, Vote
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
     model = Post
-    form_class = PostCreateForm
+    form_class = PostForm
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['board'] = self.board
+        return kwargs
+
+
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['board'] = self.object.board
         return kwargs
 
 

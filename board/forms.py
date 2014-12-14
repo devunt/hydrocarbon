@@ -11,7 +11,7 @@ class HCRegistrationForm(RegistrationFormUniqueEmail):
     nick = forms.CharField(label=_('Nickname:'), min_length=2, max_length=16)
 
 
-class PostCreateForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=None)
 
     def __init__(self, *args, **kwargs):
