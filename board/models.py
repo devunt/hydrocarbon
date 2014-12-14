@@ -53,11 +53,12 @@ class Post(models.Model):
     modified_time = models.DateTimeField()
 
     @property
-    def recommendations(self):
-        rd = dict()
-        rd['recommend'] = self._recommendations.filter(recommend=Recommendation.RECOMMEND).count()
-        rd['not_recommend'] = self._recommendations.filter(recommend=Recommendation.NOT_RECOMMEND).count()
-        return rd
+    def votes(self):
+        vd = dict()
+        vd['upvote'] = self._votes.filter(vote=Vote.UPVOTE).count()
+        vd['downvote'] = self._votes.filter(vote=Vote.DOWNVOTE).count()
+        vd['total'] = vd['upvote'] - vd['downvote']
+        return vd
 
     def __str__(self):
         return self.title
@@ -80,18 +81,18 @@ class Comment(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
 
 
-class Recommendation(models.Model):
-    NOT_RECOMMEND = 0
-    RECOMMEND = 1
-    RECOMMEND_CHOICES = (
-        (NOT_RECOMMEND, 'Not recommend'),
-        (RECOMMEND, 'Recommend'),
+class Vote(models.Model):
+    DOWNVOTE = 0
+    UPVOTE = 1
+    VOTE_CHOICES = (
+        (DOWNVOTE, 'Not recommend'),
+        (UPVOTE, 'Recommend'),
     )
-    post = models.ForeignKey('Post', blank=True, null=True, related_name='_recommendations')
-    comment = models.ForeignKey('Comment', blank=True, null=True, related_name='_recommendations')
-    user = models.ForeignKey(User, blank=True, null=True, related_name='_recommendations')
+    post = models.ForeignKey('Post', blank=True, null=True, related_name='_votes')
+    comment = models.ForeignKey('Comment', blank=True, null=True, related_name='_votes')
+    user = models.ForeignKey(User, blank=True, null=True, related_name='_votes')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
-    recommend = models.PositiveSmallIntegerField(choices=RECOMMEND_CHOICES)
+    vote = models.PositiveSmallIntegerField(choices=VOTE_CHOICES)
 
 
 class Announcement(models.Model):

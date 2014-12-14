@@ -39,8 +39,8 @@
 					<span class="cell timestamp meta" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}">
 						<span class="label meta timestamp">{{ post.created_time | timesince }}</span>
 					</span>
-					<span class="cell score meta" title="+{{ post.recommendations.recommend }} / -{{ post.recommendations.not_recommend }}">
-						<span class="label meta score">{{ post.recommendations.recommend | add:post.recommendations.not_recommend }}</span>
+					<span class="cell score meta" title="+{{ post.votes.upvote }} / -{{ post.votes.downvote }}">
+						<span class="label meta score">{{ post.votes.total }}</span>
 					</span>
 					<span class="cell views meta">
 						<span class="label meta views">{{ post.viewcount }}</span>

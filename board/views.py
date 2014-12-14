@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView
 
 from board.forms import PostCreateForm
 from board.mixins import BoardMixin, UserLoggingMixin
-from board.models import Board, Post, Recommendation
+from board.models import Board, Post, Vote
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
@@ -76,9 +76,9 @@ class RecommendView(View):
             else:
                 r.comment = comment
             if recommend[1] == '+':
-                r.recommend = Recommendation.RECOMMEND
+                r.recommend = Recommendation.UPVOTE
             else:
-                r.recommend = Recommendation.NOT_RECOMMEND
+                r.recommend = Recommendation.DOWNVOTE
             if request.user.is_authenticated():
                 r.user = request.user
             r.ipaddress = request.META['REMOTE_ADDR']
@@ -86,9 +86,9 @@ class RecommendView(View):
             return JsonResponse({'status': 'success'})
         else:
             if recommend[1] == '+':
-                rqs = rqs.filter(recommend=Recommendation.RECOMMEND)
+                rqs = rqs.filter(recommend=Recommendation.UPVOTE)
             else:
-                rqs = rqs.filter(recommend=Recommendation.NOT_RECOMMEND)
+                rqs = rqs.filter(recommend=Recommendation.DOWNVOTE)
             if not rqs.exists():
                 return JsonResponse({'status': 'notexists'}, status=404)
             r = rqs.first()

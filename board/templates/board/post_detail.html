@@ -16,8 +16,8 @@
 				{% blocktrans count counter=post.comments.count %}<span>{{ counter }}</span> comment{% plural %}<span>{{ counter }}</span> comments{% endblocktrans %}
 
 			</span>
-			<span class="label meta score" title="+{{ post.recommendations.recommend }} / -{{ post.recommendations.not_recommend }}">
-				{% blocktrans with counter=post.recommendations %}<span>{{ counter }}</span> upvotes{% endblocktrans %}
+			<span class="label meta score" title="+{{ post.votes.upvote }} / -{{ post.votes.downvote }}">
+				{% blocktrans with counter=post.votes.total %}<span>{{ counter }}</span> upvotes{% endblocktrans %}
 			</span>
 		</section>
 	</header>
