@@ -42,6 +42,16 @@ class PostUpdateView(UpdateView):
 class PostDetailView(DetailView):
     model = Post
 
+    def get_object(self, queryset=None):
+        post = super().get_object(queryset)
+        post_ids_viewed = self.request.session.get('post_ids_viewed', list())
+        if post.id not in post_ids_viewed:
+            post.viewcount += 1
+            post.save()
+            post_ids_viewed.append(post.id)
+            self.request.session['post_ids_viewed'] = post_ids_viewed
+        return post
+
     def get_context_data(self, **kwargs):
         kwargs['board'] = self.object.board
         return super().get_context_data(**kwargs)
