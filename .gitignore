@@ -66,4 +66,4 @@ target/
 db.sqlite3
 
 # media files
-media/*
+media/
