@@ -10,7 +10,7 @@
 			<h2>{{ post.title }}</h2>
 		</div>
 		<section class="meta">
-			<span class="label meta author" title="{{ post.user }}, {{ post.ipaddress }}"><span>{{ post.user.profile.nick }}</span></span>
+			<span class="label meta author" title="{{ post.user }}, {{ post.ipaddress }}"><span>{{ post.author }}</span></span>
 			<span class="label meta timestamp" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}"><span>{{ post.created_time | timesince }}</span></span>
 			<span class="label meta comments">
 				{% blocktrans count counter=post.comments.count %}<span>{{ counter }}</span> comment{% plural %}<span>{{ counter }}</span> comments{% endblocktrans %}

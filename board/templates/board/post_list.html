@@ -34,7 +34,7 @@
 						{% endif %}
 					</span>
 					<span class="cell author meta" title="{{ post.user.username }}">
-						<span class="label meta author">{{ post.user.profile.nick }}</span>
+						<span class="label meta author">{{ post.author }}</span>
 					</span>
 					<span class="cell timestamp meta" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}">
 						<span class="label meta timestamp">{{ post.created_time | timesince }}</span>

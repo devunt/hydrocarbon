@@ -1,5 +1,7 @@
 import datetime
 
+from hashlib import sha224
+
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -50,7 +52,16 @@ class VotableModelMixin:
         return vd
 
 
-class Post(VotableModelMixin, models.Model):
+class AuthorModelMixin:
+    @property
+    def author(self):
+        if self.user:
+            return self.user.profile.nick
+        else:
+            return sha224(self.ipaddress.encode()).hexdigest()[:8]
+
+
+class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     user = models.ForeignKey(User, blank=True, null=True, related_name='posts')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     board = models.ForeignKey('Board', related_name='posts')
@@ -74,7 +85,7 @@ class Post(VotableModelMixin, models.Model):
         super(Post, self).save(*args, **kwargs)
 
 
-class Comment(VotableModelMixin, models.Model):
+class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     post = models.ForeignKey('Post', related_name='comments')
     comment = models.ForeignKey('self', related_name='subcomments', blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, related_name='comments')
