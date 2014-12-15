@@ -182,7 +182,14 @@ function $ajax_vote(databox, vote, button) {
 					.find('.text span').text(data.current.total);
 			})
 			.fail(function(xhr, status, error) {
-				console.log(status);
-				console.log(error);
+				switch(error) {
+					case 'UNAUTHORIZED':
+						alert('로그인한 사용자만 사용 가능한 기능입니다.');
+						break;
+					default:
+						alert('알 수 없는 문제가 발생하였습니다.');
+						console.log(status);
+						console.log(error);
+				}
 			});
 }
