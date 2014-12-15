@@ -115,7 +115,7 @@ class VoteView(View):
                 r.user = request.user
             r.ipaddress = request.META['REMOTE_ADDR']
             r.save()
-            return JsonResponse({'status': 'success'})
+            return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
         else:
             if vote[1] == '+':
                 rqs = rqs.filter(vote=Vote.UPVOTE)
@@ -125,4 +125,4 @@ class VoteView(View):
                 return JsonResponse({'status': 'notexists'}, status=404)
             r = rqs.first()
             r.delete()
-            return JsonResponse({'status': 'success'})
+            return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
