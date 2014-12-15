@@ -49,7 +49,10 @@
 					<span class="cell title">
 						<span class="text">{{ item.title }}</span>
 						{% if item.comments.count != 0 %}
-							<span href="#" class="label meta comments">{{ item.comments.count }}</span>
+							<span class="label meta comments">
+								<span class="icon"></span>
+								<span class="text">{{ item.comments.count }}</span>
+							</span>
 						{% endif %}
 					</span>
 					<span class="cell author meta"

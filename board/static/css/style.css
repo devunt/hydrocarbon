@@ -140,15 +140,15 @@ div.right {
     width: 12px;
     background: url("../img/meta_1x.png") no-repeat;
     margin-right: 8px; }
-  .label.meta.author .text:after {
+  .label.meta.author:after {
     content: "•";
-    font-size: 1.5em;
+    font-size: 21px;
     vertical-align: top; }
-  .label.meta.author.user .text:after {
+  .label.meta.author.user:after {
     color: #3d9ccc; }
-  .label.meta.author.guest .text:after {
+  .label.meta.author.guest:after {
     color: #aaa; }
-  .label.meta.author.moderator .text:after {
+  .label.meta.author.moderator:after {
     color: #cc3d3d; }
   .label.meta.author .icon {
     background-position: 0 0; }
@@ -524,10 +524,18 @@ div.right .menu .popup {
 
 .section.article {
   padding-top: 20px; }
-  .section.article .item > .header div {
+  .section.article .item > .header .title {
     background: #f2f2f2;
     font-size: 0;
     padding: 0 5%; }
+    .section.article .item > .header .title .label.meta.comments {
+      line-height: 20px;
+      vertical-align: baseline; }
+      .section.article .item > .header .title .label.meta.comments .icon {
+        vertical-align: top; }
+      .section.article .item > .header .title .label.meta.comments .text {
+        line-height: 12px;
+        vertical-align: top; }
   .section.article .item > .header .category {
     max-width: 5%;
     display: inline-block;
@@ -553,13 +561,17 @@ div.right .menu .popup {
       max-width: 10%; }
     .section.article .item > .header h2 {
       max-width: 84%;
-      font-size: 18px; } }
+      font-size: 18px; }
+    .section.article .item > .header div.meta span.meta .text {
+      font-size: 13px; } }
   @media screen and (max-device-width: 419px) {
     .section.article .item > .header h2 {
       font-size: 14px; }
-    .section.article .item > .header div.meta span.meta .text {
+    .section.article .item > .header div.meta .label.meta .icon {
+      margin-right: 2px; }
+    .section.article .item > .header div.meta .label.meta .text {
       font-size: 0; }
-      .section.article .item > .header div.meta span.meta .text span {
+      .section.article .item > .header div.meta .label.meta .text span {
         font-size: 12px; } }
   .section.article .item div.article {
     width: 540px;
@@ -777,7 +789,8 @@ div.right .menu .popup {
           margin: 2px 2%;
           padding: 0 1.5%; }
         .section.board .item .cell.title {
-          width: 81%; }
+          width: 81%;
+          margin-right: 2%; }
           .section.board .item .cell.title .text {
             font-size: 14px; }
         .section.board .item .cell.meta {
@@ -785,7 +798,7 @@ div.right .menu .popup {
           display: inline-block;
           line-height: 23px;
           opacity: .4;
-          padding-right: 10px;
+          padding: 0;
           text-align: left;
           vertical-align: top; }
           .section.board .item .cell.meta .icon {
@@ -797,16 +810,13 @@ div.right .menu .popup {
           margin-left: 3%; }
         .section.board .item .cell.author .icon {
           display: none; }
+        .section.board .item .cell.author .text {
+          max-width: none; }
         .section.board .item .cell.views {
           margin: 0; } }
     @media screen and (max-device-width: 419px) {
-      .section.board .item .cell.meta {
-        padding: 0; }
-      .section.board .item .cell.author {
-        max-width: 6em;
-        white-space: normal; }
-        .section.board .item .cell.author .label.meta {
-          margin-right: 5px; } }
+      .section.board .item .cell.author .label.meta {
+        margin-right: 5px; } }
   .section.board .header .cell {
     font-size: 13px;
     line-height: 20px;
@@ -826,18 +836,21 @@ div.right .menu .popup {
       width: 3%;
       font-size: 0; }
     .section.board .cell.category {
-      width: 10%; }
+      width: 9%; }
     .section.board .cell.title {
-      width: 44%;
+      width: 42%;
       text-align: left;
       text-overflow: ellipsis;
       white-space: nowrap; }
     .section.board .cell.author {
-      width: 13%;
+      width: 18%; }
+    .section.board .cell.author .text {
+      max-width: calc(100% - 20px);
+      overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap; }
     .section.board .cell.timestamp {
-      width: 13%;
+      width: 11%;
       white-space: nowrap; }
     .section.board .cell.score {
       width: 7%; }
