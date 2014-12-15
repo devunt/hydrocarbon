@@ -69,9 +69,6 @@ class PostListView(BoardMixin, ListView):
 
 
 class VoteView(View):
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
     def post(self, request):
         target_type = request.POST.get('type')
         target_id = request.POST.get('target', '')
@@ -101,6 +98,8 @@ class VoteView(View):
             rqs = rqs.filter(ipaddress=request.META['REMOTE_ADDR'])
 
         if vote[0] == '+':
+            if not request.user.is_authenticated():
+                return JsonResponse({'status': 'notauthenticated'}, status=401)
             if rqs.exists():
                 return JsonResponse({'status': 'alreadyhave'}, status=409)
             r = Vote()
