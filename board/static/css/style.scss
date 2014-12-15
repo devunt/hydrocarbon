@@ -537,6 +537,11 @@ div.right .menu .popup { right:0; }
 
 			&.current { background:rgba(61,156,204,.9); color:#fff; }
 			.icon { margin:8px 0; vertical-align:top; }
+
+
+			@media screen and (max-device-width: $small) {
+				&.foldable { display:none; }
+			}
 		}
 	}
 	

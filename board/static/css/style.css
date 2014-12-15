@@ -907,6 +907,9 @@ div.right .menu .popup {
       .section.board .pages .button .icon {
         margin: 8px 0;
         vertical-align: top; }
+      @media screen and (max-device-width: 419px) {
+        .section.board .pages .button.foldable {
+          display: none; } }
 
 #search {
   width: auto;

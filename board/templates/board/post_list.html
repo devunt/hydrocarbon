@@ -122,7 +122,7 @@
 				{% endif %}
 				{% with page_start=page_obj.number|add:"-5" page_end=page_obj.number|add:"5" %}
 					{% for page in page_obj.paginator.page_range|slice:"page_start:page_end" %}
-						<a href="?page={{ page }}" class="button page{% if page == page_obj.number %} current{% endif %}">{{ page }}</a>
+						<a href="?page={{ page }}" class="button page{% if page == page_obj.number %} current{% endif %}{% if page < page_obj.number|add:"-2" or page > page_obj.number|add:"3" %} foldable{% endif %}">{{ page }}</a>
 					{% endfor %}
 				{% endwith %}
 				{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
