@@ -8,6 +8,10 @@
   color: #fff;
   text-shadow: none; }
 
+::-ms-clear,
+::-ms-reveal {
+  display: none; }
+
 body, input, textarea, button {
   color: #222;
   font: 14px "NanumGothic";
@@ -206,6 +210,7 @@ body.no-scroll {
 
 #nav {
   height: 50px;
+  background: #3d9ccc;
   background: rgba(61, 156, 204, 0.9);
   font-size: 0;
   margin: 0; }

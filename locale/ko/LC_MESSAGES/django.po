@@ -127,16 +127,38 @@ msgstr[0] ""
 "입력하신 값은 최소 %(limit_value)d글자여야만 합니다. 현재 값은 %(show_value)d"
 "글자입니다."
 
-#: board/templates/board/post_detail.html:16
+#: board/templates/board/post_detail.html:22
+#: board/templates/board/post_list.html:50
+msgid "ago"
+msgstr "전"
+
+#: board/templates/board/post_detail.html:27
 #, python-format
 msgid "<span>%(counter)s</span> comment"
 msgid_plural "<span>%(counter)s</span> comments"
 msgstr[0] "댓글 <span>%(counter)s</span>개"
 
-#: board/templates/board/post_detail.html:20
+#: board/templates/board/post_detail.html:36
 #, python-format
-msgid "<span>%(counter)s</span> upvotes"
-msgstr "추천 <span>%(counter)s</span>개"
+msgid ""
+"\n"
+"\t\t\t\t\t\t\t<span>%(counter)s</span> votes\n"
+"\t\t\t\t\t\t"
+msgstr  ""
+"\n"
+"\t\t\t\t\t\t\t추천 <span>%(counter)s</span>개\n"
+"\t\t\t\t\t\t"
+
+#: board/templates/board/post_detail.html:44
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\t\t\t<span>%(counter)s</span> views\n"
+"\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\t\t\t조회수 <span>%(counter)s</span>\n"
+"\t\t\t\t\t\t"
 
 #: board/templates/board/post_detail.html:31
 #: board/templates/board/post_detail.html:58
@@ -209,9 +231,13 @@ msgstr "추천"
 msgid "Views"
 msgstr "조회"
 
-#: board/templates/board/post_list.html:52
+#: board/templates/board/post_list.html:36
+msgid "This post has been downvoted by users."
+msgstr "사용자들의 비추천에 의해 숨겨진 글입니다."
+
+#: board/templates/board/post_list.html:91
 msgid "There are no posts here!"
-msgstr ""
+msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
 
 #: board/templates/board/post_list.html:61
 msgid "Search"
@@ -235,7 +261,7 @@ msgstr "마지막"
 
 #: board/templates/include/nav.html:11 board/templates/include/nav.html:38
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: board/templates/include/nav.html:22
 msgid "Home"

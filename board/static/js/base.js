@@ -21,14 +21,23 @@ $(function() {
 				.removeAttr('title')
 				.addClass('th')
 				.trigger('mouseenter');
-		});		
+		});
+
+	if(!browser.can.placeholder()) {
+		$('#form_login .field input').each(function() {
+			$('<label>')
+				.attr('for', $(this).attr('id'))
+				.append('<span>'+$(this).attr('placeholder')+'</span>')
+				.insertAfter($(this).addClass('noplaceholder'));
+		});
+	}
 
 	$('#form_login')
-		.on('load focusin focusout', '.field input', function() {
+		.on('load focusin focusout', '.field input.noplaceholder', function() {
 			if(this.value == '') { $(this).next('label').show();
 			} else { $(this).next('label').hide(); }
 		})
-		.on('keypress', '.field input', function() {
+		.on('keypress', '.field input.noplaceholder', function() {
 			$(this).next('label').hide();
 		});
 
@@ -85,7 +94,7 @@ var funct = function() {};
 
 var browser = {
 	can : {
-		placeholder: function() { return 'placeholder' in document.creatElement('input'); }
+		placeholder: function() { return 'placeholder' in document.createElement('input'); }
 	}
 }
 
@@ -130,6 +139,10 @@ function showTooltip(e) {
 	offsetX = (offsetX < 0) ? offsetX - 10 : 0;
 	offsetY = (offsetY < 0) ? -1*(height + targetHeight) - 2 : 2;
 
+	if(left < width/2) offsetX = width/2 - left  + 10;
+
+	console.log(offsetX);
+
 	$tooltip
 		.css({
 			'top': top + offsetY,
@@ -160,6 +173,13 @@ function $ajax_vote(databox, vote, button) {
 			.done(function(data, status, xhr) {
 				if(databox.vote.charAt(0) == '+') { button.addClass('voted');
 				} else { button.removeClass('voted'); }
+				console.log(data);
+
+				var $score = button.closest('.item').find('.meta.score');
+
+				$score
+					.attr('title', '+'+data.current.upvote+' / -'+data.current.downvote)
+					.find('.text span').text(data.current.total);
 			})
 			.fail(function(xhr, status, error) {
 				console.log(status);

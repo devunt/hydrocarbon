@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load hc %}
 {% load i18n %}
+{% load intcomma from humanize %}
 {% load cycle from future %}
 
 {% block title %}{{ board }} :: {{ block.super }}{% endblock %}
@@ -11,86 +12,120 @@
 	{% include "include/banner.html" %}
 {% endblock %}
 
-<section class="section board">
-	<div>
-		<header>
-			<div class="cell mark"></div>
-			<div class="cell category"><a href="#">Category</a></div>
-			{# the line above is a placeholder #}
-			<div class="cell title"><a href="#">{% trans "Title" %}</a></div>
-			<div class="cell author"><a href="#">{% trans "Author" %}</a></div>
-			<div class="cell timestamp"><a href="#">{% trans "Date" %}</a></div>
-			<div class="cell score"><a href="#">{% trans "Score" %}</a></div>
-			<div class="cell views"><a href="#">{% trans "Views" %}</a></div>
-		</header>
-		<ul>
-		{% for post in post_list %}
+<div class="section board">
+
+	<div class="header">
+		<div class="cell mark"></div>
+		<div class="cell category"><a href="#">{% trans "Categories" %}</a></div>
+		<div class="cell title">{% trans "Title" %}</div>
+		<div class="cell author">{% trans "Author" %}</div>
+		<div class="cell timestamp"><a href="#">{% trans "Date" %}</a></div>
+		<div class="cell score"><a href="#">{% trans "Score" %}</a></div>
+		<div class="cell views"><a href="#">{% trans "Views" %}</a></div>
+	</div>
+
+	<ul>
+	{% for item in post_list %}
+		{% cycle 'odd' 'even' as rowclass silent %}
+		{% if item.votes.total <= -10 %}
 			<li>
-				<a href="{{ post.get_absolute_url }}" class="item {{ post.category.slug }}{% if post.is_announcement %} notice{% endif %} {% cycle 'odd' 'even' %}">
-					<span class="cell mark"></span>
-					<span class="cell category">{{ post.category }}</span>
+				<a href="{{ item.get_absolute_url }}" class="item hidden {{ rowclass }}{% if post.id == item.id %} currentpost{% endif %}">
+					<span class="cell mark">&#9654;</span>
+					<span class="cell category"></span>
 					<span class="cell title">
-						<span class="text">{{ post.title }}</span>
-						{% if post.comments.count != 0 %}
-							<span href="#" class="label meta comments">{{ post.comments.count }}</span>
+						<span class="text" title="{{ item.title }}">{% trans "This post has been downvoted by users." %}</span>
+					</span>
+					<span class="cell author"></span>
+					<span class="cell timestamp"></span>
+					<span class="cell score"></span>
+					<span class="cell views"></span>
+				</a>
+			</li>
+		{% else %}
+			<li>
+				<a href="{{ item.get_absolute_url }}" class="item {{ item.category.slug }}{% if item.is_announcement %} notice{% endif %} {{ rowclass }}{% if post.id == item.id %} currentpost{% endif %}">
+					<span class="cell mark">&#9654;</span>
+					<span class="cell category">{{ item.category }}</span>
+					<span class="cell title">
+						<span class="text">{{ item.title }}</span>
+						{% if item.comments.count != 0 %}
+							<span href="#" class="label meta comments">{{ item.comments.count }}</span>
 						{% endif %}
 					</span>
-					<span class="cell author meta" title="{{ post.user.username }}">
-						<span class="label meta author">{{ post.author }}</span>
+					<span class="cell author meta"
+						title="{{ item.user.username }}">
+						<span class="label meta 
+						{% if item.user %}
+							author user">
+						{% else %}
+							author guest" title="{{ item.ipaddress }}">
+						{% endif %}
+							<span class="icon"></span>
+							<span class="text">{{ item.author }}</span>
+						</span>
 					</span>
-					<span class="cell timestamp meta" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}">
-						<span class="label meta timestamp">{{ post.created_time | timesince | split_first }}</span>
+					<span class="cell timestamp meta"
+						title="{{ item.created_time | date:'DATE_FORMAT' }} {{ item.created_time | date:'H:i:s' }}">
+						<span class="label meta timestamp">
+							<span class="icon"></span>
+							<span class="text">{{ item.created_time | timesince | split_first }} {% trans "ago" %}</span>
+						</span>
 					</span>
-					<span class="cell score meta" title="+{{ post.votes.upvote }} / -{{ post.votes.downvote }}">
-						<span class="label meta score">{{ post.votes.total }}</span>
+					<span class="cell score meta"
+						title="+{{ item.votes.upvote }} / -{{ item.votes.downvote }}">
+						<span class="label meta score">
+							<span class="icon"></span>
+							<span class="text">{{ item.votes.total | intcomma }}</span>
+						</span>
 					</span>
 					<span class="cell views meta">
-						<span class="label meta views">{{ post.viewcount }}</span>
+						<span class="label meta views">
+							<span class="icon"></span>
+							<span class="text">{{ item.viewcount | intcomma }}</span>
+						</span>
 					</span>
 				</a>
 			</li>
-		{% empty %}
-			<li class="empty">{% trans "There are no posts here!" %}</div>
-		{% endfor %}
-		</ul>
+		{% endif %}
+	{% empty %}
+		<li class="empty">{% trans "There are no posts here!" %}</div>
+	{% endfor %}
+	</ul>
 
-		<nav class="nav clear">
-			<div class="left">
-				<a href="{{ board.get_absolute_url }}" class="button">{% trans "List" %}</a>
-				<a href="{{ board.get_absolute_url }}best" class="button">{% trans "Top Posts" %}</a>
-				<form action="#" method="post" id="search" class="button search">
-					<input type="button" value="{% trans "Search" %}" class="search">
-					<input type="text" name="quary" class="text">
-					<input type="hidden" name="scope">
-					<div id="scope">Title + Article</div>
-				</form>
-			</div>
-			<div class="right">
-				<a href="{{ board.get_absolute_url }}newpost" class="button blue">{% trans "New Post" %}</a>
-			</div>
-		</nav>
-
-		<footer class="pages">
-			<a href="#" class="anchor" style="visibility:hidden;"><span class="aquo">&laquo;</span>{% trans "First" %}</a>
-			<a href="#" class="anchor" style="visibility:hidden;"><span class="aquo">&lsaquo;</span>{% trans "Prev" %}</a>
-			<div>
-				<a href="#" class="current page">1</a>
-				<a href="#" class="page">2</a>
-				<a href="#" class="page">3</a>
-				<a href="#" class="page">4</a>
-				<a href="#" class="page">5</a>
-				<a href="#" class="page">6</a>
-				<a href="#" class="page">7</a>
-				<a href="#" class="page">8</a>
-				<a href="#" class="page">9</a>
-				<a href="#" class="page">10</a>
-			</div>
-			<a href="#" class="anchor">{% trans "Next" %}<span class="aquo">&rsaquo;</span></a>
-			<a href="#" class="anchor">{% trans "Last" %}<span class="aquo">&raquo;</span></a>
-		</footer>
+	<div class="nav bottom clear">
+		<div class="left">
+			<a href="{{ board.get_absolute_url }}" class="button">{% trans "List" %}</a>
+			<a href="{{ board.get_absolute_url }}best" class="button">{% trans "Top Posts" %}</a>
+			<form action="#" method="post" id="search" class="button search">
+				<input type="button" value="{% trans "Search" %}" class="search">
+				<input type="text" name="quary" class="text">
+				<input type="hidden" name="scope">
+				<div id="scope">Title + Article</div>
+			</form>
+		</div>
+		<div class="right">
+			<a href="{{ board.get_absolute_url }}newpost" class="button blue">{% trans "New Post" %}</a>
+		</div>
 	</div>
 
-
-</section>
+	<div class="pages">
+		<a href="#" class="anchor" style="visibility:hidden;"><span class="aquo">&laquo;</span>{% trans "First" %}</a>
+		<a href="#" class="anchor" style="visibility:hidden;"><span class="aquo">&lsaquo;</span>{% trans "Prev" %}</a>
+		<div>
+			<a href="#" class="current page">1</a>
+			<a href="#" class="page">2</a>
+			<a href="#" class="page">3</a>
+			<a href="#" class="page">4</a>
+			<a href="#" class="page">5</a>
+			<a href="#" class="page">6</a>
+			<a href="#" class="page">7</a>
+			<a href="#" class="page">8</a>
+			<a href="#" class="page">9</a>
+			<a href="#" class="page">10</a>
+		</div>
+		<a href="#" class="anchor">{% trans "Next" %}<span class="aquo">&rsaquo;</span></a>
+		<a href="#" class="anchor">{% trans "Last" %}<span class="aquo">&raquo;</span></a>
+	</div>
+</div>
 
 {% endblock content %}
