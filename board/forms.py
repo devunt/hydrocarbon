@@ -15,9 +15,16 @@ class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=None)
 
     def __init__(self, *args, **kwargs):
+        authenticated = kwargs.pop('authenticated')
         board = kwargs.pop('board')
         super().__init__(*args, **kwargs)
-        self.fields['category'].queryset = Category.objects.filter(board=board)
+        cqs = Category.objects.filter(board=board)
+        self.fields['category'].queryset = cqs
+        if not cqs.exists():
+            del self.fields['category']
+        if not authenticated:
+            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname:'), max_length=16)
+            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
 
     class Meta:
         model = Post

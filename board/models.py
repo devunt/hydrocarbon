@@ -12,7 +12,15 @@ class UserProfile(models.Model):
     nick = models.CharField(max_length=16)
 
     def __str__(self):
-        return str(self.user)
+        return self.nick
+
+
+class OneTimeUser(models.Model):
+    nick = models.CharField(max_length=16)
+    password = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.nick
 
 
 class Board(models.Model):
@@ -58,11 +66,12 @@ class AuthorModelMixin:
         if self.user:
             return self.user.profile.nick
         else:
-            return sha224(self.ipaddress.encode()).hexdigest()[:8]
+            return self.onetime_user.nick
 
 
 class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     user = models.ForeignKey(User, blank=True, null=True, related_name='posts')
+    onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='post')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     board = models.ForeignKey('Board', related_name='posts')
     category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')
@@ -89,6 +98,7 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     post = models.ForeignKey('Post', related_name='comments')
     comment = models.ForeignKey('self', related_name='subcomments', blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, related_name='comments')
+    onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     contents = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)

@@ -25,6 +25,7 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
+        kwargs['authenticated'] = self.request.user.is_authenticated()
         kwargs['board'] = self.board
         return kwargs
 
@@ -36,6 +37,8 @@ class PostUpdateView(UpdateView):
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['board'] = self.object.board
+        # Anonymous users can't change their OneTimeUser property once they posted
+        kwargs['authenticated'] = True
         return kwargs
 
 

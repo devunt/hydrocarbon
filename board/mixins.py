@@ -1,7 +1,8 @@
+from django.contrib.auth.hashers import make_password
 from django.http import Http404
 from django.shortcuts import render
 
-from board.models import Board
+from board.models import Board, OneTimeUser
 
 
 class BoardMixin:
@@ -24,6 +25,13 @@ class BoardMixin:
 
 class UserLoggingMixin:
     def form_valid(self, form):
-        form.instance.user = self.request.user if self.request.user.is_authenticated() else None
+        if self.request.user.is_authenticated():
+            form.instance.user = self.request.user
+        else:
+            ot_user = OneTimeUser()
+            ot_user.nick = form.cleaned_data['onetime_nick']
+            ot_user.password = make_password(form.cleaned_data['onetime_password'])
+            ot_user.save()
+            form.instance.onetime_user = ot_user
         form.instance.ipaddress = self.request.META['REMOTE_ADDR']
         return super().form_valid(form)
