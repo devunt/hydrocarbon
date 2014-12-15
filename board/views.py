@@ -83,7 +83,7 @@ class PostDetailView(DetailView):
 
 
 class PostListView(BoardMixin, ListView):
-    pagenate_by = 20
+    paginate_by = 20
 
     def get_queryset(self):
         return Post.objects.filter(board=self.board).order_by('-created_time')
