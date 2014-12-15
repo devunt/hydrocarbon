@@ -79,7 +79,8 @@ div.right {
     text-align: center; }
     #tooltip .container p {
       color: #fff;
-      line-height: 25px; }
+      line-height: 20px;
+      padding: 5px; }
 
 .checkbox {
   display: inline-block;
@@ -535,6 +536,12 @@ div.right .menu .popup {
     margin: 1em 0;
     padding: 0 15%;
     text-align: left; }
+  .simple_notice.error {
+    padding: 50px 0; }
+    .simple_notice.error img {
+      width: 150px; }
+    .simple_notice.error p {
+      text-align: center; }
 
 .section.article {
   padding-top: 20px; }

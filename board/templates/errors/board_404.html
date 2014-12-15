@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "No board found" %} :: {{ block.super }}{% endblock %}
 
 {% block content %}
-NO SUCH BOARD
+
+<div class="simple_notice error">
+	<img src="{% static "img/dead_x2.png" %}" alt="Death of the Endless" title="Death of the Endless\n&trade; &amp; &copy; DC Comics. All rights reserved.">
+	<p>{% trans "There's no such board.<br>Returning to the main page..." %}</p>
+</div>
+
+<script>
+	window.setTimeout(function() {
+		window.location = window.location.protocol+'//'+window.location.host;
+	}, 5000);
+</script>
+
 {% endblock content %}

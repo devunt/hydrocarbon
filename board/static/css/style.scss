@@ -43,7 +43,7 @@ div.right { float:right; white-space:nowrap; }
 	.tip.top span { border-top-color:transparent; }
 	.tip.bottom span { border-bottom-color:transparent; }
 	.container { background:rgba(32,32,32,.9); border-radius:4px; padding:0 8px; text-align:center;
-		p { color:#fff; line-height:25px; }
+		p { color:#fff; line-height:20px; padding:5px; }
 	}
 }
 
@@ -302,6 +302,12 @@ div.right .menu .popup { right:0; }
 .simple_notice {
 	padding-bottom:30px; text-align:center;
 	p { font-size:16px; line-height:1.6em; margin:1em 0; padding:0 15%; text-align:left; }
+
+	&.error {
+		padding:50px 0;
+		img { width:150px; }
+		p { text-align:center; }
+	}
 }
 
 .section.article {

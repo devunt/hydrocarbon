@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-15 15:20+0900\n"
+"POT-Creation-Date: 2014-12-15 21:30+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,17 +128,10 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/templates/board/post_detail.html:26
-#: board/templates/board/post_list.html:71
+#: board/templates/board/post_detail.html:32
+#: board/templates/board/post_list.html:74
 msgid "ago"
 msgstr ""
-
-#: board/templates/board/post_detail.html:31
-#, python-format
-msgid "<span>%(counter)s</span> comment"
-msgid_plural "<span>%(counter)s</span> comments"
-msgstr[0] ""
-msgstr[1] ""
 
 #: board/templates/board/post_detail.html:37
 #, python-format
@@ -186,12 +179,12 @@ msgid "Submit comment"
 msgstr ""
 
 #: board/templates/board/post_detail.html:133
-#: board/templates/board/post_list.html:97
+#: board/templates/board/post_list.html:100
 msgid "List"
 msgstr ""
 
 #: board/templates/board/post_detail.html:134
-#: board/templates/board/post_list.html:98
+#: board/templates/board/post_list.html:101
 msgid "Top Posts"
 msgstr ""
 
@@ -204,7 +197,7 @@ msgid "Modify"
 msgstr ""
 
 #: board/templates/board/post_detail.html:139
-#: board/templates/board/post_list.html:107
+#: board/templates/board/post_list.html:110
 msgid "New Post"
 msgstr ""
 
@@ -236,28 +229,36 @@ msgstr ""
 msgid "This post has been downvoted by users."
 msgstr ""
 
-#: board/templates/board/post_list.html:91
+#: board/templates/board/post_list.html:94
 msgid "There are no posts here!"
 msgstr ""
 
-#: board/templates/board/post_list.html:100
+#: board/templates/board/post_list.html:103
 msgid "Search"
 msgstr ""
 
-#: board/templates/board/post_list.html:112
+#: board/templates/board/post_list.html:118
 msgid "First"
 msgstr ""
 
-#: board/templates/board/post_list.html:113
+#: board/templates/board/post_list.html:121
 msgid "Prev"
 msgstr ""
 
-#: board/templates/board/post_list.html:126
+#: board/templates/board/post_list.html:130
 msgid "Next"
 msgstr ""
 
-#: board/templates/board/post_list.html:127
+#: board/templates/board/post_list.html:133
 msgid "Last"
+msgstr ""
+
+#: board/templates/errors/board_404.html:5
+msgid "No board found"
+msgstr ""
+
+#: board/templates/errors/board_404.html:11
+msgid "There's no such board. Returning to the main page..."
 msgstr ""
 
 #: board/templates/include/nav.html:11 board/templates/include/nav.html:38
@@ -298,7 +299,7 @@ msgstr ""
 
 #: board/templates/include/nav.html:60
 #: board/templates/registration/login.html:5
-#: board/templates/registration/login.html:23
+#: board/templates/registration/login.html:22
 msgid "Log in"
 msgstr ""
 
@@ -351,20 +352,20 @@ msgstr ""
 msgid "Account activation on %(site_name)s"
 msgstr ""
 
-#: board/templates/registration/login.html:28
+#: board/templates/registration/login.html:27
 msgid "Do you have no account?"
 msgstr ""
 
-#: board/templates/registration/login.html:28
+#: board/templates/registration/login.html:27
 #: board/templates/registration/registration_form.html:24
 msgid "Register"
 msgstr ""
 
-#: board/templates/registration/login.html:29
+#: board/templates/registration/login.html:28
 msgid "Lost your password?"
 msgstr ""
 
-#: board/templates/registration/login.html:29
+#: board/templates/registration/login.html:28
 msgid "Click here"
 msgstr ""
 

@@ -124,7 +124,7 @@ function showTooltip(e) {
 	var height;
 	var width;
 
-	$tooltip.find('.container p').text($target.data('title'));
+	$tooltip.find('.container p').html($target.data('title').replace('\\n', '<br>'));
 	$tooltip.find('.tip').removeAttr('style');
 
 	top = position.top + targetHeight;
