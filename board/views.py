@@ -2,6 +2,7 @@ from hashlib import md5
 
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
+from django.shortcuts import redirect, render
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -10,6 +11,12 @@ from django.views.generic.edit import CreateView, UpdateView
 from board.forms import PostForm
 from board.mixins import BoardMixin, UserLoggingMixin
 from board.models import Attachment, Board, Post, Vote
+
+
+class IndexView(View):
+    def get(self, request, *args, **kwargs):
+        board = Board.objects.first()
+        return redirect(reverse('board_post_list', kwargs={'board': board.slug}))
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):

@@ -2,6 +2,7 @@ from django.conf.urls import patterns, url, include
 from registration.backends.default.views import RegistrationView
 
 from board.forms import HCRegistrationForm
+from board.views import IndexView
 
 
 urlpatterns = patterns('',
@@ -15,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^x/', include('board.urls.ajax')),
     url(r'^b/(?P<board>\w+)/', include('board.urls.board')),
     url(r'^(?P<pk>\d+)/?', include('board.urls.post')),
+    url(r'^$', IndexView.as_view()),
 )
