@@ -1,10 +1,9 @@
-import datetime
-
 from hashlib import sha224
 
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils import timezone
 
 
 class UserProfile(models.Model):
@@ -90,7 +89,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
 
     def save(self, *args, **kwargs):
         if not kwargs.pop('auto_now', False):
-            self.modified_time = datetime.datetime.now()
+            self.modified_time = timezone.now()
         super(Post, self).save(*args, **kwargs)
 
 
