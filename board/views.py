@@ -58,6 +58,18 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         kwargs['board'] = self.object.board
         kwargs['post_list'] = self.object.board.posts.order_by('-created_time')
+        voted = {'upvoted': False, 'downvoted': False}
+        if self.request.user.is_authenticated():
+            vqs = self.object._votes.filter(user=self.request.user)
+        else:
+            vqs = self.object._votes.filter(ipaddress=self.request.META['REMOTE_ADDR'])
+        if vqs.exists():
+            vote = vqs.first()
+            if vote.vote == Vote.UPVOTE:
+                voted['upvoted'] = True
+            elif vote.vote == Vote.DOWNVOTE:
+                voted['downvoted'] = True
+        kwargs['voted'] = voted
         return super().get_context_data(**kwargs)
 
 
