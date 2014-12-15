@@ -88,6 +88,13 @@ div.right { float:right; white-space:nowrap; }
 	&.score .icon { background-position:0 $meta-size * -3; }
 	&.views .icon { background-position:0 $meta-size * -4; }
 	&.refresh .icon { background-position:0 $meta-size * -5; }
+	&.reply .icon { background-position:0 $meta-size * -6; }
+	&.modify .icon { background-position:0 $meta-size * -7; }
+	&.delete .icon { background-position:0 $meta-size * -8; }
+	&.first .icon { background-position:0 $meta-size * -9; }
+	&.prev .icon { background-position:0 $meta-size * -10; }
+	&.next .icon { background-position:0 $meta-size * -11; }
+	&.last .icon { background-position:0 $meta-size * -12; }
 
 	@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
 		.icon { background-image:url("../img/meta_2x.png"); background-size:100%; }
@@ -519,6 +526,20 @@ div.right .menu .popup { right:0; }
 			#search .text { width:calc(100% - 150px); }
 		}
 	}
+
+	.pages {
+		background:#f2f2f2; padding:10px 0; text-align:center;
+
+		& > .container { border-radius:2px; display:inline-block; overflow:hidden; }
+
+		.button {
+			width:30px; min-width:initial; border-radius:0; margin:0; padding:0;
+
+			&.current { background:rgba(61,156,204,.9); color:#fff; }
+			.icon { margin:8px 0; vertical-align:top; }
+		}
+	}
+	
 }
 
 #search { width:auto; font-size:0; padding:0; }
@@ -530,14 +551,5 @@ div.right .menu .popup { right:0; }
 #search .text { height:30px; width:150px; background:transparent; border:0; line-height:30px; }
 #scope { background:rgba(0,0,0,.1) url("../img/scope.png") 100% 0 no-repeat; cursor:default; display:inline-block; padding:0 25px 0 15px; }
 #scope:hover { background-color:rgba(0,0,0,.2); }
-
-.section.board .pages { background:#f2f2f2; padding:10px 0; text-align:center; }
-.section.board .pages div { display:inline-block; margin:0 10px; }
-.section.board .pages a { height:30px; display:inline-block; font-size:16px; line-height:30px; }
-.section.board .pages a:hover { opacity:.7; }
-.section.board .pages a.page { padding:0 10px; }
-.section.board .pages a.current { background:rgba(61,156,204,.9); color:#fff; }
-.section.board .pages a.anchor { font-size:$font-size; padding:0 5px; }
-.section.board .pages a.anchor .aquo { font-size:.5em; margin:0 5px; }
 
 #footer { color:#ccc; margin:30px 0; text-align:center; }

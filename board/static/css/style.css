@@ -162,6 +162,20 @@ div.right {
     background-position: 0 -48px; }
   .label.meta.refresh .icon {
     background-position: 0 -60px; }
+  .label.meta.reply .icon {
+    background-position: 0 -72px; }
+  .label.meta.modify .icon {
+    background-position: 0 -84px; }
+  .label.meta.delete .icon {
+    background-position: 0 -96px; }
+  .label.meta.first .icon {
+    background-position: 0 -108px; }
+  .label.meta.prev .icon {
+    background-position: 0 -120px; }
+  .label.meta.next .icon {
+    background-position: 0 -132px; }
+  .label.meta.last .icon {
+    background-position: 0 -144px; }
   @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
     .label.meta .icon {
       background-image: url("../img/meta_2x.png");
@@ -873,6 +887,26 @@ div.right .menu .popup {
           position: absolute; }
         .section.board .nav.bottom #search .text {
           width: calc(100% - 150px); } }
+  .section.board .pages {
+    background: #f2f2f2;
+    padding: 10px 0;
+    text-align: center; }
+    .section.board .pages > .container {
+      border-radius: 2px;
+      display: inline-block;
+      overflow: hidden; }
+    .section.board .pages .button {
+      width: 30px;
+      min-width: initial;
+      border-radius: 0;
+      margin: 0;
+      padding: 0; }
+      .section.board .pages .button.current {
+        background: rgba(61, 156, 204, 0.9);
+        color: #fff; }
+      .section.board .pages .button .icon {
+        margin: 8px 0;
+        vertical-align: top; }
 
 #search {
   width: auto;
@@ -913,39 +947,6 @@ div.right .menu .popup {
 
 #scope:hover {
   background-color: rgba(0, 0, 0, 0.2); }
-
-.section.board .pages {
-  background: #f2f2f2;
-  padding: 10px 0;
-  text-align: center; }
-
-.section.board .pages div {
-  display: inline-block;
-  margin: 0 10px; }
-
-.section.board .pages a {
-  height: 30px;
-  display: inline-block;
-  font-size: 16px;
-  line-height: 30px; }
-
-.section.board .pages a:hover {
-  opacity: .7; }
-
-.section.board .pages a.page {
-  padding: 0 10px; }
-
-.section.board .pages a.current {
-  background: rgba(61, 156, 204, 0.9);
-  color: #fff; }
-
-.section.board .pages a.anchor {
-  font-size: 14px;
-  padding: 0 5px; }
-
-.section.board .pages a.anchor .aquo {
-  font-size: .5em;
-  margin: 0 5px; }
 
 #footer {
   color: #ccc;
