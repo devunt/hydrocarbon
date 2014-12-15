@@ -1,6 +1,7 @@
 {% extends 'board/post_list.html' %}
 {% load hc %}
 {% load i18n %}
+{% load intcomma from humanize %}
 
 {% block post %}
 
@@ -31,10 +32,10 @@
 					<span class="icon"></span>
 					<span class="text"><span>{{ post.created_time | timesince | split_first }} {% trans "ago" %}</span></span>
 				</span>
-				<span class="label meta score" title="+{{ post.votes.upvote }} / -{{ post.votes.downvote }}">
+				<span class="label meta score" title="+{{ post.votes.upvote | intcomma }} / -{{ post.votes.downvote | intcomma }}">
 					<span class="icon"></span>
 					<span class="text">
-						{% blocktrans with counter=post.votes.total %}
+						{% blocktrans with counter=post.votes.total|intcomma %}
 							<span>{{ counter }}</span> votes
 						{% endblocktrans %}
 					</span>
@@ -42,7 +43,7 @@
 				<span class="label meta views">
 					<span class="icon"></span>
 					<span class="text">
-						{% blocktrans with counter=post.viewcount %}
+						{% blocktrans with counter=post.viewcount|intcomma %}
 							<span>{{ counter }}</span> views
 						{% endblocktrans %}
 					</span>
@@ -68,7 +69,7 @@
 				<div class="left">
 					<a href="#" class="label meta comments">
 						<span class="icon"></span>
-						<span class="text">{% blocktrans count counter=post.comments.count %}There is {{ counter }} comment.{% plural %}There are {{ counter }} comments.{% endblocktrans %}</span>
+						<span class="text">{% blocktrans count counter=post.comments.count|intcomma %}There is {{ counter }} comment.{% plural %}There are {{ counter }} comments.{% endblocktrans %}</span>
 					</a>
 				</div>
 				<div class="right">
