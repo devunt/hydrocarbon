@@ -141,8 +141,6 @@ function showTooltip(e) {
 
 	if(left < width/2) offsetX = width/2 - left  + 10;
 
-	console.log(offsetX);
-
 	$tooltip
 		.css({
 			'top': top + offsetY,
@@ -173,7 +171,6 @@ function $ajax_vote(databox, vote, button) {
 			.done(function(data, status, xhr) {
 				if(databox.vote.charAt(0) == '+') { button.addClass('voted');
 				} else { button.removeClass('voted'); }
-				console.log(data);
 
 				var $score = button.closest('.item').find('.meta.score');
 
