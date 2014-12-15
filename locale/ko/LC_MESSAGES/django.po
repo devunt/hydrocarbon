@@ -212,6 +212,10 @@ msgid "New Post"
 msgstr "글쓰기"
 
 #: board/templates/board/post_list.html:19
+msgid "Categories"
+msgstr "분류"
+
+#: board/templates/board/post_list.html:19
 msgid "Title"
 msgstr "제목"
 

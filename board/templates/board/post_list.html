@@ -16,7 +16,21 @@
 
 	<div class="header">
 		<div class="cell mark"></div>
-		<div class="cell category"><a href="#">{% trans "Categories" %}</a></div>
+		<div class="cell category label meta dropdown-handle">
+			<a href="#">
+				<span class="text"><span>{% trans "Categories" %}</span></span>
+				<span class="icon"></span>
+			</a>
+			<div class="dropdown">
+				<div class="tip"><span class="left"></span><span class="right"></span></div>
+				<ul>
+					<li><a href="#">cat1</a></li>
+					<li><a href="#">cat2</a></li>
+					<li><a href="#">cat3</a></li>
+					<li><a class="checkbox checked" href="#"><span class="icon"></span><span class="text">toggle</span></a></li>
+				</ul>
+			</div>
+		</div>
 		<div class="cell title">{% trans "Title" %}</div>
 		<div class="cell author">{% trans "Author" %}</div>
 		<div class="cell timestamp"><a href="#">{% trans "Date" %}</a></div>
@@ -24,7 +38,7 @@
 		<div class="cell views"><a href="#">{% trans "Views" %}</a></div>
 	</div>
 
-	<ul>
+	<ul class="post-list">
 	{% for item in post_list %}
 		{% cycle 'odd' 'even' as rowclass silent %}
 		{% if item.votes.total <= -10 %}
@@ -103,7 +117,18 @@
 				<input type="button" value="{% trans "Search" %}" class="search">
 				<input type="text" name="quary" class="text">
 				<input type="hidden" name="scope">
-				<div id="scope">Title + Article</div>
+				<div id="scope" class="dropdown-handle">
+					<div class="dropdown">
+						<ul>
+							<li><a href="#">cat1</a></li>
+							<li><a href="#">cat2</a></li>
+							<li><a href="#">cat3</a></li>
+							<li><a class="checkbox checked" href="#"><span class="icon"></span><span class="text">toggle</span></a></li>
+						</ul>
+						<div class="tip"><span class="left"></span><span class="right"></span></div>
+					</div>
+					<span>Title + Article</span>
+				</div>
 			</form>
 		</div>
 		<div class="right">

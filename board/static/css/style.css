@@ -83,18 +83,17 @@ div.right {
       padding: 5px; }
 
 .checkbox {
-  display: inline-block;
-  cursor: default; }
-  .checkbox span {
+  display: inline-block; }
+  .checkbox .icon {
     height: 12px;
     width: 12px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(229, 229, 229, 0.9);
     border-radius: 2px;
     display: inline-block;
-    margin: 5px;
+    margin-right: 5px;
     vertical-align: middle; }
-  .checkbox.checked span {
-    background: rgba(255, 255, 255, 0.5) url("../img/checkbox.png") 50% 50% no-repeat; }
+  .checkbox.checked .icon {
+    background: rgba(229, 229, 229, 0.9) url("../img/checkbox.png") 50% 50% no-repeat; }
 
 .contents > .errorlist li {
   background: #cc3d3d;
@@ -177,6 +176,11 @@ div.right {
     background-position: 0 -132px; }
   .label.meta.last .icon {
     background-position: 0 -144px; }
+  .label.meta.dropdown-handle .icon {
+    background-position: 0 -156px;
+    vertical-align: top; }
+  .label.meta.dropdown-handle.active .icon {
+    background-position: 0 -168px; }
   @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
     .label.meta .icon {
       background-image: url("../img/meta_2x.png");
@@ -210,6 +214,36 @@ div.right {
       color: #fff; }
     .nav .button.blue:hover {
       background: rgba(61, 156, 204, 0.6); }
+
+.dropdown {
+  display: none;
+  margin: 5px 0;
+  position: absolute;
+  text-align: left;
+  z-index: 2; }
+  .dropdown-handle.active .dropdown {
+    display: block; }
+  .dropdown .tip {
+    padding: 0 10px;
+    position: relative; }
+  .dropdown .tip span {
+    border: 3px solid #fff;
+    border-top-color: transparent; }
+  .dropdown ul {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden; }
+  .dropdown li {
+    list-style: none; }
+  .dropdown li:hover {
+    background: rgba(61, 156, 204, 0.9); }
+  .dropdown li:hover a {
+    color: #fff; }
+  .dropdown a {
+    width: 100%;
+    display: inline-block;
+    padding: 10px 15px; }
 
 body {
   background: #e5e5e5; }
@@ -366,7 +400,7 @@ div.right .menu .popup {
   transition: height .2s ease, opacity .2s ease; }
   #banner span {
     visibility: hidden; }
-  @media screen and (max-device-width: 399px) {
+  @media screen and (max-device-width: 419px) {
     #banner {
       height: 0;
       opacity: 0; } }
@@ -733,10 +767,41 @@ div.right .menu .popup {
   font-size: 0; }
   .section.board .header {
     cursor: default; }
+    .section.board .header .cell {
+      font-size: 13px;
+      line-height: 20px;
+      padding-top: 10px; }
+    .section.board .header .category {
+      margin: 0; }
+      .section.board .header .category .text {
+        font-size: 13px;
+        vertical-align: top; }
+      .section.board .header .category .icon {
+        margin: 4px 0; }
     @media screen and (max-device-width: 599px) {
       .section.board .header {
-        display: none; } }
-  .section.board ul {
+        background: #f2f2f2;
+        padding: 10px 4%; }
+        .section.board .header .cell {
+          display: none; }
+        .section.board .header .category {
+          height: 30px;
+          min-width: 40px;
+          background: rgba(204, 204, 204, 0.9);
+          border-radius: 2px;
+          display: inline-block;
+          font-size: 14px;
+          line-height: 30px;
+          overflow: hidden;
+          padding: 0 10px;
+          text-align: center; }
+          .section.board .header .category:hover {
+            background: rgba(204, 204, 204, 0.6); }
+          .section.board .header .category .icon {
+            margin: 9px 0; } }
+    .section.board .header .dropdown .tip {
+      text-align: left; }
+  .section.board .post-list {
     border-top: 1px solid #f2f2f2; }
   .section.board .item {
     display: block;
@@ -838,10 +903,6 @@ div.right .menu .popup {
     @media screen and (max-device-width: 419px) {
       .section.board .item .cell.author .label.meta {
         margin-right: 5px; } }
-  .section.board .header .cell {
-    font-size: 13px;
-    line-height: 20px;
-    padding-top: 10px; }
   .section.board .hidden .cell {
     color: #bebebe;
     padding: 0; }
@@ -912,7 +973,7 @@ div.right .menu .popup {
         background: rgba(61, 156, 204, 0.9);
         color: #fff; }
       .section.board .pages .button .icon {
-        margin: 8px 0;
+        margin: 9px 0;
         vertical-align: top; }
       @media screen and (max-device-width: 419px) {
         .section.board .pages .button.foldable {
@@ -954,6 +1015,11 @@ div.right .menu .popup {
   cursor: default;
   display: inline-block;
   padding: 0 25px 0 15px; }
+  #scope .dropdown {
+    bottom: 40px; }
+  #scope .dropdown .tip span {
+    border-bottom-color: transparent;
+    border-top-color: #fff; }
 
 #scope:hover {
   background-color: rgba(0, 0, 0, 0.2); }
