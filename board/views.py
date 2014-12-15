@@ -1,3 +1,5 @@
+from hashlib import md5
+
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 from django.views.generic.base import View
@@ -7,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from board.forms import PostForm
 from board.mixins import BoardMixin, UserLoggingMixin
-from board.models import Board, Post, Vote
+from board.models import Attachment, Board, Post, Vote
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
@@ -80,7 +82,7 @@ class PostListView(BoardMixin, ListView):
         return Post.objects.filter(board=self.board).order_by('-created_time')
 
 
-class VoteView(View):
+class VoteAjaxView(View):
     def post(self, request):
         target_type = request.POST.get('type')
         target_id = request.POST.get('target', '')
@@ -138,3 +140,20 @@ class VoteView(View):
             r = rqs.first()
             r.delete()
             return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
+
+
+class FileUploadAjaxView(View):
+    def post(self, request):
+        files = list()
+        for f in request.FILES.getlist('files[]'):
+            hasher = md5()
+            for chunk in f.chunks():
+                hasher.update(chunk)
+            attachment = Attachment()
+            attachment.checksum = hasher.hexdigest()
+            attachment.content_type = f.content_type
+            attachment.name = f.name
+            attachment.file = f
+            attachment.save()
+            files.append({'name': f.name, 'content_type': f.content_type})
+        return JsonResponse({'status': 'success', 'files': files})
