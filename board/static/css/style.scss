@@ -502,8 +502,9 @@ div.right .menu .popup { right:0; }
 
 		&.mark { width:3%; font-size:0; }
 		&.category { width:9%; }
-		&.title { width:42%; text-align:left; text-overflow:ellipsis; white-space:nowrap; }
-		&.author { width:18%; }
+		&.title { width:44%; text-align:left; text-overflow:ellipsis; white-space:nowrap; }
+		&.author { width:16%; }
+		&.author .label.meta { width:100%; }
 		&.author .text { max-width:calc(100% - 20px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 		&.timestamp { width:11%; white-space:nowrap; }
 		&.score { width:7%; }

@@ -838,12 +838,14 @@ div.right .menu .popup {
     .section.board .cell.category {
       width: 9%; }
     .section.board .cell.title {
-      width: 42%;
+      width: 44%;
       text-align: left;
       text-overflow: ellipsis;
       white-space: nowrap; }
     .section.board .cell.author {
-      width: 18%; }
+      width: 16%; }
+    .section.board .cell.author .label.meta {
+      width: 100%; }
     .section.board .cell.author .text {
       max-width: calc(100% - 20px);
       overflow: hidden;
