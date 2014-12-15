@@ -15,7 +15,6 @@
 			{% for field in form %}
 			<li class="field">
 				{{ field | label_as_placeholder }}
-				{# <label for="{{ field.id_for_label }}"{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span></label> #}
 				{{ field.errors }}
 			</li>
 			{% endfor %}
