@@ -112,7 +112,7 @@ class VoteAjaxView(View):
             rqs = rqs.filter(ipaddress=request.META['REMOTE_ADDR'])
 
         if vote[0] == '+':
-            if not request.user.is_authenticated():
+            if vote[1] == '-' and not request.user.is_authenticated():
                 return JsonResponse({'status': 'notauthenticated'}, status=401)
             if rqs.exists():
                 return JsonResponse({'status': 'alreadyhave'}, status=409)
