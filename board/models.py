@@ -1,3 +1,5 @@
+import os
+
 from hashlib import sha224
 
 from django.contrib.auth.models import User
@@ -120,3 +122,16 @@ class Vote(models.Model):
 class Announcement(models.Model):
     post = models.OneToOneField('Post', related_name='announcement')
     boards = models.ManyToManyField('Board', related_name='announcements')
+
+
+def upload_to_func(instance, filename):
+    checksum = instance.checksum
+    return os.path.join(checksum[0], checksum[:2], checksum)
+
+class Attachment(models.Model):
+    post = models.ForeignKey('Post', blank=True, null=True, related_name='attachments')
+    name = models.CharField(max_length=64)
+    file = models.FileField(upload_to=upload_to_func)
+    content_type = models.CharField(max_length=64)
+    checksum = models.CharField(max_length=64)
+    dlcount = models.PositiveIntegerField(default=0)
