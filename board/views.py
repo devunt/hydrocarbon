@@ -54,6 +54,7 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         kwargs['board'] = self.object.board
+        kwargs['post_list'] = self.object.board.posts.order_by('-created_time')
         return super().get_context_data(**kwargs)
 
 
