@@ -519,7 +519,7 @@ div.right .menu .popup {
     font-size: 16px;
     line-height: 1.6em;
     margin: 1em 0;
-    padding: 0 100px;
+    padding: 0 15%;
     text-align: left; }
 
 .section.article {
@@ -718,22 +718,21 @@ div.right .menu .popup {
       background: #f2eac2; }
     .section.board .item.currentpost .cell.mark {
       font-size: 10px; }
-    .section.board .item.scanlation .cell.mark {
-      background: rgba(61, 156, 204, 0.9);
-      color: #fff; }
-    .section.board .item.news .cell.mark {
-      background: rgba(133, 204, 61, 0.9);
-      color: #fff; }
-    .section.board .item.subtitles .cell.mark {
-      background: rgba(204, 61, 61, 0.9);
-      color: #fff; }
+    @media screen and (min-device-width: 600px) {
+      .section.board .item.scanlation .cell.mark {
+        background: rgba(61, 156, 204, 0.9);
+        color: #fff; }
+      .section.board .item.news .cell.mark {
+        background: rgba(133, 204, 61, 0.9);
+        color: #fff; }
+      .section.board .item.subtitles .cell.mark {
+        background: rgba(204, 61, 61, 0.9);
+        color: #fff; } }
     @media screen and (max-device-width: 599px) {
       .section.board .item {
         padding: 5px 2%; }
-        .section.board .item.currentpost {
-          background: #fffdf2; }
-        .section.board .item.currentpost.even {
-          background: #fffbe5; }
+        .section.board .item.currentpost .cell.mark {
+          display: inline-block; }
         .section.board .item.scanlation .cell.category {
           background: rgba(61, 156, 204, 0.9);
           color: #fff; }
@@ -766,10 +765,11 @@ div.right .menu .popup {
         line-height: 25px;
         padding: 0; }
         .section.board .item .cell.mark {
+          background: transparent;
           display: none; }
         .section.board .item .cell.category {
           width: auto;
-          max-width: 10%;
+          max-width: 8%;
           background: #d9d9d9;
           border-radius: 2px;
           font-size: 12px;
