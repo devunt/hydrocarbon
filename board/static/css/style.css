@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0; }
@@ -10,7 +11,7 @@
 body, input, textarea, button {
   color: #222;
   font: 14px "NanumGothic";
-  letter-spacing: -.07em; }
+  letter-spacing: -.04em; }
 
 input, textarea {
   outline: none; }
@@ -116,29 +117,63 @@ div.right {
     background: #2e7599; }
 
 .label.meta {
-  height: 30px;
-  background: url("../img/meta.png") no-repeat;
+  font-size: 0;
   display: inline-block;
-  line-height: 30px;
-  padding: 0 10px 0 20px;
+  margin-right: 10px;
   vertical-align: top; }
-  .right .label.meta {
-    padding-right: 0; }
-  .label.meta.author {
+  @media screen and (max-device-width: 419px) {
+    .label.meta {
+      font-size: .8em; } }
+  .label.meta .icon, .label.meta .text {
+    display: inline-block;
+    vertical-align: middle; }
+  .label.meta .text {
+    font-size: 14px; }
+  .label.meta .text span {
+    vertical-align: top; }
+  .label.meta .icon {
+    height: 12px;
+    width: 12px;
+    background: url("../img/meta_1x.png") no-repeat;
+    margin-right: 8px; }
+  .label.meta.author .text:after {
+    content: "•";
+    font-size: 1.5em;
+    vertical-align: top; }
+  .label.meta.author.user .text:after {
+    color: #3d9ccc; }
+  .label.meta.author.guest .text:after {
+    color: #aaa; }
+  .label.meta.author.moderator .text:after {
+    color: #cc3d3d; }
+  .label.meta.author .icon {
     background-position: 0 0; }
-  .label.meta.timestamp {
-    background-position: 0 -30px; }
-  .label.meta.comments {
+  .label.meta.comments .icon {
+    background-position: 0 -12px; }
+  .label.meta.timestamp .icon {
+    background-position: 0 -24px; }
+  .label.meta.score .icon {
+    background-position: 0 -36px; }
+  .label.meta.views .icon {
+    background-position: 0 -48px; }
+  .label.meta.refresh .icon {
     background-position: 0 -60px; }
-  .label.meta.score {
-    background-position: 0 -90px; }
-  .label.meta.refresh {
-    background-position: 0 -120px; }
+  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+    .label.meta .icon {
+      background-image: url("../img/meta_2x.png");
+      background-size: 100%; } }
+  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+    .label.meta .icon {
+      background-image: url("../img/meta_3x.png");
+      background-size: 100%; } }
+  .right .label.meta {
+    margin-left: 10px;
+    margin-right: 0; }
 
-nav.nav {
+.nav {
   font-size: 0;
   padding: 5px 15px; }
-  nav.nav .button {
+  .nav .button {
     height: 30px;
     min-width: 40px;
     background: rgba(204, 204, 204, 0.9);
@@ -149,12 +184,12 @@ nav.nav {
     overflow: hidden;
     padding: 0 10px;
     text-align: center; }
-    nav.nav .button:hover {
+    .nav .button:hover {
       background: rgba(204, 204, 204, 0.6); }
-    nav.nav .button.blue {
+    .nav .button.blue {
       background: rgba(61, 156, 204, 0.9);
       color: #fff; }
-    nav.nav .button.blue:hover {
+    .nav .button.blue:hover {
       background: rgba(61, 156, 204, 0.6); }
 
 body {
@@ -256,7 +291,14 @@ div.right .menu .popup {
   padding-right: 10px; }
   #menu .handle .icon {
     width: 50px;
-    background: url("../img/logo.png") no-repeat; }
+    background: url("../img/logo_1x.png") no-repeat;
+    background-size: 50px; }
+    @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+      #menu .handle .icon {
+        background-image: url("../img/logo_2x.png"); } }
+    @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+      #menu .handle .icon {
+        background-image: url("../img/logo_3x.png"); } }
   #menu .handle .text {
     width: 100px;
     background: url("../img/logo_kr.png") no-repeat;
@@ -299,7 +341,8 @@ div.right .menu .popup {
 
 #banner {
   height: 150px;
-  background: url("../img/logo_large.png") 50% 50% no-repeat;
+  background: url("../img/logo_large_1x.png") 50% 50% no-repeat;
+  background-size: 350px;
   transition: height .2s ease, opacity .2s ease; }
   #banner span {
     visibility: hidden; }
@@ -314,6 +357,12 @@ div.right .menu .popup {
   @media screen and (max-device-height: 419px) {
     #banner {
       display: none; } }
+  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+    #banner {
+      background-image: url("../img/logo_large_2x.png"); } }
+  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+    #banner {
+      background-image: url("../img/logo_large_3x.png"); } }
 
 #form {
   padding-bottom: 30px; }
@@ -470,18 +519,18 @@ div.right .menu .popup {
 
 .section.article {
   padding-top: 20px; }
-  .section.article > header div {
+  .section.article .item > .header div {
     background: #f2f2f2;
     font-size: 0;
     padding: 0 5%; }
-  .section.article > header .category {
+  .section.article .item > .header .category {
     max-width: 5%;
     display: inline-block;
     font-size: 14px;
     line-height: 20px;
     vertical-align: baseline;
     text-align: right; }
-  .section.article > header h2 {
+  .section.article .item > .header h2 {
     max-width: 89%;
     display: inline-block;
     font-size: 22px;
@@ -490,98 +539,109 @@ div.right .menu .popup {
     margin: 0 3%;
     padding: 10px 0;
     vertical-align: baseline; }
-  .section.article > header section.meta {
+  .section.article .item > .header div.meta {
     background: #e5e5e5;
+    line-height: 30px;
     padding: 0 5%; }
   @media screen and (max-device-width: 599px) {
-    .section.article > header .category {
+    .section.article .item > .header .category {
       max-width: 10%; }
-    .section.article > header h2 {
+    .section.article .item > .header h2 {
       max-width: 84%;
       font-size: 18px; } }
   @media screen and (max-device-width: 419px) {
-    .section.article > header h2 {
-      font-size: 16px; }
-    .section.article > header section.meta span.meta {
+    .section.article .item > .header h2 {
+      font-size: 14px; }
+    .section.article .item > .header div.meta span.meta .text {
       font-size: 0; }
-      .section.article > header section.meta span.meta span {
-        font-size: 14px; } }
-  .section.article div.article {
+      .section.article .item > .header div.meta span.meta .text span {
+        font-size: 12px; } }
+  .section.article .item div.article {
     width: 540px;
     line-height: 20px;
     margin: 20px auto; }
     @media screen and (max-device-width: 599px) {
-      .section.article div.article {
+      .section.article .item div.article {
         width: 90%; } }
-    .section.article div.article p {
+    .section.article .item div.article p {
       margin: 1em 0; }
-  .section.article section.vote {
+  .section.article .item .vote.vote-post {
     font-size: 0;
     margin: 30px 0;
     text-align: center; }
-  .section.article section.vote a {
-    width: 80px;
-    border-radius: 2px;
-    color: #fff;
-    display: inline-block;
-    margin: 0 5px;
-    opacity: .5;
-    padding: 5px 0;
-    transition: opacity .2s ease; }
-    .section.article section.vote a .icon {
-      height: 20px;
-      background: url("../img/vote.png") no-repeat;
-      display: block; }
-    .section.article section.vote a .text {
-      display: block;
-      font-size: 14px;
-      line-height: 20px; }
-    .section.article section.vote a:hover {
-      opacity: .7; }
-    .section.article section.vote a:active {
-      opacity: 1; }
-    .section.article section.vote a.voted {
-      opacity: .9; }
-    .section.article section.vote a.upvote {
-      background: #3d9ccc; }
-    .section.article section.vote a.upvote .icon {
-      background-position: 50% 0; }
-    .section.article section.vote a.downvote {
-      background: #cc3d3d; }
-    .section.article section.vote a.downvote .icon {
-      background-position: 50% -20px; }
-  .section.article footer {
+    .section.article .item .vote.vote-post a {
+      width: 80px;
+      border-radius: 2px;
+      color: #fff;
+      display: inline-block;
+      margin: 0 5px;
+      opacity: .5;
+      padding: 5px 0;
+      transition: opacity .2s ease; }
+      .section.article .item .vote.vote-post a .icon {
+        height: 20px;
+        background: url("../img/vote_1x.png") no-repeat;
+        background-size: 20px;
+        display: block; }
+        @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+          .section.article .item .vote.vote-post a .icon {
+            background-image: url("../img/vote_2x.png"); } }
+        @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+          .section.article .item .vote.vote-post a .icon {
+            background-image: url("../img/vote_3x.png"); } }
+      .section.article .item .vote.vote-post a .text {
+        display: block;
+        font-size: 14px;
+        line-height: 20px; }
+      .section.article .item .vote.vote-post a:hover {
+        opacity: .7; }
+      .section.article .item .vote.vote-post a:active {
+        opacity: 1; }
+      .section.article .item .vote.vote-post a.voted {
+        opacity: .9; }
+      .section.article .item .vote.vote-post a.upvote {
+        background: #3d9ccc; }
+      .section.article .item .vote.vote-post a.upvote .icon {
+        background-position: 50% 0; }
+      .section.article .item .vote.vote-post a.downvote {
+        background: #cc3d3d; }
+      .section.article .item .vote.vote-post a.downvote .icon {
+        background-position: 50% -20px; }
+  .section.article .item .footer {
+    line-height: 30px;
     margin: 0 5%;
     padding: 0 3%; }
-  .section.article section.comments {
+    .section.article .item .footer .icon {
+      margin-right: 4px; }
+  .section.article .comments-list {
     border-top: 1px solid #e5e5e5;
     margin: 0 5%;
     padding: 10px 7% 0; }
     @media screen and (max-device-width: 599px) {
-      .section.article section.comments {
+      .section.article .comments-list {
         padding: 10px 5% 0; } }
     @media screen and (max-device-width: 419px) {
-      .section.article section.comments {
+      .section.article .comments-list {
         padding: 10px 2% 0; } }
-    .section.article section.comments article.comment {
+    .section.article .comments-list .comment {
       background: url("../img/bubble_right.png") 100% 100% no-repeat;
       padding-bottom: 10px; }
-      .section.article section.comments article.comment .bubble {
+      .section.article .comments-list .comment .bubble {
         background: rgba(242, 242, 242, 0.9);
         border-left: 10px solid transparent;
         border-radius: 4px;
         line-height: 20px;
         padding: 5px 10px 5px 0; }
-        .section.article section.comments article.comment .bubble .vote {
+        .section.article .comments-list .comment .bubble .vote.vote-comment {
           height: 40px;
           width: 20px;
           float: left;
           text-align: left;
           visibility: hidden; }
-        .section.article section.comments article.comment .bubble .container {
+        .section.article .comments-list .comment .bubble .container {
           margin-left: 20px;
           margin-right: 5%; }
-          .section.article section.comments article.comment .bubble .container textarea {
+          .section.article .comments-list .comment .bubble .container textarea {
             height: 35px;
             width: 100%;
             max-width: 100%;
@@ -589,56 +649,60 @@ div.right .menu .popup {
             background: transparent;
             display: block;
             margin-top: 5px; }
-          .section.article section.comments article.comment .bubble .container .nav {
+          .section.article .comments-list .comment .bubble .container .nav {
+            height: 30px;
             width: 100%;
             margin: 10px 0 5px;
             padding: 0; }
-          .section.article section.comments article.comment .bubble .container a.button {
+          .section.article .comments-list .comment .bubble .container a.button {
             margin: 0; }
-          .section.article section.comments article.comment .bubble .container a.button.blue {
+          .section.article .comments-list .comment .bubble .container a.button.blue {
             padding: 0 20px; }
-          .section.article section.comments article.comment .bubble .container nav.nav {
-            height: 30px; }
-        .section.article section.comments article.comment .bubble header {
+        .section.article .comments-list .comment .bubble .header {
           clear: right; }
-        .section.article section.comments article.comment .bubble header .meta {
+        .section.article .comments-list .comment .bubble .header .meta {
           display: inline-block;
           font-size: 14px;
           margin-right: 5px; }
-        .section.article section.comments article.comment .bubble header .right .meta {
+        .section.article .comments-list .comment .bubble .header .right .meta {
           margin: 0;
           margin-left: 5px; }
-        .section.article section.comments article.comment .bubble header span.meta.timestamp,
-        .section.article section.comments article.comment .bubble header span.meta.score {
+        .section.article .comments-list .comment .bubble .header span.meta.timestamp,
+        .section.article .comments-list .comment .bubble .header span.meta.score {
           color: #808080;
           font-size: 12px; }
         @media screen and (max-device-width: 599px) {
-          .section.article section.comments article.comment .bubble {
+          .section.article .comments-list .comment .bubble {
             border-left-width: 5px;
             padding-right: 5px; }
-            .section.article section.comments article.comment .bubble .vote {
+            .section.article .comments-list .comment .bubble .vote {
               display: none; }
-            .section.article section.comments article.comment .bubble .container {
+            .section.article .comments-list .comment .bubble .container {
               margin: 0 5%; } }
-      .section.article section.comments article.comment.owned {
+      .section.article .comments-list .comment.owned {
         background: url("../img/bubble_left.png") 0 100% no-repeat; }
-      .section.article section.comments article.comment.owned .bubble {
+      .section.article .comments-list .comment.owned .bubble {
         border-left-color: rgba(61, 156, 204, 0.9); }
-      .section.article section.comments article.comment:hover .bubble .vote {
+      .section.article .comments-list .comment:hover .bubble .vote {
         visibility: visible; }
-  .section.article nav.nav {
+  .section.article .nav {
     background: #f2f2f2; }
     @media screen and (max-device-width: 419px) {
-      .section.article nav.nav .toppost {
+      .section.article .nav .toppost {
         display: none; } }
 
 .section.board {
   font-size: 0; }
-  @media screen and (max-device-width: 599px) {
-    .section.board header {
-      display: none; } }
+  .section.board .header {
+    cursor: default; }
+    @media screen and (max-device-width: 599px) {
+      .section.board .header {
+        display: none; } }
+  .section.board ul {
+    border-top: 1px solid #f2f2f2; }
   .section.board .item {
-    display: block; }
+    display: block;
+    vertical-align: top; }
     .section.board .item:hover, .section.board .item:hover .cell a {
       color: #777; }
     .section.board .item.even {
@@ -647,8 +711,8 @@ div.right .menu .popup {
       background: #fff7cc; }
     .section.board .item.notice.even {
       background: #f2eac2; }
-    .section.board .item:first-of-type {
-      border-top: 1px solid #f2f2f2; }
+    .section.board .item.currentpost .cell.mark {
+      font-size: 10px; }
     .section.board .item.scanlation .cell.mark {
       background: rgba(61, 156, 204, 0.9);
       color: #fff; }
@@ -658,55 +722,95 @@ div.right .menu .popup {
     .section.board .item.subtitles .cell.mark {
       background: rgba(204, 61, 61, 0.9);
       color: #fff; }
-  .section.board header .cell {
-    height: 20px;
-    line-height: 20px;
-    padding-top: 10px; }
-  .section.board .hidden .cell {
-    height: 30px;
-    color: #bebebe;
-    line-height: 30px; }
+    @media screen and (max-device-width: 599px) {
+      .section.board .item {
+        padding: 5px 2%; }
+        .section.board .item.currentpost {
+          background: #fffdf2; }
+        .section.board .item.currentpost.even {
+          background: #fffbe5; }
+        .section.board .item.scanlation .cell.category {
+          background: rgba(61, 156, 204, 0.9);
+          color: #fff; }
+        .section.board .item.news .cell.category {
+          background: rgba(133, 204, 61, 0.9);
+          color: #fff; }
+        .section.board .item.subtitles .cell.category {
+          background: rgba(204, 61, 61, 0.9);
+          color: #fff; } }
   .section.board .item .cell {
-    min-height: 30px;
     line-height: 30px;
-    padding: 10px 0; }
+    padding: 10px 0;
+    vertical-align: top; }
+    .section.board .item .cell.mark {
+      height: 30px; }
     .section.board .item .cell.title .text {
-      font-size: 16px; }
+      font-size: 16px;
+      vertical-align: top; }
     .section.board .item .cell.title .label.meta.comments {
       margin-left: 5px;
       padding-left: 15px; }
     @media screen and (min-device-width: 600px) {
-      .section.board .item .cell span.label.meta {
-        background: none;
-        padding: 0; } }
-    @media screen and (max-device-width: 599px) {
-      .section.board .item .cell.mark {
-        width: 3%; }
-      .section.board .item .cell.category {
-        width: 10%;
-        padding-right: 1%; }
-      .section.board .item .cell.title {
-        width: 83%;
-        margin-right: 3%;
-        white-space: normal; }
-      .section.board .item .cell.meta {
-        width: auto;
-        display: inline-block;
-        padding: 0 3% 10px 0;
-        text-align: left; }
-      .section.board .item .cell.author {
-        margin-left: 4%; }
-      .section.board .item .cell.views {
+      .section.board .item .cell .label.meta {
+        margin: 0; }
+      .section.board .item .cell .label.meta .icon {
+        display: none;
         margin: 0; } }
+    @media screen and (max-device-width: 599px) {
+      .section.board .item .cell {
+        line-height: 25px;
+        padding: 0; }
+        .section.board .item .cell.mark {
+          display: none; }
+        .section.board .item .cell.category {
+          width: auto;
+          max-width: 10%;
+          background: #d9d9d9;
+          border-radius: 2px;
+          font-size: 12px;
+          line-height: 21px;
+          margin: 2px 2%;
+          padding: 0 1.5%; }
+        .section.board .item .cell.title {
+          width: 81%; }
+          .section.board .item .cell.title .text {
+            font-size: 14px; }
+        .section.board .item .cell.meta {
+          width: auto;
+          display: inline-block;
+          line-height: 23px;
+          opacity: .4;
+          padding-right: 10px;
+          text-align: left;
+          vertical-align: top; }
+          .section.board .item .cell.meta .icon {
+            margin-right: 4px; }
+          .section.board .item .cell.meta .text {
+            font-size: 12px;
+            vertical-align: top; }
+        .section.board .item .cell.author {
+          margin-left: 3%; }
+        .section.board .item .cell.author .icon {
+          display: none; }
+        .section.board .item .cell.views {
+          margin: 0; } }
     @media screen and (max-device-width: 419px) {
       .section.board .item .cell.meta {
-        padding-left: 0; }
+        padding: 0; }
       .section.board .item .cell.author {
         max-width: 6em;
         white-space: normal; }
-      .section.board .item .cell.author span.label.meta, .section.board .item .cell.timestamp span.label.meta {
-        background: none;
-        padding: 0; } }
+        .section.board .item .cell.author .label.meta {
+          margin-right: 5px; } }
+  .section.board .header .cell {
+    font-size: 13px;
+    line-height: 20px;
+    padding-top: 10px; }
+  .section.board .hidden .cell {
+    color: #bebebe;
+    padding: 0; }
+  .section.board .hidden .cell.title .text {
+    font-size: 13px; }
   .section.board .cell {
     display: inline-block;
     font-size: 14px;
@@ -715,7 +819,7 @@ div.right .menu .popup {
     vertical-align: top; }
     .section.board .cell.mark {
       width: 3%;
-      font-size: 10px; }
+      font-size: 0; }
     .section.board .cell.category {
       width: 10%; }
     .section.board .cell.title {
@@ -735,19 +839,19 @@ div.right .menu .popup {
     .section.board .cell.views {
       width: 7%;
       margin-right: 3%; }
-  .section.board nav.nav {
+  .section.board .nav.bottom {
     background: #e6e6e6;
     position: relative; }
     @media screen and (max-device-width: 599px) {
-      .section.board nav.nav {
+      .section.board .nav.bottom {
         height: 100px; }
-        .section.board nav.nav #search {
+        .section.board .nav.bottom #search {
           top: 50px;
           left: 0;
           width: calc(100% - 40px);
           margin: 10px 20px;
           position: absolute; }
-        .section.board nav.nav #search .text {
+        .section.board .nav.bottom #search .text {
           width: calc(100% - 150px); } }
 
 #search {
