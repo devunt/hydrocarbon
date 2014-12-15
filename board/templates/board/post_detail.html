@@ -10,7 +10,7 @@
 			<div class="title">
 				<span class="category">{{ post.category }}</span>
 				<h2>{{ post.title }}</h2>
-				{% if item.comments.count != 1 %}
+				{% if item.comments.count != 0 %}
 					<a href="#" class="label meta comments">
 						<span class="icon"></span>
 						<span class="text">{{ post.comments.count }}</span>
