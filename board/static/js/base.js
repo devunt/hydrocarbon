@@ -6,11 +6,28 @@ $(function() {
 
 	$window = $(window);
 	$document = $(document);
+	$body = $('body');
 	$overlay = $('#overlay');
 	$tooltip = $('#tooltip');
+	$menu = $('.menu');
 
-	$('.hoverable').hover(function() { $(this).addClass('hover'); },
-			function() { $(this).removeClass('hover'); });
+	$('.hoverable').hover(function() {
+		$(this).addClass('hover');
+		$body.addClass('hovered');
+	}, function() {
+		$(this).removeClass('hover');
+		$body.removeClass('hovered');
+	});
+
+	$menu
+		.on('click', '.handle[href="#"]', function(e) {
+			e.preventDefault();
+			$(this).closest('.menu').mouseenter();
+		})
+		.on('click', '.close', function(e) {
+			e.preventDefault();
+			$menu.mouseleave();
+		});
 
 	$document
 		.on('mouseenter', '.th', showTooltip)
@@ -87,6 +104,7 @@ $(function() {
 
 var $overlay;
 var $tooltip;
+var $menu;
 
 var csrftoken = $.cookie('csrftoken');
 

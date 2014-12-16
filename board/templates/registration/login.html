@@ -8,9 +8,10 @@
 
 {% include "include/banner.html" %}
 {{ form.non_field_errors }}
-<div id="form_login">
+<div id="form-login">
 	<form method="post" action="">
 		{% csrf_token %}
+		<input type="hidden" name="next" value="{{ next }}" />
 		<ul>
 			{% for field in form %}
 			<li class="field">
@@ -19,10 +20,10 @@
 			</li>
 			{% endfor %}
 		</ul>
-		<input class="submit" type="submit" value="{% trans 'Log in' %}" />
-		<input type="hidden" name="next" value="{{ next }}" />
+		<div class="center">
+			<input class="submit" type="submit" value="{% trans 'Log in' %}" />
+		</div>
 	</form>
-
 	<div class="meta">
 		<p>{% trans "Do you have no account?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a></p>
 		<p>{% trans "Lost your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Click here" %}</a></p>

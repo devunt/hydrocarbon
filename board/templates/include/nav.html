@@ -28,8 +28,8 @@
 	</div>
 	<div class="right">
 		{% if user.profile.nick %}
-		<div id="login" class="menu hovermenu hoverable">
-			<a href="/accounts/profile" class="handle">
+		<div id="login" class="menu hoverable">
+			<a href="#" class="handle">
 				<span class="button icon"></span>
 				<span class="button text">{{ user.profile.nick }}</span>
 			</a>
@@ -52,7 +52,7 @@
 			</div>
 		</div>
 		{% else %}
-		<div id="login" class="menu hoverable">
+		<div id="login" class="menu">
 			<a href="/accounts/login" class="handle">
 				<span class="button icon"></span>
 				<span class="button text">{% trans "Log in" %}</span>

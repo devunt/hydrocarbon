@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+// 	
+// 	nav.scss
+// 		#header
+// 	
+
+
+.menu {
+	&.hover {
+		.popup,
+		.popup .close { display:block }
+	}
+
+	.popup {
+		display:none; position:absolute;
+		.close { display:none; }
+		ul { font-size:$font-size; list-style:none; }
+		li {
+			background:$blue; border-top:1px solid rgba(255,255,255,.1);
+
+			&:first-of-type { border:0; }
+
+			a { color:$white; display:block; padding:0 15px; }
+			a span { height:30px; display:block; line-height:30px; }
+			a:hover { background:$blue; }
+		}
+
+		@media screen and (max-device-width: $medium) {
+			li a { font-size:16px; padding:10px 20px; }
+		}
+
+		@media screen and (max-device-width: $small) {
+			top:50px; left:0; height:calc(100% - 50px); width:100%; overflow:auto; position:fixed;
+			.close { height:100%; width:100%; background:rgba(0,0,0,.8); position:relative; z-index:8; }
+			ul { top:0; height:100%; width:70%; background:$blue; position:absolute; z-index:9; }
+			li { background:$blue-base; border-top-color:rgba(0,0,0,.1); }
+			li a { width:80%; padding:10px 10%; }
+			li a:hover { background:darken($blue-base, 10%); }
+		}
+	}
+
+	.right & {
+		.popup {
+			&, ul { right:0; }
+		}
+	}
+
+	&.hover .handle { background-color:$blue; }
+}
+
+#header { top:0; width:100%; position:fixed; z-index:10; }
+
+#nav {
+	height:50px; background:$blue-base; background:$blue; font-size:0; margin:0;
+
+	& > .container { width:720px; margin:0 auto; position:relative;
+		@media screen and (max-device-width: $large) { width:100%; }
+	}
+	.handle { height:50px; display:block; }
+	.handle span { height:50px; vertical-align:top; }
+}
+
+#menu {
+	.handle {
+		padding-right:10px;
+		
+		.icon {
+			width:50px; background:url("../img/logo_1x.png") no-repeat; background-size:50px;
+
+			@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+				background-image:url("../img/logo_2x.png"); 
+			}
+
+			@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+				background-image:url("../img/logo_3x.png");
+			}
+		}
+		.text {
+			width:100px; background:url("../img/logo_kr_1x.png") no-repeat; background-size:100px; margin:0 5px; transition:width .2s ease, opacity .2s ease;
+
+			@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+				background-image:url("../img/logo_kr_2x.png"); 
+			}
+
+			@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+				background-image:url("../img/logo_kr_3x.png");
+			}
+
+		}
+
+		@media screen and (max-device-width: $small) { 
+			padding:0;
+			.text {width:0; opacity:0; margin:0; }
+		}
+	}
+
+	&.hover .handle .icon { background-position:0 -50px; }
+}
+
+#login {
+	.handle {
+		color:$white; padding-right:10px;
+
+		.icon {
+			width:50px; background:url("../img/login_1x.png") 50% 50% no-repeat; background-size:24px;
+
+			@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+				background-image:url("../img/login_2x.png"); 
+			}
+
+			@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+				background-image:url("../img/login_3x.png");
+			}
+		}
+		.text { font-size:16px; line-height:50px; }
+	}
+}

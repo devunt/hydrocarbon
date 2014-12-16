@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+// 	
+// 	base.scss
+// 		basic css initialization
+// 		also the most basic ones like .clear
+// 	
+
+* { margin:0; padding:0; }
+
+::selection { background:$blue-base; color:$white; text-shadow:none; }
+
+::-ms-clear,
+::-ms-reveal { display:none; }
+
+body, input, textarea, button { color:$black; font:$font-size "NanumGothic"; letter-spacing:-.04em; }
+input, textarea { outline:none; }
+
+a { color:$black; text-decoration:none; }
+a:hover { color:$grey; }
+
+.button {
+	display:inline-block;
+	& > span { display:none; }
+}
+
+.clear:after { clear:both; content:""; display:block; }
+
+div.left { float:left; white-space:nowrap; }
+div.right { float:right; white-space:nowrap; }
+div.center { text-align:center; }
