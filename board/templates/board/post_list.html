@@ -70,12 +70,12 @@
 						{% endif %}
 					</span>
 					<span class="cell author meta"
-						title="{{ item.user.username }}">
+						title="{% if item.user.username %}{{ item.user.username }}{% else %}{{ item.ipaddress }}{% endif %}">
 						<span class="label meta 
 						{% if item.user %}
 							author user">
 						{% else %}
-							author guest" title="{{ item.ipaddress }}">
+							author guest">
 						{% endif %}
 							<span class="icon"></span>
 							<span class="text">{{ item.author }}</span>

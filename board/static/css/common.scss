@@ -11,9 +11,7 @@
 //	needs border
 .tip {
 	font-size:0; line-height:0; text-align:center;
-	span { height:0; width:0; display:inline-block;}
-	.left { border-left-color:transparent !important; }
-	.right { border-right-color:transparent !important; }
+	span { height:0; width:0; border: 5px solid transparent; display:inline-block; }
 }
 
 // 
@@ -22,12 +20,12 @@
 // 
 #tooltip {
 	display:none; opacity:0; pointer-events:none; position:absolute;
-
-	.tip span { border:3px solid $black-trans; }
-	.tip.top span { border-top-color:transparent; }
-	.tip.bottom span { border-bottom-color:transparent; }
+	
+	.tip.bottom { display:none; }
+	.tip.top span { border-bottom-color:$black-trans; }
+	.tip.bottom span { border-top-color:$black-trans; }
 	.container { background:$black-trans; border-radius:4px; padding:0 8px; text-align:center;
-		p { color:#fff; line-height:20px; padding:5px; }
+		p { color:#fff; line-height:20px; padding:5px; white-space:nowrap; }
 	}
 }
 

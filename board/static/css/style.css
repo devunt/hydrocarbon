@@ -55,23 +55,20 @@ div.center {
   .tip span {
     height: 0;
     width: 0;
+    border: 5px solid transparent;
     display: inline-block; }
-  .tip .left {
-    border-left-color: transparent !important; }
-  .tip .right {
-    border-right-color: transparent !important; }
 
 #tooltip {
   display: none;
   opacity: 0;
   pointer-events: none;
   position: absolute; }
-  #tooltip .tip span {
-    border: 3px solid rgba(34, 34, 34, 0.9); }
+  #tooltip .tip.bottom {
+    display: none; }
   #tooltip .tip.top span {
-    border-top-color: transparent; }
+    border-bottom-color: rgba(34, 34, 34, 0.9); }
   #tooltip .tip.bottom span {
-    border-bottom-color: transparent; }
+    border-top-color: rgba(34, 34, 34, 0.9); }
   #tooltip .container {
     background: rgba(34, 34, 34, 0.9);
     border-radius: 4px;
@@ -80,7 +77,8 @@ div.center {
     #tooltip .container p {
       color: #fff;
       line-height: 20px;
-      padding: 5px; }
+      padding: 5px;
+      white-space: nowrap; }
 
 .checkbox {
   display: inline-block; }

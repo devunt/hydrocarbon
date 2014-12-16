@@ -133,14 +133,16 @@ function showTooltip(e) {
 	var targetHeight = $target.outerHeight();
 	var targetWidth = $target.outerWidth();
 
-	var offsetY;
-	var offsetX;
+	var offsetY = 0;
+	var offsetX = 0;
 
 	var top;
 	var left;
 
 	var height;
 	var width;
+
+	var margin = 10;
 
 	$tooltip.find('.container p').html($target.data('title').replace('\\n', '<br>'));
 	$tooltip.find('.tip').removeAttr('style');
@@ -151,13 +153,18 @@ function showTooltip(e) {
 	height = $tooltip.height();
 	width = $tooltip.width();
 
-	offsetX = $window.width() - (left + width/2);
-	offsetY = $window.height() - (top + height);
+	if(top + height + margin > $window.height() + $window.scrollTop()) offsetY = -1*(targetHeight + height);
 
-	offsetX = (offsetX < 0) ? offsetX - 10 : 0;
-	offsetY = (offsetY < 0) ? -1*(height + targetHeight) - 2 : 2;
+	offsetX = $window.width() + $window.scrollLeft() - left;
 
-	if(left < width/2) offsetX = width/2 - left  + 10;
+	if(offsetX - (width/2 + margin) < 0) {
+		offsetX = offsetX - (width/2 + margin);
+		if(width/2 + offsetX < 0 ) return false;
+	} else if(offsetX + (width/2 + margin) > 0) {
+		offsetX = offsetX + width/2 + margin - $window.width();
+		if(offsetX < 0) offsetX = 0;
+		if(width/2 - offsetX < 0 ) return false;
+	} else { offsetX = 0; }
 
 	$tooltip
 		.css({
@@ -170,7 +177,7 @@ function showTooltip(e) {
 		.find('.tip')
 			.hide()
 			.css('margin-left', -2*offsetX)
-			.filter((offsetY > 0) ? '.top' : '.bottom').show();
+			.filter((offsetY >= 0) ? '.top' : '.bottom').show();
 }
 
 function hideTooltip() {
