@@ -33,6 +33,7 @@ $(function() {
 		.on('mouseenter', '.th', showTooltip)
 		.on('mouseleave scroll', '.th', hideTooltip)
 		.on('mouseenter', '*[title]', function() {
+			if($(this).closest('.note-editor').length) return false;
 			$(this)
 				.data('title', $(this).attr('title'))
 				.removeAttr('title')
