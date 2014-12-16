@@ -156,9 +156,10 @@ div.center {
   .dropdown .tip {
     padding: 0 10px;
     position: relative; }
-  .dropdown .tip span {
-    border: 3px solid #fff;
-    border-top-color: transparent; }
+  .dropdown .tip span.top {
+    border-bottom-color: #fff; }
+  .dropdown .tip span.bottom {
+    border-top-color: #fff; }
   .dropdown ul {
     background: #fff;
     border-radius: 4px;
@@ -986,9 +987,6 @@ div.center {
     vertical-align: middle; }
   #scope .dropdown {
     bottom: 40px; }
-  #scope .dropdown .tip span {
-    border-bottom-color: transparent;
-    border-top-color: #fff; }
 
 #scope:hover {
   background-color: rgba(0, 0, 0, 0.2); }
