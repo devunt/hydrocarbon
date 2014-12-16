@@ -48,6 +48,80 @@ div.right {
 div.center {
   text-align: center; }
 
+#overlay div {
+  z-index: 20; }
+
+.contents > .errorlist li {
+  background: #cc3d3d;
+  color: #fff;
+  line-height: 30px;
+  list-style: none;
+  margin: 10px 0;
+  text-align: center; }
+
+body {
+  background: #e5e5e5; }
+
+@media screen and (max-device-width: 419px) {
+  body.hovered {
+    overflow: hidden; } }
+#wrapper {
+  width: 720px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  padding-top: 50px; }
+  @media screen and (max-device-width: 719px) {
+    #wrapper {
+      width: 100%; } }
+
+#banner {
+  height: 150px;
+  background: url("../img/logo_large_1x.png") 50% 50% no-repeat;
+  background-size: 350px;
+  transition: height .2s ease, opacity .2s ease; }
+  #banner span {
+    visibility: hidden; }
+  @media screen and (max-device-width: 419px) {
+    #banner {
+      height: 0;
+      opacity: 0; } }
+  @media screen and (max-device-height: 599px) {
+    #banner {
+      height: 0;
+      opacity: 0; } }
+  @media screen and (max-device-height: 419px) {
+    #banner {
+      display: none; } }
+  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+    #banner {
+      background-image: url("../img/logo_large_2x.png"); } }
+  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+    #banner {
+      background-image: url("../img/logo_large_3x.png"); } }
+
+.simple_notice {
+  padding-bottom: 30px;
+  text-align: center; }
+  .simple_notice p {
+    font-size: 16px;
+    line-height: 1.6em;
+    margin: 1em 0;
+    padding: 0 15%;
+    text-align: left; }
+  .simple_notice.error {
+    padding: 50px 0; }
+    .simple_notice.error img {
+      width: 150px; }
+    .simple_notice.error p {
+      text-align: center; }
+
+#footer {
+  color: #ccc;
+  font-size: 12px;
+  margin: 30px 0;
+  text-align: center; }
+
 .tip {
   font-size: 0;
   line-height: 0;
@@ -76,8 +150,8 @@ div.center {
     text-align: center; }
     #tooltip .container p {
       color: #fff;
-      line-height: 20px;
-      padding: 5px;
+      font-size: 12px;
+      line-height: 25px;
       white-space: nowrap; }
 
 .checkbox {
@@ -545,6 +619,7 @@ div.center {
     padding: 0 5%; }
     .section.article .item > .header .title .label.meta.comments {
       line-height: 20px;
+      margin-left: 10px;
       vertical-align: baseline; }
       .section.article .item > .header .title .label.meta.comments .icon {
         vertical-align: top; }
@@ -990,79 +1065,5 @@ div.center {
 
 #scope:hover {
   background-color: rgba(0, 0, 0, 0.2); }
-
-#overlay div {
-  z-index: 20; }
-
-.contents > .errorlist li {
-  background: #cc3d3d;
-  color: #fff;
-  line-height: 30px;
-  list-style: none;
-  margin: 10px 0;
-  text-align: center; }
-
-body {
-  background: #e5e5e5; }
-
-@media screen and (max-device-width: 419px) {
-  body.hovered {
-    overflow: hidden; } }
-#wrapper {
-  width: 720px;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  padding-top: 50px; }
-  @media screen and (max-device-width: 719px) {
-    #wrapper {
-      width: 100%; } }
-
-#banner {
-  height: 150px;
-  background: url("../img/logo_large_1x.png") 50% 50% no-repeat;
-  background-size: 350px;
-  transition: height .2s ease, opacity .2s ease; }
-  #banner span {
-    visibility: hidden; }
-  @media screen and (max-device-width: 419px) {
-    #banner {
-      height: 0;
-      opacity: 0; } }
-  @media screen and (max-device-height: 599px) {
-    #banner {
-      height: 0;
-      opacity: 0; } }
-  @media screen and (max-device-height: 419px) {
-    #banner {
-      display: none; } }
-  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
-    #banner {
-      background-image: url("../img/logo_large_2x.png"); } }
-  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
-    #banner {
-      background-image: url("../img/logo_large_3x.png"); } }
-
-.simple_notice {
-  padding-bottom: 30px;
-  text-align: center; }
-  .simple_notice p {
-    font-size: 16px;
-    line-height: 1.6em;
-    margin: 1em 0;
-    padding: 0 15%;
-    text-align: left; }
-  .simple_notice.error {
-    padding: 50px 0; }
-    .simple_notice.error img {
-      width: 150px; }
-    .simple_notice.error p {
-      text-align: center; }
-
-#footer {
-  color: #ccc;
-  font-size: 12px;
-  margin: 30px 0;
-  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
