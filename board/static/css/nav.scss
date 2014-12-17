@@ -55,7 +55,6 @@
 			.menu { right:0; }
 		}
 
-
-		@media screen and (max-device-width: $large) { &.menu-nav .text {width:0; opacity:0; margin:0; } }
+		@media screen and (max-device-width: $small) { &.menu-nav .text {width:0; opacity:0; margin:0; } }
 	}
 }

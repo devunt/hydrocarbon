@@ -421,7 +421,7 @@ body {
     padding-right: 10px; }
   #nav .dropdown.container.menu-personal .menu {
     right: 0; }
-  @media screen and (max-device-width: 719px) {
+  @media screen and (max-device-width: 419px) {
     #nav .dropdown.container.menu-nav .text {
       width: 0;
       opacity: 0;
