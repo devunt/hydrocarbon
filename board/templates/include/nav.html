@@ -2,13 +2,14 @@
 
 <div class="container">
 	<div class="left">
-		<div id="menu" class="menu hoverable">
+		<div class="dropdown container menu-nav">
 			<a href="#" class="handle">
-				<span class="button icon"></span>
-				<span class="button text"><span>{{ site_name }}</span></span>
+				<span class="icon"></span>
+				<span class="text"><span>{{ site_name }}</span></span>
 			</a>
-			<div class="popup">
+			<div class="dropdown menu">
 				<a href="#" class="close">{% trans "Close" %}</a>
+				<div class="tip top"><span></span></div>
 				<ul>
 					{% comment %}
 						- code for future use
@@ -27,37 +28,36 @@
 		</div>
 	</div>
 	<div class="right">
-		{% if user.profile.nick %}
-		<div id="login" class="menu hoverable">
-			<a href="#" class="handle">
-				<span class="button icon"></span>
-				<span class="button text">{{ user.profile.nick }}</span>
-			</a>
-			<div class="popup">
-				<a href="#" class="close">{% trans "Close" %}</a>
-				<ul>
-					{% comment %}
-						- code for future use
+		<div class="dropdown container menu-personal">
+			{% if user.profile.nick %}
+				<a href="#" class="handle">
+					<span class="icon"></span>
+					<span class="text">{{ user.profile.nick }}</span>
+				</a>
+				<div class="dropdown menu">
+					<a href="#" class="close">{% trans "Close" %}</a>
+					<div class="tip top"><span></span></div>
+					<ul>
+						{% comment %}
+							- code for future use
 
-						{% for item in login_menu_list %}
-							<li><a href="{{ item.absurl }}">{{ item.title }}</a></li>
-						{% endfor %}
-					{% endcomment %}
+							{% for item in login_menu_list %}
+								<li><a href="{{ item.absurl }}">{{ item.title }}</a></li>
+							{% endfor %}
+						{% endcomment %}
 
-					<li><a href="/accounts/profile"><span>{% trans "Profile" %}</span></a></li>
-					<li><a href="#"><span>{% trans "Submitted" %}</span></a></li>
-					<li><a href="#"><span>{% trans "Inbox" %}</span></a></li>
-					<li><a href="/accounts/logout"><span>{% trans "Log out" %}</span></a></li>
-				</ul>
-			</div>
+						<li><a href="/accounts/profile"><span>{% trans "Profile" %}</span></a></li>
+						<li><a href="#"><span>{% trans "Submitted" %}</span></a></li>
+						<li><a href="#"><span>{% trans "Inbox" %}</span></a></li>
+						<li><a href="/accounts/logout"><span>{% trans "Log out" %}</span></a></li>
+					</ul>
+				</div>
+			{% else %}
+				<a href="/accounts/login" class="handle">
+					<span class="icon"></span>
+					<span class="text">{% trans "Log in" %}</span>
+				</a>
+			{% endif %}
 		</div>
-		{% else %}
-		<div id="login" class="menu">
-			<a href="/accounts/login" class="handle">
-				<span class="button icon"></span>
-				<span class="button text">{% trans "Log in" %}</span>
-			</a>
-		</div>
-		{% endif %}
 	</div>
 </div>

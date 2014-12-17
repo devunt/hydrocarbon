@@ -16,18 +16,24 @@
 
 	<div class="header">
 		<div class="cell mark"></div>
-		<div class="cell category dropdown-handle">
-			<a href="#" class="label meta">
+		<div class="cell category dropdown container">
+			<a href="#" class="handle label meta">
 				<span class="text"><span>{% trans "Categories" %}</span></span>
 				<span class="icon"></span>
 			</a>
-			<div class="dropdown">
-				<div class="tip"><span class="top"></span></div>
+			<div class="dropdown menu">
+				<a href="#" class="close">{% trans "Close" %}</a>
+				<div class="tip top"><span></span></div>
 				<ul>
-					<li><a href="#">cat1</a></li>
-					<li><a href="#">cat2</a></li>
-					<li><a href="#">cat3</a></li>
-					<li><a class="checkbox checked" href="#"><span class="icon"></span><span class="text">toggle</span></a></li>
+					<li><a href="#"><span>cat1</span></a></li>
+					<li><a href="#"><span>cat2</span></a></li>
+					<li><a href="#"><span>cat3</span></a></li>
+					<li><a class="checkbox checked" href="#">
+						<span class="label">
+							<span class="icon"></span>
+							<span class="text">toggle</span>
+						</span>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -47,12 +53,12 @@
 					<span class="cell mark">&#9654;</span>
 					<span class="cell category"></span>
 					<span class="cell title">
-						<span class="text" title="{{ item.title }}">{% trans "This post has been downvoted by users." %}</span>
+						<span title="{{ item.title }}">{% trans "This post has been downvoted by users." %}</span>
 					</span>
-					<span class="cell author"></span>
-					<span class="cell timestamp"></span>
-					<span class="cell score"></span>
-					<span class="cell views"></span>
+					<span class="cell author meta"></span>
+					<span class="cell timestamp meta"></span>
+					<span class="cell score meta"></span>
+					<span class="cell views meta"></span>
 				</a>
 			</li>
 		{% else %}
@@ -61,7 +67,7 @@
 					<span class="cell mark">&#9654;</span>
 					<span class="cell category">{{ item.category }}</span>
 					<span class="cell title">
-						<span class="text">{{ item.title }}</span>
+						<span class="title">{{ item.title }}</span>
 						{% if item.comments.count != 0 %}
 							<span class="label meta comments">
 								<span class="icon"></span>
@@ -117,17 +123,23 @@
 				<input type="button" value="{% trans "Search" %}" class="search">
 				<input type="text" name="quary" class="text">
 				<input type="hidden" name="scope">
-				<div id="scope" class="dropdown-handle">
-					<div class="dropdown">
+				<div id="scope" class="dropdown container">
+					<div class="dropdown menu">
+						<a href="#" class="close">{% trans "Close" %}</a>
 						<ul>
-							<li><a href="#">cat1</a></li>
-							<li><a href="#">cat2</a></li>
-							<li><a href="#">cat3</a></li>
-							<li><a class="checkbox checked" href="#"><span class="icon"></span><span class="text">toggle</span></a></li>
+							<li><a href="#"><span>cat1</span></a></li>
+							<li><a href="#"><span>cat2</span></a></li>
+							<li><a href="#"><span>cat3</span></a></li>
+							<li><a class="checkbox checked" href="#">
+								<span class="label">
+									<span class="icon"></span>
+									<span class="text">toggle</span>
+								</span>
+							</a></li>
 						</ul>
-						<div class="tip"><span class="bottom"></span></div>
+						<div class="tip bottom"><span></span></div>
 					</div>
-					<span class="label meta">
+					<span class="handle label meta">
 						<span class="text">Title + Article</span>
 						<span class="icon"></span>
 					</span>
@@ -141,7 +153,7 @@
 
 	{% if is_paginated %}
 		<div class="pages nav">
-			<div class="container">
+			<div class="container nowrap">
 				{% if page_obj.paginator.page_range|first != page_obj.number and page_obj.paginator.page_range|first != page_obj.previous_page_number%}
 					<a href="?page={{ page_obj.paginator.page_range | first }}" class="button label meta first" title="{% trans "First" %}"><span class="icon"></span></a>
 				{% endif %}

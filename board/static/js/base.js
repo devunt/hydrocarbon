@@ -9,25 +9,14 @@ $(function() {
 	$body = $('body');
 	$overlay = $('#overlay');
 	$tooltip = $('#tooltip');
-	$menu = $('.menu');
-
-	$('.hoverable').hover(function() {
-		$(this).addClass('hover');
-		$body.addClass('hovered');
-	}, function() {
-		$(this).removeClass('hover');
-		$body.removeClass('hovered');
-	});
+	$menu = $('.dropdown.container');
 
 	$menu
-		.on('click', '.handle[href="#"]', function(e) {
-			e.preventDefault();
-			$(this).closest('.menu').mouseenter();
-		})
-		.on('click', '.close', function(e) {
-			e.preventDefault();
-			$menu.mouseleave();
-		});
+		.on('touchstart', '.handle', function() { $(this).closest('.container').toggleClass('open'); })
+		.on('mouseenter', function() { if(!$(this).hasClass('open')) $(this).addClass('open'); })
+		.on('mouseleave', function() { if($(this).hasClass('open')) $(this).removeClass('open'); })
+		.on('click', '.handle[href=#]', function(e) { e.preventDefault(); })
+		.on('mousedown', '.close', function(e) { e.preventDefault(); if($menu.hasClass('open')) $menu.removeClass('open'); });
 
 	$document
 		.on('mouseenter', '.th', showTooltip)

@@ -13,22 +13,27 @@
 ::-ms-clear,
 ::-ms-reveal { display:none; }
 
-body, input, textarea, button { color:$black; font:$font-size "NanumGothic"; letter-spacing:-.04em; }
-input, textarea { outline:none; }
+body { color:$black; font:$font-size "NanumGothic"; letter-spacing:-.04em; }
+button, input, textarea { outline:none; }
 
 a { color:$black; text-decoration:none; }
 a:hover { color:$grey; }
 
 .button {
 	display:inline-block;
-	& > span { display:none; }
+	&.image > span { display:none; }
 }
+
+.icon, .text { display:inline-block; }
+.label { display:inline-block; line-height:20px; }
 
 .clear:after { clear:both; content:""; display:block; }
 
-div.left { float:left; white-space:nowrap; }
-div.right { float:right; white-space:nowrap; }
-div.center { text-align:center; }
+.left { float:left; white-space:nowrap; }
+.right { float:right; white-space:nowrap; }
+.center { text-align:center; }
+
+.nowrap { white-space:nowrap; }
 
 #overlay div { z-index:20; }
 
@@ -47,10 +52,10 @@ body { background:#e5e5e5; }
 }
 
 #banner {
-	height:150px; background:url("../img/logo_large_1x.png") 50% 50% no-repeat; background-size:350px; transition:height .2s ease, opacity .2s ease;
+	height:150px; background:url("../img/logo_large_1x.png") 50% 50% no-repeat; background-size:350px;
 	span { visibility:hidden; }
-	@media screen and (max-device-width: $small) { height:0; opacity:0; }
-	@media screen and (max-device-height: $medium) { height:0; opacity:0; }
+	@media screen and (max-device-width: $small) { display:none; }
+	@media screen and (max-device-height: $medium) { display:none; }
 	@media screen and (max-device-height: $small) { display:none; }
 	@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
 		background-image:url("../img/logo_large_2x.png"); 

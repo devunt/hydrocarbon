@@ -6,12 +6,12 @@
 {% block post %}
 
 <div class="section article">
-	<div class="item">
+	<div class="item article">
 		<div class="header">
 			<div class="title">
 				<span class="category">{{ post.category }}</span>
 				<h2>
-					{{ post.title }}
+					<span>{{ post.title }}</span>
 					{% if item.comments.count != 0 %}
 						<a href="#" class="label meta comments">
 							<span class="icon"></span>
