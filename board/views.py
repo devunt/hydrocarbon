@@ -111,48 +111,48 @@ class VoteAjaxView(View):
                 post = Post.objects.get(id=target_id)
             except Post.DoesNotExist:
                 return JsonResponse({'status': 'badrequest'}, status=400)
-            rqs = Vote.objects.filter(post=post)
+            vqs = Vote.objects.filter(post=post)
         else:
             try:
                 comment = Comment.objects.get(id=target_id)
             except Comment.DoesNotExist:
                 return JsonResponse({'status': 'badrequest'}, status=400)
-            rqs = Vote.objects.filter(comment=comment)
+            vqs = Vote.objects.filter(comment=comment)
         if request.user.is_authenticated():
-            rqs = rqs.filter(user=request.user)
+            vqs = vqs.filter(user=request.user)
         else:
-            rqs = rqs.filter(ipaddress=request.META['REMOTE_ADDR'])
+            vqs = vqs.filter(ipaddress=request.META['REMOTE_ADDR'])
 
         if vote[0] == '+':
             if vote[1] == '-' and not request.user.is_authenticated():
                 return JsonResponse({'status': 'notauthenticated'}, status=401)
-            if rqs.exists():
+            if vqs.exists():
                 return JsonResponse({'status': 'alreadyhave'}, status=409)
-            r = Vote()
+            v = Vote()
             if target_type == 'p':
-                r.post = post
+                v.post = post
             else:
-                r.comment = comment
+                v.comment = comment
             if vote[1] == '+':
-                r.vote = Vote.UPVOTE
+                v.vote = Vote.UPVOTE
             else:
-                r.vote = Vote.DOWNVOTE
+                v.vote = Vote.DOWNVOTE
             if request.user.is_authenticated():
-                r.user = request.user
-            r.ipaddress = request.META['REMOTE_ADDR']
-            r.save()
+                v.user = request.user
+            v.ipaddress = request.META['REMOTE_ADDR']
+            v.save()
             vote_dicts.append(vote_dict)
             request.session['vote_dicts'] = vote_dicts
             return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
         else:
             if vote[1] == '+':
-                rqs = rqs.filter(vote=Vote.UPVOTE)
+                vqs = vqs.filter(vote=Vote.UPVOTE)
             else:
-                rqs = rqs.filter(vote=Vote.DOWNVOTE)
-            if not rqs.exists():
+                vqs = vqs.filter(vote=Vote.DOWNVOTE)
+            if not vqs.exists():
                 return JsonResponse({'status': 'notexists'}, status=404)
-            r = rqs.first()
-            r.delete()
+            v = vqs.first()
+            v.delete()
             return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
 
 
