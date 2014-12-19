@@ -24,8 +24,8 @@
 			}
 
 			@media screen and (max-device-width: $medium) {
-				.category { max-width:10%; }
-				h2 { max-width:84%; font-size:18px; }
+				.category { max-width:15%; }
+				h2 { max-width:77%; font-size:18px; }
 				div.meta .label.meta .text { font-size:$font-size - 1; }
 			}
 
@@ -44,7 +44,8 @@
 
 			@media screen and (max-device-width: $medium) { width:90%; }
 
-			p { margin:1em 0; }
+			p { margin:0 0 1em; }
+			li { list-style-position:inside; }
 		}
 
 		.vote.vote-post {

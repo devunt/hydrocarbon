@@ -17,6 +17,10 @@
 				width:79%;
 				input { width:100%; background:none; border:0; display:block; }
 			}
+			@media screen and (max-device-width: $medium) {
+				.category { width:15%; }
+				h2 { width:72%; }
+			}
 		}
 
 		.note-editor {
@@ -32,12 +36,19 @@
 
 			.note-toolbar {
 				background:$grey-90; border:0; padding-left:5%; padding-right:5%;
-				.btn { background:$lightgrey; }
+				.btn {
+					background:$lightgrey;
+					&.active { background:$blue; color:$white; }
+					i:before { display:inline-block; font-size:14px; line-height:20px; }
+				}
 			}
 
 			.note-editable {
-				min-height:120px; width:540px; margin:20px auto; padding:0;
-				@media screen and (max-device-width: $medium) { width:90%; }
+				min-height:120px; margin:0; padding:20px 12.5% 0;
+				@media screen and (max-device-width: $medium) { padding:20px 5%; }
+
+				p { margin:0 0 1em; }
+				li { list-style-position:inside; }
 			}
 
 			.note-statusbar {

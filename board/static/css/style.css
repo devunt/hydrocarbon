@@ -618,9 +618,9 @@ body {
     margin-right: 5px; }
 @media screen and (max-device-width: 599px) {
   .section.article .item.article .header .category {
-    max-width: 10%; }
+    max-width: 15%; }
   .section.article .item.article .header h2 {
-    max-width: 84%;
+    max-width: 77%;
     font-size: 18px; }
   .section.article .item.article .header div.meta .label.meta .text {
     font-size: 13px; } }
@@ -641,7 +641,9 @@ body {
     .section.article .item.article div.article {
       width: 90%; } }
   .section.article .item.article div.article p {
-    margin: 1em 0; }
+    margin: 0 0 1em; }
+  .section.article .item.article div.article li {
+    list-style-position: inside; }
 .section.article .item.article .vote.vote-post {
   font-size: 0;
   margin: 30px 0;
@@ -1029,6 +1031,11 @@ body {
       background: none;
       border: 0;
       display: block; }
+  @media screen and (max-device-width: 599px) {
+    .section.article.form .item.article .header .category {
+      width: 15%; }
+    .section.article.form .item.article .header h2 {
+      width: 72%; } }
   .section.article.form .item.article .note-editor {
     border: 0; }
     .section.article.form .item.article .note-editor .btn, .section.article.form .item.article .note-editor button {
@@ -1044,14 +1051,24 @@ body {
       padding-right: 5%; }
       .section.article.form .item.article .note-editor .note-toolbar .btn {
         background: rgba(204, 204, 204, 0.9); }
+        .section.article.form .item.article .note-editor .note-toolbar .btn.active {
+          background: rgba(61, 156, 204, 0.9);
+          color: #fff; }
+        .section.article.form .item.article .note-editor .note-toolbar .btn i:before {
+          display: inline-block;
+          font-size: 14px;
+          line-height: 20px; }
     .section.article.form .item.article .note-editor .note-editable {
       min-height: 120px;
-      width: 540px;
-      margin: 20px auto;
-      padding: 0; }
+      margin: 0;
+      padding: 20px 12.5% 0; }
       @media screen and (max-device-width: 599px) {
         .section.article.form .item.article .note-editor .note-editable {
-          width: 90%; } }
+          padding: 20px 5%; } }
+      .section.article.form .item.article .note-editor .note-editable p {
+        margin: 0 0 1em; }
+      .section.article.form .item.article .note-editor .note-editable li {
+        list-style-position: inside; }
     .section.article.form .item.article .note-editor .note-statusbar {
       background: none;
       padding: 0 5%; }
