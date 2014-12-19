@@ -94,12 +94,17 @@ class VoteAjaxView(View):
         target_type = request.POST.get('type')
         target_id = request.POST.get('target', '')
         vote = request.POST.get('vote')
+        vote_dicts = request.session.get('vote_dicts', list())
 
         if ((target_type not in ('p', 'c')) or
             (not target_id.isdigit()) or
             (vote not in ('++', '-+', '+-', '--'))):
             return JsonResponse({'status': 'badrequest'}, status=400)
         target_id = int(target_id)
+
+        vote_dict = {'type': target_type, 'id': target_id, 'vote': vote}
+        if vote_dict in vote_dicts:
+            return JsonResponse({'status': 'alreadyhave'}, status=409)
 
         if target_type == 'p':
             try:
@@ -136,6 +141,8 @@ class VoteAjaxView(View):
                 r.user = request.user
             r.ipaddress = request.META['REMOTE_ADDR']
             r.save()
+            vote_dicts.append(vote_dict)
+            request.session['vote_dicts'] = vote_dicts
             return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
         else:
             if vote[1] == '+':
