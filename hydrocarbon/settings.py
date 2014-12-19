@@ -145,3 +145,20 @@ DEFAULT_FROM_EMAIL = 'no-reply@herocomics.kr'
 # django-registration-redux
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
+
+# django-summernote
+SUMMERNOTE_CONFIG = {
+    'toolbar': [
+        ['style', ['bold', 'underline', 'strikethrough', 'clear']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['picture', 'link']],
+        ['misc', ['codeview']]
+    ],
+    'inplacewidget_external_css': (
+        '/static/css/summernote-bs3.css',
+        '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
+    ),                                                                          
+    'inplacewidget_external_js': (
+        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
+    ),
+}
