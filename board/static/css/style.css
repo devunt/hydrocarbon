@@ -336,13 +336,17 @@ body {
 .label.meta.delete .icon {
   background-position: 0 -96px; }
 .label.meta.first .icon {
-  background-position: 0 -108px; }
+  background-position: 0 -108px;
+  margin-right: 0; }
 .label.meta.prev .icon {
-  background-position: 0 -120px; }
+  background-position: 0 -120px;
+  margin-right: 0; }
 .label.meta.next .icon {
-  background-position: 0 -132px; }
+  background-position: 0 -132px;
+  margin-right: 0; }
 .label.meta.last .icon {
-  background-position: 0 -144px; }
+  background-position: 0 -144px;
+  margin-right: 0; }
 .dropdown .label.meta .icon {
   background-position: 0 -156px;
   margin-right: 0; }
