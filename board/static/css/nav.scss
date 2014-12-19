@@ -15,13 +15,14 @@
 		@media screen and (max-device-width: $large) { width:100%; }
 	}
 	.handle { height:50px; display:block; }
-	.handle span { height:50px; vertical-align:top; }
+	.handle span { height:50px; vertical-align:middle; }
 
 	.dropdown.container {
 		.handle { height:50px; color:$white; display:inline-block; }
 		&.open .handle { background:$blue; }
 
 		.menu { margin:0 10px; }
+		.text { font-family:"NanumGothicLight"; font-size:16px; line-height:50px; padding-right:10px; }
 
 		&.menu-nav {
 			.icon {
@@ -34,10 +35,13 @@
 			&.open .icon { background-position:0 -50px; }
 
 			.text {
-				width:100px; background:url("../img/logo_kr_1x.png") no-repeat; background-size:100px; margin:0 15px 0 5px; transition:width .2s ease, opacity .2s ease;
+				font-size:18px;
+				span.default {
+					width:100px; background:url("../img/logo_kr_1x.png") no-repeat; background-size:100px; display:inline-block; font-size:0; margin:0 5px;
 
-				@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) { background-image:url("../img/logo_kr_2x.png"); }
-				@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) { background-image:url("../img/logo_kr_3x.png"); }
+					@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) { background-image:url("../img/logo_kr_2x.png"); }
+					@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) { background-image:url("../img/logo_kr_3x.png"); }
+				}
 			}
 
 			.tip { width:10px; }
@@ -50,11 +54,8 @@
 				@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) { background-image:url("../img/login_2x.png"); }
 				@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) { background-image:url("../img/login_3x.png"); }
 			}
-			.text { font-size:16px; line-height:50px; padding-right:10px; }
 
 			.menu { right:0; }
 		}
-
-		@media screen and (max-device-width: $small) { &.menu-nav .text {width:0; opacity:0; margin:0; } }
 	}
 }

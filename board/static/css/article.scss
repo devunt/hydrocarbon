@@ -8,7 +8,7 @@
 .section.article {
 
 	.item.article {
-		& > .header {
+		.header {
 			.title {
 				background:$grey-95; font-size:0; padding:0 5%;
 
