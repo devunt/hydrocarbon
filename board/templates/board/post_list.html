@@ -18,7 +18,6 @@
 		<div class="cell category dropdown container">
 			<a href="#" class="handle label meta">
 				<span class="text"><span>{% trans "Categories" %}</span></span>
-				<span class="icon"></span>
 			</a>
 			<div class="dropdown menu">
 				<a href="#" class="close">{% trans "Close" %}</a>
@@ -74,9 +73,8 @@
 							</span>
 						{% endif %}
 					</span>
-					<span class="cell author meta"
-						title="{% if item.user.username %}{{ item.user.username }}{% else %}{{ item.ipaddress }}{% endif %}">
-						<span class="label meta 
+					<span class="cell author meta">
+						<span title="{% if item.user.username %}{{ item.user.username }}{% else %}{{ item.ipaddress }}{% endif %}" class="label meta 
 						{% if item.user %}
 							author user">
 						{% else %}
@@ -86,16 +84,14 @@
 							<span class="text">{{ item.author }}</span>
 						</span>
 					</span>
-					<span class="cell timestamp meta"
-						title="{{ item.created_time | date:'DATE_FORMAT' }} {{ item.created_time | date:'H:i:s' }}">
-						<span class="label meta timestamp">
+					<span class="cell timestamp meta">
+						<span title="{{ item.created_time | date:'DATE_FORMAT' }} {{ item.created_time | date:'H:i:s' }}" class="label meta timestamp">
 							<span class="icon"></span>
 							<span class="text">{{ item.created_time | timesince | split_first }} {% trans "ago" %}</span>
 						</span>
 					</span>
-					<span class="cell score meta"
-						title="+{{ item.votes.upvote }} / -{{ item.votes.downvote }}">
-						<span class="label meta score">
+					<span class="cell score meta">
+						<span title="+{{ item.votes.upvote }} / -{{ item.votes.downvote }}" class="label meta score">
 							<span class="icon"></span>
 							<span class="text">{{ item.votes.total | intcomma }}</span>
 						</span>
@@ -117,7 +113,7 @@
 	<div class="nav bottom clear">
 		<div class="left">
 			<a href="{{ board.get_absolute_url }}" class="button">{% trans "List" %}</a>
-			<a href="{{ board.get_absolute_url }}best" class="button">{% trans "Top Posts" %}</a>
+			<a href="{{ board.get_absolute_url }}best" class="button">{% trans "Top posts" %}</a>
 			<form action="#" method="post" id="search" class="button search">
 				<input type="button" value="{% trans "Search" %}" class="search">
 				<input type="text" name="quary" class="text">
@@ -146,7 +142,7 @@
 			</form>
 		</div>
 		<div class="right">
-			<a href="{{ board.get_absolute_url }}newpost" class="button blue">{% trans "New Post" %}</a>
+			<a href="{{ board.get_absolute_url }}newpost" class="button blue">{% trans "New post" %}</a>
 		</div>
 	</div>
 

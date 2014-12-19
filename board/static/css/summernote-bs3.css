@@ -30,7 +30,6 @@
   display: none;
 }
 .note-editor html {
-  font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -74,7 +73,6 @@
 .note-editor kbd,
 .note-editor pre,
 .note-editor samp {
-  font-family: monospace, serif;
   font-size: 1em;
 }
 .note-editor pre {
@@ -256,7 +254,6 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .note-editor body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -401,7 +398,6 @@
 .note-editor .h4,
 .note-editor .h5,
 .note-editor .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -623,12 +619,6 @@
   margin-bottom: 20px;
   font-style: normal;
   line-height: 1.428571429;
-}
-.note-editor code,
-.note-editor kdb,
-.note-editor pre,
-.note-editor samp {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 .note-editor code {
   padding: 2px 4px;

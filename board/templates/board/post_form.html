@@ -1,13 +1,54 @@
 {% extends 'base.html' %}
+{% load hc %}
+{% load i18n %}
+
+{% block title %}{%trans "New post" %} :: {{ block.super }}{% endblock %}
+{% block pagename %}{%trans "New post" %}{% endblock %}
 
 {% block content %}
-{{ form.media }}
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create" />
-</form>
-<input id='file-upload' type='file' name='files[]' multiple>
-<div id='progress'>0</div>
+
+{% for field in form %}
+	{% if field.errors %}
+	<ul class="errorlist">
+		{% for error in field.errors %}
+		<li>{{ error | escape }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+{% endfor %}
+
+<div class="section article form">
+	<div class="media">{{ form.media }}</div>
+	<form action="" method="post">
+	{% csrf_token %}
+	<div class="item article">
+		<div class="header">
+			<div class="title">
+				<span class="category">{{ form.category }}</span>
+				<h2>
+					{{ form.title | label_as_placeholder  }}
+				</h2>
+			</div>
+		</div>
+		{{ form.contents }}
+		<div class="footer clear">
+			<div class="tags">
+				<a href="#" class="label meta tags">
+					<span class="icon" title="{% trans "Tags" %} "></span>
+					<span class="text">{{ form.tags | label_as_placeholder  }}</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="files">
+		<input id='file-upload' type='file' name='files[]' multiple>
+		<div id='progress'>0</div>
+	</div>
+	<div class="center">
+		<input class="submit" type="submit" value="{% trans "New post" %}">
+	</div>
+	</form>
+</div>
 <script>
 $(function () {
 	$('#file-upload').fileupload({

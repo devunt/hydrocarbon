@@ -17,7 +17,7 @@ body {
   font: 14px "NanumGothic";
   letter-spacing: -.04em; }
 
-button, input, textarea {
+button, input, select, textarea {
   outline: none; }
 
 a {
@@ -64,9 +64,9 @@ a:hover {
 .contents > .errorlist li {
   background: #cc3d3d;
   color: #fff;
-  line-height: 30px;
+  line-height: 20px;
   list-style: none;
-  margin: 10px 0;
+  padding: 5px 0;
   text-align: center; }
 
 body {
@@ -352,6 +352,8 @@ body {
   margin-right: 0; }
 .dropdown.open .label.meta .icon {
   background-position: 0 -168px; }
+.label.meta.tags .icon {
+  background-position: 0 -180px; }
 
 #header {
   top: 0;
@@ -515,11 +517,10 @@ body {
     padding: 0; }
 
 #form-login {
-  margin: 20px 0;
-  transition: margin .2s ease; }
+  padding: 50px 0; }
   @media screen and (max-device-height: 419px) {
     #form-login {
-      margin: 0; } }
+      padding: 0; } }
   #form-login #banner {
     margin: 30px 0; }
   #form-login form {
@@ -576,7 +577,7 @@ body {
     margin: 0 0 20px;
     border-radius: 0 0 4px 4px; }
   #form-login .meta {
-    padding: 10px 0 50px;
+    padding: 10px 0;
     text-align: center; }
   #form-login .meta p {
     margin: 5px 0; }
@@ -587,7 +588,7 @@ body {
 .section.article .item.article .header .title {
   background: #f2f2f2;
   font-size: 0;
-  padding: 0 5%; }
+  padding-right: 5%; }
   .section.article .item.article .header .title .label.meta.comments {
     margin-left: 10px;
     vertical-align: text-bottom; }
@@ -595,14 +596,14 @@ body {
       color: #222;
       opacity: .6; }
 .section.article .item.article .header .category {
-  max-width: 5%;
+  max-width: 8%;
   display: inline-block;
   font-size: 14px;
   line-height: 20px;
-  vertical-align: baseline;
-  text-align: right; }
+  padding-left: 5%;
+  vertical-align: baseline; }
 .section.article .item.article .header h2 {
-  max-width: 89%;
+  max-width: 79%;
   display: inline-block;
   font-size: 22px;
   font-weight: normal;
@@ -684,9 +685,8 @@ body {
     .section.article .item.article .vote.vote-post a.downvote .icon {
       background-position: 50% -20px; }
 .section.article .item.article .footer {
-  line-height: 30px;
   margin: 0 5%;
-  padding: 0 3%; }
+  padding: 5px 3%; }
   .section.article .item.article .footer .icon {
     margin-right: 4px; }
 .section.article .comments-list {
@@ -780,7 +780,7 @@ body {
     .section.board .header .cell.category .label.meta:hover .text {
       color: #222; }
     .section.board .header .dropdown .tip {
-      text-align: left; }
+      width: 45px; }
   .section.board .post-list {
     border-top: 1px solid #f2f2f2; }
   .section.board .item {
@@ -1014,5 +1014,62 @@ body {
 
 #scope:hover {
   background-color: rgba(0, 0, 0, 0.2); }
+
+.section.article.form {
+  padding-bottom: 20px; }
+  .section.article.form .item.article .header .category select {
+    width: 100%;
+    background: none;
+    border: 0;
+    text-align: right; }
+  .section.article.form .item.article .header h2 {
+    width: 79%; }
+    .section.article.form .item.article .header h2 input {
+      width: 100%;
+      background: none;
+      border: 0;
+      display: block; }
+  .section.article.form .item.article .note-editor {
+    border: 0; }
+    .section.article.form .item.article .note-editor .btn, .section.article.form .item.article .note-editor button {
+      border: 0; }
+    .section.article.form .item.article .note-editor .btn-primary {
+      background: rgba(61, 156, 204, 0.9); }
+    .section.article.form .item.article .note-editor .note-dialog .close {
+      background: none; }
+    .section.article.form .item.article .note-editor .note-toolbar {
+      background: #e5e5e5;
+      border: 0;
+      padding-left: 5%;
+      padding-right: 5%; }
+      .section.article.form .item.article .note-editor .note-toolbar .btn {
+        background: rgba(204, 204, 204, 0.9); }
+    .section.article.form .item.article .note-editor .note-editable {
+      min-height: 120px;
+      width: 540px;
+      margin: 20px auto;
+      padding: 0; }
+      @media screen and (max-device-width: 599px) {
+        .section.article.form .item.article .note-editor .note-editable {
+          width: 90%; } }
+    .section.article.form .item.article .note-editor .note-statusbar {
+      background: none;
+      padding: 0 5%; }
+      .section.article.form .item.article .note-editor .note-statusbar .note-resizebar {
+        height: 10px;
+        border-top: 1px solid #f2f2f2;
+        padding: 2px 0; }
+        .section.article.form .item.article .note-editor .note-statusbar .note-resizebar .note-icon-bar {
+          border-top: 1px solid #d9d9d9; }
+        .section.article.form .item.article .note-editor .note-statusbar .note-resizebar:hover .note-icon-bar {
+          border-top: 1px solid #ccc; }
+  .section.article.form .item.article .tags input {
+    border: 0;
+    border-bottom: 1px solid #ccc; }
+    .section.article.form .item.article .tags input:focus {
+      border-bottom-color: #3d9ccc;
+      outline: none; }
+  .section.article.form .submit {
+    margin: 10px 0; }
 
 /*# sourceMappingURL=style.css.map */

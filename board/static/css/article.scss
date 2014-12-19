@@ -6,19 +6,18 @@
 // 	
 
 .section.article {
-
 	.item.article {
 		.header {
 			.title {
-				background:$grey-95; font-size:0; padding:0 5%;
+				background:$grey-95; font-size:0; padding-right:5%;
 
 				.label.meta.comments {
 					margin-left:10px; vertical-align:text-bottom;
 					&:hover { color:$black; opacity:.6; }
 				}
 			}
-			.category { max-width:5%; display:inline-block; font-size:$font-size; line-height:20px; vertical-align:baseline; text-align:right; }
-			h2 { max-width:89%; display:inline-block; font-size:22px; font-weight:normal; line-height:1.25em; margin: 0 3%; padding:10px 0; vertical-align:baseline; }
+			.category { max-width:8%; display:inline-block; font-size:$font-size; line-height:20px; padding-left:5%; vertical-align:baseline; }
+			h2 { max-width:79%; display:inline-block; font-size:22px; font-weight:normal; line-height:1.25em; margin: 0 3%; padding:10px 0; vertical-align:baseline; }
 			div.meta {
 				background:$grey-90; padding:5px 5%;
 				.label.meta { margin-right:5px; }
@@ -79,7 +78,7 @@
 		}
 
 		.footer {
-			line-height:30px; margin:0 5%; padding:0 3%;
+			margin:0 5%; padding:5px 3%;
 			.icon { margin-right:4px; }
 		}
 	}

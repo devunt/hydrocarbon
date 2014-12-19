@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+// 	
+// 	write.scss
+// 		write form
+// 		uses part of article.scss too
+// 	
+
+.section.article.form {
+	padding-bottom:20px;
+	.item.article {
+		.header {
+			.category {
+				select { width:100%; background:none; border:0; text-align:right; }
+			}
+			h2 {
+				width:79%;
+				input { width:100%; background:none; border:0; display:block; }
+			}
+		}
+
+		.note-editor {
+			border:0;
+
+			.btn, button { border:0; }
+
+			.btn-primary { background:$blue; }
+
+			.note-dialog {
+				.close { background:none; }
+			}
+
+			.note-toolbar {
+				background:$grey-90; border:0; padding-left:5%; padding-right:5%;
+				.btn { background:$lightgrey; }
+			}
+
+			.note-editable {
+				min-height:120px; width:540px; margin:20px auto; padding:0;
+				@media screen and (max-device-width: $medium) { width:90%; }
+			}
+
+			.note-statusbar {
+				background:none; padding:0 5%;
+				.note-resizebar {
+					height:10px; border-top:1px solid $grey-95; padding:2px 0;
+					.note-icon-bar { border-top:1px solid $grey-85; }
+					&:hover .note-icon-bar { border-top:1px solid $lightgrey-base; }
+				}
+			}
+		}
+
+		.tags {
+			input { border:0; border-bottom:1px solid $lightgrey-base; 
+				&:focus { border-bottom-color:$blue-base; outline:none; }
+			}
+		}
+	}
+
+	.submit { margin:10px 0; }
+}

@@ -67,6 +67,12 @@
 			</a>
 		</div>
 		<div class="footer clear">
+			<div class="tags">
+				<a href="#" class="label meta tags">
+					<span class="icon"></span>
+					<span class="text">{{ post.tag }}</span>
+				</a>
+			</div>
 			<div class="comments">
 				<div class="left">
 					<a href="#" class="label meta comments">
@@ -134,12 +140,12 @@
 	<div class="nav clear">
 		<div class="left">
 			<a href="{{ board.get_absolute_url }}" class="button">{% trans "List" %}</a>
-			<a href="{{ board.get_absolute_url }}best" class="button toppost">{% trans "Top Posts" %}</a>
+			<a href="{{ board.get_absolute_url }}best" class="button toppost">{% trans "Top posts" %}</a>
 		</div>
 		<div class="right">
 			<a href="{{ post.get_absolute_url }}/delete" class="button">{% trans "Delete" %}</a>
 			<a href="{{ post.get_absolute_url }}/modify" class="button">{% trans "Modify" %}</a>
-			<a href="{{ board.get_absolute_url }}newpost" class="button blue">{% trans "New Post" %}</a>
+			<a href="{{ board.get_absolute_url }}newpost" class="button blue">{% trans "New post" %}</a>
 		</div>
 	</div>
 </div>

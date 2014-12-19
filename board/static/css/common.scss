@@ -148,4 +148,5 @@
 	&.last .icon { background-position:0 $meta-size * -12; margin-right:0; }
 	.dropdown & .icon { background-position:0 $meta-size * -13; margin-right:0; }
 	.dropdown.open & .icon { background-position:0 $meta-size * -14; }
+	&.tags .icon { background-position:0 $meta-size * -15; }
 }

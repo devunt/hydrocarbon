@@ -57,8 +57,8 @@
 //	login form specific style
 // 
 #form-login {
-	margin:20px 0; transition:margin .2s ease;
-	@media screen and (max-device-height: $small) { margin:0; }
+	padding:50px 0;
+	@media screen and (max-device-height: $small) { padding:0; }
 
 	#banner { margin:30px 0; }
 	form { margin:30px 0; }
@@ -93,7 +93,7 @@
 		}
 
 	.submit { margin:0 0 20px; border-radius:0 0 4px 4px; }
-	.meta { padding:10px 0 50px; text-align:center; }
+	.meta { padding:10px 0; text-align:center; }
 	.meta p { margin:5px 0; }
 	.meta a { display:inline-block; padding:0 .5em; }
 }

@@ -13,7 +13,7 @@ $(function() {
 
 	$menu
 		.on('touchstart', '.handle', function() { $(this).closest('.container').toggleClass('open'); })
-		.on('mouseenter', function() { if(!$(this).hasClass('open')) $(this).addClass('open'); })
+		.on('mouseenter', '.handle', function() { if(!$(this).closest('.container').hasClass('open')) $(this).closest('.container').addClass('open'); })
 		.on('mouseleave', function() { if($(this).hasClass('open')) $(this).removeClass('open'); })
 		.on('click', '.handle[href=#]', function(e) { e.preventDefault(); })
 		.on('mousedown', '.close', function(e) { e.preventDefault(); if($menu.hasClass('open')) $menu.removeClass('open'); });
