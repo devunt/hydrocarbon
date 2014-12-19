@@ -67,12 +67,14 @@
 			</a>
 		</div>
 		<div class="footer clear">
+			{% if post.tag %}
 			<div class="tags">
 				<a href="#" class="label meta tags">
 					<span class="icon"></span>
 					<span class="text">{{ post.tag }}</span>
 				</a>
 			</div>
+			{% endif %}
 			<div class="comments">
 				<div class="left">
 					<a href="#" class="label meta comments">
