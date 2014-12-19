@@ -108,7 +108,7 @@ body {
       background-image: url("../img/logo_large_3x.png"); } }
 
 .simple_notice {
-  padding-bottom: 30px;
+  padding: 80px;
   text-align: center; }
   .simple_notice p {
     font-size: 16px;
@@ -128,6 +128,9 @@ body {
   font-size: 12px;
   margin: 30px 0;
   text-align: center; }
+
+#footer img {
+  width: 98px; }
 
 .tip {
   font-size: 0;
@@ -333,13 +336,17 @@ body {
 .label.meta.delete .icon {
   background-position: 0 -96px; }
 .label.meta.first .icon {
-  background-position: 0 -108px; }
+  background-position: 0 -108px;
+  margin-right: 0; }
 .label.meta.prev .icon {
-  background-position: 0 -120px; }
+  background-position: 0 -120px;
+  margin-right: 0; }
 .label.meta.next .icon {
-  background-position: 0 -132px; }
+  background-position: 0 -132px;
+  margin-right: 0; }
 .label.meta.last .icon {
-  background-position: 0 -144px; }
+  background-position: 0 -144px;
+  margin-right: 0; }
 .dropdown .label.meta .icon {
   background-position: 0 -156px;
   margin-right: 0; }
@@ -370,7 +377,7 @@ body {
     display: block; }
   #nav .handle span {
     height: 50px;
-    vertical-align: top; }
+    vertical-align: middle; }
   #nav .dropdown.container .handle {
     height: 50px;
     color: #fff;
@@ -379,6 +386,11 @@ body {
     background: rgba(61, 156, 204, 0.9); }
   #nav .dropdown.container .menu {
     margin: 0 10px; }
+  #nav .dropdown.container .text {
+    font-family: "NanumGothicLight";
+    font-size: 16px;
+    line-height: 50px;
+    padding-right: 10px; }
   #nav .dropdown.container.menu-nav .icon {
     width: 50px;
     background: url("../img/logo_1x.png") no-repeat;
@@ -392,17 +404,20 @@ body {
   #nav .dropdown.container.menu-nav.open .icon {
     background-position: 0 -50px; }
   #nav .dropdown.container.menu-nav .text {
-    width: 100px;
-    background: url("../img/logo_kr_1x.png") no-repeat;
-    background-size: 100px;
-    margin: 0 15px 0 5px;
-    transition: width .2s ease, opacity .2s ease; }
-    @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
-      #nav .dropdown.container.menu-nav .text {
-        background-image: url("../img/logo_kr_2x.png"); } }
-    @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
-      #nav .dropdown.container.menu-nav .text {
-        background-image: url("../img/logo_kr_3x.png"); } }
+    font-size: 18px; }
+    #nav .dropdown.container.menu-nav .text span.default {
+      width: 100px;
+      background: url("../img/logo_kr_1x.png") no-repeat;
+      background-size: 100px;
+      display: inline-block;
+      font-size: 0;
+      margin: 0 5px; }
+      @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+        #nav .dropdown.container.menu-nav .text span.default {
+          background-image: url("../img/logo_kr_2x.png"); } }
+      @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+        #nav .dropdown.container.menu-nav .text span.default {
+          background-image: url("../img/logo_kr_3x.png"); } }
   #nav .dropdown.container.menu-nav .tip {
     width: 10px; }
   #nav .dropdown.container.menu-personal .icon {
@@ -415,20 +430,11 @@ body {
     @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
       #nav .dropdown.container.menu-personal .icon {
         background-image: url("../img/login_3x.png"); } }
-  #nav .dropdown.container.menu-personal .text {
-    font-size: 16px;
-    line-height: 50px;
-    padding-right: 10px; }
   #nav .dropdown.container.menu-personal .menu {
     right: 0; }
-  @media screen and (max-device-width: 419px) {
-    #nav .dropdown.container.menu-nav .text {
-      width: 0;
-      opacity: 0;
-      margin: 0; } }
 
 #form {
-  padding-bottom: 30px; }
+  padding: 80px 0; }
   #form .field {
     width: 600px;
     list-style: none;
@@ -578,24 +584,24 @@ body {
     display: inline-block;
     padding: 0 .5em; }
 
-.section.article .item.article > .header .title {
+.section.article .item.article .header .title {
   background: #f2f2f2;
   font-size: 0;
   padding: 0 5%; }
-  .section.article .item.article > .header .title .label.meta.comments {
+  .section.article .item.article .header .title .label.meta.comments {
     margin-left: 10px;
     vertical-align: text-bottom; }
-    .section.article .item.article > .header .title .label.meta.comments:hover {
+    .section.article .item.article .header .title .label.meta.comments:hover {
       color: #222;
       opacity: .6; }
-.section.article .item.article > .header .category {
+.section.article .item.article .header .category {
   max-width: 5%;
   display: inline-block;
   font-size: 14px;
   line-height: 20px;
   vertical-align: baseline;
   text-align: right; }
-.section.article .item.article > .header h2 {
+.section.article .item.article .header h2 {
   max-width: 89%;
   display: inline-block;
   font-size: 22px;
@@ -604,27 +610,27 @@ body {
   margin: 0 3%;
   padding: 10px 0;
   vertical-align: baseline; }
-.section.article .item.article > .header div.meta {
+.section.article .item.article .header div.meta {
   background: #e5e5e5;
   padding: 5px 5%; }
-  .section.article .item.article > .header div.meta .label.meta {
+  .section.article .item.article .header div.meta .label.meta {
     margin-right: 5px; }
 @media screen and (max-device-width: 599px) {
-  .section.article .item.article > .header .category {
+  .section.article .item.article .header .category {
     max-width: 10%; }
-  .section.article .item.article > .header h2 {
+  .section.article .item.article .header h2 {
     max-width: 84%;
     font-size: 18px; }
-  .section.article .item.article > .header div.meta .label.meta .text {
+  .section.article .item.article .header div.meta .label.meta .text {
     font-size: 13px; } }
 @media screen and (max-device-width: 419px) {
-  .section.article .item.article > .header h2 {
+  .section.article .item.article .header h2 {
     font-size: 14px; }
-  .section.article .item.article > .header div.meta .label.meta .icon {
+  .section.article .item.article .header div.meta .label.meta .icon {
     margin-right: 2px; }
-  .section.article .item.article > .header div.meta .label.meta .text {
+  .section.article .item.article .header div.meta .label.meta .text {
     font-size: 0; }
-    .section.article .item.article > .header div.meta .label.meta .text span {
+    .section.article .item.article .header div.meta .label.meta .text span {
       font-size: 12px; } }
 .section.article .item.article div.article {
   width: 540px;

@@ -102,9 +102,6 @@
 	}
 }
 
-
-
-
 // 
 // .label
 //	generic label style
@@ -145,10 +142,10 @@
 	&.reply .icon { background-position:0 $meta-size * -6; }
 	&.modify .icon { background-position:0 $meta-size * -7; }
 	&.delete .icon { background-position:0 $meta-size * -8; }
-	&.first .icon { background-position:0 $meta-size * -9; }
-	&.prev .icon { background-position:0 $meta-size * -10; }
-	&.next .icon { background-position:0 $meta-size * -11; }
-	&.last .icon { background-position:0 $meta-size * -12; }
+	&.first .icon { background-position:0 $meta-size * -9; margin-right:0; }
+	&.prev .icon { background-position:0 $meta-size * -10; margin-right:0; }
+	&.next .icon { background-position:0 $meta-size * -11; margin-right:0; }
+	&.last .icon { background-position:0 $meta-size * -12; margin-right:0; }
 	.dropdown & .icon { background-position:0 $meta-size * -13; margin-right:0; }
 	.dropdown.open & .icon { background-position:0 $meta-size * -14; }
 }

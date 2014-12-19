@@ -2,10 +2,9 @@
 {% load i18n %}
 
 {% block title %}{% trans "Logged out" %} :: {{ block.super }}{% endblock %}
+{% block pagename %}{% trans "Logged out" %}{% endblock %}
 
 {% block content %}
-
-{% include "include/banner.html" %}
 
 <div class="simple_notice">
 	<p>{% trans "Successfully logged out" %}.</p>
