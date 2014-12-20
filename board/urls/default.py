@@ -15,6 +15,6 @@ urlpatterns = patterns('',
 
     url(r'^x/', include('board.urls.ajax')),
     url(r'^b/(?P<board>\w+)/', include('board.urls.board')),
-    url(r'^(?P<pk>\d+)/?', include('board.urls.post')),
+    url(r'^(?P<pk>\d+)/', include('board.urls.post')),
     url(r'^$', IndexView.as_view()),
 )

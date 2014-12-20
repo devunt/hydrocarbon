@@ -36,3 +36,7 @@ class PostForm(forms.ModelForm):
         labels = {
             'contents': '',
         }
+
+
+class PostDeleteForm(forms.Form):
+    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput())

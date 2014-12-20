@@ -1,14 +1,14 @@
 from hashlib import md5
 
 from django.core.urlresolvers import reverse
-from django.http import JsonResponse
+from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import redirect, render
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from board.forms import PostForm
+from board.forms import PostForm, PostDeleteForm
 from board.mixins import BoardMixin, UserLoggingMixin
 from board.models import Attachment, Board, Post, Vote
 
@@ -51,6 +51,24 @@ class PostUpdateView(UpdateView):
         return kwargs
 
 
+class PostDeleteView(DeleteView):
+    model = Post
+
+    #def dispatch(self, request, *args, **kwargs):
+    #    post = super().get_object(super().get_queryset())
+
+    def get(self, request, *args, **kwargs):
+        post = super().get_object(super().get_queryset())
+        if post.user:
+            if post.user != self.request.user:
+                return HttpResponseForbidden()
+        else:
+            return render(request, 'board/post_delete_password.html', form=PostDeleteForm())
+
+    def get_success_url(self):
+        return reverse('board_post_list', kwargs={'board': self.object.board.slug})
+
+
 class PostDetailView(DetailView):
     model = Post
 
@@ -87,6 +105,11 @@ class PostListView(BoardMixin, ListView):
 
     def get_queryset(self):
         return Post.objects.filter(board=self.board).order_by('-created_time')
+
+
+class PostBestListView(PostListView):
+    def get_queryset(self):
+        return super().get_queryset() # 추천수 높은거 빼내기
 
 
 class VoteAjaxView(View):
