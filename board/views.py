@@ -1,6 +1,7 @@
 from hashlib import md5
 
 from django.core.urlresolvers import reverse
+from django.db.models import Sum
 from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import redirect, render
 from django.views.generic.base import View
@@ -11,6 +12,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from board.forms import PostForm, PostDeleteForm
 from board.mixins import BoardMixin, UserLoggingMixin
 from board.models import Attachment, Board, Post, Vote
+from hydrocarbon import settings
 
 
 class IndexView(View):
@@ -109,7 +111,10 @@ class PostListView(BoardMixin, ListView):
 
 class PostBestListView(PostListView):
     def get_queryset(self):
-        return super().get_queryset() # 추천수 높은거 빼내기
+        pqs = super().get_queryset()
+        pqs = pqs.annotate(vote=Sum('_votes__vote'))
+        pqs = pqs.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
+        return pqs
 
 
 class VoteAjaxView(View):

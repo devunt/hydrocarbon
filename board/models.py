@@ -106,7 +106,7 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
 
 
 class Vote(models.Model):
-    DOWNVOTE = 0
+    DOWNVOTE = -1
     UPVOTE = 1
     VOTE_CHOICES = (
         (DOWNVOTE, 'Not recommend'),
@@ -116,7 +116,7 @@ class Vote(models.Model):
     comment = models.ForeignKey('Comment', blank=True, null=True, related_name='_votes')
     user = models.ForeignKey(User, blank=True, null=True, related_name='_votes')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
-    vote = models.PositiveSmallIntegerField(choices=VOTE_CHOICES)
+    vote = models.SmallIntegerField(choices=VOTE_CHOICES)
 
 
 class Announcement(models.Model):

@@ -157,8 +157,11 @@ SUMMERNOTE_CONFIG = {
     'inplacewidget_external_css': (
         '/static/css/summernote-bs3.css',
         '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
-    ),                                                                          
+    ),
     'inplacewidget_external_js': (
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
     ),
 }
+
+# App settings
+BOARD_POST_BEST_VOTES = 1
