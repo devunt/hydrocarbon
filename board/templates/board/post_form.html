@@ -44,6 +44,14 @@
 		<input id='file-upload' type='file' name='files[]' multiple>
 		<div id='progress'>0</div>
 	</div>
+	<div>
+		{% if form.onetime_nick %}
+			{{ form.onetime_nick }}
+		{% endif %}
+		{% if form.onetime_password %}
+			{{ form.onetime_password }}
+		{% endif %}
+	</div>
 	<div class="center">
 		<input class="submit" type="submit" value="{% trans "New post" %}">
 	</div>
