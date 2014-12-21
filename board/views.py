@@ -104,12 +104,19 @@ class PostDetailView(DetailView):
 
 class PostListView(BoardMixin, ListView):
     paginate_by = 20
+    is_best = False
 
     def get_queryset(self):
         return Post.objects.filter(board=self.board).order_by('-created_time')
 
+    def get_context_data(self, **kwargs):
+        kwargs['is_best'] = self.is_best
+        return super().get_context_data(**kwargs)
+
 
 class PostBestListView(PostListView):
+    is_best = True
+
     def get_queryset(self):
         pqs = super().get_queryset()
         pqs = pqs.annotate(vote=Sum('_votes__vote'))
