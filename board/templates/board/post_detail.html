@@ -142,12 +142,21 @@
 	<div class="nav clear">
 		<div class="left">
 			<a href="{% url 'board_post_list' board.slug %}" class="button">{% trans "List" %}</a>
-			<a href="{% url 'board_post_list_best' board.slug %}" class="button toppost">{% trans "Top Posts" %}</a>
+			{% if is_best %}
+				<a href="{{ board.get_absolute_url }}" class="button blue checkbox checked">
+			{% else %}
+				<a href="{{ board.get_absolute_url }}best" class="button checkbox">
+			{% endif %}
+				<span class="label">
+					<span class="icon"></span>
+					<span class="text">{% trans "Top posts" %}</span>
+				</span>
+			</a>
 		</div>
 		<div class="right">
 			<a href="{% url 'post_delete' post.id %}" class="button">{% trans "Delete" %}</a>
 			<a href="{% url 'post_update' post.id %}" class="button">{% trans "Modify" %}</a>
-			<a href="{% url 'board_post_create' board.slug %}" class="button blue">{% trans "New Post" %}</a>
+			<a href="{% url 'board_post_create' board.slug %}" class="button blue">{% trans "New post" %}</a>
 		</div>
 	</div>
 </div>

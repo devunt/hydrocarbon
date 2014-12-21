@@ -113,7 +113,16 @@
 	<div class="nav bottom clear">
 		<div class="left">
 			<a href="{{ board.get_absolute_url }}" class="button">{% trans "List" %}</a>
-			<a href="{{ board.get_absolute_url }}best" class="button">{% trans "Top posts" %}</a>
+			{% if is_best %}
+				<a href="{{ board.get_absolute_url }}" class="button blue checkbox checked">
+			{% else %}
+				<a href="{{ board.get_absolute_url }}best" class="button checkbox">
+			{% endif %}
+				<span class="label">
+					<span class="icon"></span>
+					<span class="text">{% trans "Top posts" %}</span>
+				</span>
+			</a>
 			<form action="#" method="post" id="search" class="button search">
 				<input type="button" value="{% trans "Search" %}" class="search">
 				<input type="text" name="quary" class="text">
