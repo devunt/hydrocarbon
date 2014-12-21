@@ -9,3 +9,5 @@ urlpatterns = patterns('',
     url(r'', include('board.urls.default')),
     url(r'^admin/', include(admin.site.urls)),
 )
+
+handler403 = 'board.urls.default.handler403'

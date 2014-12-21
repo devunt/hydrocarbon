@@ -1,4 +1,7 @@
 from django.conf.urls import patterns, url, include
+from django.utils.functional import curry
+from django.views.defaults import permission_denied
+
 from registration.backends.default.views import RegistrationView
 
 from board.forms import HCRegistrationForm
@@ -18,3 +21,5 @@ urlpatterns = patterns('',
     url(r'^(?P<pk>\d+)/', include('board.urls.post')),
     url(r'^$', IndexView.as_view()),
 )
+
+handler403 = curry(permission_denied, template_name='errors/403.html')
