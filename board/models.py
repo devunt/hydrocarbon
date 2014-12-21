@@ -72,7 +72,7 @@ class AuthorModelMixin:
 
 class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     user = models.ForeignKey(User, blank=True, null=True, related_name='posts')
-    onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='post')
+    onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='post', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     board = models.ForeignKey('Board', related_name='posts')
     category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')

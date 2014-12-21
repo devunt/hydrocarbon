@@ -2,6 +2,16 @@
 
 {% block content %}
 <form action="" method="post">{% csrf_token %}
-    <input type="submit" value="Create" />
+	{% if messages %}
+	<ul>
+	{% for message in messages %}
+	<li>{{ message }}</li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+	{% if form %}
+	{{ form.as_p }}
+	{% endif %}
+	<input type="submit" value="Create" />
 </form>
 {% endblock content %}
