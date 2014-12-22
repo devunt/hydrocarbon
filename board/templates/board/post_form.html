@@ -24,7 +24,7 @@
 	<div class="item article">
 		<div class="header">
 			<div class="title">
-				<span class="category">{{ form.category }}</span>
+				<span class="category dropdown container" data-text="{% trans "Categories" %}">{{ form.category }}</span>
 				<h2>
 					{{ form.title | label_as_placeholder  }}
 				</h2>
@@ -33,10 +33,10 @@
 		{{ form.contents }}
 		<div class="footer clear">
 			<div class="tags">
-				<a href="#" class="label meta tags">
+				<span class="label meta tags">
 					<span class="icon" title="{% trans "Tags" %} "></span>
 					<span class="text">{{ form.tags | label_as_placeholder  }}</span>
-				</a>
+				</span>
 			</div>
 		</div>
 	</div>

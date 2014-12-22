@@ -11,14 +11,16 @@ $(function() {
 	$tooltip = $('#tooltip');
 	$menu = $('.dropdown.container');
 
-	$menu
-		.on('touchstart', '.handle', function() { $(this).closest('.container').toggleClass('open'); })
-		.on('mouseenter', '.handle', function() { if(!$(this).closest('.container').hasClass('open')) $(this).closest('.container').addClass('open'); })
-		.on('mouseleave', function() { if($(this).hasClass('open')) $(this).removeClass('open'); })
-		.on('click', '.handle[href=#]', function(e) { e.preventDefault(); })
-		.on('mousedown', '.close', function(e) { e.preventDefault(); if($menu.hasClass('open')) $menu.removeClass('open'); });
-
 	$document
+		.on('touchstart', '.dropdown.container .handle', function() { $(this).closest('.container').toggleClass('open'); })
+		.on('click', '.dropdown.container .handle', function() {
+			var $container = $(this).closest('.container');
+			if(!$container.hasClass('open')) { $container.addClass('open');
+			} else { $container.removeClass('open'); }
+		})
+		.on('mouseleave', '.dropdown.container', function() { if($(this).hasClass('open')) $(this).removeClass('open'); })
+		.on('click', '.dropdown.container .handle[href=#]', function(e) { e.preventDefault(); })
+		.on('mousedown', '.dropdown.container .close', function(e) { e.preventDefault(); if($menu.hasClass('open')) $menu.removeClass('open'); })
 		.on('mouseenter', '.th', showTooltip)
 		.on('mouseleave scroll', '.th', hideTooltip)
 		.on('mouseenter', '*[title]', function() {
@@ -29,6 +31,69 @@ $(function() {
 				.addClass('th')
 				.trigger('mouseenter');
 		});
+
+	$('.section.article.form .category')
+		.on('click', 'a.option', function(e) {
+			e.preventDefault();
+			$('.section.article.form .category option').filter('[value='+$(this).data('value')+']').prop('selected', true);
+			$('.section.article.form .category .text').text($(this).text());
+			$(this).closest('.dropdown.container').removeClass('open');
+		})
+		.each(function() {
+			var option, $handle = $('<a>'), $dropdown = $('<div>'), $ul = $('<ul>');
+
+			option = $(this).find('select option');
+
+			$('<span>')
+				.html('<span>'+$(this).data('text')+'</span>')
+				.addClass('text')
+				.appendTo($handle);
+
+			$('<span>')
+				.addClass('icon')
+				.appendTo($handle);
+
+			$handle
+				.attr('href', '#')
+				.addClass('handle label meta')
+				.appendTo($(this));
+
+			$('<a>')
+				.addClass('close')
+				.attr('href', '#')
+				.appendTo($dropdown);
+
+			$('<div>')
+				.addClass('tip top')
+				.html('<span></span>')
+				.appendTo($dropdown);
+
+			option.each(function() {
+				var $li = $('<li>'), $a = $('<a>'), value = $(this).attr('value');
+
+				if(value == '') return true;
+
+				$('<span>')
+					.text($(this).text())
+					.appendTo($a);
+
+				$a
+					.attr('href', '#')
+					.addClass('option')
+					.data('value', value)
+					.appendTo($li);
+				$li.appendTo($ul);
+			});
+
+			$ul.appendTo($dropdown);
+
+			$dropdown
+				.addClass('dropdown menu')
+				.appendTo($(this));
+
+			$(this).find('select').hide();
+		});
+
 
 	if(!browser.can.placeholder()) {
 		$('#form_login .field input').each(function() {
