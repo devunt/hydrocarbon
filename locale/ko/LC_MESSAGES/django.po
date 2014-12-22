@@ -322,9 +322,13 @@ msgstr "마지막"
 msgid "No board found"
 msgstr "게시판 없음"
 
-#: board/templates/errors/board_404.html:11
-msgid "There's no such board.<br>Returning to the main page..."
-msgstr "찾으시는 게시판이 없습니다.<br>잠시 후 첫 화면으로 돌아갑니다..."
+#: board/templates/errors/board_404.html:12
+msgid "There's no such board."
+msgstr "찾으시는 게시판이 없습니다."
+
+#: board/templates/errors/board_404.html:13
+msgid "Returning to the main page..."
+msgstr "잠시 후 첫 화면으로 돌아갑니다..."
 
 #: board/templates/registration/activate.html:7
 msgid "Account activation failed."
