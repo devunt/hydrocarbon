@@ -42,7 +42,7 @@ a.label:hover { color:$black; opacity:.6; }
 	li {
 		background:$lightgrey-base; color:$black; line-height:20px; list-style:none; padding:5px 0; text-align:center;
 		&.success { background:$green-base; color:$white; }
-		&.warning { background:#ffea80; color:$white; }
+		&.warning { background:#ffea80; }
 		&.error { background:$red; color:$white; }
 	}
 }
