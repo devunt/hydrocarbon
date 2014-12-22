@@ -104,10 +104,10 @@ body {
   @media screen and (max-device-height: 419px) {
     #banner {
       display: none; } }
-  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
     #banner {
       background-image: url("../img/logo_large_2x.png"); } }
-  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
     #banner {
       background-image: url("../img/logo_large_3x.png"); } }
 
@@ -178,6 +178,12 @@ body {
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 68px; }
+  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
+    .checkbox.checked .icon {
+      background-image: url("../img/checkbox_2x.png"); } }
+  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
+    .checkbox.checked .icon {
+      background-image: url("../img/checkbox_3x.png"); } }
 .checkbox.medium {
   line-height: 30px; }
   .checkbox.medium .icon {
@@ -304,10 +310,10 @@ body {
   width: 12px;
   background: url("../img/meta_1x.png") no-repeat;
   background-size: 12px; }
-  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
     .label.meta .icon {
       background-image: url("../img/meta_2x.png"); } }
-  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
     .label.meta .icon {
       background-image: url("../img/meta_3x.png"); } }
 .label.meta.author:after {
@@ -401,10 +407,10 @@ body {
     width: 50px;
     background: url("../img/logo_1x.png") no-repeat;
     background-size: 50px; }
-    @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+    @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
       #nav .dropdown.container.menu-nav .icon {
         background-image: url("../img/logo_2x.png"); } }
-    @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+    @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
       #nav .dropdown.container.menu-nav .icon {
         background-image: url("../img/logo_3x.png"); } }
   #nav .dropdown.container.menu-nav.open .icon {
@@ -418,10 +424,10 @@ body {
       display: inline-block;
       font-size: 0;
       margin: 0 5px; }
-      @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+      @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
         #nav .dropdown.container.menu-nav .text span.default {
           background-image: url("../img/logo_kr_2x.png"); } }
-      @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+      @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
         #nav .dropdown.container.menu-nav .text span.default {
           background-image: url("../img/logo_kr_3x.png"); } }
   #nav .dropdown.container.menu-nav .tip {
@@ -430,10 +436,10 @@ body {
     width: 50px;
     background: url("../img/login_1x.png") 50% 50% no-repeat;
     background-size: 24px; }
-    @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+    @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
       #nav .dropdown.container.menu-personal .icon {
         background-image: url("../img/login_2x.png"); } }
-    @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+    @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
       #nav .dropdown.container.menu-personal .icon {
         background-image: url("../img/login_3x.png"); } }
   #nav .dropdown.container.menu-personal .menu {
@@ -555,10 +561,10 @@ body {
       background-size: 16px;
       padding-left: 5%;
       padding-right: 10%; }
-      @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+      @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
         #form-login .field input {
           background-image: url("../img/login_icon_2x.png"); } }
-      @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+      @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
         #form-login .field input {
           background-image: url("../img/login_icon_3x.png"); } }
     #form-login .field #id_password {
@@ -664,10 +670,10 @@ body {
       background: url("../img/vote_1x.png") no-repeat;
       background-size: 20px;
       display: block; }
-      @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+      @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
         .section.article .item.article .vote.vote-post a .icon {
           background-image: url("../img/vote_2x.png"); } }
-      @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+      @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
         .section.article .item.article .vote.vote-post a .icon {
           background-image: url("../img/vote_3x.png"); } }
     .section.article .item.article .vote.vote-post a .text {
@@ -903,6 +909,8 @@ body {
         text-align: center; }
         .section.board .header .category:hover {
           background: rgba(204, 204, 204, 0.6); }
+        .section.board .header .category .tip {
+          text-align: left; }
     .section.board .item {
       padding: 5px 2%;
       padding-left: 0; }

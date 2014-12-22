@@ -37,7 +37,15 @@
 .checkbox {
 
 	.icon { height:12px; width:12px; background-color:$checkbox; border-radius:2px; }
-	&.checked .icon { background-image:url("../img/checkbox_1x.png"); background-position:0 0; background-repeat:no-repeat; background-size:68px; }
+	&.checked .icon {
+		background-image:url("../img/checkbox_1x.png"); background-position:0 0; background-repeat:no-repeat; background-size:68px;
+		@media
+		screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+		screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) { background-image:url("../img/checkbox_2x.png"); }
+		@media
+		screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+		screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) { background-image:url("../img/checkbox_3x.png"); }
+	}
 	&.medium {
 		line-height:30px;
 		.icon { height:24px; width:24px; border-radius:4px; }
@@ -124,8 +132,12 @@
 
 	.icon {
 		height:$meta-size; width:$meta-size; background:url("../img/meta_1x.png") no-repeat; background-size:12px;
-		@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) { background-image:url("../img/meta_2x.png"); }
-		@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) { background-image:url("../img/meta_3x.png"); }
+		@media
+		screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+		screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) { background-image:url("../img/meta_2x.png"); }
+		@media
+		screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+		screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) { background-image:url("../img/meta_3x.png"); }
 	}
 
 	&.author:after { content:"•"; font-size:20px; margin:0 -4px; vertical-align:top; }

@@ -74,11 +74,15 @@
 		input {
 			width:85%; border:0; background:transparent url("../img/login_icon_1x.png") 95% 0 no-repeat; background-size:16px; padding-left:5%; padding-right:10%;
 
-			@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+			@media
+			screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+			screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
 				background-image:url("../img/login_icon_2x.png"); 
 			}
 
-			@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+			@media
+			screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+			screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
 				background-image:url("../img/login_icon_3x.png");
 			}
 		}

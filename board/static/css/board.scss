@@ -90,6 +90,7 @@
 			.category {
 				width:auto; background:$lightgrey; border-radius:2px; display:inline-block; font-size:$font-size; overflow:hidden; padding:5px 10px; text-align:center;
 				&:hover { background:$lightgrey-trans; }
+				.tip { text-align:left; }
 			}
 		}
 
