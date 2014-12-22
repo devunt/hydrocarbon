@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import check_password
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.db.models import Sum
-from django.http import JsonResponse
+from django.http import JsonResponse, QueryDict
 from django.shortcuts import redirect
 from django.utils.translation import ugettext as _
 from django.views.generic.base import TemplateView, View
@@ -15,7 +15,7 @@ from django.views.generic.list import ListView
 
 from board.forms import PostForm, PostDeleteForm
 from board.mixins import BoardMixin, UserLoggingMixin
-from board.models import Attachment, Board, Post, Vote
+from board.models import Attachment, Board, Comment, Post, Vote
 
 from hydrocarbon import settings
 
@@ -225,3 +225,104 @@ class FileUploadAjaxView(View):
             attachment.save()
             files.append({'name': f.name, 'content_type': f.content_type})
         return JsonResponse({'status': 'success', 'files': files})
+
+
+class CommentAjaxView(View):
+    def dispatch(self, request, *args, **kwargs):
+        self.pk = kwargs.pop('pk')
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        try:
+            post = Post.objects.get(pk=self.pk)
+        except Post.DoesNotExist:
+            return self.not_found()
+        def _make_list(comments):
+            lst = list()
+            for comment in comments:
+                subcomments = None
+                if comment.subcomments.exists():
+                    subcomments = _make_list(comment.subcomments.filter(comment=comment))
+                lst.append({
+                    'id': comment.id,
+                    'auther': comment.author,
+                    'iphash': comment.iphash if not comment.user else None,
+                    'contents': comment.contents,
+                    'created_time': comment.created_time,
+                    'subcomments': subcomments
+                })
+            return lst
+        lst = _make_list(post.comments.filter(comment=None))
+        return JsonResponse({'status': 'success', 'comments': lst})
+
+    def post(self, request, *args, **kwargs):
+        target_type = request.POST.get('type')
+        c = Comment()
+        if target_type == 'p':
+            try:
+                c.post = Post.objects.get(pk=self.pk)
+            except Post.DoesNotExist:
+                return self.not_found()
+        elif target_type == 'c':
+            try:
+                c.comment = Comment.objects.get(pk=self.pk)
+                c.post = c.comment.post
+            except Comment.DoesNotExist:
+                return self.not_found()
+        else:
+            return self.bad_request()
+        if request.user.is_authenticated():
+            c.user = request.user
+        else:
+            ot_user = OneTimeUser()
+            ot_user.nick = request.POST.get('ot_nick')
+            ot_user.password = request.POST.get('ot_password')
+            ot_user.save()
+            c.onetime_user = ot_user
+        c.ipaddress = request.META['REMOTE_ADDR']
+        c.contents = request.POST.get('contents')
+        c.save()
+        return self.success()
+
+    def put(self, request, *args, **kwargs):
+        try:
+            c = Comment.objects.get(pk=self.pk)
+        except Comment.DoesNotExist:
+            return self.not_found()
+        if c.user:
+            if c.user != request.user:
+                return self.permission_denied()
+        else:
+            if not check_password(request.META.get('HTTP_X_HC_PASSWORD'), c.onetime_user.password):
+                return self.permission_denied()
+        PUT = QueryDict(request.body)
+        c.contents = PUT.get('contents')
+        c.save()
+        return self.success()
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            c = Comment.objects.get(pk=self.pk)
+        except Comment.DoesNotExist:
+            return self.not_found()
+        if c.user:
+            if c.user != request.user:
+                return self.permission_denied()
+        else:
+            if not check_password(request.META.get('HTTP_X_HC_PASSWORD'), c.onetime_user.password):
+                return self.permission_denied()
+            c.onetime_user.delete()
+        c.delete()
+        return self.success()
+
+    def bad_request(self):
+        return JsonResponse({'status': 'badrequest'}, status=400)
+
+    def permission_denied(self):
+        return JsonResponse({'status': 'permissiondenied'}, status=403)
+
+    def not_found(self):
+        return JsonResponse({'status': 'notexists'}, status=404)
+
+    def success(self):
+        return JsonResponse({'status': 'success'})

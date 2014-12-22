@@ -103,7 +103,7 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     post = models.ForeignKey('Post', related_name='comments')
     comment = models.ForeignKey('self', related_name='subcomments', blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, related_name='comments')
-    onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment')
+    onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     contents = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
