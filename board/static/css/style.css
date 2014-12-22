@@ -219,13 +219,12 @@ body {
 
 .nav {
   font-size: 0;
-  padding: 5px 15px; }
+  padding: 10px 20px; }
   .nav .button {
     background: rgba(204, 204, 204, 0.9);
     border-radius: 2px;
     font-size: 14px;
     line-height: 20px;
-    margin: 5px;
     overflow: hidden;
     padding: 5px 10px;
     text-align: center; }
@@ -237,6 +236,11 @@ body {
       color: #fff; }
     .nav .button.blue:hover {
       background: rgba(61, 156, 204, 0.6); }
+    .nav .button + .button {
+      margin-left: 10px; }
+  @media screen and (max-device-width: 599px) {
+    .nav {
+      padding: 10px 4%; } }
 
 .dropdown.container.open .menu {
   display: block; }
@@ -625,16 +629,16 @@ body {
   .section.article .item.article .header div.meta .label.meta {
     margin-right: 5px; }
 @media screen and (max-device-width: 599px) {
-  .section.article .item.article .header .category {
+  .section.article .item.article .header .title .category {
     max-width: 15%; }
-  .section.article .item.article .header h2 {
+  .section.article .item.article .header .title h2 {
     max-width: 77%;
     font-size: 18px; }
   .section.article .item.article .header div.meta .label.meta .text {
     font-size: 13px; } }
 @media screen and (max-device-width: 419px) {
-  .section.article .item.article .header h2 {
-    font-size: 14px; }
+  .section.article .item.article .header .title h2 {
+    font-size: 18px; }
   .section.article .item.article .header div.meta .label.meta .icon {
     margin-right: 2px; }
   .section.article .item.article .header div.meta .label.meta .text {

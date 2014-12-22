@@ -26,17 +26,21 @@
 			}
 
 			@media screen and (max-device-width: $medium) {
-				.category { max-width:15%; }
-				h2 { max-width:77%; font-size:18px; }
+				.title {
+					.category { max-width:15%; }
+					h2 { max-width:77%; font-size:18px; }
+				}
 				div.meta .label.meta .text { font-size:$font-size - 1; }
 			}
 
 			@media screen and (max-device-width: $small) {
-				h2 { font-size:$font-size; }
-				div.meta .label.meta .icon { margin-right:2px; }
-				div.meta .label.meta .text {
-					font-size:0;
-					span { font-size:$font-size - 2; }
+				.title h2 { font-size:18px; }
+				div.meta .label.meta {
+					.icon { margin-right:2px; }
+					.text {
+						font-size:0;
+						span { font-size:$font-size - 2; }
+					}
 				}
 			}
 		}
