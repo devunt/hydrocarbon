@@ -2,7 +2,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import Http404, JsonResponse
 from django.shortcuts import render
 
-from board.models import Board, OneTimeUser
+from board.models import Announcement, Board, OneTimeUser
 
 
 class BoardMixin:
@@ -49,3 +49,14 @@ class AjaxMixin:
 
     def success(self):
         return JsonResponse({'status': 'success'})
+
+
+class PostListMixin:
+    def get_context_data(self, **kwargs):
+        announcement_list = list()
+        for announcement in self.board.announcements.all():
+            post = announcement.post
+            post.is_announcement = True
+            announcement_list.append(post)
+        kwargs['announcement_list'] = announcement_list
+        return super().get_context_data(**kwargs)

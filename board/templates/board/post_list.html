@@ -61,7 +61,7 @@
 			</li>
 		{% else %}
 			<li>
-				<a href="{{ item.get_absolute_url }}" class="item {{ item.category.slug }}{% if item.is_announcement %} notice{% endif %} {{ rowclass }}{% if post.id == item.id %} currentpost{% endif %}">
+				<a href="{{ item.get_absolute_url }}" class="item {{ item.category.slug }} {{ rowclass }}{% if post.id == item.id %} currentpost{% endif %}">
 					<span class="cell mark">&#9654;</span>
 					<span class="cell category">{{ item.category }}</span>
 					<span class="cell title">

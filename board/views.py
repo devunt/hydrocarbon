@@ -14,7 +14,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from board.forms import PostForm, PostDeleteForm
-from board.mixins import AjaxMixin, BoardMixin, UserLoggingMixin
+from board.mixins import AjaxMixin, BoardMixin, PostListMixin, UserLoggingMixin
 from board.models import Attachment, Board, Comment, Post, Vote
 
 from hydrocarbon import settings
@@ -90,11 +90,12 @@ class PostDeleteView(DeleteView):
         return super(PostDeleteView, self).get_context_data(**kwargs)
 
 
-class PostDetailView(DetailView):
+class PostDetailView(PostListMixin, DetailView):
     model = Post
 
     def get_object(self, queryset=None):
         post = super().get_object(queryset)
+        self.board = post.board
         post_ids_viewed = self.request.session.get('post_ids_viewed', list())
         if post.id not in post_ids_viewed:
             post.viewcount += 1
@@ -104,8 +105,8 @@ class PostDetailView(DetailView):
         return post
 
     def get_context_data(self, **kwargs):
-        kwargs['board'] = self.object.board
-        kwargs['post_list'] = self.object.board.posts.order_by('-created_time')
+        kwargs['board'] = self.board
+        kwargs['post_list'] = self.board.posts.order_by('-created_time')
         voted = {'upvoted': False, 'downvoted': False}
         if self.request.user.is_authenticated():
             vqs = self.object._votes.filter(user=self.request.user)
@@ -121,7 +122,7 @@ class PostDetailView(DetailView):
         return super().get_context_data(**kwargs)
 
 
-class PostListView(BoardMixin, ListView):
+class PostListView(BoardMixin, PostListMixin, ListView):
     paginate_by = 20
     is_best = False
 
