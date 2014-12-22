@@ -8,13 +8,12 @@
 
 <div class="simple_notice error">
 	<img src="{% static "img/dead_2x.png" %}" alt="Death of the Endless" title="Death of the Endless\n&trade; &amp; &copy; DC Comics. All rights reserved.">
-	<p>{% trans "There's no such board.<br>Returning to the main page..." %}</p>
+	<p>
+		{% trans "There's no such board." %}<br>
+		{% trans "Returning to the main page..." %}
+	</p>
 </div>
 
-<script>
-	window.setTimeout(function() {
-		window.location = window.location.protocol+'//'+window.location.host;
-	}, 5000);
-</script>
+<script> window.setTimeout(function() { window.location = window.location.protocol+'//'+window.location.host; }, 5000); </script>
 
 {% endblock content %}

@@ -18,6 +18,7 @@ button, input, select, textarea { outline:none; }
 
 a { color:$black; text-decoration:none; }
 a:hover { color:$grey; }
+a.label:hover { color:$black; opacity:.6; }
 
 .button {
 	display:inline-block;

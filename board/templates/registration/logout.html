@@ -7,7 +7,12 @@
 {% block content %}
 
 <div class="simple_notice">
-	<p>{% trans "Successfully logged out" %}.</p>
+	<p>
+		{% trans "Successfully logged out" %}.<br>
+		{% trans "Returning to the main page..." %}
+	</p>
 </div>
+
+<script> window.setTimeout(function() { window.location = window.location.protocol+'//'+window.location.host; }, 5000); </script>
 
 {% endblock %}

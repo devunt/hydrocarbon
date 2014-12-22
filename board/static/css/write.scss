@@ -11,7 +11,9 @@
 	.item.article {
 		.header {
 			.category {
+				display:inline-block; vertical-align:bottom;
 				select { width:100%; background:none; border:0; text-align:right; }
+				.tip { text-align:left; }
 			}
 			h2 {
 				width:79%;

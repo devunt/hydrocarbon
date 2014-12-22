@@ -27,6 +27,10 @@ a {
 a:hover {
   color: #aaa; }
 
+a.label:hover {
+  color: #222;
+  opacity: .6; }
+
 .button {
   display: inline-block; }
   .button.image > span {
@@ -384,7 +388,7 @@ body {
     height: 50px;
     color: #fff;
     display: inline-block; }
-  #nav .dropdown.container.open .handle {
+  #nav .dropdown.container .handle:hover, #nav .dropdown.container.open .handle {
     background: rgba(61, 156, 204, 0.9); }
   #nav .dropdown.container .menu {
     margin: 0 10px; }
@@ -588,29 +592,27 @@ body {
 .section.article .item.article .header .title {
   background: #f2f2f2;
   font-size: 0;
-  padding-right: 5%; }
+  padding: 10px 5%; }
+  .section.article .item.article .header .title .category {
+    max-width: 8%;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: baseline; }
+  .section.article .item.article .header .title h2 {
+    max-width: 79%;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.25em;
+    margin: 0 3%;
+    vertical-align: baseline; }
   .section.article .item.article .header .title .label.meta.comments {
     margin-left: 10px;
     vertical-align: text-bottom; }
     .section.article .item.article .header .title .label.meta.comments:hover {
       color: #222;
       opacity: .6; }
-.section.article .item.article .header .category {
-  max-width: 8%;
-  display: inline-block;
-  font-size: 14px;
-  line-height: 20px;
-  padding-left: 5%;
-  vertical-align: baseline; }
-.section.article .item.article .header h2 {
-  max-width: 79%;
-  display: inline-block;
-  font-size: 22px;
-  font-weight: normal;
-  line-height: 1.25em;
-  margin: 0 3%;
-  padding: 10px 0;
-  vertical-align: baseline; }
 .section.article .item.article .header div.meta {
   background: #e5e5e5;
   padding: 5px 5%; }
@@ -765,8 +767,8 @@ body {
       visibility: visible; }
 .section.article .nav {
   background: #f2f2f2; }
-  @media screen and (max-device-width: 419px) {
-    .section.article .nav .toppost {
+  @media screen and (max-device-width: 359px) {
+    .section.article .nav .button.checkbox {
       display: none; } }
 
 .section.board {
@@ -1019,11 +1021,16 @@ body {
 
 .section.article.form {
   padding-bottom: 20px; }
-  .section.article.form .item.article .header .category select {
-    width: 100%;
-    background: none;
-    border: 0;
-    text-align: right; }
+  .section.article.form .item.article .header .category {
+    display: inline-block;
+    vertical-align: bottom; }
+    .section.article.form .item.article .header .category select {
+      width: 100%;
+      background: none;
+      border: 0;
+      text-align: right; }
+    .section.article.form .item.article .header .category .tip {
+      text-align: left; }
   .section.article.form .item.article .header h2 {
     width: 79%; }
     .section.article.form .item.article .header h2 input {
