@@ -13,7 +13,7 @@
 ::-ms-clear,
 ::-ms-reveal { display:none; }
 
-body { color:$black; font:$font-size "NanumGothic"; letter-spacing:-.04em; }
+body { color:$black; font:$font-size "NanumGothic"; letter-spacing:-.03em; }
 button, input, select, textarea { outline:none; }
 
 a { color:$black; text-decoration:none; }
@@ -38,8 +38,13 @@ a.label:hover { color:$black; opacity:.6; }
 
 #overlay div { z-index:20; }
 
-.contents > .errorlist {
-	li { background:#cc3d3d; color:#fff; line-height:20px; list-style:none; padding:5px 0; text-align:center; }
+#messages {
+	li {
+		background:$lightgrey-base; color:$black; line-height:20px; list-style:none; padding:5px 0; text-align:center;
+		&.success { background:$green-base; color:$white; }
+		&.warning { background:#ffea80; color:$white; }
+		&.error { background:$red; color:$white; }
+	}
 }
 
 

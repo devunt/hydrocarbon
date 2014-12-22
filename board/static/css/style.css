@@ -15,7 +15,7 @@
 body {
   color: #222;
   font: 14px "NanumGothic";
-  letter-spacing: -.04em; }
+  letter-spacing: -.03em; }
 
 button, input, select, textarea {
   outline: none; }
@@ -65,13 +65,22 @@ a.label:hover {
 #overlay div {
   z-index: 20; }
 
-.contents > .errorlist li {
-  background: #cc3d3d;
-  color: #fff;
+#messages li {
+  background: #ccc;
+  color: #222;
   line-height: 20px;
   list-style: none;
   padding: 5px 0;
   text-align: center; }
+  #messages li.success {
+    background: #85cc3d;
+    color: #fff; }
+  #messages li.warning {
+    background: #ffea80;
+    color: #fff; }
+  #messages li.error {
+    background: #cc3d3d;
+    color: #fff; }
 
 body {
   background: #e5e5e5; }
@@ -653,10 +662,12 @@ body {
   @media screen and (max-device-width: 599px) {
     .section.article .item.article div.article {
       width: 90%; } }
-  .section.article .item.article div.article p {
-    margin: 0 0 1em; }
+  .section.article .item.article div.article img {
+    max-width: 100%; }
   .section.article .item.article div.article li {
     list-style-position: inside; }
+  .section.article .item.article div.article p {
+    margin: 0 0 1em; }
 .section.article .item.article .vote.vote-post {
   font-size: 0;
   margin: 30px 0;
@@ -1034,18 +1045,15 @@ body {
 
 .section.article.form {
   padding-bottom: 20px; }
-  .section.article.form .item.article .header .category {
-    display: inline-block;
-    vertical-align: bottom; }
-    .section.article.form .item.article .header .category select {
-      width: 100%;
-      background: none;
-      border: 0;
-      text-align: right; }
-    .section.article.form .item.article .header .category .tip {
-      text-align: left; }
+  .section.article.form .item.article .header .category select {
+    width: 100%;
+    background: none;
+    border: 0;
+    text-align: right; }
+  .section.article.form .item.article .header .category .tip {
+    text-align: left; }
   .section.article.form .item.article .header h2 {
-    width: 79%; }
+    width: 100%; }
     .section.article.form .item.article .header h2 input {
       width: 100%;
       background: none;

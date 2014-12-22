@@ -47,8 +47,9 @@
 
 			@media screen and (max-device-width: $medium) { width:90%; }
 
-			p { margin:0 0 1em; }
+			img { max-width:100%; }
 			li { list-style-position:inside; }
+			p { margin:0 0 1em; }
 		}
 
 		.vote.vote-post {
