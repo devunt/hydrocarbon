@@ -1,17 +1,41 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Delete post" %} :: {{ block.super }}{% endblock %}
+{% block pagename %}{% trans "Delete post" %}{% endblock %}
 
 {% block content %}
-<form action="" method="post">{% csrf_token %}
-	{% if messages %}
-	<ul>
-	{% for message in messages %}
-	<li>{{ message }}</li>
-	{% endfor %}
+
+{% if messages %}
+	<ul class="errorlist">
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
 	</ul>
-	{% endif %}
-	{% if form %}
-	{{ form.as_p }}
-	{% endif %}
-	<input type="submit" value="Create" />
-</form>
+{% endif %}
+
+<div id="form">
+	<form method="post" action="">
+		{% csrf_token %}
+			<div class="simple_notice">
+				<p>{% trans "Deleting a post- this action cannot be undone. Are you sure?" %}
+			{% if form %}
+				<br>{% trans "Then enter the password you used." %}</p>
+			</div>
+			<ul>
+				{% for field in form %}
+				<li class="field">
+					<label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
+					{{ field.errors }}
+				</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			</p></div>
+		{% endif %}
+		<div class="center">
+			<input class="submit" type="submit" value="{% trans 'Delete' %}" />
+		</div>
+	</form>
+</div>
 {% endblock content %}

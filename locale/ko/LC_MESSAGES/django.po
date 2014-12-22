@@ -171,6 +171,24 @@ msgstr "로그아웃"
 msgid "Log in"
 msgstr "로그인"
 
+#: board/templates/board/post_confirm_delete.html:4
+#: board/templates/board/post_confirm_delete.html:5
+msgid "Delete post"
+msgstr "글 삭제"
+
+#: board/templates/board/post_confirm_delete.html:21
+msgid "Deleting a post- this action cannot be undone. Are you sure?"
+msgstr "글을 삭제합니다. 삭제된 글은 복구할 수 없습니다. 삭제하시겠습니까?"
+
+#: board/templates/board/post_confirm_delete.html:23
+msgid "Then enter the password you used."
+msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력해 주세요."
+
+#: board/templates/board/post_confirm_delete.html:29
+#: board/templates/board/post_detail.html:158
+msgid "Delete"
+msgstr "삭제"
+
 #: board/templates/board/post_detail.html:35
 #: board/templates/board/post_list.html:90
 msgid "ago"
@@ -236,10 +254,6 @@ msgstr "목록"
 #| msgid "Top posts"
 msgid "Top Posts"
 msgstr "베스트"
-
-#: board/templates/board/post_detail.html:148
-msgid "Delete"
-msgstr "삭제"
 
 #: board/templates/board/post_detail.html:149
 msgid "Modify"
@@ -317,6 +331,14 @@ msgstr "다음"
 #: board/templates/board/post_list.html:168
 msgid "Last"
 msgstr "마지막"
+
+#: board/templates/errors/403.html:5
+msgid "No permission"
+msgstr "권한 없음"
+
+#: board/templates/errors/403.html:12
+msgid "You don't have the permission."
+msgstr "권한이 없습니다."
 
 #: board/templates/errors/board_404.html:5
 msgid "No board found"
