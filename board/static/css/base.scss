@@ -48,7 +48,7 @@ body { background:#e5e5e5; }
 	body.hovered { overflow:hidden; }
 }
 
-#wrapper { width:720px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.1); margin:0 auto; padding-top:50px;
+#wrapper { width:720px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.1); margin:0 auto; margin-top:50px;
 	@media screen and (max-device-width: $large) { width:100%; }
 }
 
@@ -83,5 +83,13 @@ body { background:#e5e5e5; }
 	}
 }
 
-#footer { color:$lightgrey-base; font-size:$font-size - 2; margin:30px 0; text-align:center; }
-#footer img { width:98px; }
+#footer {
+	color:$lightgrey-base; font-size:$font-size - 2; padding:30px 0;
+
+	img { width:98px; }
+
+	@media screen and (max-device-width: $small) {
+		color:$grey; padding:10px 0;
+		img { display:none; }
+	}
+}
