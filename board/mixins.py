@@ -1,5 +1,5 @@
 from django.contrib.auth.hashers import make_password
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.shortcuts import render
 
 from board.models import Board, OneTimeUser
@@ -35,3 +35,17 @@ class UserLoggingMixin:
             form.instance.onetime_user = ot_user
         form.instance.ipaddress = self.request.META['REMOTE_ADDR']
         return super().form_valid(form)
+
+
+class AjaxMixin:
+    def bad_request(self):
+        return JsonResponse({'status': 'badrequest'}, status=400)
+
+    def permission_denied(self):
+        return JsonResponse({'status': 'permissiondenied'}, status=403)
+
+    def not_found(self):
+        return JsonResponse({'status': 'notexists'}, status=404)
+
+    def success(self):
+        return JsonResponse({'status': 'success'})

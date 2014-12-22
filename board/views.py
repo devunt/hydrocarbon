@@ -14,7 +14,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from board.forms import PostForm, PostDeleteForm
-from board.mixins import BoardMixin, UserLoggingMixin
+from board.mixins import AjaxMixin, BoardMixin, UserLoggingMixin
 from board.models import Attachment, Board, Comment, Post, Vote
 
 from hydrocarbon import settings
@@ -143,7 +143,7 @@ class PostBestListView(PostListView):
         return pqs
 
 
-class VoteAjaxView(View):
+class VoteAjaxView(AjaxMixin, View):
     def post(self, request):
         target_type = request.POST.get('type')
         target_id = request.POST.get('target', '')
@@ -153,7 +153,7 @@ class VoteAjaxView(View):
         if ((target_type not in ('p', 'c')) or
             (not target_id.isdigit()) or
             (vote not in ('++', '-+', '+-', '--'))):
-            return JsonResponse({'status': 'badrequest'}, status=400)
+            return self.bad_request()
         target_id = int(target_id)
 
         vote_dict = {'type': target_type, 'id': target_id, 'vote': vote}
@@ -164,13 +164,13 @@ class VoteAjaxView(View):
             try:
                 post = Post.objects.get(id=target_id)
             except Post.DoesNotExist:
-                return JsonResponse({'status': 'badrequest'}, status=400)
+                return self.bad_request()
             vqs = Vote.objects.filter(post=post)
         else:
             try:
                 comment = Comment.objects.get(id=target_id)
             except Comment.DoesNotExist:
-                return JsonResponse({'status': 'badrequest'}, status=400)
+                return self.bad_request()
             vqs = Vote.objects.filter(comment=comment)
         if request.user.is_authenticated():
             vqs = vqs.filter(user=request.user)
@@ -204,13 +204,13 @@ class VoteAjaxView(View):
             else:
                 vqs = vqs.filter(vote=Vote.DOWNVOTE)
             if not vqs.exists():
-                return JsonResponse({'status': 'notexists'}, status=404)
+                return self.not_found()
             v = vqs.first()
             v.delete()
             return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
 
 
-class FileUploadAjaxView(View):
+class FileUploadAjaxView(AjaxMixin, View):
     def post(self, request):
         files = list()
         for f in request.FILES.getlist('files[]'):
@@ -227,7 +227,7 @@ class FileUploadAjaxView(View):
         return JsonResponse({'status': 'success', 'files': files})
 
 
-class CommentAjaxView(View):
+class CommentAjaxView(AjaxMixin, View):
     def dispatch(self, request, *args, **kwargs):
         self.pk = kwargs.pop('pk')
         return super().dispatch(request, *args, **kwargs)
@@ -314,15 +314,3 @@ class CommentAjaxView(View):
             c.onetime_user.delete()
         c.delete()
         return self.success()
-
-    def bad_request(self):
-        return JsonResponse({'status': 'badrequest'}, status=400)
-
-    def permission_denied(self):
-        return JsonResponse({'status': 'permissiondenied'}, status=403)
-
-    def not_found(self):
-        return JsonResponse({'status': 'notexists'}, status=404)
-
-    def success(self):
-        return JsonResponse({'status': 'success'})
