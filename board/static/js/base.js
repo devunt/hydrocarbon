@@ -12,7 +12,6 @@ $(function() {
 	$menu = $('.dropdown.container');
 
 	$document
-		.on('touchstart', '.dropdown.container .handle', function() { $(this).closest('.container').toggleClass('open'); })
 		.on('click', '.dropdown.container .handle', function() {
 			var $container = $(this).closest('.container');
 			if(!$container.hasClass('open')) { $container.addClass('open');

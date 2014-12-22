@@ -9,7 +9,7 @@
 	<div class="item article">
 		<div class="header">
 			<div class="title">
-				<span class="category">{{ post.category }}</span>
+				<p class="category">{{ post.category }}</p>
 				<h2>
 					<span>{{ post.title }}</span>
 					{% if item.comments.count != 0 %}
@@ -154,8 +154,10 @@
 			</a>
 		</div>
 		<div class="right">
-			<a href="{% url 'post_delete' post.id %}" class="button">{% trans "Delete" %}</a>
-			<a href="{% url 'post_update' post.id %}" class="button">{% trans "Modify" %}</a>
+			{% if user.username == post.user.username or not post.user.username %}
+				<a href="{% url 'post_delete' post.id %}" class="button">{% trans "Delete" %}</a>
+				<a href="{% url 'post_update' post.id %}" class="button">{% trans "Modify" %}</a>
+			{% endif %}
 			<a href="{% url 'board_post_create' board.slug %}" class="button blue">{% trans "New post" %}</a>
 		</div>
 	</div>

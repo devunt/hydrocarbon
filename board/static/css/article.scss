@@ -11,11 +11,11 @@
 			.title {
 				background:$grey-95; font-size:0; padding:10px 5%;
 
-				.category { max-width:8%; display:inline-block; font-size:$font-size; line-height:20px; vertical-align:baseline; }
-				h2 { max-width:79%; display:inline-block; font-size:22px; font-weight:normal; line-height:1.25em; margin: 0 3%; vertical-align:baseline; }
+				.category { color:$darkgrey; display:table-cell; font-size:$font-size; padding-right:.5em; white-space:nowrap; }
+				h2 { display:table-cell; font-size:22px; font-weight:normal; line-height:28px; vertical-align:baseline; }
 
 				.label.meta.comments {
-					margin-left:10px; vertical-align:text-bottom;
+					margin-left:.5em; vertical-align:text-bottom;
 					&:hover { color:$black; opacity:.6; }
 				}
 			}
@@ -26,17 +26,18 @@
 			}
 
 			@media screen and (max-device-width: $medium) {
-				.category { max-width:15%; }
-				h2 { max-width:77%; font-size:18px; }
+				.title h2 { font-size:18px; line-height:24px; }
 				div.meta .label.meta .text { font-size:$font-size - 1; }
 			}
 
 			@media screen and (max-device-width: $small) {
-				h2 { font-size:$font-size; }
-				div.meta .label.meta .icon { margin-right:2px; }
-				div.meta .label.meta .text {
-					font-size:0;
-					span { font-size:$font-size - 2; }
+				.title h2 { font-size:16px; line-height:22px; }
+				div.meta .label.meta {
+					.icon { margin-right:2px; }
+					.text {
+						font-size:0;
+						span { font-size:$font-size - 2; }
+					}
 				}
 			}
 		}
@@ -59,11 +60,15 @@
 				.icon {
 					height:20px; background:url("../img/vote_1x.png") no-repeat; background-size:20px; display:block;
 
-					@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) {
+					@media
+					screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+					screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
 						background-image:url("../img/vote_2x.png"); 
 					}
 
-					@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) {
+					@media
+					screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+					screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
 						background-image:url("../img/vote_3x.png");
 					}
 				}

@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "No permission" %} :: {{ block.super }}{% endblock %}
 
 {% block content %}
-NO PERMISSION
+
+<div class="simple_notice error">
+	<img src="{% static "img/dead_2x.png" %}" alt="Death of the Endless" title="Death of the Endless\n&trade; &amp; &copy; DC Comics. All rights reserved.">
+	<p>
+		{% trans "You don't have the permission." %}<br>
+		{% trans "Returning to the main page..." %}
+	</p>
+</div>
+
+<script> window.setTimeout(function() { window.location = window.location.protocol+'//'+window.location.host; }, 3000); </script>
+
 {% endblock content %}

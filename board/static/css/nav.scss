@@ -29,8 +29,13 @@
 			.icon {
 				width:50px; background:url("../img/logo_1x.png") no-repeat; background-size:50px;
 
-				@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) { background-image:url("../img/logo_2x.png"); }
-				@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) { background-image:url("../img/logo_3x.png"); }
+				@media
+				screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+				screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) { background-image:url("../img/logo_2x.png"); }
+
+				@media
+				screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+				screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3)  { background-image:url("../img/logo_3x.png"); }
 			}
 
 			&.open .icon { background-position:0 -50px; }
@@ -40,8 +45,12 @@
 				span.default {
 					width:100px; background:url("../img/logo_kr_1x.png") no-repeat; background-size:100px; display:inline-block; font-size:0; margin:0 5px;
 
-					@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) { background-image:url("../img/logo_kr_2x.png"); }
-					@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) { background-image:url("../img/logo_kr_3x.png"); }
+					@media
+					screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+					screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) { background-image:url("../img/logo_kr_2x.png"); }
+					@media
+					screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+					screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3)  { background-image:url("../img/logo_kr_3x.png"); }
 				}
 			}
 
@@ -52,8 +61,12 @@
 			.icon {
 				width:50px; background:url("../img/login_1x.png") 50% 50% no-repeat; background-size:24px;
 
-				@media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx) { background-image:url("../img/login_2x.png"); }
-				@media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx) { background-image:url("../img/login_3x.png"); }
+				@media
+				screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+				screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2)  { background-image:url("../img/login_2x.png"); }
+				@media
+				screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+				screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3)  { background-image:url("../img/login_3x.png"); }
 			}
 
 			.menu { right:0; }
