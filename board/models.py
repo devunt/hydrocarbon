@@ -69,6 +69,10 @@ class AuthorModelMixin:
         else:
             return self.onetime_user.nick
 
+    @property
+    def iphash(self):
+        return sha224(self.ipaddress.encode()).hexdigest()[:10]
+
 
 class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     user = models.ForeignKey(User, blank=True, null=True, related_name='posts')
