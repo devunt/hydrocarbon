@@ -819,8 +819,18 @@ body {
       background: #fff7cc; }
     .section.board .item.notice.even {
       background: #f2eac2; }
+    .section.board .item.notice .cell.author {
+      visibility: hidden; }
     .section.board .item.currentpost .cell.mark {
       font-size: 10px; }
+    .section.board .item.hidden .cell {
+      color: #aaa;
+      padding: 5px 0;
+      visibility: hidden; }
+      .section.board .item.hidden .cell.mark, .section.board .item.hidden .cell.title {
+        visibility: visible; }
+      .section.board .item.hidden .cell.title span.title {
+        font-size: 13px; }
     .section.board .item .cell {
       line-height: 20px;
       padding: 15px 0;
@@ -833,13 +843,6 @@ body {
       .section.board .item .cell.title .label.meta.comments {
         margin-left: 5px;
         padding-left: 15px; }
-  .section.board .hidden .cell {
-    color: #aaa;
-    padding: 5px 0; }
-  .section.board .hidden .cell.title .text {
-    font-size: 13px; }
-  .section.board .hidden .cell.meta .text {
-    display: none; }
   .section.board .cell {
     display: inline-block;
     font-size: 14px;

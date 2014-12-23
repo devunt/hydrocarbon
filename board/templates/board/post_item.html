@@ -1,0 +1,52 @@
+{% load hc %}
+{% load i18n %}
+{% load intcomma from humanize %}
+
+<li>
+	<a href="{{ item.get_absolute_url }}" class="item {% if notice %}notice {% elif item.votes.total <= -10 %}hidden {% else %}{{ item.category.slug }} {% endif %}{{ rowclass }}{% if current_id == item.id %} currentpost{% endif %}">
+		<span class="cell mark">&#9654;</span>
+		<span class="cell category">{% if notice %}{% trans "Notice" %}{% else %}{{ item.category }}{% endif %}</span>
+		<span class="cell title">
+			{% if item.votes.total <= -10 %}
+				<span class="title" title="{{ item.title }}">{% trans "This post has been downvoted by users." %}</span>
+			{% else %}
+				<span class="title">{{ item.title }}</span>
+				{% if item.comments.count != 0 %}
+					<span class="label meta comments">
+						<span class="icon"></span>
+						<span class="text">{{ item.comments.count }}</span>
+					</span>
+				{% endif %}
+			{% endif %}
+		</span>
+		<span class="cell author meta">
+			<span {% if not item.user.username %}title="{{ item.iphash }}" {% endif %}class="label meta 
+			{% if item.user %}
+				author user">
+			{% else %}
+				author guest">
+			{% endif %}
+				<span class="icon"></span>
+				<span class="text">{{ item.author }}</span>
+			</span>
+		</span>
+		<span class="cell timestamp meta">
+			<span title="{{ item.created_time | date:'DATE_FORMAT' }} {{ item.created_time | date:'H:i:s' }}" class="label meta timestamp">
+				<span class="icon"></span>
+				<span class="text">{{ item.created_time | timesince | split_first }} {% trans "ago" %}</span>
+			</span>
+		</span>
+		<span class="cell score meta">
+			<span title="+{{ item.votes.upvote }} / -{{ item.votes.downvote }}" class="label meta score">
+				<span class="icon"></span>
+				<span class="text">{{ item.votes.total | intcomma }}</span>
+			</span>
+		</span>
+		<span class="cell views meta">
+			<span class="label meta views">
+				<span class="icon"></span>
+				<span class="text">{{ item.viewcount | intcomma }}</span>
+			</span>
+		</span>
+	</a>
+</li>

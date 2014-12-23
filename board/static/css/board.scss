@@ -30,7 +30,16 @@
 		&.even { background:$grey-95; }
 		&.notice { background:#fff7cc; }
 		&.notice.even { background:#f2eac2; }
+		&.notice .cell.author { visibility:hidden; }
 		&.currentpost .cell.mark { font-size:$font-size - 4; }
+
+		&.hidden .cell {
+			color:$grey; padding:5px 0; visibility:hidden;
+		
+			&.mark,
+			&.title { visibility:visible; }
+			&.title span.title { font-size:$font-size - 1; }
+		}
 		
 		.cell {
 			line-height:20px; padding:15px 0; vertical-align:top;
@@ -40,10 +49,6 @@
 			&.title .label.meta.comments { margin-left:5px; padding-left:15px; }			
 		}
 	}
-
-	.hidden .cell { color:$grey; padding:5px 0; }
-	.hidden .cell.title .text { font-size:$font-size - 1; }
-	.hidden .cell.meta .text { display:none; }
 
 	.cell {
 		display:inline-block; font-size:$font-size; overflow:hidden; text-align:center; vertical-align:top;
