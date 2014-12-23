@@ -59,7 +59,7 @@
 			</div>
 			<div class="right">
 				<div class="dropdown container menu-personal">
-					{% if user.profile.nick %}
+					{% if user.is_authenticated %}
 						<a href="#" class="handle">
 							<span class="icon"></span>
 							<span class="text">{{ user.profile.nick }}</span>

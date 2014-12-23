@@ -12,6 +12,7 @@
 
 		.cell { font-size:$font-size - 1; line-height:20px; padding:10px 0 5px; }
 		.cell.category {
+			position:static;
 			.label.meta .text { font-size:inherit; }
 			.label.meta:hover .text { color:$black; }
 		}
@@ -30,7 +31,7 @@
 		&.even { background:$grey-95; }
 		&.notice { background:#fff7cc; }
 		&.notice.even { background:#f2eac2; }
-		&.notice .cell.author { visibility:hidden; }
+		&.notice .cell.author .label.meta { display:none; }
 		&.currentpost .cell.mark { font-size:$font-size - 4; }
 
 		&.hidden .cell {
@@ -104,6 +105,7 @@
 
 			&.currentpost .cell.mark { visibility:visible; }
 
+			&.notice .cell.category { background:transparent; }
 			&.scanlation .cell.category { background:$blue; color:$white; }
 			&.news .cell.category { background:$green; color:$white; }
 			&.subtitles .cell.category { background:$red-trans; color:$white; }
@@ -129,6 +131,8 @@
 				&.author .text { max-width:none; }
 				&.views { margin:0; }
 			}
+
+			&.notice .cell.timestamp { margin-left:4%; }
 		}
 
 		.nav.bottom {

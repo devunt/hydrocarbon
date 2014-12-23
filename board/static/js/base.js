@@ -12,14 +12,18 @@ $(function() {
 	$menu = $('.dropdown.container');
 
 	$document
-		.on('click', '.dropdown.container .handle', function() {
+		.on('click', '.dropdown.container .handle', function(e) {
 			var $container = $(this).closest('.container');
 			if(!$container.hasClass('open')) { $container.addClass('open');
 			} else { $container.removeClass('open'); }
 		})
 		.on('mouseleave', '.dropdown.container', function() { if($(this).hasClass('open')) $(this).removeClass('open'); })
 		.on('click', '.dropdown.container .handle[href=#]', function(e) { e.preventDefault(); })
-		.on('mousedown', '.dropdown.container .close', function(e) { e.preventDefault(); if($menu.hasClass('open')) $menu.removeClass('open'); })
+		.on('mousedown', '.dropdown.container .close', function(e) {
+			e.preventDefault();
+			var $container = $(this).closest('.container');
+			$container.removeClass('open');
+		})
 		.on('mouseenter', '.th', showTooltip)
 		.on('mouseleave scroll', '.th', hideTooltip)
 		.on('mouseenter', '*[title]', function() {

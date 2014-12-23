@@ -5,7 +5,7 @@
 
 {% block post %}
 
-<div class="section article">
+<div class="section article" data-id="{{ post.id }}">
 	<div class="item article">
 		<div class="header">
 			<div class="title">
@@ -118,31 +118,31 @@
 											<a href="#" class="close">{% trans "Close" %}</a>
 											<div class="tip top"><span></span></div>
 											<ul>
-												<li><a href="#">
+												<li><a href="#upvote">
 													<span class="label meta score">
 														<span class="icon"></span>
 														<span class="text">{% trans "Upvote" %}</span>
 													</span>
 												</a></li>
-												<li><a href="#">
+												<li><a href="#downvote">
 													<span class="label meta downvote">
 														<span class="icon"></span>
 														<span class="text">{% trans "Downvote" %}</span>
 													</span>
 												</a></li>
-												<li><a href="#">
+												<li><a href="#reply">
 													<span class="label meta reply">
 														<span class="icon"></span>
 														<span class="text">{% trans "Reply" %}</span>
 													</span>
 												</a></li>
-												<li><a href="#">
+												<li><a href="#modify">
 													<span class="label meta modify">
 														<span class="icon"></span>
 														<span class="text">{% trans "Modify" %}</span>
 													</span>
 												</a></li>
-												<li><a href="#">
+												<li><a href="#delete">
 													<span class="label meta delete">
 														<span class="icon"></span>
 														<span class="text">{% trans "Delete" %}</span>
@@ -166,7 +166,14 @@
 						<div class="container">
 							<div class="article"><textarea placeholder="{% trans 'Please write your reply here.' %}"></textarea></div>
 							<div class="footer clear">
-								<div class="right nav">
+								<div class="ot nav">
+									{% if not user.is_authenticated %}
+										<label class="nick"><input type="text" name="nick" placeholder="{% trans "Nickname" %}"></label>
+										<label class="password"><input type="password" name="password" placeholder="{% trans "Password" %}"></label>
+									{% endif %}
+								</div>
+								<div class="nav">
+									<a href="#" class="cancel button" style="display:none;">{% trans "Cancel" %}</a>
 									<a href="#" class="submit button blue">{% trans "Submit comment" %}</a>
 								</div>
 							</div>
@@ -176,29 +183,7 @@
 				</div>
 			</li>
 		</ul>
-
-		
-
-		<script>
-			getComments({{ post.id }});
-
-			$('.comments-list').on('click', '.write .submit', function(e) {
-				e.preventDefault();
-				var $container = $(this).closest('.write'),
-					text = $container.find('textarea').val(),
-					id = {{ post.id }};
-
-				if(text == '') {
-					alert('내용을 입력해 주세요.');
-					return false;
-				}
-
-				if($container.data('type') == 'c') id = $container.prev('.item').data('id');
-
-				postComments(id, text, $container.data('type'))
-					.done(getComments({{ post.id }}));
-			});
-		</script>
+		<script> getComments({{ post.id }}); </script>
 	</div>
 
 	<div class="nav clear">

@@ -765,32 +765,62 @@ body {
         padding: 0 5px;
         text-align: right; }
     .section.article .comments-list .comment .bubble.item .article {
-      padding: 5px 10px 10px; }
+      padding: 5px 10px; }
       .section.article .comments-list .comment .bubble.item .article textarea {
-        min-height: 2em;
+        min-height: 80px;
         width: 100%;
         max-width: 100%;
         border: 0;
         background: transparent;
         display: block; }
     .section.article .comments-list .comment .bubble.item .footer {
-      padding: 0 10px; }
+      border-top: 1px solid #e5e5e5;
+      margin: 0 10px;
+      padding: 5px 0 10px; }
       .section.article .comments-list .comment .bubble.item .footer .nav {
+        display: table-cell;
+        font-size: 0;
         line-height: 0;
         padding: 0;
-        padding-bottom: 10px; }
+        vertical-align: top;
+        white-space: nowrap; }
+      .section.article .comments-list .comment .bubble.item .footer .ot {
+        width: 100%; }
+      .section.article .comments-list .comment .bubble.item .footer label {
+        width: 30%;
+        background: #e5e5e5;
+        border-radius: 2px 0 0 2px;
+        display: inline-block;
+        font-size: 14px;
+        padding: 5px 0; }
+        .section.article .comments-list .comment .bubble.item .footer label input {
+          width: 100%;
+          background: 0;
+          border: 0;
+          border-right: 1px solid #d9d9d9;
+          box-sizing: border-box;
+          display: block;
+          line-height: 20px;
+          padding: 0 5%; }
+      .section.article .comments-list .comment .bubble.item .footer .password {
+        width: 45%;
+        border-radius: 0 2px 2px 0; }
+        .section.article .comments-list .comment .bubble.item .footer .password input {
+          border: 0;
+          border-left: 1px solid #f2f2f2; }
+        .section.article .comments-list .comment .bubble.item .footer .password:first-of-type {
+          border-radius: 2px; }
+        .section.article .comments-list .comment .bubble.item .footer .password:first-of-type input {
+          border: 0; }
     @media screen and (max-device-width: 599px) {
-      .section.article .comments-list .comment .bubble.item {
-        border-left-width: 5px;
-        padding-right: 5px; }
-        .section.article .comments-list .comment .bubble.item .vote {
-          display: none; }
-        .section.article .comments-list .comment .bubble.item .container {
-          margin: 0 5%; } }
+      .section.article .comments-list .comment .bubble.item .footer label {
+        width: 40%; }
+      .section.article .comments-list .comment .bubble.item .footer label + label {
+        width: 60%; } }
   .section.article .comments-list .comment .bubble.tip {
     height: 10px;
     overflow: hidden;
-    padding: 0 50px;
+    padding: 0 6%;
     text-align: right; }
     .section.article .comments-list .comment .bubble.tip span {
       border-right-color: #f2f2f2;
@@ -817,10 +847,12 @@ body {
       font-size: 13px;
       line-height: 20px;
       padding: 10px 0 5px; }
-    .section.board .header .cell.category .label.meta .text {
-      font-size: inherit; }
-    .section.board .header .cell.category .label.meta:hover .text {
-      color: #222; }
+    .section.board .header .cell.category {
+      position: static; }
+      .section.board .header .cell.category .label.meta .text {
+        font-size: inherit; }
+      .section.board .header .cell.category .label.meta:hover .text {
+        color: #222; }
     .section.board .header .dropdown .tip {
       width: 45px; }
   .section.board .post-list {
@@ -836,8 +868,8 @@ body {
       background: #fff7cc; }
     .section.board .item.notice.even {
       background: #f2eac2; }
-    .section.board .item.notice .cell.author {
-      visibility: hidden; }
+    .section.board .item.notice .cell.author .label.meta {
+      display: none; }
     .section.board .item.currentpost .cell.mark {
       font-size: 10px; }
     .section.board .item.hidden .cell {
@@ -950,6 +982,8 @@ body {
       padding-left: 0; }
       .section.board .item.currentpost .cell.mark {
         visibility: visible; }
+      .section.board .item.notice .cell.category {
+        background: transparent; }
       .section.board .item.scanlation .cell.category {
         background: rgba(61, 156, 204, 0.9);
         color: #fff; }
@@ -1006,6 +1040,8 @@ body {
           max-width: none; }
         .section.board .item .cell.views {
           margin: 0; }
+      .section.board .item.notice .cell.timestamp {
+        margin-left: 4%; }
     .section.board .nav.bottom #search .text,
     .section.board .nav.bottom #scope {
       width: 0;

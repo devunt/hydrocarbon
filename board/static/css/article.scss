@@ -122,25 +122,39 @@
 					}
 
 					.article {
-						padding:5px 10px 10px;
-						textarea { min-height:2em; width:100%; max-width:100%; border:0; background:transparent; display:block; }
+						padding:5px 10px;
+						textarea { min-height:80px; width:100%; max-width:100%; border:0; background:transparent; display:block; }
 						
 					}
 
 					.footer {
-						padding:0 10px;
-						.nav { line-height:0; padding:0; padding-bottom:10px; }
+						border-top:1px solid $grey-90; margin:0 10px; padding:5px 0 10px;
+						.nav { display:table-cell; font-size:0; line-height:0; padding:0; vertical-align:top; white-space:nowrap; }
+						.ot { width:100%; }
+
+						label {
+							width:30%; background:$grey-90; border-radius:2px 0 0 2px; display:inline-block; font-size:$font-size; padding:5px 0;
+							input { width:100%; background:0; border:0; border-right:1px solid $grey-85; box-sizing:border-box; display:block; line-height:20px; padding:0 5%; }
+						}
+						.password {
+							width:45%; border-radius:0 2px 2px 0;
+							input { border:0; border-left:1px solid $grey-95; }
+
+							&:first-of-type { border-radius:2px; }
+							&:first-of-type input { border:0; }
+						}
 					}
 
 					@media screen and (max-device-width: $medium) {
-						border-left-width:5px; padding-right:5px;
-						.vote { display:none; }
-						.container { margin:0 5%; }
+						.footer {
+							label { width:40%; }
+							label + label { width:60%; }
+						}
 					}
 				}
 
 				&.tip {
-					height:10px; overflow:hidden; padding:0 50px; text-align:right;
+					height:10px; overflow:hidden; padding:0 6%; text-align:right;
 					span { border-right-color:$grey-95; border-top-color:$grey-95; border-width:10px; }
 				}
 			}
