@@ -15,7 +15,7 @@ from django.views.generic.list import ListView
 
 from board.forms import PostForm, PostDeleteForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, UserLoggingMixin
-from board.models import Attachment, Board, Comment, Post, Vote
+from board.models import Attachment, Board, Comment, OneTimeUser, Post, Vote
 
 from hydrocarbon import settings
 
