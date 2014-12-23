@@ -92,44 +92,8 @@ class PostDeleteView(DeleteView):
         return super(PostDeleteView, self).get_context_data(**kwargs)
 
 
-class PostDetailView(PostListMixin, DetailView):
-    model = Post
-
-    @method_decorator(ensure_csrf_cookie)
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_object(self, queryset=None):
-        post = super().get_object(queryset)
-        self.board = post.board
-        post_ids_viewed = self.request.session.get('post_ids_viewed', list())
-        if post.id not in post_ids_viewed:
-            post.viewcount += 1
-            post.save()
-            post_ids_viewed.append(post.id)
-            self.request.session['post_ids_viewed'] = post_ids_viewed
-        return post
-
-    def get_context_data(self, **kwargs):
-        kwargs['board'] = self.board
-        kwargs['post_list'] = self.board.posts.order_by('-created_time')
-        voted = {'upvoted': False, 'downvoted': False}
-        if self.request.user.is_authenticated():
-            vqs = self.object._votes.filter(user=self.request.user)
-        else:
-            vqs = self.object._votes.filter(ipaddress=self.request.META['REMOTE_ADDR'])
-        if vqs.exists():
-            vote = vqs.first()
-            if vote.vote == Vote.UPVOTE:
-                voted['upvoted'] = True
-            elif vote.vote == Vote.DOWNVOTE:
-                voted['downvoted'] = True
-        kwargs['voted'] = voted
-        return super().get_context_data(**kwargs)
-
-
 class PostListView(BoardMixin, PostListMixin, ListView):
-    paginate_by = 20
+    paginate_by = 10
     is_best = False
 
     def get_queryset(self):
@@ -148,6 +112,47 @@ class PostBestListView(PostListView):
         pqs = pqs.annotate(vote=Sum('_votes__vote'))
         pqs = pqs.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
         return pqs
+
+
+class PostDetailView(DetailView):
+    model = Post
+
+    @method_decorator(ensure_csrf_cookie)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_object(self, queryset=None):
+        post = super().get_object(queryset)
+        self.board = post.board
+        post_ids_viewed = self.request.session.get('post_ids_viewed', list())
+        if post.id not in post_ids_viewed:
+            post.viewcount += 1
+            post.save()
+            post_ids_viewed.append(post.id)
+            self.request.session['post_ids_viewed'] = post_ids_viewed
+        return post
+
+    def get_context_data(self, **kwargs):
+        postlist_view = PostListView()
+        postlist_view.kwargs = dict()
+        postlist_view.request = self.request
+        postlist_view.dispatch(self.request, board=self.board.slug)
+        ctx = postlist_view.get_context_data()
+        kwargs.update(ctx)
+        kwargs['board'] = self.board
+        voted = {'upvoted': False, 'downvoted': False}
+        if self.request.user.is_authenticated():
+            vqs = self.object._votes.filter(user=self.request.user)
+        else:
+            vqs = self.object._votes.filter(ipaddress=self.request.META['REMOTE_ADDR'])
+        if vqs.exists():
+            vote = vqs.first()
+            if vote.vote == Vote.UPVOTE:
+                voted['upvoted'] = True
+            elif vote.vote == Vote.DOWNVOTE:
+                voted['downvoted'] = True
+        kwargs['voted'] = voted
+        return super().get_context_data(**kwargs)
 
 
 class VoteAjaxView(AjaxMixin, View):
