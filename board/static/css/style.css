@@ -76,8 +76,7 @@ a.label:hover {
     background: #85cc3d;
     color: #fff; }
   #messages li.warning {
-    background: #ffea80;
-    color: #fff; }
+    background: #ffea80; }
   #messages li.error {
     background: #cc3d3d;
     color: #fff; }

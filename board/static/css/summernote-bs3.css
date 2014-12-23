@@ -5621,7 +5621,7 @@ button.note-editor .close {
   background-color: transparent;
   border: 0;
 }
-.hidden {
+.note-editor .hidden {
   display: none !important;
   visibility: hidden !important;
 }
