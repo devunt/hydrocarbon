@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-21 20:59+0900\n"
+"POT-Creation-Date: 2014-12-23 10:48+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,7 +129,8 @@ msgstr[0] ""
 
 #: board/templates/base.html:39 board/templates/base.html.py:67
 #: board/templates/board/post_list.html:23
-#: board/templates/board/post_list.html:123
+#: board/templates/board/post_list.html:78 board/templates/post_list.html:23
+#: board/templates/post_list.html.py:73
 msgid "Close"
 msgstr "닫기"
 
@@ -176,11 +177,11 @@ msgstr "로그인"
 msgid "Delete post"
 msgstr "글 삭제"
 
-#: board/templates/board/post_confirm_delete.html:21
+#: board/templates/board/post_confirm_delete.html:13
 msgid "Deleting a post- this action cannot be undone. Are you sure?"
 msgstr "글을 삭제합니다. 삭제된 글은 복구할 수 없습니다. 삭제하시겠습니까?"
 
-#: board/templates/board/post_confirm_delete.html:23
+#: board/templates/board/post_confirm_delete.html:15
 msgid "Then enter the password you used."
 msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력해 주세요."
 
@@ -190,7 +191,7 @@ msgid "Delete"
 msgstr "삭제"
 
 #: board/templates/board/post_detail.html:35
-#: board/templates/board/post_list.html:90
+#: board/templates/board/post_item.html:36
 msgid "ago"
 msgstr "전"
 
@@ -245,90 +246,86 @@ msgid "Submit comment"
 msgstr "댓글 달기"
 
 #: board/templates/board/post_detail.html:144
-#: board/templates/board/post_list.html:115
+#: board/templates/board/post_list.html:61 board/templates/post_list.html:56
 msgid "List"
 msgstr "목록"
 
-#: board/templates/board/post_detail.html:145
-#, fuzzy
-#| msgid "Top posts"
-msgid "Top Posts"
+#: board/templates/board/post_detail.html:152
+#: board/templates/board/post_list.html:69 board/templates/post_list.html:64
+msgid "Top posts"
 msgstr "베스트"
 
-#: board/templates/board/post_detail.html:149
+#: board/templates/board/post_detail.html:159
 msgid "Modify"
 msgstr "수정"
 
-#: board/templates/board/post_detail.html:150
-#, fuzzy
-#| msgid "New post"
-msgid "New Post"
-msgstr "글쓰기"
-
+#: board/templates/board/post_detail.html:161
 #: board/templates/board/post_form.html:5
 #: board/templates/board/post_form.html:6
-#: board/templates/board/post_form.html:48
-#: board/templates/board/post_list.html:145
+#: board/templates/board/post_form.html:56
+#: board/templates/board/post_list.html:100 board/templates/post_list.html:95
 msgid "New post"
 msgstr "글쓰기"
+
+#: board/templates/board/post_form.html:27
+#: board/templates/board/post_list.html:20 board/templates/post_list.html:20
+msgid "Categories"
+msgstr "분류"
 
 #: board/templates/board/post_form.html:37
 msgid "Tags"
 msgstr ""
 
-#: board/templates/board/post_list.html:20
-msgid "Categories"
-msgstr "분류"
+#: board/templates/board/post_item.html:8
+#, fuzzy
+msgid "Notice"
+msgstr "공지사항"
 
-#: board/templates/board/post_list.html:38
-msgid "Title"
-msgstr "제목"
-
-#: board/templates/board/post_list.html:39
-msgid "Author"
-msgstr "글쓴이"
-
-#: board/templates/board/post_list.html:40
-msgid "Date"
-msgstr "날짜"
-
-#: board/templates/board/post_list.html:41
-msgid "Score"
-msgstr "추천"
-
-#: board/templates/board/post_list.html:42
-msgid "Views"
-msgstr "조회"
-
-#: board/templates/board/post_list.html:54
+#: board/templates/board/post_item.html:11
 msgid "This post has been downvoted by users."
 msgstr "사용자들의 비추천에 의해 숨겨진 글입니다."
 
-#: board/templates/board/post_list.html:109
+#: board/templates/board/post_list.html:38 board/templates/post_list.html:38
+msgid "Title"
+msgstr "제목"
+
+#: board/templates/board/post_list.html:39 board/templates/post_list.html:39
+msgid "Author"
+msgstr "글쓴이"
+
+#: board/templates/board/post_list.html:40 board/templates/post_list.html:40
+msgid "Date"
+msgstr "날짜"
+
+#: board/templates/board/post_list.html:41 board/templates/post_list.html:41
+msgid "Score"
+msgstr "추천"
+
+#: board/templates/board/post_list.html:42 board/templates/post_list.html:42
+msgid "Views"
+msgstr "조회"
+
+#: board/templates/board/post_list.html:55 board/templates/post_list.html:50
 msgid "There are no posts here!"
 msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
 
-#: board/templates/board/post_list.html:116
-msgid "Top posts"
-msgstr "베스트"
-
-#: board/templates/board/post_list.html:118
+#: board/templates/board/post_list.html:73 board/templates/post_list.html:68
 msgid "Search"
 msgstr "검색"
 
-#: board/templates/board/post_list.html:153
+#: board/templates/board/post_list.html:108 board/templates/post_list.html:103
 msgid "First"
 msgstr "처음"
 
-#: board/templates/board/post_list.html:156
+#: board/templates/board/post_list.html:111 board/templates/post_list.html:106
 msgid "Prev"
 msgstr "이전"
 
-#: board/templates/board/post_list.html:165
+#: board/templates/board/post_list.html:119 board/templates/post_list.html:115
 msgid "Next"
 msgstr "다음"
 
-#: board/templates/board/post_list.html:168
+#: board/templates/board/post_list.html:122 board/templates/post_list.html:118
 msgid "Last"
 msgstr "마지막"
 
@@ -340,6 +337,11 @@ msgstr "권한 없음"
 msgid "You don't have the permission."
 msgstr "권한이 없습니다."
 
+#: board/templates/errors/403.html:13 board/templates/errors/board_404.html:13
+#: board/templates/registration/logout.html:12
+msgid "Returning to the main page..."
+msgstr "잠시 후 첫 화면으로 돌아갑니다..."
+
 #: board/templates/errors/board_404.html:5
 msgid "No board found"
 msgstr "게시판 없음"
@@ -347,10 +349,6 @@ msgstr "게시판 없음"
 #: board/templates/errors/board_404.html:12
 msgid "There's no such board."
 msgstr "찾으시는 게시판이 없습니다."
-
-#: board/templates/errors/board_404.html:13
-msgid "Returning to the main page..."
-msgstr "잠시 후 첫 화면으로 돌아갑니다..."
 
 #: board/templates/registration/activate.html:7
 msgid "Account activation failed."
@@ -397,13 +395,7 @@ msgstr ""
 "요.\n"
 
 #: board/templates/registration/activation_email.txt:19
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "Thank you, and we welcome you as our newest valued member.\n"
-#| "\n"
-#| "With regards,\n"
-#| "%(site_name)s\n"
+#, python-format
 msgid ""
 "\n"
 "Thank you, and we welcome you as our newest valued member.\n"
@@ -441,7 +433,7 @@ msgstr "여기를 클릭하세요."
 msgid "Logged out"
 msgstr "로그아웃"
 
-#: board/templates/registration/logout.html:10
+#: board/templates/registration/logout.html:11
 msgid "Successfully logged out"
 msgstr "성공적으로 로그아웃 되었습니다"
 
@@ -604,7 +596,3 @@ msgstr "한국어"
 #: hydrocarbon/settings.py:96
 msgid "English"
 msgstr "영어"
-
-#~ msgid "<span>%(counter)s</span> comment"
-#~ msgid_plural "<span>%(counter)s</span> comments"
-#~ msgstr[0] "댓글 <span>%(counter)s</span>개"
