@@ -249,7 +249,7 @@ class CommentAjaxView(AjaxMixin, View):
                     subcomments = _make_list(comment.subcomments.filter(comment=comment))
                 lst.append({
                     'id': comment.id,
-                    'auther': comment.author,
+                    'author': comment.author,
                     'iphash': comment.iphash if not comment.user else None,
                     'contents': comment.contents,
                     'created_time': comment.created_time,
