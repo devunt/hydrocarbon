@@ -3,7 +3,7 @@
 {% load intcomma from humanize %}
 
 <li>
-	<a href="{{ item.get_absolute_url }}" class="item {% if notice %}notice {% elif item.votes.total <= -10 %}hidden {% else %}{{ item.category.slug }} {% endif %}{{ rowclass }}{% if current_id == item.id %} currentpost{% endif %}">
+	<a href="{{ item.get_absolute_url }}" class="item {% if notice %}notice {% elif item.votes.total <= -10 %}hidden {% else %}{{ item.category.slug }} {% endif %}{{ rowclass }}{% if post.id == item.id %} currentpost{% endif %}">
 		<span class="cell mark">&#9654;</span>
 		<span class="cell category">{% if notice %}{% trans "Notice" %}{% else %}{{ item.category }}{% endif %}</span>
 		<span class="cell title">
