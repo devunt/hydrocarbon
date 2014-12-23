@@ -77,13 +77,13 @@
 			{% endif %}
 			<div class="comments">
 				<div class="left">
-					<a href="#" class="label meta comments">
+					<a href="#toggle" class="label meta comments">
 						<span class="icon"></span>
 						<span class="text">{% blocktrans count counter=post.comments.count|intcomma %}There is <span>{{ counter }}</span> comment.{% plural %}There are <span>{{ counter }}</span> comments.{% endblocktrans %}</span>
 					</a>
 				</div>
 				<div class="right">
-					<a href="#" class="label meta refresh">
+					<a href="#refresh" class="label meta refresh">
 						<span class="icon"></span>
 						<span class="text">{% trans "Refresh" %}</span>
 					</a>
@@ -108,7 +108,7 @@
 								<div class="right">
 									<span class="label meta score">
 										<span class="icon"></span>
-										<span class="text"></span>
+										<span class="text">0</span>
 									</span>
 									<div class="dropdown container">
 										<a href="#" class="label meta more dropdown handle">

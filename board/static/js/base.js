@@ -166,8 +166,6 @@ var $menu;
 
 var csrftoken = $.cookie('csrftoken');
 
-var funct = function() {};
-
 var browser = {
 	can : {
 		placeholder: function() { return 'placeholder' in document.createElement('input'); }

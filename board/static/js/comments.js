@@ -105,6 +105,24 @@ function deleteComments(id, password) {
 }
 
 $(function() {
+	$('.section.article .item.article .footer')
+		.on('click', 'a', function(e) {
+			var action = $(this).attr('href').replace('#', '');
+
+			switch(action) {
+				case 'toggle':
+					e.preventDefault();
+					$('#comments').toggle();
+					break;
+
+				case 'refresh':
+					e.preventDefault();
+					getComments($('.section.article').data('id'));
+					break;
+			}
+		});
+
+
 	$('.comments-list')
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
