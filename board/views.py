@@ -1,13 +1,15 @@
 from hashlib import md5
 
 from django.contrib import messages
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.db.models import Sum
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import redirect
+from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -92,6 +94,10 @@ class PostDeleteView(DeleteView):
 
 class PostDetailView(PostListMixin, DetailView):
     model = Post
+
+    @method_decorator(ensure_csrf_cookie)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
     def get_object(self, queryset=None):
         post = super().get_object(queryset)
@@ -280,7 +286,7 @@ class CommentAjaxView(AjaxMixin, View):
         else:
             ot_user = OneTimeUser()
             ot_user.nick = request.POST.get('ot_nick')
-            ot_user.password = request.POST.get('ot_password')
+            ot_user.password = make_password(request.POST.get('ot_password'))
             ot_user.save()
             c.onetime_user = ot_user
         c.ipaddress = request.META['REMOTE_ADDR']
