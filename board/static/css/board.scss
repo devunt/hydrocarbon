@@ -46,7 +46,7 @@
 
 			&.mark { height:20px; }
 			&.title span.title { font-size:16px; vertical-align:top; }
-			&.title .label.meta.comments { margin-left:5px; padding-left:15px; }			
+			&.title .label.meta.comments { margin-left:.5em; }			
 		}
 	}
 
@@ -81,7 +81,7 @@
 			&.news .cell.mark { background:$green; color:$white; }
 			&.subtitles .cell.mark { background:$red-trans; color:$white; }
 
-			.cell {
+			.cell.meta {
 				.label.meta { margin:0; }
 				.label.meta .icon { display:none; margin:0; }
 			}

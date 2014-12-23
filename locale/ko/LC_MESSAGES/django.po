@@ -229,9 +229,9 @@ msgstr "비추천"
 
 #: board/templates/board/post_detail.html:82
 #, python-format
-msgid "There is %(counter)s comment."
-msgid_plural "There are %(counter)s comments."
-msgstr[0] "%(counter)s개의 댓글이 달려있습니다."
+msgid "There is <span>%(counter)s</span> comment."
+msgid_plural "There are <span>%(counter)s</span> comments."
+msgstr[0] "<span>%(counter)s</span>개의 댓글이 달려있습니다."
 
 #: board/templates/board/post_detail.html:88
 msgid "Refresh"

@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load intcomma from humanize %}
 
-<li>
+<li class="post-id-{{ item.id }}">
 	<a href="{{ item.get_absolute_url }}" class="item {% if notice %}notice {% elif item.votes.total <= -10 %}hidden {% else %}{{ item.category.slug }} {% endif %}{{ rowclass }}{% if post.id == item.id %} currentpost{% endif %}">
 		<span class="cell mark">&#9654;</span>
 		<span class="cell category">{% if notice %}{% trans "Notice" %}{% else %}{{ item.category }}{% endif %}</span>
@@ -11,12 +11,10 @@
 				<span class="title" title="{{ item.title }}">{% trans "This post has been downvoted by users." %}</span>
 			{% else %}
 				<span class="title">{{ item.title }}</span>
-				{% if item.comments.count != 0 %}
-					<span class="label meta comments">
-						<span class="icon"></span>
-						<span class="text">{{ item.comments.count }}</span>
-					</span>
-				{% endif %}
+				<span class="label meta comments"{% if item.comments.count == 0 %} style="display:none;"{% endif %}>
+					<span class="icon"></span>
+					<span class="text">{{ item.comments.count }}</span>
+				</span>
 			{% endif %}
 		</span>
 		<span class="cell author meta">

@@ -12,15 +12,14 @@
 				<p class="category">{{ post.category }}</p>
 				<h2>
 					<span>{{ post.title }}</span>
-					{% if item.comments.count != 0 %}
-						<a href="#" class="label meta comments">
-							<span class="icon"></span>
-							<span class="text">{{ post.comments.count }}</span>
-						</a>
-					{% endif %}
+					<a href="#comments" class="label meta comments"{% if item.comments.count == 0 %} style="display:none;"{% endif %}>
+						<span class="icon"></span>
+						<span class="text">{{ post.comments.count }}</span>
+					</a>
 				</h2>
 			</div>
 			<div class="meta">
+				{% if not post.announcement %}
 				<span class="label meta 
 				{% if post.user %}
 					author user">
@@ -30,6 +29,7 @@
 					<span class="icon"></span>
 					<span class="text"><span>{{ post.author }}</span></span>
 				</span>
+				{% endif %}
 				<span class="label meta timestamp" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}">
 					<span class="icon"></span>
 					<span class="text"><span>{{ post.created_time | timesince | split_first }} {% trans "ago" %}</span></span>
@@ -79,7 +79,7 @@
 				<div class="left">
 					<a href="#" class="label meta comments">
 						<span class="icon"></span>
-						<span class="text">{% blocktrans count counter=post.comments.count|intcomma %}There is {{ counter }} comment.{% plural %}There are {{ counter }} comments.{% endblocktrans %}</span>
+						<span class="text">{% blocktrans count counter=post.comments.count|intcomma %}There is <span>{{ counter }}</span> comment.{% plural %}There are <span>{{ counter }}</span> comments.{% endblocktrans %}</span>
 					</a>
 				</div>
 				<div class="right">
@@ -92,51 +92,113 @@
 		</div>
 	</div>
 
-	<div class="comments-list">
-		{# for #}
-		<div class="comment">
-		{# nested:  style="margin-left:20px;" #}
-			<div class="bubble item">
-				<div class="vote vote-comment" data-target-id="{{ comment.id }}">
-					<a href="#upvote" class="upvote vote-comment" title="{% trans "Upvote" %}">&#9650;</a>
-					<a href="#downvote" class="downvote vote-comment" title="{% trans "Downvote" %}">&#9660;</a>
-				</div>
-				<div class="container">
-					<div class="header">
-						<span class="meta author" title="user, ipaddress">user.profile.nick</span>
-						<span class="meta timestamp" title="created_time">created_time|timesince</span>
-						<span class="meta score">
-							<span class="text"><span>2</span></span>
-						</span>
-						<div class="right">
-							<a class="button meta report" href="#"><span>Report</span></a>
-							<a class="button meta delete" href="#"><span>Delete</span></a>
-							<a class="button meta modify" href="#"><span>Modify</span></a>
-							<a class="button meta comment" href="#"><span>Comment</span></a>
+	<div id="comments" class="comments-list">
+		<ul>
+			<li class="list template" style="display:none;">
+				<div class="comment">
+					<div class="bubble item">
+						<div class="container">
+							<div class="header clear">
+								<div class="left">
+									<span class="label meta author user">
+										<span class="text"></span>
+									</span>
+									<span class="meta timestamp"></span>
+								</div>
+								<div class="right">
+									<span class="label meta score">
+										<span class="icon"></span>
+										<span class="text"></span>
+									</span>
+									<div class="dropdown container">
+										<a href="#" class="label meta more dropdown handle">
+											<span class="icon"></span>
+										</a>
+										<div class="dropdown menu">
+											<a href="#" class="close">{% trans "Close" %}</a>
+											<div class="tip top"><span></span></div>
+											<ul>
+												<li><a href="#">
+													<span class="label meta score">
+														<span class="icon"></span>
+														<span class="text">{% trans "Upvote" %}</span>
+													</span>
+												</a></li>
+												<li><a href="#">
+													<span class="label meta downvote">
+														<span class="icon"></span>
+														<span class="text">{% trans "Downvote" %}</span>
+													</span>
+												</a></li>
+												<li><a href="#">
+													<span class="label meta reply">
+														<span class="icon"></span>
+														<span class="text">{% trans "Reply" %}</span>
+													</span>
+												</a></li>
+												<li><a href="#">
+													<span class="label meta modify">
+														<span class="icon"></span>
+														<span class="text">{% trans "Modify" %}</span>
+													</span>
+												</a></li>
+												<li><a href="#">
+													<span class="label meta delete">
+														<span class="icon"></span>
+														<span class="text">{% trans "Delete" %}</span>
+													</span>
+												</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article"></div>
 						</div>
 					</div>
-					<div class="comment_contents">asd</div>
+					<div class="bubble tip"><span></span></div>
 				</div>
-			</div>
-		</div>
-		{# endfor #}
+			</li>
 
-		<div class="comment owned">
-			<div class="bubble">
-				<div class="vote">
-				</div>
-				<div class="container">
-					<div class="comment_contents">
-						<textarea>{% trans "Please write your reply here." %}</textarea>
-						<div class="nav" style="display:block;">
-							<div class="right">
-								<a href="#" class="button blue">{% trans "Submit comment" %}</a>
+			<li class="owned write template" data-type="p">
+				<div class="comment">
+					<div class="bubble item">
+						<div class="container">
+							<div class="article"><textarea placeholder="{% trans 'Please write your reply here.' %}"></textarea></div>
+							<div class="footer clear">
+								<div class="right nav">
+									<a href="#" class="submit button blue">{% trans "Submit comment" %}</a>
+								</div>
 							</div>
 						</div>
 					</div>
+					<div class="bubble tip"><span></span></div>
 				</div>
-			</div>
-		</div>
+			</li>
+		</ul>
+
+		
+
+		<script>
+			getComments({{ post.id }});
+
+			$('.comments-list').on('click', '.write .submit', function(e) {
+				e.preventDefault();
+				var $container = $(this).closest('.write'),
+					text = $container.find('textarea').val(),
+					id = {{ post.id }};
+
+				if(text == '') {
+					alert('내용을 입력해 주세요.');
+					return false;
+				}
+
+				if($container.data('type') == 'c') id = $container.prev('.item').data('id');
+
+				postComments(id, text, $container.data('type'))
+					.done(getComments({{ post.id }}));
+			});
+		</script>
 	</div>
 
 	<div class="nav clear">
