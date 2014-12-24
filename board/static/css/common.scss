@@ -108,7 +108,7 @@
 		li:hover { background:$blue; }
 		li:hover a,
 		li.voted a { color:#fff; }
-		li.voted:hover { opacity:.9; }
+		li.vote:hover { opacity:.9; }
 		li.downvote:hover { background:$red-trans; }
 		li a { width:100%; display:inline-block; font-size:$font-size; line-height:20px; padding:10px 0; }
 		li a > span { display:block; margin:0 20px; white-space:nowrap; }
@@ -167,7 +167,8 @@
 	&.author .icon { background-position:0 0; }
 	&.comments .icon { background-position:0 $meta-size * -1; }
 	&.timestamp .icon { background-position:0 $meta-size * -2; }
-	&.score .icon { background-position:0 $meta-size * -3; }
+	&.score .icon,
+	&.upvote .icon { background-position:0 $meta-size * -3; }
 	&.views .icon { background-position:0 $meta-size * -4; }
 	&.refresh .icon { background-position:0 $meta-size * -5; }
 	&.reply .icon { background-position:0 $meta-size * -6; }

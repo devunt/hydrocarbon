@@ -296,7 +296,7 @@ body {
   .dropdown.menu li:hover a,
   .dropdown.menu li.voted a {
     color: #fff; }
-  .dropdown.menu li.voted:hover {
+  .dropdown.menu li.vote:hover {
     opacity: .9; }
   .dropdown.menu li.downvote:hover {
     background: rgba(204, 61, 61, 0.6); }
@@ -364,7 +364,7 @@ body {
   background-position: 0 -12px; }
 .label.meta.timestamp .icon {
   background-position: 0 -24px; }
-.label.meta.score .icon {
+.label.meta.score .icon, .label.meta.upvote .icon {
   background-position: 0 -36px; }
 .label.meta.views .icon {
   background-position: 0 -48px; }
