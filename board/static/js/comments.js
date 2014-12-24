@@ -4,10 +4,10 @@ function getComments(id) {
 		url: '/x/c/' + id
 	})
 		.done(function(data, status, xhr) {
-			var $article = $('.section.article'), $container = $('.comments-list ul'), count = data.comments.length;
+			var $article = $('.section.article'), $container = $('.comments-list ul'), count = data.comments.count;
 			$container.find('.list.item, .clone').remove();
 
-			$.each(data.comments, function(i, v) { renderComment($container, v); });
+			$.each(data.comments.list, function(i, v) { renderComment($container, v); });
 
 			$article
 				.find('.item.article .header .label.meta.comments .text, .item.article .footer .label.meta.comments .text span')
@@ -201,8 +201,9 @@ $(function() {
 					console.log($item.css('margin-left'));
 					$c
 						.css('margin-left', $item.data('depth')*2 + 1 + '%')
-						.removeAttr('data-type')
+						.removeAttr('data-type data-id')
 						.data('type', 'c')
+						.data('id', $item.data('id'))
 						.addClass('clone')
 						.removeClass('template')
 						.insertAfter($item)
