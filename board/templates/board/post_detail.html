@@ -108,7 +108,7 @@
 								<div class="right">
 									<span class="label meta score">
 										<span class="icon"></span>
-										<span class="text">0</span>
+										<span class="text"><span>0</span></span>
 									</span>
 									<div class="dropdown container">
 										<a href="#" class="label meta more dropdown handle">
@@ -118,36 +118,46 @@
 											<a href="#" class="close">{% trans "Close" %}</a>
 											<div class="tip top"><span></span></div>
 											<ul>
-												<li><a href="#upvote">
-													<span class="label meta score">
-														<span class="icon"></span>
-														<span class="text">{% trans "Upvote" %}</span>
-													</span>
-												</a></li>
-												<li><a href="#downvote">
-													<span class="label meta downvote">
-														<span class="icon"></span>
-														<span class="text">{% trans "Downvote" %}</span>
-													</span>
-												</a></li>
-												<li><a href="#reply">
-													<span class="label meta reply">
-														<span class="icon"></span>
-														<span class="text">{% trans "Reply" %}</span>
-													</span>
-												</a></li>
-												<li class="manipulate"><a href="#modify">
-													<span class="label meta modify">
-														<span class="icon"></span>
-														<span class="text">{% trans "Modify" %}</span>
-													</span>
-												</a></li>
-												<li class="manipulate"><a href="#delete">
-													<span class="label meta delete">
-														<span class="icon"></span>
-														<span class="text">{% trans "Delete" %}</span>
-													</span>
-												</a></li>
+												<li class="vote upvote">
+													<a href="#upvote">
+														<span class="label meta score">
+															<span class="icon"></span>
+															<span class="text">{% trans "Upvote" %}</span>
+														</span>
+													</a>
+												</li>
+												<li class="vote downvote">
+													<a href="#downvote">
+														<span class="label meta downvote">
+															<span class="icon"></span>
+															<span class="text">{% trans "Downvote" %}</span>
+														</span>
+													</a>
+												</li>
+												<li>
+													<a href="#reply">
+														<span class="label meta reply">
+															<span class="icon"></span>
+															<span class="text">{% trans "Reply" %}</span>
+														</span>
+													</a>
+												</li>
+												<li class="manipulate">
+													<a href="#modify">
+														<span class="label meta modify">
+															<span class="icon"></span>
+															<span class="text">{% trans "Modify" %}</span>
+														</span>
+													</a>
+												</li>
+												<li class="manipulate">
+													<a href="#delete">
+														<span class="label meta delete">
+															<span class="icon"></span>
+															<span class="text">{% trans "Delete" %}</span>
+														</span>
+													</a>
+												</li>
 											</ul>
 										</div>
 									</div>

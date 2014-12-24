@@ -118,44 +118,7 @@ $(function() {
 
 	$('.vote a').on('click', function(e) {
 		e.preventDefault();
-
-		var $sibling_voted = $(this).siblings('.voted');
-
-		var vote;
-		var avote;
-		var work;
-		var button;
-		var callback;
-
-		var databox = {
-			type: null,
-			target: null,
-			vote: null
-		}
-
-		if($(this).hasClass('vote-post')) databox.type = 'p';
-		if($(this).hasClass('vote-comment')) databox.type = 'c';
-
-		databox.target = $(this).parent('.vote').data('target-id');
-
-		if($(this).hasClass('voted')) { work = '-';
-		} else { work = '+'; }
-
-		if($(this).hasClass('upvote')) { 
-			vote = '+';
-			avote = '-';
-		}
-		if($(this).hasClass('downvote')) {
-			vote = '-';
-			avote = '+';
-		}
-
-		button = $(this);
-
-		if(work == '+' && $sibling_voted.length) {
-			$ajax_vote(databox, '-' + avote, $sibling_voted)
-				.done(function() { $ajax_vote(databox, work + vote, button); });
-		} else { $ajax_vote(databox, work + vote, button); }
+		vote('p', $(this).parent('.vote').data('target-id'), $(this));
 	});
 
 });
@@ -242,23 +205,47 @@ function hideTooltip() {
 		.animate({'opacity': 0}, 100, function() { $tooltip.hide(); });
 }
 
-function $ajax_vote(databox, vote, button) {
-	databox.vote = vote;
+function vote(type, target, button) {
+	var vote, avote, work,
+		$sibling_voted = button.siblings('.voted'),
+		databox = {
+			type: type,
+			target: target,
+			vote: null
+		};
+
+	work = button.hasClass('voted') ? '-' : '+';
+	vote = button.hasClass('upvote') ? '+' : '-';
+	avote = button.hasClass('upvote') ? '-' : '+';
+
+	if(work == '+' && $sibling_voted.length) {
+		$ajax_vote({type: type, target: target, vote: '-' + avote}, $sibling_voted)
+			.done(function(data, status, xhr) {
+				$ajax_vote({type: type, target: target, vote: work + vote})
+					.done(function(data) { vote_callback(data, work, button); });
+
+				vote_callback(data, '-', $sibling_voted);
+			});
+	} else { $ajax_vote({type: type, target: target, vote: work + vote}).done(function(data) { vote_callback(data, work, button); }); };
+}
+
+function vote_callback(data, work, button) {
+	if(work == '+') { button.addClass('voted');
+	} else { button.removeClass('voted'); }
+
+	var $score = button.closest('.item').find('.meta.score');
+
+	$score
+		.attr('title', '+'+data.current.upvote+' / -'+data.current.downvote)
+		.find('.text span').text(data.current.total);
+}
+
+function $ajax_vote(databox) {
 	return $.ajax({
 			type: 'POST',
 			url: '/x/v',
 			data: databox
 		})
-			.done(function(data, status, xhr) {
-				if(databox.vote.charAt(0) == '+') { button.addClass('voted');
-				} else { button.removeClass('voted'); }
-
-				var $score = button.closest('.item').find('.meta.score');
-
-				$score
-					.attr('title', '+'+data.current.upvote+' / -'+data.current.downvote)
-					.find('.text span').text(data.current.total);
-			})
 			.fail(function(xhr, status, error) {
 				switch(error) {
 					case 'UNAUTHORIZED':
@@ -266,6 +253,8 @@ function $ajax_vote(databox, vote, button) {
 						break;
 					default:
 						alert('알 수 없는 문제가 발생하였습니다.');
+						console.log(databox);
+						console.log(xhr);
 						console.log(status);
 						console.log(error);
 				}

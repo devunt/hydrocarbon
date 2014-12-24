@@ -124,6 +124,8 @@
 							.tip { padding:0 5px; text-align:right; }
 
 							&.menu {
+								li.upvote.voted { background-color:$blue-base; }
+								li.downvote.voted { background-color:$red; }
 								li.manipulate { display:none; }
 							}
 						}
@@ -170,7 +172,7 @@
 
 		.owned .comment {
 			.bubble {
-				&.item { border-left-color:rgba(61,156,204,.9); }
+				&.item { border-left-color:$blue; }
 				&.tip { text-align:left;
 					span { border-left-color:$grey-95; border-right-color:transparent; }
 				}

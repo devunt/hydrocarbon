@@ -293,8 +293,13 @@ body {
     list-style: none; }
   .dropdown.menu li:hover {
     background: rgba(61, 156, 204, 0.9); }
-  .dropdown.menu li:hover a {
+  .dropdown.menu li:hover a,
+  .dropdown.menu li.voted a {
     color: #fff; }
+  .dropdown.menu li.voted:hover {
+    opacity: .9; }
+  .dropdown.menu li.downvote:hover {
+    background: rgba(204, 61, 61, 0.6); }
   .dropdown.menu li a {
     width: 100%;
     display: inline-block;
@@ -334,13 +339,13 @@ body {
   @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
     .label.meta .icon {
       background-image: url("../img/meta_3x.png"); } }
-.dropdown li a:hover .label.meta .icon {
+.dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon {
   background-image: url("../img/meta_w_1x.png"); }
   @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
-    .dropdown li a:hover .label.meta .icon {
+    .dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon {
       background-image: url("../img/meta_w_2x.png"); } }
   @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
-    .dropdown li a:hover .label.meta .icon {
+    .dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon {
       background-image: url("../img/meta_w_3x.png"); } }
 .label.meta.author:after {
   content: "•";
@@ -767,6 +772,10 @@ body {
       .section.article .comments-list .comment .bubble.item .header .dropdown .tip {
         padding: 0 5px;
         text-align: right; }
+      .section.article .comments-list .comment .bubble.item .header .dropdown.menu li.upvote.voted {
+        background-color: #3d9ccc; }
+      .section.article .comments-list .comment .bubble.item .header .dropdown.menu li.downvote.voted {
+        background-color: #cc3d3d; }
       .section.article .comments-list .comment .bubble.item .header .dropdown.menu li.manipulate {
         display: none; }
     .section.article .comments-list .comment .bubble.item .article {
