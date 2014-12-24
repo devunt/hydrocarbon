@@ -191,14 +191,15 @@ $(function() {
 
 			switch(action) {
 				case 'upvote':
-					break;
-
 				case 'downvote':
+					var button  = $(this).closest('li.vote'),
+						$item = $(this).closest('li.item');
+					vote('c', $item.data('id'), button);
+
 					break;
 
 				case 'reply':
 					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
-					console.log($item.css('margin-left'));
 					$c
 						.css('margin-left', $item.data('depth')*2 + 1 + '%')
 						.removeAttr('data-type data-id')
