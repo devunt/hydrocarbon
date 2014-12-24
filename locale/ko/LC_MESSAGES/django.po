@@ -274,12 +274,12 @@ msgstr "분류"
 
 #: board/templates/board/post_form.html:37
 msgid "Tags"
-msgstr ""
+msgstr "태그"
 
 #: board/templates/board/post_item.html:8
 #, fuzzy
 msgid "Notice"
-msgstr "공지사항"
+msgstr "공지"
 
 #: board/templates/board/post_item.html:11
 msgid "This post has been downvoted by users."

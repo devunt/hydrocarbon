@@ -173,8 +173,8 @@
 	&.prev .icon { background-position:0 $meta-size * -10; margin-right:0; }
 	&.next .icon { background-position:0 $meta-size * -11; margin-right:0; }
 	&.last .icon { background-position:0 $meta-size * -12; margin-right:0; }
-	.dropdown .handle & .icon { background-position:0 $meta-size * -13; margin-right:0; }
-	.dropdown.open .handle &.icon { background-position:0 $meta-size * -14; }
+	.dropdown.container &.handle .icon { background-position:0 $meta-size * -13; margin-right:0; }
+	.dropdown.container.open &.handle .icon { background-position:0 $meta-size * -14; }
 	&.tags .icon { background-position:0 $meta-size * -15; }
 	&.more .icon { background-position:0 $meta-size * -16 !important; }
 	&.downvote .icon { background-position:0 $meta-size * -17; }
