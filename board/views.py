@@ -269,7 +269,7 @@ class CommentAjaxView(AjaxMixin, View):
                     'votes': comment.votes,
                     'subcomments': subcomments
                 })
-            lst.sort(key=_comment_sort_key)
+            lst.sort(key=_comment_sort_key, reverse=True)
             return lst
         lst = _make_list(post.comments.filter(comment=None))
         return JsonResponse({'status': 'success', 'comments': {'count': post.comments.count(), 'list': lst}})
