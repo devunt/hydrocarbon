@@ -252,6 +252,8 @@ class CommentAjaxView(AjaxMixin, View):
             post = Post.objects.get(pk=self.pk)
         except Post.DoesNotExist:
             return self.not_found()
+        def _comment_sort_key(comment):
+            return comment['votes']['total']
         def _make_list(comments):
             lst = list()
             for comment in comments:
@@ -264,8 +266,10 @@ class CommentAjaxView(AjaxMixin, View):
                     'iphash': comment.iphash if not comment.user else None,
                     'contents': comment.contents,
                     'created_time': comment.created_time,
+                    'votes': comment.votes,
                     'subcomments': subcomments
                 })
+            lst.sort(key=_comment_sort_key)
             return lst
         lst = _make_list(post.comments.filter(comment=None))
         return JsonResponse({'status': 'success', 'comments': {'count': post.comments.count(), 'list': lst}})
