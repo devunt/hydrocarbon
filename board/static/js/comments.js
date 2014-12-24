@@ -30,6 +30,8 @@ function renderComment($container, v, depth) {
 
 	var $c = $container.find('.list.template').clone(), date = new Date(v.created_time);
 
+	console.log(v);
+
 	if(v.iphash) {
 		$c
 			.addClass('guest')
@@ -47,7 +49,13 @@ function renderComment($container, v, depth) {
 	$c.find('.meta.timestamp')
 		.attr('title', date.toLocaleString('ko-kr', { hour12: false }))
 		.text($.timeago(v.created_time));
+	$c.find('.meta.score')
+		.attr('title', '+'+v.votes.upvote+' / -'+v.votes.downvote)
+		.find('.text span').text(v.votes.total);
 	$c.find('.article').html(v.contents);
+
+	if(v.voted.upvoted) $c.find('.dropdown .upvote').addClass('voted');
+	if(v.voted.downvoted) $c.find('.dropdown .downvote').addClass('voted');
 
 	$c
 		.data('id', v.id)

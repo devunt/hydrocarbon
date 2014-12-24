@@ -216,7 +216,7 @@ function vote(type, target, button) {
 
 	work = button.hasClass('voted') ? '-' : '+';
 	vote = button.hasClass('upvote') ? '+' : '-';
-	avote = button.hasClass('upvote') ? '-' : '+';
+	avote = (vote == '+') ? '-' : '+';
 
 	if(work == '+' && $sibling_voted.length) {
 		$ajax_vote({type: type, target: target, vote: '-' + avote}, $sibling_voted)
