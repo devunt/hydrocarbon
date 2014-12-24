@@ -136,13 +136,13 @@
 														<span class="text">{% trans "Reply" %}</span>
 													</span>
 												</a></li>
-												<li><a href="#modify">
+												<li class="manipulate"><a href="#modify">
 													<span class="label meta modify">
 														<span class="icon"></span>
 														<span class="text">{% trans "Modify" %}</span>
 													</span>
 												</a></li>
-												<li><a href="#delete">
+												<li class="manipulate"><a href="#delete">
 													<span class="label meta delete">
 														<span class="icon"></span>
 														<span class="text">{% trans "Delete" %}</span>
@@ -173,8 +173,8 @@
 									{% endif %}
 								</div>
 								<div class="nav">
-									<a href="#" class="cancel button" style="display:none;">{% trans "Cancel" %}</a>
-									<a href="#" class="submit button blue">{% trans "Submit comment" %}</a>
+									<a href="#cancel" class="cancel button" style="display:none;">{% trans "Cancel" %}</a>
+									<a href="#submit" class="submit button blue">{% trans "Submit comment" %}</a>
 								</div>
 							</div>
 						</div>
@@ -183,7 +183,11 @@
 				</div>
 			</li>
 		</ul>
-		<script> getComments({{ post.id }}); </script>
+		<script>
+			var author = '{{ user.profile.nick }}';
+			var post_id = {{ post.id }};
+			getComments({{ post.id }});
+		</script>
 	</div>
 
 	<div class="nav clear">

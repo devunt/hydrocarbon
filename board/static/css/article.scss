@@ -98,7 +98,13 @@
 		@media screen and (max-device-width: $medium) { padding:10px 5% 0; }
 		@media screen and (max-device-width: $small) { padding:10px 2% 0; }
 
-		li { list-style:none; }
+		.list.item {
+			list-style:none;
+
+			&.guest, &.owned {
+				.comment .bubble.item .header .dropdown li.manipulate { display:block; }
+			}
+		}
 
 		.comment {
 			.bubble {
@@ -113,11 +119,13 @@
 
 						.dropdown {
 							&.container { display:inline-block; }
-							&.handle {
-								.icon { margin:4px; }
-							}
+							&.handle .icon { margin:4px; }
 
 							.tip { padding:0 5px; text-align:right; }
+
+							&.menu {
+								li.manipulate { display:none; }
+							}
 						}
 					}
 

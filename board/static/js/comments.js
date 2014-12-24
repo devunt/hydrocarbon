@@ -25,15 +25,23 @@ function getComments(id) {
 		});
 }
 
-function renderComment($container, v) {
+function renderComment($container, v, depth) {
+	depth = typeof depth !== 'undefined' ? depth : 0;
+
 	var $c = $container.find('.list.template').clone(), date = new Date(v.created_time);
 
 	if(v.iphash) {
-		$c.find('.meta.author')
-			.removeClass('user')
+		$c
 			.addClass('guest')
-			.attr('title', v.iphash);
+			.find('.meta.author')
+				.removeClass('user')
+				.addClass('guest')
+				.attr('title', v.iphash);
+	} else if(v.author == author) {
+		$c.addClass('owned');
 	}
+
+	if(depth > 0) $c.css('margin-left', 2*depth+'%');
 
 	$c.find('.meta.author .text').text(v.author);
 	$c.find('.meta.timestamp')
@@ -43,16 +51,14 @@ function renderComment($container, v) {
 
 	$c
 		.data('id', v.id)
+		.data('depth', depth)
 		.addClass('item')
 		.removeClass('template')
 		.insertBefore($container.find('.write.template'))
 		.show();
 
 	if(v.subcomments) {
-		$.each(v.subcomments, function(i, v) {
-			renderComment($container, v)
-				.css('margin-left', '2%');
-		});
+		$.each(v.subcomments, function(i, v) { renderComment($container, v, depth + 1); });
 	}
 
 	return $c;
@@ -130,7 +136,7 @@ $(function() {
 				text = $container.find('textarea').val(),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
-				id = $('.section.article').data('id'),
+				id = $container.data('id'),
 				databox = {
 					contents: text,
 					type: $container.data('type'),
@@ -146,7 +152,7 @@ $(function() {
 			if($container.data('type') == 'c') id = $container.prev('li.item').data('id');
 			console.log(databox);
 			postComments(id, databox)
-				.done(getComments(id));
+				.done(getComments(post_id));
 		})
 		.on('click', '.modify .submit', function(e) {
 			e.preventDefault();
@@ -168,7 +174,7 @@ $(function() {
 			}
 
 			putComments(id, text, password)
-				.done(getComments($('.section.article').data('id')));
+				.done(getComments(post_id));
 		})
 		.on('click', '.delete .submit', function(e) {
 			e.preventDefault();
@@ -176,7 +182,7 @@ $(function() {
 				password = $item.find('.footer label.password input').val();
 
 			deleteComments($item.data('id'), password)
-				.done(getComments($('.section.article').data('id')));
+				.done(getComments(post_id));
 		})
 		.on('click', '.dropdown.menu li a', function(e) {
 			e.preventDefault();
@@ -191,14 +197,15 @@ $(function() {
 					break;
 
 				case 'reply':
-					var $c = $container.find('.write.template').clone();
+					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
+					console.log($item.css('margin-left'));
 					$c
-						.css('margin-left', '2%')
+						.css('margin-left', $item.data('depth')*2 + 1 + '%')
 						.removeAttr('data-type')
 						.data('type', 'c')
 						.addClass('clone')
 						.removeClass('template')
-						.insertAfter($(this).closest('li.item'))
+						.insertAfter($item)
 						.show();
 					break;
 
@@ -206,6 +213,7 @@ $(function() {
 					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
 					$item.hide();
 					$c
+						.css('margin-left', $item.css('margin-left'))
 						.removeAttr('data-type')
 						.data('id', $item.data('id'))
 						.addClass('clone modify')

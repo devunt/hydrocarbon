@@ -383,10 +383,10 @@ body {
 .label.meta.last .icon {
   background-position: 0 -144px;
   margin-right: 0; }
-.dropdown .handle .label.meta .icon {
+.dropdown.container .label.meta.handle .icon {
   background-position: 0 -156px;
   margin-right: 0; }
-.dropdown.open .handle .label.meta.icon {
+.dropdown.container.open .label.meta.handle .icon {
   background-position: 0 -168px; }
 .label.meta.tags .icon {
   background-position: 0 -180px; }
@@ -736,8 +736,10 @@ body {
   @media screen and (max-device-width: 419px) {
     .section.article .comments-list {
       padding: 10px 2% 0; } }
-  .section.article .comments-list li {
+  .section.article .comments-list .list.item {
     list-style: none; }
+    .section.article .comments-list .list.item.guest .comment .bubble.item .header .dropdown li.manipulate, .section.article .comments-list .list.item.owned .comment .bubble.item .header .dropdown li.manipulate {
+      display: block; }
   .section.article .comments-list .comment .bubble.item {
     background: #f2f2f2;
     border-left: 5px solid transparent;
@@ -764,6 +766,8 @@ body {
       .section.article .comments-list .comment .bubble.item .header .dropdown .tip {
         padding: 0 5px;
         text-align: right; }
+      .section.article .comments-list .comment .bubble.item .header .dropdown.menu li.manipulate {
+        display: none; }
     .section.article .comments-list .comment .bubble.item .article {
       padding: 5px 10px; }
       .section.article .comments-list .comment .bubble.item .article textarea {
