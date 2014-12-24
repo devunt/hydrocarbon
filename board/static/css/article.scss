@@ -98,9 +98,9 @@
 		@media screen and (max-device-width: $medium) { padding:10px 5% 0; }
 		@media screen and (max-device-width: $small) { padding:10px 2% 0; }
 
+		li.list.item,
+		li.write { list-style:none; }
 		.list.item {
-			list-style:none;
-
 			&.guest, &.owned {
 				.comment .bubble.item .header .dropdown li.manipulate { display:block; }
 			}

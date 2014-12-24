@@ -736,10 +736,11 @@ body {
   @media screen and (max-device-width: 419px) {
     .section.article .comments-list {
       padding: 10px 2% 0; } }
-  .section.article .comments-list .list.item {
+  .section.article .comments-list li.list.item,
+  .section.article .comments-list li.write {
     list-style: none; }
-    .section.article .comments-list .list.item.guest .comment .bubble.item .header .dropdown li.manipulate, .section.article .comments-list .list.item.owned .comment .bubble.item .header .dropdown li.manipulate {
-      display: block; }
+  .section.article .comments-list .list.item.guest .comment .bubble.item .header .dropdown li.manipulate, .section.article .comments-list .list.item.owned .comment .bubble.item .header .dropdown li.manipulate {
+    display: block; }
   .section.article .comments-list .comment .bubble.item {
     background: #f2f2f2;
     border-left: 5px solid transparent;
