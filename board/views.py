@@ -260,6 +260,17 @@ class CommentAjaxView(AjaxMixin, View):
                 subcomments = None
                 if comment.subcomments.exists():
                     subcomments = _make_list(comment.subcomments.filter(comment=comment))
+                voted = {'upvoted': False, 'downvoted': False}
+                if request.user.is_authenticated():
+                    vqs = comment._votes.filter(user=request.user)
+                else:
+                    vqs = comment._votes.filter(ipaddress=request.META['REMOTE_ADDR'])
+                if vqs.exists():
+                    vote = vqs.first()
+                    if vote.vote == Vote.UPVOTE:
+                        voted['upvoted'] = True
+                    elif vote.vote == Vote.DOWNVOTE:
+                        voted['downvoted'] = True
                 lst.append({
                     'id': comment.id,
                     'author': comment.author,
@@ -267,7 +278,8 @@ class CommentAjaxView(AjaxMixin, View):
                     'contents': comment.contents,
                     'created_time': comment.created_time,
                     'votes': comment.votes,
-                    'subcomments': subcomments
+                    'voted': voted,
+                    'subcomments': subcomments,
                 })
             lst.sort(key=_comment_sort_key, reverse=True)
             return lst
