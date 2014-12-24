@@ -268,7 +268,7 @@ class CommentAjaxView(AjaxMixin, View):
                 })
             return lst
         lst = _make_list(post.comments.filter(comment=None))
-        return JsonResponse({'status': 'success', 'comments': {'count': post.comments.count(), 'list': lst})
+        return JsonResponse({'status': 'success', 'comments': {'count': post.comments.count(), 'list': lst}})
 
     def post(self, request, *args, **kwargs):
         target_type = request.POST.get('type')
