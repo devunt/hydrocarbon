@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-23 10:48+0900\n"
+"POT-Creation-Date: 2014-12-25 12:59+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,7 @@ msgid "Nickname:"
 msgstr ""
 
 #: board/forms.py:27 board/forms.py:42 board/i18n_fake.py:7
+#: board/templates/board/post_detail.html:182
 msgid "Password"
 msgstr ""
 
@@ -129,46 +130,50 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/templates/base.html:39 board/templates/base.html.py:67
+#: board/mixins.py:84
+msgid "Wrong password"
+msgstr ""
+
+#: board/templates/base.html:41 board/templates/base.html.py:69
+#: board/templates/board/post_detail.html:118
 #: board/templates/board/post_list.html:23
-#: board/templates/board/post_list.html:78 board/templates/post_list.html:23
-#: board/templates/post_list.html.py:73
+#: board/templates/board/post_list.html:78
 msgid "Close"
 msgstr ""
 
-#: board/templates/base.html:51
+#: board/templates/base.html:53
 msgid "Home"
 msgstr ""
 
-#: board/templates/base.html:52
+#: board/templates/base.html:54
 msgid "Favorites"
 msgstr ""
 
-#: board/templates/base.html:53
+#: board/templates/base.html:55
 msgid "Notices"
 msgstr ""
 
-#: board/templates/base.html:54
+#: board/templates/base.html:56
 msgid "Scanlations"
 msgstr ""
 
-#: board/templates/base.html:79
+#: board/templates/base.html:81
 msgid "Profile"
 msgstr ""
 
-#: board/templates/base.html:80
+#: board/templates/base.html:82
 msgid "Submitted"
 msgstr ""
 
-#: board/templates/base.html:81
+#: board/templates/base.html:83
 msgid "Inbox"
 msgstr ""
 
-#: board/templates/base.html:82
+#: board/templates/base.html:84
 msgid "Log out"
 msgstr ""
 
-#: board/templates/base.html:88 board/templates/registration/login.html:5
+#: board/templates/base.html:90 board/templates/registration/login.html:5
 #: board/templates/registration/login.html:6
 #: board/templates/registration/login.html:24
 msgid "Log in"
@@ -188,12 +193,13 @@ msgid "Then enter the password you used."
 msgstr ""
 
 #: board/templates/board/post_confirm_delete.html:29
-#: board/templates/board/post_detail.html:158
+#: board/templates/board/post_detail.html:157
+#: board/templates/board/post_detail.html:219
 msgid "Delete"
 msgstr ""
 
 #: board/templates/board/post_detail.html:35
-#: board/templates/board/post_item.html:36
+#: board/templates/board/post_item.html:34
 msgid "ago"
 msgstr ""
 
@@ -214,19 +220,19 @@ msgid ""
 msgstr ""
 
 #: board/templates/board/post_detail.html:62
-#: board/templates/board/post_detail.html:101
+#: board/templates/board/post_detail.html:125
 msgid "Upvote"
 msgstr ""
 
 #: board/templates/board/post_detail.html:66
-#: board/templates/board/post_detail.html:102
+#: board/templates/board/post_detail.html:133
 msgid "Downvote"
 msgstr ""
 
 #: board/templates/board/post_detail.html:82
 #, python-format
-msgid "There is %(counter)s comment."
-msgid_plural "There are %(counter)s comments."
+msgid "There is <span>%(counter)s</span> comment."
+msgid_plural "There are <span>%(counter)s</span> comments."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -234,42 +240,55 @@ msgstr[1] ""
 msgid "Refresh"
 msgstr ""
 
-#: board/templates/board/post_detail.html:130
-msgid "Please write your reply here."
+#: board/templates/board/post_detail.html:141
+msgid "Reply"
 msgstr ""
 
-#: board/templates/board/post_detail.html:133
-msgid "Submit comment"
-msgstr ""
-
-#: board/templates/board/post_detail.html:144
-#: board/templates/board/post_list.html:61 board/templates/post_list.html:56
-msgid "List"
-msgstr ""
-
-#: board/templates/board/post_detail.html:152
-#: board/templates/board/post_list.html:69 board/templates/post_list.html:64
-msgid "Top posts"
-msgstr ""
-
-#: board/templates/board/post_detail.html:159
+#: board/templates/board/post_detail.html:149
+#: board/templates/board/post_detail.html:220
 msgid "Modify"
 msgstr ""
 
-#: board/templates/board/post_detail.html:161
+#: board/templates/board/post_detail.html:177
+msgid "Please write your reply here."
+msgstr ""
+
+#: board/templates/board/post_detail.html:181
+msgid "Nickname"
+msgstr ""
+
+#: board/templates/board/post_detail.html:186
+msgid "Cancel"
+msgstr ""
+
+#: board/templates/board/post_detail.html:187
+msgid "Submit comment"
+msgstr ""
+
+#: board/templates/board/post_detail.html:205
+#: board/templates/board/post_list.html:61
+msgid "List"
+msgstr ""
+
+#: board/templates/board/post_detail.html:213
+#: board/templates/board/post_list.html:69
+msgid "Top posts"
+msgstr ""
+
+#: board/templates/board/post_detail.html:222
 #: board/templates/board/post_form.html:5
 #: board/templates/board/post_form.html:6
-#: board/templates/board/post_form.html:56
-#: board/templates/board/post_list.html:100 board/templates/post_list.html:95
+#: board/templates/board/post_form.html:63
+#: board/templates/board/post_list.html:100
 msgid "New post"
 msgstr ""
 
-#: board/templates/board/post_form.html:27
-#: board/templates/board/post_list.html:20 board/templates/post_list.html:20
+#: board/templates/board/post_form.html:34
+#: board/templates/board/post_list.html:20
 msgid "Categories"
 msgstr ""
 
-#: board/templates/board/post_form.html:37
+#: board/templates/board/post_form.html:44
 msgid "Tags"
 msgstr ""
 
@@ -281,47 +300,47 @@ msgstr ""
 msgid "This post has been downvoted by users."
 msgstr ""
 
-#: board/templates/board/post_list.html:38 board/templates/post_list.html:38
+#: board/templates/board/post_list.html:38
 msgid "Title"
 msgstr ""
 
-#: board/templates/board/post_list.html:39 board/templates/post_list.html:39
+#: board/templates/board/post_list.html:39
 msgid "Author"
 msgstr ""
 
-#: board/templates/board/post_list.html:40 board/templates/post_list.html:40
+#: board/templates/board/post_list.html:40
 msgid "Date"
 msgstr ""
 
-#: board/templates/board/post_list.html:41 board/templates/post_list.html:41
+#: board/templates/board/post_list.html:41
 msgid "Score"
 msgstr ""
 
-#: board/templates/board/post_list.html:42 board/templates/post_list.html:42
+#: board/templates/board/post_list.html:42
 msgid "Views"
 msgstr ""
 
-#: board/templates/board/post_list.html:55 board/templates/post_list.html:50
+#: board/templates/board/post_list.html:55
 msgid "There are no posts here!"
 msgstr ""
 
-#: board/templates/board/post_list.html:73 board/templates/post_list.html:68
+#: board/templates/board/post_list.html:73
 msgid "Search"
 msgstr ""
 
-#: board/templates/board/post_list.html:108 board/templates/post_list.html:103
+#: board/templates/board/post_list.html:108
 msgid "First"
 msgstr ""
 
-#: board/templates/board/post_list.html:111 board/templates/post_list.html:106
+#: board/templates/board/post_list.html:111
 msgid "Prev"
 msgstr ""
 
-#: board/templates/board/post_list.html:119 board/templates/post_list.html:115
+#: board/templates/board/post_list.html:119
 msgid "Next"
 msgstr ""
 
-#: board/templates/board/post_list.html:122 board/templates/post_list.html:118
+#: board/templates/board/post_list.html:122
 msgid "Last"
 msgstr ""
 
@@ -552,8 +571,8 @@ msgstr ""
 msgid "Register for an account"
 msgstr ""
 
-#: board/views.py:81
-msgid "Wrong password"
+#: board/views.py:92
+msgid "Deleted"
 msgstr ""
 
 #: hydrocarbon/settings.py:95

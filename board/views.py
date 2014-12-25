@@ -7,6 +7,7 @@ from django.db.models import Sum
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
+from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
@@ -88,6 +89,7 @@ class PostDeleteView(PermissionMixin, DeleteView):
         return super().delete(request, *args, **kwargs)
 
     def get_success_url(self):
+        messages.success(self.request, _('Deleted'))
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
 
 

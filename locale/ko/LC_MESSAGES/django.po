@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-23 10:48+0900\n"
+"POT-Creation-Date: 2014-12-25 12:59+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,7 @@ msgid "Nickname:"
 msgstr "별명"
 
 #: board/forms.py:27 board/forms.py:42 board/i18n_fake.py:7
+#: board/templates/board/post_detail.html:182
 msgid "Password"
 msgstr "비밀번호"
 
@@ -127,46 +128,50 @@ msgstr[0] ""
 "입력하신 값은 최소 %(limit_value)d글자여야만 합니다. 현재 값은 %(show_value)d"
 "글자입니다."
 
-#: board/templates/base.html:39 board/templates/base.html.py:67
+#: board/mixins.py:84
+msgid "Wrong password"
+msgstr "잘못된 비밀번호입니다"
+
+#: board/templates/base.html:41 board/templates/base.html.py:69
+#: board/templates/board/post_detail.html:118
 #: board/templates/board/post_list.html:23
-#: board/templates/board/post_list.html:78 board/templates/post_list.html:23
-#: board/templates/post_list.html.py:73
+#: board/templates/board/post_list.html:78
 msgid "Close"
 msgstr "닫기"
 
-#: board/templates/base.html:51
+#: board/templates/base.html:53
 msgid "Home"
 msgstr "홈"
 
-#: board/templates/base.html:52
+#: board/templates/base.html:54
 msgid "Favorites"
 msgstr "즐겨찾기"
 
-#: board/templates/base.html:53
+#: board/templates/base.html:55
 msgid "Notices"
 msgstr "공지사항"
 
-#: board/templates/base.html:54
+#: board/templates/base.html:56
 msgid "Scanlations"
 msgstr "번역"
 
-#: board/templates/base.html:79
+#: board/templates/base.html:81
 msgid "Profile"
 msgstr "프로필"
 
-#: board/templates/base.html:80
+#: board/templates/base.html:82
 msgid "Submitted"
 msgstr "작성글 보기"
 
-#: board/templates/base.html:81
+#: board/templates/base.html:83
 msgid "Inbox"
 msgstr "쪽지함"
 
-#: board/templates/base.html:82
+#: board/templates/base.html:84
 msgid "Log out"
 msgstr "로그아웃"
 
-#: board/templates/base.html:88 board/templates/registration/login.html:5
+#: board/templates/base.html:90 board/templates/registration/login.html:5
 #: board/templates/registration/login.html:6
 #: board/templates/registration/login.html:24
 msgid "Log in"
@@ -186,12 +191,13 @@ msgid "Then enter the password you used."
 msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력해 주세요."
 
 #: board/templates/board/post_confirm_delete.html:29
-#: board/templates/board/post_detail.html:158
+#: board/templates/board/post_detail.html:157
+#: board/templates/board/post_detail.html:219
 msgid "Delete"
 msgstr "삭제"
 
 #: board/templates/board/post_detail.html:35
-#: board/templates/board/post_item.html:36
+#: board/templates/board/post_item.html:34
 msgid "ago"
 msgstr "전"
 
@@ -218,12 +224,12 @@ msgstr ""
 "\t\t\t\t\t\t"
 
 #: board/templates/board/post_detail.html:62
-#: board/templates/board/post_detail.html:101
+#: board/templates/board/post_detail.html:125
 msgid "Upvote"
 msgstr "추천"
 
 #: board/templates/board/post_detail.html:66
-#: board/templates/board/post_detail.html:102
+#: board/templates/board/post_detail.html:133
 msgid "Downvote"
 msgstr "비추천"
 
@@ -237,42 +243,55 @@ msgstr[0] "<span>%(counter)s</span>개의 댓글이 달려있습니다."
 msgid "Refresh"
 msgstr "새로고침"
 
-#: board/templates/board/post_detail.html:130
-msgid "Please write your reply here."
-msgstr "댓글을 달아보시는 건 어떤가요?"
+#: board/templates/board/post_detail.html:141
+msgid "Reply"
+msgstr ""
 
-#: board/templates/board/post_detail.html:133
-msgid "Submit comment"
-msgstr "댓글 달기"
-
-#: board/templates/board/post_detail.html:144
-#: board/templates/board/post_list.html:61 board/templates/post_list.html:56
-msgid "List"
-msgstr "목록"
-
-#: board/templates/board/post_detail.html:152
-#: board/templates/board/post_list.html:69 board/templates/post_list.html:64
-msgid "Top posts"
-msgstr "베스트"
-
-#: board/templates/board/post_detail.html:159
+#: board/templates/board/post_detail.html:149
+#: board/templates/board/post_detail.html:220
 msgid "Modify"
 msgstr "수정"
 
-#: board/templates/board/post_detail.html:161
+#: board/templates/board/post_detail.html:177
+msgid "Please write your reply here."
+msgstr "댓글을 달아보시는 건 어떤가요?"
+
+#: board/templates/board/post_detail.html:181
+msgid "Nickname"
+msgstr "별명"
+
+#: board/templates/board/post_detail.html:186
+msgid "Cancel"
+msgstr ""
+
+#: board/templates/board/post_detail.html:187
+msgid "Submit comment"
+msgstr "댓글 달기"
+
+#: board/templates/board/post_detail.html:205
+#: board/templates/board/post_list.html:61
+msgid "List"
+msgstr "목록"
+
+#: board/templates/board/post_detail.html:213
+#: board/templates/board/post_list.html:69
+msgid "Top posts"
+msgstr "베스트"
+
+#: board/templates/board/post_detail.html:222
 #: board/templates/board/post_form.html:5
 #: board/templates/board/post_form.html:6
-#: board/templates/board/post_form.html:56
-#: board/templates/board/post_list.html:100 board/templates/post_list.html:95
+#: board/templates/board/post_form.html:63
+#: board/templates/board/post_list.html:100
 msgid "New post"
 msgstr "글쓰기"
 
-#: board/templates/board/post_form.html:27
-#: board/templates/board/post_list.html:20 board/templates/post_list.html:20
+#: board/templates/board/post_form.html:34
+#: board/templates/board/post_list.html:20
 msgid "Categories"
 msgstr "분류"
 
-#: board/templates/board/post_form.html:37
+#: board/templates/board/post_form.html:44
 msgid "Tags"
 msgstr "태그"
 
@@ -285,47 +304,47 @@ msgstr "공지"
 msgid "This post has been downvoted by users."
 msgstr "사용자들의 비추천에 의해 숨겨진 글입니다."
 
-#: board/templates/board/post_list.html:38 board/templates/post_list.html:38
+#: board/templates/board/post_list.html:38
 msgid "Title"
 msgstr "제목"
 
-#: board/templates/board/post_list.html:39 board/templates/post_list.html:39
+#: board/templates/board/post_list.html:39
 msgid "Author"
 msgstr "글쓴이"
 
-#: board/templates/board/post_list.html:40 board/templates/post_list.html:40
+#: board/templates/board/post_list.html:40
 msgid "Date"
 msgstr "날짜"
 
-#: board/templates/board/post_list.html:41 board/templates/post_list.html:41
+#: board/templates/board/post_list.html:41
 msgid "Score"
 msgstr "추천"
 
-#: board/templates/board/post_list.html:42 board/templates/post_list.html:42
+#: board/templates/board/post_list.html:42
 msgid "Views"
 msgstr "조회"
 
-#: board/templates/board/post_list.html:55 board/templates/post_list.html:50
+#: board/templates/board/post_list.html:55
 msgid "There are no posts here!"
 msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
 
-#: board/templates/board/post_list.html:73 board/templates/post_list.html:68
+#: board/templates/board/post_list.html:73
 msgid "Search"
 msgstr "검색"
 
-#: board/templates/board/post_list.html:108 board/templates/post_list.html:103
+#: board/templates/board/post_list.html:108
 msgid "First"
 msgstr "처음"
 
-#: board/templates/board/post_list.html:111 board/templates/post_list.html:106
+#: board/templates/board/post_list.html:111
 msgid "Prev"
 msgstr "이전"
 
-#: board/templates/board/post_list.html:119 board/templates/post_list.html:115
+#: board/templates/board/post_list.html:119
 msgid "Next"
 msgstr "다음"
 
-#: board/templates/board/post_list.html:122 board/templates/post_list.html:118
+#: board/templates/board/post_list.html:122
 msgid "Last"
 msgstr "마지막"
 
@@ -585,9 +604,9 @@ msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다.
 msgid "Register for an account"
 msgstr "회원가입"
 
-#: board/views.py:81
-msgid "Wrong password"
-msgstr "잘못된 비밀번호입니다"
+#: board/views.py:92
+msgid "Deleted"
+msgstr "삭제되었습니다"
 
 #: hydrocarbon/settings.py:95
 msgid "Korean"
