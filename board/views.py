@@ -15,7 +15,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
-from board.forms import PostForm, PostDeleteForm
+from board.forms import PasswordForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, UserLoggingMixin
 from board.models import Attachment, Board, Comment, OneTimeUser, Post, Vote
 
@@ -88,7 +88,7 @@ class PostDeleteView(DeleteView):
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
 
     def _get_context_data(self, **kwargs):
-        kwargs['form'] = PostDeleteForm()
+        kwargs['form'] = PasswordForm()
         return super(PostDeleteView, self).get_context_data(**kwargs)
 
 
