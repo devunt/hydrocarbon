@@ -137,13 +137,13 @@ class PostDetailView(DetailView):
             self.request.build_absolute_uri(
                 reverse('board_post_list_best', kwargs={'board': self.board.slug})
             ):
-            postlist_view = PostBestListView()
+            plv = PostBestListView()
         else:
-            postlist_view = PostListView()
-        postlist_view.kwargs = dict()
-        postlist_view.request = self.request
-        postlist_view.dispatch(self.request, board=self.board.slug)
-        ctx = postlist_view.get_context_data()
+            plv = PostListView()
+        plv.kwargs = dict()
+        plv.request = self.request
+        plv.dispatch(self.request, board=self.board.slug)
+        ctx = plv.get_context_data()
         kwargs.update(ctx)
         kwargs['board'] = self.board
         voted = {'upvoted': False, 'downvoted': False}
