@@ -89,7 +89,7 @@ class PostDeleteView(DeleteView):
 
     def _get_context_data(self, **kwargs):
         kwargs['form'] = PasswordForm()
-        return super(PostDeleteView, self).get_context_data(**kwargs)
+        return super().get_context_data(**kwargs)
 
 
 class PostListView(BoardMixin, PostListMixin, ListView):
