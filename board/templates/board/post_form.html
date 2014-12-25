@@ -7,6 +7,13 @@
 
 {% block content %}
 
+{% if password_form %}
+<form method='post'>
+	{% csrf_token %}
+	{{ password_form.as_p }}
+	<input type='submit'>
+</form>
+{% else %}
 {% for field in form %}
 	{% if field.errors %}
 	<ul class="errorlist">
@@ -79,4 +86,5 @@ $(function () {
 	});
 });
 </script>
+{% endif %}
 {% endblock content %}

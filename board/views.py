@@ -2,13 +2,11 @@ from hashlib import md5
 
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password, make_password
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.db.models import Sum
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
-from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
@@ -16,7 +14,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from board.forms import PasswordForm, PostForm
-from board.mixins import AjaxMixin, BoardMixin, PostListMixin, UserLoggingMixin
+from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import Attachment, Board, Comment, OneTimeUser, Post, Vote
 
 from hydrocarbon import settings
@@ -48,9 +46,23 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
         return kwargs
 
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(PermissionMixin, UpdateView):
     model = Post
     form_class = PostForm
+
+    def get(self, request, *args, **kwargs):
+        if (not kwargs.pop('authenticated', False)) and self.object.user is None:
+            self.get_context_data = self._get_context_data
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('password'):
+            if self.check_permission():
+                kwargs['authenticated'] = True
+            request.method = 'GET'
+            return self.get(request, *args, **kwargs)
+        else:
+            return super().post(request, *args, **kwargs)
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -60,14 +72,8 @@ class PostUpdateView(UpdateView):
         return kwargs
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(PermissionMixin, DeleteView):
     model = Post
-
-    def dispatch(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        if (self.object.user is not None) and (self.object.user != self.request.user):
-            raise PermissionDenied
-        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         if self.object.user is None:
@@ -75,21 +81,14 @@ class PostDeleteView(DeleteView):
         return super().get(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
-        if self.object.user is None:
-            password = request.POST.get('password')
-            if check_password(password, self.object.onetime_user.password):
-                self.object.onetime_user.delete()
-            else:
-                messages.error(request, _('Wrong password'))
-                return self.get(request, *args, **kwargs)
+        if not self.check_permission():
+            return self.get(request, *args, **kwargs)
+        if self.object.onetime_user is not None:
+            self.object.onetime_user.delete()
         return super().delete(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
-
-    def _get_context_data(self, **kwargs):
-        kwargs['form'] = PasswordForm()
-        return super().get_context_data(**kwargs)
 
 
 class PostListView(BoardMixin, PostListMixin, ListView):

@@ -11,11 +11,11 @@
 		{% csrf_token %}
 			<div class="simple_notice">
 				<p>{% trans "Deleting a post- this action cannot be undone. Are you sure?" %}
-			{% if form %}
+			{% if password_form %}
 				<br>{% trans "Then enter the password you used." %}</p>
 			</div>
 			<ul>
-				{% for field in form %}
+				{% for field in password_form %}
 				<li class="field">
 					<label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
 					{{ field.errors }}
