@@ -133,7 +133,13 @@ class PostDetailView(DetailView):
         return post
 
     def get_context_data(self, **kwargs):
-        postlist_view = PostListView()
+        if self.request.META.get('HTTP_REFERER') == \
+            self.request.build_absolute_uri(
+                reverse('board_post_list_best', kwargs={'board': self.board.slug})
+            ):
+            postlist_view = PostBestListView()
+        else:
+            postlist_view = PostListView()
         postlist_view.kwargs = dict()
         postlist_view.request = self.request
         postlist_view.dispatch(self.request, board=self.board.slug)
