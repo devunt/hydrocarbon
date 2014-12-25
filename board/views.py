@@ -32,12 +32,16 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
     form_class = PostForm
 
     def get_success_url(self):
-        v = Vote()
-        v.user = self.object.user
-        v.ipaddress = self.object.ipaddress
-        v.post = self.object
-        v.vote = Vote.UPVOTE
-        v.save()
+        qdict = QueryDict('', mutable=True)
+        qdict.update({
+            'type': 'p',
+            'target': str(self.object.id),
+            'vote': '++',
+        })
+        r = self.request
+        r.POST = qdict
+        v = VoteAjaxView()
+        v.post(r)
         return super().get_success_url()
 
     def get_form_kwargs(self):
@@ -320,6 +324,16 @@ class CommentAjaxView(AjaxMixin, View):
         c.ipaddress = request.META['REMOTE_ADDR']
         c.contents = request.POST.get('contents')
         c.save()
+        qdict = QueryDict('', mutable=True)
+        qdict.update({
+            'type': 'c',
+            'target': str(c.id),
+            'vote': '++',
+        })
+        r = request
+        r.POST = qdict
+        v = VoteAjaxView()
+        v.post(r)
         return self.success()
 
     def put(self, request, *args, **kwargs):
