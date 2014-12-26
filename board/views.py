@@ -155,7 +155,7 @@ class PostDetailView(DetailView):
         if self.request.user.is_authenticated():
             vqs = self.object._votes.filter(user=self.request.user)
         else:
-            vqs = self.object._votes.filter(ipaddress=self.request.META['REMOTE_ADDR'])
+            vqs = self.object._votes.filter(user=None, ipaddress=self.request.META['REMOTE_ADDR'])
         if vqs.exists():
             vote = vqs.first()
             if vote.vote == Vote.UPVOTE:
@@ -198,7 +198,7 @@ class VoteAjaxView(AjaxMixin, View):
         if request.user.is_authenticated():
             vqs = vqs.filter(user=request.user)
         else:
-            vqs = vqs.filter(ipaddress=request.META['REMOTE_ADDR'])
+            vqs = vqs.filter(user=None, ipaddress=request.META['REMOTE_ADDR'])
 
         if vote[0] == '+':
             if vote[1] == '-' and not request.user.is_authenticated():
@@ -275,7 +275,7 @@ class CommentAjaxView(AjaxMixin, View):
                 if request.user.is_authenticated():
                     vqs = comment._votes.filter(user=request.user)
                 else:
-                    vqs = comment._votes.filter(ipaddress=request.META['REMOTE_ADDR'])
+                    vqs = comment._votes.filter(user=None, ipaddress=request.META['REMOTE_ADDR'])
                 if vqs.exists():
                     vote = vqs.first()
                     if vote.vote == Vote.UPVOTE:
