@@ -296,7 +296,6 @@ msgid "Tags"
 msgstr "태그"
 
 #: board/templates/board/post_item.html:8
-#, fuzzy
 msgid "Notice"
 msgstr "공지"
 
