@@ -50,7 +50,7 @@
         suffixFromNow: "후",
         inPast: '곧',
         seconds: "방금",
-        minute: "1분 전",
+        minute: "1분",
         minutes: "%d분",
         hour: "1시간",
         hours: "%d시간",
