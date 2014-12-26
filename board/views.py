@@ -342,10 +342,10 @@ class CommentAjaxView(AjaxMixin, View):
         except Comment.DoesNotExist:
             return self.not_found()
         if c.user:
-            if c.user != request.user:
+            if (not request.user.is_staff) and (c.user != request.user):
                 return self.permission_denied()
         else:
-            if not check_password(request.META.get('HTTP_X_HC_PASSWORD'), c.onetime_user.password):
+            if (not request.user.is_staff) and not check_password(request.META.get('HTTP_X_HC_PASSWORD'), c.onetime_user.password):
                 return self.permission_denied()
         PUT = QueryDict(request.body)
         c.contents = PUT.get('contents')
@@ -358,10 +358,10 @@ class CommentAjaxView(AjaxMixin, View):
         except Comment.DoesNotExist:
             return self.not_found()
         if c.user:
-            if c.user != request.user:
+            if (not request.user.is_staff) and (c.user != request.user):
                 return self.permission_denied()
         else:
-            if not check_password(request.META.get('HTTP_X_HC_PASSWORD'), c.onetime_user.password):
+            if (not request.user.is_staff) and not check_password(request.META.get('HTTP_X_HC_PASSWORD'), c.onetime_user.password):
                 return self.permission_denied()
             c.onetime_user.delete()
         c.delete()

@@ -42,6 +42,9 @@ function renderComment($container, v, depth) {
 	} else if(v.author == author) {
 		$c.addClass('owned');
 	}
+	if(c3RhZmY) {
+		$c.find('.manipulate').show();
+	}
 
 	if(depth > 0) $c.css('margin-left', 2*depth+'%');
 

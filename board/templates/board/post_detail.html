@@ -194,6 +194,7 @@
 			</li>
 		</ul>
 		<script>
+			var c3RhZmY = {{ user.is_staff | lower }};
 			var author = '{{ user.profile.nick }}';
 			var post_id = {{ post.id }};
 			getComments({{ post.id }});
@@ -215,7 +216,7 @@
 			</a>
 		</div>
 		<div class="right">
-			{% if user.username == post.user.username or not post.user.username %}
+			{% if user.is_staff or user == post.user or not post.user %}
 				<a href="{% url 'post_delete' post.id %}" class="button">{% trans "Delete" %}</a>
 				<a href="{% url 'post_update' post.id %}" class="button">{% trans "Modify" %}</a>
 			{% endif %}

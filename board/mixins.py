@@ -69,11 +69,14 @@ class PostListMixin:
 class PermissionMixin:
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
-        if (self.object.user is not None) and (self.object.user != self.request.user):
+        if ((self.object.user is not None) and (self.object.user != request.user)) and \
+           (not request.user.is_staff):
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
 
     def check_permission(self):
+        if self.request.user.is_staff:
+            return True
         if self.object.user is None:
             password = self.request.POST.get('password')
             if password:
@@ -86,5 +89,6 @@ class PermissionMixin:
         return True
 
     def _get_context_data(self, **kwargs):
-        kwargs['password_form'] = PasswordForm()
+        if not self.request.user.is_staff:
+            kwargs['password_form'] = PasswordForm()
         return super().get_context_data(**kwargs)
