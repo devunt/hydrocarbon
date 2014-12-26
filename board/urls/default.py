@@ -14,6 +14,7 @@ urlpatterns = patterns('',
         name='registration_register'
     ),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^search/', include('haystack.urls')),
     url(r'^summernote/', include('django_summernote.urls')),
 
     url(r'^x/', include('board.urls.ajax')),

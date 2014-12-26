@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     # third-party apps
     'registration',
     'django_summernote',
+    'haystack',
     ) + (
     # django apps
     'django.contrib.admin',
@@ -163,6 +164,16 @@ SUMMERNOTE_CONFIG = {
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
     ),
 }
+
+# django-haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # App settings
 BOARD_POST_BEST_VOTES = 1
