@@ -4,5 +4,7 @@ cffi==0.8.6
 django-haystack==2.3.1
 django-registration-redux==1.1
 django-summernote==0.6.0
+elasticsearch==1.2.0
 pycparser==2.10
 six==1.8.0
+urllib3==1.10
