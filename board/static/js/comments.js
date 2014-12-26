@@ -160,7 +160,7 @@ $(function() {
 			if($container.data('type') == 'c') id = $container.prev('li.item').data('id');
 			console.log(databox);
 			postComments(id, databox)
-				.done(getComments(post_id));
+				.done(function() { getComments(post_id) });
 		})
 		.on('click', '.modify .submit', function(e) {
 			e.preventDefault();
@@ -182,7 +182,7 @@ $(function() {
 			}
 
 			putComments(id, text, password)
-				.done(getComments(post_id));
+				.done(function() { getComments(post_id) });
 		})
 		.on('click', '.delete .submit', function(e) {
 			e.preventDefault();
@@ -190,7 +190,7 @@ $(function() {
 				password = $item.find('.footer label.password input').val();
 
 			deleteComments($item.data('id'), password)
-				.done(getComments(post_id));
+				.done(function() { getComments(post_id) });
 		})
 		.on('click', '.dropdown.menu li a', function(e) {
 			e.preventDefault();
