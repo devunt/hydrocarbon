@@ -57,7 +57,7 @@ function renderComment($container, v, depth) {
 		.find('.text span').text(v.votes.total);
 
 	contents = v.contents;
-	contents = contents.replace(/\n/g, '<br>');
+	contents = contents.replace(/\n/g, '<br>', 'g');
 	$c.find('.article').html(contents);
 
 	if(v.voted.upvoted) $c.find('.dropdown .upvote').addClass('voted');
