@@ -231,8 +231,9 @@ class VoteAjaxView(AjaxMixin, View):
             v = vqs.first()
             v.delete()
             vote_dict['vote'] = '+' + vote[1]
-            vote_dicts.remove(vote_dict)
-            request.session['vote_dicts'] = vote_dicts
+            if vote_dict in vote_dicts:
+                vote_dicts.remove(vote_dict)
+                request.session['vote_dicts'] = vote_dicts
             return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
 
 
