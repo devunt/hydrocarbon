@@ -253,7 +253,8 @@ $(function() {
 						.insertAfter($item)
 						.show();
 
-					if($item.hasClass('guest')) {
+					if(c3RhZmY) { $c.find('label').remove();
+					} else if($item.hasClass('guest')) {
 						$c.find('label.nick').remove();
 						$c.find('label').show();
 					}
@@ -273,7 +274,8 @@ $(function() {
 
 					$c.appendTo($item.find('.bubble.item > .container'));
 
-					if($item.hasClass('guest')) {
+					if(c3RhZmY) { $c.find('label').remove();
+					} else if($item.hasClass('guest')) {
 						$c.find('label.nick').remove();
 						$c.find('label').show();
 					}
