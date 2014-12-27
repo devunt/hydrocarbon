@@ -35,6 +35,18 @@ $(function() {
 				.trigger('mouseenter');
 		});
 
+	$('.post.item .label.meta.comments')
+		.on('mouseenter', function() {
+			var $item = $(this).closest('a.post.item');
+
+			$item.attr('href', $item.attr('href') + '#comments');
+		})
+		.on('mouseleave', function() {
+			var $item = $(this).closest('a.post.item');
+
+			$item.attr('href', $item.attr('href').replace('#comments', ''));
+		});
+
 	$('.section.article.form .category')
 		.on('click', 'a.option', function(e) {
 			e.preventDefault();
