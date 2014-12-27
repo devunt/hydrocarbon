@@ -16,7 +16,8 @@ body {
   color: #222;
   font: 14px "NanumGothic";
   letter-spacing: -.03em;
-  overflow: initial !important; }
+  overflow: initial !important;
+  overflow-y: scroll !important; }
 
 button, input, select, textarea {
   outline: none; }
@@ -648,7 +649,7 @@ a.anchor {
     color: #666;
     display: table-cell;
     font-size: 14px;
-    padding-right: .5em;
+    padding-right: 1em;
     white-space: nowrap; }
   .section.article .item.article .header .title h2 {
     display: table-cell;
@@ -885,8 +886,7 @@ a.anchor {
   .section.board .post-list {
     border-top: 1px solid #f2f2f2; }
   .section.board .item {
-    display: block;
-    vertical-align: top; }
+    display: block; }
     .section.board .item:hover, .section.board .item:hover .cell a {
       color: #666; }
     .section.board .item.even {
@@ -909,13 +909,11 @@ a.anchor {
         font-size: 13px; }
     .section.board .item .cell {
       line-height: 20px;
-      padding: 15px 0;
-      vertical-align: top; }
+      padding: 15px 0; }
       .section.board .item .cell.mark {
         height: 20px; }
       .section.board .item .cell.title span.title {
-        font-size: 16px;
-        vertical-align: top; }
+        font-size: 16px; }
       .section.board .item .cell.title .label.meta.comments {
         margin-left: .5em; }
   .section.board .cell {
@@ -923,7 +921,7 @@ a.anchor {
     font-size: 14px;
     overflow: hidden;
     text-align: center;
-    vertical-align: top; }
+    vertical-align: middle; }
     .section.board .cell.mark {
       width: 3%;
       font-size: 0; }
@@ -1028,7 +1026,6 @@ a.anchor {
           width: 4%;
           background: transparent;
           line-height: 25px;
-          vertical-align: middle;
           visibility: hidden; }
         .section.board .item .cell.category {
           width: auto;
@@ -1050,15 +1047,13 @@ a.anchor {
           line-height: 17px;
           opacity: .4;
           padding: 0;
-          text-align: left;
-          vertical-align: top; }
+          text-align: left; }
           .section.board .item .cell.meta .label.meta {
             margin-right: 10px; }
           .section.board .item .cell.meta .icon {
             margin-right: 2px; }
           .section.board .item .cell.meta .text {
-            font-size: 12px;
-            vertical-align: top; }
+            font-size: 12px; }
         .section.board .item .cell.author {
           margin-left: 4%; }
         .section.board .item .cell.author .icon {

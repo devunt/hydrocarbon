@@ -23,7 +23,7 @@
 	.post-list { border-top:1px solid $grey-95; }
 
 	.item {
-		display:block; vertical-align:top;
+		display:block;
 
 		&:hover,
 		&:hover .cell a { color:$darkgrey; }
@@ -43,16 +43,16 @@
 		}
 		
 		.cell {
-			line-height:20px; padding:15px 0; vertical-align:top;
+			line-height:20px; padding:15px 0;
 
 			&.mark { height:20px; }
-			&.title span.title { font-size:16px; vertical-align:top; }
+			&.title span.title { font-size:16px; }
 			&.title .label.meta.comments { margin-left:.5em; }			
 		}
 	}
 
 	.cell {
-		display:inline-block; font-size:$font-size; overflow:hidden; text-align:center; vertical-align:top;
+		display:inline-block; font-size:$font-size; overflow:hidden; text-align:center; vertical-align:middle;
 
 		&.mark { width:3%; font-size:0; }
 		&.category { width:9%; }
@@ -113,18 +113,18 @@
 			.cell {
 				line-height:23px; padding:0;
 
-				&.mark { height:23px; width:4%; background:transparent; line-height:25px; vertical-align:middle; visibility:hidden; }
+				&.mark { height:23px; width:4%; background:transparent; line-height:25px; visibility:hidden; }
 				&.category { width:auto; max-width:8%; background:$grey-85; border-radius:2px; font-size:$font-size - 2; line-height:23px; padding:0 1.5%; }
 				&.title {
 					width:75%; margin-left:2%; margin-right:4%;
 					span.title { font-size:$font-size; }
 				}
 				&.meta {
-					width:auto; display:inline-block; line-height:17px; opacity:.4; padding:0; text-align:left; vertical-align:top;
+					width:auto; display:inline-block; line-height:17px; opacity:.4; padding:0; text-align:left;
 					
 					.label.meta { margin-right:10px; }
 					.icon { margin-right:2px; }
-					.text { font-size:$font-size - 2; vertical-align:top; }
+					.text { font-size:$font-size - 2;}
 				}
 				&.author { margin-left:4%; }
 				&.author .icon { display:none; }
