@@ -274,7 +274,7 @@ body {
   display: none;
   position: absolute;
   text-align: left;
-  z-index: 5; }
+  z-index: 2005; }
   .dropdown.menu .tip {
     padding: 0 10px;
     position: relative; }
@@ -404,7 +404,7 @@ body {
   top: 0;
   width: 100%;
   position: fixed;
-  z-index: 10; }
+  z-index: 2010; }
 
 #nav {
   height: 50px;
