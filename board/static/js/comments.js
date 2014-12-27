@@ -209,6 +209,7 @@ $(function() {
 			e.preventDefault();
 			var $container = $(this).closest('.footer.clear');
 
+			$container.closest('.delete').removeClass('delete');
 			$container.remove();
 		})
 		.on('click', '.dropdown.menu li a', function(e) {
