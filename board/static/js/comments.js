@@ -28,9 +28,7 @@ function getComments(id) {
 function renderComment($container, v, depth) {
 	depth = typeof depth !== 'undefined' ? depth : 0;
 
-	var $c = $container.find('.list.template').clone(), date = new Date(v.created_time);
-
-	console.log(v);
+	var $c = $container.find('.list.template').clone(), date = new Date(v.created_time), contents;
 
 	if(v.iphash) {
 		$c
@@ -190,6 +188,13 @@ $(function() {
 			putComments(id, text, password)
 				.done(function() { getComments(post_id) });
 		})
+		.on('click', '.modify .cancel', function(e) {
+			e.preventDefault();
+			var $container = $(this).closest('.modify');
+
+			$container.prev('.list.item').show();
+			$container.remove();
+		})
 		.on('click', '.delete .submit', function(e) {
 			e.preventDefault();
 			var $item = $(this).closest('li.item'),
@@ -241,7 +246,7 @@ $(function() {
 						.remove();
 
 					$c.find('textarea')
-						.val($item.find('.article').text());
+						.val($item.find('.article').html().replace(/<br\s*[\/]?>/gi, '\n'));
 
 					$c.find('.cancel')
 						.show();
