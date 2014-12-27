@@ -1,4 +1,3 @@
-from hashlib import md5
 from urllib.parse import urlparse
 
 from django.conf import settings
@@ -11,12 +10,12 @@ from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import ensure_csrf_cookie
-from django.views.generic.base import TemplateView, View
+from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
-from board.forms import PasswordForm, PostForm
+from board.forms import PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import Board, Comment, OneTimeUser, Post, Vote
 
@@ -155,8 +154,7 @@ class PostDetailView(DetailView):
         request.GET = QueryDict(p.query)
         if referer == \
             self.request.build_absolute_uri(
-                reverse('board_post_list_best', kwargs={'board': self.board.slug})
-            ):
+                reverse('board_post_list_best', kwargs={'board': self.board.slug})):
             plv = PostBestListView()
         else:
             plv = PostListView()
@@ -189,8 +187,8 @@ class VoteAjaxView(AjaxMixin, View):
         vote_dicts = request.session.get('vote_dicts', list())
 
         if ((target_type not in ('p', 'c')) or
-            (not target_id.isdigit()) or
-            (vote not in ('++', '-+', '+-', '--'))):
+                (not target_id.isdigit()) or
+                (vote not in ('++', '-+', '+-', '--'))):
             return self.bad_request()
         target_id = int(target_id)
 
@@ -262,8 +260,10 @@ class CommentAjaxView(AjaxMixin, View):
             post = Post.objects.get(pk=self.pk)
         except Post.DoesNotExist:
             return self.not_found()
+
         def _comment_sort_key(comment):
             return comment['votes']['total']
+
         def _make_list(comments):
             lst = list()
             for comment in comments:

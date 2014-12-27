@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from redactor.widgets import RedactorEditor
 from registration.forms import RegistrationFormUniqueEmail
 
-from board.models import Board, Category, Post
+from board.models import Category, Post
 
 
 class HCRegistrationForm(RegistrationFormUniqueEmail):

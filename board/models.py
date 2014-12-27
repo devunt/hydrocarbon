@@ -1,5 +1,3 @@
-import os
-
 import bleach
 
 from hashlib import sha224
@@ -105,7 +103,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
         )
         if not kwargs.pop('auto_now', False):
             self.modified_time = timezone.now()
-        super(Post, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 class Comment(AuthorModelMixin, VotableModelMixin, models.Model):

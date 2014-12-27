@@ -1,12 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import PermissionDenied
-from django.http import Http404, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.translation import ugettext as _
 
 from board.forms import PasswordForm
-from board.models import Announcement, Board, OneTimeUser
+from board.models import Board, OneTimeUser
 
 
 class BoardMixin:
