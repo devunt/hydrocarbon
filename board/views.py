@@ -1,4 +1,5 @@
 from hashlib import md5
+from urllib.parse import urlparse
 
 from django.conf import settings
 from django.contrib import messages
@@ -101,7 +102,17 @@ class PostListView(BoardMixin, PostListMixin, ListView):
     is_best = False
 
     def get_queryset(self):
-        return Post.objects.filter(board=self.board, announcement=None).order_by('-created_time')
+        pqs = Post.objects.filter(board=self.board, announcement=None)
+        s = self.request.GET.get('o')
+        if s == 'm':
+            column = 'modified_time'
+        else:
+            column = 'created_time'
+        if 'r' in self.request.GET:
+            order = ''
+        else:
+            order = '-'
+        return pqs.order_by(order + column)
 
     def get_context_data(self, **kwargs):
         kwargs['is_best'] = self.is_best
@@ -138,7 +149,11 @@ class PostDetailView(DetailView):
         return post
 
     def get_context_data(self, **kwargs):
-        if self.request.META.get('HTTP_REFERER') == \
+        request = self.request
+        referer = self.request.META.get('HTTP_REFERER')
+        p = urlparse(referer)
+        request.GET = QueryDict(p.query)
+        if referer == \
             self.request.build_absolute_uri(
                 reverse('board_post_list_best', kwargs={'board': self.board.slug})
             ):
@@ -146,8 +161,8 @@ class PostDetailView(DetailView):
         else:
             plv = PostListView()
         plv.kwargs = dict()
-        plv.request = self.request
-        plv.dispatch(self.request, board=self.board.slug)
+        plv.request = request
+        plv.dispatch(request, board=self.board.slug)
         ctx = plv.get_context_data()
         kwargs.update(ctx)
         kwargs['board'] = self.board
