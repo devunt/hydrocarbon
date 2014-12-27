@@ -400,6 +400,13 @@ body {
 .label.meta.downvote .icon {
   background-position: 0 -204px; }
 
+a.anchor {
+  top: -60px;
+  height: 0;
+  width: 0;
+  display: block;
+  position: relative; }
+
 #header {
   top: 0;
   width: 100%;

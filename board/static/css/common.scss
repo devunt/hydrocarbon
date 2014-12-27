@@ -184,3 +184,9 @@
 	&.more .icon { background-position:0 $meta-size * -16 !important; }
 	&.downvote .icon { background-position:0 $meta-size * -17; }
 }
+
+// 
+// .anchor
+//	for the fixed navbar
+// 
+a.anchor { top:-60px; height:0; width:0; display:block; position:relative; }
