@@ -742,7 +742,8 @@ body {
     .section.article .comments-list {
       padding: 10px 2% 0; } }
   .section.article .comments-list li.list.item,
-  .section.article .comments-list li.write {
+  .section.article .comments-list li.write,
+  .section.article .comments-list li.modify {
     list-style: none; }
   .section.article .comments-list .list.item.guest .comment .bubble.item .header .dropdown li.manipulate, .section.article .comments-list .list.item.owned .comment .bubble.item .header .dropdown li.manipulate {
     display: block; }
