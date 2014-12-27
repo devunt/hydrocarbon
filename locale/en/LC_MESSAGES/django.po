@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-25 12:59+0900\n"
+"POT-Creation-Date: 2014-12-27 13:00+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,7 +130,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/mixins.py:84
+#: board/mixins.py:87
 msgid "Wrong password"
 msgstr ""
 
@@ -194,7 +194,7 @@ msgstr ""
 
 #: board/templates/board/post_confirm_delete.html:29
 #: board/templates/board/post_detail.html:157
-#: board/templates/board/post_detail.html:219
+#: board/templates/board/post_detail.html:220
 msgid "Delete"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgid "Reply"
 msgstr ""
 
 #: board/templates/board/post_detail.html:149
-#: board/templates/board/post_detail.html:220
+#: board/templates/board/post_detail.html:221
 msgid "Modify"
 msgstr ""
 
@@ -265,17 +265,17 @@ msgstr ""
 msgid "Submit comment"
 msgstr ""
 
-#: board/templates/board/post_detail.html:205
+#: board/templates/board/post_detail.html:206
 #: board/templates/board/post_list.html:61
 msgid "List"
 msgstr ""
 
-#: board/templates/board/post_detail.html:213
+#: board/templates/board/post_detail.html:214
 #: board/templates/board/post_list.html:69
 msgid "Top posts"
 msgstr ""
 
-#: board/templates/board/post_detail.html:222
+#: board/templates/board/post_detail.html:223
 #: board/templates/board/post_form.html:5
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:63
@@ -571,14 +571,14 @@ msgstr ""
 msgid "Register for an account"
 msgstr ""
 
-#: board/views.py:92
+#: board/views.py:96
 msgid "Deleted"
 msgstr ""
 
-#: hydrocarbon/settings.py:95
+#: hydrocarbon/settings.py:97
 msgid "Korean"
 msgstr ""
 
-#: hydrocarbon/settings.py:96
+#: hydrocarbon/settings.py:98
 msgid "English"
 msgstr ""
