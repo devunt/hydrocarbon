@@ -15,7 +15,8 @@
 body {
   color: #222;
   font: 14px "NanumGothic";
-  letter-spacing: -.03em; }
+  letter-spacing: -.03em;
+  overflow: initial !important; }
 
 button, input, select, textarea {
   outline: none; }
