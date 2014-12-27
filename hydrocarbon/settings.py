@@ -165,7 +165,8 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # App settings
-BOARD_POST_BEST_VOTES = 1
+BOARD_POST_BLIND_VOTES = -1 # DEBUGGING
+BOARD_POST_BEST_VOTES = 1 # DEBUGGING
 LOGIN_REDIRECT_URL = '/'
 
 def _filter_iframe_src(name, value):
