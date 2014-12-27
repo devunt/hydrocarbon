@@ -6,6 +6,22 @@
 // 		uses part of article.scss too
 // 	
 
+#redactor-modal,
+#redactor-modal footer button,
+.redactor-dropdown,
+.redactor-toolbar-tooltip { font-family:inherit !important; }
+
+.redactor-dropdown {
+	a {
+		&:hover { background-color:$blue-base !important; }
+	}
+}
+
+#redactor-modal footer button.redactor-modal-action-btn {
+	background-color:$blue !important;
+	&:hover { background-color:$blue-base !important; }
+}
+
 .section.article.form {
 	padding-bottom:20px;
 	.item.article {
@@ -24,47 +40,34 @@
 			}
 		}
 
-		.note-editor {
+		.redactor-box {
 			border:0;
 
-			.btn, button { border:0; }
+			.redactor-toolbar {
+				background:$grey-90; border:0; box-shadow:none; padding:0 5% !important;
 
-			.btn-primary { background:$blue; }
-
-			.note-dialog {
-				.close { background:none; }
-			}
-
-			.note-toolbar {
-				background:$grey-90; border:0; padding-left:5%; padding-right:5%;
-				.btn {
-					background:$lightgrey;
-					&.active { background:$blue; color:$white; }
-					i:before { display:inline-block; font-size:14px; line-height:20px; }
+				li a {
+					&:hover { background:$blue-base; }
+					&:active,
+					&.redactor-act { background:$lightgrey-base; }
 				}
 			}
 
-			.note-editable {
-				min-height:120px; margin:0; padding:20px 12.5% 0;
+			.redactor-editor {
+				border:0; margin:0; padding:20px 12.5%;
 				@media screen and (max-device-width: $medium) { padding:20px 5%; }
 
 				p { margin:0 0 1em; }
 				li { list-style-position:inside; }
 			}
-
-			.note-statusbar {
-				background:none; padding:0 5%;
-				.note-resizebar {
-					height:10px; border-top:1px solid $grey-95; padding:2px 0;
-					.note-icon-bar { border-top:1px solid $grey-85; }
-					&:hover .note-icon-bar { border-top:1px solid $lightgrey-base; }
-				}
-			}
 		}
 
-		.tags {
-			input { border:0; border-bottom:1px solid $lightgrey-base; 
-				&:focus { border-bottom-color:$blue-base; outline:none; }
+		.footer {
+			border-top:1px solid $grey-90;
+			.tags {
+				input { border:0; border-bottom:1px solid $lightgrey-base; 
+					&:focus { border-bottom-color:$blue-base; outline:none; }
+				}
 			}
 		}
 	}

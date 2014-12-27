@@ -1124,6 +1124,20 @@ a.anchor {
 #scope:hover {
   background-color: rgba(0, 0, 0, 0.2); }
 
+#redactor-modal,
+#redactor-modal footer button,
+.redactor-dropdown,
+.redactor-toolbar-tooltip {
+  font-family: inherit !important; }
+
+.redactor-dropdown a:hover {
+  background-color: #3d9ccc !important; }
+
+#redactor-modal footer button.redactor-modal-action-btn {
+  background-color: rgba(61, 156, 204, 0.9) !important; }
+  #redactor-modal footer button.redactor-modal-action-btn:hover {
+    background-color: #3d9ccc !important; }
+
 .section.article.form {
   padding-bottom: 20px; }
   .section.article.form .item.article .header .category select {
@@ -1145,56 +1159,36 @@ a.anchor {
       width: 15%; }
     .section.article.form .item.article .header h2 {
       width: 72%; } }
-  .section.article.form .item.article .note-editor {
+  .section.article.form .item.article .redactor-box {
     border: 0; }
-    .section.article.form .item.article .note-editor .btn, .section.article.form .item.article .note-editor button {
-      border: 0; }
-    .section.article.form .item.article .note-editor .btn-primary {
-      background: rgba(61, 156, 204, 0.9); }
-    .section.article.form .item.article .note-editor .note-dialog .close {
-      background: none; }
-    .section.article.form .item.article .note-editor .note-toolbar {
+    .section.article.form .item.article .redactor-box .redactor-toolbar {
       background: #e5e5e5;
       border: 0;
-      padding-left: 5%;
-      padding-right: 5%; }
-      .section.article.form .item.article .note-editor .note-toolbar .btn {
-        background: rgba(204, 204, 204, 0.9); }
-        .section.article.form .item.article .note-editor .note-toolbar .btn.active {
-          background: rgba(61, 156, 204, 0.9);
-          color: #fff; }
-        .section.article.form .item.article .note-editor .note-toolbar .btn i:before {
-          display: inline-block;
-          font-size: 14px;
-          line-height: 20px; }
-    .section.article.form .item.article .note-editor .note-editable {
-      min-height: 120px;
+      box-shadow: none;
+      padding: 0 5% !important; }
+      .section.article.form .item.article .redactor-box .redactor-toolbar li a:hover {
+        background: #3d9ccc; }
+      .section.article.form .item.article .redactor-box .redactor-toolbar li a:active, .section.article.form .item.article .redactor-box .redactor-toolbar li a.redactor-act {
+        background: #ccc; }
+    .section.article.form .item.article .redactor-box .redactor-editor {
+      border: 0;
       margin: 0;
-      padding: 20px 12.5% 0; }
+      padding: 20px 12.5%; }
       @media screen and (max-device-width: 599px) {
-        .section.article.form .item.article .note-editor .note-editable {
+        .section.article.form .item.article .redactor-box .redactor-editor {
           padding: 20px 5%; } }
-      .section.article.form .item.article .note-editor .note-editable p {
+      .section.article.form .item.article .redactor-box .redactor-editor p {
         margin: 0 0 1em; }
-      .section.article.form .item.article .note-editor .note-editable li {
+      .section.article.form .item.article .redactor-box .redactor-editor li {
         list-style-position: inside; }
-    .section.article.form .item.article .note-editor .note-statusbar {
-      background: none;
-      padding: 0 5%; }
-      .section.article.form .item.article .note-editor .note-statusbar .note-resizebar {
-        height: 10px;
-        border-top: 1px solid #f2f2f2;
-        padding: 2px 0; }
-        .section.article.form .item.article .note-editor .note-statusbar .note-resizebar .note-icon-bar {
-          border-top: 1px solid #d9d9d9; }
-        .section.article.form .item.article .note-editor .note-statusbar .note-resizebar:hover .note-icon-bar {
-          border-top: 1px solid #ccc; }
-  .section.article.form .item.article .tags input {
-    border: 0;
-    border-bottom: 1px solid #ccc; }
-    .section.article.form .item.article .tags input:focus {
-      border-bottom-color: #3d9ccc;
-      outline: none; }
+  .section.article.form .item.article .footer {
+    border-top: 1px solid #e5e5e5; }
+    .section.article.form .item.article .footer .tags input {
+      border: 0;
+      border-bottom: 1px solid #ccc; }
+      .section.article.form .item.article .footer .tags input:focus {
+        border-bottom-color: #3d9ccc;
+        outline: none; }
   .section.article.form .submit {
     margin: 10px 0; }
 
