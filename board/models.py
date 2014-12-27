@@ -1,11 +1,15 @@
 import os
 
+import bleach
+
 from hashlib import sha224
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
+from redactor.fields import RedactorField
 
 
 class UserProfile(models.Model):
@@ -81,7 +85,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     board = models.ForeignKey('Board', related_name='posts')
     category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')
     title = models.CharField(max_length=32)
-    contents = models.TextField()
+    contents = RedactorField()
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     viewcount = models.PositiveIntegerField(default=0)
     created_time = models.DateTimeField(auto_now_add=True)
@@ -94,6 +98,11 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
         return reverse('post_detail', kwargs={'pk': self.id})
 
     def save(self, *args, **kwargs):
+        self.contents = bleach.clean(self.contents,
+            tags=settings.BLEACH_ALLOWED_TAGS,
+            attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
+            styles=settings.BLEACH_ALLOWED_STYLES
+        )
         if not kwargs.pop('auto_now', False):
             self.modified_time = timezone.now()
         super(Post, self).save(*args, **kwargs)

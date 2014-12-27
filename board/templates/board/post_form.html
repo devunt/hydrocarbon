@@ -47,10 +47,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="files">
-		<input id='file-upload' type='file' name='files[]' multiple>
-		<div id='progress'>0</div>
-	</div>
 	<div>
 		{% if form.onetime_nick %}
 			{{ form.onetime_nick }}
@@ -64,27 +60,5 @@
 	</div>
 	</form>
 </div>
-<script>
-$(function () {
-	$('#file-upload').fileupload({
-		url: '/x/f',
-		singleFileUploads: false,
-		dataType: 'json',
-		formData: [
-			{ name: 'csrfmiddlewaretoken', value: '{{ csrf_token }}' }
-		],
-		progressall: function (e, data) {
-			var progress = parseInt(data.loaded / data.total * 100, 10);
-			$('#progress').text(progress);
-		},
-		done: function (e, data) {
-			console.log(data);
-			$.each(data.result.files, function (index, file) {
-				console.log(file.name);
-			});
-		}
-	});
-});
-</script>
 {% endif %}
 {% endblock content %}

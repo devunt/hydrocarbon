@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
-from django_summernote.widgets import SummernoteInplaceWidget
+from redactor.widgets import RedactorEditor
 from registration.forms import RegistrationFormUniqueEmail
 
 from board.models import Board, Category, Post
@@ -30,7 +30,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['category', 'title', 'contents', 'tags']
         widgets = {
-            'contents': SummernoteInplaceWidget(),
+            'contents': RedactorEditor(),
             'tags': TextInput(),
         }
         labels = {

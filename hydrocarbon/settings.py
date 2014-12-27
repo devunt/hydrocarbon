@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from urllib.parse import urlparse
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -38,7 +39,7 @@ INSTALLED_APPS = (
     ) + (
     # third-party apps
     'registration',
-    'django_summernote',
+    'redactor',
     'haystack',
     ) + (
     # django apps
@@ -148,22 +149,10 @@ DEFAULT_FROM_EMAIL = 'no-reply@herocomics.kr'
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 
-# django-summernote
-SUMMERNOTE_CONFIG = {
-    'toolbar': [
-        ['style', ['style']],
-        ['style', ['bold', 'underline', 'strikethrough', 'clear']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['insert', ['picture', 'link']],
-        ['misc', ['codeview']]
-    ],
-    'inplacewidget_external_css': (
-        '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
-    ),
-    'inplacewidget_external_js': (
-        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
-    ),
-}
+# django-wysiwyg-redactor
+REDACTOR_OPTIONS = {'lang': 'ko', 'plugins': ['video']}
+REDACTOR_UPLOAD = 'uploads/'
+REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 
 # django-haystack
 HAYSTACK_CONNECTIONS = {
@@ -178,3 +167,36 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # App settings
 BOARD_POST_BEST_VOTES = 1
 LOGIN_REDIRECT_URL = '/'
+
+def _filter_iframe_src(name, value):
+    if name in ('allowfullscreen', 'frameborder', 'height', 'style', 'width'):
+        return True
+    if name == 'src':
+        p = urlparse(value)
+        return p.netloc in (
+            'youtube.com',
+            'www.youtube.com',
+            'youtube-nocookie.com',
+            'www.youtube-nocookie.com',
+        )
+    return False
+
+BLEACH_ALLOWED_TAGS = [
+    'blockquote', 'br', 'hr', 'p', 'pre',
+    'del', 'em', 'strong',
+    'h1', 'h2', 'h3', 'h4', 'h5',
+    'li', 'ol', 'ul',
+    'a', 'img', 'iframe',
+]
+BLEACH_ALLOWED_ATTRIBUTES = {
+    'a': ['href', 'target'],
+    'iframe': _filter_iframe_src,
+    'img': ['alt', 'style', 'src'],
+    'p': ['style'],
+}
+BLEACH_ALLOWED_STYLES = [
+    'display',
+    'width', 'height',
+    'margin', 'margin-left',
+    'text-align',
+]

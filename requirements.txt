@@ -1,10 +1,13 @@
 Django==1.7.1
+Pillow==2.6.1
 bcrypt==1.1.0
+bleach==1.4.1
 cffi==0.8.6
 django-haystack==2.3.1
 django-registration-redux==1.1
-django-summernote==0.6.0
+django-wysiwyg-redactor==0.4.3.2
 elasticsearch==1.2.0
+html5lib==0.999
 pycparser==2.10
 six==1.8.0
 urllib3==1.10
