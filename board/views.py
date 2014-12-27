@@ -1,5 +1,6 @@
 from hashlib import md5
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.urlresolvers import reverse
@@ -17,8 +18,6 @@ from django.views.generic.list import ListView
 from board.forms import PasswordForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import Attachment, Board, Comment, OneTimeUser, Post, Vote
-
-from hydrocarbon import settings
 
 
 class IndexView(View):
