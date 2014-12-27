@@ -101,7 +101,7 @@ class PostListView(BoardMixin, PostListMixin, ListView):
     is_best = False
 
     def get_queryset(self):
-        return Post.objects.filter(board=self.board).order_by('-created_time')
+        return Post.objects.filter(board=self.board, announcement=None).order_by('-created_time')
 
     def get_context_data(self, **kwargs):
         kwargs['is_best'] = self.is_best
