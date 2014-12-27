@@ -47,6 +47,10 @@ a.label:hover { color:$black; opacity:.6; }
 	}
 }
 
+.errorlist { @extend #messages;
+	li { background:$red; color:$white; }
+}
+
 
 body { background:#e5e5e5; }
 @media screen and (max-device-width: $small) {

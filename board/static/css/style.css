@@ -66,21 +66,25 @@ a.label:hover {
 #overlay div {
   z-index: 20; }
 
-#messages li {
+#messages li, .errorlist li {
   background: #ccc;
   color: #222;
   line-height: 20px;
   list-style: none;
   padding: 5px 0;
   text-align: center; }
-  #messages li.success {
+  #messages li.success, .errorlist li.success {
     background: #85cc3d;
     color: #fff; }
-  #messages li.warning {
+  #messages li.warning, .errorlist li.warning {
     background: #ffea80; }
-  #messages li.error {
+  #messages li.error, .errorlist li.error {
     background: #cc3d3d;
     color: #fff; }
+
+.errorlist li {
+  background: #cc3d3d;
+  color: #fff; }
 
 body {
   background: #e5e5e5; }
