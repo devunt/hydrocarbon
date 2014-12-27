@@ -205,9 +205,9 @@
 		<div class="left">
 			<a href="{% url 'board_post_list' board.slug %}" class="button">{% trans "List" %}</a>
 			{% if is_best %}
-				<a href="{{ board.get_absolute_url }}" class="button blue checkbox checked">
+				<a href="{% url 'board_post_list' board.slug %}" class="button blue checkbox checked">
 			{% else %}
-				<a href="{{ board.get_absolute_url }}best" class="button checkbox">
+				<a href="{% url 'board_post_list_best' board.slug %}" class="button checkbox">
 			{% endif %}
 				<span class="label">
 					<span class="icon"></span>
