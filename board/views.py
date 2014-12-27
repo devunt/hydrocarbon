@@ -17,7 +17,7 @@ from django.views.generic.list import ListView
 
 from board.forms import PasswordForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
-from board.models import Attachment, Board, Comment, OneTimeUser, Post, Vote
+from board.models import Board, Comment, OneTimeUser, Post, Vote
 
 
 class IndexView(View):
@@ -235,23 +235,6 @@ class VoteAjaxView(AjaxMixin, View):
                 vote_dicts.remove(vote_dict)
                 request.session['vote_dicts'] = vote_dicts
             return JsonResponse({'status': 'success', 'current': post.votes if target_type == 'p' else comment.votes})
-
-
-class FileUploadAjaxView(AjaxMixin, View):
-    def post(self, request):
-        files = list()
-        for f in request.FILES.getlist('files[]'):
-            hasher = md5()
-            for chunk in f.chunks():
-                hasher.update(chunk)
-            attachment = Attachment()
-            attachment.checksum = hasher.hexdigest()
-            attachment.content_type = f.content_type
-            attachment.name = f.name
-            attachment.file = f
-            attachment.save()
-            files.append({'name': f.name, 'content_type': f.content_type})
-        return JsonResponse({'status': 'success', 'files': files})
 
 
 class CommentAjaxView(AjaxMixin, View):

@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(primary_key=True, auto_created=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=64)),
-                ('file', models.FileField(upload_to=board.models.upload_to_func)),
+                ('file', models.FileField()),
                 ('content_type', models.CharField(max_length=64)),
                 ('checksum', models.CharField(max_length=64)),
                 ('dlcount', models.PositiveIntegerField(default=0)),
