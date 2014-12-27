@@ -99,7 +99,8 @@
 		@media screen and (max-device-width: $small) { padding:10px 2% 0; }
 
 		li.list.item,
-		li.write { list-style:none; }
+		li.write,
+		li.modify { list-style:none; }
 		.list.item {
 			&.guest, &.owned {
 				.comment .bubble.item .header .dropdown li.manipulate { display:block; }

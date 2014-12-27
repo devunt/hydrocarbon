@@ -274,7 +274,7 @@ body {
   display: none;
   position: absolute;
   text-align: left;
-  z-index: 5; }
+  z-index: 2005; }
   .dropdown.menu .tip {
     padding: 0 10px;
     position: relative; }
@@ -404,7 +404,7 @@ body {
   top: 0;
   width: 100%;
   position: fixed;
-  z-index: 10; }
+  z-index: 2010; }
 
 #nav {
   height: 50px;
@@ -742,7 +742,8 @@ body {
     .section.article .comments-list {
       padding: 10px 2% 0; } }
   .section.article .comments-list li.list.item,
-  .section.article .comments-list li.write {
+  .section.article .comments-list li.write,
+  .section.article .comments-list li.modify {
     list-style: none; }
   .section.article .comments-list .list.item.guest .comment .bubble.item .header .dropdown li.manipulate, .section.article .comments-list .list.item.owned .comment .bubble.item .header .dropdown li.manipulate {
     display: block; }
