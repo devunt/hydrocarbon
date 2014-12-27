@@ -67,6 +67,7 @@
 			</a>
 		</div>
 		<div class="footer clear">
+			<a class="anchor" id="comments"></a>
 			{% if post.tag %}
 			<div class="tags">
 				<a href="#" class="label meta tags">
@@ -95,6 +96,7 @@
 	<div id="comments" class="comments-list">
 		<ul>
 			<li class="list template" style="display:none;">
+				<a class="anchor"></a>
 				<div class="comment">
 					<div class="bubble item">
 						<div class="container">
@@ -177,10 +179,8 @@
 							<div class="article"><textarea placeholder="{% trans 'Please write your reply here.' %}"></textarea></div>
 							<div class="footer clear">
 								<div class="ot nav">
-									{% if not user.is_authenticated %}
-										<label class="nick"><input type="text" name="nick" placeholder="{% trans "Nickname" %}"></label>
-										<label class="password"><input type="password" name="password" placeholder="{% trans "Password" %}"></label>
-									{% endif %}
+									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick"><input type="text" name="nick" placeholder="{% trans "Nickname" %}"></label>
+									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="password"><input type="password" name="password" placeholder="{% trans "Password" %}"></label>
 								</div>
 								<div class="nav">
 									<a href="#cancel" class="cancel button" style="display:none;">{% trans "Cancel" %}</a>

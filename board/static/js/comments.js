@@ -46,6 +46,8 @@ function renderComment($container, v, depth) {
 
 	if(depth > 0) $c.css('margin-left', 2*depth+'%');
 
+	$c.find('a.anchor').attr('id', 'comment-id-'+v.id);
+
 	$c.find('.meta.author .text').text(v.author);
 	$c.find('.meta.timestamp')
 		.attr('title', date.toLocaleString('ko-kr', { hour12: false }))
@@ -130,7 +132,7 @@ $(function() {
 			switch(action) {
 				case 'toggle':
 					e.preventDefault();
-					$('#comments').toggle();
+					$('.comments-list').toggle();
 					break;
 
 				case 'refresh':
@@ -203,8 +205,16 @@ $(function() {
 			deleteComments($item.data('id'), password)
 				.done(function() { getComments(post_id) });
 		})
+		.on('click', '.delete .cancel', function(e) {
+			e.preventDefault();
+			var $container = $(this).closest('.footer.clear');
+
+			$container.remove();
+		})
 		.on('click', '.dropdown.menu li a', function(e) {
 			e.preventDefault();
+
+			$(this).closest('.dropdown.container.open').removeClass('open');
 
 			var $container = $('.comments-list ul'), action = $(this).attr('href').replace('#', '');
 
@@ -242,8 +252,10 @@ $(function() {
 						.insertAfter($item)
 						.show();
 
-					$c.find('label.nick')
-						.remove();
+					if($item.hasClass('guest')) {
+						$c.find('label.nick').remove();
+						$c.find('label').show();
+					}
 
 					$c.find('textarea')
 						.val($item.find('.article').html().replace(/<br\s*[\/]?>/gi, '\n'));
@@ -254,14 +266,16 @@ $(function() {
 					break;
 
 				case 'delete':
-					var $c = $container.find('.write.template .footer').clone(), $item = $(this).closest('li.item .bubble.item > .container');
+					var $c = $container.find('.write.template .footer').clone(), $item = $(this).closest('li.item').not('.delete');
 
 					$item.addClass('delete');
 
-					$c.appendTo($item);
+					$c.appendTo($item.find('.bubble.item > .container'));
 
-					$c.find('label.nick')
-						.remove();
+					if($item.hasClass('guest')) {
+						$c.find('label.nick').remove();
+						$c.find('label').show();
+					}
 
 					$c.find('.cancel')
 						.show();
