@@ -8,7 +8,7 @@ from board.models import Category, Post
 
 
 class HCRegistrationForm(RegistrationFormUniqueEmail):
-    nick = forms.CharField(label=_('Nickname:'), min_length=2, max_length=16)
+    nick = forms.CharField(label=_('Nickname'), min_length=2, max_length=16)
 
 
 class PostForm(forms.ModelForm):
@@ -23,7 +23,7 @@ class PostForm(forms.ModelForm):
         if not cqs.exists():
             del self.fields['category']
         if not authenticated:
-            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname:'), max_length=16)
+            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
             self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
 
     class Meta:

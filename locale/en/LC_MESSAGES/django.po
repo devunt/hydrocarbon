@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-27 13:00+0900\n"
+"POT-Creation-Date: 2014-12-28 11:12+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: board/forms.py:11 board/forms.py:26
-msgid "Nickname:"
+#: board/templates/board/post_detail.html:182
+msgid "Nickname"
 msgstr ""
 
 #: board/forms.py:27 board/forms.py:42 board/i18n_fake.py:7
-#: board/templates/board/post_detail.html:182
+#: board/templates/board/post_detail.html:183
 msgid "Password"
 msgstr ""
 
@@ -134,46 +135,46 @@ msgstr[1] ""
 msgid "Wrong password"
 msgstr ""
 
-#: board/templates/base.html:41 board/templates/base.html.py:69
-#: board/templates/board/post_detail.html:118
+#: board/templates/base.html:40 board/templates/base.html.py:68
+#: board/templates/board/post_detail.html:120
 #: board/templates/board/post_list.html:23
 #: board/templates/board/post_list.html:78
 msgid "Close"
 msgstr ""
 
-#: board/templates/base.html:53
+#: board/templates/base.html:52
 msgid "Home"
 msgstr ""
 
-#: board/templates/base.html:54
+#: board/templates/base.html:53
 msgid "Favorites"
 msgstr ""
 
-#: board/templates/base.html:55
+#: board/templates/base.html:54
 msgid "Notices"
 msgstr ""
 
-#: board/templates/base.html:56
+#: board/templates/base.html:55
 msgid "Scanlations"
 msgstr ""
 
-#: board/templates/base.html:81
+#: board/templates/base.html:80
 msgid "Profile"
 msgstr ""
 
-#: board/templates/base.html:82
+#: board/templates/base.html:81
 msgid "Submitted"
 msgstr ""
 
-#: board/templates/base.html:83
+#: board/templates/base.html:82
 msgid "Inbox"
 msgstr ""
 
-#: board/templates/base.html:84
+#: board/templates/base.html:83
 msgid "Log out"
 msgstr ""
 
-#: board/templates/base.html:90 board/templates/registration/login.html:5
+#: board/templates/base.html:89 board/templates/registration/login.html:5
 #: board/templates/registration/login.html:6
 #: board/templates/registration/login.html:24
 msgid "Log in"
@@ -193,7 +194,7 @@ msgid "Then enter the password you used."
 msgstr ""
 
 #: board/templates/board/post_confirm_delete.html:29
-#: board/templates/board/post_detail.html:157
+#: board/templates/board/post_detail.html:159
 #: board/templates/board/post_detail.html:220
 msgid "Delete"
 msgstr ""
@@ -220,41 +221,37 @@ msgid ""
 msgstr ""
 
 #: board/templates/board/post_detail.html:62
-#: board/templates/board/post_detail.html:125
+#: board/templates/board/post_detail.html:127
 msgid "Upvote"
 msgstr ""
 
 #: board/templates/board/post_detail.html:66
-#: board/templates/board/post_detail.html:133
+#: board/templates/board/post_detail.html:135
 msgid "Downvote"
 msgstr ""
 
-#: board/templates/board/post_detail.html:82
+#: board/templates/board/post_detail.html:83
 #, python-format
 msgid "There is <span>%(counter)s</span> comment."
 msgid_plural "There are <span>%(counter)s</span> comments."
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/templates/board/post_detail.html:88
+#: board/templates/board/post_detail.html:89
 msgid "Refresh"
 msgstr ""
 
-#: board/templates/board/post_detail.html:141
+#: board/templates/board/post_detail.html:143
 msgid "Reply"
 msgstr ""
 
-#: board/templates/board/post_detail.html:149
+#: board/templates/board/post_detail.html:151
 #: board/templates/board/post_detail.html:221
 msgid "Modify"
 msgstr ""
 
-#: board/templates/board/post_detail.html:177
+#: board/templates/board/post_detail.html:179
 msgid "Please write your reply here."
-msgstr ""
-
-#: board/templates/board/post_detail.html:181
-msgid "Nickname"
 msgstr ""
 
 #: board/templates/board/post_detail.html:186
@@ -278,7 +275,7 @@ msgstr ""
 #: board/templates/board/post_detail.html:223
 #: board/templates/board/post_form.html:5
 #: board/templates/board/post_form.html:6
-#: board/templates/board/post_form.html:63
+#: board/templates/board/post_form.html:61
 #: board/templates/board/post_list.html:100
 msgid "New post"
 msgstr ""
@@ -288,7 +285,7 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: board/templates/board/post_form.html:44
+#: board/templates/board/post_form.html:46
 msgid "Tags"
 msgstr ""
 
@@ -571,14 +568,14 @@ msgstr ""
 msgid "Register for an account"
 msgstr ""
 
-#: board/views.py:96
+#: board/views.py:95
 msgid "Deleted"
 msgstr ""
 
-#: hydrocarbon/settings.py:97
+#: hydrocarbon/settings.py:98
 msgid "Korean"
 msgstr ""
 
-#: hydrocarbon/settings.py:98
+#: hydrocarbon/settings.py:99
 msgid "English"
 msgstr ""
