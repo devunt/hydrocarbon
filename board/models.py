@@ -12,7 +12,7 @@ from redactor.fields import RedactorField
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
-    nick = models.CharField(max_length=16)
+    nick = models.CharField(max_length=16, unique=True)
 
     def __str__(self):
         return self.nick
