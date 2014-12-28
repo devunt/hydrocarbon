@@ -1164,13 +1164,14 @@ a.anchor {
   .section.article.form .item.article .redactor-box {
     border: 0; }
     .section.article.form .item.article .redactor-box .redactor-toolbar {
-      border-bottom: 1px solid #e5e5e5 !important;
+      background: #e5e5e5;
       padding: 0 5% !important; }
     .section.article.form .item.article .redactor-box .redactor-editor {
-      padding: 20px 12.5%; }
+      min-height: 300px !important;
+      padding: 20px 12.5% !important; }
       @media screen and (max-device-width: 599px) {
         .section.article.form .item.article .redactor-box .redactor-editor {
-          padding: 20px 5%; } }
+          padding: 20px 5% !important; } }
   .section.article.form .item.article .footer {
     border-top: 1px solid #e5e5e5; }
     .section.article.form .item.article .footer .tags input {

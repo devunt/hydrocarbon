@@ -43,11 +43,11 @@
 		.redactor-box {
 			border:0;
 
-			.redactor-toolbar { border-bottom:1px solid $grey-90 !important; padding:0 5% !important; }
+			.redactor-toolbar { background:$grey-90; padding:0 5% !important; }
 
 			.redactor-editor {
-				padding:20px 12.5%;
-				@media screen and (max-device-width: $medium) { padding:20px 5%; }
+				min-height:300px !important; padding:20px 12.5% !important;
+				@media screen and (max-device-width: $medium) { padding:20px 5% !important; }
 			}
 		}
 
