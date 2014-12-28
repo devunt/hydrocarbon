@@ -21,7 +21,7 @@ msgstr ""
 #: board/forms.py:11 board/forms.py:26
 #: board/templates/board/post_detail.html:182
 msgid "Nickname"
-msgstr "별명"
+msgstr "닉네임"
 
 #: board/forms.py:27 board/forms.py:42 board/i18n_fake.py:7
 #: board/templates/board/post_detail.html:183
