@@ -26,7 +26,7 @@ class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
                 if item == '':
                     continue
                 kwargs = {self.to_field_name: item}
-                if not Tag.objects.filter(**kwargs).exists():
+                if not self.queryset.filter(**kwargs).exists():
                     t = Tag()
                     t.name = item
                     t.save()
