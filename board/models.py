@@ -112,8 +112,16 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     user = models.ForeignKey(User, blank=True, null=True, related_name='comments')
     onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
-    contents = models.TextField()
+    contents = RedactorField()
     created_time = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        self.contents = bleach.clean(self.contents,
+            tags=settings.BLEACH_ALLOWED_TAGS,
+            attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
+            styles=settings.BLEACH_ALLOWED_STYLES
+        )
+        super().save(*args, **kwargs)
 
 
 class Vote(models.Model):

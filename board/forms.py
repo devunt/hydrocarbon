@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from redactor.widgets import RedactorEditor
 from registration.forms import RegistrationFormUniqueEmail
 
-from board.models import Category, Post
+from board.models import Category, Comment, Post
 
 
 class HCRegistrationForm(RegistrationFormUniqueEmail):
@@ -30,9 +30,24 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['category', 'title', 'contents', 'tags']
         widgets = {
-            'contents': RedactorEditor(),
             'tags': TextInput(),
         }
+        labels = {
+            'contents': '',
+        }
+
+
+class CommentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        authenticated = kwargs.pop('authenticated')
+        super().__init__(*args, **kwargs)
+        if not authenticated:
+            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
+            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
+
+    class Meta:
+        model = Comment
+        fields = ['contents']
         labels = {
             'contents': '',
         }

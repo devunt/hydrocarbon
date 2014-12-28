@@ -15,7 +15,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
-from board.forms import PostForm
+from board.forms import CommentForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import Board, Comment, OneTimeUser, Post, Vote
 
@@ -176,6 +176,8 @@ class PostDetailView(DetailView):
             elif vote.vote == Vote.DOWNVOTE:
                 voted['downvoted'] = True
         kwargs['voted'] = voted
+        f = CommentForm(authenticated=self.request.user.is_authenticated())
+        kwargs['comment_form'] = f
         return super().get_context_data(**kwargs)
 
 
