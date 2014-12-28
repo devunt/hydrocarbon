@@ -40,6 +40,7 @@
 			&.mark,
 			&.title { visibility:visible; }
 			&.title span.title { font-size:$font-size - 1; }
+			&.meta { display:none; }
 		}
 		
 		.cell {

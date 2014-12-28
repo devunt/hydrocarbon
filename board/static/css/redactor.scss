@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+// 	
+// 	redactor.scss
+// 		redactor specific styles
+// 	
+
+.redactor-box {
+	border:0; float:none !important;
+
+	.redactor-toolbar {
+		border:0; box-shadow:none;
+
+		li a {
+			&:hover { background:$blue-base; }
+			&:active,
+			&.redactor-act { background:$lightgrey-base; }
+		}
+	}
+
+	.redactor-editor {
+		border:0; font-family:inherit !important; margin:0;
+
+		p { margin:0 0 1em; }
+		li { list-style-position:inside; }
+	}
+}

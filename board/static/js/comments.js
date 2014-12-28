@@ -14,7 +14,7 @@ function getComments(id) {
 				.add('.post-id-'+id+' .label.meta.comments .text')
 					.text(count);
 
-			$('.comments-list .write textarea').val('');
+			$('.comments-list .write .redactor-editor').html('');
 		})
 		.fail(function(xhr, status, error) {
 			console.log(xhr);
@@ -57,7 +57,7 @@ function renderComment($container, v, depth) {
 		.find('.text span').text(v.votes.total);
 
 	contents = v.contents;
-	contents = contents.replace(/\n/g, '<br>', 'g');
+	/* contents = contents.replace(/\n/g, '<br>', 'g'); */
 	$c.find('.article').html(contents);
 
 	if(v.voted.upvoted) $c.find('.dropdown .upvote').addClass('voted');
@@ -147,7 +147,7 @@ $(function() {
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
-				text = $container.find('textarea').val(),
+				text = $container.find('.redactor-editor').html(),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
@@ -171,7 +171,7 @@ $(function() {
 		.on('click', '.modify .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.modify'),
-				text = $container.find('textarea').val(),
+				text = $container.find('.redactor-editor').html(),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 
@@ -259,8 +259,8 @@ $(function() {
 						$c.find('label').show();
 					}
 
-					$c.find('textarea')
-						.val($item.find('.article').html().replace(/<br\s*[\/]?>/gi, '\n'));
+					$c.find('.redactor-editor')
+						.html($item.find('.article').html());
 
 					$c.find('.cancel')
 						.show();

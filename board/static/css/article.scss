@@ -134,8 +134,12 @@
 
 					.article {
 						padding:5px 10px;
-						textarea { min-height:80px; width:100%; max-width:100%; border:0; background:transparent; display:block; }
-						
+						// textarea { min-height:80px; width:100%; max-width:100%; border:0; background:transparent; display:block; }
+						.redactor-box {
+							background:none; margin:0;
+							.redactor-toolbar { background:none; border-bottom:1px solid $grey-90; }
+							.redactor-editor { background:none; padding:5px 0; }
+						}
 					}
 
 					.footer {

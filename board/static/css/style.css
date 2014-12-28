@@ -15,9 +15,11 @@
 body {
   color: #222;
   font: 14px "NanumGothic";
-  letter-spacing: -.03em;
-  overflow: initial !important;
-  overflow-y: scroll !important; }
+  letter-spacing: -.03em; }
+  @media screen and (mim-device-width: 720px) {
+    body {
+      overflow: initial !important;
+      overflow-y: scroll !important; } }
 
 button, input, select, textarea {
   outline: none; }
@@ -417,7 +419,7 @@ a.anchor {
   top: 0;
   width: 100%;
   position: fixed;
-  z-index: 2010; }
+  z-index: 1054; }
 
 #nav {
   height: 50px;
@@ -794,13 +796,15 @@ a.anchor {
         display: none; }
     .section.article .comments-list .comment .bubble.item .article {
       padding: 5px 10px; }
-      .section.article .comments-list .comment .bubble.item .article textarea {
-        min-height: 80px;
-        width: 100%;
-        max-width: 100%;
-        border: 0;
-        background: transparent;
-        display: block; }
+      .section.article .comments-list .comment .bubble.item .article .redactor-box {
+        background: none;
+        margin: 0; }
+        .section.article .comments-list .comment .bubble.item .article .redactor-box .redactor-toolbar {
+          background: none;
+          border-bottom: 1px solid #e5e5e5; }
+        .section.article .comments-list .comment .bubble.item .article .redactor-box .redactor-editor {
+          background: none;
+          padding: 5px 0; }
     .section.article .comments-list .comment .bubble.item .footer {
       border-top: 1px solid #e5e5e5;
       margin: 0 10px;
@@ -907,6 +911,8 @@ a.anchor {
         visibility: visible; }
       .section.board .item.hidden .cell.title span.title {
         font-size: 13px; }
+      .section.board .item.hidden .cell.meta {
+        display: none; }
     .section.board .item .cell {
       line-height: 20px;
       padding: 15px 0; }
@@ -1158,24 +1164,12 @@ a.anchor {
     border: 0; }
     .section.article.form .item.article .redactor-box .redactor-toolbar {
       background: #e5e5e5;
-      border: 0;
-      box-shadow: none;
       padding: 0 5% !important; }
-      .section.article.form .item.article .redactor-box .redactor-toolbar li a:hover {
-        background: #3d9ccc; }
-      .section.article.form .item.article .redactor-box .redactor-toolbar li a:active, .section.article.form .item.article .redactor-box .redactor-toolbar li a.redactor-act {
-        background: #ccc; }
     .section.article.form .item.article .redactor-box .redactor-editor {
-      border: 0;
-      margin: 0;
       padding: 20px 12.5%; }
       @media screen and (max-device-width: 599px) {
         .section.article.form .item.article .redactor-box .redactor-editor {
           padding: 20px 5%; } }
-      .section.article.form .item.article .redactor-box .redactor-editor p {
-        margin: 0 0 1em; }
-      .section.article.form .item.article .redactor-box .redactor-editor li {
-        list-style-position: inside; }
   .section.article.form .item.article .footer {
     border-top: 1px solid #e5e5e5; }
     .section.article.form .item.article .footer .tags input {
@@ -1186,5 +1180,24 @@ a.anchor {
         outline: none; }
   .section.article.form .submit {
     margin: 10px 0; }
+
+.redactor-box {
+  border: 0;
+  float: none !important; }
+  .redactor-box .redactor-toolbar {
+    border: 0;
+    box-shadow: none; }
+    .redactor-box .redactor-toolbar li a:hover {
+      background: #3d9ccc; }
+    .redactor-box .redactor-toolbar li a:active, .redactor-box .redactor-toolbar li a.redactor-act {
+      background: #ccc; }
+  .redactor-box .redactor-editor {
+    border: 0;
+    font-family: inherit !important;
+    margin: 0; }
+    .redactor-box .redactor-editor p {
+      margin: 0 0 1em; }
+    .redactor-box .redactor-editor li {
+      list-style-position: inside; }
 
 /*# sourceMappingURL=style.css.map */

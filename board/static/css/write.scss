@@ -43,22 +43,11 @@
 		.redactor-box {
 			border:0;
 
-			.redactor-toolbar {
-				background:$grey-90; border:0; box-shadow:none; padding:0 5% !important;
-
-				li a {
-					&:hover { background:$blue-base; }
-					&:active,
-					&.redactor-act { background:$lightgrey-base; }
-				}
-			}
+			.redactor-toolbar { background:$grey-90; padding:0 5% !important; }
 
 			.redactor-editor {
-				border:0; margin:0; padding:20px 12.5%;
+				padding:20px 12.5%;
 				@media screen and (max-device-width: $medium) { padding:20px 5%; }
-
-				p { margin:0 0 1em; }
-				li { list-style-position:inside; }
 			}
 		}
 
