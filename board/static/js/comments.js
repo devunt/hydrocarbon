@@ -48,7 +48,7 @@ function renderComment($container, v, depth) {
 
 	if(depth > 0) $c.css('margin-left', 2*depth+'%');
 
-	$c.find('a.anchor').attr('id', 'comment-id-'+v.id);
+	$c.find('a.anchor').attr('id', 'c'+v.id);
 
 	$c.find('.meta.author .text').text(v.author);
 	$c.find('.meta.timestamp')
@@ -59,7 +59,6 @@ function renderComment($container, v, depth) {
 		.find('.text span').text(v.votes.total);
 
 	contents = v.contents;
-	/* contents = contents.replace(/\n/g, '<br>', 'g'); */
 	$c.find('.article .redactor-editor').html(contents);
 
 	if(v.voted.upvoted) $c.find('.dropdown .upvote').addClass('voted');
