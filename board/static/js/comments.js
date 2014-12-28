@@ -58,7 +58,7 @@ function renderComment($container, v, depth) {
 
 	contents = v.contents;
 	/* contents = contents.replace(/\n/g, '<br>', 'g'); */
-	$c.find('.article').html(contents);
+	$c.find('.article .redactor-editor').html(contents);
 
 	if(v.voted.upvoted) $c.find('.dropdown .upvote').addClass('voted');
 	if(v.voted.downvoted) $c.find('.dropdown .downvote').addClass('voted');
