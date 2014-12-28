@@ -47,7 +47,7 @@ class Category(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=16)
+    name = models.CharField(max_length=16, unique=True)
 
     def __str__(self):
         return self.name
@@ -84,7 +84,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')
     title = models.CharField(max_length=32)
     contents = RedactorField()
-    tags = models.ManyToManyField(Tag, blank=True, null=True)
+    tags = models.ManyToManyField('Tag', blank=True, null=True)
     viewcount = models.PositiveIntegerField(default=0)
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField()

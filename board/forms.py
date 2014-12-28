@@ -4,7 +4,35 @@ from django.utils.translation import ugettext_lazy as _
 from redactor.widgets import RedactorEditor
 from registration.forms import RegistrationFormUniqueEmail
 
-from board.models import Category, Comment, Post
+from board.models import Category, Comment, Post, Tag
+
+
+class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
+    widget = TextInput
+
+    def prepare_value(self, value):
+        lst = list()
+        if isinstance(value, list):
+            for item in value:
+                lst.append(getattr(self.queryset.get(id=item), self.to_field_name))
+            value = ', '.join(lst)
+        return super().prepare_value(value)
+
+    def clean(self, value):
+        if value not in ('', None):
+            lst = list()
+            for item in value.split(','):
+                item = item.strip()
+                if item == '':
+                    continue
+                kwargs = {self.to_field_name: item}
+                if not Tag.objects.filter(**kwargs).exists():
+                    t = Tag()
+                    t.name = item
+                    t.save()
+                lst.append(item)
+            value = lst
+        return super().clean(value)
 
 
 class HCRegistrationForm(RegistrationFormUniqueEmail):
@@ -13,6 +41,7 @@ class HCRegistrationForm(RegistrationFormUniqueEmail):
 
 class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=None)
+    tags = ModelCommaSeparatedChoiceField(queryset=Tag.objects.all(), to_field_name='name', required=False)
 
     def __init__(self, *args, **kwargs):
         authenticated = kwargs.pop('authenticated')
@@ -29,9 +58,6 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['category', 'title', 'contents', 'tags']
-        widgets = {
-            'tags': TextInput(),
-        }
         labels = {
             'contents': '',
         }
