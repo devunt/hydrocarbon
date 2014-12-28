@@ -1,3 +1,5 @@
+var options;
+
 function getComments(id) {
 	return $.ajax({
 		type: 'GET',
@@ -230,6 +232,16 @@ $(function() {
 
 				case 'reply':
 					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
+
+					$c.find('textarea')
+						.removeAttr('id')
+						.val('')
+						.appendTo($c.find('.article'))
+						.show();
+
+					$c.find('.redactor-box').remove();
+					$c.find('script').remove();
+
 					$c
 						.css('margin-left', $item.data('depth')*2 + 1 + '%')
 						.removeAttr('data-type data-id')
@@ -239,11 +251,23 @@ $(function() {
 						.removeClass('template')
 						.insertAfter($item)
 						.show();
+
+					$c.find('textarea').redactor(options);
 					break;
 
 				case 'modify':
 					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
 					$item.hide();
+
+					$c.find('textarea')
+						.removeAttr('id')
+						.val('')
+						.appendTo($c.find('.article'))
+						.show();
+
+					$c.find('.redactor-box').remove();
+					$c.find('script').remove();
+
 					$c
 						.css('margin-left', $item.css('margin-left'))
 						.removeAttr('data-type')
@@ -259,8 +283,10 @@ $(function() {
 						$c.find('label').show();
 					}
 
+					$c.find('textarea').redactor(options);
+
 					$c.find('.redactor-editor')
-						.html($item.find('.article').html());
+						.html($item.find('.article .redactor-editor').html());
 
 					$c.find('.cancel')
 						.show();
