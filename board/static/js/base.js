@@ -11,9 +11,9 @@ function checkEnter(e){
 	return txtArea || (e.keyCode || e.which || e.charCode || 0) !== 13;
 }
 
-document.querySelector('form').onkeypress = checkEnter;
-
 $(function() {
+
+	document.querySelector('form').onkeypress = checkEnter;
 
 	$window = $(window);
 	$document = $(document);
