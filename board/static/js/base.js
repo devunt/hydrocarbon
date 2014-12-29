@@ -162,6 +162,20 @@ var taggingJS_options = {
 	'tag-on-blur': false
 }
 
+var autocomplete_options = {
+	'serviceUrl': '/x/t',
+	'minChars': 2,
+	'lookupLimit': 5,
+	'formatResult': function(suggestion, currentValue) {
+		return '<span class="left">' + $.Autocomplete.formatResult(suggestion, currentValue) + '</span><span class="right">' + suggestion.data + '</span>';
+	},
+	'onSelect': function(suggestion) {
+		this.focus();
+	},
+	'type': 'POST',
+	'zIndex': 1050
+}
+
 function csrfSafeMethod(method) { return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)); }
 
 $.ajaxSetup({
