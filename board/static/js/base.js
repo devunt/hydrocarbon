@@ -2,6 +2,14 @@
 // 141211
 // - initial version
 
+// Disable enter to submit form
+// http://stackoverflow.com/a/587575
+function checkEnter(e){
+	e = e || event;
+	var txtArea = /textarea/i.test((e.target || e.srcElement).tagName);
+	return txtArea || (e.keyCode || e.which || e.charCode || 0) !== 13;
+}
+
 $(function() {
 
 	$window = $(window);
@@ -12,6 +20,7 @@ $(function() {
 	$menu = $('.dropdown.container');
 
 	$document
+		.on('keypress', '.type-zone', checkEnter)
 		.on('click', '.dropdown.container .handle', function(e) {
 			var $container = $(this).closest('.container');
 			if(!$container.hasClass('open')) { $container.addClass('open');
@@ -158,7 +167,6 @@ var taggingJS_options = {
 	'no-duplicate-text': '이하의 태그는 이미 선택되어 있습니다:\n',
 	'tag-char': '',
 	'no-spacebar': true,
-	'no-enter': true,
 	'tag-on-blur': false
 }
 
