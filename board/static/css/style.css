@@ -65,6 +65,10 @@ a.label:hover {
 .nowrap {
   white-space: nowrap; }
 
+textarea[name=contents] {
+  background: transparent;
+  border: 0; }
+
 #overlay div {
   z-index: 20; }
 

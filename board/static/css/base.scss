@@ -38,6 +38,8 @@ a.label:hover { color:$black; opacity:.6; }
 
 .nowrap { white-space:nowrap; }
 
+textarea[name=contents] { background:transparent; border:0; }
+
 #overlay div { z-index:20; }
 
 #messages {
