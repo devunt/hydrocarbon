@@ -93,7 +93,7 @@
 		&.open .menu { display:block; }
 		.close { display:none; }
 		@media screen and (max-device-width: $large) {
-			&.open .close { top:0; left:0; height:100%; width:100%; display:block; position:fixed; z-index:-1; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+			&.open .close { top:0; left:0; height:100%; width:100%; display:block; font-size:0; position:fixed; z-index:-1; -webkit-tap-highlight-color: rgba(0,0,0,0); }
 		}
 	}
 	&.menu {
@@ -190,3 +190,22 @@
 //	for the fixed navbar
 // 
 a.anchor { top:-60px; height:0; width:0; display:block; position:relative; }
+
+
+// 
+// .ot
+// 	for those who are not logged in
+// 
+.ot {
+	label {
+		background:$grey-90; border-radius:2px 0 0 2px; display:inline-block; font-size:$font-size; padding:5px 0;
+		input { width:100%; background:0; border:0; border-right:1px solid $grey-85; box-sizing:border-box; display:block; line-height:20px; padding:0 5%; }
+	}
+	.password {
+		border-radius:0 2px 2px 0;
+		input { border:0; border-left:1px solid $grey-95; }
+
+		&:first-of-type { border-radius:2px; }
+		&:first-of-type input { border:0; }
+	}
+}

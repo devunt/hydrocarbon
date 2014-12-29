@@ -23,8 +23,8 @@
 }
 
 .section.article.form {
-	padding-bottom:20px;
 	.item.article {
+		margin-bottom:20px;
 		.header {
 			.category {
 				select { width:100%; background:none; border:0; text-align:right; }
@@ -54,12 +54,33 @@
 		.footer {
 			border-top:1px solid $grey-90;
 			.tags {
-				input { border:0; border-bottom:1px solid $lightgrey-base; 
+				input { border:0; line-height:20px;
 					&:focus { border-bottom-color:$blue-base; outline:none; }
+				}
+
+				.tagging {
+					white-space:normal;
+					.tag { cursor:default; }
+					input { padding:0 .2em; }
+					.tag,
+					input {
+						height:20px; background:$grey-95; border-radius:2px; display:inline-block; letter-spacing:inherit; line-height:20px; margin:0 5px 5px; vertical-align:top;
+
+						span, a { display:inline-block; }
+						.tag-i { width:20px; height:20px; color:inherit; cursor:pointer; font-size:.8em; text-align:center; }
+					}
+
 				}
 			}
 		}
 	}
 
-	.submit { margin:10px 0; }
+	.ot.nav {
+		label { width:30%; }
+	}
+
+	.nav.center {
+		padding:0;
+		.submit { width:100%; border-radius:0; display:block; }
+	}
 }

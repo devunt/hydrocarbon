@@ -145,18 +145,10 @@
 					.footer {
 						border-top:1px solid $grey-90; margin:0 10px; padding:5px 0 10px;
 						.nav { display:table-cell; font-size:0; line-height:0; padding:0; vertical-align:top; white-space:nowrap; }
-						.ot { width:100%; }
-
-						label {
-							width:30%; background:$grey-90; border-radius:2px 0 0 2px; display:inline-block; font-size:$font-size; padding:5px 0;
-							input { width:100%; background:0; border:0; border-right:1px solid $grey-85; box-sizing:border-box; display:block; line-height:20px; padding:0 5%; }
-						}
-						.password {
-							width:45%; border-radius:0 2px 2px 0;
-							input { border:0; border-left:1px solid $grey-95; }
-
-							&:first-of-type { border-radius:2px; }
-							&:first-of-type input { border:0; }
+						.ot {
+							width:100%;
+							label { width:30%;}
+							.password { width:45%; }
 						}
 					}
 

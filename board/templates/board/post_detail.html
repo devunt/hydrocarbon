@@ -69,16 +69,21 @@
 			</a>
 		</div>
 		<div class="footer clear">
-			<a class="anchor" id="comments"></a>
-			{% if post.tag %}
+			{% if post.tags.all %}
 			<div class="tags">
-				<a href="#" class="label meta tags">
+				<a class="anchor" id="tags"></a>
+				<a href="#tags" class="label meta tags">
 					<span class="icon"></span>
-					<span class="text">{{ post.tag }}</span>
+					<span class="text">
+					{% for tag in post.tags.all %}
+						<a href="/t/{{ tag.name }}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+					{% endfor %}
+					</span>
 				</a>
 			</div>
 			{% endif %}
 			<div class="comments">
+				<a class="anchor" id="comments"></a>
 				<div class="left">
 					<a href="#toggle" class="label meta comments">
 						<span class="icon"></span>

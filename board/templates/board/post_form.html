@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load hc %}
 {% load i18n %}
 
 {% block title %}{%trans "New post" %} :: {{ block.super }}{% endblock %}
 {% block pagename %}{%trans "New post" %}{% endblock %}
+
+{% block head %}
+	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
+	<script src="{% static "js/tagging.min.js" %}"></script>
+	{{ form.media }}
+{% endblock %}
 
 {% block content %}
 
@@ -14,21 +21,21 @@
 	<input type='submit'>
 </form>
 {% else %}
-{% for field in form %}
-	{% if field.errors %}
-	<ul class="errorlist">
-		{% for error in field.errors %}
-		<li>{{ error | escape }}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-{% endfor %}
 
 <div class="section article form">
-	<div class="media">{{ form.media }}</div>
 	<form action="" method="post">
 	{% csrf_token %}
 	<div class="item article">
+		{% if form.category.errors or form.title.errors %}
+		<ul class="errorlist">
+			{% for error in form.category.errors %}
+			<li>{{ form.category.label }}은(는) {{ error | escape }}</li>
+			{% endfor %}
+			{% for error in form.title.errors %}
+			<li>{{ form.title.label }}은(는) {{ error | escape }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
 		<div class="header">
 			<div class="title">
 				<span class="category dropdown container" data-text="{% trans "Categories" %}">{{ form.category }}</span>
@@ -37,30 +44,54 @@
 				</h2>
 			</div>
 		</div>
+		{% if form.contents.errors %}
+		<ul class="errorlist">
+			{% for error in form.contents.errors %}
+			<li>{{ error | escape }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
 		<div class="clear">
 			{{ form.contents }}
 		</div>
 		<div class="footer clear">
 			<div class="tags">
-				<span class="label meta tags">
+				{{ form.tags }}
+				<div class="label meta tags">
 					<span class="icon" title="{% trans "Tags" %} "></span>
-					<span class="text">{{ form.tags | label_as_placeholder  }}</span>
-				</span>
+					<div class="text" id="tagbox" data-tags-input-name="{{ form.tags.html_name }}"></div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div>
+	{% if form.onetime_nick or form.onetime_password %}
+	<div class="ot nav">
 		{% if form.onetime_nick %}
-			{{ form.onetime_nick }}
+			<label class="nick">{{ form.onetime_nick | label_as_placeholder }}</label>
 		{% endif %}
 		{% if form.onetime_password %}
-			{{ form.onetime_password }}
+			<label class="password">{{ form.onetime_password | label_as_placeholder }}</label>
 		{% endif %}
 	</div>
-	<div class="center">
+	{% endif %}
+	<div class="nav center">
 		<input class="submit" type="submit" value="{% trans "New post" %}">
 	</div>
 	</form>
 </div>
+
+<script>
+	$(function() {
+		var $tagbox = $('#tagbox'), $tags = $('#id_tags');
+
+		$tagbox.tagging({'tag-char': ''});
+		$tagbox.find('input.type-zone').attr('placeholder', '{% trans "Tags" %}');
+		$tagbox.tagging('add', $('#id_tags').val().split(/,[ ]?/));
+	});
+	
+	$('.section.article.form form').submit(function() {
+		$tags.val($tagbox.tagging('getTags').join(','));
+	});
+</script>
 {% endif %}
 {% endblock content %}

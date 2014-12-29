@@ -275,6 +275,7 @@ body {
       height: 100%;
       width: 100%;
       display: block;
+      font-size: 0;
       position: fixed;
       z-index: -1;
       -webkit-tap-highlight-color: transparent; } }
@@ -414,6 +415,31 @@ a.anchor {
   width: 0;
   display: block;
   position: relative; }
+
+.ot label {
+  background: #e5e5e5;
+  border-radius: 2px 0 0 2px;
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px 0; }
+  .ot label input {
+    width: 100%;
+    background: 0;
+    border: 0;
+    border-right: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    display: block;
+    line-height: 20px;
+    padding: 0 5%; }
+.ot .password {
+  border-radius: 0 2px 2px 0; }
+  .ot .password input {
+    border: 0;
+    border-left: 1px solid #f2f2f2; }
+  .ot .password:first-of-type {
+    border-radius: 2px; }
+  .ot .password:first-of-type input {
+    border: 0; }
 
 #header {
   top: 0;
@@ -820,32 +846,10 @@ a.anchor {
         white-space: nowrap; }
       .section.article .comments-list .comment .bubble.item .footer .ot {
         width: 100%; }
-      .section.article .comments-list .comment .bubble.item .footer label {
-        width: 30%;
-        background: #e5e5e5;
-        border-radius: 2px 0 0 2px;
-        display: inline-block;
-        font-size: 14px;
-        padding: 5px 0; }
-        .section.article .comments-list .comment .bubble.item .footer label input {
-          width: 100%;
-          background: 0;
-          border: 0;
-          border-right: 1px solid #d9d9d9;
-          box-sizing: border-box;
-          display: block;
-          line-height: 20px;
-          padding: 0 5%; }
-      .section.article .comments-list .comment .bubble.item .footer .password {
-        width: 45%;
-        border-radius: 0 2px 2px 0; }
-        .section.article .comments-list .comment .bubble.item .footer .password input {
-          border: 0;
-          border-left: 1px solid #f2f2f2; }
-        .section.article .comments-list .comment .bubble.item .footer .password:first-of-type {
-          border-radius: 2px; }
-        .section.article .comments-list .comment .bubble.item .footer .password:first-of-type input {
-          border: 0; }
+        .section.article .comments-list .comment .bubble.item .footer .ot label {
+          width: 30%; }
+        .section.article .comments-list .comment .bubble.item .footer .ot .password {
+          width: 45%; }
     @media screen and (max-device-width: 599px) {
       .section.article .comments-list .comment .bubble.item .footer label {
         width: 40%; }
@@ -1141,8 +1145,8 @@ a.anchor {
   #redactor-modal footer button.redactor-modal-action-btn:hover {
     background-color: #3d9ccc !important; }
 
-.section.article.form {
-  padding-bottom: 20px; }
+.section.article.form .item.article {
+  margin-bottom: 20px; }
   .section.article.form .item.article .header .category select {
     width: 100%;
     background: none;
@@ -1177,12 +1181,46 @@ a.anchor {
     border-top: 1px solid #e5e5e5; }
     .section.article.form .item.article .footer .tags input {
       border: 0;
-      border-bottom: 1px solid #ccc; }
+      line-height: 20px; }
       .section.article.form .item.article .footer .tags input:focus {
         border-bottom-color: #3d9ccc;
         outline: none; }
-  .section.article.form .submit {
-    margin: 10px 0; }
+    .section.article.form .item.article .footer .tags .tagging {
+      white-space: normal; }
+      .section.article.form .item.article .footer .tags .tagging .tag {
+        cursor: default; }
+      .section.article.form .item.article .footer .tags .tagging input {
+        padding: 0 .2em; }
+      .section.article.form .item.article .footer .tags .tagging .tag,
+      .section.article.form .item.article .footer .tags .tagging input {
+        height: 20px;
+        background: #f2f2f2;
+        border-radius: 2px;
+        display: inline-block;
+        letter-spacing: inherit;
+        line-height: 20px;
+        margin: 0 5px 5px;
+        vertical-align: top; }
+        .section.article.form .item.article .footer .tags .tagging .tag span, .section.article.form .item.article .footer .tags .tagging .tag a,
+        .section.article.form .item.article .footer .tags .tagging input span,
+        .section.article.form .item.article .footer .tags .tagging input a {
+          display: inline-block; }
+        .section.article.form .item.article .footer .tags .tagging .tag .tag-i,
+        .section.article.form .item.article .footer .tags .tagging input .tag-i {
+          width: 20px;
+          height: 20px;
+          color: inherit;
+          cursor: pointer;
+          font-size: .8em;
+          text-align: center; }
+.section.article.form .ot.nav label {
+  width: 30%; }
+.section.article.form .nav.center {
+  padding: 0; }
+  .section.article.form .nav.center .submit {
+    width: 100%;
+    border-radius: 0;
+    display: block; }
 
 .redactor-box {
   border: 0;

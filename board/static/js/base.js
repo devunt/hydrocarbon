@@ -88,6 +88,8 @@ $(function() {
 
 				if(value == '') return true;
 
+				if($(this).prop('selected')) $(this).closest('.dropdown.container').find('.handle .text span').text($(this).text());
+
 				$('<span>')
 					.text($(this).text())
 					.appendTo($a);
@@ -97,6 +99,7 @@ $(function() {
 					.addClass('option')
 					.data('value', value)
 					.appendTo($li);
+
 				$li.appendTo($ul);
 			});
 
