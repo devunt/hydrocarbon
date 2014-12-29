@@ -2,18 +2,7 @@
 // 141211
 // - initial version
 
-
-// Disable enter to submit form
-// http://stackoverflow.com/a/587575
-function checkEnter(e){
-	e = e || event;
-	var txtArea = /textarea/i.test((e.target || e.srcElement).tagName);
-	return txtArea || (e.keyCode || e.which || e.charCode || 0) !== 13;
-}
-
 $(function() {
-
-	document.querySelector('form').onkeypress = checkEnter;
 
 	$window = $(window);
 	$document = $(document);
@@ -168,7 +157,8 @@ var taggingJS_options = {
 	'forbidden-words-text': '이하의 단어는 사용할 수 없습니다:\n',
 	'no-duplicate-text': '이하의 태그는 이미 선택되어 있습니다:\n',
 	'tag-char': '',
-	'no-spacebar': true
+	'no-spacebar': true,
+	'tag-on-blur': false
 }
 
 function csrfSafeMethod(method) { return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)); }

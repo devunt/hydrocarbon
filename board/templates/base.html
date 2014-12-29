@@ -15,13 +15,13 @@
 	<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
 	<script src="{% static "js/jquery.cookie.min.js" %}"></script>
 	<script src="{% static "js/jquery.timeago.kr.js" %}"></script>
-	<script src="{% static "js/base.js" %}"></script>
-	<script src="{% static "js/comments.js" %}"></script>
+	<link rel="stylesheet" href="{% static "css/normalize.css" %}">
+	<link rel="stylesheet" href="{% static "fontface/NanumGothicLight/styles.css" %}">
 
 	{% block head %}{% endblock %}
 
-	<link rel="stylesheet" href="{% static "fontface/NanumGothicLight/styles.css" %}">
-	<link rel="stylesheet" href="{% static "css/normalize.css" %}">
+	<script src="{% static "js/base.js" %}"></script>
+	<script src="{% static "js/comments.js" %}"></script>
 	<link rel="stylesheet" href="{% static "css/style.css" %}">
 
 	<title>{% block title %}{{ site_name }}{% endblock %}</title>

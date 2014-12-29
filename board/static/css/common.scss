@@ -159,10 +159,10 @@
 		screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) { background-image:url("../img/meta_w_3x.png"); }
 	}
 
-	&.author:after { content:"•"; font-size:20px; margin:0 -4px; vertical-align:top; }
-	&.author.user:after { color:$blue-base; }
-	&.author.guest:after { color:$grey; }
-	&.author.moderator:after { color:$red; }
+	&.author .text:after { height:4px; width:4px; border-radius:2px; content:""; display:inline-block; margin-left:.4em; vertical-align:middle; }
+	&.author.user .text:after { background:$blue-base; }
+	&.author.guest .text:after { background:$grey; }
+	&.author.moderator .text:after { background:$red; }
 
 	&.author .icon { background-position:0 0; }
 	&.comments .icon { background-position:0 $meta-size * -1; }

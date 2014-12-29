@@ -59,7 +59,7 @@
 				.tagging {
 					white-space:normal;
 					.tag { cursor:default; }
-					input { outline:none; padding:0 .2em; }
+					input { width:200px; outline:none; padding:0 .2em; }
 					.tag,
 					input {
 						height:20px; background:$grey-95; border:0; border-radius:2px; display:inline-block; letter-spacing:inherit; line-height:20px; margin:0 5px 5px; vertical-align:top;
@@ -67,7 +67,6 @@
 						span, a { display:inline-block; }
 						.tag-i { width:20px; height:20px; color:inherit; cursor:pointer; font-size:.8em; text-align:center; }
 					}
-
 				}
 			}
 		}
@@ -82,3 +81,11 @@
 		.submit { width:100%; border-radius:0; display:block; }
 	}
 }
+
+.autocomplete-suggestions { background:$white; border:1px solid $grey-95; border-radius:4px 4px 0 0; overflow: auto; }
+.autocomplete-suggestion { clear:both; cursor:default; line-height:20px; overflow:hidden; padding:10px 20px; white-space:nowrap;}
+.autocomplete-selected { background:$blue-base; color:$white; }
+.autocomplete-suggestions strong { font-weight:normal; color:$blue-base; }
+.autocomplete-selected strong { color:$white; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }

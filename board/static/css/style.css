@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0; }
@@ -356,17 +355,20 @@ body {
   @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
     .dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon {
       background-image: url("../img/meta_w_3x.png"); } }
-.label.meta.author:after {
-  content: "•";
-  font-size: 20px;
-  margin: 0 -4px;
-  vertical-align: top; }
-.label.meta.author.user:after {
-  color: #3d9ccc; }
-.label.meta.author.guest:after {
-  color: #aaa; }
-.label.meta.author.moderator:after {
-  color: #cc3d3d; }
+.label.meta.author .text:after {
+  height: 4px;
+  width: 4px;
+  border-radius: 2px;
+  content: "";
+  display: inline-block;
+  margin-left: .4em;
+  vertical-align: middle; }
+.label.meta.author.user .text:after {
+  background: #3d9ccc; }
+.label.meta.author.guest .text:after {
+  background: #aaa; }
+.label.meta.author.moderator .text:after {
+  background: #cc3d3d; }
 .label.meta.author .icon {
   background-position: 0 0; }
 .label.meta.comments .icon {
@@ -1186,6 +1188,7 @@ a.anchor {
       .section.article.form .item.article .footer .tags .tagging .tag {
         cursor: default; }
       .section.article.form .item.article .footer .tags .tagging input {
+        width: 200px;
         outline: none;
         padding: 0 .2em; }
       .section.article.form .item.article .footer .tags .tagging .tag,
@@ -1219,6 +1222,38 @@ a.anchor {
     width: 100%;
     border-radius: 0;
     display: block; }
+
+.autocomplete-suggestions {
+  background: #fff;
+  border: 1px solid #f2f2f2;
+  border-radius: 4px 4px 0 0;
+  overflow: auto; }
+
+.autocomplete-suggestion {
+  clear: both;
+  cursor: default;
+  line-height: 20px;
+  overflow: hidden;
+  padding: 10px 20px;
+  white-space: nowrap; }
+
+.autocomplete-selected {
+  background: #3d9ccc;
+  color: #fff; }
+
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3d9ccc; }
+
+.autocomplete-selected strong {
+  color: #fff; }
+
+.autocomplete-group {
+  padding: 2px 5px; }
+
+.autocomplete-group strong {
+  display: block;
+  border-bottom: 1px solid #000; }
 
 .redactor-box {
   border: 0;

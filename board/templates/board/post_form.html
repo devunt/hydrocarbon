@@ -89,7 +89,22 @@
 		$tagbox.tagging(taggingJS_options);
 		$tagbox.find('input.type-zone')
 			.attr('placeholder', '{% trans "Tags" %}')
-			.attr('maxlength', 32);
+			.attr('maxlength', 32)
+			.autocomplete({
+				'serviceUrl': '/x/t',
+				'minChars': 2,
+				'lookupLimit': 5,
+				'formatResult': function(suggestion, currentValue) {
+					return '<span class="left">' + $.Autocomplete.formatResult(suggestion, currentValue) + '</span><span class="right">' + suggestion.data + '</span>';
+				},
+				'onSelect': function(suggestion) {
+					this.focus();
+				},
+				'appendTo': $('<div class="autocomplete tags">').appendTo(document.body),
+				'forceFixPosition': true,
+				'type': 'POST',
+				'zIndex': 1050
+			});
 		$tagbox.tagging('add', $tags.val().split(/,[ ]?/));
 	});
 	
