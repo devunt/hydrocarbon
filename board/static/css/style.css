@@ -755,6 +755,7 @@ a.anchor {
       padding: 10px 5% 0; } }
   @media screen and (max-device-width: 419px) {
     .section.article .comments-list {
+      margin: 0;
       padding: 10px 2% 0; } }
   .section.article .comments-list li.list.item,
   .section.article .comments-list li.write,
@@ -1202,5 +1203,9 @@ a.anchor {
   font-family: inherit !important;
   padding: 0 !important;
   margin: 0; }
+  .redactor-editor a.imagecontainer {
+    display: inline-block; }
+  .redactor-editor p:last-of-type {
+    margin-bottom: 0; }
 
 /*# sourceMappingURL=style.css.map */
