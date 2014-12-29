@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, url
 
-from board.views import CommentAjaxView, VoteAjaxView
+from board.views import CommentAjaxView, TagAutocompleteAjaxView, VoteAjaxView
 
 
 urlpatterns = patterns('',
     url(r'^v$', VoteAjaxView.as_view(), name='ajax_vote'),
     url(r'^c/(?P<pk>\d+)$', CommentAjaxView.as_view(), name='ajax_comment'),
+    url(r'^t$', TagAutocompleteAjaxView.as_view(), name='ajax_tagautocomplete'),
 )

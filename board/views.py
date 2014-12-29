@@ -17,7 +17,7 @@ from django.views.generic.list import ListView
 
 from board.forms import CommentForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
-from board.models import Board, Comment, OneTimeUser, Post, Vote
+from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
 
 
 class IndexView(View):
@@ -364,3 +364,17 @@ class CommentAjaxView(AjaxMixin, View):
             c.onetime_user.delete()
         c.delete()
         return self.success()
+
+from django.views.decorators.csrf import csrf_exempt
+class TagAutocompleteAjaxView(AjaxMixin, View):
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        query = request.POST.get('query')
+        if not query:
+            return self.bad_request()
+        tags = Tag.objects.filter(name__icontains=query)
+        lst = [{'value': tag.name, 'data': tag.posts.count()} for tag in tags]
+        return JsonResponse({'status': 'success', 'query': query, 'suggestions': lst})
