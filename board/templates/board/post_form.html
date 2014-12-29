@@ -81,12 +81,14 @@
 </div>
 
 <script>
+	var $tagbox, $tags
 	$(function() {
-		var $tagbox = $('#tagbox'), $tags = $('#id_tags');
+		$tagbox = $('#tagbox');
+		$tags = $('#id_tags');
 
 		$tagbox.tagging({'tag-char': ''});
 		$tagbox.find('input.type-zone').attr('placeholder', '{% trans "Tags" %}');
-		$tagbox.tagging('add', $('#id_tags').val().split(/,[ ]?/));
+		$tagbox.tagging('add', $tags.val().split(/,[ ]?/));
 	});
 	
 	$('.section.article.form form').submit(function() {
