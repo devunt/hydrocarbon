@@ -86,11 +86,10 @@
 		$tagbox = $('#tagbox');
 		$tags = $('#id_tags');
 
-		$tagbox.tagging( {
-				'tag-char': '',
-				'no-spacebar': true
-			});
-		$tagbox.find('input.type-zone').attr('placeholder', '{% trans "Tags" %}');
+		$tagbox.tagging(taggingJS_options);
+		$tagbox.find('input.type-zone')
+			.attr('placeholder', '{% trans "Tags" %}')
+			.attr('maxlength', 32);
 		$tagbox.tagging('add', $tags.val().split(/,[ ]?/));
 	});
 	
