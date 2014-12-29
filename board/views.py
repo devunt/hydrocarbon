@@ -148,7 +148,7 @@ class PostDetailView(DetailView):
         post_ids_viewed = self.request.session.get('post_ids_viewed', list())
         if post.id not in post_ids_viewed:
             post.viewcount += 1
-            post.save()
+            post.save(auto_now=False)
             post_ids_viewed.append(post.id)
             self.request.session['post_ids_viewed'] = post_ids_viewed
         return post

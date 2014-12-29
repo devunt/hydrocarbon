@@ -101,7 +101,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
             attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
             styles=settings.BLEACH_ALLOWED_STYLES
         )
-        if not kwargs.pop('auto_now', False):
+        if kwargs.pop('auto_now', True):
             self.modified_time = timezone.now()
         super().save(*args, **kwargs)
 
