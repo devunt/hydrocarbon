@@ -75,6 +75,10 @@ class PostUpdateView(PermissionMixin, UpdateView):
         kwargs['authenticated'] = True
         return kwargs
 
+    def get_success_url(self):
+        Tag.objects.filter(posts=None).delete()
+        return super().get_success_url()
+
 
 class PostDeleteView(PermissionMixin, DeleteView):
     model = Post
@@ -89,7 +93,9 @@ class PostDeleteView(PermissionMixin, DeleteView):
             return self.get(request, *args, **kwargs)
         if self.object.onetime_user is not None:
             self.object.onetime_user.delete()
-        return super().delete(request, *args, **kwargs)
+        r = super().delete(request, *args, **kwargs)
+        Tag.objects.filter(posts=None).delete()
+        return r
 
     def get_success_url(self):
         messages.success(self.request, _('Deleted'))
