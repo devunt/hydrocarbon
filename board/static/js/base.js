@@ -158,6 +158,7 @@ var taggingJS_options = {
 	'no-duplicate-text': '이하의 태그는 이미 선택되어 있습니다:\n',
 	'tag-char': '',
 	'no-spacebar': true,
+	'no-enter': true,
 	'tag-on-blur': false
 }
 
