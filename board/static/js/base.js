@@ -161,6 +161,16 @@ var browser = {
 	}
 }
 
+var taggingJS_options = {
+	'case-sensitive': true,
+	'forbidden-chars': [','],
+	'forbidden-chars-text': '이하의 문자는 사용할 수 없습니다:\n',
+	'forbidden-words-text': '이하의 단어는 사용할 수 없습니다:\n',
+	'no-duplicate-text': '이하의 태그는 이미 선택되어 있습니다:\n',
+	'tag-char': '',
+	'no-spacebar': true
+}
+
 function csrfSafeMethod(method) { return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)); }
 
 $.ajaxSetup({
