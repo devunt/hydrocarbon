@@ -365,12 +365,8 @@ class CommentAjaxView(AjaxMixin, View):
         c.delete()
         return self.success()
 
-from django.views.decorators.csrf import csrf_exempt
-class TagAutocompleteAjaxView(AjaxMixin, View):
-    @csrf_exempt
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
 
+class TagAutocompleteAjaxView(AjaxMixin, View):
     def post(self, request, *args, **kwargs):
         query = request.POST.get('query')
         if not query:
