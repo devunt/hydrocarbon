@@ -1,7 +1,6 @@
 from django import forms
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
-from redactor.widgets import RedactorEditor
 from registration.forms import RegistrationFormUniqueEmail
 
 from board.models import Category, Comment, Post, Tag

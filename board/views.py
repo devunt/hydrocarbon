@@ -17,7 +17,7 @@ from django.views.generic.list import ListView
 
 from board.forms import CommentForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
-from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
+from board.models import Board, Comment, OneTimeUser, Post, Vote
 
 
 class IndexView(View):
