@@ -61,6 +61,20 @@ function renderComment($container, v, depth) {
 	contents = v.contents;
 	$c.find('.article .redactor-editor').html(contents);
 
+	$c.find('.article .redactor-editor img').each(function() {
+		if(!$(this).parents('a').length > 0) {
+			var a = $('<a>');
+
+			a
+				.addClass('imagecontainer')
+				.attr('href', $(this).attr('src'))
+				.attr('target', '_blank')
+				.attr('title', '원본 보기');
+
+			$(this).wrap(a);
+		}
+	});
+
 	if(v.voted.upvoted) $c.find('.dropdown .upvote').addClass('voted');
 	if(v.voted.downvoted) $c.find('.dropdown .downvote').addClass('voted');
 
@@ -148,7 +162,7 @@ $(function() {
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
-				text = $container.find('.redactor-editor').html(),
+				text = $container.find('textarea').val(),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
@@ -165,18 +179,15 @@ $(function() {
 			}
 
 			if($container.data('type') == 'c') id = $container.prev('li.item').data('id');
-			console.log(databox);
 			postComments(id, databox)
 				.done(function() { getComments(post_id) });
 		})
 		.on('click', '.modify .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.modify'),
-				text = $container.find('.redactor-editor').html(),
+				text = $container.find('textarea').val(),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
-
-			console.log(password);
 
 			if(text == '') {
 				alert('내용을 입력해 주세요.');
