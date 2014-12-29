@@ -1,12 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import PermissionDenied
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.translation import ugettext as _
 
 from board.forms import PasswordForm
-from board.models import Board, OneTimeUser
+from board.models import Announcement, Board, OneTimeUser
 
 
 class BoardMixin:
@@ -57,11 +58,8 @@ class AjaxMixin:
 
 class PostListMixin:
     def get_context_data(self, **kwargs):
-        announcement_list = list()
-        for announcement in self.board.announcements.all():
-            post = announcement.post
-            post.is_announcement = True
-            announcement_list.append(post)
+        aqs = Announcement.objects.filter(Q(boards=self.board) | Q(boards=None))
+        announcement_list = [announcement.post for announcement in aqs]
         kwargs['announcement_list'] = announcement_list
         return super().get_context_data(**kwargs)
 

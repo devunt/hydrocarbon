@@ -140,4 +140,4 @@ class Vote(models.Model):
 
 class Announcement(models.Model):
     post = models.OneToOneField('Post', related_name='announcement')
-    boards = models.ManyToManyField('Board', related_name='announcements')
+    boards = models.ManyToManyField('Board', blank=True, null=True, related_name='announcements')
