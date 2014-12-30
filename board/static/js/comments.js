@@ -158,11 +158,10 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.on('keydown', '.redactor-editor', function(e) {
-			if(e.ctrlKey && e.keyCode == 13) {
-				e.preventDefault();
-				console.log('lel');
+		.on('keypress', function(e) {
+			if(e.ctrlKey && e.which == 32) {
 				$(this).closest('.comments-list').find('.write .submit').trigger('click');
+				return false;
 			}
 		})
 		.on('click', '.write .submit', function(e) {
