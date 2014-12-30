@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from django import forms
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
@@ -41,7 +43,8 @@ class HCSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         del self.fields['username']
-
+        order = ('email', 'password', 'password_confirm', 'nickname', 'code')
+        self.fields = OrderedDict((k, self.fields[k]) for k in order)
 
 class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=None)

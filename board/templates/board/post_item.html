@@ -18,7 +18,7 @@
 			{% endif %}
 		</span>
 		<span class="cell author meta">
-			<span {% if not item.user.username %}title="{{ item.iphash }}" {% endif %}class="label meta 
+			<span {% if not item.user %}title="{{ item.iphash }}" {% endif %}class="label meta 
 			{% if item.user %}
 				author user">
 			{% else %}
