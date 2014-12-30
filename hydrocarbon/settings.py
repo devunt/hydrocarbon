@@ -199,7 +199,7 @@ BLEACH_ALLOWED_ATTRIBUTES = {
     'iframe': _filter_iframe_src,
     'img': ['alt', 'style', 'src'],
     'p': ['style'],
-    'span', _filter_span_class,
+    'span': _filter_span_class,
 }
 BLEACH_ALLOWED_STYLES = [
     'display',
