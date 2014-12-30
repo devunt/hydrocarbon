@@ -11,6 +11,8 @@ _('New password confirmation')
 _('Old password')
 _('Please enter a correct %(username)s and password. Note that both fields may be case-sensitive.')
 
+_("Remember Me")
+
 ungettext('%d year', '%d years')
 ungettext('%d month', '%d months')
 ungettext('%d week', '%d weeks')

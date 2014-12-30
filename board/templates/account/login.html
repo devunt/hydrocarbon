@@ -12,12 +12,13 @@
 	<form method="post" action="">
 		{% csrf_token %}
 		{% for hidden in form.hideen_fields %}
-		{{ hidden }}
+			{{ hidden }}
 		{% endfor %}
 		<ul>
 			{% for field in form.visible_fields %}
-			<li class="field">
+			<li class="field {{ field.html_name }}">
 				{{ field | label_as_placeholder }}
+				{% if field.html_name == 'remember' %}{{ field.label_tag }}{% endif %}
 				{{ field.errors }}
 			</li>
 			{% endfor %}

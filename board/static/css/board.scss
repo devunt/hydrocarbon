@@ -22,6 +22,8 @@
 
 	.post-list { border-top:1px solid $grey-95; }
 
+	li.empty { font-size:$font-size; line-height:20px; list-style:none; padding:15px 0; text-align:center; }
+
 	.item {
 		display:block;
 
@@ -157,15 +159,13 @@
 	form {
 		width:100%; height:inherit; display:table;
 
-		.search-button,
-		input.text,
+		input,
 		.scope { display:table-cell; vertical-align:top; }
 
 		.search-button { height:30px; width:30px; background:transparent url("../img/search.png"); border:0; color:transparent; cursor:pointer; }
-		input.text { width:calc(100% - 30px); background:transparent; border:0; font-size:$font-size; line-height:inherit; padding:5px 0; }
+		input[type=search] { width:calc(100% - 30px); background:transparent; border:0; font-size:$font-size; line-height:inherit; padding:5px 0; }
 		.scope { height:30px; width:30px; background:rgba(0,0,0,.1); cursor:default; position:static; }
-		.scope .dropdown.menu { bottom:40px; }
-		.scope .handle { padding:5px 0; }
+		.scope .handle { width:100%; padding:5px 0; }
 		.scope .dropdown.menu .tip { width:10px; }
 	}
 }

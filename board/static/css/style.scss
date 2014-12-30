@@ -11,7 +11,8 @@ $blue-base: #3d9ccc;
 $blue: rgba($blue-base, .9);
 $blue-trans: rgba($blue-base, .6);
 
-$red: #cc3d3d;
+$red-base: #cc3d3d;
+$red: rgba($red-base, .9);
 $red-trans: rgba($red, .6);
 
 $green-base: #85cc3d;
@@ -24,7 +25,9 @@ $black-trans: rgba($black, .9);
 
 $darkgrey: #666;
 
-$grey: #aaa;
+$grey-base: #aaa;
+$grey: rgba($grey-base, .9);
+$grey-trans: rgba($grey-base, .6);
 
 $lightgrey-base: #ccc;
 $lightgrey: rgba($lightgrey-base, .9);
@@ -45,3 +48,4 @@ $checkbox: rgba($checkbox-base, .9);
 @import "board.scss";
 @import "write.scss";
 @import "redactor.scss";
+@import "search.scss";

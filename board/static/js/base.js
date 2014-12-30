@@ -21,6 +21,7 @@ $(function() {
 
 	$document
 		.on('keypress', '.type-zone', checkEnter)
+
 		.on('click', '.dropdown.container .handle', function(e) {
 			var $container = $(this).closest('.container');
 			if(!$container.hasClass('open')) { $container.addClass('open');
@@ -33,6 +34,14 @@ $(function() {
 			var $container = $(this).closest('.container');
 			$container.removeClass('open');
 		})
+
+		.on('click', 'a.checkbox', function() {
+			var $checkbox = $(this).prev('input[type=checkbox]');
+
+			$(this).toggleClass('checked');
+			$checkbox.prop('checked', !$checkbox.prop('checked'));
+		})
+
 		.on('mouseenter', '.th', showTooltip)
 		.on('mouseleave scroll', '.th', hideTooltip)
 		.on('mouseenter', '*[title]', function() {
@@ -43,6 +52,25 @@ $(function() {
 				.addClass('th')
 				.trigger('mouseenter');
 		});
+
+	$('input[type=checkbox]').each(function() {
+		var $label = $(this).next('label');
+		var $a = $('<a>')
+			.attr('href', '#')
+			.addClass('checkbox')
+			.html('<span class="label"><span class="icon"></span></span>')
+			.insertAfter($(this));
+
+		if($(this).prop('checked')) $a.addClass('checked');
+
+		if($label) {
+			$a.find('.label').append('<span class="text">' + $label.text() + '</span>');
+			$label.remove();
+		}
+
+		$(this).hide();
+	});
+
 
 	$('.post.item .label.meta.comments')
 		.on('mouseenter', function() {

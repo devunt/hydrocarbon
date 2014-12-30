@@ -6,7 +6,7 @@
 // 	
 
 #form {
-	padding:80px 0;
+	padding:80px 0 0;
 
 	.field {
 		width:600px; list-style:none; margin:0 auto; padding:10px 0;
@@ -14,8 +14,8 @@
 		label {
 			display:block; font-size:0; margin:10px 0; white-space:nowrap;
 			span { width:125px; color:$grey; display:inline-block; font-size:20px; letter-spacing:-2px; line-height:30px; text-align:right; vertical-align:top; }
-			input {
-				max-width:380px; width:380px; border:0; border-bottom:1px solid $lightgrey-base; color:$black; font-size:16px; line-height:30px; margin-left:15px; padding:0 10px;
+			input, select {
+				max-width:380px; width:380px; border:0; border-bottom:1px solid $lightgrey-base; box-sizing:content-box; color:$black; font-size:16px; line-height:30px; margin-left:15px; padding:0 10px;
 				&:focus { border-bottom-color:$blue-base; outline:none; }
 			}
 
@@ -31,7 +31,7 @@
 		@media screen and (max-device-width: $medium) { width:100%;
 			label {
 				span { width:auto; display:block; text-align:left; margin:5px 0; padding:0 5%; }
-				input { max-width:86%; width:86%; margin:0 5%; padding:0 2%; }
+				input, select { max-width:86%; width:86%; margin:0 5%; padding:0 2%; }
 			}
 
 			.errorlist {
@@ -48,7 +48,9 @@
 		}
 	}
 
-	.simple_notice { padding:0; }
+	.notice { padding:0; }
+
+	.submit { margin-top:80px; }
 }
 
 
@@ -68,8 +70,15 @@
 		width:$small + 1; list-style:none; margin:0 auto; position:relative;
 		@media screen and (max-device-width: $small) { width:100%; }
 
-		&:first-of-type { border-bottom:1px solid rgba(0,0,0,.1); }
-		&:last-of-type { border-top:1px solid rgba(255,255,255,.5); }
+		&.email { border-bottom:1px solid rgba(0,0,0,.1); }
+		&.password { border-top:1px solid rgba(255,255,255,.5); }
+		&.remember {
+			text-align:right;
+
+			a { color:$darkgrey; }
+			.icon { background-color:$grey-85; }
+		}
+
 		input, label { height:50px; line-height:50px; }
 		input {
 			width:85%; border:0; background:transparent url("../img/login_icon_1x.png") 95% 0 no-repeat; background-size:16px; padding-left:5%; padding-right:10%;
@@ -96,7 +105,7 @@
 			li { color:$red; list-style:square inside; margin:5px 0; }
 		}
 
-	.submit { margin:0 0 20px; border-radius:0 0 4px 4px; }
+	.submit { width:auto; display:inline-block; margin:0 0 20px; padding:0 4em; border-radius:0 0 4px 4px; }
 	.meta { padding:10px 0; text-align:center; }
 	.meta p { margin:5px 0; }
 	.meta a { display:inline-block; padding:0 .5em; }

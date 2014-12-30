@@ -42,20 +42,6 @@ textarea[name=contents] { background:transparent; border:0; }
 
 #overlay div { z-index:1054; }
 
-#messages {
-	li {
-		background:$lightgrey-base; color:$black; line-height:20px; list-style:none; padding:5px 0; text-align:center;
-		&.success { background:$green-base; color:$white; }
-		&.warning { background:#ffea80; }
-		&.error { background:$red; color:$white; }
-	}
-}
-
-.errorlist { @extend #messages;
-	li { background:$red; color:$white; }
-}
-
-
 body { background:#e5e5e5; }
 @media screen and (max-device-width: $small) {
 	body.hovered { overflow:hidden; }
@@ -63,37 +49,6 @@ body { background:#e5e5e5; }
 
 #wrapper { width:720px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.1); margin:0 auto; margin-top:50px;
 	@media screen and (max-device-width: $large) { width:100%; }
-}
-
-#banner {
-	height:150px; background:url("../img/logo_large_1x.png") 50% 50% no-repeat; background-size:350px;
-	span { visibility:hidden; }
-	@media screen and (max-device-width: $small) { display:none; }
-	@media screen and (max-device-height: $medium) { display:none; }
-	@media screen and (max-device-height: $small) { display:none; }
-
-	@media
-	screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
-	screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
-		background-image:url("../img/logo_large_2x.png"); 
-	}
-
-	@media
-	screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
-	screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
-		background-image:url("../img/logo_large_3x.png");
-	}
-}
-
-.simple_notice {
-	padding:80px; text-align:center;
-	p { font-size:16px; line-height:1.6em; margin:1em 0; padding:0 15%; text-align:left; }
-
-	&.error {
-		padding:50px 0;
-		img { width:150px; }
-		p { text-align:center; }
-	}
 }
 
 #footer {

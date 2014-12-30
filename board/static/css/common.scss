@@ -63,8 +63,22 @@
 //	standard submit button
 // 	mostly used in registration forms
 // 
-.submit { background:$blue; border:0; border-radius:4px; color:$white; cursor:pointer; display:inline-block; font-size:16px; line-height:60px; padding:0 3em; text-align:center; text-decoration:none; }
-.submit:hover { background:$blue-trans; }
+.submit { width:100%; background:$blue; border:0; color:$white; cursor:pointer; display:block; font-size:16px; line-height:60px; text-align:center; text-decoration:none; }
+.submit:hover { background:$blue-trans; color:$white; }
+
+// 
+// .redmit
+//	same as submit but red
+// 
+.redmit { @extend .submit; background:$red; }
+.redmit:hover { background:$red-trans; color:$white; }
+
+// 
+// .gromit
+//	it's not the dog it's grey submit
+// 
+.gromit { @extend .submit; background:$grey; }
+.gromit:hover { background:$grey-trans; color:$white; }
 
 // 
 // .nav
@@ -81,6 +95,41 @@
 		& + .button { margin-left:10px; }
 	}
 	@media screen and (max-device-width: $medium) { padding:10px 4%;}
+}
+
+//
+// #messages
+// 	top bar message
+// 	comes in various colors
+// 
+#messages {
+	li {
+		background:$lightgrey-base; color:$black; line-height:20px; list-style:none; padding:5px 0; text-align:center;
+		&.success { background:$green-base; color:$white; }
+		&.warning { background:#ffea80; }
+		&.error { background:$red; color:$white; }
+	}
+}
+
+.contents > .errorlist {
+	@extend #messages;
+	li { background:$red; color:$white; }
+}
+
+//
+// .notice
+//	simple notice with paragraphs
+// 	with the death of the endless
+//
+.notice {
+	padding:4em 0; text-align:center;
+	p { font-size:16px; line-height:1.6em; margin:1em 0; padding:0 15%; text-align:left; }
+
+	&.error {
+		padding:50px 0;
+		img { width:150px; }
+		p { text-align:center; }
+	}
 }
 
 // 
