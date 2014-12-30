@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-30 23:33+0900\n"
+"POT-Creation-Date: 2014-12-31 01:15+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,17 +18,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: board/forms.py:39 board/forms.py:59 board/forms.py:75
+#: board/forms.py:42 board/forms.py:70 board/forms.py:86
 #: board/templates/board/post_detail.html:199
 msgid "Nickname"
 msgstr "닉네임"
 
-#: board/forms.py:60 board/forms.py:76 board/forms.py:92 board/i18n_fake.py:6
+#: board/forms.py:55
+msgid "This nickname is already taken. Please choose another."
+msgstr ""
+
+#: board/forms.py:71 board/forms.py:87 board/forms.py:103 board/i18n_fake.py:6
 #: board/templates/board/post_detail.html:200
 msgid "Password"
 msgstr "비밀번호"
 
-#: board/forms.py:86
+#: board/forms.py:97
 msgid "Press ctrl-space to submit a comment"
 msgstr "컨트롤-스페이스 키를 이용해 댓글을 달 수 있습니다"
 
@@ -179,16 +183,17 @@ msgid "[%(site_name)s] Password reset"
 msgstr "비밀번호 재설정 확인"
 
 #: board/templates/account/email_confirm.html:4
-#: board/templates/account/email_confirm.html:10
+#: board/templates/account/email_confirm.html:5
+#: board/templates/account/email_confirm.html:11
 msgid "Confirm Email"
 msgstr ""
 
-#: board/templates/account/email_confirm.html:13
+#: board/templates/account/email_confirm.html:14
 #, python-format
 msgid "Confirm email address <b>%(email)s</b>?"
 msgstr ""
 
-#: board/templates/account/email_confirm.html:14
+#: board/templates/account/email_confirm.html:15
 msgid "Confirm"
 msgstr ""
 
@@ -229,9 +234,6 @@ msgid "Click here"
 msgstr "여기를 클릭하세요."
 
 #: board/templates/account/logout.html:4 board/templates/account/logout.html:5
-msgid "Logged out"
-msgstr "로그아웃"
-
 #: board/templates/account/logout.html:12
 #: board/templates/account/logout.html:16 board/templates/base.html:83
 msgid "Log out"
@@ -294,11 +296,12 @@ msgid "Set password"
 msgstr "비밀번호 설정"
 
 #: board/templates/account/password_reset_token_fail.html:4
-#: board/templates/account/password_reset_token_fail.html:7
+#: board/templates/account/password_reset_token_fail.html:5
+#: board/templates/account/password_reset_token_fail.html:8
 msgid "Bad token"
 msgstr ""
 
-#: board/templates/account/password_reset_token_fail.html:9
+#: board/templates/account/password_reset_token_fail.html:10
 #, python-format
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
@@ -333,7 +336,7 @@ msgstr ""
 #: board/templates/base.html:40 board/templates/base.html.py:68
 #: board/templates/board/post_detail.html:135
 #: board/templates/board/post_list.html:23
-#: board/templates/board/post_list.html:78
+#: board/templates/board/post_list.html:96
 msgid "Close"
 msgstr "닫기"
 
@@ -449,12 +452,12 @@ msgid "Submit comment"
 msgstr "댓글 달기"
 
 #: board/templates/board/post_detail.html:224
-#: board/templates/board/post_list.html:61
+#: board/templates/board/post_list.html:77
 msgid "List"
 msgstr "목록"
 
 #: board/templates/board/post_detail.html:232
-#: board/templates/board/post_list.html:69
+#: board/templates/board/post_list.html:85
 msgid "Top posts"
 msgstr "베스트"
 
@@ -462,7 +465,7 @@ msgstr "베스트"
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
 #: board/templates/board/post_form.html:76
-#: board/templates/board/post_list.html:100
+#: board/templates/board/post_list.html:118
 msgid "New post"
 msgstr "글쓰기"
 
@@ -492,39 +495,39 @@ msgstr "제목"
 msgid "Author"
 msgstr "글쓴이"
 
-#: board/templates/board/post_list.html:40
+#: board/templates/board/post_list.html:43
 msgid "Date"
 msgstr "날짜"
 
-#: board/templates/board/post_list.html:41
+#: board/templates/board/post_list.html:49
 msgid "Score"
 msgstr "추천"
 
-#: board/templates/board/post_list.html:42
+#: board/templates/board/post_list.html:55
 msgid "Views"
 msgstr "조회"
 
-#: board/templates/board/post_list.html:55
+#: board/templates/board/post_list.html:71
 msgid "There are no posts here!"
 msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
 
-#: board/templates/board/post_list.html:73
+#: board/templates/board/post_list.html:92
 msgid "Search"
 msgstr "검색"
 
-#: board/templates/board/post_list.html:108
+#: board/templates/board/post_list.html:126
 msgid "First"
 msgstr "처음"
 
-#: board/templates/board/post_list.html:111
+#: board/templates/board/post_list.html:129
 msgid "Prev"
 msgstr "이전"
 
-#: board/templates/board/post_list.html:119
+#: board/templates/board/post_list.html:137
 msgid "Next"
 msgstr "다음"
 
-#: board/templates/board/post_list.html:122
+#: board/templates/board/post_list.html:140
 msgid "Last"
 msgstr "마지막"
 
@@ -548,7 +551,7 @@ msgstr "게시판 없음"
 msgid "There's no such board."
 msgstr "찾으시는 게시판이 없습니다."
 
-#: board/views.py:128
+#: board/views.py:127
 msgid "Deleted"
 msgstr "삭제되었습니다"
 
@@ -559,6 +562,9 @@ msgstr "한국어"
 #: hydrocarbon/settings.py:103
 msgid "English"
 msgstr "영어"
+
+#~ msgid "Logged out"
+#~ msgstr "로그아웃"
 
 #~ msgid "herocomics"
 #~ msgstr "히어로코믹스"

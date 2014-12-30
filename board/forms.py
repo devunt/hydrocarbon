@@ -1,6 +1,7 @@
 from collections import OrderedDict
 
 from django import forms
+from django.contrib.auth import get_user_model
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
 from account.forms import SignupForm
@@ -45,6 +46,13 @@ class HCSignupForm(SignupForm):
         del self.fields['username']
         order = ('email', 'password', 'password_confirm', 'nickname', 'code')
         self.fields = OrderedDict((k, self.fields[k]) for k in order)
+
+    def clean_nickname(self):
+        value = self.cleaned_data['nickname']
+        qs = get_user_model().objects.filter(nickname__iexact=value)
+        if not qs.exists():
+            return self.cleaned_data['nickname']
+        raise forms.ValidationError(_('This nickname is already taken. Please choose another.'))
 
 class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=None)
