@@ -124,12 +124,18 @@ class PostListView(BoardMixin, PostListMixin, ListView):
         pqs = Post.objects.filter(board=self.board, announcement=None)
         pqs = pqs.annotate(vote=Sum('_votes__vote'))
         order_by = self.request.session.get('post_list_order_by')
-        print(order_by)
         return pqs.order_by(order_by, '-created_time')
 
     def get_context_data(self, **kwargs):
         order_by = self.request.session.get('post_list_order_by')
-        kwargs['order_by'] = {'column': order_by[1:], 'order': 'asc' if order_by[0] == '-' else 'desc'}
+        odict = dict()
+        if order_by.startswith('-'):
+            odict['order'] = 'asc'
+            odict['column'] = order_by[1:]
+        else:
+            odict['order'] = 'desc'
+            odict['column'] = order_by
+        kwargs['order_by'] = odict
         kwargs['is_best'] = self.is_best
         kwargs['BOARD_POST_BLIND_VOTES'] = settings.BOARD_POST_BLIND_VOTES
         return super().get_context_data(**kwargs)
