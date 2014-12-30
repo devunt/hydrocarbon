@@ -11,9 +11,9 @@
 	border:0 !important; box-shadow:none !important;
 
 	li a {
-		&:hover { background:$blue-base; }
+		&:hover { background:$blue-base !important; }
 		&:active,
-		&.redactor-act { background:$lightgrey-base; }
+		&.redactor-act { background:$lightgrey-base !important; }
 	}
 }
 
@@ -22,4 +22,8 @@
 
 	a.imagecontainer { display:inline-block; }
 	p:last-of-type { margin-bottom:0; }
+}
+
+@media screen and (max-device-width: $medium) {
+	.redactor-dropdown { left:5% !important; width:90% !important; }
 }
