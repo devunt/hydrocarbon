@@ -79,7 +79,7 @@ class CommentForm(forms.ModelForm):
         }
         widgets = {
             'contents': RedactorEditor(
-                redactor_options={'placeholder': _('Press ctrl-enter to submit a comment')},
+                redactor_options={'placeholder': _('Press ctrl-space to submit a comment')},
             ),
         }
 

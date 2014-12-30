@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-28 11:12+0900\n"
+"POT-Creation-Date: 2014-12-30 15:35+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: board/forms.py:11 board/forms.py:26
-#: board/templates/board/post_detail.html:182
+#: board/forms.py:39 board/forms.py:55 board/forms.py:71
+#: board/templates/board/post_detail.html:199
 msgid "Nickname"
 msgstr "닉네임"
 
-#: board/forms.py:27 board/forms.py:42 board/i18n_fake.py:7
-#: board/templates/board/post_detail.html:183
+#: board/forms.py:56 board/forms.py:72 board/forms.py:88 board/i18n_fake.py:7
+#: board/templates/board/post_detail.html:200
 msgid "Password"
 msgstr "비밀번호"
+
+#: board/forms.py:82
+msgid "Press ctrl-space to submit a comment"
+msgstr "컨트롤-스페이스 키를 이용해 댓글을 달 수 있습니다"
 
 #: board/i18n_fake.py:3
 msgid "herocomics"
@@ -129,50 +133,50 @@ msgstr[0] ""
 "입력하신 값은 최소 %(limit_value)d글자여야만 합니다. 현재 값은 %(show_value)d"
 "글자입니다."
 
-#: board/mixins.py:87
+#: board/mixins.py:85
 msgid "Wrong password"
 msgstr "잘못된 비밀번호입니다"
 
-#: board/templates/base.html:40 board/templates/base.html.py:68
-#: board/templates/board/post_detail.html:120
+#: board/templates/base.html:42 board/templates/base.html.py:70
+#: board/templates/board/post_detail.html:135
 #: board/templates/board/post_list.html:23
 #: board/templates/board/post_list.html:78
 msgid "Close"
 msgstr "닫기"
 
-#: board/templates/base.html:52
+#: board/templates/base.html:54
 msgid "Home"
 msgstr "홈"
 
-#: board/templates/base.html:53
+#: board/templates/base.html:55
 msgid "Favorites"
 msgstr "즐겨찾기"
 
-#: board/templates/base.html:54
+#: board/templates/base.html:56
 msgid "Notices"
 msgstr "공지사항"
 
-#: board/templates/base.html:55
+#: board/templates/base.html:57
 msgid "Scanlations"
 msgstr "번역"
 
-#: board/templates/base.html:80
+#: board/templates/base.html:82
 msgid "Profile"
 msgstr "프로필"
 
-#: board/templates/base.html:81
+#: board/templates/base.html:83
 msgid "Submitted"
 msgstr "작성글 보기"
 
-#: board/templates/base.html:82
+#: board/templates/base.html:84
 msgid "Inbox"
 msgstr "쪽지함"
 
-#: board/templates/base.html:83
+#: board/templates/base.html:85
 msgid "Log out"
 msgstr "로그아웃"
 
-#: board/templates/base.html:89 board/templates/registration/login.html:5
+#: board/templates/base.html:91 board/templates/registration/login.html:5
 #: board/templates/registration/login.html:6
 #: board/templates/registration/login.html:24
 msgid "Log in"
@@ -192,17 +196,17 @@ msgid "Then enter the password you used."
 msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력해 주세요."
 
 #: board/templates/board/post_confirm_delete.html:29
-#: board/templates/board/post_detail.html:159
-#: board/templates/board/post_detail.html:220
+#: board/templates/board/post_detail.html:174
+#: board/templates/board/post_detail.html:238
 msgid "Delete"
 msgstr "삭제"
 
-#: board/templates/board/post_detail.html:35
+#: board/templates/board/post_detail.html:43
 #: board/templates/board/post_item.html:34
 msgid "ago"
 msgstr "전"
 
-#: board/templates/board/post_detail.html:40
+#: board/templates/board/post_detail.html:48
 #, python-format
 msgid ""
 "\n"
@@ -213,7 +217,7 @@ msgstr ""
 "\t\t\t\t\t\t\t추천 <span>%(counter)s</span>개\n"
 "\t\t\t\t\t\t"
 
-#: board/templates/board/post_detail.html:48
+#: board/templates/board/post_detail.html:56
 #, python-format
 msgid ""
 "\n"
@@ -224,71 +228,68 @@ msgstr ""
 "\t\t\t\t\t\t\t조회수 <span>%(counter)s</span>\n"
 "\t\t\t\t\t\t"
 
-#: board/templates/board/post_detail.html:62
-#: board/templates/board/post_detail.html:127
+#: board/templates/board/post_detail.html:72
+#: board/templates/board/post_detail.html:142
 msgid "Upvote"
 msgstr "추천"
 
-#: board/templates/board/post_detail.html:66
-#: board/templates/board/post_detail.html:135
+#: board/templates/board/post_detail.html:76
+#: board/templates/board/post_detail.html:150
 msgid "Downvote"
 msgstr "비추천"
 
-#: board/templates/board/post_detail.html:83
+#: board/templates/board/post_detail.html:98
 #, python-format
 msgid "There is <span>%(counter)s</span> comment."
 msgid_plural "There are <span>%(counter)s</span> comments."
 msgstr[0] "<span>%(counter)s</span>개의 댓글이 달려있습니다."
 
-#: board/templates/board/post_detail.html:89
+#: board/templates/board/post_detail.html:104
 msgid "Refresh"
 msgstr "새로고침"
 
-#: board/templates/board/post_detail.html:143
+#: board/templates/board/post_detail.html:158
 msgid "Reply"
 msgstr "답글"
 
-#: board/templates/board/post_detail.html:151
-#: board/templates/board/post_detail.html:221
+#: board/templates/board/post_detail.html:166
+#: board/templates/board/post_detail.html:239
 msgid "Modify"
 msgstr "수정"
 
-#: board/templates/board/post_detail.html:179
-msgid "Please write your reply here."
-msgstr "댓글을 달아보시는 건 어떤가요?"
-
-#: board/templates/board/post_detail.html:186
+#: board/templates/board/post_detail.html:203
 msgid "Cancel"
 msgstr "취소"
 
-#: board/templates/board/post_detail.html:187
+#: board/templates/board/post_detail.html:204
 msgid "Submit comment"
 msgstr "댓글 달기"
 
-#: board/templates/board/post_detail.html:206
+#: board/templates/board/post_detail.html:224
 #: board/templates/board/post_list.html:61
 msgid "List"
 msgstr "목록"
 
-#: board/templates/board/post_detail.html:214
+#: board/templates/board/post_detail.html:232
 #: board/templates/board/post_list.html:69
 msgid "Top posts"
 msgstr "베스트"
 
-#: board/templates/board/post_detail.html:223
-#: board/templates/board/post_form.html:5
+#: board/templates/board/post_detail.html:241
 #: board/templates/board/post_form.html:6
-#: board/templates/board/post_form.html:61
+#: board/templates/board/post_form.html:7
+#: board/templates/board/post_form.html:79
 #: board/templates/board/post_list.html:100
 msgid "New post"
 msgstr "글쓰기"
 
-#: board/templates/board/post_form.html:34
+#: board/templates/board/post_form.html:42
 #: board/templates/board/post_list.html:20
 msgid "Categories"
 msgstr "분류"
 
-#: board/templates/board/post_form.html:46
+#: board/templates/board/post_form.html:62
+#: board/templates/board/post_form.html:92
 msgid "Tags"
 msgstr "태그"
 
@@ -600,7 +601,7 @@ msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다.
 msgid "Register for an account"
 msgstr "회원가입"
 
-#: board/views.py:95
+#: board/views.py:101
 msgid "Deleted"
 msgstr "삭제되었습니다"
 
