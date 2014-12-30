@@ -29,10 +29,10 @@
 		{% if form.category.errors or form.title.errors %}
 		<ul class="errorlist">
 			{% for error in form.category.errors %}
-			<li>{{ form.category.label }}은(는) {{ error | escape }}</li>
+			<li>{{ error | escape }}</li>
 			{% endfor %}
 			{% for error in form.title.errors %}
-			<li>{{ form.title.label }}은(는) {{ error | escape }}</li>
+			<li>{{ error | escape }}</li>
 			{% endfor %}
 		</ul>
 		{% endif %}
@@ -81,7 +81,7 @@
 </div>
 
 <script>
-	var $tagbox, $tags
+	var $tagbox, $tags;
 	$(function() {
 		$tagbox = $('#tagbox');
 		$tags = $('#id_tags');

@@ -172,15 +172,13 @@ var taggingJS_options = {
 
 var autocomplete_options = {
 	'serviceUrl': '/x/t',
+	'type': 'POST',
 	'minChars': 2,
 	'lookupLimit': 5,
 	'formatResult': function(suggestion, currentValue) {
 		return '<span class="left">' + $.Autocomplete.formatResult(suggestion, currentValue) + '</span><span class="right">' + suggestion.data + '</span>';
 	},
-	'onSelect': function(suggestion) {
-		this.focus();
-	},
-	'type': 'POST',
+	'onSelect': function(suggestion) { this.focus(); },
 	'zIndex': 1050
 }
 
