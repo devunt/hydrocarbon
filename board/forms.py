@@ -1,6 +1,7 @@
 from django import forms
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
+from redactor.widgets import RedactorEditor
 from registration.forms import RegistrationFormUniqueEmail
 
 from board.models import Category, Comment, Post, Tag
@@ -75,6 +76,11 @@ class CommentForm(forms.ModelForm):
         fields = ['contents']
         labels = {
             'contents': '',
+        }
+        widgets = {
+            'contents': RedactorEditor(
+                redactor_options={'placeholder': _('Press ctrl-enter to submit a comment')},
+            ),
         }
 
 
