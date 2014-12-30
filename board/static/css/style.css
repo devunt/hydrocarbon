@@ -70,7 +70,7 @@ textarea[name=contents] {
   border: 0; }
 
 #overlay div {
-  z-index: 20; }
+  z-index: 1054; }
 
 #messages li, .errorlist li {
   background: #ccc;
@@ -351,14 +351,18 @@ body {
   @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
     .label.meta .icon {
       background-image: url("../img/meta_3x.png"); } }
-.dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon {
+.dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon, .error .label.meta .icon {
   background-image: url("../img/meta_w_1x.png"); }
   @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
-    .dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon {
+    .dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon, .error .label.meta .icon {
       background-image: url("../img/meta_w_2x.png"); } }
   @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
-    .dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon {
+    .dropdown li a:hover .label.meta .icon, .dropdown li.voted a .label.meta .icon, .error .label.meta .icon {
       background-image: url("../img/meta_w_3x.png"); } }
+.error .label.meta {
+  background: #cc3d3d;
+  border-radius: 2px;
+  color: #fff; }
 .label.meta.author .text:after {
   height: 4px;
   width: 4px;
@@ -683,13 +687,15 @@ a.anchor {
     color: #666;
     display: table-cell;
     font-size: 14px;
-    padding-right: 1em;
     white-space: nowrap; }
+    .section.article .item.article .header .title .category .handle.label.meta {
+      padding-left: 2px; }
   .section.article .item.article .header .title h2 {
     display: table-cell;
     font-size: 22px;
     font-weight: normal;
     line-height: 28px;
+    padding-left: 10px;
     vertical-align: baseline; }
   .section.article .item.article .header .title .label.meta.comments {
     margin-left: .5em;

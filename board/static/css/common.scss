@@ -148,7 +148,8 @@
 	}
 
 	.dropdown li a:hover & .icon,
-	.dropdown li.voted a & .icon {
+	.dropdown li.voted a & .icon,
+	.error & .icon {
 		background-image:url("../img/meta_w_1x.png");
 
 		@media
@@ -158,6 +159,8 @@
 		screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
 		screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) { background-image:url("../img/meta_w_3x.png"); }
 	}
+
+	.error & { background:$red; border-radius:2px; color:$white; }
 
 	&.author .text:after { height:4px; width:4px; border-radius:2px; content:""; display:inline-block; margin-left:.4em; vertical-align:middle; }
 	&.author.user .text:after { background:$blue-base; }
