@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'board',
     ) + (
     # third-party apps
-    'registration',
+    'account',
+    'custom_user',
     'redactor',
     'haystack',
     ) + (
@@ -63,6 +64,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    'account.middleware.LocaleMiddleware',
+    'account.middleware.TimezoneMiddleware',
 )
 
 ROOT_URLCONF = 'hydrocarbon.urls'
@@ -82,6 +85,7 @@ DATABASES = {
 
 # Template
 TEMPLATE_CONTEXT_PROCESSORS = (
+    'account.context_processors.account',
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
@@ -124,6 +128,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'board/media')
 
 MEDIA_URL = '/media/'
 
+# User model
+AUTH_USER_MODEL = 'board.User'
+
+# Authentication backends
+AUTHENTICATION_BACKENDS = (
+    'account.auth_backends.EmailAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 # Password encryption method
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
@@ -145,9 +158,10 @@ EMAIL_HOST_PASSWORD = '***REMOVED***'
 
 DEFAULT_FROM_EMAIL = 'no-reply@herocomics.kr'
 
-# django-registration-redux
-ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_AUTO_LOGIN = True
+# django-user-accounts
+ACCOUNT_EMAIL_UNIQUE = True
+ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
+ACCOUNT_NOTIFY_ON_PASSWORD_CHANGE = False
 
 # django-wysiwyg-redactor
 REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'plugins': ['video', 'spoiler']}

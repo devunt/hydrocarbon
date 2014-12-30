@@ -4,18 +4,13 @@ from django.conf.urls.static import static
 from django.utils.functional import curry
 from django.views.defaults import permission_denied
 
-from registration.backends.default.views import RegistrationView
-
-from board.forms import HCRegistrationForm
-from board.views import IndexView
+from board.views import HCLoginView, HCSignupView, IndexView
 
 
 urlpatterns = patterns('',
-    url(r'^accounts/register/$',
-        RegistrationView.as_view(form_class=HCRegistrationForm),
-        name='registration_register'
-    ),
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^account/login/$', HCLoginView.as_view(), name='account_login'),
+    url(r'^account/signup/$', HCSignupView.as_view(), name='account_signup'),
+    url(r'^account/', include('account.urls')),
     url(r'^search/', include('haystack.urls')),
     url(r'^redactor/', include('redactor.urls')),
 

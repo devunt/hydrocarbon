@@ -1,0 +1,15 @@
+{% load i18n %}
+
+{% blocktrans with site_name=current_site.name %}
+Thank you for registering in {{ site_name }}. If you never heard of our site and
+someone pretending to be you used your mail account to register instead,
+please ignore this mail while we automatically remove all the information
+entered under your address within the next few days.
+{% endblocktrans %}
+{% blocktrans %}
+To activate this account, please go to the link below:
+{% endblocktrans %}
+
+{{ activate_url }}
+
+-- {{ current_site.name }}

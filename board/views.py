@@ -1,7 +1,9 @@
 from urllib.parse import urlparse
+from uuid import uuid4
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.urlresolvers import reverse
 from django.db.models import Sum
@@ -14,9 +16,11 @@ from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+from account.forms import LoginEmailForm
+from account.views import LoginView, SignupView
 from haystack.query import SearchQuerySet
 
-from board.forms import CommentForm, PostForm
+from board.forms import CommentForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
 from board.utils import normalize
@@ -26,6 +30,27 @@ class IndexView(View):
     def get(self, request, *args, **kwargs):
         board = Board.objects.first()
         return redirect(reverse('board_post_list', kwargs={'board': board.slug}))
+
+
+class HCLoginView(LoginView):
+    form_class = LoginEmailForm
+
+
+class HCSignupView(SignupView):
+    form_class = HCSignupForm
+
+    def create_user(self, form, commit=True, **kwargs):
+        user = get_user_model()(**kwargs)
+        user.email = form.cleaned_data['email'].strip()
+        user.nickname = form.cleaned_data['nickname'].strip()
+        password = form.cleaned_data.get('password')
+        if password:
+            user.set_password(password)
+        else:
+            user.set_unusable_password()
+        if commit:
+            user.save()
+        return user
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):

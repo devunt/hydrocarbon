@@ -1,6 +1,5 @@
 _ = lambda s: s
 
-_('herocomics')
 _('Username')
 _('username')
 _('E-mail')

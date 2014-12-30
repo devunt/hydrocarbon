@@ -1,8 +1,6 @@
 {% load static %}
 {% load i18n %}
 
-{% trans request.site.name as site_name %}
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -24,7 +22,7 @@
 	<script src="{% static "js/comments.js" %}"></script>
 	<link rel="stylesheet" href="{% static "css/style.css" %}">
 
-	<title>{% block title %}{{ site_name }}{% endblock %}</title>
+	<title>{% block title %}{{ request.site.name }}{% endblock %}</title>
 </head>
 
 <body>
@@ -36,7 +34,7 @@
 				<div class="dropdown container menu-nav">
 					<a href="#" class="handle">
 						<span class="icon"></span>
-						<span class="text">{% block pagename %}<span class="default">{{ site_name }}</span>{% endblock %}</span>
+						<span class="text">{% block pagename %}<span class="default">{{ request.site.name }}</span>{% endblock %}</span>
 					</a>
 					<div class="dropdown menu">
 						<a href="#" class="close">{% trans "Close" %}</a>
@@ -63,7 +61,7 @@
 					{% if user.is_authenticated %}
 						<a href="#" class="handle">
 							<span class="icon"></span>
-							<span class="text">{{ user.profile.nick }}</span>
+							<span class="text">{{ user.nickname }}</span>
 						</a>
 						<div class="dropdown menu">
 							<a href="#" class="close">{% trans "Close" %}</a>
@@ -80,11 +78,11 @@
 								<li><a href="/accounts/profile"><span>{% trans "Profile" %}</span></a></li>
 								<li><a href="#"><span>{% trans "Submitted" %}</span></a></li>
 								<li><a href="#"><span>{% trans "Inbox" %}</span></a></li>
-								<li><a href="/accounts/logout"><span>{% trans "Log out" %}</span></a></li>
+								<li><a href="{% url 'account_logout' %}"><span>{% trans "Log out" %}</span></a></li>
 							</ul>
 						</div>
 					{% else %}
-						<a href="/accounts/login" class="handle">
+						<a href="{% url 'account_login' %}" class="handle">
 							<span class="icon"></span>
 							<span class="text">{% trans "Log in" %}</span>
 						</a>

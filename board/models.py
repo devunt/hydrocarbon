@@ -3,21 +3,20 @@ import bleach
 from hashlib import sha224
 
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
+from custom_user.models import AbstractEmailUser
 from redactor.fields import RedactorField
 
 from board.utils import normalize
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name='profile')
-    nick = models.CharField(max_length=16, unique=True)
+class User(AbstractEmailUser):
+    nickname = models.CharField(max_length=16, unique=True)
 
     def __str__(self):
-        return self.nick
+        return self.nickname
 
 
 class OneTimeUser(models.Model):
@@ -73,7 +72,7 @@ class AuthorModelMixin:
     @property
     def author(self):
         if self.user:
-            return self.user.profile.nick
+            return self.user.profile.nickname
         else:
             return self.onetime_user.nick
 
@@ -83,7 +82,7 @@ class AuthorModelMixin:
 
 
 class Post(AuthorModelMixin, VotableModelMixin, models.Model):
-    user = models.ForeignKey(User, blank=True, null=True, related_name='posts')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='posts')
     onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='post', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     board = models.ForeignKey('Board', related_name='posts')
@@ -115,7 +114,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
 class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     post = models.ForeignKey('Post', related_name='comments')
     comment = models.ForeignKey('self', related_name='subcomments', blank=True, null=True)
-    user = models.ForeignKey(User, blank=True, null=True, related_name='comments')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='comments')
     onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     contents = RedactorField()
@@ -139,7 +138,7 @@ class Vote(models.Model):
     )
     post = models.ForeignKey('Post', blank=True, null=True, related_name='_votes')
     comment = models.ForeignKey('Comment', blank=True, null=True, related_name='_votes')
-    user = models.ForeignKey(User, blank=True, null=True, related_name='_votes')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='_votes')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     vote = models.SmallIntegerField(choices=VOTE_CHOICES)
 

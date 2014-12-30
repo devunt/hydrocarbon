@@ -1,4 +1,4 @@
-{% extends "registration/registration_base.html" %}
+{% extends "base.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Activation email sent" %} :: {{ block.super }}{% endblock %}
@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="simple_notice">
-	<p>{% blocktrans %}Welcome to {{ site_name }}!{% endblocktrans %}</p>
+	<p>{% blocktrans with site_name as request.site.name %}Welcome to {{ site_name }}!{% endblocktrans %}</p>
 	<p>{% trans "Please check your email to complete the registration process." %}</p>
 </div>
 

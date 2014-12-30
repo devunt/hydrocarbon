@@ -1,8 +1,8 @@
 from django import forms
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
+from account.forms import SignupForm
 from redactor.widgets import RedactorEditor
-from registration.forms import RegistrationFormUniqueEmail
 
 from board.models import Category, Comment, Post, Tag
 
@@ -35,8 +35,12 @@ class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
         return super().clean(value)
 
 
-class HCRegistrationForm(RegistrationFormUniqueEmail):
-    nick = forms.CharField(label=_('Nickname'), min_length=2, max_length=16)
+class HCSignupForm(SignupForm):
+    nickname = forms.CharField(label=_('Nickname'), min_length=2, max_length=16)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        del self.fields['username']
 
 
 class PostForm(forms.ModelForm):

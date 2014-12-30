@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Register for an account" %} :: {{ block.super }}{% endblock %}
+{% block pagename %}{% trans "Register for an account" %}{% endblock %}
+
+{% block content %}
+
+{{ form.non_field_errors }}
+<div id="form">
+	<form method="post" action="">
+		{% csrf_token %}
+		{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+		{% endfor %}
+		<ul>
+			{% for field in form.visible_fields %}
+			<li class="field">
+				<label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
+				{{ field.errors }}
+			</li>
+			{% endfor %}
+		</ul>
+		<div class="center">
+			<input class="submit" type="submit" value="{% trans 'Register' %}" />
+		</div>
+	</form>
+</div>
+
+{% endblock %}

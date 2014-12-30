@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Log out" %} :: {{ block.super }}{% endblock %}
+{% block pagename %}{% trans "Log out" %}{% endblock %}
+
+{% block content %}
+
+<div class="simple_notice">
+	<p>
+		<form method="POST">
+			<legend>{% trans "Log out" %}</legend>
+			<fieldset>
+				{% csrf_token %}
+				<p>{% trans "Are you sure you want to log out?" %}</p>
+				<button type="submit" class="btn btn-primary">{% trans "Log out" %}</button>
+			</fieldset>
+		</form>
+	</p>
+</div>
+
+{% endblock %}

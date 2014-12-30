@@ -1,4 +1,4 @@
-{% extends "registration/registration_base.html" %}
+{% extends "base.html" %}
 {% load hc %}
 {% load i18n %}
 
@@ -11,9 +11,11 @@
 <div id="form-login">
 	<form method="post" action="">
 		{% csrf_token %}
-		<input type="hidden" name="next" value="{{ next }}" />
+		{% for hidden in form.hideen_fields %}
+		{{ hidden }}
+		{% endfor %}
 		<ul>
-			{% for field in form %}
+			{% for field in form.visible_fields %}
 			<li class="field">
 				{{ field | label_as_placeholder }}
 				{{ field.errors }}
@@ -25,8 +27,8 @@
 		</div>
 	</form>
 	<div class="meta">
-		<p>{% trans "Do you have no account?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a></p>
-		<p>{% trans "Lost your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Click here" %}</a></p>
+		<p>{% trans "Do you have no account?" %} <a href="{% url 'account_signup' %}">{% trans "Register" %}</a></p>
+		<p>{% trans "Lost your password?" %} <a href="{% url 'account_password_reset' %}">{% trans "Click here" %}</a></p>
 	</div>
 </div>
 
