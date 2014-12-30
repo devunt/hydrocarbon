@@ -129,7 +129,7 @@ class PostListView(BoardMixin, PostListMixin, ListView):
 
     def get_context_data(self, **kwargs):
         order_by = self.request.session.get('post_list_order_by')
-        kwargs['order_by'] = {'columm': order_by[1:], 'order': order_by[0]}
+        kwargs['order_by'] = {'columm': order_by[1:], 'order': 'asc' if order_by[0] == '-' else 'desc'}
         kwargs['is_best'] = self.is_best
         kwargs['BOARD_POST_BLIND_VOTES'] = settings.BOARD_POST_BLIND_VOTES
         return super().get_context_data(**kwargs)
