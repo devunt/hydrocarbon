@@ -15,7 +15,7 @@
 
 	<div class="header">
 		<div class="cell mark"></div>
-		<div class="cell category dropdown container">
+		<div class="cell category sortable dropdown container">
 			<a href="#" class="handle label meta">
 				<span class="text"><span>{% trans "Categories" %}</span></span>
 			</a>
@@ -37,9 +37,25 @@
 		</div>
 		<div class="cell title">{% trans "Title" %}</div>
 		<div class="cell author">{% trans "Author" %}</div>
-		<div class="cell timestamp"><a href="#">{% trans "Date" %}</a></div>
-		<div class="cell score"><a href="#">{% trans "Score" %}</a></div>
-		<div class="cell views"><a href="#">{% trans "Views" %}</a></div>
+		{{ order_by }}
+		<div class="cell timestamp sortable dropdown{% if order_by.order == 'asc' %} open{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug '+ct' %}{% else %}{% url 'board_post_list' board.slug '-ct' %}{% endif %}">
+				<span class="text">{% trans "Date" %}</span>
+				{% if order_by.column == 'created_time' %}<span class="icon"></span> {% endif %}
+			</a>
+		</div>
+		<div class="cell score sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'vote' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug '+vt' %}{% else %}{% url 'board_post_list' board.slug '-vt' %}{% endif %}">
+				<span class="text">{% trans "Score" %}</span>
+				{% if order_by.column == 'vote' %}<span class="icon"></span> {% endif %}
+			</a>
+		</div>
+		<div class="cell views sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'viewcount' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug '+vc' %}{% else %}{% url 'board_post_list' board.slug '-vc' %}{% endif %}">
+				<span class="text">{% trans "Views" %}</span>
+				{% if order_by.column == 'viewcount' %}<span class="icon"></span> {% endif %}
+			</a>
+		</div>
 	</div>
 
 	<ul class="post-list">
@@ -56,7 +72,7 @@
 	{% endfor %}
 	</ul>
 
-	<div class="nav bottom clear">
+	<div class="nav bottom clear close">
 		<div class="left">
 			<a href="{% url 'board_post_list' board.slug %}" class="button">{% trans "List" %}</a>
 			{% if is_best %}
@@ -69,32 +85,34 @@
 					<span class="text">{% trans "Top posts" %}</span>
 				</span>
 			</a>
-			<form action="#" method="post" id="search" class="button search">
-				<input type="button" value="{% trans "Search" %}" class="search">
-				<input type="text" name="quary" class="text">
-				<input type="hidden" name="scope">
-				<div id="scope" class="dropdown container">
-					<div class="dropdown menu">
-						<a href="#" class="close">{% trans "Close" %}</a>
-						<ul>
-							<li><a href="#"><span>cat1</span></a></li>
-							<li><a href="#"><span>cat2</span></a></li>
-							<li><a href="#"><span>cat3</span></a></li>
-							<li><a class="checkbox checked" href="#">
-								<span class="label">
-									<span class="icon"></span>
-									<span class="text">toggle</span>
-								</span>
-							</a></li>
-						</ul>
-						<div class="tip bottom"><span></span></div>
+			<div class="search button">
+				<form action="#" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="scope">
+					<input type="button" value="{% trans "Search" %}" class="search-button">
+					<input type="text" name="quary" class="text">
+					<div class="dropdown container scope">
+						<div class="dropdown menu">
+							<a href="#" class="close">{% trans "Close" %}</a>
+							<ul>
+								<li><a href="#"><span>cat1</span></a></li>
+								<li><a href="#"><span>cat2</span></a></li>
+								<li><a href="#"><span>cat3</span></a></li>
+								<li><a class="checkbox checked" href="#">
+									<span class="label">
+										<span class="icon"></span>
+										<span class="text">toggle</span>
+									</span>
+								</a></li>
+							</ul>
+							<div class="tip bottom"><span></span></div>
+						</div>
+						<span class="handle label meta">
+							<span class="icon"></span>
+						</span>
 					</div>
-					<span class="handle label meta">
-						<span class="text">Title + Article</span>
-						<span class="icon"></span>
-					</span>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 		<div class="right">
 			<a href="{% url 'board_post_create' board.slug %}" class="button blue">{% trans "New post" %}</a>

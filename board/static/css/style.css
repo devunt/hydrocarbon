@@ -407,10 +407,10 @@ body {
 .label.meta.last .icon {
   background-position: 0 -144px;
   margin-right: 0; }
-.dropdown.container .label.meta.handle .icon {
+.dropdown .label.meta.handle .icon {
   background-position: 0 -156px;
   margin-right: 0; }
-.dropdown.container.open .label.meta.handle .icon {
+.dropdown.open .label.meta.handle .icon {
   background-position: 0 -168px; }
 .label.meta.tags .icon {
   background-position: 0 -180px; }
@@ -1014,19 +1014,22 @@ a.anchor {
       padding: 10px 4%; }
       .section.board .header .cell {
         display: none; }
-      .section.board .header .category {
+      .section.board .header .sortable {
         width: auto;
         background: rgba(204, 204, 204, 0.9);
         border-radius: 2px;
         display: inline-block;
         font-size: 14px;
         overflow: hidden;
+        margin-left: 10px;
         padding: 5px 10px;
         text-align: center; }
-        .section.board .header .category:hover {
+        .section.board .header .sortable:hover {
           background: rgba(204, 204, 204, 0.6); }
-        .section.board .header .category .tip {
+        .section.board .header .sortable .tip {
           text-align: left; }
+      .section.board .header .category.sortable {
+        margin: 0; }
     .section.board .item {
       padding: 5px 2%;
       padding-left: 0; }
@@ -1089,60 +1092,56 @@ a.anchor {
           margin: 0; }
       .section.board .item.notice .cell.timestamp {
         margin-left: 4%; }
-    .section.board .nav.bottom #search .text,
-    .section.board .nav.bottom #scope {
-      width: 0;
-      padding: 5px 0;
-      transition: width .2s ease, padding .2s ease; } }
+    .section.board .close .search.button form input.text {
+      width: 0; }
+    .section.board .close .search.button form .scope {
+      display: none; } }
   @media screen and (max-device-width: 419px) {
     .section.board .item .cell.author .label.meta {
       margin-right: 5px; }
     .section.board .pages .button.foldable {
       display: none; } }
 
-#search {
+.search.button {
   height: 30px;
-  width: auto;
   font-size: 0;
-  padding: 0; }
-
-#search:hover {
-  background: rgba(204, 204, 204, 0.9); }
-
-#search input {
+  padding: 0;
   vertical-align: top; }
-
-#search .search {
-  height: 30px;
-  width: 30px;
-  background: transparent url("../img/search.png");
-  border: 0;
-  color: transparent;
-  cursor: pointer; }
-
-#search .search:hover {
-  background-color: rgba(255, 255, 255, 0.2); }
-
-#search input.text {
-  height: 30px;
-  width: 80px;
-  width: 150px;
-  background: transparent;
-  border: 0;
-  font-size: 14px;
-  line-height: 30px; }
-
-#scope {
-  background: rgba(0, 0, 0, 0.1);
-  cursor: default;
-  display: inline-block;
-  padding: 5px 15px;
-  vertical-align: top; }
-  #scope .dropdown {
-    bottom: 40px; }
-
-#scope:hover {
-  background-color: rgba(0, 0, 0, 0.2); }
+  .search.button form {
+    width: 100%;
+    height: inherit;
+    display: table; }
+    .search.button form .search-button,
+    .search.button form input.text,
+    .search.button form .scope {
+      display: table-cell;
+      vertical-align: top; }
+    .search.button form .search-button {
+      height: 30px;
+      width: 30px;
+      background: transparent url("../img/search.png");
+      border: 0;
+      color: transparent;
+      cursor: pointer; }
+    .search.button form input.text {
+      width: calc(100% - 30px);
+      background: transparent;
+      border: 0;
+      font-size: 14px;
+      line-height: inherit;
+      padding: 5px 0; }
+    .search.button form .scope {
+      height: 30px;
+      width: 30px;
+      background: rgba(0, 0, 0, 0.1);
+      cursor: default;
+      position: static; }
+    .search.button form .scope .dropdown.menu {
+      bottom: 40px; }
+    .search.button form .scope .handle {
+      padding: 5px 0; }
+    .search.button form .scope .dropdown.menu .tip {
+      width: 10px; }
 
 #redactor-modal,
 #redactor-modal footer button,

@@ -94,11 +94,12 @@
 		.header {
 			background:$grey-90; padding:10px 4%;
 			.cell { display:none; }
-			.category {
-				width:auto; background:$lightgrey; border-radius:2px; display:inline-block; font-size:$font-size; overflow:hidden; padding:5px 10px; text-align:center;
+			.sortable {
+				width:auto; background:$lightgrey; border-radius:2px; display:inline-block; font-size:$font-size; overflow:hidden; margin-left:10px; padding:5px 10px; text-align:center;
 				&:hover { background:$lightgrey-trans; }
 				.tip { text-align:left; }
 			}
+			.category.sortable { margin:0; }
 		}
 
 		.item {
@@ -132,13 +133,14 @@
 				&.author .text { max-width:none; }
 				&.views { margin:0; }
 			}
-
 			&.notice .cell.timestamp { margin-left:4%; }
 		}
 
-		.nav.bottom {
-			#search .text,
-			#scope { width:0; padding:5px 0; transition:width .2s ease, padding .2s ease; }
+		.close .search.button {
+			form {
+				input.text { width:0; }
+				.scope { display:none; }
+			}
 		}
 	}
 
@@ -149,15 +151,21 @@
 	
 }
 
-// will re-do searchbox later
-#search { height:30px; width:auto; font-size:0; padding:0; }
-#search:hover { background:$lightgrey; }
-#search input { vertical-align:top; }
-#search .search { height:30px; width:30px; background:transparent url("../img/search.png"); border:0; color:transparent; cursor:pointer; }
-#search .search:hover { background-color:rgba(255,255,255,.2); }
-#search input.text { height:30px; width:80px; width:150px; background:transparent; border:0; font-size:$font-size; line-height:30px; }
-#scope {
-	background:rgba(0,0,0,.1); cursor:default; display:inline-block; padding:5px 15px; vertical-align:top;
-	.dropdown { bottom:40px; }
+.search.button {
+	height:30px; font-size:0; padding:0; vertical-align:top;
+
+	form {
+		width:100%; height:inherit; display:table;
+
+		.search-button,
+		input.text,
+		.scope { display:table-cell; vertical-align:top; }
+
+		.search-button { height:30px; width:30px; background:transparent url("../img/search.png"); border:0; color:transparent; cursor:pointer; }
+		input.text { width:calc(100% - 30px); background:transparent; border:0; font-size:$font-size; line-height:inherit; padding:5px 0; }
+		.scope { height:30px; width:30px; background:rgba(0,0,0,.1); cursor:default; position:static; }
+		.scope .dropdown.menu { bottom:40px; }
+		.scope .handle { padding:5px 0; }
+		.scope .dropdown.menu .tip { width:10px; }
+	}
 }
-#scope:hover { background-color:rgba(0,0,0,.2); }
