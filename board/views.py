@@ -119,10 +119,12 @@ class PostListView(BoardMixin, PostListMixin, ListView):
         elif not s.startswith('+'):
             s = ' ' + s
         column = d.get(s[1:], 'created_time')
-        print(order + column)
-        return pqs.order_by(order + column)
+        self.order_by = order + column
+        pqs = pqs.order_by('-created_time')
+        return pqs.order_by(self.order_by)
 
     def get_context_data(self, **kwargs):
+        kwargs['order_by'] = self.order_by
         kwargs['is_best'] = self.is_best
         kwargs['BOARD_POST_BLIND_VOTES'] = settings.BOARD_POST_BLIND_VOTES
         return super().get_context_data(**kwargs)
