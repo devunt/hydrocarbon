@@ -43,7 +43,7 @@
 		}
 
 		div.article {
-			width:540px; line-height:20px; margin:20px auto;
+			width:540px; line-height:20px; margin:20px auto !important;
 
 			@media screen and (max-device-width: $medium) { width:90%; }
 

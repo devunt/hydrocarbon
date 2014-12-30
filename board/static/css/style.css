@@ -721,7 +721,7 @@ a.anchor {
 .section.article .item.article div.article {
   width: 540px;
   line-height: 20px;
-  margin: 20px auto; }
+  margin: 20px auto !important; }
   @media screen and (max-device-width: 599px) {
     .section.article .item.article div.article {
       width: 90%; } }
@@ -1291,8 +1291,12 @@ a.anchor {
     display: inline-block;
     margin: 0 2px;
     padding: 0 2px; }
+  .redactor-editor span.spoiler img {
+    visibility: hidden; }
   .redactor-editor span.spoiler:hover {
     color: #fff; }
+  .redactor-editor span.spoiler:hover img {
+    visibility: visible; }
 
 @media screen and (max-device-width: 599px) {
   .redactor-dropdown {

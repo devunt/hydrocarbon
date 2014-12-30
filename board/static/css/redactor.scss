@@ -24,7 +24,9 @@
 	p:last-of-type { margin-bottom:0; }
 
 	span.spoiler { background:$black; cursor:default; display:inline-block; margin:0 2px; padding:0 2px; }
+	span.spoiler img { visibility:hidden; }
 	span.spoiler:hover { color:$white; }
+	span.spoiler:hover img { visibility:visible; }
 }
 
 @media screen and (max-device-width: $medium) {
