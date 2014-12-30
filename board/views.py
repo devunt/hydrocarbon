@@ -1,5 +1,4 @@
 from urllib.parse import urlparse
-from uuid import uuid4
 
 from django.conf import settings
 from django.contrib import messages
