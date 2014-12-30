@@ -182,8 +182,13 @@ def _filter_iframe_src(name, value):
         )
     return False
 
+def _filter_span_class(name, value):
+    if name == 'class' and value == 'spoiler':
+        return True
+    return False
+
 BLEACH_ALLOWED_TAGS = [
-    'blockquote', 'br', 'hr', 'p', 'pre',
+    'blockquote', 'br', 'hr', 'p', 'pre', 'span',
     'del', 'em', 'strong',
     'h1', 'h2', 'h3', 'h4', 'h5',
     'li', 'ol', 'ul',
@@ -194,6 +199,7 @@ BLEACH_ALLOWED_ATTRIBUTES = {
     'iframe': _filter_iframe_src,
     'img': ['alt', 'style', 'src'],
     'p': ['style'],
+    'span', _filter_span_class,
 }
 BLEACH_ALLOWED_STYLES = [
     'display',
