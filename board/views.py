@@ -103,28 +103,33 @@ class PostDeleteView(PermissionMixin, DeleteView):
         messages.success(self.request, _('Deleted'))
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
 
-
 class PostListView(BoardMixin, PostListMixin, ListView):
     paginate_by = 10
     is_best = False
 
+    def get(self, request, *args, **kwargs):
+        if kwargs.get('is_detailview', False):
+            if 'post_list_order_by' not in request.session:
+                request.session['post_list_order_by'] = '-created_time'
+        else:
+            o = kwargs.get('order_by')
+            if o is None:
+                o = '+ct'
+            d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}
+            order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
+            request.session['post_list_order_by'] = order_by
+        return super().get(request, *args, **kwargs)
+
     def get_queryset(self):
         pqs = Post.objects.filter(board=self.board, announcement=None)
         pqs = pqs.annotate(vote=Sum('_votes__vote'))
-        s = self.request.GET.get('o', '')
-        d = {'mt': 'modified_time', 'vc': 'viewcount', 'vt': 'vote'}
-        order = '-'
-        if s.startswith('-'):
-            order = ''
-        elif not s.startswith('+'):
-            s = ' ' + s
-        column = d.get(s[1:], 'created_time')
-        self.order_by = {'column': column, 'order': 'asc' if order == '' else 'desc'}
-        pqs = pqs.order_by('-created_time')
-        return pqs.order_by(order + column)
+        order_by = self.request.session.get('post_list_order_by')
+        print(order_by)
+        return pqs.order_by(order_by, '-created_time')
 
     def get_context_data(self, **kwargs):
-        kwargs['order_by'] = self.order_by
+        order_by = self.request.session.get('post_list_order_by')
+        kwargs['order_by'] = {'columm': order_by[1:], 'order': order_by[0]}
         kwargs['is_best'] = self.is_best
         kwargs['BOARD_POST_BLIND_VOTES'] = settings.BOARD_POST_BLIND_VOTES
         return super().get_context_data(**kwargs)
@@ -170,7 +175,7 @@ class PostDetailView(DetailView):
             plv = PostListView()
         plv.kwargs = dict()
         plv.request = request
-        plv.dispatch(request, board=self.board.slug)
+        plv.dispatch(request, board=self.board.slug, is_detailview=True)
         ctx = plv.get_context_data()
         kwargs.update(ctx)
         kwargs['board'] = self.board
