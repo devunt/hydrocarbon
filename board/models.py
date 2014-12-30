@@ -72,7 +72,7 @@ class AuthorModelMixin:
     @property
     def author(self):
         if self.user:
-            return self.user.profile.nickname
+            return self.user.nickname
         else:
             return self.onetime_user.nick
 
