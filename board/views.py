@@ -110,15 +110,16 @@ class PostListView(BoardMixin, PostListMixin, ListView):
 
     def get_queryset(self):
         pqs = Post.objects.filter(board=self.board, announcement=None)
-        s = self.request.GET.get('o')
-        if s == 'm':
-            column = 'modified_time'
-        else:
-            column = 'created_time'
-        if 'r' in self.request.GET:
+        pqs = pqs.annotate(vote=Sum('_votes__vote'))
+        s = self.request.GET.get('o', '')
+        d = {'mt': 'modified_time', 'vc': 'viewcount', 'vt': 'vote'}
+        order = '-'
+        if s.startswith('-'):
             order = ''
-        else:
-            order = '-'
+        elif not s.startswith('+'):
+            s = ' ' + s
+        column = d.get(s[1:], 'created_time')
+        print(order + column)
         return pqs.order_by(order + column)
 
     def get_context_data(self, **kwargs):
@@ -132,7 +133,6 @@ class PostBestListView(PostListView):
 
     def get_queryset(self):
         pqs = super().get_queryset()
-        pqs = pqs.annotate(vote=Sum('_votes__vote'))
         pqs = pqs.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
         return pqs
 
