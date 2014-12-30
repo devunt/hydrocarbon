@@ -1,7 +1,15 @@
 {% extends 'board/post_list.html' %}
+{% load static %}
 {% load hc %}
 {% load i18n %}
 {% load intcomma from humanize %}
+
+{% block head %}
+	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
+	<script src="{% static "js/tagging.min.js" %}"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+	{{ comment_form.media }}
+{% endblock %}
 
 {% block post %}
 
@@ -203,7 +211,6 @@
 			</li>
 		</ul>
 
-		<div class="media">{{ comment_form.media }}</div>
 		<script>
 			var c3RhZmY = {{ user.is_staff | lower }};
 			var author = '{{ user.profile.nick }}';

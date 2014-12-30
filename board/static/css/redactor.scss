@@ -22,6 +22,9 @@
 
 	a.imagecontainer { display:inline-block; }
 	p:last-of-type { margin-bottom:0; }
+
+	span.spoiler { background:$black; cursor:default; display:inline-block; margin:0 2px; padding:0 2px; }
+	span.spoiler:hover { color:$white; }
 }
 
 @media screen and (max-device-width: $medium) {

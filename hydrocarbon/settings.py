@@ -150,7 +150,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 
 # django-wysiwyg-redactor
-REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'plugins': ['video']}
+REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'plugins': ['video', 'spoiler']}
 REDACTOR_UPLOAD = 'uploads/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 

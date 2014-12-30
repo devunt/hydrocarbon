@@ -1285,6 +1285,14 @@ a.anchor {
     display: inline-block; }
   .redactor-editor p:last-of-type {
     margin-bottom: 0; }
+  .redactor-editor span.spoiler {
+    background: #222;
+    cursor: default;
+    display: inline-block;
+    margin: 0 2px;
+    padding: 0 2px; }
+  .redactor-editor span.spoiler:hover {
+    color: #fff; }
 
 @media screen and (max-device-width: 599px) {
   .redactor-dropdown {
