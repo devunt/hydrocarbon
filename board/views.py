@@ -14,10 +14,12 @@ from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+from haystack.query import SearchQuerySet
 
 from board.forms import CommentForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
+from board.utils import normalize
 
 
 class IndexView(View):
@@ -377,6 +379,7 @@ class TagAutocompleteAjaxView(AjaxMixin, View):
         query = request.POST.get('query')
         if not query:
             return self.bad_request()
-        tags = Tag.objects.filter(name__icontains=query)
-        lst = [{'value': tag.name, 'data': tag.posts.count()} for tag in tags]
+        sqs = SearchQuerySet()
+        sqs = sqs.models(Tag).filter(content__exact=normalize(query))
+        lst = [{'value': sr.object.name, 'data': sr.object.posts.count()} for sr in sqs.all()]
         return JsonResponse({'status': 'success', 'query': query, 'suggestions': lst})

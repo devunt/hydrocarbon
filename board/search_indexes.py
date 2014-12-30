@@ -1,6 +1,6 @@
 from haystack import indexes
 
-from board.models import Post
+from board.models import Post, Tag
 
 
 class PostIndex(indexes.SearchIndex, indexes.Indexable):
@@ -9,3 +9,10 @@ class PostIndex(indexes.SearchIndex, indexes.Indexable):
 
     def get_model(self):
         return Post
+
+
+class TagIndex(indexes.SearchIndex, indexes.Indexable):
+    text = indexes.CharField(model_attr='normalized', document=True)
+
+    def get_model(self):
+        return Tag

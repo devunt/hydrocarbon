@@ -9,6 +9,8 @@ from django.db import models
 from django.utils import timezone
 from redactor.fields import RedactorField
 
+from board.utils import normalize
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
@@ -48,6 +50,10 @@ class Category(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=32, unique=True)
+
+    @property
+    def normalized(self):
+        return normalize(self.name)
 
     def __str__(self):
         return self.name
