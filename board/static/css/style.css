@@ -1282,6 +1282,7 @@ a.anchor {
   padding: 0 !important;
   margin: 0; }
   .redactor-editor a.imagecontainer {
+    max-width: 100%;
     display: inline-block; }
   .redactor-editor p:last-of-type {
     margin-bottom: 0; }
