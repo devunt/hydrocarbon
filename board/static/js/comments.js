@@ -157,8 +157,14 @@ $(function() {
 			}
 		});
 
-
 	$('.comments-list')
+		.on('keydown', '.redactor-editor', function(e) {
+			if(e.ctrlKey && e.keyCode == 13) {
+				e.preventDefault();
+				console.log('lel');
+				$(this).closest('.comments-list').find('.write .submit').trigger('click');
+			}
+		})
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),

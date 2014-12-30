@@ -1291,12 +1291,14 @@ a.anchor {
     display: inline-block;
     margin: 0 2px;
     padding: 0 2px; }
-  .redactor-editor span.spoiler img {
-    visibility: hidden; }
-  .redactor-editor span.spoiler:hover {
-    color: #fff; }
-  .redactor-editor span.spoiler:hover img {
-    visibility: visible; }
+    .redactor-editor span.spoiler p {
+      display: inline; }
+    .redactor-editor span.spoiler img {
+      visibility: hidden; }
+    .redactor-editor span.spoiler:hover {
+      color: #fff; }
+    .redactor-editor span.spoiler:hover img {
+      visibility: visible; }
 
 @media screen and (max-device-width: 599px) {
   .redactor-dropdown {
