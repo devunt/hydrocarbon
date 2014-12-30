@@ -11,8 +11,11 @@
 			.title {
 				background:$grey-95; font-size:0; padding:10px 5%;
 
-				.category { color:$darkgrey; display:table-cell; font-size:$font-size; padding-right:1em; white-space:nowrap; }
-				h2 { display:table-cell; font-size:22px; font-weight:normal; line-height:28px; vertical-align:baseline; }
+				.category {
+					color:$darkgrey; display:table-cell; font-size:$font-size; white-space:nowrap;
+					.handle.label.meta { padding-left:2px; }
+				}
+				h2 { display:table-cell; font-size:22px; font-weight:normal; line-height:28px; padding-left:10px; vertical-align:baseline; }
 
 				.label.meta.comments {
 					margin-left:.5em; vertical-align:text-bottom;

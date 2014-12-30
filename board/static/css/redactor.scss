@@ -20,7 +20,7 @@
 .redactor-editor {
 	min-height:0 !important; background:none !important; border:0 !important; font-family:inherit !important; padding:0 !important; margin:0;
 
-	a.imagecontainer { display:inline-block; }
+	a.imagecontainer { max-width:100%; display:inline-block; }
 	p:last-of-type { margin-bottom:0; }
 
 	span.spoiler {
