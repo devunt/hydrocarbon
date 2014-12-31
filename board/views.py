@@ -10,14 +10,16 @@ from django.http import JsonResponse, QueryDict
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
 from django.views.generic.list import ListView
 from account.forms import LoginEmailForm
 from account.views import LoginView, SignupView
 from haystack.query import SearchQuerySet
+from haystack.views import SearchView
+from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
@@ -50,6 +52,12 @@ class HCSignupView(SignupView):
         if commit:
             user.save()
         return user
+
+
+class HCRedactorUploadView(RedactorUploadView):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return FormView.dispatch(self, request, *args, **kwargs)
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):

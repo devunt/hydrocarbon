@@ -3,13 +3,21 @@ from django.conf.urls import patterns, url, include
 from django.conf.urls.static import static
 from django.utils.functional import curry
 from django.views.defaults import permission_denied
+from redactor.forms import FileForm, ImageForm
 
-from board.views import HCLoginView, HCSignupView, IndexView
+from board.views import HCLoginView, HCSignupView, HCRedactorUploadView, IndexView
 
 
 urlpatterns = patterns('',
     url(r'^account/login/$', HCLoginView.as_view(), name='account_login'),
     url(r'^account/signup/$', HCSignupView.as_view(), name='account_signup'),
+    url(r'^redactor/upload/image/(?P<upload_to>.*)',
+        HCRedactorUploadView.as_view(form_class=ImageForm),
+        name='redactor_upload_image'),
+    url(r'^redactor/upload/file/(?P<upload_to>.*)',
+        HCRedactorUploadView.as_view(form_class=FileForm),
+        name='redactor_upload_file'),
+
     url(r'^account/', include('account.urls')),
     url(r'^search/', include('haystack.urls')),
     url(r'^redactor/', include('redactor.urls')),
