@@ -128,6 +128,7 @@ class PostDeleteView(PermissionMixin, DeleteView):
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
 
 class PostListView(BoardMixin, PostListMixin, ListView):
+    template_name = 'board/post_list.html'
     paginate_by = 10
     is_best = False
 
@@ -171,6 +172,15 @@ class PostBestListView(PostListView):
     def get_queryset(self):
         pqs = super().get_queryset()
         pqs = pqs.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
+        return pqs
+
+
+class BoardSearchView(PostListView):
+    def get_queryset(self):
+        sqs = SearchQuerySet().models(Post)
+        sqs = sqs.filter(board=self.board.slug, content=self.request.GET.get('q'))
+        pqs = super().get_queryset()
+        pqs.filter(pk__in=[s.pk for s in sqs])
         return pqs
 
 
