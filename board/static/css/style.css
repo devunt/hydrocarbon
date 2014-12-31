@@ -200,8 +200,10 @@ body {
   font-size: 0;
   padding: 10px 20px; }
   .nav .button {
+    width: auto;
     background: rgba(204, 204, 204, 0.9);
     border-radius: 2px;
+    display: inline-block;
     font-size: 14px;
     line-height: 20px;
     overflow: hidden;
@@ -924,11 +926,11 @@ a.anchor {
       color: #666; }
     .section.board .item.even {
       background: #f2f2f2; }
-    .section.board .item.notice {
+    .section.board .item.announcement {
       background: #fff7cc; }
-    .section.board .item.notice.even {
+    .section.board .item.announcement.even {
       background: #f2eac2; }
-    .section.board .item.notice .cell.author .label.meta {
+    .section.board .item.announcement .cell.author .label.meta {
       display: none; }
     .section.board .item.currentpost .cell.mark {
       font-size: 10px; }
@@ -1045,7 +1047,7 @@ a.anchor {
       padding-left: 0; }
       .section.board .item.currentpost .cell.mark {
         visibility: visible; }
-      .section.board .item.notice .cell.category {
+      .section.board .item.announcement .cell.category {
         background: transparent; }
       .section.board .item.scanlation .cell.category {
         background: rgba(61, 156, 204, 0.9);
@@ -1100,7 +1102,7 @@ a.anchor {
           max-width: none; }
         .section.board .item .cell.views {
           margin: 0; }
-      .section.board .item.notice .cell.timestamp {
+      .section.board .item.announcement .cell.timestamp {
         margin-left: 4%; }
     .section.board .close .search.button form input.text {
       width: 0; }
