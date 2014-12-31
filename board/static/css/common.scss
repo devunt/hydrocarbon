@@ -88,7 +88,7 @@
 .nav {
 	font-size:0; padding:10px 20px;
 	.button {
-		background:$lightgrey; border-radius:2px; font-size:$font-size; line-height:20px; overflow:hidden; padding:5px 10px; text-align:center;
+		width:auto; background:$lightgrey; border-radius:2px; display:inline-block; font-size:$font-size; line-height:20px; overflow:hidden; padding:5px 10px; text-align:center;
 		&:hover { background:$lightgrey-trans; color:$black; }
 		&.blue { background:$blue; color:#fff; }
 		&.blue:hover { background:$blue-trans; }

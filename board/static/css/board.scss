@@ -31,9 +31,9 @@
 		&:hover .cell a { color:$darkgrey; }
 
 		&.even { background:$grey-95; }
-		&.notice { background:#fff7cc; }
-		&.notice.even { background:#f2eac2; }
-		&.notice .cell.author .label.meta { display:none; }
+		&.announcement { background:#fff7cc; }
+		&.announcement.even { background:#f2eac2; }
+		&.announcement .cell.author .label.meta { display:none; }
 		&.currentpost .cell.mark { font-size:$font-size - 4; }
 
 		&.hidden .cell {
@@ -109,7 +109,7 @@
 
 			&.currentpost .cell.mark { visibility:visible; }
 
-			&.notice .cell.category { background:transparent; }
+			&.announcement .cell.category { background:transparent; }
 			&.scanlation .cell.category { background:$blue; color:$white; }
 			&.news .cell.category { background:$green; color:$white; }
 			&.subtitles .cell.category { background:$red-trans; color:$white; }
@@ -135,7 +135,7 @@
 				&.author .text { max-width:none; }
 				&.views { margin:0; }
 			}
-			&.notice .cell.timestamp { margin-left:4%; }
+			&.announcement .cell.timestamp { margin-left:4%; }
 		}
 
 		.close .search.button {
