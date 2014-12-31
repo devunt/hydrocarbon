@@ -75,6 +75,8 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
         r.POST = qdict
         v = VoteAjaxView()
         v.post(r)
+        if not self.request.user.is_authenticated():
+            self.request.session['onetime_nick'] = self.object.onetime_user.nick
         return super().get_success_url()
 
     def get_form_kwargs(self):
@@ -82,6 +84,12 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
         kwargs['authenticated'] = self.request.user.is_authenticated()
         kwargs['board'] = self.board
         return kwargs
+
+    def get_initial(self):
+        initial = super().get_initial()
+        if not self.request.user.is_authenticated():
+            initial['onetime_nick'] = self.request.session.get('onetime_nick')
+        return initial
 
 
 class PostUpdateView(PermissionMixin, UpdateView):
@@ -240,6 +248,8 @@ class PostDetailView(DetailView):
                 voted['downvoted'] = True
         kwargs['voted'] = voted
         f = CommentForm(authenticated=self.request.user.is_authenticated())
+        if not self.request.user.is_authenticated():
+            f.initial = {'onetime_nick': self.request.session.get('onetime_nick')}
         kwargs['comment_form'] = f
         return super().get_context_data(**kwargs)
 
@@ -382,6 +392,7 @@ class CommentAjaxView(AjaxMixin, View):
             ot_user.password = make_password(request.POST.get('ot_password'))
             ot_user.save()
             c.onetime_user = ot_user
+            request.session['onetime_nick'] = ot_user.nick
         c.ipaddress = request.META['REMOTE_ADDR']
         c.contents = request.POST.get('contents')
         c.save()
