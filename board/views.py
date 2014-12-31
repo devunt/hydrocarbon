@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.urlresolvers import reverse
-from django.db.models import Sum
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
@@ -23,6 +22,7 @@ from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
+from board.models import DefaultSum
 from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
 from board.utils import normalize
 
@@ -155,7 +155,7 @@ class PostListView(BoardMixin, PostListMixin, ListView):
 
     def get_queryset(self):
         pqs = Post.objects.filter(board=self.board, announcement=None)
-        pqs = pqs.annotate(vote=Sum('_votes__vote'))
+        pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
         order_by = self.request.session.get('post_list_order_by')
         return pqs.order_by(order_by, '-created_time')
 

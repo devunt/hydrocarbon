@@ -5,11 +5,22 @@ from hashlib import sha224
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models import aggregates
+from django.db.models.sql import aggregates as sql_aggregates
 from django.utils import timezone
 from custom_user.models import AbstractEmailUser
 from redactor.fields import RedactorField
 
 from board.utils import normalize
+
+
+class DefaultSum(aggregates.Aggregate):
+    name = 'DefaultSum'
+
+class SQLDefaultSum(sql_aggregates.Sum):
+    sql_template = 'COALESCE(%(function)s(%(field)s), %(default)s)'
+
+setattr(sql_aggregates, 'DefaultSum', SQLDefaultSum)
 
 
 class User(AbstractEmailUser):
