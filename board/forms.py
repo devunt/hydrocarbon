@@ -54,21 +54,27 @@ class HCSignupForm(SignupForm):
             return self.cleaned_data['nickname']
         raise forms.ValidationError(_('This nickname is already taken. Please choose another.'))
 
-class PostForm(forms.ModelForm):
+
+class OneTimeUserFormMixin:
+    def __init__(self, *args, **kwargs):
+        self.authenticated = kwargs.pop('authenticated')
+        super().__init__(*args, **kwargs)
+        if not self.authenticated:
+            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
+            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
+
+
+class PostForm(OneTimeUserFormMixin, forms.ModelForm):
     category = forms.ModelChoiceField(queryset=None)
     tags = ModelCommaSeparatedChoiceField(queryset=Tag.objects.all(), to_field_name='name', required=False)
 
     def __init__(self, *args, **kwargs):
-        authenticated = kwargs.pop('authenticated')
         board = kwargs.pop('board')
         super().__init__(*args, **kwargs)
         cqs = Category.objects.filter(board=board)
         self.fields['category'].queryset = cqs
         if not cqs.exists():
             del self.fields['category']
-        if not authenticated:
-            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
-            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
 
     class Meta:
         model = Post
@@ -78,14 +84,7 @@ class PostForm(forms.ModelForm):
         }
 
 
-class CommentForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        authenticated = kwargs.pop('authenticated')
-        super().__init__(*args, **kwargs)
-        if not authenticated:
-            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
-            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
-
+class CommentForm(OneTimeUserFormMixin, forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['contents']
