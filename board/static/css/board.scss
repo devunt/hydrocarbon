@@ -50,6 +50,7 @@
 
 			&.mark { height:20px; }
 			&.title span.title { font-size:16px; }
+			&.title span.title .highlight { background:#fff7cc; color:$red-base; }
 			&.title .label.meta.comments { margin-left:.5em; }			
 		}
 	}

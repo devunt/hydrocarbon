@@ -4,7 +4,13 @@
 {% load cycle from future %}
 
 {% block title %}{{ board }} :: {{ block.super }}{% endblock %}
-{% block pagename %}{{ board }}{% endblock %}
+{% block pagename %}
+	{% if search %}
+		{% blocktrans %}Searching {{ board }}{% endblocktrans %}
+	{% else %}
+		{{ board }}
+	{% endif %}
+{% endblock %}
 
 {% block content %}
 
@@ -61,9 +67,17 @@
 		{% cycle rowclass %}
 		{% include "board/post_item.html" %}
 	{% empty %}
-		<li class="empty">{% trans "There are no posts here!" %}</li>
+		{% if search %}
+			<li class="empty">{% trans "There are no results." %}</li>
+		{% else %}
+			<li class="empty">{% trans "There are no posts here!" %}</li>
+		{% endif %}
 	{% endfor %}
 	</ul>
+
+	{% if search %}
+		<script>$('.post-list a.post.item .cell.title .title').each(function() { $(this).html($(this).text().replace(/({{ search.query }})/gi, '<span class="highlight">$1</span>')); });</script>
+	{% endif %}
 
 	<div class="nav bottom clear close">
 		<div class="left">
@@ -81,7 +95,7 @@
 			<div class="search button">
 				<form action="{% url 'board_search' board.slug %}" method="get">
 					<input type="button" value="{% trans "Search" %}" class="search-button">
-					<input type="search" name="q" class="text">
+					<input type="search" name="q" class="text"{% if search %} value="{{ search.query }}"{% endif %}>
 					<div class="dropdown container scope">
 						<a href="#" class="handle label meta">
 							<span class="icon"></span>

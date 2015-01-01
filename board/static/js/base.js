@@ -95,82 +95,84 @@ $(function() {
 			$item.attr('href', $item.attr('href').replace('#comments', ''));
 		});
 
-	$('.section.article.form .category')
-		.on('click', 'a.option', function(e) {
-			e.preventDefault();
-			$('.section.article.form .category option').filter('[value='+$(this).data('value')+']').prop('selected', true);
-			$('.section.article.form .category .text').text($(this).text());
-			$(this).closest('.dropdown.container').removeClass('open');
-		})
-		.each(function() {
-			var option, $handle = $('<a>'), $dropdown = $('<div>'), $ul = $('<ul>');
+	$('.section.article.form form')
+		.on('submit', function() { $('#tagbox').tagging('add'); })
+		.find('.category')
+			.on('click', 'a.option', function(e) {
+				e.preventDefault();
+				$('.section.article.form .category option').filter('[value='+$(this).data('value')+']').prop('selected', true);
+				$('.section.article.form .category .text').text($(this).text());
+				$(this).closest('.dropdown.container').removeClass('open');
+			})
+			.each(function() {
+				var option, $handle = $('<a>'), $dropdown = $('<div>'), $ul = $('<ul>');
 
-			option = $(this).find('select option');
-
-			$('<span>')
-				.html('<span>'+$(this).data('text')+'</span>')
-				.addClass('text')
-				.appendTo($handle);
-
-			$('<span>')
-				.addClass('icon')
-				.appendTo($handle);
-
-			$handle
-				.attr('href', '#')
-				.addClass('handle label meta')
-				.appendTo($(this));
-
-			$('<a>')
-				.addClass('close')
-				.attr('href', '#')
-				.appendTo($dropdown);
-
-			$('<div>')
-				.addClass('tip top')
-				.html('<span></span>')
-				.appendTo($dropdown);
-
-			option.each(function() {
-				var $li = $('<li>'), $a = $('<a>'), value = $(this).attr('value');
-
-				if(value == '') return true;
-
-				if($(this).prop('selected')) $(this).closest('.dropdown.container').find('.handle .text span').text($(this).text());
+				option = $(this).find('select option');
 
 				$('<span>')
-					.text($(this).text())
-					.appendTo($a);
+					.html('<span>'+$(this).data('text')+'</span>')
+					.addClass('text')
+					.appendTo($handle);
 
-				$a
+				$('<span>')
+					.addClass('icon')
+					.appendTo($handle);
+
+				$handle
 					.attr('href', '#')
-					.addClass('option')
-					.data('value', value)
-					.appendTo($li);
+					.addClass('handle label meta')
+					.appendTo($(this));
 
-				switch($(this).text()) {
-					case '번역':
-						$a.addClass('scanlation');
-						break;
-					case '자막':
-						$a.addClass('subtitles');
-						break;
-					case '정보':
-						$a.addClass('news');
-						break;
-				}
+				$('<a>')
+					.addClass('close')
+					.attr('href', '#')
+					.appendTo($dropdown);
 
-				$li.appendTo($ul);
+				$('<div>')
+					.addClass('tip top')
+					.html('<span></span>')
+					.appendTo($dropdown);
+
+				option.each(function() {
+					var $li = $('<li>'), $a = $('<a>'), value = $(this).attr('value');
+
+					if(value == '') return true;
+
+					if($(this).prop('selected')) $(this).closest('.dropdown.container').find('.handle .text span').text($(this).text());
+
+					$('<span>')
+						.text($(this).text())
+						.appendTo($a);
+
+					$a
+						.attr('href', '#')
+						.addClass('option')
+						.data('value', value)
+						.appendTo($li);
+
+					switch($(this).text()) {
+						case '번역':
+							$a.addClass('scanlation');
+							break;
+						case '자막':
+							$a.addClass('subtitles');
+							break;
+						case '정보':
+							$a.addClass('news');
+							break;
+					}
+
+					$li.appendTo($ul);
+				});
+
+				$ul.appendTo($dropdown);
+
+				$dropdown
+					.addClass('dropdown menu')
+					.appendTo($(this));
+
+				$(this).find('select').hide();
 			});
-
-			$ul.appendTo($dropdown);
-
-			$dropdown
-				.addClass('dropdown menu')
-				.appendTo($(this));
-
-			$(this).find('select').hide();
-		});
 
 
 	if(!browser.can.placeholder()) {
@@ -246,6 +248,7 @@ var autocomplete_options = {
 	'type': 'POST',
 	'minChars': 2,
 	'lookupLimit': 5,
+	'preserveInput': true,
 	'formatResult': function(suggestion, currentValue) {
 		return '<span class="left">' + $.Autocomplete.formatResult(suggestion, currentValue) + '</span><span class="right">' + suggestion.data + '</span>';
 	},
