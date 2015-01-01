@@ -196,7 +196,7 @@ class BoardSearchView(PostListView):
         sqs = SearchQuerySet().models(Post)
         sqs = sqs.filter(board=self.board.slug, content=self.request.GET.get('q'))
         pqs = super().get_queryset()
-        pqs.filter(pk__in=[s.pk for s in sqs])
+        pqs = pqs.filter(pk__in=[s.pk for s in sqs])
         return pqs
 
 
