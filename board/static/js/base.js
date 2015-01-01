@@ -75,7 +75,7 @@ $(function() {
 
 		$a
 			.insertAfter($label)
-			.find('.label').append('<span class="text">' + $.trim($label.text().replace(':', '')) + '</span>');
+			.find('.label').append('<span class="text">' + $.trim($label.text()) + '</span>');
 		$(this).insertAfter($label);
 
 		$(this).hide();
