@@ -70,7 +70,7 @@
 
 	.nav.bottom { background:$grey-90;  position:relative; }
 
-	.close .search.button {
+	.search.button {
 		form {
 			.scope .dropdown.menu ul { left:-50%; position:relative; white-space:nowrap; }
 			.scope .dropdown.menu li { display:inline-block; }
@@ -145,11 +145,35 @@
 			&.announcement .cell.timestamp { margin-left:4%; }
 		}
 
-		.close .search.button {
-			form {
-				input.text { width:0; }
-				.scope { display:none; }
+		.close {
+			.search.button {
+				form {
+					input.text { width:0; }
+					.scope { display:none; }
+				}
 			}
+		}
+
+		.open {
+			.left { float:none; }
+			.button { display:none; }
+			.search.button {
+				display:block; margin-left:0;
+				form {
+					.label.meta.delete { display:table-cell; }
+
+					.scope .dropdown {
+						&.menu {
+							width:92%; right:0; margin:0 4%;
+
+							.tip { width:auto; padding:0 40px; text-align:right; }
+							ul { left:auto; position:static; overflow:hidden; overflow-x:auto; }
+						}
+					}
+				}
+			}
+
+			.right { display:none; }
 		}
 	}
 
@@ -174,5 +198,10 @@
 		.scope { height:30px; width:30px; background:rgba(0,0,0,.1); cursor:default; position:static; }
 		.scope .handle { width:100%; padding:5px 0; }
 		.scope .dropdown.menu .tip { width:10px; }
+
+		.label.meta.delete {
+			width:30px; background:rgba(0,0,0,.2); display:none; padding:5px 0;
+			.icon { margin:4px; }
+		}
 	}
 }

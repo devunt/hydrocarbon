@@ -1000,11 +1000,11 @@ a.anchor {
   .section.board .nav.bottom {
     background: #e5e5e5;
     position: relative; }
-  .section.board .close .search.button form .scope .dropdown.menu ul {
+  .section.board .search.button form .scope .dropdown.menu ul {
     left: -50%;
     position: relative;
     white-space: nowrap; }
-  .section.board .close .search.button form .scope .dropdown.menu li {
+  .section.board .search.button form .scope .dropdown.menu li {
     display: inline-block; }
   .section.board .pages {
     background: #f2f2f2;
@@ -1124,6 +1124,30 @@ a.anchor {
     .section.board .close .search.button form input.text {
       width: 0; }
     .section.board .close .search.button form .scope {
+      display: none; }
+    .section.board .open .left {
+      float: none; }
+    .section.board .open .button {
+      display: none; }
+    .section.board .open .search.button {
+      display: block;
+      margin-left: 0; }
+      .section.board .open .search.button form .label.meta.delete {
+        display: table-cell; }
+      .section.board .open .search.button form .scope .dropdown.menu {
+        width: 92%;
+        right: 0;
+        margin: 0 4%; }
+        .section.board .open .search.button form .scope .dropdown.menu .tip {
+          width: auto;
+          padding: 0 40px;
+          text-align: right; }
+        .section.board .open .search.button form .scope .dropdown.menu ul {
+          left: auto;
+          position: static;
+          overflow: hidden;
+          overflow-x: auto; }
+    .section.board .open .right {
       display: none; } }
   @media screen and (max-device-width: 419px) {
     .section.board .item .cell.author .label.meta {
@@ -1169,6 +1193,13 @@ a.anchor {
       padding: 5px 0; }
     .search.button form .scope .dropdown.menu .tip {
       width: 10px; }
+    .search.button form .label.meta.delete {
+      width: 30px;
+      background: rgba(0, 0, 0, 0.2);
+      display: none;
+      padding: 5px 0; }
+      .search.button form .label.meta.delete .icon {
+        margin: 4px; }
 
 #redactor-modal,
 #redactor-modal footer button,

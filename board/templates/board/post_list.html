@@ -79,11 +79,9 @@
 				</span>
 			</a>
 			<div class="search button">
-				<form action="#" method="post">
-					{% csrf_token %}
-					<input type="hidden" name="scope">
+				<form action="{% url 'board_search' board.slug %}" method="get">
 					<input type="button" value="{% trans "Search" %}" class="search-button">
-					<input type="search" name="quary" class="text">
+					<input type="search" name="q" class="text">
 					<div class="dropdown container scope">
 						<a href="#" class="handle label meta">
 							<span class="icon"></span>
@@ -104,6 +102,9 @@
 							</ul>
 						</div>
 					</div>
+					<a href="#" class="label meta delete">
+						<span class="icon"></span>
+					</a>
 				</form>
 			</div>
 		</div>

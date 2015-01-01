@@ -37,7 +37,7 @@ $(function() {
 
 		.on('click', 'a.checkbox', function(e) {
 			e.preventDefault();
-			
+
 			var $checkbox = $(this).prev('input[type=checkbox]');
 
 			$(this).toggleClass('checked');
@@ -189,6 +189,26 @@ $(function() {
 		vote('p', $(this).parent('.vote').data('target-id'), $(this));
 	});
 
+	$('.section.board')
+		.on('click', '.search.button .search-button', function(e) {
+			e.preventDefault();
+
+			var $nav = $(this).closest('.nav.bottom');
+
+			$nav
+				.addClass('open')
+				.removeClass('close');
+
+		})
+		.on('click', '.search.button .label.meta.delete', function(e) {
+			e.preventDefault();
+
+			var $nav = $(this).closest('.nav.bottom');
+
+			$nav
+				.removeClass('open')
+				.addClass('close');
+		});
 });
 
 var $overlay;
