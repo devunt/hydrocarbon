@@ -29,9 +29,9 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'herocomics',
+        'NAME': 'hydrocarbon',
         'USER': 'herocomics',
-        'PASSWORD': '',
+        'PASSWORD': '***REMOVED***',
         'HOST': '127.0.0.1',
         'PORT': '5432',
         'ATOMIC_REQUESTS': True,
