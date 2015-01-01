@@ -25,7 +25,7 @@ msgstr "닉네임"
 
 #: board/forms.py:55
 msgid "This nickname is already taken. Please choose another."
-msgstr ""
+msgstr "이 닉네임은 이미 사용중입니다. 다른 닉네임을 사용해 주세요."
 
 #: board/forms.py:64 board/forms.py:102 board/i18n_fake.py:7
 #: board/templates/board/post_detail.html:200
@@ -91,23 +91,23 @@ msgstr ""
 
 #: board/i18n_fake.py:15
 msgid "Usernames can only contain letters, numbers and underscores."
-msgstr ""
+msgstr "아이디에는 영문자, 숫자 및 \"_\"만 사용할 수 있습니다."
 
 #: board/i18n_fake.py:16
 msgid "This username is already taken. Please choose another."
-msgstr ""
+msgstr "이 아이디는 이미 사용중입니다. 다른 아이디를 사용해 주세요."
 
 #: board/i18n_fake.py:17
 msgid "A user is registered with this email address."
-msgstr ""
+msgstr "이 이메일은 이미 사용중입니다."
 
 #: board/i18n_fake.py:18
 msgid "You must type the same password each time."
-msgstr ""
+msgstr "같은 비밀번호를 두 번 입력해 주세요."
 
 #: board/i18n_fake.py:19
 msgid "Remember Me"
-msgstr ""
+msgstr "로그인 유지"
 
 #: board/i18n_fake.py:20
 #, fuzzy
@@ -117,11 +117,11 @@ msgstr "계정이 성공적으로 활성화되었습니다."
 
 #: board/i18n_fake.py:21
 msgid "The username and/or password you specified are not correct."
-msgstr ""
+msgstr "입력하신 아이디 또는 비밀번호가 정확하지 않습니다."
 
 #: board/i18n_fake.py:22
 msgid "The email address and/or password you specified are not correct."
-msgstr ""
+msgstr "입력하신 이메일 또는 비밀번호가 정확하지 않습니다."
 
 #: board/i18n_fake.py:24
 #, fuzzy
@@ -131,31 +131,31 @@ msgstr "비밀번호를 잃어버리셨나요?"
 
 #: board/i18n_fake.py:25
 msgid "Email address can not be found."
-msgstr ""
+msgstr "입력하신 이메일 주소는 등록되지 않았습니다."
 
 #: board/i18n_fake.py:27
 msgid "Timezone"
-msgstr ""
+msgstr "시간대"
 
 #: board/i18n_fake.py:28
 msgid "Language"
-msgstr ""
+msgstr "언어"
 
 #: board/i18n_fake.py:29
 msgid "timezone"
-msgstr ""
+msgstr "시간대"
 
 #: board/i18n_fake.py:30
 msgid "language"
-msgstr ""
+msgstr "언어"
 
 #: board/i18n_fake.py:32
 msgid "email address"
-msgstr ""
+msgstr "이메일 주소"
 
 #: board/i18n_fake.py:33
 msgid "email addresses"
-msgstr ""
+msgstr "이메일 주소"
 
 #: board/i18n_fake.py:34
 #, fuzzy
@@ -178,12 +178,12 @@ msgstr "인증 메일 발송됨"
 #: board/i18n_fake.py:38
 #, python-brace-format
 msgid "The code {code} is invalid."
-msgstr ""
+msgstr "{code}는 유효하지 않은 코드입니다."
 
 #: board/i18n_fake.py:39
 #, python-brace-format
 msgid "You have confirmed {email}."
-msgstr ""
+msgstr "{email}을 확인했습니다."
 
 #: board/i18n_fake.py:40
 #, fuzzy
@@ -203,6 +203,8 @@ msgid ""
 "Your account is now inactive and your data will be expunged in the next "
 "{expunge_hours} hours."
 msgstr ""
+"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간 이후 계정의 자료는"
+"삭제될 예정입니다."
 
 #: board/i18n_fake.py:45
 #, python-format
@@ -286,7 +288,7 @@ msgid ""
 "To activate this account, please go to the link below:\n"
 msgstr ""
 "\n"
-"이 계정을 활성화하려면 아래 링크를 눌러주세요:\n"
+"이 계정을 활성화하려면 아래 링크를 눌러주세요.\n"
 
 #: board/templates/account/email/email_confirmation_subject.txt:1
 #, python-format
@@ -302,26 +304,31 @@ msgid ""
 "It can be safely ignored if you did not request a password reset. Click the "
 "link below to reset your password.\n"
 msgstr ""
+"\n"
+"이 메일은 본인 또는 누군가가 %(site_name)s에서 비밀번호를 찾고자 했기 때문에"
+"발송되었습니다.\n"
+"만일 본인이 아니라 다른 사람이 비밀번호 초기화를 신청한 경우 이 메일은"
+"무시하셔도 됩니다. 비밀번호를 초기화하시려면 아래 링크를 눌러주세요.\n"
 
 #: board/templates/account/email/password_reset_subject.txt:1
 #, fuzzy, python-format
 #| msgid "Confirm password reset"
-msgid "[%(site_name)s] Password reset"
-msgstr "비밀번호 재설정 확인"
+msgid "%(site_name)s Password reset"
+msgstr "%(site_name)s 비밀번호 재설정"
 
 #: board/templates/account/email_confirm.html:4
 #: board/templates/account/email_confirm.html:5
 msgid "Confirm Email"
-msgstr ""
+msgstr "메일 확인"
 
 #: board/templates/account/email_confirm.html:11
 #, python-format
 msgid "Confirm email address <b>%(email)s</b>?"
-msgstr ""
+msgstr "<b>%(email)s</b>로 확인하시겠습니까?"
 
 #: board/templates/account/email_confirm.html:13
 msgid "Confirm"
-msgstr ""
+msgstr "확인"
 
 #: board/templates/account/email_confirmation_sent.html:4
 #: board/templates/account/email_confirmation_sent.html:5
@@ -366,7 +373,7 @@ msgstr "로그아웃"
 
 #: board/templates/account/logout.html:11
 msgid "Are you sure you want to log out?"
-msgstr ""
+msgstr "로그아웃 하시겠습니까?"
 
 #: board/templates/account/password_change.html:4
 #: board/templates/account/password_change.html:5
@@ -402,11 +409,12 @@ msgstr ""
 
 #: board/templates/account/password_reset_sent.html:15
 msgid "If you do not receive it within a few minutes, try resending."
-msgstr ""
+msgstr "만일 신청하신 후 몇 분 후에도 메일을 받지 못하셨다면"
+"메일을 다시 발송해보세요."
 
 #: board/templates/account/password_reset_sent.html:17
 msgid "Resend"
-msgstr ""
+msgstr "재발송"
 
 #: board/templates/account/password_reset_token.html:4
 #: board/templates/account/password_reset_token.html:5
@@ -424,7 +432,7 @@ msgstr "비밀번호 설정"
 #: board/templates/account/password_reset_token_fail.html:4
 #: board/templates/account/password_reset_token_fail.html:5
 msgid "Bad token"
-msgstr ""
+msgstr "잘못된 토큰"
 
 #: board/templates/account/password_reset_token_fail.html:11
 #, python-format
@@ -432,6 +440,9 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a <a href=\"%(url)s\">new password reset</a>."
 msgstr ""
+"사용하신 비밀번호 초기화 링크는 이미 사용되었거나 한 이유로 인해 "
+"유효하지 않습니다. <a href=\"%(url)s\">새로 비밀번호 초기화</a>를"
+"신청해 주세요."
 
 #: board/templates/account/settings.html:4
 #: board/templates/account/settings.html:5
@@ -442,7 +453,7 @@ msgstr "계정 활성화됨"
 
 #: board/templates/account/settings.html:24
 msgid "Save"
-msgstr ""
+msgstr "저장"
 
 #: board/templates/account/signup.html:4 board/templates/account/signup.html:5
 msgid "Register for an account"

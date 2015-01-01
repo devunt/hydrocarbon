@@ -32,7 +32,7 @@
 		<div class="cell author">{% trans "Author" %}</div>
 		{{ order_by }}
 		<div class="cell timestamp sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
-			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug '+ct' %}{% else %}{% url 'board_post_list' board.slug '-ct' %}{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug %}{% else %}{% url 'board_post_list' board.slug '-ct' %}{% endif %}">
 				<span class="text">{% trans "Date" %}</span>
 				{% if order_by.column == 'created_time' %}<span class="icon"></span> {% endif %}
 			</a>
@@ -79,11 +79,9 @@
 				</span>
 			</a>
 			<div class="search button">
-				<form action="#" method="post">
-					{% csrf_token %}
-					<input type="hidden" name="scope">
+				<form action="{% url 'board_search' board.slug %}" method="get">
 					<input type="button" value="{% trans "Search" %}" class="search-button">
-					<input type="search" name="quary" class="text">
+					<input type="search" name="q" class="text">
 					<div class="dropdown container scope">
 						<a href="#" class="handle label meta">
 							<span class="icon"></span>
@@ -104,6 +102,9 @@
 							</ul>
 						</div>
 					</div>
+					<a href="#" class="label meta delete">
+						<span class="icon"></span>
+					</a>
 				</form>
 			</div>
 		</div>

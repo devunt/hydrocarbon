@@ -36,8 +36,10 @@ $(function() {
 		})
 
 		.on('click', 'a.checkbox', function(e) {
+			if(this.href != '#') return true;
+
 			e.preventDefault();
-			
+
 			var $checkbox = $(this).prev('input[type=checkbox]');
 
 			$(this).toggleClass('checked');
@@ -56,7 +58,12 @@ $(function() {
 		});
 
 	$('input[type=checkbox]').each(function() {
-		var $label = $(this).closest('label');
+		var $label;
+
+		$label = $(this).closest('label').length ? $(this).closest('label') : $label;
+		$label = $(this).next('label').length ? $(this).next('label') : $label;
+		$label = $(this).prev('label').length ? $(this).prev('label') : $label;
+
 		var $a = $('<a>')
 			.attr('href', '#')
 			.addClass('checkbox')
@@ -64,15 +71,15 @@ $(function() {
 
 		if($(this).prop('checked')) $a.addClass('checked');
 
-		if($label) {
-			$a
-				.insertAfter($label)
-				.find('.label').append('<span class="text">' + $.trim($label.text()) + '</span>');
-			$(this).insertAfter($label);
-			$label.remove();
-		} else { $a.insertAfter($(this)); }
+		console.log($label);
+
+		$a
+			.insertAfter($label)
+			.find('.label').append('<span class="text">' + $.trim($label.text().replace(':', '')) + '</span>');
+		$(this).insertAfter($label);
 
 		$(this).hide();
+		$label.remove();
 	});
 
 
@@ -189,6 +196,26 @@ $(function() {
 		vote('p', $(this).parent('.vote').data('target-id'), $(this));
 	});
 
+	$('.section.board')
+		.on('click', '.search.button .search-button', function(e) {
+			e.preventDefault();
+
+			var $nav = $(this).closest('.nav.bottom');
+
+			$nav
+				.addClass('open')
+				.removeClass('close');
+
+		})
+		.on('click', '.search.button .label.meta.delete', function(e) {
+			e.preventDefault();
+
+			var $nav = $(this).closest('.nav.bottom');
+
+			$nav
+				.removeClass('open')
+				.addClass('close');
+		});
 });
 
 var $overlay;
