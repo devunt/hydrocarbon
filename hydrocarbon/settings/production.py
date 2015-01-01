@@ -48,9 +48,9 @@ TEMPLATE_LOADERS = (
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'board/static')
+STATIC_ROOT = '/home/herocomics/static'
 STATIC_URL = 'http://s.herocomics.kr/'
 
 # Media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'board/media')
+MEDIA_ROOT = '/home/herocomics/media'
 MEDIA_URL = 'http://uc.herocomics.kr/'
