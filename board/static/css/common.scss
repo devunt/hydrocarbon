@@ -148,7 +148,7 @@
 	&.menu {
 		display:none; position:absolute; text-align:left; z-index:2005;
 
-		.tip { padding:0 10px; position:relative; }
+		.tip { padding:0 10px; position:relative; z-index:2006; }
 		.tip.top span { border-bottom-color:#fff; margin-top:-5px; }
 		.tip.bottom span { border-top-color:#fff; margin-bottom:-5px; }
 
@@ -159,8 +159,13 @@
 		li.voted a { color:#fff; }
 		li.vote:hover { opacity:.9; }
 		li.downvote:hover { background:$red-trans; }
-		li a { width:100%; display:inline-block; font-size:$font-size; line-height:20px; padding:10px 0; }
-		li a > span { display:block; margin:0 20px; white-space:nowrap; }
+		li a {
+			width:100%; display:inline-block; font-size:$font-size; line-height:20px; padding:10px;
+			&.scanlation { border-left:10px solid $blue; padding-left:0; }
+			&.news { border-left:10px solid $green; padding-left:0; }
+			&.subtitles { border-left:10px solid $red; padding-left:0;}
+		}
+		li a > span { display:block; margin:0 10px; white-space:nowrap; }
 	}
 }
 

@@ -35,7 +35,9 @@ $(function() {
 			$container.removeClass('open');
 		})
 
-		.on('click', 'a.checkbox', function() {
+		.on('click', 'a.checkbox', function(e) {
+			e.preventDefault();
+			
 			var $checkbox = $(this).prev('input[type=checkbox]');
 
 			$(this).toggleClass('checked');
@@ -54,19 +56,21 @@ $(function() {
 		});
 
 	$('input[type=checkbox]').each(function() {
-		var $label = $(this).next('label');
+		var $label = $(this).closest('label');
 		var $a = $('<a>')
 			.attr('href', '#')
 			.addClass('checkbox')
 			.html('<span class="label"><span class="icon"></span></span>')
-			.insertAfter($(this));
 
 		if($(this).prop('checked')) $a.addClass('checked');
 
 		if($label) {
-			$a.find('.label').append('<span class="text">' + $label.text() + '</span>');
+			$a
+				.insertAfter($label)
+				.find('.label').append('<span class="text">' + $.trim($label.text()) + '</span>');
+			$(this).insertAfter($label);
 			$label.remove();
-		}
+		} else { $a.insertAfter($(this)); }
 
 		$(this).hide();
 	});
@@ -136,6 +140,18 @@ $(function() {
 					.addClass('option')
 					.data('value', value)
 					.appendTo($li);
+
+				switch($(this).text()) {
+					case '번역':
+						$a.addClass('scanlation');
+						break;
+					case '자막':
+						$a.addClass('subtitles');
+						break;
+					case '정보':
+						$a.addClass('news');
+						break;
+				}
 
 				$li.appendTo($ul);
 			});

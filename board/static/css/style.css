@@ -283,7 +283,8 @@ body {
   z-index: 2005; }
   .dropdown.menu .tip {
     padding: 0 10px;
-    position: relative; }
+    position: relative;
+    z-index: 2006; }
   .dropdown.menu .tip.top span {
     border-bottom-color: #fff;
     margin-top: -5px; }
@@ -311,10 +312,19 @@ body {
     display: inline-block;
     font-size: 14px;
     line-height: 20px;
-    padding: 10px 0; }
+    padding: 10px; }
+    .dropdown.menu li a.scanlation {
+      border-left: 10px solid rgba(61, 156, 204, 0.9);
+      padding-left: 0; }
+    .dropdown.menu li a.news {
+      border-left: 10px solid rgba(133, 204, 61, 0.9);
+      padding-left: 0; }
+    .dropdown.menu li a.subtitles {
+      border-left: 10px solid rgba(204, 61, 61, 0.9);
+      padding-left: 0; }
   .dropdown.menu li a > span {
     display: block;
-    margin: 0 20px;
+    margin: 0 10px;
     white-space: nowrap; }
 
 .right .dropdown.menu {
@@ -990,6 +1000,12 @@ a.anchor {
   .section.board .nav.bottom {
     background: #e5e5e5;
     position: relative; }
+  .section.board .close .search.button form .scope .dropdown.menu ul {
+    left: -50%;
+    position: relative;
+    white-space: nowrap; }
+  .section.board .close .search.button form .scope .dropdown.menu li {
+    display: inline-block; }
   .section.board .pages {
     background: #f2f2f2;
     padding: 10px 0;

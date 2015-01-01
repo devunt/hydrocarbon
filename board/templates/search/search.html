@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load hc %}
 {% load i18n %}
+{% load highlight%}
 
 {% block title %}{% trans 'Search' %} :: {{ block.super }}{% endblock %}
 {% block pagename %}{% trans 'Search' %}{% endblock %}
@@ -15,9 +16,9 @@
 				<input type="submit" value="{% trans "Search" %}" class="search-button">
 				{{ form.q }}
 				<div class="dropdown container scope">
-					<span class="handle label meta">
+					<a href="#" class="handle label meta">
 						<span class="icon"></span>
-					</span>
+					</a>
 					<div class="dropdown menu">
 						<a href="#" class="close">{% trans "Close" %}</a>
 						<div class="tip top"><span></span></div>
@@ -26,36 +27,6 @@
 				</div>
 			</form>
 		</div>
-
-		<script>
-
-			$('#id_models label input[type=checkbox]').each(function() {
-				var $li = $(this).closest('li'),
-					$label = $(this).closest('label');
-
-				var $a = $('<a>')
-					.attr('href', '#')
-					.addClass('checkbox')
-					.html('<span class="label"><span class="icon"></span><span class="text">' + $.trim($label.text()) + '</span></span>')
-					.appendTo($li);
-
-				if($(this).prop('checked')) $a.addClass('checked');
-
-				$(this)
-					.hide()
-					.prependTo($li);
-
-				$label.remove();
-			});
-
-			$('#id_models').on('click', 'a.checkbox', function() {
-				var $checkbox = $(this).prev('input[type=checkbox]');
-
-				$(this).toggleClass('checked');
-				$checkbox.prop('checked', !$checkbox.prop('checked'));
-			});
-
-		</script>
 	</div>
 
 			{% if query %}
@@ -63,7 +34,7 @@
 
 				{% for result in page.object_list %}
 					<p>
-						<a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
+						<a href="{{ result.object.get_absolute_url }}">{{ result.object.title }} - {{ result.object.author }} {{ result.comments.count }}</a>
 					</p>
 				{% empty %}
 					<p>No results found.</p>
