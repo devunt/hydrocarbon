@@ -111,7 +111,9 @@
 	}
 }
 
-.contents > .errorlist {
+.contents > .errorlist,
+.section > .errorlist,
+.item.article > .errorlist {
 	@extend #messages;
 	li { background:$red; color:$white; }
 }
