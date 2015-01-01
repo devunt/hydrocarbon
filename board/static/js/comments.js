@@ -116,11 +116,17 @@ function putComments(id, contents, password) {
 		headers: { 'X-HC-PASSWORD': password }
 	})
 		.fail(function(xhr, status, error) {
-			console.log(xhr);
-			console.log(status);
-			console.log(error);
+			switch(error) {
+				case 'FORBIDDEN':
+					alert('이 댓글을 수정할 권한이 없습니다. 비밀번호를 잘못 입력하셨나요?');
+					break;
 
-			alert('댓글을 수정하는 과정에서 오류가 발생했습니다.');
+				default:
+					console.log(xhr);
+					console.log(status);
+					console.log(error);
+					alert('댓글을 수정하는 과정에서 오류가 발생했습니다.');
+			}
 		});
 }
 
@@ -131,11 +137,17 @@ function deleteComments(id, password) {
 		headers: { 'X-HC-PASSWORD': password }
 	})
 		.fail(function(xhr, status, error) {
-			console.log(xhr);
-			console.log(status);
-			console.log(error);
+			switch(error) {
+				case 'FORBIDDEN':
+					alert('이 댓글을 삭제할 권한이 없습니다. 비밀번호를 잘못 입력하셨나요?');
+					break;
 
-			alert('댓글을 삭제하는 과정에서 오류가 발생했습니다.');
+				default:
+					console.log(xhr);
+					console.log(status);
+					console.log(error);
+					alert('댓글을 삭제하는 과정에서 오류가 발생했습니다.');
+			}
 		});
 }
 
@@ -207,6 +219,13 @@ $(function() {
 			putComments(id, text, password)
 				.done(function() { getComments(post_id) });
 		})
+		.on('click', '.reply .cancel', function(e) {
+			e.preventDefault();
+			var $container = $(this).closest('.reply');
+
+			$container.prev('.reply').removeClass('reply')
+			$container.remove();
+		})
 		.on('click', '.modify .cancel', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.modify');
@@ -246,7 +265,9 @@ $(function() {
 					break;
 
 				case 'reply':
-					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
+					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item').not('.reply');
+
+					$item.addClass('reply');
 
 					$c.find('textarea')
 						.removeAttr('id')
@@ -262,12 +283,16 @@ $(function() {
 						.removeAttr('data-type data-id')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
-						.addClass('clone')
+						.addClass('clone reply')
 						.removeClass('template')
 						.insertAfter($item)
 						.show();
 
 					$c.find('textarea').redactor(options);
+
+					$c.find('.cancel')
+						.show();
+
 					break;
 
 				case 'modify':
