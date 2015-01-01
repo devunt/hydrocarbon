@@ -61,20 +61,6 @@ function renderComment($container, v, depth) {
 	contents = v.contents;
 	$c.find('.article .redactor-editor').html(contents);
 
-	$c.find('.article .redactor-editor img').each(function() {
-		if(!$(this).parents('a').length > 0) {
-			var a = $('<a>');
-
-			a
-				.addClass('imagecontainer')
-				.attr('href', $(this).attr('src'))
-				.attr('target', '_blank')
-				.attr('title', '원본 보기');
-
-			$(this).wrap(a);
-		}
-	});
-
 	if(v.voted.upvoted) $c.find('.dropdown .upvote').addClass('voted');
 	if(v.voted.downvoted) $c.find('.dropdown .downvote').addClass('voted');
 
