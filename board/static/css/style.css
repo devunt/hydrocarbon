@@ -309,6 +309,7 @@ body {
     background: rgba(204, 61, 61, 0.6); }
   .dropdown.menu li a {
     width: 100%;
+    box-sizing: border-box;
     display: inline-block;
     font-size: 14px;
     line-height: 20px;
