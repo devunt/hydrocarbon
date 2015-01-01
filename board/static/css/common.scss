@@ -211,7 +211,7 @@
 
 	.error & { background:$red; border-radius:2px; color:$white; }
 
-	&.author .text:after { height:4px; width:4px; border-radius:2px; content:""; display:inline-block; margin-left:.4em; vertical-align:middle; }
+	&.author .text:after { height:4px; width:4px; border-radius:2px; content:""; display:inline-block; margin-left:5px; vertical-align:middle; }
 	&.author.user .text:after { background:$blue-base; }
 	&.author.guest .text:after { background:$grey; }
 	&.author.moderator .text:after { background:$red; }

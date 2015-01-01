@@ -83,7 +83,7 @@
 		.item {
 			&.scanlation .cell.mark { background:$blue; color:$white; }
 			&.news .cell.mark { background:$green; color:$white; }
-			&.subtitles .cell.mark { background:$red-trans; color:$white; }
+			&.subtitles .cell.mark { background:$red; color:$white; }
 
 			.cell.meta {
 				.label.meta { margin:0; }
@@ -112,7 +112,7 @@
 			&.announcement .cell.category { background:transparent; }
 			&.scanlation .cell.category { background:$blue; color:$white; }
 			&.news .cell.category { background:$green; color:$white; }
-			&.subtitles .cell.category { background:$red-trans; color:$white; }
+			&.subtitles .cell.category { background:$red; color:$white; }
 
 			.cell {
 				line-height:23px; padding:0;

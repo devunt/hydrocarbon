@@ -363,7 +363,7 @@ body {
   border-radius: 2px;
   content: "";
   display: inline-block;
-  margin-left: .4em;
+  margin-left: 5px;
   vertical-align: middle; }
 .label.meta.author.user .text:after {
   background: #3d9ccc; }
@@ -793,7 +793,8 @@ a.anchor {
 .section.article .comments-list {
   border-top: 1px solid #e5e5e5;
   margin: 0 5%;
-  padding: 10px 7% 0; }
+  padding: 10px 7% 0;
+  -webkit-tap-highlight-color: transparent; }
   @media screen and (max-device-width: 599px) {
     .section.article .comments-list {
       margin: 0 2%;
@@ -1013,7 +1014,7 @@ a.anchor {
       background: rgba(133, 204, 61, 0.9);
       color: #fff; }
     .section.board .item.subtitles .cell.mark {
-      background: rgba(204, 61, 61, 0.6);
+      background: rgba(204, 61, 61, 0.9);
       color: #fff; }
     .section.board .item .cell.meta .label.meta {
       margin: 0; }
@@ -1056,7 +1057,7 @@ a.anchor {
         background: rgba(133, 204, 61, 0.9);
         color: #fff; }
       .section.board .item.subtitles .cell.category {
-        background: rgba(204, 61, 61, 0.6);
+        background: rgba(204, 61, 61, 0.9);
         color: #fff; }
       .section.board .item .cell {
         line-height: 23px;
