@@ -36,6 +36,8 @@ $(function() {
 		})
 
 		.on('click', 'a.checkbox', function(e) {
+			if(this.href != '#') return true;
+
 			e.preventDefault();
 
 			var $checkbox = $(this).prev('input[type=checkbox]');
