@@ -25,19 +25,14 @@
 					<li><a href="#"><span>cat1</span></a></li>
 					<li><a href="#"><span>cat2</span></a></li>
 					<li><a href="#"><span>cat3</span></a></li>
-					<li><a class="checkbox checked" href="#">
-						<span class="label">
-							<span class="icon"></span>
-							<span class="text">toggle</span>
-						</span>
-					</a></li>
+					<li><a href="{% url 'board_post_list' board.slug %}"><span>{% trans "Clear sort/filter" %}</span></a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="cell title">{% trans "Title" %}</div>
 		<div class="cell author">{% trans "Author" %}</div>
 		{{ order_by }}
-		<div class="cell timestamp sortable dropdown{% if order_by.order == 'asc' %} open{% endif %}">
+		<div class="cell timestamp sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
 			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug '+ct' %}{% else %}{% url 'board_post_list' board.slug '-ct' %}{% endif %}">
 				<span class="text">{% trans "Date" %}</span>
 				{% if order_by.column == 'created_time' %}<span class="icon"></span> {% endif %}
