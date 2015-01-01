@@ -8,6 +8,7 @@ from account.forms import LoginEmailForm, SignupForm
 from redactor.widgets import RedactorEditor
 
 from board.models import Category, Comment, Post, Tag
+from board.utils import is_empty_html
 
 
 class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
@@ -81,6 +82,11 @@ class PostForm(OneTimeUserFormMixin, forms.ModelForm):
         self.fields['category'].queryset = cqs
         if not cqs.exists():
             del self.fields['category']
+
+    def clean_contents(self):
+        contents = self.cleaned_data['contents']
+        if not is_empty_html(contents):
+            return contents
 
     class Meta:
         model = Post

@@ -1,6 +1,8 @@
 from urllib.parse import quote_plus, urlparse
 from hashlib import md5
 
+from html2text import html2text
+
 from django.http import QueryDict
 from django.utils.encoding import iri_to_uri
 
@@ -20,6 +22,10 @@ def _normalize(c):
 
 def normalize(s):
     return ' '.join(map(_normalize, s))
+
+
+def is_empty_html(html):
+    return (html2text(html).strip() == '')
 
 
 # From https://bitbucket.org/monwara/django-url-tools/raw/9ce1dbd9b3609b9cebd8445ce787dff640ffedbc/url_tools/helper.py

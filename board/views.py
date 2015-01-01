@@ -23,7 +23,7 @@ from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import DefaultSum
 from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
-from board.utils import normalize
+from board.utils import is_empty_html, normalize
 
 
 class IndexView(View):
