@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-31 01:15+0900\n"
+"POT-Creation-Date: 2015-01-01 16:05+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: board/forms.py:42 board/forms.py:70 board/forms.py:86
+#: board/forms.py:42 board/forms.py:63
 #: board/templates/board/post_detail.html:199
 msgid "Nickname"
 msgstr ""
@@ -26,12 +26,12 @@ msgstr ""
 msgid "This nickname is already taken. Please choose another."
 msgstr ""
 
-#: board/forms.py:71 board/forms.py:87 board/forms.py:103 board/i18n_fake.py:6
+#: board/forms.py:64 board/forms.py:102 board/i18n_fake.py:7
 #: board/templates/board/post_detail.html:200
 msgid "Password"
 msgstr ""
 
-#: board/forms.py:97
+#: board/forms.py:96
 msgid "Press ctrl-space to submit a comment"
 msgstr ""
 
@@ -47,84 +47,190 @@ msgstr ""
 msgid "E-mail"
 msgstr ""
 
-#: board/i18n_fake.py:7
-msgid "Password (again)"
+#: board/i18n_fake.py:6
+msgid "Email"
 msgstr ""
 
 #: board/i18n_fake.py:8
-msgid "The two password fields didn't match."
+msgid "Password (again)"
 msgstr ""
 
 #: board/i18n_fake.py:9
-msgid "New password"
+msgid "The two password fields didn't match."
 msgstr ""
 
 #: board/i18n_fake.py:10
-msgid "New password confirmation"
+msgid "Current Password"
 msgstr ""
 
 #: board/i18n_fake.py:11
-msgid "Old password"
+msgid "New Password"
 msgstr ""
 
 #: board/i18n_fake.py:12
+msgid "New Password (again)"
+msgstr ""
+
+#: board/i18n_fake.py:14
 #, python-format
 msgid ""
 "Please enter a correct %(username)s and password. Note that both fields may "
 "be case-sensitive."
 msgstr ""
 
-#: board/i18n_fake.py:14
+#: board/i18n_fake.py:15
+msgid "Usernames can only contain letters, numbers and underscores."
+msgstr ""
+
+#: board/i18n_fake.py:16
+msgid "This username is already taken. Please choose another."
+msgstr ""
+
+#: board/i18n_fake.py:17
+msgid "A user is registered with this email address."
+msgstr ""
+
+#: board/i18n_fake.py:18
+msgid "You must type the same password each time."
+msgstr ""
+
+#: board/i18n_fake.py:19
+msgid "Remember Me"
+msgstr ""
+
+#: board/i18n_fake.py:20
+msgid "This account is inactive."
+msgstr ""
+
+#: board/i18n_fake.py:21
+msgid "The username and/or password you specified are not correct."
+msgstr ""
+
+#: board/i18n_fake.py:22
+msgid "The email address and/or password you specified are not correct."
+msgstr ""
+
+#: board/i18n_fake.py:24
+msgid "Please type your current password."
+msgstr ""
+
+#: board/i18n_fake.py:25
+msgid "Email address can not be found."
+msgstr ""
+
+#: board/i18n_fake.py:27
+msgid "Timezone"
+msgstr ""
+
+#: board/i18n_fake.py:28
+msgid "Language"
+msgstr ""
+
+#: board/i18n_fake.py:29
+msgid "timezone"
+msgstr ""
+
+#: board/i18n_fake.py:30
+msgid "language"
+msgstr ""
+
+#: board/i18n_fake.py:32
+msgid "email address"
+msgstr ""
+
+#: board/i18n_fake.py:33
+msgid "email addresses"
+msgstr ""
+
+#: board/i18n_fake.py:34
+msgid "email confirmation"
+msgstr ""
+
+#: board/i18n_fake.py:35
+msgid "email confirmations"
+msgstr ""
+
+#: board/i18n_fake.py:37
+#, python-brace-format
+msgid "Confirmation email sent to {email}."
+msgstr ""
+
+#: board/i18n_fake.py:38
+#, python-brace-format
+msgid "The code {code} is invalid."
+msgstr ""
+
+#: board/i18n_fake.py:39
+#, python-brace-format
+msgid "You have confirmed {email}."
+msgstr ""
+
+#: board/i18n_fake.py:40
+msgid "Password successfully changed."
+msgstr ""
+
+#: board/i18n_fake.py:41
+msgid "Account settings updated."
+msgstr ""
+
+#: board/i18n_fake.py:43
+#, python-brace-format
+msgid ""
+"Your account is now inactive and your data will be expunged in the next "
+"{expunge_hours} hours."
+msgstr ""
+
+#: board/i18n_fake.py:45
 #, python-format
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/i18n_fake.py:15
+#: board/i18n_fake.py:46
 #, python-format
 msgid "%d month"
 msgid_plural "%d months"
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/i18n_fake.py:16
+#: board/i18n_fake.py:47
 #, python-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/i18n_fake.py:17
+#: board/i18n_fake.py:48
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/i18n_fake.py:18
+#: board/i18n_fake.py:49
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/i18n_fake.py:19
+#: board/i18n_fake.py:50
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/i18n_fake.py:20
+#: board/i18n_fake.py:51
 msgid "0 minutes"
 msgstr ""
 
-#: board/i18n_fake.py:21
+#: board/i18n_fake.py:52
 msgid ", "
 msgstr ""
 
-#: board/i18n_fake.py:24
+#: board/i18n_fake.py:55
 #, python-format
 msgid ""
 "Ensure this value has at least %(limit_value)d character (it has "
@@ -178,16 +284,15 @@ msgstr ""
 
 #: board/templates/account/email_confirm.html:4
 #: board/templates/account/email_confirm.html:5
-#: board/templates/account/email_confirm.html:11
 msgid "Confirm Email"
 msgstr ""
 
-#: board/templates/account/email_confirm.html:14
+#: board/templates/account/email_confirm.html:11
 #, python-format
 msgid "Confirm email address <b>%(email)s</b>?"
 msgstr ""
 
-#: board/templates/account/email_confirm.html:15
+#: board/templates/account/email_confirm.html:13
 msgid "Confirm"
 msgstr ""
 
@@ -206,48 +311,48 @@ msgid "Please check your email to complete the registration process."
 msgstr ""
 
 #: board/templates/account/login.html:5 board/templates/account/login.html:6
-#: board/templates/account/login.html:26 board/templates/base.html:89
+#: board/templates/account/login.html:27 board/templates/base.html:89
 msgid "Log in"
 msgstr ""
 
-#: board/templates/account/login.html:30
+#: board/templates/account/login.html:31
 msgid "Do you have no account?"
 msgstr ""
 
-#: board/templates/account/login.html:30
-#: board/templates/account/signup.html:25
+#: board/templates/account/login.html:31
+#: board/templates/account/signup.html:24
 msgid "Register"
 msgstr ""
 
-#: board/templates/account/login.html:31
+#: board/templates/account/login.html:32
 msgid "Lost your password?"
 msgstr ""
 
-#: board/templates/account/login.html:31
+#: board/templates/account/login.html:32
 msgid "Click here"
 msgstr ""
 
 #: board/templates/account/logout.html:4 board/templates/account/logout.html:5
-#: board/templates/account/logout.html:12
-#: board/templates/account/logout.html:16 board/templates/base.html:83
+#: board/templates/account/logout.html:13 board/templates/base.html:83
 msgid "Log out"
 msgstr ""
 
-#: board/templates/account/logout.html:15
+#: board/templates/account/logout.html:11
 msgid "Are you sure you want to log out?"
 msgstr ""
 
 #: board/templates/account/password_change.html:4
 #: board/templates/account/password_change.html:5
-#: board/templates/account/password_change.html:22
+#: board/templates/account/password_change.html:21
 msgid "Change password"
 msgstr ""
 
 #: board/templates/account/password_reset.html:4
 #: board/templates/account/password_reset.html:5
-#: board/templates/account/password_reset.html:27
+#: board/templates/account/password_reset.html:26
 #: board/templates/account/password_reset_sent.html:4
 #: board/templates/account/password_reset_sent.html:5
+#: board/templates/account/password_reset_token_fail.html:14
 msgid "Reset password"
 msgstr ""
 
@@ -257,17 +362,17 @@ msgid ""
 "instructions for creating a new one."
 msgstr ""
 
-#: board/templates/account/password_reset_sent.html:11
+#: board/templates/account/password_reset_sent.html:14
 msgid ""
 "We have sent you an email with a link to reset your password. Please check "
 "your email and click the link to continue."
 msgstr ""
 
-#: board/templates/account/password_reset_sent.html:12
+#: board/templates/account/password_reset_sent.html:15
 msgid "If you do not receive it within a few minutes, try resending."
 msgstr ""
 
-#: board/templates/account/password_reset_sent.html:19
+#: board/templates/account/password_reset_sent.html:17
 msgid "Resend"
 msgstr ""
 
@@ -280,17 +385,16 @@ msgstr ""
 msgid "Enter your new password below to reset your password:"
 msgstr ""
 
-#: board/templates/account/password_reset_token.html:27
+#: board/templates/account/password_reset_token.html:26
 msgid "Set password"
 msgstr ""
 
 #: board/templates/account/password_reset_token_fail.html:4
 #: board/templates/account/password_reset_token_fail.html:5
-#: board/templates/account/password_reset_token_fail.html:8
 msgid "Bad token"
 msgstr ""
 
-#: board/templates/account/password_reset_token_fail.html:10
+#: board/templates/account/password_reset_token_fail.html:11
 #, python-format
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
@@ -302,7 +406,7 @@ msgstr ""
 msgid "Account settings"
 msgstr ""
 
-#: board/templates/account/settings.html:25
+#: board/templates/account/settings.html:24
 msgid "Save"
 msgstr ""
 
@@ -321,8 +425,9 @@ msgstr ""
 
 #: board/templates/base.html:40 board/templates/base.html.py:68
 #: board/templates/board/post_detail.html:135
-#: board/templates/board/post_list.html:23
-#: board/templates/board/post_list.html:96
+#: board/templates/board/post_list.html:22
+#: board/templates/board/post_list.html:95
+#: board/templates/search/search.html:22
 msgid "Close"
 msgstr ""
 
@@ -433,12 +538,12 @@ msgid "Submit comment"
 msgstr ""
 
 #: board/templates/board/post_detail.html:224
-#: board/templates/board/post_list.html:77
+#: board/templates/board/post_list.html:76
 msgid "List"
 msgstr ""
 
 #: board/templates/board/post_detail.html:232
-#: board/templates/board/post_list.html:85
+#: board/templates/board/post_list.html:84
 msgid "Top posts"
 msgstr ""
 
@@ -446,12 +551,12 @@ msgstr ""
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
 #: board/templates/board/post_form.html:76
-#: board/templates/board/post_list.html:118
+#: board/templates/board/post_list.html:117
 msgid "New post"
 msgstr ""
 
 #: board/templates/board/post_form.html:39
-#: board/templates/board/post_list.html:20
+#: board/templates/board/post_list.html:19
 msgid "Categories"
 msgstr ""
 
@@ -468,47 +573,49 @@ msgstr ""
 msgid "This post has been downvoted by users."
 msgstr ""
 
-#: board/templates/board/post_list.html:38
+#: board/templates/board/post_list.html:37
 msgid "Title"
 msgstr ""
 
-#: board/templates/board/post_list.html:39
+#: board/templates/board/post_list.html:38
 msgid "Author"
 msgstr ""
 
-#: board/templates/board/post_list.html:43
+#: board/templates/board/post_list.html:42
 msgid "Date"
 msgstr ""
 
-#: board/templates/board/post_list.html:49
+#: board/templates/board/post_list.html:48
 msgid "Score"
 msgstr ""
 
-#: board/templates/board/post_list.html:55
+#: board/templates/board/post_list.html:54
 msgid "Views"
 msgstr ""
 
-#: board/templates/board/post_list.html:71
+#: board/templates/board/post_list.html:70
 msgid "There are no posts here!"
 msgstr ""
 
-#: board/templates/board/post_list.html:92
+#: board/templates/board/post_list.html:91
+#: board/templates/search/search.html:5 board/templates/search/search.html:6
+#: board/templates/search/search.html:15
 msgid "Search"
 msgstr ""
 
-#: board/templates/board/post_list.html:126
+#: board/templates/board/post_list.html:125
 msgid "First"
 msgstr ""
 
-#: board/templates/board/post_list.html:129
+#: board/templates/board/post_list.html:128
 msgid "Prev"
 msgstr ""
 
-#: board/templates/board/post_list.html:137
+#: board/templates/board/post_list.html:136
 msgid "Next"
 msgstr ""
 
-#: board/templates/board/post_list.html:140
+#: board/templates/board/post_list.html:139
 msgid "Last"
 msgstr ""
 
@@ -532,14 +639,14 @@ msgstr ""
 msgid "There's no such board."
 msgstr ""
 
-#: board/views.py:127
+#: board/views.py:143
 msgid "Deleted"
 msgstr ""
 
-#: hydrocarbon/settings.py:102
+#: hydrocarbon/settings/base.py:103
 msgid "Korean"
 msgstr ""
 
-#: hydrocarbon/settings.py:103
+#: hydrocarbon/settings/base.py:104
 msgid "English"
 msgstr ""
