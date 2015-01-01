@@ -601,7 +601,7 @@ msgstr "사용자들의 비추천에 의해 숨겨진 글입니다."
 
 #: board/templates/board/post_list.html:27
 msgid "Clear sort/filter"
-msgstr ""
+msgstr "기본값 보기"
 
 #: board/templates/board/post_list.html:31
 msgid "Title"

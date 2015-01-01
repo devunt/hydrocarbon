@@ -223,23 +223,33 @@ body {
     .nav {
       padding: 10px 4%; } }
 
-#messages li, .contents > .errorlist li {
+#messages li, .contents > .errorlist li,
+.section > .errorlist li,
+.item.article > .errorlist li {
   background: #ccc;
   color: #222;
   line-height: 20px;
   list-style: none;
   padding: 5px 0;
   text-align: center; }
-  #messages li.success, .contents > .errorlist li.success {
+  #messages li.success, .contents > .errorlist li.success,
+  .section > .errorlist li.success,
+  .item.article > .errorlist li.success {
     background: #85cc3d;
     color: #fff; }
-  #messages li.warning, .contents > .errorlist li.warning {
+  #messages li.warning, .contents > .errorlist li.warning,
+  .section > .errorlist li.warning,
+  .item.article > .errorlist li.warning {
     background: #ffea80; }
-  #messages li.error, .contents > .errorlist li.error {
+  #messages li.error, .contents > .errorlist li.error,
+  .section > .errorlist li.error,
+  .item.article > .errorlist li.error {
     background: rgba(204, 61, 61, 0.9);
     color: #fff; }
 
-.contents > .errorlist li {
+.contents > .errorlist li,
+.section > .errorlist li,
+.item.article > .errorlist li {
   background: rgba(204, 61, 61, 0.9);
   color: #fff; }
 
