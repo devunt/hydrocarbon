@@ -1264,37 +1264,28 @@ a.anchor {
       display: none; }
     .section.article.form .item.article .footer .tags .tagging {
       white-space: normal; }
-      .section.article.form .item.article .footer .tags .tagging .tag {
-        cursor: default; }
       .section.article.form .item.article .footer .tags .tagging input {
         width: 200px;
+        cursor: text !important;
         outline: none;
-        padding: 0 .2em;
         position: relative;
         z-index: 1051; }
-      .section.article.form .item.article .footer .tags .tagging .tag,
-      .section.article.form .item.article .footer .tags .tagging input {
-        height: 20px;
-        background: #f2f2f2;
-        border: 0;
-        border-radius: 2px;
-        display: inline-block;
-        letter-spacing: inherit;
-        line-height: 20px;
-        margin: 0 5px 5px;
-        vertical-align: top; }
-        .section.article.form .item.article .footer .tags .tagging .tag span, .section.article.form .item.article .footer .tags .tagging .tag a,
-        .section.article.form .item.article .footer .tags .tagging input span,
-        .section.article.form .item.article .footer .tags .tagging input a {
-          display: inline-block; }
-        .section.article.form .item.article .footer .tags .tagging .tag .tag-i,
-        .section.article.form .item.article .footer .tags .tagging input .tag-i {
+      .section.article.form .item.article .footer .tags .tagging .tag, .section.article.form .item.article .footer .tags .tagging input {
+        padding-right: 0; }
+        .section.article.form .item.article .footer .tags .tagging .tag .tag-i, .section.article.form .item.article .footer .tags .tagging input .tag-i {
           width: 20px;
           height: 20px;
+          background: #e5e5e5;
           color: inherit;
           cursor: pointer;
+          display: inline-block;
           font-size: .8em;
-          text-align: center; }
+          line-height: 20px;
+          margin-left: 5px;
+          text-align: center;
+          vertical-align: top; }
+        .section.article.form .item.article .footer .tags .tagging .tag .tag-i:hover, .section.article.form .item.article .footer .tags .tagging input .tag-i:hover {
+          background: #d9d9d9; }
 .section.article.form .ot.nav label {
   width: 30%; }
 .section.article.form .nav.center {
@@ -1303,6 +1294,25 @@ a.anchor {
     width: 100%;
     border-radius: 0;
     display: block; }
+
+.tag, .section.article.form .item.article .footer .tags .tagging input {
+  background: #f2f2f2;
+  border: 0;
+  border-radius: 2px;
+  cursor: default;
+  display: inline-block;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin: 0 5px 5px 0;
+  padding: 0 5px;
+  vertical-align: top; }
+
+.tag.readonly, .section.article.form .item.article .footer .tags .tagging input.readonly {
+  cursor: pointer; }
+
+.tag.readonly:hover, .section.article.form .item.article .footer .tags .tagging input.readonly:hover {
+  background: #3d9ccc;
+  color: #fff; }
 
 .autocomplete-suggestions {
   background: #fff;

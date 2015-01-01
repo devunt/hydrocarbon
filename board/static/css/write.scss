@@ -58,14 +58,11 @@
 
 				.tagging {
 					white-space:normal;
-					.tag { cursor:default; }
-					input { width:200px; outline:none; padding:0 .2em; position:relative; z-index:1051; }
-					.tag,
-					input {
-						height:20px; background:$grey-95; border:0; border-radius:2px; display:inline-block; letter-spacing:inherit; line-height:20px; margin:0 5px 5px; vertical-align:top;
-
-						span, a { display:inline-block; }
-						.tag-i { width:20px; height:20px; color:inherit; cursor:pointer; font-size:.8em; text-align:center; }
+					input { @extend .tag; width:200px; cursor:text !important; outline:none; position:relative; z-index:1051; }
+					.tag {
+						padding-right:0;
+						.tag-i { width:20px; height:20px; background:$grey-90; color:inherit; cursor:pointer; display:inline-block; font-size:.8em; line-height:20px; margin-left:5px; text-align:center; vertical-align:top; }
+						.tag-i:hover { background:$grey-85; }
 					}
 				}
 			}
@@ -81,6 +78,10 @@
 		.submit { width:100%; border-radius:0; display:block; }
 	}
 }
+
+.tag { background:$grey-95; border:0; border-radius:2px; cursor:default; display:inline-block; letter-spacing:inherit; line-height:20px; margin:0 5px 5px 0; padding:0 5px; vertical-align:top; }
+.tag.readonly { cursor:pointer; }
+.tag.readonly:hover { background:$blue-base; color:$white; }
 
 .autocomplete-suggestions { background:$white; box-shadow:0 2px 10px rgba(0,0,0,.3); border-radius:0 0 4px 4px; overflow: auto; }
 .autocomplete-suggestion { clear:both; cursor:default; line-height:20px; overflow:hidden; padding:10px 20px; white-space:nowrap;}

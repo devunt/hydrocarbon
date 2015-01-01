@@ -84,7 +84,7 @@
 					<span class="icon"></span>
 					<span class="text">
 					{% for tag in post.tags.all %}
-						<a href="/t/{{ tag.name | urlencode:"" }}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+						<a class="tag readonly" href="/t/{{ tag.name | urlencode:"" }}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
 					{% endfor %}
 					</span>
 				</a>
