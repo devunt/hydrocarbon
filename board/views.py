@@ -14,13 +14,12 @@ from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
 from django.views.generic.list import ListView
-from account.forms import LoginEmailForm
 from account.views import LoginView, SignupView
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView
 from redactor.views import RedactorUploadView
 
-from board.forms import CommentForm, HCSignupForm, PostForm
+from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import DefaultSum
 from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
@@ -34,7 +33,7 @@ class IndexView(View):
 
 
 class HCLoginView(LoginView):
-    form_class = LoginEmailForm
+    form_class = HCLoginForm
 
 
 class HCSignupView(SignupView):

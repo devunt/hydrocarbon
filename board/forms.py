@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
-from account.forms import SignupForm
+from account.forms import LoginEmailForm, SignupForm
 from redactor.widgets import RedactorEditor
 
 from board.models import Category, Comment, Post, Tag
@@ -36,6 +36,12 @@ class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
                 lst.append(item)
             value = lst
         return super().clean(value)
+
+
+class HCLoginForm(LoginEmailForm):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('label_suffix', '')
+        super().__init__(*args, **kwargs)
 
 
 class HCSignupForm(SignupForm):
