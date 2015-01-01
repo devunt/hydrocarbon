@@ -85,6 +85,7 @@ DATABASES = {
 
 # Template
 TEMPLATE_CONTEXT_PROCESSORS = (
+    'board.context_processors.current_url',
     'account.context_processors.account',
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
