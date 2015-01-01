@@ -11,7 +11,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # ALLOWED HOSTS
-ALLOWED_HOSTS = ['herocomics.kr']
+ALLOWED_HOSTS = ['herocomics.kr', 'beta.herocomics.kr']
 
 # Cache backend
 CACHES = {
