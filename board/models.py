@@ -4,6 +4,7 @@ from hashlib import sha224
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.db.models import aggregates
 from django.db.models.sql import aggregates as sql_aggregates
@@ -24,7 +25,8 @@ setattr(sql_aggregates, 'DefaultSum', SQLDefaultSum)
 
 
 class User(AbstractEmailUser):
-    nickname = models.CharField(max_length=16, unique=True)
+    nickname = models.CharField(max_length=16, unique=True,
+        validators=[MinLengthValidator(2)])
 
     def __str__(self):
         return self.nickname
