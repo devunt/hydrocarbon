@@ -16,11 +16,25 @@
 {% block content %}
 
 {% if password_form %}
-<form method='post'>
-	{% csrf_token %}
-	{{ password_form.as_p }}
-	<input type='submit'>
-</form>
+<div id="form">
+	<form method="post" action="">
+		{% csrf_token %}
+		<div class="notice">
+			<p>{% trans "Input the password you used on this post." %}</p>
+		</div>
+		<ul>
+			{% for field in password_form %}
+			<li class="field">
+				<label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
+				{{ field.errors }}
+			</li>
+			{% endfor %}
+		</ul>
+		<div class="center">
+			<input class="submit" type="submit">
+		</div>
+	</form>
+</div>
 {% else %}
 
 <div class="section article form">
