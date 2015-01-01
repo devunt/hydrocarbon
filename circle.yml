@@ -1,3 +1,8 @@
 machine:
   python:
     version: 3.4.1
+deployment:
+  production:
+    branch: production
+    commands:
+    - ssh herocomics@erinn.devunt.kr -p2201 ./deploy
