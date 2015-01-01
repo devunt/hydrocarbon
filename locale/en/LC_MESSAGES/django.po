@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-01 16:05+0900\n"
+"POT-Creation-Date: 2015-01-01 22:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: board/forms.py:42 board/forms.py:63
+#: board/forms.py:48 board/forms.py:69
 #: board/templates/board/post_detail.html:199
 msgid "Nickname"
 msgstr ""
 
-#: board/forms.py:55
+#: board/forms.py:61
 msgid "This nickname is already taken. Please choose another."
 msgstr ""
 
-#: board/forms.py:64 board/forms.py:102 board/i18n_fake.py:7
+#: board/forms.py:70 board/forms.py:108 board/i18n_fake.py:7
 #: board/templates/board/post_detail.html:200
 msgid "Password"
 msgstr ""
 
-#: board/forms.py:96
+#: board/forms.py:102
 msgid "Press ctrl-space to submit a comment"
 msgstr ""
 
@@ -279,7 +279,7 @@ msgstr ""
 
 #: board/templates/account/email/password_reset_subject.txt:1
 #, python-format
-msgid "[%(site_name)s] Password reset"
+msgid "%(site_name)s Password reset"
 msgstr ""
 
 #: board/templates/account/email_confirm.html:4
@@ -425,9 +425,9 @@ msgstr ""
 
 #: board/templates/base.html:40 board/templates/base.html.py:68
 #: board/templates/board/post_detail.html:135
-#: board/templates/board/post_list.html:22
-#: board/templates/board/post_list.html:95
-#: board/templates/search/search.html:22
+#: board/templates/board/post_list.html:21
+#: board/templates/board/post_list.html:91
+#: board/templates/search/search.html:23
 msgid "Close"
 msgstr ""
 
@@ -538,12 +538,12 @@ msgid "Submit comment"
 msgstr ""
 
 #: board/templates/board/post_detail.html:224
-#: board/templates/board/post_list.html:76
+#: board/templates/board/post_list.html:70
 msgid "List"
 msgstr ""
 
 #: board/templates/board/post_detail.html:232
-#: board/templates/board/post_list.html:84
+#: board/templates/board/post_list.html:78
 msgid "Top posts"
 msgstr ""
 
@@ -551,12 +551,12 @@ msgstr ""
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
 #: board/templates/board/post_form.html:76
-#: board/templates/board/post_list.html:117
+#: board/templates/board/post_list.html:112
 msgid "New post"
 msgstr ""
 
 #: board/templates/board/post_form.html:39
-#: board/templates/board/post_list.html:19
+#: board/templates/board/post_list.html:18
 msgid "Categories"
 msgstr ""
 
@@ -573,49 +573,53 @@ msgstr ""
 msgid "This post has been downvoted by users."
 msgstr ""
 
-#: board/templates/board/post_list.html:37
+#: board/templates/board/post_list.html:27
+msgid "Clear sort/filter"
+msgstr ""
+
+#: board/templates/board/post_list.html:31
 msgid "Title"
 msgstr ""
 
-#: board/templates/board/post_list.html:38
+#: board/templates/board/post_list.html:32
 msgid "Author"
 msgstr ""
 
-#: board/templates/board/post_list.html:42
+#: board/templates/board/post_list.html:36
 msgid "Date"
 msgstr ""
 
-#: board/templates/board/post_list.html:48
+#: board/templates/board/post_list.html:42
 msgid "Score"
 msgstr ""
 
-#: board/templates/board/post_list.html:54
+#: board/templates/board/post_list.html:48
 msgid "Views"
 msgstr ""
 
-#: board/templates/board/post_list.html:70
+#: board/templates/board/post_list.html:64
 msgid "There are no posts here!"
 msgstr ""
 
-#: board/templates/board/post_list.html:91
-#: board/templates/search/search.html:5 board/templates/search/search.html:6
-#: board/templates/search/search.html:15
+#: board/templates/board/post_list.html:83
+#: board/templates/search/search.html:6 board/templates/search/search.html:7
+#: board/templates/search/search.html:16
 msgid "Search"
 msgstr ""
 
-#: board/templates/board/post_list.html:125
+#: board/templates/board/post_list.html:120
 msgid "First"
 msgstr ""
 
-#: board/templates/board/post_list.html:128
+#: board/templates/board/post_list.html:123
 msgid "Prev"
 msgstr ""
 
-#: board/templates/board/post_list.html:136
+#: board/templates/board/post_list.html:131
 msgid "Next"
 msgstr ""
 
-#: board/templates/board/post_list.html:139
+#: board/templates/board/post_list.html:134
 msgid "Last"
 msgstr ""
 
@@ -639,7 +643,7 @@ msgstr ""
 msgid "There's no such board."
 msgstr ""
 
-#: board/views.py:143
+#: board/views.py:142
 msgid "Deleted"
 msgstr ""
 

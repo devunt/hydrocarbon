@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-01 16:05+0900\n"
+"POT-Creation-Date: 2015-01-01 22:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,21 +18,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: board/forms.py:42 board/forms.py:63
+#: board/forms.py:48 board/forms.py:69
 #: board/templates/board/post_detail.html:199
 msgid "Nickname"
 msgstr "닉네임"
 
-#: board/forms.py:55
+#: board/forms.py:61
 msgid "This nickname is already taken. Please choose another."
 msgstr "이 닉네임은 이미 사용중입니다. 다른 닉네임을 사용해 주세요."
 
-#: board/forms.py:64 board/forms.py:102 board/i18n_fake.py:7
+#: board/forms.py:70 board/forms.py:108 board/i18n_fake.py:7
 #: board/templates/board/post_detail.html:200
 msgid "Password"
 msgstr "비밀번호"
 
-#: board/forms.py:96
+#: board/forms.py:102
 msgid "Press ctrl-space to submit a comment"
 msgstr "컨트롤-스페이스 키를 이용해 댓글을 달 수 있습니다"
 
@@ -49,8 +49,6 @@ msgid "E-mail"
 msgstr "이메일"
 
 #: board/i18n_fake.py:6
-#, fuzzy
-#| msgid "E-mail"
 msgid "Email"
 msgstr "이메일"
 
@@ -63,20 +61,14 @@ msgid "The two password fields didn't match."
 msgstr "비밀번호가 서로 일치하지 않습니다."
 
 #: board/i18n_fake.py:10
-#, fuzzy
-#| msgid "Set password"
 msgid "Current Password"
-msgstr "비밀번호 설정"
+msgstr "현재 비밀번호"
 
 #: board/i18n_fake.py:11
-#, fuzzy
-#| msgid "New password"
 msgid "New Password"
 msgstr "새 비밀번호"
 
 #: board/i18n_fake.py:12
-#, fuzzy
-#| msgid "Password (again)"
 msgid "New Password (again)"
 msgstr "비밀번호 확인"
 
@@ -110,10 +102,8 @@ msgid "Remember Me"
 msgstr "로그인 유지"
 
 #: board/i18n_fake.py:20
-#, fuzzy
-#| msgid "Your account is now activated."
 msgid "This account is inactive."
-msgstr "계정이 성공적으로 활성화되었습니다."
+msgstr "비활성화된 계정입니다."
 
 #: board/i18n_fake.py:21
 msgid "The username and/or password you specified are not correct."
@@ -124,10 +114,8 @@ msgid "The email address and/or password you specified are not correct."
 msgstr "입력하신 이메일 또는 비밀번호가 정확하지 않습니다."
 
 #: board/i18n_fake.py:24
-#, fuzzy
-#| msgid "Lost your password?"
 msgid "Please type your current password."
-msgstr "비밀번호를 잃어버리셨나요?"
+msgstr "현재 비밀번호를 입력해주세요."
 
 #: board/i18n_fake.py:25
 msgid "Email address can not be found."
@@ -158,22 +146,17 @@ msgid "email addresses"
 msgstr "이메일 주소"
 
 #: board/i18n_fake.py:34
-#, fuzzy
-#| msgid "New password confirmation"
 msgid "email confirmation"
-msgstr "새 비밀번호 확인"
+msgstr "이메일 인증"
 
 #: board/i18n_fake.py:35
-#, fuzzy
-#| msgid "New password confirmation"
 msgid "email confirmations"
-msgstr "새 비밀번호 확인"
+msgstr "이메일 인증"
 
 #: board/i18n_fake.py:37
-#, fuzzy, python-brace-format
-#| msgid "Activation email sent"
+#, python-brace-format
 msgid "Confirmation email sent to {email}."
-msgstr "인증 메일 발송됨"
+msgstr "인증 메일이 {email}로 발송되었습니다."
 
 #: board/i18n_fake.py:38
 #, python-brace-format
@@ -186,16 +169,12 @@ msgid "You have confirmed {email}."
 msgstr "{email}을 확인했습니다."
 
 #: board/i18n_fake.py:40
-#, fuzzy
-#| msgid "Password successfully changed!"
 msgid "Password successfully changed."
-msgstr "성공적으로 비밀번호가 변경되었습니다!"
+msgstr "성공적으로 비밀번호가 변경되었습니다."
 
 #: board/i18n_fake.py:41
-#, fuzzy
-#| msgid "Account Activated"
 msgid "Account settings updated."
-msgstr "계정 활성화됨"
+msgstr "계정 설정 변경됨."
 
 #: board/i18n_fake.py:43
 #, python-brace-format
@@ -203,7 +182,7 @@ msgid ""
 "Your account is now inactive and your data will be expunged in the next "
 "{expunge_hours} hours."
 msgstr ""
-"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간 이후 계정의 자료는"
+"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간 이후 계정의 자료는 "
 "삭제될 예정입니다."
 
 #: board/i18n_fake.py:45
@@ -305,14 +284,13 @@ msgid ""
 "link below to reset your password.\n"
 msgstr ""
 "\n"
-"이 메일은 본인 또는 누군가가 %(site_name)s에서 비밀번호를 찾고자 했기 때문에"
+"이 메일은 본인 또는 누군가가 %(site_name)s에서 비밀번호를 찾고자 했기 때문에 "
 "발송되었습니다.\n"
-"만일 본인이 아니라 다른 사람이 비밀번호 초기화를 신청한 경우 이 메일은"
-"무시하셔도 됩니다. 비밀번호를 초기화하시려면 아래 링크를 눌러주세요.\n"
+"만일 본인이 아니라 다른 사람이 비밀번호 초기화를 신청한 경우 이 메일은 무시하"
+"셔도 됩니다. 비밀번호를 초기화하시려면 아래 링크를 눌러주세요.\n"
 
 #: board/templates/account/email/password_reset_subject.txt:1
-#, fuzzy, python-format
-#| msgid "Confirm password reset"
+#, python-format
 msgid "%(site_name)s Password reset"
 msgstr "%(site_name)s 비밀번호 재설정"
 
@@ -399,18 +377,18 @@ msgstr ""
 "요. 비밀번호를 바꿀 수 있는 방법을 보내드리겠습니다."
 
 #: board/templates/account/password_reset_sent.html:14
-#, fuzzy
-#| msgid "We have sent you an email with a link to reset your password."
 msgid ""
 "We have sent you an email with a link to reset your password. Please check "
 "your email and click the link to continue."
 msgstr ""
-"입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다."
+"입력하신 이메일 주소로 비밀번호를 초기화할 수 있는 링크를 보내드렸습니다. 이"
+"메일을 확인하신 후 링크를 눌러 비밀번호를 초기화하세요"
 
 #: board/templates/account/password_reset_sent.html:15
 msgid "If you do not receive it within a few minutes, try resending."
-msgstr "만일 신청하신 후 몇 분 후에도 메일을 받지 못하셨다면"
-"메일을 다시 발송해보세요."
+msgstr ""
+"만일 신청하신 후 몇 분 후에도 메일을 받지 못하셨다면 메일을 다시 발송해보세"
+"요."
 
 #: board/templates/account/password_reset_sent.html:17
 msgid "Resend"
@@ -440,16 +418,13 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a <a href=\"%(url)s\">new password reset</a>."
 msgstr ""
-"사용하신 비밀번호 초기화 링크는 이미 사용되었거나 한 이유로 인해 "
-"유효하지 않습니다. <a href=\"%(url)s\">새로 비밀번호 초기화</a>를"
-"신청해 주세요."
+"사용하신 비밀번호 초기화 링크는 이미 사용되었거나 한 이유로 인해 유효하지 않"
+"습니다. <a href=\"%(url)s\">새로 비밀번호 초기화</a>를신청해 주세요."
 
 #: board/templates/account/settings.html:4
 #: board/templates/account/settings.html:5
-#, fuzzy
-#| msgid "Account Activated"
 msgid "Account settings"
-msgstr "계정 활성화됨"
+msgstr "계정 설정"
 
 #: board/templates/account/settings.html:24
 msgid "Save"
@@ -471,9 +446,9 @@ msgstr ""
 
 #: board/templates/base.html:40 board/templates/base.html.py:68
 #: board/templates/board/post_detail.html:135
-#: board/templates/board/post_list.html:22
-#: board/templates/board/post_list.html:95
-#: board/templates/search/search.html:22
+#: board/templates/board/post_list.html:21
+#: board/templates/board/post_list.html:91
+#: board/templates/search/search.html:23
 msgid "Close"
 msgstr "닫기"
 
@@ -589,12 +564,12 @@ msgid "Submit comment"
 msgstr "댓글 달기"
 
 #: board/templates/board/post_detail.html:224
-#: board/templates/board/post_list.html:76
+#: board/templates/board/post_list.html:70
 msgid "List"
 msgstr "목록"
 
 #: board/templates/board/post_detail.html:232
-#: board/templates/board/post_list.html:84
+#: board/templates/board/post_list.html:78
 msgid "Top posts"
 msgstr "베스트"
 
@@ -602,12 +577,12 @@ msgstr "베스트"
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
 #: board/templates/board/post_form.html:76
-#: board/templates/board/post_list.html:117
+#: board/templates/board/post_list.html:112
 msgid "New post"
 msgstr "글쓰기"
 
 #: board/templates/board/post_form.html:39
-#: board/templates/board/post_list.html:19
+#: board/templates/board/post_list.html:18
 msgid "Categories"
 msgstr "분류"
 
@@ -624,49 +599,53 @@ msgstr "공지"
 msgid "This post has been downvoted by users."
 msgstr "사용자들의 비추천에 의해 숨겨진 글입니다."
 
-#: board/templates/board/post_list.html:37
+#: board/templates/board/post_list.html:27
+msgid "Clear sort/filter"
+msgstr ""
+
+#: board/templates/board/post_list.html:31
 msgid "Title"
 msgstr "제목"
 
-#: board/templates/board/post_list.html:38
+#: board/templates/board/post_list.html:32
 msgid "Author"
 msgstr "글쓴이"
 
-#: board/templates/board/post_list.html:42
+#: board/templates/board/post_list.html:36
 msgid "Date"
 msgstr "날짜"
 
-#: board/templates/board/post_list.html:48
+#: board/templates/board/post_list.html:42
 msgid "Score"
 msgstr "추천"
 
-#: board/templates/board/post_list.html:54
+#: board/templates/board/post_list.html:48
 msgid "Views"
 msgstr "조회"
 
-#: board/templates/board/post_list.html:70
+#: board/templates/board/post_list.html:64
 msgid "There are no posts here!"
 msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
 
-#: board/templates/board/post_list.html:91
-#: board/templates/search/search.html:5 board/templates/search/search.html:6
-#: board/templates/search/search.html:15
+#: board/templates/board/post_list.html:83
+#: board/templates/search/search.html:6 board/templates/search/search.html:7
+#: board/templates/search/search.html:16
 msgid "Search"
 msgstr "검색"
 
-#: board/templates/board/post_list.html:125
+#: board/templates/board/post_list.html:120
 msgid "First"
 msgstr "처음"
 
-#: board/templates/board/post_list.html:128
+#: board/templates/board/post_list.html:123
 msgid "Prev"
 msgstr "이전"
 
-#: board/templates/board/post_list.html:136
+#: board/templates/board/post_list.html:131
 msgid "Next"
 msgstr "다음"
 
-#: board/templates/board/post_list.html:139
+#: board/templates/board/post_list.html:134
 msgid "Last"
 msgstr "마지막"
 
@@ -690,7 +669,7 @@ msgstr "게시판 없음"
 msgid "There's no such board."
 msgstr "찾으시는 게시판이 없습니다."
 
-#: board/views.py:143
+#: board/views.py:142
 msgid "Deleted"
 msgstr "삭제되었습니다"
 
@@ -701,81 +680,3 @@ msgstr "한국어"
 #: hydrocarbon/settings/base.py:104
 msgid "English"
 msgstr "영어"
-
-#~ msgid "Old password"
-#~ msgstr "기존 비밀번호"
-
-#~ msgid "Logged out"
-#~ msgstr "로그아웃"
-
-#~ msgid "herocomics"
-#~ msgstr "히어로코믹스"
-
-#~ msgid "Account activation failed."
-#~ msgstr "계정 활성화에 실패했습니다."
-
-#~ msgid "You can log in."
-#~ msgstr "이제 로그인하실 수 있습니다."
-
-#~ msgid ""
-#~ "\n"
-#~ "Hello %(user)s.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "%(user)s님 안녕하세요.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "This mail is for a %(domain)s member who requested password reset\n"
-#~ "or change. If you never have done that and presume that someone\n"
-#~ " is trying to log in with your account without your permission,\n"
-#~ " you can ignore this mail and we'll keep your account safe.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "이 메일은 %(domain)s 계정 비밀번호 변경을 요청하신 분께 자동으로\n"
-#~ "발송됩니다. 만일 본인께서 요청하신 적이 없다면 이 메일은 무시해\n"
-#~ "주시기 바랍니다.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "To reset your password, please press the link below, or copy and paste "
-#~ "it\n"
-#~ "into your web browser:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "비밀번호를 초기화하려면 아래의 링크를 누르거나, 링크를 복사해\n"
-#~ "브라우저의 주소창에 입력해 이동해 주세요.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "For your reminder, the ID that belongs to this mail is %(user_username)s\n"
-#~ msgstr ""
-#~ "\n"
-#~ "요청하신 분의 아이디는 %(user_username)s입니다.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "With regards,\n"
-#~ "%(site_name)s\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "-- %(site_name)s\n"
-
-#~ msgid "Successfully logged out"
-#~ msgstr "성공적으로 로그아웃 되었습니다"
-
-#~ msgid "Password changed"
-#~ msgstr "비밀번호 변경 완료"
-
-#~ msgid "Password reset complete"
-#~ msgstr "비밀번호 재설정 완료"
-
-#~ msgid "Your password has been reset!"
-#~ msgstr "비밀번호가 재설정되었습니다!"
-
-#~ msgid "You may now"
-#~ msgstr "이제 로그인할 수 있습니다."
-
-#~ msgid "Please check your email and click the link to continue."
-#~ msgstr "이메일을 확인하시고 링크에 접속해 비밀번호를 초기화해 주세요."
