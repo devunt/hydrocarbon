@@ -56,7 +56,12 @@ $(function() {
 		});
 
 	$('input[type=checkbox]').each(function() {
-		var $label = $(this).closest('label');
+		var $label;
+
+		$label = $(this).closest('label').length ? $(this).closest('label') : $label;
+		$label = $(this).next('label').length ? $(this).next('label') : $label;
+		$label = $(this).prev('label').length ? $(this).prev('label') : $label;
+
 		var $a = $('<a>')
 			.attr('href', '#')
 			.addClass('checkbox')
@@ -64,15 +69,15 @@ $(function() {
 
 		if($(this).prop('checked')) $a.addClass('checked');
 
-		if($label) {
-			$a
-				.insertAfter($label)
-				.find('.label').append('<span class="text">' + $.trim($label.text()) + '</span>');
-			$(this).insertAfter($label);
-			$label.remove();
-		} else { $a.insertAfter($(this)); }
+		console.log($label);
+
+		$a
+			.insertAfter($label)
+			.find('.label').append('<span class="text">' + $.trim($label.text().replace(':', '')) + '</span>');
+		$(this).insertAfter($label);
 
 		$(this).hide();
+		$label.remove();
 	});
 
 
