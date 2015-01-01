@@ -196,7 +196,7 @@
 							<div class="article">{{ comment_form.contents }}</div>
 							<div class="footer clear">
 								<div class="ot nav">
-									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick"><input type="text" name="nick" placeholder="{% trans "Nickname" %}"></label>
+									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick"><input type="text" name="nick" placeholder="{% trans "Nickname" %}" value="{{ request.session.onetime_nick }}"></label>
 									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="password"><input type="password" name="password" placeholder="{% trans "Password" %}"></label>
 								</div>
 								<div class="nav">
