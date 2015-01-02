@@ -36,7 +36,7 @@ $(function() {
 		})
 
 		.on('click', 'a.checkbox', function(e) {
-			if(this.href != '#') return true;
+			if($(this).attr('href') != '#') return true;
 
 			e.preventDefault();
 
@@ -70,8 +70,6 @@ $(function() {
 			.html('<span class="label"><span class="icon"></span></span>')
 
 		if($(this).prop('checked')) $a.addClass('checked');
-
-		console.log($label);
 
 		$a
 			.insertAfter($label)
