@@ -117,7 +117,7 @@ ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
 ACCOUNT_NOTIFY_ON_PASSWORD_CHANGE = False
 
 # django-wysiwyg-redactor
-REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'plugins': ['video', 'spoiler']}
+REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'plugins': ['video', 'spoiler', 'krfix']}
 REDACTOR_UPLOAD = 'uploads/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 
