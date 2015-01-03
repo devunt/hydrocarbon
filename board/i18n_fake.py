@@ -1,4 +1,5 @@
 _ = lambda s: s
+ungettext = lambda s, p: s
 
 _('Username')
 _('username')
