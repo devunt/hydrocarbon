@@ -380,7 +380,7 @@ class CommentAjaxView(AjaxMixin, View):
                 lst.append({
                     'id': comment.id,
                     'author': comment.author,
-                    'author_score': comment.user.score if comment.user else None,
+                    'author_total_score': comment.user.total_score if comment.user else None,
                     'iphash': comment.iphash if not comment.user else None,
                     'contents': comment.contents,
                     'created_time': comment.created_time,

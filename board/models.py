@@ -32,7 +32,7 @@ class User(AbstractEmailUser):
         return self.nickname
 
     @property
-    def score(self):
+    def total_score(self):
         post_votes = self.posts.aggregate(score=DefaultSum('_votes__vote', default=0))
         comment_votes = self.comments.aggregate(score=DefaultSum('_votes__vote', default=0))
         return post_votes['score'] + comment_votes['score']
