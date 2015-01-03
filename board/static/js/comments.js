@@ -336,6 +336,8 @@ $(function() {
 						.insertAfter($item)
 						.show();
 
+					$c.find('input').removeAttr('id');
+
 					$c.find('textarea').redactor(options);
 
 					$c.find('.cancel')
@@ -371,6 +373,8 @@ $(function() {
 						$c.find('label').show();
 					}
 
+					$c.find('input').removeAttr('id');
+
 					$c.find('textarea').redactor(options);
 
 					$c.find('.redactor-editor')
@@ -393,6 +397,8 @@ $(function() {
 						$c.find('label.nick').remove();
 						$c.find('label').show();
 					}
+
+					$c.find('input').removeAttr('id');
 
 					$c.find('.cancel')
 						.show();

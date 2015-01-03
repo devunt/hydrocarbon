@@ -198,8 +198,8 @@
 							<div class="article">{{ comment_form.contents }}</div>
 							<div class="footer clear">
 								<div class="ot nav">
-									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick"><input type="text" name="nick" placeholder="{% trans "Nickname" %}" value="{{ request.session.onetime_nick }}"></label>
-									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="password"><input type="password" name="password" placeholder="{% trans "Password" %}"></label>
+									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick">{{ comment_form.onetime_nick | label_as_placeholder }}</label>
+									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="password">{{ comment_form.onetime_password | label_as_placeholder }}</label>
 								</div>
 								<div class="nav">
 									<a href="#cancel" class="cancel button" style="display:none;">{% trans "Cancel" %}</a>
