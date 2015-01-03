@@ -30,7 +30,7 @@
 			</div>
 			<div class="meta">
 				{% if not post.announcement %}
-				<span title="{% if post.user %}{% if post.user.total.score >= 0 %}+{% endif %}{{ post.user.total.score }}{% else %}{{ post.iphash }}{% endif %}" class="label meta 
+				<span title="{% if post.user %}{% if post.user.total_score >= 0 %}+{% endif %}{{ post.user.total_score }}{% else %}{{ post.iphash }}{% endif %}" class="label meta 
 				{% if post.user %}
 					author user">
 				{% else %}
