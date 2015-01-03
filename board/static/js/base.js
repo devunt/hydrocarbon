@@ -90,13 +90,13 @@ $(function() {
 		.on('mouseleave scroll', '.th', hideTooltip)
 		.on('touchstart', '.th:not(.th-active)', showTooltip)
 		.on('touchstart', '.th.th-active', hideTooltip)
-		.on('mouseenter touchstart', '*[title]', function() {
+		.on('mouseenter touchstart', '*[title]', function(e) {
 			if($(this).closest('.note-editor').length) return false;
 			$(this)
 				.data('title', $(this).attr('title'))
 				.removeAttr('title')
-				.addClass('th')
-				.trigger('mouseenter');
+				.addClass('th');
+			showTooltip(e);
 		});
 
 	$('.article img').each(function() {
