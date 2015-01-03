@@ -54,3 +54,7 @@ STATIC_URL = 'http://s.herocomics.kr/'
 # Media files
 MEDIA_ROOT = '/home/herocomics/media'
 MEDIA_URL = 'http://uc.herocomics.kr/'
+
+# App settings
+BOARD_POST_BLIND_VOTES = -10
+BOARD_POST_BEST_VOTES = 10

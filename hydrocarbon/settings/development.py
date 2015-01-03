@@ -34,3 +34,7 @@ STATIC_URL = '/static/'
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'board/media')
 MEDIA_URL = '/media/'
+
+# App settings
+BOARD_POST_BLIND_VOTES = -1
+BOARD_POST_BEST_VOTES = 1
