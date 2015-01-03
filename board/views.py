@@ -80,8 +80,8 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs['authenticated'] = self.request.user.is_authenticated()
         kwargs['board'] = self.board
+        kwargs['show_ot_form'] = not self.request.user.is_authenticated()
         return kwargs
 
     def get_initial(self):
@@ -112,8 +112,6 @@ class PostUpdateView(PermissionMixin, UpdateView):
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['board'] = self.object.board
-        # Anonymous users can't change their OneTimeUser property once they posted
-        kwargs['authenticated'] = True
         return kwargs
 
     def get_success_url(self):
@@ -251,7 +249,7 @@ class PostDetailView(DetailView):
             elif vote.vote == Vote.DOWNVOTE:
                 voted['downvoted'] = True
         kwargs['voted'] = voted
-        f = CommentForm(authenticated=self.request.user.is_authenticated())
+        f = CommentForm(show_ot_form=True)
         if not self.request.user.is_authenticated():
             f.initial = {'onetime_nick': self.request.session.get('onetime_nick')}
         kwargs['comment_form'] = f

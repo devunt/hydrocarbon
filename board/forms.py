@@ -64,9 +64,9 @@ class HCSignupForm(SignupForm):
 
 class OneTimeUserFormMixin:
     def __init__(self, *args, **kwargs):
-        self.authenticated = kwargs.pop('authenticated')
+        show_ot_form = kwargs.pop('show_ot_form', False)
         super().__init__(*args, **kwargs)
-        if not self.authenticated:
+        if show_ot_form:
             self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
             self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
 
