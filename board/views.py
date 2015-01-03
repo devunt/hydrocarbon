@@ -150,7 +150,7 @@ class PostListView(BoardMixin, PostListMixin, ListView):
             if 'post_list_order_by' not in request.session:
                 request.session['post_list_order_by'] = '-created_time'
         else:
-            o = kwargs.get('order_by')
+            o = request.GET.get('o')
             if o is None:
                 o = '+ct'
             d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}

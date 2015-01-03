@@ -38,19 +38,19 @@
 		<div class="cell author">{% trans "Author" %}</div>
 		{{ order_by }}
 		<div class="cell timestamp sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
-			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug %}{% else %}{% url 'board_post_list' board.slug '-ct' %}{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% del_params current_url %}{% else %}{% add_params current_url o='-ct' %}{% endif %}">
 				<span class="text">{% trans "Date" %}</span>
 				{% if order_by.column == 'created_time' %}<span class="icon"></span> {% endif %}
 			</a>
 		</div>
 		<div class="cell score sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
-			<a class="handle label meta" href="{% if order_by.column == 'vote' and order_by.order == 'asc' %}{% url 'board_post_list' board.slug '-vt' %}{% else %}{% url 'board_post_list' board.slug '+vt' %}{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'vote' and order_by.order == 'asc' %}{% add_params current_url o='-vt' %}{% else %}{% add_params current_url o='+vt' %}{% endif %}">
 				<span class="text">{% trans "Score" %}</span>
 				{% if order_by.column == 'vote' %}<span class="icon"></span> {% endif %}
 			</a>
 		</div>
 		<div class="cell views sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
-			<a class="handle label meta" href="{% if order_by.column == 'viewcount' and order_by.order == 'asc' %}{% url 'board_post_list' board.slug '-vc' %}{% else %}{% url 'board_post_list' board.slug '+vc' %}{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'viewcount' and order_by.order == 'asc' %}{% add_params current_url o='-vc' %}{% else %}{% add_params current_url o='+vc' %}{% endif %}">
 				<span class="text">{% trans "Views" %}</span>
 				{% if order_by.column == 'viewcount' %}<span class="icon"></span> {% endif %}
 			</a>
