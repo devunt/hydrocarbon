@@ -397,14 +397,16 @@ class CommentAjaxView(AjaxMixin, View):
         else:
             ot_user = OneTimeUser()
             ot_user.nick = request.POST.get('ot_nick')
-            ot_user.password = make_password(request.POST.get('ot_password'))
+            ot_user.password = request.POST.get('ot_password')
             try:
                 ot_user.full_clean()
             except ValidationError as ex:
                 return JsonResponse({'status': 'badrequest', 'error_fields': list(ex.message_dict.keys())}, status=400)
-            ot_user.save()
-            c.onetime_user = ot_user
-            request.session['onetime_nick'] = ot_user.nick
+            else:
+                ot_user.password = make_password(ot_user.password)
+                ot_user.save()
+                c.onetime_user = ot_user
+                request.session['onetime_nick'] = ot_user.nick
         c.ipaddress = request.META['REMOTE_ADDR']
         c.contents = request.POST.get('contents')
         c.save()
