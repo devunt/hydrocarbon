@@ -48,7 +48,7 @@
 		}
 		
 		.cell {
-			line-height:20px; padding:15px 0;
+			height:20px; line-height:20px; padding:15px 0;
 
 			&.mark { height:20px; }
 			&.title span.title { font-size:16px; }
@@ -60,7 +60,7 @@
 	}
 
 	.cell {
-		display:inline-block; font-size:$font-size; overflow:hidden; text-align:center; vertical-align:middle;
+		display:inline-block; font-size:$font-size; overflow:hidden; text-align:center; vertical-align:top;
 
 		&.mark { width:3%; font-size:0; }
 		&.category { width:9%; }

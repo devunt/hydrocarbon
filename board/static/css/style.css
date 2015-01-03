@@ -823,7 +823,8 @@ a.anchor {
       background-position: 50% -20px; }
 .section.article .item.article .footer {
   margin: 0 5%;
-  padding: 5px 3%; }
+  padding: 5px 3%;
+  -webkit-tap-highlight-color: transparent; }
   .section.article .item.article .footer .icon {
     margin-right: 4px; }
 .section.article .comments-list {
@@ -982,6 +983,7 @@ a.anchor {
       .section.board .item.hidden .cell.meta {
         display: none; }
     .section.board .item .cell {
+      height: 20px;
       line-height: 20px;
       padding: 15px 0; }
       .section.board .item .cell.mark {
@@ -1000,7 +1002,7 @@ a.anchor {
     font-size: 14px;
     overflow: hidden;
     text-align: center;
-    vertical-align: middle; }
+    vertical-align: top; }
     .section.board .cell.mark {
       width: 3%;
       font-size: 0; }
