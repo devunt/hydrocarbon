@@ -329,15 +329,21 @@ form > .errorlist li {
     font-size: 14px;
     line-height: 20px;
     padding: 10px; }
-    .dropdown.menu li a.scanlation {
-      border-left: 10px solid rgba(61, 156, 204, 0.9);
-      padding-left: 0; }
-    .dropdown.menu li a.news {
-      border-left: 10px solid rgba(133, 204, 61, 0.9);
-      padding-left: 0; }
-    .dropdown.menu li a.subtitles {
-      border-left: 10px solid rgba(204, 61, 61, 0.9);
-      padding-left: 0; }
+  .dropdown.menu li.scanlation:hover {
+    background: rgba(61, 156, 204, 0.9); }
+  .dropdown.menu li.scanlation a {
+    border-left: 10px solid rgba(61, 156, 204, 0.9);
+    padding-left: 0; }
+  .dropdown.menu li.news:hover {
+    background: rgba(133, 204, 61, 0.9); }
+  .dropdown.menu li.news a {
+    border-left: 10px solid rgba(133, 204, 61, 0.9);
+    padding-left: 0; }
+  .dropdown.menu li.subtitles:hover {
+    background: rgba(204, 61, 61, 0.9); }
+  .dropdown.menu li.subtitles a {
+    border-left: 10px solid rgba(204, 61, 61, 0.9);
+    padding-left: 0; }
   .dropdown.menu li a > span {
     display: block;
     margin: 0 10px;
