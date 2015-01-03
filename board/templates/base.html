@@ -32,29 +32,23 @@
 	<div id="nav">
 		<div class="container">
 			<div class="left">
-				<div class="dropdown container menu-nav">
-					<a href="#" class="handle">
+				<div class="dropdown container menu-nav nodropdown">
+					<a href="/" class="handle">
 						<span class="icon"></span>
 						<span class="text">{% block pagename %}<span class="default">{{ request.site.name }}</span>{% endblock %}</span>
 					</a>
+					{% comment %}
 					<div class="dropdown menu">
 						<a href="#" class="close">{% trans "Close" %}</a>
 						<div class="tip top"><span></span></div>
 						<ul>
-							{% comment %}
-								- code for future use
-
-								{% for item in nav_menu_list %}
-									<li><a href="{{ item.absurl }}">{{ item.title }}</a></li>
-								{% endfor %}
-							{% endcomment %}
-
 							<li><a href="/"><span>{% trans "Home" %}</span></a></li>
 							<li><a href="#"><span>{% trans "Favorites" %}</span></a></li>
 							<li><a href="#"><span>{% trans "Notices" %}</span></a></li>
 							<li><a href="#"><span>{% trans "Scanlations" %}</span></a></li>
 						</ul>
 					</div>
+					{% endcomment %}
 				</div>
 			</div>
 			<div class="right">

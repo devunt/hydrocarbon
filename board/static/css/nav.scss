@@ -39,6 +39,7 @@
 			}
 
 			&.open .icon { background-position:0 -50px; }
+			&.nodropdown .icon { background-position:0 -100px !important; }
 
 			.text {
 				font-size:18px;

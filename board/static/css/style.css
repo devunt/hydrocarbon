@@ -530,6 +530,8 @@ a.anchor {
         background-image: url("../img/logo_3x.png"); } }
   #nav .dropdown.container.menu-nav.open .icon {
     background-position: 0 -50px; }
+  #nav .dropdown.container.menu-nav.nodropdown .icon {
+    background-position: 0 -100px !important; }
   #nav .dropdown.container.menu-nav .text {
     font-size: 18px; }
     #nav .dropdown.container.menu-nav .text span.default {
