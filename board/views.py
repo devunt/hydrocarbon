@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password, make_password
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import redirect
@@ -16,7 +17,6 @@ from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateVi
 from django.views.generic.list import ListView
 from account.views import LoginView, SignupView
 from haystack.query import SearchQuerySet
-from haystack.views import SearchView
 from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
@@ -360,6 +360,7 @@ class CommentAjaxView(AjaxMixin, View):
                 lst.append({
                     'id': comment.id,
                     'author': comment.author,
+                    'author_score': comment.user.score if comment.user else None,
                     'iphash': comment.iphash if not comment.user else None,
                     'contents': comment.contents,
                     'created_time': comment.created_time,
@@ -388,12 +389,19 @@ class CommentAjaxView(AjaxMixin, View):
                 return self.not_found()
         else:
             return self.bad_request()
+        contents = request.POST.get('contents')
+        if is_empty_html(contents):
+            return JsonResponse({'status': 'badrequest', 'error_fields': ['contents']}, status=400)
         if request.user.is_authenticated():
             c.user = request.user
         else:
             ot_user = OneTimeUser()
             ot_user.nick = request.POST.get('ot_nick')
             ot_user.password = make_password(request.POST.get('ot_password'))
+            try:
+                ot_user.full_clean()
+            except ValidationError as ex:
+                return JsonResponse({'status': 'badrequest', 'error_fields': list(ex.message_dict.keys())}, status=400)
             ot_user.save()
             c.onetime_user = ot_user
             request.session['onetime_nick'] = ot_user.nick
@@ -424,7 +432,10 @@ class CommentAjaxView(AjaxMixin, View):
             if (not request.user.is_staff) and not check_password(request.META.get('HTTP_X_HC_PASSWORD'), c.onetime_user.password):
                 return self.permission_denied()
         PUT = QueryDict(request.body)
-        c.contents = PUT.get('contents')
+        contents = PUT.get('contents')
+        if is_empty_html(contents):
+            return JsonResponse({'status': 'badrequest', 'error_fields': ['contents']}, status=400)
+        c.contents = contents
         c.save()
         return self.success()
 
