@@ -39,9 +39,11 @@ function renderComment($container, v, depth) {
 				.removeClass('user')
 				.addClass('guest')
 				.attr('title', v.iphash);
-	} else if(v.author == author) {
-		$c.addClass('owned');
+	} else {
+		 if(v.author == author.nick) $c.addClass('owned');
+		 $c.find('.meta.author').attr('title', '+' + v.author_score);
 	}
+
 	if(c3RhZmY) {
 		$c.find('.manipulate').show();
 	}
@@ -99,11 +101,27 @@ function postComments(id, databox) {
 		data: databox
 	})
 		.fail(function(xhr, status, error) {
-			console.log(xhr);
-			console.log(status);
-			console.log(error);
+			var response = xhr.responseJSON.status;
+			switch(response) {
+				case 'badrequest':
+					var errorstr;
 
-			alert('댓글을 등록하는 과정에서 오류가 발생했습니다.');
+					jQuery.each(xhr.responseJSON.error_fields, function(i, v) {
+						if(v == 'contents') errorstr = errorstr +'내용을 입력해 주세요.\n';
+						if(v == 'nick') errorstr = errorstr +'닉네임을 입력해 주세요.\n';
+					});
+
+					alert(errorstr);
+
+					break;
+
+				default:
+					alert('댓글을 등록하는 과정에서 오류가 발생했습니다.');
+					console.log(databox);
+					console.log(xhr);
+					console.log(status);
+					console.log(error);
+			}
 		});
 }
 
@@ -118,6 +136,18 @@ function putComments(id, contents, password) {
 			switch(error) {
 				case 'FORBIDDEN':
 					alert('이 댓글을 수정할 권한이 없습니다. 비밀번호를 잘못 입력하셨나요?');
+					break;
+
+				case 'BAD REQUEST':
+					var errorstr;
+
+					jQuery.each(xhr.responseJSON.error_fields, function(i, v) {
+						if(v == 'contents') errorstr = errorstr +'내용을 입력해 주세요.\n';
+						if(v == 'nick') errorstr = errorstr +'닉네임을 입력해 주세요.\n';
+					});
+
+					alert(errorstr);
+
 					break;
 
 				default:
@@ -201,7 +231,7 @@ $(function() {
 				}
 			}
 
-			if(text == '') {
+			if($container.find('.redactor-editor').text() == '') {
 				alert('내용을 입력해 주세요.');
 				return false;
 			}
@@ -216,14 +246,21 @@ $(function() {
 				text = $container.find('textarea').val(),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
+			
+			if(author == '') {
+				if(nick == '') {
+					alert('닉네임을 입력해 주세요.');
+					return false;
+				}
 
-			if(text == '') {
-				alert('내용을 입력해 주세요.');
-				return false;
+				if(password == '') {
+					alert('비밀번호를 입력해 주세요.');
+					return false;
+				}
 			}
 
-			if(password == '') {
-				alert('비밀번호를 입력해 주세요.');
+			if($container.find('.redactor-editor').text() == '') {
+				alert('내용을 입력해 주세요.');
 				return false;
 			}
 
