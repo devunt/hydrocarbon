@@ -37,6 +37,20 @@ class User(AbstractEmailUser):
         comment_votes = self.comments.aggregate(score=DefaultSum('_votes__vote', default=0))
         return post_votes['score'] + comment_votes['score']
 
+    @property
+    def score(self):
+        votes = {
+            'posts': {
+                'upvotes': Vote.objects.filter(post__in=self.posts.all(), vote=Vote.UPVOTE).count(),
+                'downvotes': Vote.objects.filter(post__in=self.posts.all(), vote=Vote.DOWNVOTE).count(),
+            },
+            'comments': {
+                'upvotes': Vote.objects.filter(comment__in=self.posts.all(), vote=Vote.UPVOTE).count(),
+                'downvotes': Vote.objects.filter(comment__in=self.posts.all(), vote=Vote.DOWNVOTE).count(),
+            },
+        }
+        return votes
+
 
 class OneTimeUser(models.Model):
     nick = models.CharField(max_length=16)
