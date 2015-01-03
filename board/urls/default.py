@@ -5,7 +5,8 @@ from django.utils.functional import curry
 from django.views.defaults import permission_denied
 from redactor.forms import FileForm, ImageForm
 
-from board.views import HCLoginView, HCSignupView, HCRedactorUploadView, IndexView
+from board.views import HCLoginView, HCSignupView, HCRedactorUploadView
+from board.views import IndexView, UserProfileView
 
 
 urlpatterns = patterns('',
@@ -23,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^redactor/', include('redactor.urls')),
 
     url(r'^x/', include('board.urls.ajax')),
+    url(r'^u/(?P<pk>\d+)$', UserProfileView.as_view(), name='user_profile'),
     url(r'^b/(?P<board>\w+)/', include('board.urls.board')),
     url(r'^(?P<pk>\d+)/', include('board.urls.post')),
     url(r'^$', IndexView.as_view()),

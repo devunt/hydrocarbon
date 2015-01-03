@@ -22,7 +22,7 @@ from redactor.views import RedactorUploadView
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import DefaultSum
-from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, Vote
+from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
 
 
@@ -57,6 +57,11 @@ class HCRedactorUploadView(RedactorUploadView):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return FormView.dispatch(self, request, *args, **kwargs)
+
+
+class UserProfileView(DetailView):
+    model = User
+    template_name = 'user/profile.html'
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):

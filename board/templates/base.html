@@ -70,7 +70,7 @@
 									{% endfor %}
 								{% endcomment %}
 
-								<li><a href="/accounts/profile"><span>{{ user.nickname }}</span></a></li>
+								<li><a href="{% url 'user_profile' user.id %}"><span>{{ user.nickname }}</span></a></li>
 								<li><a href="#"><span>{% trans "Submitted" %}</span></a></li>
 								<li><a href="#"><span>{% trans "Inbox" %}</span></a></li>
 								<li><a href="{% url 'account_logout' %}"><span>{% trans "Log out" %}</span></a></li>
