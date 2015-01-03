@@ -31,6 +31,12 @@ class User(AbstractEmailUser):
     def __str__(self):
         return self.nickname
 
+    @property
+    def score(self):
+        post_votes = self.posts.aggregate(score=DefaultSum('_votes__vote', default=0))
+        comment_votes = self.comments.aggregate(score=DefaultSum('_votes__vote', default=0))
+        return post_votes['score'] + comment_votes['score']
+
 
 class OneTimeUser(models.Model):
     nick = models.CharField(max_length=16)
