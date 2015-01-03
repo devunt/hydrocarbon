@@ -5,11 +5,10 @@
 {% block pagename %}{% trans "Delete post" %}{% endblock %}
 
 {% block content %}
-
 <div id="form">
 	<form method="post" action="">
 		{% csrf_token %}
-			<div class="simple_notice">
+			<div class="notice">
 				<p>{% trans "Deleting a post- this action cannot be undone. Are you sure?" %}
 			{% if password_form %}
 				<br>{% trans "Then enter the password you used." %}</p>
@@ -26,7 +25,7 @@
 			</p></div>
 		{% endif %}
 		<div class="center">
-			<input class="submit" type="submit" value="{% trans 'Delete' %}" />
+			<input class="submit" type="submit" value="{% trans 'Delete' %}">
 		</div>
 	</form>
 </div>

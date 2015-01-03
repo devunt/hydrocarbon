@@ -581,6 +581,10 @@ msgstr "베스트"
 msgid "New post"
 msgstr "글쓰기"
 
+#: board/templates/board/post_form.html:23
+msgid "Input the password you used on this post."
+msgstr "글을 작성하실 때 사용하셨던 비밀번호를 입력해 주세요."
+
 #: board/templates/board/post_form.html:39
 #: board/templates/board/post_list.html:18
 msgid "Categories"
@@ -601,7 +605,7 @@ msgstr "사용자들의 비추천에 의해 숨겨진 글입니다."
 
 #: board/templates/board/post_list.html:27
 msgid "Clear sort/filter"
-msgstr "기본값 보기"
+msgstr "기본 정렬"
 
 #: board/templates/board/post_list.html:31
 msgid "Title"

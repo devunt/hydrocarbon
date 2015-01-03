@@ -19,7 +19,7 @@
 
 				.label.meta.comments {
 					margin-left:.5em; vertical-align:text-bottom;
-					&:hover { color:$black; opacity:.6; }
+					.no-touch &:hover { color:$black; opacity:.6; }
 				}
 			}
 			
@@ -78,7 +78,7 @@
 				}
 				.text { display:block; font-size:$font-size; line-height:20px; }
 
-				&:hover { opacity:.7; }
+				.no-touch &:hover { opacity:.7; }
 				&:active { opacity:1; }
 				&.voted { opacity:.9; }
 
@@ -90,7 +90,7 @@
 		}
 
 		.footer {
-			margin:0 5%; padding:5px 3%;
+			margin:0 5%; padding:5px 3%; -webkit-tap-highlight-color: rgba(0,0,0,0);
 			.icon { margin-right:4px; }
 		}
 	}
@@ -137,7 +137,6 @@
 
 					.article {
 						padding:5px 10px;
-						// textarea { min-height:80px; width:100%; max-width:100%; border:0; background:transparent; display:block; }
 						.redactor-box {
 							background:none; margin:0;
 							.redactor-toolbar { background:none; border-bottom:1px solid $grey-90 !important; }

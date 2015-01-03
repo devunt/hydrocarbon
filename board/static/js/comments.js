@@ -68,8 +68,7 @@ function renderComment($container, v, depth) {
 			a
 				.addClass('imagecontainer')
 				.attr('href', $(this).attr('src'))
-				.attr('target', '_blank')
-				.attr('title', '원본 보기');
+				.attr('target', '_blank');
 
 			$(this).wrap(a);
 		}
@@ -189,6 +188,18 @@ $(function() {
 					ot_nick: nick,
 					ot_password: password
 				};
+
+			if(author == '') {
+				if(nick == '') {
+					alert('닉네임을 입력해 주세요.');
+					return false;
+				}
+
+				if(password == '') {
+					alert('비밀번호를 입력해 주세요.');
+					return false;
+				}
+			}
 
 			if(text == '') {
 				alert('내용을 입력해 주세요.');

@@ -23,7 +23,7 @@ from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import DefaultSum
 from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
-from board.utils import normalize
+from board.utils import is_empty_html, normalize
 
 
 class IndexView(View):
@@ -192,11 +192,16 @@ class PostBestListView(PostListView):
 
 class BoardSearchView(PostListView):
     def get_queryset(self):
+        self.q = self.request.GET.get('q')
         sqs = SearchQuerySet().models(Post)
-        sqs = sqs.filter(board=self.board.slug, content=self.request.GET.get('q'))
+        sqs = sqs.filter(board=self.board.slug, content=self.q)
         pqs = super().get_queryset()
         pqs = pqs.filter(pk__in=[s.pk for s in sqs])
         return pqs
+
+    def get_context_data(self, **kwargs):
+        kwargs['search'] = {'query': self.q}
+        return super().get_context_data(**kwargs)
 
 
 class PostDetailView(DetailView):

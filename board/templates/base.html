@@ -2,7 +2,7 @@
 {% load i18n %}
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="no-touch">
 
 <head>
 	<meta charset="UTF-8">
@@ -75,7 +75,7 @@
 									{% endfor %}
 								{% endcomment %}
 
-								<li><a href="/accounts/profile"><span>{% trans "Profile" %}</span></a></li>
+								<li><a href="/accounts/profile"><span>{{ user.nickname }}</span></a></li>
 								<li><a href="#"><span>{% trans "Submitted" %}</span></a></li>
 								<li><a href="#"><span>{% trans "Inbox" %}</span></a></li>
 								<li><a href="{% url 'account_logout' %}"><span>{% trans "Log out" %}</span></a></li>
