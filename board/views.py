@@ -7,7 +7,7 @@ from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse, QueryDict
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
@@ -22,7 +22,7 @@ from redactor.views import RedactorUploadView
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import DefaultSum
-from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
+from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, Vote
 from board.utils import is_empty_html, normalize
 
 
@@ -186,6 +186,23 @@ class PostBestListView(PostListView):
         pqs = super().get_queryset()
         pqs = pqs.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
         return pqs
+
+
+class PostListByCategoryView(PostListView):
+    template_name = 'board/post_list_by_category.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.category = get_object_or_404(Category, slug=kwargs.get('category'))
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        pqs = super().get_queryset()
+        pqs = pqs.filter(category=self.category)
+        return pqs
+
+    def get_context_data(self, **kwargs):
+        kwargs['category'] = self.category
+        return super().get_context_data(**kwargs)
 
 
 class BoardSearchView(PostListView):
