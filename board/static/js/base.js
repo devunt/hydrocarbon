@@ -20,7 +20,11 @@ $(function() {
 	$menu = $('.dropdown.container');
 
 	$document
-		.one('touchstart', function() { $('html').removeClass('no-touch'); })
+		.one('touchstart', function() {
+			$('html').removeClass('no-touch');
+
+			$document.off('mouseenter mouseleave', '.th');
+		})
 
 		.on('keypress', '.type-zone', checkEnter)
 
@@ -50,7 +54,9 @@ $(function() {
 
 		.on('mouseenter', '.th', showTooltip)
 		.on('mouseleave scroll', '.th', hideTooltip)
-		.on('mouseenter', '*[title]', function() {
+		.on('touchstart', '.th:not(.th-active)', showTooltip)
+		.on('touchstart', '.th.th-active', hideTooltip)
+		.on('mouseenter touchstart', '*[title]', function() {
 			if($(this).closest('.note-editor').length) return false;
 			$(this)
 				.data('title', $(this).attr('title'))
@@ -306,6 +312,9 @@ function showTooltip(e) {
 		if(width/2 - offsetX < 0 ) return false;
 	} else { offsetX = 0; }
 
+	$('.th-active').removeClass('th-active');
+	$target.addClass('th-active');
+
 	$tooltip
 		.css({
 			'top': top + offsetY,
@@ -321,6 +330,8 @@ function showTooltip(e) {
 }
 
 function hideTooltip() {
+	$('.th-active').removeClass('th-active');
+
 	$tooltip
 		.stop()
 		.animate({'opacity': 0}, 100, function() { $tooltip.hide(); });
