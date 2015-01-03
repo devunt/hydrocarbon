@@ -8,7 +8,7 @@ register = Library()
 try:
     head = subprocess.Popen('git rev-parse --short HEAD',
         shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    VERSION = head.stdout.readline().strip()
+    VERSION = head.stdout.readline().strip().decode()
 except:
     VERSION = 'unknown'
 
