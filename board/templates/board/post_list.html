@@ -94,7 +94,7 @@
 			</a>
 			<div class="search button">
 				<form action="{% url 'board_search' board.slug %}" method="get">
-					<input type="button" value="{% trans "Search" %}" class="search-button">
+					<button type="button" title="{% trans "Search" %}" class="search label meta"><span class="icon"></span></button>
 					<input type="search" name="q" class="text"{% if search %} value="{{ search.query }}"{% endif %}>
 					<div class="dropdown container scope">
 						<a href="#" class="handle label meta">

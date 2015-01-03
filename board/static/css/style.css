@@ -439,6 +439,8 @@ body {
   background-position: 0 -192px !important; }
 .label.meta.downvote .icon {
   background-position: 0 -204px; }
+.label.meta.search .icon {
+  background-position: 0 -216px; }
 
 a.anchor {
   top: -60px;
@@ -1201,13 +1203,13 @@ a.anchor {
     .search.button form .scope {
       display: table-cell;
       vertical-align: top; }
-    .search.button form .search-button {
-      height: 30px;
-      width: 30px;
-      background: transparent url("../img/search.png");
-      border: 0;
-      color: transparent;
-      cursor: pointer; }
+    .search.button form .search.label.meta {
+      background: none;
+      border: 0; }
+      .search.button form .search.label.meta .icon {
+        margin: 8px; }
+      .no-touch .search.button form .search.label.meta:hover {
+        background: rgba(0, 0, 0, 0.1); }
     .search.button form input[type=search] {
       width: calc(100% - 30px);
       background: transparent;
@@ -1221,11 +1223,13 @@ a.anchor {
       background: rgba(0, 0, 0, 0.1);
       cursor: default;
       position: static; }
-    .search.button form .scope .handle {
-      width: 100%;
-      padding: 5px 0; }
-    .search.button form .scope .dropdown.menu .tip {
-      width: 10px; }
+      .no-touch .search.button form .scope:hover {
+        background: rgba(0, 0, 0, 0.2); }
+      .search.button form .scope .handle {
+        width: 100%;
+        padding: 5px 0; }
+      .search.button form .scope .dropdown.menu .tip {
+        width: 10px; }
     .search.button form .label.meta.delete {
       width: 30px;
       background: rgba(0, 0, 0, 0.2);
@@ -1233,6 +1237,8 @@ a.anchor {
       padding: 5px 0; }
       .search.button form .label.meta.delete .icon {
         margin: 4px; }
+  .search.button:hover {
+    background: rgba(204, 204, 204, 0.9) !important; }
 
 #redactor-modal,
 #redactor-modal footer button,
