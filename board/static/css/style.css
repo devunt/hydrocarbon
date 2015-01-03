@@ -110,23 +110,23 @@ body {
     border: 5px solid transparent;
     display: inline-block; }
 
-#tooltip {
+.tooltip {
   display: none;
   opacity: 0;
   pointer-events: none;
   position: absolute; }
-  #tooltip .tip.bottom {
+  .tooltip .tip.bottom {
     display: none; }
-  #tooltip .tip.top span {
+  .tooltip .tip.top span {
     border-bottom-color: rgba(34, 34, 34, 0.9); }
-  #tooltip .tip.bottom span {
+  .tooltip .tip.bottom span {
     border-top-color: rgba(34, 34, 34, 0.9); }
-  #tooltip .container {
+  .tooltip .container {
     background: rgba(34, 34, 34, 0.9);
     border-radius: 4px;
     padding: 0 8px;
     text-align: center; }
-    #tooltip .container p {
+    .tooltip .container p {
       color: #fff;
       font-size: 12px;
       line-height: 25px;
@@ -758,6 +758,8 @@ a.anchor {
   padding: 5px 5%; }
   .section.article .item.article .header div.meta .label.meta {
     margin-right: 5px; }
+    .no-touch .section.article .item.article .header div.meta .label.meta:hover {
+      color: #222; }
 @media screen and (max-device-width: 599px) {
   .section.article .item.article .header .title h2 {
     font-size: 18px;
@@ -1441,5 +1443,71 @@ a.anchor {
   text-align: center; }
 .section.search .search.button {
   width: 100%; }
+
+.section.profile {
+  padding: 20px 0; }
+  .section.profile .header {
+    width: 90%;
+    display: table;
+    margin: 0 auto;
+    padding: 20px 0; }
+    .section.profile .header .icon {
+      width: 100px;
+      display: table-cell;
+      vertical-align: middle; }
+      .section.profile .header .icon img {
+        width: 100%;
+        vertical-align: middle; }
+    .section.profile .header .meta {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 5px 20px;
+      vertical-align: top; }
+      .section.profile .header .meta h1 {
+        height: 1.25em;
+        font: normal 40px "NanumGothicLight";
+        line-height: 1.25em;
+        margin: 0; }
+      .section.profile .header .meta .score {
+        margin-top: 10px; }
+        .section.profile .header .meta .score .count {
+          line-height: 20px; }
+        .section.profile .header .meta .score .votes.bar {
+          height: 10px;
+          width: 100%;
+          background: #e5e5e5;
+          border-radius: 5px;
+          display: table;
+          overflow: hidden; }
+          .section.profile .header .meta .score .votes.bar .bar {
+            height: 100%;
+            display: table-cell; }
+          .section.profile .header .meta .score .votes.bar .downvote.bar {
+            background: #cc3d3d; }
+          .section.profile .header .meta .score .votes.bar .upvote.bar {
+            width: 0;
+            background: #3d9ccc; }
+          .section.profile .header .meta .score .votes.bar .relative {
+            position: relative; }
+        .section.profile .header .meta .score .tooltip {
+          display: block;
+          float: left;
+          opacity: 1;
+          position: relative; }
+          .section.profile .header .meta .score .tooltip .tip {
+            display: block; }
+    @media screen and (max-device-width: 719px) {
+      .section.profile .header .icon {
+        width: 80px; }
+      .section.profile .header .meta h1 {
+        font-size: 30px; } }
+    @media screen and (max-device-width: 599px) {
+      .section.profile .header .icon {
+        width: 60px; }
+      .section.profile .header .meta h1 {
+        font-size: 25px; } }
+    @media screen and (max-device-width: 419px) {
+      .section.profile .header .icon {
+        display: none; } }
 
 /*# sourceMappingURL=style.css.map */

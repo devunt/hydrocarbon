@@ -32,6 +32,7 @@ function renderComment($container, v, depth) {
 
 	var $c = $container.find('.list.template').clone(), date = new Date(v.created_time), contents;
 
+	console.log(v);
 	if(v.iphash) {
 		$c
 			.addClass('guest')

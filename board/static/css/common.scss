@@ -18,7 +18,7 @@
 // #tooltip
 //	JS tooltip
 // 
-#tooltip {
+.tooltip {
 	display:none; opacity:0; pointer-events:none; position:absolute;
 	
 	.tip.bottom { display:none; }
@@ -94,7 +94,7 @@
 		.no-touch &.blue:hover { background:$blue-trans; color:$white; }
 		& + .button { margin-left:10px; }
 	}
-	@media screen and (max-device-width: $medium) { padding:10px 4%;}
+	@media screen and (max-device-width: $medium) { padding:10px 4%; }
 }
 
 //

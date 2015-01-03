@@ -2,8 +2,8 @@
 {% load i18n %}
 {% load intcomma from humanize %}
 
-<li class="post-id-{{ item.id }}">
-	<a href="{{ item.get_absolute_url }}" class="post item {% if notice %}announcement {% elif item.votes.total <= BOARD_POST_BLIND_VOTES %}hidden {% else %}{{ item.category.slug }} {% endif %}{{ rowclass }}{% if post.id == item.id %} currentpost{% endif %}">
+<li>
+	<a href="{{ item.get_absolute_url }}" class="post item {% if notice %}announcement {% elif item.votes.total <= BOARD_POST_BLIND_VOTES %}hidden {% else %}{{ item.category.slug }} {% endif %}{{ rowclass }}{% if post.id == item.id %} currentpost{% endif %}" data-post-id="{{ item.id }}">
 		<span class="cell mark">&#9654;</span>
 		<span class="cell category">{% if notice %}{% trans "Notice" %}{% else %}{{ item.category }}{% endif %}</span>
 		<span class="cell title">
@@ -21,11 +21,10 @@
 		<span class="cell author meta">
 			<span title="{% if item.user %}{% if item.user.total_score >= 0 %}+{% endif %}{{ item.user.total_score }}{% else %}{{ item.iphash }}{% endif %}" class="label meta 
 			{% if item.user %}
-				author user">
+				author user" data-user-id-url="{% url 'user_profile' item.user.id %}">
 			{% else %}
 				author guest">
 			{% endif %}
-				<span class="icon"></span>
 				<span class="text">{{ item.author }}</span>
 			</span>
 		</span>

@@ -1,5 +1,63 @@
 {% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ user.nickname }} :: {{ block.super }}{% endblock %}
+{% block pagename %}{{ user.nickname }}{% endblock %}
 
 {% block content %}
-USER PROFILE
+
+{% with user=user %}
+
+<script>
+
+var score = {	
+	posts: {
+		upvotes: {{ user.score.posts.upvotes | default:0 }},
+		downvotes: {{ user.score.posts.downvotes | default:0 }}
+	},
+	comments: {
+		upvotes: {{ user.score.comments.upvotes | default:0 }},
+		downvotes: {{ user.score.comments.downvotes | default:0 }}
+	}
+}
+
+</script>
+
+<div class="section profile">
+	<div class="header">
+		<div class="icon"><img src="{% static "img/profile_3x.png" %}"></div>
+		<div class="meta">
+			<h1>{{ user.nickname }}</h1>
+			<div class="score">
+				<div class="votes bar">
+					{% if user.score.posts.upvotes or user.score.posts.downvotes or user.score.comments.upvotes or user.score.comments.downvotes %}
+						<div class="upvote bar"></div><div class="downvote bar"></div>
+					{% endif %}
+				</div>
+				<div class="count clear">
+					<div class="left">
+						<p>+{{ user.score.posts.upvotes | add:user.score.comments.upvotes }}</p>
+					</div>
+					<div class="right">
+						<p>-{{ user.score.posts.downvotes | add:user.score.comments.downvotes }}</p>
+					</div>
+				</div>
+
+				<script>
+					$('.upvote.bar')
+						.css('width',
+							(score.posts.upvotes
+								+ score.comments.upvotes)/
+							(score.posts.upvotes
+								+ score.posts.downvotes
+								+ score.comments.upvotes
+								+ score.comments.downvotes)*100 + '%');
+				</script>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endwith %}
+
 {% endblock %}

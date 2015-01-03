@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+// 	
+// 	profile.scss
+// 		finally, the profile!
+// 	
+
+.section.profile {
+	padding:20px 0;
+
+	.header {
+		width:90%; display:table; margin:0 auto; padding:20px 0;
+
+		.icon {
+			width:100px; display:table-cell; vertical-align:middle;
+			img { width:100%; vertical-align:middle; }
+		}
+		.meta {
+			width:100%; box-sizing:border-box; padding:5px 20px; vertical-align:top;
+			h1 { height:1.25em; font:normal 40px "NanumGothicLight"; line-height:1.25em; margin:0; }
+			.score {
+				margin-top:10px; 
+				.count { line-height:20px; }
+
+				.votes.bar {
+					height:10px; width:100%; background:$grey-90; border-radius:5px; display:table; overflow:hidden;
+					.bar { height:100%; display:table-cell; }
+					.downvote.bar { background:$red-base; }
+					.upvote.bar { width:0; background:$blue-base; }
+
+					.relative { position:relative; }
+				}
+
+				.tooltip {
+					display:block; float:left; opacity:1; position:relative;
+					.tip { display:block; }
+				}
+			}
+		}
+
+		@media screen and (max-device-width: $large) {
+			.icon { width:80px; }
+			.meta h1 { font-size:30px; }
+		}
+
+		@media screen and (max-device-width: $medium) {
+			.icon { width:60px; }
+			.meta h1 { font-size:25px; }
+		}
+
+		@media screen and (max-device-width: $small) {
+			.icon { display:none; }
+		}
+	}
+}

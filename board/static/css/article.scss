@@ -25,7 +25,10 @@
 			
 			div.meta {
 				background:$grey-90; padding:5px 5%;
-				.label.meta { margin-right:5px; }
+				.label.meta {
+					margin-right:5px;
+					.no-touch &:hover { color:$black; }
+				}
 			}
 
 			@media screen and (max-device-width: $medium) {

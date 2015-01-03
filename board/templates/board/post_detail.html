@@ -30,15 +30,15 @@
 			</div>
 			<div class="meta">
 				{% if not post.announcement %}
-				<span title="{% if post.user %}{% if post.user.total_score >= 0 %}+{% endif %}{{ post.user.total_score }}{% else %}{{ post.iphash }}{% endif %}" class="label meta 
+				<a title="{% if post.user %}{% if post.user.total_score >= 0 %}+{% endif %}{{ post.user.total_score }}{% else %}{{ post.iphash }}{% endif %}" class="label meta 
 				{% if post.user %}
-					author user">
+					author user" href="{% url 'user_profile' post.user.id %}">
 				{% else %}
 					author guest">
 				{% endif %}
 					<span class="icon"></span>
 					<span class="text"><span>{{ post.author }}</span></span>
-				</span>
+				</a>
 				{% endif %}
 				<span class="label meta timestamp" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}">
 					<span class="icon"></span>

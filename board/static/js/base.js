@@ -135,7 +135,6 @@ $(function() {
 		$label.remove();
 	});
 
-
 	$('.post.item .label.meta.comments')
 		.on('mouseenter', function() {
 			var $item = $(this).closest('a.post.item');
@@ -146,6 +145,18 @@ $(function() {
 			var $item = $(this).closest('a.post.item');
 
 			$item.attr('href', $item.attr('href').replace('#comments', ''));
+		});
+
+	$('.post.item .label.meta.author.user')
+		.on('mouseenter', function() {
+			var $item = $(this).closest('a.post.item');
+
+			$item.attr('href', $(this).data('user-id-url'));
+		})
+		.on('mouseleave', function() {
+			var $item = $(this).closest('a.post.item');
+
+			$item.attr('href', '/' + $item.data('post-id') + '/');
 		});
 
 	$('.section.article.form form')
