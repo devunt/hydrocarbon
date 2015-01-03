@@ -385,8 +385,9 @@ body {
   border-radius: 2px;
   content: "";
   display: inline-block;
+  margin: 8px 0;
   margin-left: 5px;
-  vertical-align: middle; }
+  vertical-align: top; }
 .label.meta.author.user .text:after {
   background: #3d9ccc; }
 .label.meta.author.guest .text:after {
