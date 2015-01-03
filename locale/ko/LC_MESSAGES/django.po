@@ -166,7 +166,7 @@ msgstr "{code}는 유효하지 않은 코드입니다."
 #: board/i18n_fake.py:39
 #, python-brace-format
 msgid "You have confirmed {email}."
-msgstr "{email}을 확인했습니다."
+msgstr "메일 주소 {email}로 인증되었습니다."
 
 #: board/i18n_fake.py:40
 msgid "Password successfully changed."
@@ -302,7 +302,7 @@ msgstr "메일 확인"
 #: board/templates/account/email_confirm.html:11
 #, python-format
 msgid "Confirm email address <b>%(email)s</b>?"
-msgstr "<b>%(email)s</b>로 확인하시겠습니까?"
+msgstr "메일 주소 <b>%(email)s</b>로 인증하시겠습니까?"
 
 #: board/templates/account/email_confirm.html:13
 msgid "Confirm"
