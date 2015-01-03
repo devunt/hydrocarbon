@@ -30,11 +30,11 @@
 			</div>
 			<div class="meta">
 				{% if not post.announcement %}
-				<span class="label meta 
+				<span title="{% if post.user %}{% if post.user.score >= 0 %}+{% endif %}{{ post.user.score }}{% else %}{{ post.iphash }}{% endif %}" class="label meta 
 				{% if post.user %}
 					author user">
 				{% else %}
-					author guest" title="{{ post.iphash }}">
+					author guest">
 				{% endif %}
 					<span class="icon"></span>
 					<span class="text"><span>{{ post.author }}</span></span>
@@ -215,7 +215,10 @@
 
 		<script>
 			var c3RhZmY = {{ user.is_staff | lower }};
-			var author = '{{ user.nickname }}';
+			var author = {
+				nick: '{{ user.nickname }}',
+				authed: {{ user.is_authenticated | lower }}
+			}
 			var post_id = {{ post.id }};
 			getComments({{ post.id }});
 		</script>
