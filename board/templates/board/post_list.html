@@ -4,13 +4,7 @@
 {% load cycle from future %}
 
 {% block title %}{{ board }} :: {{ block.super }}{% endblock %}
-{% block pagename %}
-	{% if search %}
-		{% blocktrans %}Searching {{ board }}{% endblocktrans %}
-	{% else %}
-		{{ board }}
-	{% endif %}
-{% endblock %}
+{% block pagename %}{% if search %}{% blocktrans %}Searching {{ board }}{% endblocktrans %}{% else %}{{ board }}{% endif %}{% endblock %}
 
 {% block content %}
 
@@ -20,6 +14,8 @@
 	<div class="header{% if post %} foldable{% endif %}">
 		<div class="cell mark"></div>
 		<div class="cell category sortable dropdown container">
+			{{ post.all }}
+			{% if board.categories.all %}
 			<a href="#" class="handle label meta">
 				<span class="text"><span>{% trans "Categories" %}</span></span>
 			</a>
@@ -27,16 +23,16 @@
 				<a href="#" class="close">{% trans "Close" %}</a>
 				<div class="tip top"><span></span></div>
 				<ul>
-					<li><a href="#"><span>cat1</span></a></li>
-					<li><a href="#"><span>cat2</span></a></li>
-					<li><a href="#"><span>cat3</span></a></li>
-					<li><a href="{% url 'board_post_list' board.slug %}"><span>{% trans "Clear sort/filter" %}</span></a></li>
+					{% for cat in board.categories.all %}
+					<li class="{{ cat.slug }}"><a href="{% url 'board_post_list_by_category' board.slug cat.slug %}"><span>{{ cat.name }}</span></a></li>
+					{% endfor %}
+					<li style="border-top:1px solid #e5e5e5;"><a href="{% url 'board_post_list' board.slug %}"><span>{% trans "Clear sort/filter" %}</span></a></li>
 				</ul>
 			</div>
+			{% endif %}
 		</div>
 		<div class="cell title">{% trans "Title" %}</div>
 		<div class="cell author">{% trans "Author" %}</div>
-		{{ order_by }}
 		<div class="cell timestamp sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
 			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug %}{% else %}{% url 'board_post_list' board.slug '-ct' %}{% endif %}">
 				<span class="text">{% trans "Date" %}</span>

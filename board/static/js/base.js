@@ -149,7 +149,10 @@ $(function() {
 		});
 
 	$('.section.article.form form')
-		.on('submit', function() { $('#tagbox').tagging('add'); })
+		.on('submit', function() {
+			$('#tagbox').tagging('add');
+			$tags.val($tagbox.tagging('getTags').join(','));
+		})
 		.find('.category')
 			.on('click', 'a.option', function(e) {
 				e.preventDefault();
@@ -205,13 +208,13 @@ $(function() {
 
 					switch($(this).text()) {
 						case '번역':
-							$a.addClass('scanlation');
+							$li.addClass('scanlation');
 							break;
 						case '자막':
-							$a.addClass('subtitles');
+							$li.addClass('subtitles');
 							break;
 						case '정보':
-							$a.addClass('news');
+							$li.addClass('news');
 							break;
 					}
 
