@@ -65,6 +65,19 @@ $(function() {
 				.trigger('mouseenter');
 		});
 
+	$('.article img').each(function() {
+		if($(this).parents('a').length > 0) { return false; } else {
+			var a = $('<a>');
+
+			a
+				.addClass('imagecontainer')
+				.attr('href', $(this).attr('src'))
+				.attr('target', '_blank');
+
+			$(this).wrap(a);
+		}
+	});
+
 	$('input[type=checkbox]').each(function() {
 		var $label;
 
