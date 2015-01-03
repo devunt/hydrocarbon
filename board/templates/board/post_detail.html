@@ -4,6 +4,8 @@
 {% load i18n %}
 {% load intcomma from humanize %}
 
+{% block title %}{{ post.title }} - {{ block.super }}{% endblock %}
+
 {% block head %}
 	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
 	<script src="{% static "js/tagging.min.js" %}"></script>
@@ -20,7 +22,7 @@
 				<p class="category">{{ post.category }}</p>
 				<h2>
 					<span>{{ post.title }}</span>
-					<a href="#comments" class="label meta comments"{% if item.comments.count == 0 %} style="display:none;"{% endif %}>
+					<a href="#comments" class="label meta comments"{% if post.comments.count == 0 %} style="display:none;"{% endif %}>
 						<span class="icon"></span>
 						<span class="text">{{ post.comments.count }}</span>
 					</a>
