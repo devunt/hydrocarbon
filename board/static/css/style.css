@@ -23,6 +23,9 @@ body {
 button, input, select, textarea {
   outline: none; }
 
+input {
+  border-radius: 0; }
+
 a {
   color: #222;
   text-decoration: none; }
