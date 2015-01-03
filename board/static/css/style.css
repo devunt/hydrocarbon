@@ -33,7 +33,7 @@ a {
 .no-touch a.label:hover,
 .no-touch a:hover .label {
   color: #222;
-  opacity: .6; }
+  opacity: .8; }
 
 .button {
   display: inline-block; }
