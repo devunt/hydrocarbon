@@ -230,7 +230,8 @@ body {
 
 #messages li, .contents > .errorlist li,
 .section > .errorlist li,
-.item.article > .errorlist li {
+.item.article > .errorlist li,
+form > .errorlist li {
   background: #ccc;
   color: #222;
   line-height: 20px;
@@ -239,22 +240,26 @@ body {
   text-align: center; }
   #messages li.success, .contents > .errorlist li.success,
   .section > .errorlist li.success,
-  .item.article > .errorlist li.success {
+  .item.article > .errorlist li.success,
+  form > .errorlist li.success {
     background: #85cc3d;
     color: #fff; }
   #messages li.warning, .contents > .errorlist li.warning,
   .section > .errorlist li.warning,
-  .item.article > .errorlist li.warning {
+  .item.article > .errorlist li.warning,
+  form > .errorlist li.warning {
     background: #ffea80; }
   #messages li.error, .contents > .errorlist li.error,
   .section > .errorlist li.error,
-  .item.article > .errorlist li.error {
+  .item.article > .errorlist li.error,
+  form > .errorlist li.error {
     background: rgba(204, 61, 61, 0.9);
     color: #fff; }
 
 .contents > .errorlist li,
 .section > .errorlist li,
-.item.article > .errorlist li {
+.item.article > .errorlist li,
+form > .errorlist li {
   background: rgba(204, 61, 61, 0.9);
   color: #fff; }
 

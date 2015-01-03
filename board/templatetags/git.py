@@ -1,14 +1,15 @@
-import subprocess
-
 from django.template import Library
 
 
 register = Library()
 
 try:
-    head = subprocess.Popen('git rev-parse --short HEAD',
-        shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    VERSION = head.stdout.readline().strip()
+    with open('.git/logs/HEAD', 'r') as f:
+        f.seek(0, 2)
+        fsize = f.tell()
+        f.seek(max(fsize - 1024, 0), 0)
+        line = f.readlines()[-1]
+    VERSION = line.split()[1][:7]
 except:
     VERSION = 'unknown'
 

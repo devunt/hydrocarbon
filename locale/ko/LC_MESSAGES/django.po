@@ -630,7 +630,7 @@ msgstr "조회"
 
 #: board/templates/board/post_list.html:71
 msgid "There are no results."
-msgstr "결과가 없습니다."
+msgstr "검색 결과가 없습니다."
 
 #: board/templates/board/post_list.html:73
 msgid "There are no posts here!"
