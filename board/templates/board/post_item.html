@@ -19,7 +19,7 @@
 		</span>
 		<br>
 		<span class="cell author meta">
-			<span title="{% if item.user %}{% if item.user.score >= 0 %}+{% endif %}{{ item.user.score }}{% else %}{{ item.iphash }}{% endif %}" class="label meta 
+			<span title="{% if item.user %}{% if item.user.total.score >= 0 %}+{% endif %}{{ item.user.total.score }}{% else %}{{ item.iphash }}{% endif %}" class="label meta 
 			{% if item.user %}
 				author user">
 			{% else %}
