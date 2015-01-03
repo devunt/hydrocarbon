@@ -10,6 +10,40 @@ function checkEnter(e){
 	return txtArea || (e.keyCode || e.which || e.charCode || 0) !== 13;
 }
 
+
+
+var $overlay,
+	$tooltip,
+	$menu,
+	csrftoken = $.cookie('csrftoken'),
+	browser = {
+		can : {
+			placeholder: function() { return 'placeholder' in document.createElement('input'); }
+		}
+	},
+	taggingJS_options = {
+		'case-sensitive': true,
+		'forbidden-chars': [','],
+		'forbidden-chars-text': '이하의 문자는 사용할 수 없습니다:\n',
+		'forbidden-words-text': '이하의 단어는 사용할 수 없습니다:\n',
+		'no-duplicate-text': '이하의 태그는 이미 선택되어 있습니다:\n',
+		'tag-char': '',
+		'no-spacebar': true,
+		'tag-on-blur': false
+	},
+	autocomplete_options = {
+		'serviceUrl': '/x/t',
+		'type': 'POST',
+		'minChars': 2,
+		'lookupLimit': 5,
+		'preserveInput': true,
+		'formatResult': function(suggestion, currentValue) {
+			return '<span class="left">' + $.Autocomplete.formatResult(suggestion, currentValue) + '</span><span class="right">' + suggestion.data + '</span>';
+		},
+		'onSelect': function(suggestion) { this.focus(); },
+		'zIndex': 1050
+	}
+
 $(function() {
 
 	$window = $(window);
@@ -239,42 +273,6 @@ $(function() {
 		});
 });
 
-var $overlay;
-var $tooltip;
-var $menu;
-
-var csrftoken = $.cookie('csrftoken');
-
-var browser = {
-	can : {
-		placeholder: function() { return 'placeholder' in document.createElement('input'); }
-	}
-}
-
-var taggingJS_options = {
-	'case-sensitive': true,
-	'forbidden-chars': [','],
-	'forbidden-chars-text': '이하의 문자는 사용할 수 없습니다:\n',
-	'forbidden-words-text': '이하의 단어는 사용할 수 없습니다:\n',
-	'no-duplicate-text': '이하의 태그는 이미 선택되어 있습니다:\n',
-	'tag-char': '',
-	'no-spacebar': true,
-	'tag-on-blur': false
-}
-
-var autocomplete_options = {
-	'serviceUrl': '/x/t',
-	'type': 'POST',
-	'minChars': 2,
-	'lookupLimit': 5,
-	'preserveInput': true,
-	'formatResult': function(suggestion, currentValue) {
-		return '<span class="left">' + $.Autocomplete.formatResult(suggestion, currentValue) + '</span><span class="right">' + suggestion.data + '</span>';
-	},
-	'onSelect': function(suggestion) { this.focus(); },
-	'zIndex': 1050
-}
-
 function csrfSafeMethod(method) { return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)); }
 
 $.ajaxSetup({
@@ -392,10 +390,16 @@ function $ajax_vote(databox) {
 			data: databox
 		})
 			.fail(function(xhr, status, error) {
-				switch(error) {
-					case 'UNAUTHORIZED':
+				var response = xhr.responseJSON.status;
+				switch(response) {
+					case 'notauthenticated':
 						alert('로그인한 사용자만 사용 가능한 기능입니다.');
 						break;
+
+					case 'alreadyhave':
+						alert('이미 추천한 게시글 또는 댓글입니다.');
+						break;
+
 					default:
 						alert('알 수 없는 문제가 발생하였습니다.');
 						console.log(databox);
