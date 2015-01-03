@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-01 22:42+0900\n"
+"POT-Creation-Date: 2015-01-03 16:23+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: board/forms.py:48 board/forms.py:69
-#: board/templates/board/post_detail.html:199
+#: board/forms.py:49 board/forms.py:70
+#: board/templates/board/post_detail.html:201
 msgid "Nickname"
 msgstr ""
 
-#: board/forms.py:61
+#: board/forms.py:62
 msgid "This nickname is already taken. Please choose another."
 msgstr ""
 
-#: board/forms.py:70 board/forms.py:108 board/i18n_fake.py:7
-#: board/templates/board/post_detail.html:200
+#: board/forms.py:71 board/forms.py:114 board/i18n_fake.py:7
+#: board/templates/board/post_detail.html:202
 msgid "Password"
 msgstr ""
 
-#: board/forms.py:102
+#: board/forms.py:108
 msgid "Press ctrl-space to submit a comment"
 msgstr ""
 
@@ -424,10 +424,10 @@ msgid "Sorry, but registration is closed at this moment. Come back later."
 msgstr ""
 
 #: board/templates/base.html:40 board/templates/base.html.py:68
-#: board/templates/board/post_detail.html:135
-#: board/templates/board/post_list.html:21
-#: board/templates/board/post_list.html:91
-#: board/templates/search/search.html:23
+#: board/templates/board/post_detail.html:137
+#: board/templates/board/post_list.html:27
+#: board/templates/board/post_list.html:105
+#: board/templates/search/search.html:22
 msgid "Close"
 msgstr ""
 
@@ -447,10 +447,6 @@ msgstr ""
 msgid "Scanlations"
 msgstr ""
 
-#: board/templates/base.html:80
-msgid "Profile"
-msgstr ""
-
 #: board/templates/base.html:81
 msgid "Submitted"
 msgstr ""
@@ -464,26 +460,26 @@ msgstr ""
 msgid "Delete post"
 msgstr ""
 
-#: board/templates/board/post_confirm_delete.html:13
+#: board/templates/board/post_confirm_delete.html:12
 msgid "Deleting a post- this action cannot be undone. Are you sure?"
 msgstr ""
 
-#: board/templates/board/post_confirm_delete.html:15
+#: board/templates/board/post_confirm_delete.html:14
 msgid "Then enter the password you used."
 msgstr ""
 
-#: board/templates/board/post_confirm_delete.html:29
-#: board/templates/board/post_detail.html:174
-#: board/templates/board/post_detail.html:238
+#: board/templates/board/post_confirm_delete.html:28
+#: board/templates/board/post_detail.html:176
+#: board/templates/board/post_detail.html:240
 msgid "Delete"
 msgstr ""
 
-#: board/templates/board/post_detail.html:43
-#: board/templates/board/post_item.html:34
+#: board/templates/board/post_detail.html:45
+#: board/templates/board/post_item.html:35
 msgid "ago"
 msgstr ""
 
-#: board/templates/board/post_detail.html:48
+#: board/templates/board/post_detail.html:50
 #, python-format
 msgid ""
 "\n"
@@ -491,7 +487,7 @@ msgid ""
 "\t\t\t\t\t\t"
 msgstr ""
 
-#: board/templates/board/post_detail.html:56
+#: board/templates/board/post_detail.html:58
 #, python-format
 msgid ""
 "\n"
@@ -499,69 +495,73 @@ msgid ""
 "\t\t\t\t\t\t"
 msgstr ""
 
-#: board/templates/board/post_detail.html:72
-#: board/templates/board/post_detail.html:142
+#: board/templates/board/post_detail.html:74
+#: board/templates/board/post_detail.html:144
 msgid "Upvote"
 msgstr ""
 
-#: board/templates/board/post_detail.html:76
-#: board/templates/board/post_detail.html:150
+#: board/templates/board/post_detail.html:78
+#: board/templates/board/post_detail.html:152
 msgid "Downvote"
 msgstr ""
 
-#: board/templates/board/post_detail.html:98
+#: board/templates/board/post_detail.html:100
 #, python-format
 msgid "There is <span>%(counter)s</span> comment."
 msgid_plural "There are <span>%(counter)s</span> comments."
 msgstr[0] ""
 msgstr[1] ""
 
-#: board/templates/board/post_detail.html:104
+#: board/templates/board/post_detail.html:106
 msgid "Refresh"
 msgstr ""
 
-#: board/templates/board/post_detail.html:158
+#: board/templates/board/post_detail.html:160
 msgid "Reply"
 msgstr ""
 
-#: board/templates/board/post_detail.html:166
-#: board/templates/board/post_detail.html:239
+#: board/templates/board/post_detail.html:168
+#: board/templates/board/post_detail.html:241
 msgid "Modify"
 msgstr ""
 
-#: board/templates/board/post_detail.html:203
+#: board/templates/board/post_detail.html:205
 msgid "Cancel"
 msgstr ""
 
-#: board/templates/board/post_detail.html:204
+#: board/templates/board/post_detail.html:206
 msgid "Submit comment"
 msgstr ""
 
-#: board/templates/board/post_detail.html:224
-#: board/templates/board/post_list.html:70
+#: board/templates/board/post_detail.html:226
+#: board/templates/board/post_list.html:84
 msgid "List"
 msgstr ""
 
-#: board/templates/board/post_detail.html:232
-#: board/templates/board/post_list.html:78
+#: board/templates/board/post_detail.html:234
+#: board/templates/board/post_list.html:92
 msgid "Top posts"
 msgstr ""
 
-#: board/templates/board/post_detail.html:241
+#: board/templates/board/post_detail.html:243
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
-#: board/templates/board/post_form.html:76
-#: board/templates/board/post_list.html:112
+#: board/templates/board/post_form.html:90
+#: board/templates/board/post_list.html:126
 msgid "New post"
 msgstr ""
 
-#: board/templates/board/post_form.html:39
-#: board/templates/board/post_list.html:18
+#: board/templates/board/post_form.html:23
+msgid "Input the password you used on this post."
+msgstr ""
+
+#: board/templates/board/post_form.html:53
+#: board/templates/board/post_list.html:24
 msgid "Categories"
 msgstr ""
 
-#: board/templates/board/post_form.html:59
-#: board/templates/board/post_form.html:89
+#: board/templates/board/post_form.html:73
+#: board/templates/board/post_form.html:103
 msgid "Tags"
 msgstr ""
 
@@ -573,53 +573,61 @@ msgstr ""
 msgid "This post has been downvoted by users."
 msgstr ""
 
-#: board/templates/board/post_list.html:27
+#: board/templates/board/post_list.html:9
+#, python-format
+msgid "Searching %(board)s"
+msgstr ""
+
+#: board/templates/board/post_list.html:33
 msgid "Clear sort/filter"
 msgstr ""
 
-#: board/templates/board/post_list.html:31
+#: board/templates/board/post_list.html:37
 msgid "Title"
 msgstr ""
 
-#: board/templates/board/post_list.html:32
+#: board/templates/board/post_list.html:38
 msgid "Author"
 msgstr ""
 
-#: board/templates/board/post_list.html:36
+#: board/templates/board/post_list.html:42
 msgid "Date"
 msgstr ""
 
-#: board/templates/board/post_list.html:42
+#: board/templates/board/post_list.html:48
 msgid "Score"
 msgstr ""
 
-#: board/templates/board/post_list.html:48
+#: board/templates/board/post_list.html:54
 msgid "Views"
 msgstr ""
 
-#: board/templates/board/post_list.html:64
+#: board/templates/board/post_list.html:71
+msgid "There are no results."
+msgstr ""
+
+#: board/templates/board/post_list.html:73
 msgid "There are no posts here!"
 msgstr ""
 
-#: board/templates/board/post_list.html:83
+#: board/templates/board/post_list.html:98
 #: board/templates/search/search.html:6 board/templates/search/search.html:7
-#: board/templates/search/search.html:16
 msgid "Search"
 msgstr ""
 
-#: board/templates/board/post_list.html:120
+#: board/templates/board/post_list.html:134
 msgid "First"
 msgstr ""
 
-#: board/templates/board/post_list.html:123
+#: board/templates/board/post_list.html:137
 msgid "Prev"
 msgstr ""
 
-#: board/templates/board/post_list.html:131
+#: board/templates/board/post_list.html:145
 msgid "Next"
 msgstr ""
 
-#: board/templates/board/post_list.html:134
+#: board/templates/board/post_list.html:148
 msgid "Last"
 msgstr ""
 
