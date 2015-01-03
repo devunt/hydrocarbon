@@ -21,8 +21,6 @@ input { border-radius:0; }
 
 a { color:$black; text-decoration:none; }
 .no-touch a:hover { color:$grey; }
-.no-touch a.label:hover,
-.no-touch a:hover .label { color:$black; opacity:.8; }
 
 .button {
 	display:inline-block;

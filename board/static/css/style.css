@@ -33,11 +33,6 @@ a {
 .no-touch a:hover {
   color: rgba(170, 170, 170, 0.9); }
 
-.no-touch a.label:hover,
-.no-touch a:hover .label {
-  color: #222;
-  opacity: .8; }
-
 .button {
   display: inline-block; }
   .button.image > span {
