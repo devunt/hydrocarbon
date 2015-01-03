@@ -29,6 +29,7 @@
 			.category {
 				select { width:100%; background:none; border:0; text-align:right; }
 				.tip { text-align:left; }
+				.dropdown.menu li a > span { margin:0 15px; }
 			}
 			h2 {
 				width:100%;
@@ -70,7 +71,12 @@
 	}
 
 	.ot.nav {
-		label { width:30%; }
+		label {
+			width:30%;
+			@media screen and (max-device-width: $medium) { width:40%; }
+			@media screen and (max-device-width: $small) { width:50%; }
+		}
+
 	}
 
 	.nav.center {

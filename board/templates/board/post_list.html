@@ -17,7 +17,7 @@
 {% block post %}{% endblock %}
 
 <div class="section board">
-	<div class="header">
+	<div class="header{% if post %} foldable{% endif %}">
 		<div class="cell mark"></div>
 		<div class="cell category sortable dropdown container">
 			<a href="#" class="handle label meta">

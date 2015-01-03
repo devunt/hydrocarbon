@@ -216,7 +216,8 @@ body {
       background: rgba(61, 156, 204, 0.9);
       color: #fff; }
     .no-touch .nav .button.blue:hover {
-      background: rgba(61, 156, 204, 0.6); }
+      background: rgba(61, 156, 204, 0.6);
+      color: #fff; }
     .nav .button + .button {
       margin-left: 10px; }
   @media screen and (max-device-width: 599px) {
@@ -308,9 +309,9 @@ body {
     overflow: hidden; }
   .dropdown.menu li {
     list-style: none; }
-  .no-touch .dropdown.menu li:hover {
+  .dropdown.menu li:hover {
     background: rgba(61, 156, 204, 0.9); }
-  .no-touch .dropdown.menu li:hover a,
+  .dropdown.menu li:hover a,
   .dropdown.menu li.voted a {
     color: #fff; }
   .no-touch .dropdown.menu li.vote:hover {
@@ -985,6 +986,8 @@ a.anchor {
         color: #cc3d3d; }
       .section.board .item .cell.title .label.meta.comments {
         margin-left: .5em; }
+    .section.board .item br {
+      display: none; }
   .section.board .cell {
     display: inline-block;
     font-size: 14px;
@@ -1080,6 +1083,8 @@ a.anchor {
           text-align: left; }
       .section.board .header .category.sortable {
         margin: 0; }
+      .section.board .header.foldable {
+        display: none; }
     .section.board .item {
       padding: 5px 2%;
       padding-left: 0; }
@@ -1142,6 +1147,8 @@ a.anchor {
           margin: 0; }
       .section.board .item.announcement .cell.timestamp {
         margin-left: 4%; }
+      .section.board .item br {
+        display: inline; }
     .section.board .close .search.button form input.text {
       width: 0; }
     .section.board .close .search.button form .scope {
@@ -1245,6 +1252,8 @@ a.anchor {
     text-align: right; }
   .section.article.form .item.article .header .category .tip {
     text-align: left; }
+  .section.article.form .item.article .header .category .dropdown.menu li a > span {
+    margin: 0 15px; }
   .section.article.form .item.article .header h2 {
     width: 100%; }
     .section.article.form .item.article .header h2 input {
@@ -1298,6 +1307,12 @@ a.anchor {
           background: #d9d9d9; }
 .section.article.form .ot.nav label {
   width: 30%; }
+  @media screen and (max-device-width: 599px) {
+    .section.article.form .ot.nav label {
+      width: 40%; } }
+  @media screen and (max-device-width: 419px) {
+    .section.article.form .ot.nav label {
+      width: 50%; } }
 .section.article.form .nav.center {
   padding: 0; }
   .section.article.form .nav.center .submit, .section.article.form .nav.center .redmit, .section.article.form .nav.center .gromit {

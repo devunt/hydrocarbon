@@ -55,6 +55,8 @@
 			&.title span.title .highlight { background:#fff7cc; color:$red-base; }
 			&.title .label.meta.comments { margin-left:.5em; }			
 		}
+
+		br { display:none; }
 	}
 
 	.cell {
@@ -112,6 +114,7 @@
 				.tip { text-align:left; }
 			}
 			.category.sortable { margin:0; }
+			&.foldable { display:none; }
 		}
 
 		.item {
@@ -146,6 +149,8 @@
 				&.views { margin:0; }
 			}
 			&.announcement .cell.timestamp { margin-left:4%; }
+
+			br { display:inline; }
 		}
 
 		.close {
