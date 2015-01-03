@@ -19,7 +19,7 @@
 
 				.label.meta.comments {
 					margin-left:.5em; vertical-align:text-bottom;
-					&:hover { color:$black; opacity:.6; }
+					.no-touch &:hover { color:$black; opacity:.6; }
 				}
 			}
 			
@@ -78,7 +78,7 @@
 				}
 				.text { display:block; font-size:$font-size; line-height:20px; }
 
-				&:hover { opacity:.7; }
+				.no-touch &:hover { opacity:.7; }
 				&:active { opacity:1; }
 				&.voted { opacity:.9; }
 

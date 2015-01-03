@@ -20,6 +20,8 @@ $(function() {
 	$menu = $('.dropdown.container');
 
 	$document
+		.one('touchstart', function() { $('html').removeClass('no-touch'); })
+
 		.on('keypress', '.type-zone', checkEnter)
 
 		.on('click', '.dropdown.container .handle', function(e) {

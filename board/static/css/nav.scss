@@ -19,7 +19,7 @@
 
 	.dropdown.container {
 		.handle { height:50px; color:$white; display:inline-block; }
-		.handle:hover,
+		.no-touch  & .handle:hover,
 		&.open .handle { background:$blue; }
 
 		.menu { margin:0 10px; }

@@ -32,7 +32,7 @@
 	.meta { margin-top:30px; text-align:center;
 		a { border-left:1px solid $lightgrey-base; color:$grey; display:inline-block; font-size:$font-size; line-height:20px; padding:0 1em;
 			&:first-of-type { border:0; }
-			&:hover { color:$black; }
+			.no-touch &:hover { color:$black; }
 		}
 	}
 

@@ -13,8 +13,10 @@
 		.cell { font-size:$font-size - 1; line-height:20px; padding:10px 0 5px; }
 		.cell.category {
 			position:static;
-			.label.meta .text { font-size:inherit; }
-			.label.meta:hover .text { color:$black; }
+			.label.meta {
+				.text { font-size:inherit; }
+				.no-touch &:hover .text { color:$black; }
+			}
 		}
 
 		.dropdown .tip { width:45px; }
@@ -27,8 +29,8 @@
 	.item {
 		display:block;
 
-		&:hover,
-		&:hover .cell a { color:$darkgrey; }
+		.no-touch &:hover,
+		.no-touch &:hover .cell a { color:$darkgrey; }
 
 		&.even { background:$grey-95; }
 		&.announcement { background:#fff7cc; }
@@ -106,7 +108,7 @@
 			.cell { display:none; }
 			.sortable {
 				width:auto; background:$lightgrey; border-radius:2px; display:inline-block; font-size:$font-size; overflow:hidden; margin-left:10px; padding:5px 10px; text-align:center;
-				&:hover { background:$lightgrey-trans; }
+				.no-touch &:hover { background:$lightgrey-trans; }
 				.tip { text-align:left; }
 			}
 			.category.sortable { margin:0; }

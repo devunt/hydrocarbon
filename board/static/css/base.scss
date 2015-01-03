@@ -19,8 +19,8 @@ body { color:$black; font:$font-size "NanumGothic"; letter-spacing:-.03em;
 button, input, select, textarea { outline:none; }
 
 a { color:$black; text-decoration:none; }
-a:hover { color:$grey; }
-a.label:hover { color:$black; opacity:.6; }
+.no-touch a:hover { color:$grey; }
+.no-touch a.label:hover { color:$black; opacity:.6; }
 
 .button {
 	display:inline-block;
