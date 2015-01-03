@@ -218,7 +218,7 @@ $(function() {
 	});
 
 	$('.section.board')
-		.on('click', '.search.button .search-button', function(e) {
+		.on('click', '.search.button .label.meta.search', function(e) {
 			e.preventDefault();
 
 			var $nav = $(this).closest('.nav.bottom');
