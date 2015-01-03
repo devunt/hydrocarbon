@@ -30,9 +30,7 @@
 			</li>
 			{% endfor %}
 		</ul>
-		<div class="center">
-			<input class="submit" type="submit">
-		</div>
+		<input class="submit" type="submit">
 	</form>
 </div>
 {% else %}
@@ -77,6 +75,18 @@
 		</div>
 	</div>
 	{% if form.onetime_nick or form.onetime_password %}
+
+	{% if form.onetime_nick.errors or form.onetime_password.errors %}
+	<ul class="errorlist">
+		{% for error in form.onetime_nick.errors %}
+		<li>{{ form.onetime_nick.label }}: {{ error | escape }}</li>
+		{% endfor %}
+		{% for error in form.onetime_password.errors %}
+		<li>{{ form.onetime_password.label }}: {{ error | escape }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
 	<div class="ot nav">
 		{% if form.onetime_nick %}
 			<label class="nick">{{ form.onetime_nick | label_as_placeholder }}</label>

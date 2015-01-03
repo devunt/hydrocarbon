@@ -113,7 +113,8 @@
 
 .contents > .errorlist,
 .section > .errorlist,
-.item.article > .errorlist {
+.item.article > .errorlist,
+form > .errorlist {
 	@extend #messages;
 	li { background:$red; color:$white; }
 }
