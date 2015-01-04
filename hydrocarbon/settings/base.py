@@ -101,7 +101,6 @@ LOCALE_PATHS = (
 )
 LANGUAGES = (
     ('ko', _('Korean')),
-    ('en', _('English')),
 )
 LANGUAGE_CODE = 'ko-kr'
 
