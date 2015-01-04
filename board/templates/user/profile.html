@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}{{ user.nickname }} :: {{ block.super }}{% endblock %}
-{% block pagename %}{{ user.nickname }}{% endblock %}
+{% block title %}{{ object.nickname }} :: {{ block.super }}{% endblock %}
+{% block pagename %}{{ object.nickname }}{% endblock %}
 
 {% block content %}
 
-{% with user=user %}
+{% with user=object %}
 
 <script>
 
