@@ -1,7 +1,7 @@
 var user = {
 	id: {{ user.id | default:'null' }},
 	nick: "{{ user.nickname }}",
-	c3RhZmY = {{ user.is_staff | lower }},
+	c3RhZmY: {{ user.is_staff | lower }},
 	authenticated: {{ user.is_authenticated | lower }}
 }
 
