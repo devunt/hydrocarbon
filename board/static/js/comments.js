@@ -231,7 +231,8 @@ $(function() {
 				if(index <= item_index - 1) return true;
 				if(depth <= item_depth) return false;
 				
-				$(it).toggle();
+				if($item.hasClass('hidden')) { $(it).hide();
+				} else { $(it).show(); }
 			});
 		})
 		.on('click', '.write .submit', function(e) {
