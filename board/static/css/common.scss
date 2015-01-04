@@ -24,8 +24,8 @@
 	.tip.bottom { display:none; }
 	.tip.top span { border-bottom-color:$black-trans; }
 	.tip.bottom span { border-top-color:$black-trans; }
-	.container { background:$black-trans; border-radius:4px; padding:0 8px; text-align:center;
-		p { color:$white; font-size:$font-size - 2; line-height:25px; white-space:nowrap; }
+	.container { background:$black-trans; border-radius:4px; padding:5px 8px; text-align:center;
+		p { color:$white; font-size:$font-size - 2; line-height:20px; white-space:nowrap; }
 	}
 }
 
@@ -245,7 +245,7 @@ form > .errorlist {
 	&.prev .icon { background-position:0 $meta-size * -10; margin-right:0; }
 	&.next .icon { background-position:0 $meta-size * -11; margin-right:0; }
 	&.last .icon { background-position:0 $meta-size * -12; margin-right:0; }
-	.dropdown &.handle .icon { background-position:0 $meta-size * -13; margin-right:0; }
+	.dropdown &.handle .icon, { background-position:0 $meta-size * -13; margin-right:0; }
 	.dropdown.open &.handle .icon { background-position:0 $meta-size * -14; }
 	&.tags .icon { background-position:0 $meta-size * -15; }
 	&.more .icon { background-position:0 $meta-size * -16 !important; }

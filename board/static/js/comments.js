@@ -1,4 +1,5 @@
 var options;
+var COMMENTS_DOWNVOTE_HIDE = 0;
 
 function getComments(id) {
 	return $.ajax({
@@ -27,12 +28,11 @@ function getComments(id) {
 		});
 }
 
-function renderComment($container, v, depth) {
+function renderComment($container, v, depth, hidden) {
 	depth = typeof depth !== 'undefined' ? depth : 0;
 
 	var $c = $container.find('.list.template').clone(), date = new Date(v.created_time), contents;
 
-	console.log(v);
 	if(v.iphash) {
 		$c
 			.addClass('guest')
@@ -49,7 +49,8 @@ function renderComment($container, v, depth) {
 		$c.find('.manipulate').show();
 	}
 
-	if(depth > 0) $c.css('margin-left', 2*depth+'%');
+	if(depth > 0) $c.css('margin-left', 4*depth+'%');
+	if(!(depth > 0) && v.votes.total <= COMMENTS_DOWNVOTE_HIDE) $c.addClass('hidden');
 
 	$c.find('a.anchor').attr('id', 'c'+v.id);
 
@@ -86,10 +87,19 @@ function renderComment($container, v, depth) {
 		.addClass('item')
 		.removeClass('template')
 		.insertBefore($container.find('.write.template'))
-		.show();
+	
+	if(!hidden) $c.show();
 
 	if(v.subcomments) {
-		$.each(v.subcomments, function(i, v) { renderComment($container, v, depth + 1); });
+		if(v.votes.total <= COMMENTS_DOWNVOTE_HIDE || hidden) {
+			$.each(v.subcomments, function(i, v) {
+				renderComment($container, v, depth + 1, true);
+			});
+		} else {
+			$.each(v.subcomments, function(i, v) {
+				renderComment($container, v, depth + 1);
+			});
+		}
 	}
 
 	return $c;
@@ -205,6 +215,25 @@ $(function() {
 				$(this).closest('.comments-list').find('.write .submit').trigger('click');
 				return false;
 			}
+		})
+		.on('click', 'a.dropdown.fold', function(e) {
+			e.preventDefault();
+			var $container = $(this).closest('ul'),
+				$item = $(this).closest('li.item'),
+				item_depth = $item.data('depth'),
+				item_index = $item.index();
+
+			$item.toggleClass('hidden');
+
+			$.each($container.find('li.item'), function(index, it) {
+				var depth = $(it).data('depth');
+
+				if(index <= item_index - 1) return true;
+				if(depth <= item_depth) return false;
+				
+				if($item.hasClass('hidden')) { $(it).hide();
+				} else { $(it).show(); }
+			});
 		})
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();

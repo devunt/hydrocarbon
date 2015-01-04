@@ -1,25 +1,31 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}{{ object.nickname }} :: {{ block.super }}{% endblock %}
-{% block pagename %}{{ object.nickname }}{% endblock %}
+{% block title %}{{ u.nickname }} :: {{ block.super }}{% endblock %}
+{% block pagename %}{{ u.nickname }}{% endblock %}
 
 {% block content %}
 
-{% with user=object %}
+{% with user=u %}
 
 <script>
 
 var score = {	
 	posts: {
-		upvotes: {{ user.score.posts.upvotes | default:0 }},
-		downvotes: {{ user.score.posts.downvotes | default:0 }}
+		upvotes: {{ user.score.posts.upvotes }},
+		downvotes: {{ user.score.posts.downvotes }}
 	},
 	comments: {
-		upvotes: {{ user.score.comments.upvotes | default:0 }},
-		downvotes: {{ user.score.comments.downvotes | default:0 }}
+		upvotes: {{ user.score.comments.upvotes }},
+		downvotes: {{ user.score.comments.downvotes }}
 	}
 }
+
+var score_tooltip = new String()
+	+ '{% blocktrans with upvotes=user.score.posts.upvotes %}{{ upvotes }} post upvotes{% endblocktrans %}\\n'
+	+ '{% blocktrans with downvotes=user.score.posts.downvotes %}{{ downvotes }} post downvotes{% endblocktrans %}\\n'
+	+ '{% blocktrans with upvotes=user.score.comments.upvotes %}{{ upvotes }} comments upvotes{% endblocktrans %}\\n'
+	+ '{% blocktrans with downvotes=user.score.comments.downvotes %}{{ downvotes }} comments downvotes{% endblocktrans %}\\n';
 
 </script>
 
@@ -28,7 +34,7 @@ var score = {
 		<div class="icon"><img src="{% static "img/profile_3x.png" %}"></div>
 		<div class="meta">
 			<h1>{{ user.nickname }}</h1>
-			<div class="score">
+			<div class="score container">
 				<div class="votes bar">
 					{% if user.score.posts.upvotes or user.score.posts.downvotes or user.score.comments.upvotes or user.score.comments.downvotes %}
 						<div class="upvote bar"></div><div class="downvote bar"></div>
@@ -42,18 +48,21 @@ var score = {
 						<p>-{{ user.score.posts.downvotes | add:user.score.comments.downvotes }}</p>
 					</div>
 				</div>
-
-				<script>
-					$('.upvote.bar')
-						.css('width',
-							(score.posts.upvotes
-								+ score.comments.upvotes)/
-							(score.posts.upvotes
-								+ score.posts.downvotes
-								+ score.comments.upvotes
-								+ score.comments.downvotes)*100 + '%');
-				</script>
 			</div>
+
+			<script>
+				$('.upvote.bar')
+					.css('width',
+						(score.posts.upvotes
+							+ score.comments.upvotes)/
+						(score.posts.upvotes
+							+ score.posts.downvotes
+							+ score.comments.upvotes
+							+ score.comments.downvotes)*100 + '%');
+
+				$('.votes.bar')
+					.attr('title', score_tooltip);
+			</script>
 		</div>
 	</div>
 </div>

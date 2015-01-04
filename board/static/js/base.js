@@ -315,7 +315,7 @@ function showTooltip(e) {
 
 	var margin = 10;
 
-	$tooltip.find('.container p').html($target.data('title').replace('\\n', '<br>'));
+	$tooltip.find('.container p').html($target.data('title').replace(/\\n/gi, '<br>'));
 	$tooltip.find('.tip').removeAttr('style');
 
 	top = position.top + targetHeight;
