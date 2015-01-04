@@ -497,3 +497,7 @@ class JSConstantsView(TemplateView):
     @method_decorator(cache_page(24 * 60 * 60))
     def get(self, request, *args, **kwargs):
         return super().get(self, request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        kwargs['BOARD_COMMENT_BLIND_VOTES'] = settings.BOARD_COMMENT_BLIND_VOTES
+        return super().get_context_data(**kwargs)

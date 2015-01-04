@@ -58,3 +58,4 @@ MEDIA_URL = 'http://uc.herocomics.kr/'
 # App settings
 BOARD_POST_BLIND_VOTES = -10
 BOARD_POST_BEST_VOTES = 10
+BOARD_COMMENT_BLIND_VOTES = -5
