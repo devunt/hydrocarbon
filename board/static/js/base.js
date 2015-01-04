@@ -400,7 +400,7 @@ function vote_callback(data, work, button) {
 function $ajax_vote(databox) {
 	return $.ajax({
 			type: 'POST',
-			url: '/x/v',
+			url: VOTE_AJAX_ENDPOINT,
 			data: databox
 		})
 			.fail(function(xhr, status, error) {
