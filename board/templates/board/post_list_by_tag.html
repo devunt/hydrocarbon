@@ -1,0 +1,4 @@
+{% extends 'board/post_list_base.html' %}
+
+{% block title %}{{ tag.name }} :: {{ block.super }}{% endblock title %}
+{% block pagename %}{{ block.super }} &rsaquo; {{ category.name }}{% endblock %}

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import PermissionDenied
@@ -7,6 +8,7 @@ from django.shortcuts import render
 from django.utils.translation import ugettext as _
 
 from board.forms import PasswordForm
+from board.models import DefaultSum
 from board.models import Announcement, Board, OneTimeUser
 
 
@@ -57,6 +59,45 @@ class AjaxMixin:
 
 
 class PostListMixin:
+    paginate_by = 10
+
+    def get(self, request, *args, **kwargs):
+        if kwargs.get('is_detailview', False):
+            if 'post_list_order_by' not in request.session:
+                request.session['post_list_order_by'] = '-created_time'
+        else:
+            o = request.GET.get('o')
+            if o is None:
+                o = '+ct'
+            d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}
+            order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
+            request.session['post_list_order_by'] = order_by
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        if hasattr(self, '_get_queryset'):
+            pqs = self._get_queryset()
+        else:
+            pqs = super().get_queryset()
+        pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
+        order_by = self.request.session.get('post_list_order_by')
+        return pqs.order_by(order_by, '-created_time')
+
+    def get_context_data(self, **kwargs):
+        order_by = self.request.session.get('post_list_order_by')
+        odict = dict()
+        if order_by.startswith('-'):
+            odict['order'] = 'asc'
+            odict['column'] = order_by[1:]
+        else:
+            odict['order'] = 'desc'
+            odict['column'] = order_by
+        kwargs['order_by'] = odict
+        kwargs['BOARD_POST_BLIND_VOTES'] = settings.BOARD_POST_BLIND_VOTES
+        return super().get_context_data(**kwargs)
+
+
+class BoardPostListMixin:
     def get_context_data(self, **kwargs):
         aqs = Announcement.objects.filter(Q(boards=self.board) | Q(boards=None))
         announcement_list = [announcement.post for announcement in aqs]

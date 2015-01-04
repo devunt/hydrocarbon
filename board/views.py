@@ -22,7 +22,7 @@ from haystack.query import SearchQuerySet
 from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
-from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
+from board.mixins import AjaxMixin, BoardMixin, BoardPostListMixin, PostListMixin, PermissionMixin, UserLoggingMixin
 from board.models import DefaultSum
 from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
@@ -157,42 +157,18 @@ class PostDeleteView(PermissionMixin, DeleteView):
         messages.success(self.request, _('Deleted'))
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
 
-class PostListView(BoardMixin, PostListMixin, ListView):
+
+class PostListView(BoardMixin, BoardPostListMixin, PostListMixin, ListView):
     template_name = 'board/post_list_with_board.html'
     paginate_by = 10
     is_best = False
 
-    def get(self, request, *args, **kwargs):
-        if kwargs.get('is_detailview', False):
-            if 'post_list_order_by' not in request.session:
-                request.session['post_list_order_by'] = '-created_time'
-        else:
-            o = request.GET.get('o')
-            if o is None:
-                o = '+ct'
-            d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}
-            order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
-            request.session['post_list_order_by'] = order_by
-        return super().get(request, *args, **kwargs)
-
-    def get_queryset(self):
+    def _get_queryset(self):
         pqs = Post.objects.filter(board=self.board, announcement=None)
-        pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
-        order_by = self.request.session.get('post_list_order_by')
-        return pqs.order_by(order_by, '-created_time')
+        return pqs
 
     def get_context_data(self, **kwargs):
-        order_by = self.request.session.get('post_list_order_by')
-        odict = dict()
-        if order_by.startswith('-'):
-            odict['order'] = 'asc'
-            odict['column'] = order_by[1:]
-        else:
-            odict['order'] = 'desc'
-            odict['column'] = order_by
-        kwargs['order_by'] = odict
         kwargs['is_best'] = self.is_best
-        kwargs['BOARD_POST_BLIND_VOTES'] = settings.BOARD_POST_BLIND_VOTES
         return super().get_context_data(**kwargs)
 
 
@@ -203,6 +179,22 @@ class PostBestListView(PostListView):
         pqs = super().get_queryset()
         pqs = pqs.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
         return pqs
+
+
+class PostListByTagView(PostListMixin, ListView):
+    template_name = 'board/post_list_by_tag.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.tag = get_object_or_404(Tag, name=kwargs.get('tag'))
+        return super().dispatch(request, *args, **kwargs)
+
+    def _get_queryset(self):
+        pqs = Post.objects.filter(tags=self.tag, announcement=None)
+        return pqs
+
+    def get_context_data(self, **kwargs):
+        kwargs['tag'] = self.tag
+        return super().get_context_data(**kwargs)
 
 
 class PostListByCategoryView(PostListView):
