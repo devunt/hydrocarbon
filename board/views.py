@@ -383,6 +383,7 @@ class CommentAjaxView(AjaxMixin, View):
                     'id': comment.id,
                     'author': comment.author,
                     'author_total_score': comment.user.total_score if comment.user else None,
+                    'author_url': comment.user.get_absolute_url() if comment.user else None,
                     'iphash': comment.iphash if not comment.user else None,
                     'contents': comment.contents,
                     'created_time': comment.created_time,

@@ -28,9 +28,6 @@ class User(AbstractEmailUser):
     nickname = models.CharField(max_length=16, unique=True,
         validators=[MinLengthValidator(2)])
 
-    def __str__(self):
-        return self.nickname
-
     @property
     def total_score(self):
         post_votes = self.posts.aggregate(score=DefaultSum('_votes__vote', default=0))
@@ -50,6 +47,12 @@ class User(AbstractEmailUser):
             },
         }
         return votes
+
+    def __str__(self):
+        return self.nickname
+
+    def get_absolute_url(self):
+        return reverse('user_profile', kwargs={'pk': self.id})
 
 
 class OneTimeUser(models.Model):
