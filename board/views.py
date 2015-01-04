@@ -61,6 +61,7 @@ class HCRedactorUploadView(RedactorUploadView):
 
 class UserProfileView(DetailView):
     model = User
+    context_object_name = 'u'
     template_name = 'user/profile.html'
 
 
