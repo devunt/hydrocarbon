@@ -6,7 +6,7 @@ from django.views.defaults import permission_denied
 from redactor.forms import FileForm, ImageForm
 
 from board.views import HCLoginView, HCSignupView, HCRedactorUploadView
-from board.views import IndexView, UserProfileView
+from board.views import IndexView, JSConstantsView, UserProfileView
 
 
 urlpatterns = patterns('',
@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^search/', include('haystack.urls')),
     url(r'^redactor/', include('redactor.urls')),
 
+    url(r'^constants.js', JSConstantsView.as_view(), name='constants.js'),
     url(r'^x/', include('board.urls.ajax')),
     url(r'^u/(?P<pk>\d+)$', UserProfileView.as_view(), name='user_profile'),
     url(r'^b/(?P<board>\w+)/', include('board.urls.board')),

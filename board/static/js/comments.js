@@ -41,11 +41,11 @@ function renderComment($container, v, depth) {
 				.addClass('guest')
 				.attr('title', v.iphash);
 	} else {
-		 if(v.author == author.nick) $c.addClass('owned');
+		 if(v.author == user.nick) $c.addClass('owned');
 		 $c.find('.meta.author').attr('title', '+' + v.author_total_score);
 	}
 
-	if(c3RhZmY) {
+	if(user.c3RhZmY) {
 		$c.find('.manipulate').show();
 	}
 
@@ -368,7 +368,7 @@ $(function() {
 						.insertAfter($item)
 						.show();
 
-					if(c3RhZmY) { $c.find('label').remove();
+					if(user.c3RhZmY) { $c.find('label').remove();
 					} else if($item.hasClass('guest')) {
 						$c.find('label.nick').remove();
 						$c.find('label').show();
@@ -393,7 +393,7 @@ $(function() {
 
 					$c.appendTo($item.find('.bubble.item > .container'));
 
-					if(c3RhZmY) { $c.find('label').remove();
+					if(user.c3RhZmY) { $c.find('label').remove();
 					} else if($item.hasClass('guest')) {
 						$c.find('label.nick').remove();
 						$c.find('label').show();

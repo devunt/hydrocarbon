@@ -212,11 +212,6 @@
 		</ul>
 
 		<script>
-			var c3RhZmY = {{ user.is_staff | lower }};
-			var author = {
-				nick: '{{ user.nickname }}',
-				authed: {{ user.is_authenticated | lower }}
-			}
 			var post_id = {{ post.id }};
 			getComments({{ post.id }});
 		</script>
