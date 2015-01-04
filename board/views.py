@@ -158,7 +158,7 @@ class PostDeleteView(PermissionMixin, DeleteView):
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
 
 class PostListView(BoardMixin, PostListMixin, ListView):
-    template_name = 'board/post_list.html'
+    template_name = 'board/post_list_with_board.html'
     paginate_by = 10
     is_best = False
 
