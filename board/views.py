@@ -23,7 +23,6 @@ from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
 from board.mixins import AjaxMixin, BoardMixin, BoardPostListMixin, PostListMixin, PermissionMixin, UserLoggingMixin
-from board.models import DefaultSum
 from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
 
@@ -38,7 +37,6 @@ class HCLoginView(LoginView):
     form_class = HCLoginForm
 
     def login_user(self, form):
-        user = form.user
         email = EmailAddress.objects.get_primary(form.user)
         if not email.verified:
             self.request.session['redirect_to'] = settings.ACCOUNT_LOGIN_URL
