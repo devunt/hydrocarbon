@@ -45,8 +45,8 @@ class User(AbstractEmailUser):
                 'downvotes': Vote.objects.filter(post__in=self.posts.all(), vote=Vote.DOWNVOTE).count(),
             },
             'comments': {
-                'upvotes': Vote.objects.filter(comment__in=self.posts.all(), vote=Vote.UPVOTE).count(),
-                'downvotes': Vote.objects.filter(comment__in=self.posts.all(), vote=Vote.DOWNVOTE).count(),
+                'upvotes': Vote.objects.filter(comment__in=self.comments.all(), vote=Vote.UPVOTE).count(),
+                'downvotes': Vote.objects.filter(comment__in=self.comments.all(), vote=Vote.DOWNVOTE).count(),
             },
         }
         return votes
