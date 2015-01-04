@@ -3,7 +3,7 @@ var options;
 function getComments(id) {
 	return $.ajax({
 		type: 'GET',
-		url: '/x/c/' + id
+		url: get_comment_ajax_url(id)
 	})
 		.done(function(data, status, xhr) {
 			var $article = $('.section.article'), $container = $('.comments-list ul'), count = data.comments.count;
@@ -49,7 +49,7 @@ function renderComment($container, v, depth, hidden) {
 	}
 
 	if(depth > 0) $c.css('margin-left', 4*depth+'%');
-	if(!(depth > 0) && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
+	if(!hidden && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
 	$c.find('a.anchor').attr('id', 'c'+v.id);
 
@@ -107,7 +107,7 @@ function renderComment($container, v, depth, hidden) {
 function postComments(id, databox) {
 	return $.ajax({
 		type: 'POST',
-		url: '/x/c/' + id,
+		url: get_comment_ajax_url(id),
 		data: databox
 	})
 		.fail(function(xhr, status, error) {
@@ -138,7 +138,7 @@ function postComments(id, databox) {
 function putComments(id, contents, password) {
 	return $.ajax({
 		type: 'PUT',
-		url: '/x/c/' + id,
+		url: get_comment_ajax_url(id),
 		data: { contents: contents },
 		headers: { 'X-HC-PASSWORD': password }
 	})
@@ -172,7 +172,7 @@ function putComments(id, contents, password) {
 function deleteComments(id, password) {
 	return $.ajax({
 		type: 'DELETE',
-		url: '/x/c/' + id,
+		url: get_comment_ajax_url(id),
 		headers: { 'X-HC-PASSWORD': password }
 	})
 		.fail(function(xhr, status, error) {
@@ -231,7 +231,7 @@ $(function() {
 				if(depth <= item_depth) return false;
 				
 				if($item.hasClass('hidden')) { $(it).hide();
-				} else { $(it).show(); }
+				} else { $(it).removeClass('hidden').show(); }
 			});
 		})
 		.on('click', '.write .submit', function(e) {
