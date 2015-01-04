@@ -120,9 +120,14 @@
 
 					.header {
 						border-bottom:1px solid $grey-90; margin:0 10px; padding:5px 0;
+						.label.meta.handle .icon { background-position:0 -168px; }
 						.meta { display:inline-block; font-size:$font-size; vertical-align:top; }
 						.meta + .meta { margin-left:5px; }
 						.meta.timestamp { color:#808080; font-size:$font-size - 2; }
+
+						.hidden.author { display:none; }
+
+						.no-touch & a.author:hover { color:$black; }
 
 						.dropdown {
 							&.container { display:inline-block; }
@@ -172,13 +177,30 @@
 			}
 		}
 
-		.owned .comment {
+		.owned > .comment {
 			.bubble {
 				&.item { border-left-color:$blue; }
 				&.tip { text-align:left;
 					span { border-left-color:$grey-95; border-right-color:transparent; }
 				}
 			} 
+		}
+
+		.hidden > .comment {
+			.bubble {
+				&.item {
+					.header {
+						border:0;
+						.label.meta.handle .icon { background-position:0 -156px; }
+						.hidden.author { display:inline; }
+						.label.meta.author,
+						.label.meta.score,
+						.dropdown.container { display:none; }
+					}
+					.article, .footer { display:none; }
+				}
+				&.tip { visibility:hidden; }
+			}
 		}
 	}
 

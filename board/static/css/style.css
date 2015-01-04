@@ -124,12 +124,12 @@ body {
   .tooltip .container {
     background: rgba(34, 34, 34, 0.9);
     border-radius: 4px;
-    padding: 0 8px;
+    padding: 5px 8px;
     text-align: center; }
     .tooltip .container p {
       color: #fff;
       font-size: 12px;
-      line-height: 25px;
+      line-height: 20px;
       white-space: nowrap; }
 
 .checkbox .icon {
@@ -866,6 +866,8 @@ a.anchor {
       border-bottom: 1px solid #e5e5e5;
       margin: 0 10px;
       padding: 5px 0; }
+      .section.article .comments-list .comment .bubble.item .header .label.meta.handle .icon {
+        background-position: 0 -168px; }
       .section.article .comments-list .comment .bubble.item .header .meta {
         display: inline-block;
         font-size: 14px;
@@ -875,6 +877,10 @@ a.anchor {
       .section.article .comments-list .comment .bubble.item .header .meta.timestamp {
         color: #808080;
         font-size: 12px; }
+      .section.article .comments-list .comment .bubble.item .header .hidden.author {
+        display: none; }
+      .no-touch .section.article .comments-list .comment .bubble.item .header a.author:hover {
+        color: #222; }
       .section.article .comments-list .comment .bubble.item .header .dropdown.container {
         display: inline-block; }
       .section.article .comments-list .comment .bubble.item .header .dropdown.handle .icon {
@@ -931,13 +937,27 @@ a.anchor {
       border-right-color: #f2f2f2;
       border-top-color: #f2f2f2;
       border-width: 10px; }
-  .section.article .comments-list .owned .comment .bubble.item {
+  .section.article .comments-list .owned > .comment .bubble.item {
     border-left-color: rgba(61, 156, 204, 0.9); }
-  .section.article .comments-list .owned .comment .bubble.tip {
+  .section.article .comments-list .owned > .comment .bubble.tip {
     text-align: left; }
-    .section.article .comments-list .owned .comment .bubble.tip span {
+    .section.article .comments-list .owned > .comment .bubble.tip span {
       border-left-color: #f2f2f2;
       border-right-color: transparent; }
+  .section.article .comments-list .hidden > .comment .bubble.item .header {
+    border: 0; }
+    .section.article .comments-list .hidden > .comment .bubble.item .header .label.meta.handle .icon {
+      background-position: 0 -156px; }
+    .section.article .comments-list .hidden > .comment .bubble.item .header .hidden.author {
+      display: inline; }
+    .section.article .comments-list .hidden > .comment .bubble.item .header .label.meta.author,
+    .section.article .comments-list .hidden > .comment .bubble.item .header .label.meta.score,
+    .section.article .comments-list .hidden > .comment .bubble.item .header .dropdown.container {
+      display: none; }
+  .section.article .comments-list .hidden > .comment .bubble.item .article, .section.article .comments-list .hidden > .comment .bubble.item .footer {
+    display: none; }
+  .section.article .comments-list .hidden > .comment .bubble.tip {
+    visibility: hidden; }
 .section.article .nav {
   background: #f2f2f2; }
   @media screen and (max-device-width: 359px) {
