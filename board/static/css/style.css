@@ -945,7 +945,8 @@ a.anchor {
       border-left-color: #f2f2f2;
       border-right-color: transparent; }
   .section.article .comments-list .hidden > .comment .bubble.item .header {
-    border: 0; }
+    border: 0;
+    opacity: .5; }
     .section.article .comments-list .hidden > .comment .bubble.item .header .label.meta.handle .icon {
       background-position: 0 -156px; }
     .section.article .comments-list .hidden > .comment .bubble.item .header .hidden.author {

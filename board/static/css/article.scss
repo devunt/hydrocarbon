@@ -190,7 +190,7 @@
 			.bubble {
 				&.item {
 					.header {
-						border:0;
+						border:0; opacity:.5;
 						.label.meta.handle .icon { background-position:0 -156px; }
 						.hidden.author { display:inline; }
 						.label.meta.author,
