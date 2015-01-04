@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-04 16:59+0900\n"
+"POT-Creation-Date: 2015-01-04 21:38+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -321,7 +321,7 @@ msgid "Please check your email to complete the registration process."
 msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다. 확인해 주세요."
 
 #: board/templates/account/login.html:5 board/templates/account/login.html:6
-#: board/templates/account/login.html:27 board/templates/base.html:84
+#: board/templates/account/login.html:27 board/templates/base.html:86
 msgid "Log in"
 msgstr "로그인"
 
@@ -343,7 +343,7 @@ msgid "Click here"
 msgstr "여기를 클릭하세요."
 
 #: board/templates/account/logout.html:4 board/templates/account/logout.html:5
-#: board/templates/account/logout.html:13 board/templates/base.html:78
+#: board/templates/account/logout.html:13 board/templates/base.html:80
 msgid "Log out"
 msgstr "로그아웃"
 
@@ -442,18 +442,18 @@ msgid "Sorry, but registration is closed at this moment. Come back later."
 msgstr ""
 "죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 시도해 주세요."
 
-#: board/templates/base.html:63 board/templates/board/post_detail.html:139
+#: board/templates/base.html:65 board/templates/board/post_detail.html:139
 #: board/templates/board/post_list.html:23
 #: board/templates/board/post_list.html:101
 #: board/templates/search/search.html:22
 msgid "Close"
 msgstr "닫기"
 
-#: board/templates/base.html:76
+#: board/templates/base.html:78
 msgid "Submitted"
 msgstr "작성글 보기"
 
-#: board/templates/base.html:77
+#: board/templates/base.html:79
 msgid "Inbox"
 msgstr "쪽지함"
 
@@ -682,7 +682,11 @@ msgstr ""
 msgid "%(downvotes)s comments downvotes"
 msgstr ""
 
-#: board/views.py:147
+#: board/views.py:45
+msgid "Please confirm email."
+msgstr "이메일 주소를 인증해주세요."
+
+#: board/views.py:157
 msgid "Deleted"
 msgstr "삭제되었습니다"
 

@@ -16,6 +16,7 @@ from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
 from django.views.generic.list import ListView
+from account.models import EmailAddress
 from account.views import LoginView, SignupView
 from haystack.query import SearchQuerySet
 from redactor.views import RedactorUploadView
@@ -35,6 +36,15 @@ class IndexView(View):
 
 class HCLoginView(LoginView):
     form_class = HCLoginForm
+
+    def login_user(self, form):
+        user = form.user
+        email = EmailAddress.objects.get_primary(form.user)
+        if not email.verified:
+            self.request.session['redirect_to'] = settings.ACCOUNT_LOGIN_URL
+            messages.error(self.request, _('Please confirm email.'))
+        else:
+            super().login_user(form)
 
 
 class HCSignupView(SignupView):
