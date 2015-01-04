@@ -6,6 +6,9 @@ var user = {
 }
 
 
+var COMMENT_BLIND_VOTES = {{ BOARD_COMMENT_BLIND_VOTES }}
+
+
 var VOTE_AJAX_ENDPOINT = "{% url 'ajax_vote' %}"
 
 function get_comment_ajax_url(id) {
