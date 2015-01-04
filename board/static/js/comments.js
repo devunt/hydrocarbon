@@ -1,5 +1,4 @@
 var options;
-var COMMENTS_DOWNVOTE_HIDE = 0;
 
 function getComments(id) {
 	return $.ajax({
@@ -50,7 +49,7 @@ function renderComment($container, v, depth, hidden) {
 	}
 
 	if(depth > 0) $c.css('margin-left', 4*depth+'%');
-	if(!(depth > 0) && v.votes.total <= COMMENTS_DOWNVOTE_HIDE) $c.addClass('hidden');
+	if(!(depth > 0) && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
 	$c.find('a.anchor').attr('id', 'c'+v.id);
 
@@ -91,7 +90,7 @@ function renderComment($container, v, depth, hidden) {
 	if(!hidden) $c.show();
 
 	if(v.subcomments) {
-		if(v.votes.total <= COMMENTS_DOWNVOTE_HIDE || hidden) {
+		if(v.votes.total <= COMMENT_BLIND_VOTES || hidden) {
 			$.each(v.subcomments, function(i, v) {
 				renderComment($container, v, depth + 1, true);
 			});
@@ -249,7 +248,7 @@ $(function() {
 					ot_password: password
 				};
 
-			if(author == '') {
+			if(!user.authenticated) {
 				if(nick == '') {
 					alert('닉네임을 입력해 주세요.');
 					return false;
@@ -277,7 +276,7 @@ $(function() {
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 			
-			if(author == '') {
+			if(!user.authenticated) {
 				if(nick == '') {
 					alert('닉네임을 입력해 주세요.');
 					return false;
@@ -357,7 +356,7 @@ $(function() {
 					$c.find('script').remove();
 
 					$c
-						.css('margin-left', $item.data('depth')*2 + 1 + '%')
+						.css('margin-left', ($item.data('depth') + 1)*4 + '%')
 						.removeAttr('data-type data-id')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
