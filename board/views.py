@@ -22,7 +22,7 @@ from haystack.query import SearchQuerySet
 from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
-from board.mixins import AjaxMixin, BoardMixin, BoardPostListMixin, PostListMixin, PermissionMixin, UserLoggingMixin
+from board.mixins import AjaxMixin, BoardMixin, BoardPostListMixin, PostListMixin, PermissionMixin, UserLoggingMixin, UserProfileMixin
 from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
 
@@ -68,10 +68,20 @@ class HCRedactorUploadView(RedactorUploadView):
         return FormView.dispatch(self, request, *args, **kwargs)
 
 
-class UserProfileView(DetailView):
+class UserProfileView(UserProfileMixin, DetailView):
     model = User
     context_object_name = 'u'
     template_name = 'user/profile.html'
+
+    def get_object(self, queryset=None):
+        return self.user
+
+
+class UserPostListView(UserProfileMixin, PostListMixin, ListView):
+    template_name = 'board/post_list_by_user.html'
+
+    def _get_queryset(self):
+        return self.user.posts
 
 
 class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):

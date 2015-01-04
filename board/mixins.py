@@ -9,7 +9,7 @@ from django.utils.translation import ugettext as _
 
 from board.forms import PasswordForm
 from board.models import DefaultSum
-from board.models import Announcement, Board, OneTimeUser
+from board.models import Announcement, Board, OneTimeUser, User
 
 
 class BoardMixin:
@@ -131,3 +131,13 @@ class PermissionMixin:
         if not self.request.user.is_staff:
             kwargs['password_form'] = PasswordForm()
         return super().get_context_data(**kwargs)
+
+
+class UserProfileMixin:
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            self.user = User.objects.get(pk=kwargs['user'])
+        except User.DoesNotExist:
+            return render(request, 'errors/user_404.html', status=404)
+        else:
+            return super().dispatch(request, *args, **kwargs)
