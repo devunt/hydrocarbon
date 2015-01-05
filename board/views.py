@@ -22,7 +22,7 @@ from haystack.query import SearchQuerySet
 from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
-from board.mixins import AjaxMixin, BoardMixin, BoardPostListMixin, PostListMixin, PermissionMixin, UserLoggingMixin, UserProfileMixin
+from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
 from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
 
@@ -68,7 +68,7 @@ class HCRedactorUploadView(RedactorUploadView):
         return FormView.dispatch(self, request, *args, **kwargs)
 
 
-class UserProfileView(UserProfileMixin, DetailView):
+class UserProfileView(UserURLMixin, DetailView):
     model = User
     context_object_name = 'u'
     template_name = 'user/profile.html'
@@ -77,14 +77,14 @@ class UserProfileView(UserProfileMixin, DetailView):
         return self.user
 
 
-class UserPostListView(UserProfileMixin, PostListMixin, ListView):
+class UserPostListView(UserURLMixin, PostListMixin, ListView):
     template_name = 'board/post_list_by_user.html'
 
-    def _get_queryset(self):
+    def get_base_queryset(self):
         return self.user.posts
 
 
-class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
+class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
     model = Post
     form_class = PostForm
 
@@ -116,13 +116,13 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
         return initial
 
 
-class PostUpdateView(PermissionMixin, UpdateView):
+class PostUpdateView(PermissionCheckMixin, UpdateView):
     model = Post
     form_class = PostForm
 
     def get(self, request, *args, **kwargs):
         if (not kwargs.pop('authenticated', False)) and self.object.user is None:
-            self.get_context_data = self._get_context_data
+            self.show_password_form()
         return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
@@ -144,12 +144,12 @@ class PostUpdateView(PermissionMixin, UpdateView):
         return super().get_success_url()
 
 
-class PostDeleteView(PermissionMixin, DeleteView):
+class PostDeleteView(PermissionCheckMixin, DeleteView):
     model = Post
 
     def get(self, request, *args, **kwargs):
         if self.object.user is None:
-            self.get_context_data = self._get_context_data
+            self.show_password_form()
         return super().get(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
@@ -166,27 +166,51 @@ class PostDeleteView(PermissionMixin, DeleteView):
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
 
 
-class PostListView(BoardMixin, BoardPostListMixin, PostListMixin, ListView):
-    template_name = 'board/post_list_with_board.html'
-    paginate_by = 10
-    is_best = False
+class BaseBPostListView(BoardURLMixin, BPostListMixin, ListView):
+    pass
 
-    def _get_queryset(self):
-        pqs = Post.objects.filter(board=self.board, announcement=None)
+
+class PostListView(BaseBPostListView):
+    pass
+
+
+class PostBestListView(BaseBPostListView):
+    def queryset_post_filter(self, queryset):
+        pqs = queryset.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
         return pqs
 
     def get_context_data(self, **kwargs):
-        kwargs['is_best'] = self.is_best
+        kwargs['best'] = True
         return super().get_context_data(**kwargs)
 
 
-class PostBestListView(PostListView):
-    is_best = True
+class PostListByCategoryView(BaseBPostListView):
+    template_name = 'board/post_list_by_category.html'
 
-    def get_queryset(self):
-        pqs = super().get_queryset()
-        pqs = pqs.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
+    def dispatch(self, request, *args, **kwargs):
+        self.category = get_object_or_404(Category, slug=kwargs.get('category'))
+        return super().dispatch(request, *args, **kwargs)
+
+    def queryset_post_filter(self, queryset):
+        pqs = queryset.filter(category=self.category)
         return pqs
+
+    def get_context_data(self, **kwargs):
+        kwargs['category'] = self.category
+        return super().get_context_data(**kwargs)
+
+
+class BoardSearchView(BaseBPostListView):
+    def queryset_post_filter(self, queryset):
+        self.q = self.request.GET.get('q')
+        sqs = SearchQuerySet().models(Post)
+        sqs = sqs.filter(board=self.board.slug, content=self.q)
+        pqs = queryset.filter(pk__in=[s.pk for s in sqs])
+        return pqs
+
+    def get_context_data(self, **kwargs):
+        kwargs['search'] = {'query': self.q}
+        return super().get_context_data(**kwargs)
 
 
 class PostListByTagView(PostListMixin, ListView):
@@ -196,43 +220,12 @@ class PostListByTagView(PostListMixin, ListView):
         self.tag = get_object_or_404(Tag, name=kwargs.get('tag'))
         return super().dispatch(request, *args, **kwargs)
 
-    def _get_queryset(self):
+    def get_base_queryset(self):
         pqs = Post.objects.filter(tags=self.tag, announcement=None)
         return pqs
 
     def get_context_data(self, **kwargs):
         kwargs['tag'] = self.tag
-        return super().get_context_data(**kwargs)
-
-
-class PostListByCategoryView(PostListView):
-    template_name = 'board/post_list_by_category.html'
-
-    def dispatch(self, request, *args, **kwargs):
-        self.category = get_object_or_404(Category, slug=kwargs.get('category'))
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_queryset(self):
-        pqs = super().get_queryset()
-        pqs = pqs.filter(category=self.category)
-        return pqs
-
-    def get_context_data(self, **kwargs):
-        kwargs['category'] = self.category
-        return super().get_context_data(**kwargs)
-
-
-class BoardSearchView(PostListView):
-    def get_queryset(self):
-        self.q = self.request.GET.get('q')
-        sqs = SearchQuerySet().models(Post)
-        sqs = sqs.filter(board=self.board.slug, content=self.q)
-        pqs = super().get_queryset()
-        pqs = pqs.filter(pk__in=[s.pk for s in sqs])
-        return pqs
-
-    def get_context_data(self, **kwargs):
-        kwargs['search'] = {'query': self.q}
         return super().get_context_data(**kwargs)
 
 
