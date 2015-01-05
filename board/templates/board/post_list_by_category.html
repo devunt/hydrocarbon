@@ -1,4 +1,5 @@
 {% extends 'board/post_list_with_board.html' %}
+{% load i18n %}
 
 {% block title %}{{ board.name }} &rsaquo; {{ category.name }} :: {{ request.site.name }}{% endblock title %}
-{% block pagename %}{{ block.super }} &rsaquo; {{ category.name }}{% endblock %}
+{% block pagename %}{% trans "Category" %} &rsaquo; {{ category.name }}{% endblock %}
