@@ -56,12 +56,12 @@ class NicknameFormMixin:
         self.fields['nickname'] = self.nickname
 
     def clean_nickname(self):
-        value = self.cleaned_data['nickname']
+        value = self.cleaned_data['nickname'].strip()
         if self.initial.get('nickname') == value:
             return value
         qs = get_user_model().objects.filter(nickname__iexact=value)
         if not qs.exists():
-            return self.cleaned_data['nickname']
+            return value
         raise forms.ValidationError(_('This nickname is already taken. Please choose another.'))
 
 

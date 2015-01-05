@@ -76,7 +76,7 @@ class HCSettingsView(SettingsView):
 
     def update_nickname(self, form):
         user = self.request.user
-        user.nickname = form.cleaned_data['nickname'].strip()
+        user.nickname = form.cleaned_data['nickname']
         user.save()
 
 
