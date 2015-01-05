@@ -10,7 +10,6 @@ from django.http import JsonResponse, QueryDict
 from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
-from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
@@ -523,7 +522,6 @@ class JSConstantsView(TemplateView):
     template_name = 'constants.js'
     content_type = 'application/javascript'
 
-    @method_decorator(cache_page(24 * 60 * 60))
     def get(self, request, *args, **kwargs):
         return super().get(self, request, *args, **kwargs)
 
