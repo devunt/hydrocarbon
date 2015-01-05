@@ -5,6 +5,7 @@
 {% load intcomma from humanize %}
 
 {% block title %}{{ post.title }} - {{ block.super }}{% endblock %}
+{% block href_back %}{% url 'board_post_list' board.slug %}{% endblock %}
 
 {% block head %}
 	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
@@ -15,7 +16,7 @@
 
 {% block post %}
 
-<div class="section article" data-id="{{ post.id }}">
+<div class="section article detail" data-id="{{ post.id }}">
 	<div class="item article">
 		<div class="header">
 			<div class="title">
