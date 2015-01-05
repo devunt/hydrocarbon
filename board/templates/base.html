@@ -35,7 +35,7 @@
 		<div class="container">
 			<div class="left">
 				<div class="dropdown container menu-nav nodropdown">
-					<a href="/" class="handle">
+					<a href="{% block href_back %}/{% endblock %}" class="handle">
 						<span class="icon"></span>
 						<span class="text">{% block pagename %}<span class="default">{{ request.site.name }}</span>{% endblock %}</span>
 					</a>
@@ -64,17 +64,9 @@
 							<a href="#" class="close">{% trans "Close" %}</a>
 							<div class="tip top"><span></span></div>
 							<ul>
-								{% comment %}
-									- code for future use
-
-									{% for item in login_menu_list %}
-										<li><a href="{{ item.absurl }}">{{ item.title }}</a></li>
-									{% endfor %}
-								{% endcomment %}
-
 								<li><a href="{% url 'user_profile' user.id %}"><span>{{ user.nickname }}</span></a></li>
-								<li><a href="#"><span>{% trans "Submitted" %}</span></a></li>
-								<li><a href="#"><span>{% trans "Inbox" %}</span></a></li>
+								<li><a href="{% url 'account_settings' %}"><span>{% trans "Account settings" %}</span></a></li>
+								{# <li><a href="#"><span>{% trans "Inbox" %}</span></a></li> #}
 								<li><a href="{% url 'account_logout' %}"><span>{% trans "Log out" %}</span></a></li>
 							</ul>
 						</div>
