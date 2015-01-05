@@ -285,6 +285,21 @@ $(function() {
 				.removeClass('open')
 				.addClass('close');
 		});
+
+	$('.tabs')
+		.on('click', '.tab.header a:not(.current)', function(e) {
+			e.preventDefault();
+
+			var $container = $(this).closest('.tabs'),
+				target = $(this).attr('href').replace('#', '.');
+
+			$container.find('.section').hide();
+			$container.find(target).show();
+
+			$container.find('.tab.header a').removeClass('current');
+			$(this).addClass('current');
+
+		})
 });
 
 function csrfSafeMethod(method) { return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)); }
@@ -298,6 +313,8 @@ $.ajaxSetup({
 });
 
 function showTooltip(e) {
+	e.preventDefault();
+	
 	var $target = $(e.target).closest('.th');
 	var position = $target.offset();
 
