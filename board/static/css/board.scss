@@ -107,7 +107,7 @@
 		}
 	}
 
-	@media screen and (max-device-width: $medium) {
+	@media screen and (max-width: $medium) {
 		.header {
 			background:$grey-90; padding:10px 4%;
 			.cell { display:none; }
@@ -194,7 +194,7 @@
 		}
 	}
 
-	@media screen and (max-device-width: $small) {
+	@media screen and (max-width: $small) {
 		.item .cell.author .label.meta { margin-right:5px; }
 		.pages .button.foldable { display:none; }
 	}

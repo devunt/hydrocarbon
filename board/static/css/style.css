@@ -75,7 +75,7 @@ textarea[name=contents] {
 body {
   background: #e5e5e5; }
 
-@media screen and (max-device-width: 419px) {
+@media screen and (max-width: 419px) {
   body.hovered {
     overflow: hidden; } }
 #wrapper {
@@ -84,7 +84,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   margin-top: 50px; }
-  @media screen and (max-device-width: 719px) {
+  @media screen and (max-width: 719px) {
     #wrapper {
       width: 100%; } }
 
@@ -94,7 +94,7 @@ body {
   padding: 30px 0; }
   #footer img {
     width: 98px; }
-  @media screen and (max-device-width: 419px) {
+  @media screen and (max-width: 419px) {
     #footer {
       color: rgba(170, 170, 170, 0.9);
       padding: 10px 0; }
@@ -220,7 +220,7 @@ body {
       color: #fff; }
     .nav .button + .button {
       margin-left: 10px; }
-  @media screen and (max-device-width: 599px) {
+  @media screen and (max-width: 599px) {
     .nav {
       padding: 10px 4%; } }
 
@@ -281,7 +281,7 @@ form > .errorlist li {
     display: block; }
   .dropdown.container .close {
     display: none; }
-  @media screen and (max-device-width: 719px) {
+  @media screen and (max-width: 719px) {
     .dropdown.container.open .close {
       top: 0;
       left: 0;
@@ -497,7 +497,7 @@ a.anchor {
     width: 720px;
     margin: 0 auto;
     position: relative; }
-    @media screen and (max-device-width: 719px) {
+    @media screen and (max-width: 719px) {
       #nav > .container {
         width: 100%; } }
   #nav .handle {
@@ -559,7 +559,7 @@ a.anchor {
     @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
       #nav .dropdown.container.menu-personal .icon {
         background-image: url("../img/login_3x.png"); } }
-  @media screen and (max-device-width: 419px) {
+  @media screen and (max-width: 419px) {
     #nav .dropdown.container.menu-personal .text {
       display: none; } }
   #nav .dropdown.container.menu-personal .tip {
@@ -705,13 +705,13 @@ a.anchor {
     display: inline-block;
     padding: 0 .5em; }
 
-@media screen and (max-device-height: 419px) {
+@media screen and (max-height: 419px) {
   #form-login {
     padding: 10px 0; } }
-@media screen and (max-device-width: 419px) {
+@media screen and (max-width: 419px) {
   #form-login .field {
     width: auto; } }
-@media screen and (max-device-width: 599px) {
+@media screen and (max-width: 599px) {
   #form .field {
     width: 100%; }
     #form .field label span {
@@ -760,13 +760,13 @@ a.anchor {
     margin-right: 5px; }
     .no-touch .section.article .item.article .header div.meta .label.meta:hover {
       color: #222; }
-@media screen and (max-device-width: 599px) {
+@media screen and (max-width: 599px) {
   .section.article .item.article .header .title h2 {
     font-size: 18px;
     line-height: 24px; }
   .section.article .item.article .header div.meta .label.meta .text {
     font-size: 13px; } }
-@media screen and (max-device-width: 419px) {
+@media screen and (max-width: 419px) {
   .section.article .item.article .header .title h2 {
     font-size: 16px;
     line-height: 22px; }
@@ -780,7 +780,7 @@ a.anchor {
   width: 540px;
   line-height: 20px;
   margin: 20px auto !important; }
-  @media screen and (max-device-width: 599px) {
+  @media screen and (max-width: 599px) {
     .section.article .item.article div.article {
       width: 90%; } }
   .section.article .item.article div.article img {
@@ -843,11 +843,11 @@ a.anchor {
   margin: 0 5%;
   padding: 10px 7% 0;
   -webkit-tap-highlight-color: transparent; }
-  @media screen and (max-device-width: 599px) {
+  @media screen and (max-width: 599px) {
     .section.article .comments-list {
       margin: 0 2%;
       padding: 10px 5% 0; } }
-  @media screen and (max-device-width: 419px) {
+  @media screen and (max-width: 419px) {
     .section.article .comments-list {
       margin: 0 1%;
       padding: 10px 2% 0; } }
@@ -925,7 +925,7 @@ a.anchor {
           width: 30%; }
         .section.article .comments-list .comment .bubble.item .footer .ot .password {
           width: 45%; }
-    @media screen and (max-device-width: 599px) {
+    @media screen and (max-width: 599px) {
       .section.article .comments-list .comment .bubble.item .footer label {
         width: 40%; }
       .section.article .comments-list .comment .bubble.item .footer label + label {
@@ -963,7 +963,7 @@ a.anchor {
     visibility: hidden; }
 .section.article .nav {
   background: #f2f2f2; }
-  @media screen and (max-device-width: 419px) {
+  @media screen and (max-width: 419px) {
     .section.article .nav .button.checkbox {
       display: none; } }
 
@@ -1106,7 +1106,7 @@ a.anchor {
     .section.board .item .cell.meta .label.meta .icon {
       display: none;
       margin: 0; } }
-  @media screen and (max-device-width: 599px) {
+  @media screen and (max-width: 599px) {
     .section.board .header {
       background: #e5e5e5;
       padding: 10px 4%; }
@@ -1225,7 +1225,7 @@ a.anchor {
           overflow-x: auto; }
     .section.board .open .right {
       display: none; } }
-  @media screen and (max-device-width: 419px) {
+  @media screen and (max-width: 419px) {
     .section.board .item .cell.author .label.meta {
       margin-right: 5px; }
     .section.board .pages .button.foldable {
@@ -1313,7 +1313,7 @@ a.anchor {
       background: none;
       border: 0;
       display: block; }
-  @media all and (max-device-width: 599px) {
+  @media all and (max-width: 599px) {
     .section.article.form .item.article .header .category {
       width: 15%; }
     .section.article.form .item.article .header h2 {
@@ -1326,7 +1326,7 @@ a.anchor {
     .section.article.form .item.article .redactor-box .redactor-editor {
       min-height: 300px !important;
       padding: 20px 12.5% !important; }
-      @media all and (max-device-width: 599px) {
+      @media all and (max-width: 599px) {
         .section.article.form .item.article .redactor-box .redactor-editor {
           padding: 20px 5% !important; } }
   .section.article.form .item.article .footer {
@@ -1359,10 +1359,10 @@ a.anchor {
           background: #d9d9d9; }
 .section.article.form .ot.nav label {
   width: 30%; }
-  @media all and (max-device-width: 599px) {
+  @media all and (max-width: 599px) {
     .section.article.form .ot.nav label {
       width: 40%; } }
-  @media all and (max-device-width: 419px) {
+  @media all and (max-width: 419px) {
     .section.article.form .ot.nav label {
       width: 50%; } }
 .section.article.form .nav.center {
@@ -1465,7 +1465,7 @@ a.anchor {
     .redactor-editor span.spoiler:hover img {
       visibility: visible; }
 
-@media screen and (max-device-width: 599px) {
+@media screen and (max-width: 599px) {
   .redactor-dropdown {
     left: 5% !important;
     width: 90% !important; } }
@@ -1526,12 +1526,12 @@ a.anchor {
           .section.profile .header .meta .score .count .total {
             display: inline-block;
             position: relative; }
-    @media screen and (max-device-width: 719px) {
+    @media screen and (max-width: 719px) {
       .section.profile .header .icon {
         width: 80px; }
       .section.profile .header .meta h1 {
         font-size: 30px; } }
-    @media screen and (max-device-width: 599px) {
+    @media screen and (max-width: 599px) {
       .section.profile .header .icon {
         width: auto;
         display: block;

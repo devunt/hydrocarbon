@@ -43,12 +43,12 @@ textarea[name=contents] { background:transparent; border:0; }
 #overlay div { z-index:1054; }
 
 body { background:#e5e5e5; }
-@media screen and (max-device-width: $small) {
+@media screen and (max-width: $small) {
 	body.hovered { overflow:hidden; }
 }
 
 #wrapper { width:720px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.1); margin:0 auto; margin-top:50px;
-	@media screen and (max-device-width: $large) { width:100%; }
+	@media screen and (max-width: $large) { width:100%; }
 }
 
 #footer {
@@ -56,7 +56,7 @@ body { background:#e5e5e5; }
 
 	img { width:98px; }
 
-	@media screen and (max-device-width: $small) {
+	@media screen and (max-width: $small) {
 		color:$grey; padding:10px 0;
 		img { display:none; }
 	}

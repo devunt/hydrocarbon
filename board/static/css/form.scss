@@ -97,9 +97,9 @@
 	.meta a { display:inline-block; padding:0 .5em; }
 }
 
-@media screen and (max-device-height: $small) { #form-login { padding:10px 0; } }
-@media screen and (max-device-width: $small) { #form-login .field { width:auto; } }
-@media screen and (max-device-width: $medium) {
+@media screen and (max-height: $small) { #form-login { padding:10px 0; } }
+@media screen and (max-width: $small) { #form-login .field { width:auto; } }
+@media screen and (max-width: $medium) {
 	#form .field {
 		width:100%;
 		label {

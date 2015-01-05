@@ -38,12 +38,12 @@
 			}
 		}
 
-		@media screen and (max-device-width: $large) {
+		@media screen and (max-width: $large) {
 			.icon { width:80px; }
 			.meta h1 { font-size:30px; }
 		}
 
-		@media screen and (max-device-width: $medium) {
+		@media screen and (max-width: $medium) {
 			.icon { width:auto; display:block; margin-bottom:20px; text-align:center; }
 			.icon img { width:80px; }
 			.meta h1 { text-align:center; }

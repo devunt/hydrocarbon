@@ -34,6 +34,6 @@
 	}
 }
 
-@media screen and (max-device-width: $medium) {
+@media screen and (max-width: $medium) {
 	.redactor-dropdown { left:5% !important; width:90% !important; }
 }

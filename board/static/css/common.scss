@@ -94,7 +94,7 @@
 		.no-touch &.blue:hover { background:$blue-trans; color:$white; }
 		& + .button { margin-left:10px; }
 	}
-	@media screen and (max-device-width: $medium) { padding:10px 4%; }
+	@media screen and (max-width: $medium) { padding:10px 4%; }
 }
 
 //
@@ -144,7 +144,7 @@ form > .errorlist {
 		position:relative;
 		&.open .menu { display:block; }
 		.close { display:none; }
-		@media screen and (max-device-width: $large) {
+		@media screen and (max-width: $large) {
 			&.open .close { top:0; left:0; height:100%; width:100%; display:block; font-size:0; position:fixed; z-index:-1; -webkit-tap-highlight-color: rgba(0,0,0,0); }
 		}
 	}

@@ -31,12 +31,12 @@
 				}
 			}
 
-			@media screen and (max-device-width: $medium) {
+			@media screen and (max-width: $medium) {
 				.title h2 { font-size:18px; line-height:24px; }
 				div.meta .label.meta .text { font-size:$font-size - 1; }
 			}
 
-			@media screen and (max-device-width: $small) {
+			@media screen and (max-width: $small) {
 				.title h2 { font-size:16px; line-height:22px; }
 				div.meta .label.meta {
 					.icon { margin-right:2px; }
@@ -51,7 +51,7 @@
 		div.article {
 			width:540px; line-height:20px; margin:20px auto !important;
 
-			@media screen and (max-device-width: $medium) { width:90%; }
+			@media screen and (max-width: $medium) { width:90%; }
 
 			img { max-width:100%; }
 			li { list-style-position:inside; }
@@ -102,8 +102,8 @@
 	.comments-list {
 		margin:0 5%; padding:10px 7% 0; -webkit-tap-highlight-color: rgba(0,0,0,0);
 
-		@media screen and (max-device-width: $medium) { margin:0 2%; padding:10px 5% 0; }
-		@media screen and (max-device-width: $small) { margin:0 1%; padding:10px 2% 0; }
+		@media screen and (max-width: $medium) { margin:0 2%; padding:10px 5% 0; }
+		@media screen and (max-width: $small) { margin:0 1%; padding:10px 2% 0; }
 
 		li.list.item,
 		li.write,
@@ -163,7 +163,7 @@
 						}
 					}
 
-					@media screen and (max-device-width: $medium) {
+					@media screen and (max-width: $medium) {
 						.footer {
 							label { width:40%; }
 							label + label { width:60%; }
@@ -207,6 +207,6 @@
 
 	.nav {
 		background:$grey-95;
-		@media screen and (max-device-width: $small) { .button.checkbox { display:none; } }
+		@media screen and (max-width: $small) { .button.checkbox { display:none; } }
 	}
 }
