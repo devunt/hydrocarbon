@@ -57,6 +57,8 @@ class NicknameFormMixin:
 
     def clean_nickname(self):
         value = self.cleaned_data['nickname']
+        if self.initial.get('nickname') == value:
+            return value
         qs = get_user_model().objects.filter(nickname__iexact=value)
         if not qs.exists():
             return self.cleaned_data['nickname']
