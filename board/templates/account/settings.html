@@ -22,10 +22,13 @@
 			{% endfor %}
 		</ul>
 		<div class="clear">
-			<div class="left" style="width:50%;">
-				<a href="{% url 'account_password' %}" class="redmit">{% trans 'Change password' %}</a>
+			<div class="left" style="width:30%;">
+				<a href="{% url 'account_delete' %}" class="redmit">{% trans 'Delete account' %}</a>
 			</div>
-			<div class="right" style="width:50%;">
+			<div class="left" style="width:30%;">
+				<a href="{% url 'account_password' %}" class="gromit">{% trans 'Change password' %}</a>
+			</div>
+			<div class="left" style="width:40%;">
 				<button class="submit" type="submit">{% trans 'Save' %}</button>
 			</div>
 		</div>
