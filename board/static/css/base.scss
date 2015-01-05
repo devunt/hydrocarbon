@@ -30,7 +30,7 @@ a { color:$black; text-decoration:none; }
 .icon, .text { display:inline-block; }
 .label { display:inline-block; line-height:20px; }
 
-.clear:after { clear:both; content:""; display:block; }
+.clear:after { height:0; clear:both; content:""; display:block; }
 
 .left { float:left; white-space:nowrap; }
 .right { float:right; white-space:nowrap; }

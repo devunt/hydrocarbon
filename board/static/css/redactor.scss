@@ -23,6 +23,8 @@
 	a.imagecontainer { max-width:100%; display:inline-block; }
 	p:last-of-type { margin-bottom:0; }
 
+	iframe { height:auto !important; max-width:100%; }
+
 	span.spoiler {
 		background:$black; cursor:default; display:inline-block; margin:0 2px; padding:0 2px;
 		p { display:inline; }

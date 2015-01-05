@@ -24,8 +24,8 @@
 	.tip.bottom { display:none; }
 	.tip.top span { border-bottom-color:$black-trans; }
 	.tip.bottom span { border-top-color:$black-trans; }
-	.container { background:$black-trans; border-radius:4px; padding:5px 8px; text-align:center;
-		p { color:$white; font-size:$font-size - 2; line-height:20px; white-space:nowrap; }
+	.container { background:$black-trans; border-radius:4px; padding:5px 10px; text-align:center;
+		p { color:$white; font-size:$font-size - 2; line-height:1.3em; white-space:nowrap; }
 	}
 }
 

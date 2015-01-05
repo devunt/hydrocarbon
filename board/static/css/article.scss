@@ -98,11 +98,12 @@
 		}
 	}
 
+	&.detail .comments-list { border-top:1px solid $grey-90; }
 	.comments-list {
-		border-top:1px solid $grey-90; margin:0 5%; padding:10px 7% 0; -webkit-tap-highlight-color: rgba(0,0,0,0);
+		margin:0 5%; padding:10px 7% 0; -webkit-tap-highlight-color: rgba(0,0,0,0);
 
 		@media screen and (max-device-width: $medium) { margin:0 2%; padding:10px 5% 0; }
-		@media screen and (max-device-width: $small) { margin:0; padding:10px 2% 0; }
+		@media screen and (max-device-width: $small) { margin:0 1%; padding:10px 2% 0; }
 
 		li.list.item,
 		li.write,
