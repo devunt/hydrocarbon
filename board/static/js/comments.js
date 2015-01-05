@@ -3,7 +3,7 @@ var options;
 function getComments(id) {
 	return $.ajax({
 		type: 'GET',
-		url: get_comment_ajax_url(id)
+		url: get_comment_ajax_url(id) + '?t=' + new Date().getTime()
 	})
 		.done(function(data, status, xhr) {
 			var $article = $('.section.article'), $container = $('.comments-list ul'), count = data.comments.count;
