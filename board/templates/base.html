@@ -11,6 +11,8 @@
 
 	{% include "include/favicon.html" %}
 
+	<script src="{% url "constants.js" %}"></script>
+
 	<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
 	<script src="{% static "js/jquery.cookie.min.js" %}"></script>
 	<script src="{% static "js/jquery.timeago.kr.js" %}"></script>
@@ -32,29 +34,23 @@
 	<div id="nav">
 		<div class="container">
 			<div class="left">
-				<div class="dropdown container menu-nav">
-					<a href="#" class="handle">
+				<div class="dropdown container menu-nav nodropdown">
+					<a href="{% block href_back %}/{% endblock %}" class="handle">
 						<span class="icon"></span>
 						<span class="text">{% block pagename %}<span class="default">{{ request.site.name }}</span>{% endblock %}</span>
 					</a>
+					{% comment %}
 					<div class="dropdown menu">
 						<a href="#" class="close">{% trans "Close" %}</a>
 						<div class="tip top"><span></span></div>
 						<ul>
-							{% comment %}
-								- code for future use
-
-								{% for item in nav_menu_list %}
-									<li><a href="{{ item.absurl }}">{{ item.title }}</a></li>
-								{% endfor %}
-							{% endcomment %}
-
 							<li><a href="/"><span>{% trans "Home" %}</span></a></li>
 							<li><a href="#"><span>{% trans "Favorites" %}</span></a></li>
 							<li><a href="#"><span>{% trans "Notices" %}</span></a></li>
 							<li><a href="#"><span>{% trans "Scanlations" %}</span></a></li>
 						</ul>
 					</div>
+					{% endcomment %}
 				</div>
 			</div>
 			<div class="right">
@@ -68,17 +64,9 @@
 							<a href="#" class="close">{% trans "Close" %}</a>
 							<div class="tip top"><span></span></div>
 							<ul>
-								{% comment %}
-									- code for future use
-
-									{% for item in login_menu_list %}
-										<li><a href="{{ item.absurl }}">{{ item.title }}</a></li>
-									{% endfor %}
-								{% endcomment %}
-
-								<li><a href="/accounts/profile"><span>{{ user.nickname }}</span></a></li>
-								<li><a href="#"><span>{% trans "Submitted" %}</span></a></li>
-								<li><a href="#"><span>{% trans "Inbox" %}</span></a></li>
+								<li><a href="{% url 'user_profile' user.id %}"><span>{{ user.nickname }}</span></a></li>
+								<li><a href="{% url 'account_settings' %}"><span>{% trans "Account settings" %}</span></a></li>
+								{# <li><a href="#"><span>{% trans "Inbox" %}</span></a></li> #}
 								<li><a href="{% url 'account_logout' %}"><span>{% trans "Log out" %}</span></a></li>
 							</ul>
 						</div>
@@ -115,7 +103,7 @@
 </div>
 
 <div id="overlay">
-	<div id="tooltip">
+	<div class="tooltip" id="tooltip">
 		<div class="tip top"><span></span></div>
 		<div class="container">
 			<p></p>

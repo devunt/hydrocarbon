@@ -12,7 +12,7 @@
 
 
 	& > .container { width:720px; margin:0 auto; position:relative;
-		@media screen and (max-device-width: $large) { width:100%; }
+		@media screen and (max-width: $large) { width:100%; }
 	}
 	.handle { height:50px; display:block; }
 	.handle span { height:50px; vertical-align:middle; }
@@ -39,11 +39,12 @@
 			}
 
 			&.open .icon { background-position:0 -50px; }
+			&.nodropdown .icon { background-position:0 -100px !important; }
 
 			.text {
 				font-size:18px;
 				span.default {
-					width:100px; background:url("../img/logo_kr_1x.png") no-repeat; background-size:100px; display:inline-block; font-size:0; margin:0 5px;
+					width:100px; background:url("../img/logo_kr_1x.png") no-repeat; background-size:100px; display:inline-block; font-size:0;
 
 					@media
 					screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
@@ -69,7 +70,7 @@
 				screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3)  { background-image:url("../img/login_3x.png"); }
 			}
 
-			@media screen and (max-device-width: $small) {
+			@media screen and (max-width: $small) {
 				.text { display:none; }
 			}
 

@@ -118,10 +118,6 @@
 		if($('#id_title').val() == '') { $('#id_title').focus();
 		} else if($('#id_contents').val() == '') { $('.redactor-editor').focus(); }
 	});
-	
-	$('.section.article.form form').submit(function() {
-		$tags.val($tagbox.tagging('getTags').join(','));
-	});
 </script>
 {% endif %}
 {% endblock content %}

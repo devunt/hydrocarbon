@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-$tiny: 360px - 1;
 $small: 420px - 1;
 $medium: 600px - 1;
 $large: 720px - 1;
@@ -49,3 +48,4 @@ $checkbox: rgba($checkbox-base, .9);
 @import "write.scss";
 @import "redactor.scss";
 @import "search.scss";
+@import "profile.scss";

@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load i18n static hc %}
+
+{% block title %}{{ u.nickname }} :: {{ block.super }}{% endblock %}
+{% block pagename %}{{ u.nickname }}{% endblock %}
+
+{% block content %}
+
+<script>
+
+var score = {	
+	posts: {
+		upvotes: {{ u.score.posts.upvotes }},
+		downvotes: {{ u.score.posts.downvotes }}
+	},
+	comments: {
+		upvotes: {{ u.score.comments.upvotes }},
+		downvotes: {{ u.score.comments.downvotes }}
+	}
+}
+
+var score_tooltip = new String()
+	+ '{% trans "Posts"%}: +' + score.posts.upvotes + ' / -' + score.posts.downvotes + '\\n'
+	+ '{% trans "Comments" %}: +' + score.comments.upvotes + ' / -' + score.comments.downvotes;
+
+var upvote_ratio = 0
+	+ (score.posts.upvotes
+	+ score.comments.upvotes)/
+		(score.posts.upvotes
+		+ score.posts.downvotes
+		+ score.comments.upvotes
+		+ score.comments.downvotes)*100 + '%';
+
+</script>
+
+<div class="section profile">
+	<div class="header">
+		<div class="icon"><img src="{% static "img/profile_3x.png" %}"></div>
+		<div class="meta">
+			<h1>{{ u.nickname }}</h1>
+			<div class="score container">
+				<div class="votes bar">
+					{% if u.score.posts.upvotes or u.score.posts.downvotes or u.score.comments.upvotes or u.score.comments.downvotes %}
+						<div class="upvote bar"></div><div class="downvote bar"></div>
+					{% endif %}
+				</div>
+				<div class="count clear">
+					<div class="left">
+						<p>+{{ u.score.posts.upvotes | add:u.score.comments.upvotes }}</p>
+					</div>
+					<div class="right">
+						<p>-{{ u.score.posts.downvotes | add:u.score.comments.downvotes }}</p>
+					</div>
+					<span class="total">
+						{% if u.score.posts.upvotes|add:u.score.comments.upvotes != 0 and u.score.posts.downvotes|add:u.score.comments.downvotes != 0%}{% if u.total_score >= 0 %}+{% endif %}{{ u.total_score }}{% endif %}
+					</span>
+				</div>
+			</div>
+
+			<script>
+				$('.upvote.bar')
+					.css('width',upvote_ratio);
+
+				$('.votes.bar')
+					.attr('title', score_tooltip);
+
+				$('.score .count .total')
+					.css('left', upvote_ratio)
+					.css('margin-left',  -1*$('.score .count .total').width()/2);
+			</script>
+		</div>
+	</div>
+</div>
+
+<div class="tabs">
+	<div class="tab header">
+		<a class="current" href="#board">{% trans "Posts" %}</a>
+		<a href="#article">{% trans "Comments" %}</a>
+	</div>
+
+	<div class="section board tab">
+		<ul class="post-list">
+		{% for item in u.posts.all|slice:":10" %}
+			{% cycle 'odd' 'even' as rowclass silent %}
+			{% include "board/postlist/item.html" %}
+		{% empty %}
+			<li class="empty">{% trans "There are no posts here!" %}</li>
+		{% endfor %}
+		</ul>
+		{% if u.posts.all|length > 10 %}
+		<div class="nav bottom clear">
+			<div class="right">
+				<a href="{% url 'user_profile_posts' u.id %}" class="button">{% trans "More..." %}</a>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+
+	<div class="section article tab" style="display:none;">
+		<div class="comments-list">
+			<ul>
+				{% for item in u.comments.all|slice:":5" %}
+				<li class="list item{% if u = user %} owned{% endif %}">
+					<div class="comment">
+						<div class="bubble item">
+							<div class="container">
+								<div class="header clear">
+									<div class="left">
+										<a class="label meta author user">
+											<span class="text">{{ item.author }}</span>
+										</a>
+										<span class="meta timestamp">{{ item.created_time | timesince | split_first }}</span>
+									</div>
+									<div class="right">
+										<span class="label meta score">
+											<span class="icon"></span>
+											<span class="text"><span>{{ item.votes.total }}</span></span>
+										</span>
+									</div>
+								</div>
+								<div class="article clear">
+									<div class="redactor-editor">
+										{{ item.contents | safe }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="bubble tip"><span></span></div>
+					</div>
+				</li>
+				{% empty %}
+					<li class="empty">{% trans "There are no posts here!" %}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="nav bottom clear">
+			<div class="right">
+				<a href="{% url 'user_profile_posts' u.id %}" class="button">{% trans "More..." %}</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

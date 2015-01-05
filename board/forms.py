@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
-from account.forms import LoginEmailForm, SignupForm
+from account.forms import LoginEmailForm, SignupForm, SettingsForm
 from redactor.widgets import RedactorEditor
 
 from board.models import Category, Comment, Post, Tag
@@ -39,36 +39,51 @@ class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
         return super().clean(value)
 
 
+class OneTimeUserFormMixin:
+    def __init__(self, *args, **kwargs):
+        show_ot_form = kwargs.pop('show_ot_form', False)
+        super().__init__(*args, **kwargs)
+        if show_ot_form:
+            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
+            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
+
+
+class NicknameFormMixin:
+    nickname = forms.CharField(label=_('Nickname'), min_length=2, max_length=16)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['nickname'] = self.nickname
+
+    def clean_nickname(self):
+        value = self.cleaned_data['nickname'].strip()
+        if self.initial.get('nickname') == value:
+            return value
+        qs = get_user_model().objects.filter(nickname__iexact=value)
+        if not qs.exists():
+            return value
+        raise forms.ValidationError(_('This nickname is already taken. Please choose another.'))
+
+
 class HCLoginForm(LoginEmailForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super().__init__(*args, **kwargs)
 
 
-class HCSignupForm(SignupForm):
-    nickname = forms.CharField(label=_('Nickname'), min_length=2, max_length=16)
-
+class HCSignupForm(NicknameFormMixin, SignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         del self.fields['username']
         order = ('email', 'password', 'password_confirm', 'nickname', 'code')
         self.fields = OrderedDict((k, self.fields[k]) for k in order)
 
-    def clean_nickname(self):
-        value = self.cleaned_data['nickname']
-        qs = get_user_model().objects.filter(nickname__iexact=value)
-        if not qs.exists():
-            return self.cleaned_data['nickname']
-        raise forms.ValidationError(_('This nickname is already taken. Please choose another.'))
 
-
-class OneTimeUserFormMixin:
+class HCSettingsForm(NicknameFormMixin, SettingsForm):
     def __init__(self, *args, **kwargs):
-        self.authenticated = kwargs.pop('authenticated')
         super().__init__(*args, **kwargs)
-        if not self.authenticated:
-            self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
-            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
+        del self.fields['timezone']
+        del self.fields['language']
 
 
 class PostForm(OneTimeUserFormMixin, forms.ModelForm):

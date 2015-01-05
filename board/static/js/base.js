@@ -90,13 +90,13 @@ $(function() {
 		.on('mouseleave scroll', '.th', hideTooltip)
 		.on('touchstart', '.th:not(.th-active)', showTooltip)
 		.on('touchstart', '.th.th-active', hideTooltip)
-		.on('mouseenter touchstart', '*[title]', function() {
+		.on('mouseenter touchstart', '*[title]', function(e) {
 			if($(this).closest('.note-editor').length) return false;
 			$(this)
 				.data('title', $(this).attr('title'))
 				.removeAttr('title')
-				.addClass('th')
-				.trigger('mouseenter');
+				.addClass('th');
+			showTooltip(e);
 		});
 
 	$('.article img').each(function() {
@@ -135,7 +135,6 @@ $(function() {
 		$label.remove();
 	});
 
-
 	$('.post.item .label.meta.comments')
 		.on('mouseenter', function() {
 			var $item = $(this).closest('a.post.item');
@@ -148,8 +147,23 @@ $(function() {
 			$item.attr('href', $item.attr('href').replace('#comments', ''));
 		});
 
+	$('.post.item .label.meta.author.user')
+		.on('mouseenter', function() {
+			var $item = $(this).closest('a.post.item');
+
+			$item.attr('href', $(this).data('user-id-url'));
+		})
+		.on('mouseleave', function() {
+			var $item = $(this).closest('a.post.item');
+
+			$item.attr('href', '/' + $item.data('post-id') + '/');
+		});
+
 	$('.section.article.form form')
-		.on('submit', function() { $('#tagbox').tagging('add'); })
+		.on('submit', function() {
+			$('#tagbox').tagging('add');
+			$tags.val($tagbox.tagging('getTags').join(','));
+		})
 		.find('.category')
 			.on('click', 'a.option', function(e) {
 				e.preventDefault();
@@ -205,13 +219,13 @@ $(function() {
 
 					switch($(this).text()) {
 						case '번역':
-							$a.addClass('scanlation');
+							$li.addClass('scanlation');
 							break;
 						case '자막':
-							$a.addClass('subtitles');
+							$li.addClass('subtitles');
 							break;
 						case '정보':
-							$a.addClass('news');
+							$li.addClass('news');
 							break;
 					}
 
@@ -271,6 +285,21 @@ $(function() {
 				.removeClass('open')
 				.addClass('close');
 		});
+
+	$('.tabs')
+		.on('click', '.tab.header a:not(.current)', function(e) {
+			e.preventDefault();
+
+			var $container = $(this).closest('.tabs'),
+				target = $(this).attr('href').replace('#', '.');
+
+			$container.find('.section').hide();
+			$container.find(target).show();
+
+			$container.find('.tab.header a').removeClass('current');
+			$(this).addClass('current');
+
+		})
 });
 
 function csrfSafeMethod(method) { return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)); }
@@ -284,6 +313,8 @@ $.ajaxSetup({
 });
 
 function showTooltip(e) {
+	e.preventDefault();
+	
 	var $target = $(e.target).closest('.th');
 	var position = $target.offset();
 
@@ -301,7 +332,7 @@ function showTooltip(e) {
 
 	var margin = 10;
 
-	$tooltip.find('.container p').html($target.data('title').replace('\\n', '<br>'));
+	$tooltip.find('.container p').html($target.data('title').replace(/\\n/gi, '<br>'));
 	$tooltip.find('.tip').removeAttr('style');
 
 	top = position.top + targetHeight;
@@ -386,7 +417,7 @@ function vote_callback(data, work, button) {
 function $ajax_vote(databox) {
 	return $.ajax({
 			type: 'POST',
-			url: '/x/v',
+			url: VOTE_AJAX_ENDPOINT,
 			data: databox
 		})
 			.fail(function(xhr, status, error) {

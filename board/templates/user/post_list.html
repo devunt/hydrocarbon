@@ -1,0 +1,6 @@
+{% extends 'board/post_list_base.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.nickname }} :: {{ block.super }}{% endblock title %}
+{% block href_back %}{% url 'user_profile' user.id %}{% endblock %}
+{% block pagename %}{{ user.nickname }} &rsaquo; {% trans "Posts" %}{% endblock %}

@@ -21,8 +21,6 @@ input { border-radius:0; }
 
 a { color:$black; text-decoration:none; }
 .no-touch a:hover { color:$grey; }
-.no-touch a.label:hover,
-.no-touch a:hover .label { color:$black; opacity:.8; }
 
 .button {
 	display:inline-block;
@@ -32,7 +30,7 @@ a { color:$black; text-decoration:none; }
 .icon, .text { display:inline-block; }
 .label { display:inline-block; line-height:20px; }
 
-.clear:after { clear:both; content:""; display:block; }
+.clear:after { height:0; clear:both; content:""; display:block; }
 
 .left { float:left; white-space:nowrap; }
 .right { float:right; white-space:nowrap; }
@@ -45,12 +43,12 @@ textarea[name=contents] { background:transparent; border:0; }
 #overlay div { z-index:1054; }
 
 body { background:#e5e5e5; }
-@media screen and (max-device-width: $small) {
+@media screen and (max-width: $small) {
 	body.hovered { overflow:hidden; }
 }
 
 #wrapper { width:720px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.1); margin:0 auto; margin-top:50px;
-	@media screen and (max-device-width: $large) { width:100%; }
+	@media screen and (max-width: $large) { width:100%; }
 }
 
 #footer {
@@ -58,7 +56,7 @@ body { background:#e5e5e5; }
 
 	img { width:98px; }
 
-	@media screen and (max-device-width: $small) {
+	@media screen and (max-width: $small) {
 		color:$grey; padding:10px 0;
 		img { display:none; }
 	}

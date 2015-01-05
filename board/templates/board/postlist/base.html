@@ -3,23 +3,12 @@
 {% load intcomma from humanize %}
 {% load cycle from future %}
 
-{% block title %}{{ board }} :: {{ block.super }}{% endblock %}
-{% block pagename %}
-	{% if search %}
-		{% blocktrans %}Searching {{ board }}{% endblocktrans %}
-	{% else %}
-		{{ board }}
-	{% endif %}
-{% endblock %}
-
 {% block content %}
-
-{% block post %}{% endblock %}
-
 <div class="section board">
 	<div class="header{% if post %} foldable{% endif %}">
 		<div class="cell mark"></div>
 		<div class="cell category sortable dropdown container">
+			{% if board and board.categories.all %}
 			<a href="#" class="handle label meta">
 				<span class="text"><span>{% trans "Categories" %}</span></span>
 			</a>
@@ -27,30 +16,30 @@
 				<a href="#" class="close">{% trans "Close" %}</a>
 				<div class="tip top"><span></span></div>
 				<ul>
-					<li><a href="#"><span>cat1</span></a></li>
-					<li><a href="#"><span>cat2</span></a></li>
-					<li><a href="#"><span>cat3</span></a></li>
-					<li><a href="{% url 'board_post_list' board.slug %}"><span>{% trans "Clear sort/filter" %}</span></a></li>
+					{% for cat in board.categories.all %}
+					<li class="{{ cat.slug }}"><a href="{% url 'board_post_list_by_category' board.slug cat.slug %}"><span>{{ cat.name }}</span></a></li>
+					{% endfor %}
+					<li style="border-top:1px solid #e5e5e5;"><a href="{% url 'board_post_list' board.slug %}"><span>{% trans "Clear sort/filter" %}</span></a></li>
 				</ul>
 			</div>
+			{% endif %}
 		</div>
 		<div class="cell title">{% trans "Title" %}</div>
 		<div class="cell author">{% trans "Author" %}</div>
-		{{ order_by }}
 		<div class="cell timestamp sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
-			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% url 'board_post_list' board.slug %}{% else %}{% url 'board_post_list' board.slug '-ct' %}{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'created_time' and order_by.order == 'desc' %}{% del_params current_url %}{% else %}{% add_params current_url o='-ct' %}{% endif %}">
 				<span class="text">{% trans "Date" %}</span>
 				{% if order_by.column == 'created_time' %}<span class="icon"></span> {% endif %}
 			</a>
 		</div>
 		<div class="cell score sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
-			<a class="handle label meta" href="{% if order_by.column == 'vote' and order_by.order == 'asc' %}{% url 'board_post_list' board.slug '-vt' %}{% else %}{% url 'board_post_list' board.slug '+vt' %}{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'vote' and order_by.order == 'asc' %}{% add_params current_url o='-vt' %}{% else %}{% add_params current_url o='+vt' %}{% endif %}">
 				<span class="text">{% trans "Score" %}</span>
 				{% if order_by.column == 'vote' %}<span class="icon"></span> {% endif %}
 			</a>
 		</div>
 		<div class="cell views sortable dropdown{% if order_by.order == 'desc' %} open{% endif %}">
-			<a class="handle label meta" href="{% if order_by.column == 'viewcount' and order_by.order == 'asc' %}{% url 'board_post_list' board.slug '-vc' %}{% else %}{% url 'board_post_list' board.slug '+vc' %}{% endif %}">
+			<a class="handle label meta" href="{% if order_by.column == 'viewcount' and order_by.order == 'asc' %}{% add_params current_url o='-vc' %}{% else %}{% add_params current_url o='+vc' %}{% endif %}">
 				<span class="text">{% trans "Views" %}</span>
 				{% if order_by.column == 'viewcount' %}<span class="icon"></span> {% endif %}
 			</a>
@@ -60,12 +49,12 @@
 	<ul class="post-list">
 	{% for item in announcement_list %}
 		{% cycle 'odd' 'even' as rowclass silent %}
-		{% include "board/post_item.html" with notice=True %}
+		{% include "board/postlist/item.html" with notice=True %}
 	{% endfor %}
 
 	{% for item in post_list %}
 		{% cycle rowclass %}
-		{% include "board/post_item.html" %}
+		{% include "board/postlist/item.html" %}
 	{% empty %}
 		{% if search %}
 			<li class="empty">{% trans "There are no results." %}</li>
@@ -79,53 +68,8 @@
 		<script>$('.post-list a.post.item .cell.title .title').each(function() { $(this).html($(this).text().replace(/({{ search.query }})/gi, '<span class="highlight">$1</span>')); });</script>
 	{% endif %}
 
-	<div class="nav bottom clear close">
-		<div class="left">
-			<a href="{% url 'board_post_list' board.slug %}" class="button">{% trans "List" %}</a>
-			{% if is_best %}
-				<a href="{% url 'board_post_list' board.slug %}" class="button blue checkbox checked">
-			{% else %}
-				<a href="{% url 'board_post_list_best' board.slug %}" class="button checkbox">
-			{% endif %}
-				<span class="label">
-					<span class="icon"></span>
-					<span class="text">{% trans "Top posts" %}</span>
-				</span>
-			</a>
-			<div class="search button">
-				<form action="{% url 'board_search' board.slug %}" method="get">
-					<button type="button" class="search label meta"><span class="icon"></span></button>
-					<input type="search" name="q" placeholder="{% trans "Search" %}" class="text"{% if search %} value="{{ search.query }}"{% endif %}>
-					<div class="dropdown container scope">
-						<a href="#" class="handle label meta">
-							<span class="icon"></span>
-						</a>
-						<div class="dropdown menu">
-						<div class="tip top"><span></span></div>
-							<a href="#" class="close">{% trans "Close" %}</a>
-							<ul>
-								<li><a href="#"><span>cat1</span></a></li>
-								<li><a href="#"><span>cat2</span></a></li>
-								<li><a href="#"><span>cat3</span></a></li>
-								<li><a class="checkbox checked" href="#">
-									<span class="label">
-										<span class="icon"></span>
-										<span class="text">toggle</span>
-									</span>
-								</a></li>
-							</ul>
-						</div>
-					</div>
-					<a href="#" class="label meta delete">
-						<span class="icon"></span>
-					</a>
-				</form>
-			</div>
-		</div>
-		<div class="right">
-			<a href="{% url 'board_post_create' board.slug %}" class="button blue">{% trans "New post" %}</a>
-		</div>
-	</div>
+	{% block bottom-nav %}
+	{% endblock %}
 
 	{% if is_paginated %}
 		<div class="pages nav">

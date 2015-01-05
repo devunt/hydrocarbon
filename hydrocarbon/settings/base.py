@@ -101,7 +101,6 @@ LOCALE_PATHS = (
 )
 LANGUAGES = (
     ('ko', _('Korean')),
-    ('en', _('English')),
 )
 LANGUAGE_CODE = 'ko-kr'
 
@@ -115,9 +114,11 @@ USE_TZ = True
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
 ACCOUNT_NOTIFY_ON_PASSWORD_CHANGE = False
+ACCOUNT_DELETION_MARK_CALLBACK = 'board.callbacks.account_delete_mark'
+ACCOUNT_DELETION_EXPUNGE_CALLBACK = 'board.callbacks.account_delete_expunge'
 
 # django-wysiwyg-redactor
-REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'plugins': ['video', 'spoiler', 'krfix']}
+REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'buttonsHide': ['horizontalrule'], 'plugins': ['video', 'spoiler', 'krfix']}
 REDACTOR_UPLOAD = 'uploads/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 

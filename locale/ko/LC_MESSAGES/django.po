@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-03 16:23+0900\n"
+"POT-Creation-Date: 2015-01-05 22:15+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,61 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: board/forms.py:49 board/forms.py:70
-#: board/templates/board/post_detail.html:201
+#: board/forms.py:47 board/forms.py:52
 msgid "Nickname"
 msgstr "닉네임"
 
-#: board/forms.py:62
-msgid "This nickname is already taken. Please choose another."
-msgstr "이 닉네임은 이미 사용중입니다. 다른 닉네임을 사용해 주세요."
-
-#: board/forms.py:71 board/forms.py:114 board/i18n_fake.py:7
-#: board/templates/board/post_detail.html:202
+#: board/forms.py:48 board/forms.py:129 board/i18n_fake.py:8
 msgid "Password"
 msgstr "비밀번호"
 
-#: board/forms.py:108
+#: board/forms.py:65
+msgid "This nickname is already taken. Please choose another."
+msgstr "이 닉네임은 이미 사용중입니다. 다른 닉네임을 사용해 주세요."
+
+#: board/forms.py:123
 msgid "Press ctrl-space to submit a comment"
 msgstr "컨트롤-스페이스 키를 이용해 댓글을 달 수 있습니다"
 
-#: board/i18n_fake.py:3
+#: board/i18n_fake.py:4
 msgid "Username"
 msgstr "아이디"
 
-#: board/i18n_fake.py:4
+#: board/i18n_fake.py:5
 msgid "username"
 msgstr "아이디"
 
-#: board/i18n_fake.py:5
+#: board/i18n_fake.py:6
 msgid "E-mail"
 msgstr "이메일"
 
-#: board/i18n_fake.py:6
+#: board/i18n_fake.py:7
 msgid "Email"
 msgstr "이메일"
 
-#: board/i18n_fake.py:8
+#: board/i18n_fake.py:9
 msgid "Password (again)"
 msgstr "비밀번호 확인"
 
-#: board/i18n_fake.py:9
+#: board/i18n_fake.py:10
 msgid "The two password fields didn't match."
 msgstr "비밀번호가 서로 일치하지 않습니다."
 
-#: board/i18n_fake.py:10
+#: board/i18n_fake.py:11
 msgid "Current Password"
 msgstr "현재 비밀번호"
 
-#: board/i18n_fake.py:11
+#: board/i18n_fake.py:12
 msgid "New Password"
 msgstr "새 비밀번호"
 
-#: board/i18n_fake.py:12
+#: board/i18n_fake.py:13
 msgid "New Password (again)"
 msgstr "비밀번호 확인"
 
-#: board/i18n_fake.py:14
+#: board/i18n_fake.py:15
 #, python-format
 msgid ""
 "Please enter a correct %(username)s and password. Note that both fields may "
@@ -81,155 +79,155 @@ msgstr ""
 "%(username)s와 비밀번호를 정확히 입력해 주세요. 아이디와 비밀번호는 둘 다 대"
 "소문자를 구분합니다."
 
-#: board/i18n_fake.py:15
+#: board/i18n_fake.py:16
 msgid "Usernames can only contain letters, numbers and underscores."
 msgstr "아이디에는 영문자, 숫자 및 \"_\"만 사용할 수 있습니다."
 
-#: board/i18n_fake.py:16
+#: board/i18n_fake.py:17
 msgid "This username is already taken. Please choose another."
 msgstr "이 아이디는 이미 사용중입니다. 다른 아이디를 사용해 주세요."
 
-#: board/i18n_fake.py:17
+#: board/i18n_fake.py:18
 msgid "A user is registered with this email address."
 msgstr "이 이메일은 이미 사용중입니다."
 
-#: board/i18n_fake.py:18
+#: board/i18n_fake.py:19
 msgid "You must type the same password each time."
 msgstr "같은 비밀번호를 두 번 입력해 주세요."
 
-#: board/i18n_fake.py:19
+#: board/i18n_fake.py:20
 msgid "Remember Me"
 msgstr "로그인 유지"
 
-#: board/i18n_fake.py:20
+#: board/i18n_fake.py:21
 msgid "This account is inactive."
 msgstr "비활성화된 계정입니다."
 
-#: board/i18n_fake.py:21
+#: board/i18n_fake.py:22
 msgid "The username and/or password you specified are not correct."
 msgstr "입력하신 아이디 또는 비밀번호가 정확하지 않습니다."
 
-#: board/i18n_fake.py:22
+#: board/i18n_fake.py:23
 msgid "The email address and/or password you specified are not correct."
 msgstr "입력하신 이메일 또는 비밀번호가 정확하지 않습니다."
 
-#: board/i18n_fake.py:24
+#: board/i18n_fake.py:25
 msgid "Please type your current password."
 msgstr "현재 비밀번호를 입력해주세요."
 
-#: board/i18n_fake.py:25
+#: board/i18n_fake.py:26
 msgid "Email address can not be found."
 msgstr "입력하신 이메일 주소는 등록되지 않았습니다."
 
-#: board/i18n_fake.py:27
+#: board/i18n_fake.py:28
 msgid "Timezone"
 msgstr "시간대"
 
-#: board/i18n_fake.py:28
+#: board/i18n_fake.py:29
 msgid "Language"
 msgstr "언어"
 
-#: board/i18n_fake.py:29
+#: board/i18n_fake.py:30
 msgid "timezone"
 msgstr "시간대"
 
-#: board/i18n_fake.py:30
+#: board/i18n_fake.py:31
 msgid "language"
 msgstr "언어"
 
-#: board/i18n_fake.py:32
+#: board/i18n_fake.py:33
 msgid "email address"
 msgstr "이메일 주소"
 
-#: board/i18n_fake.py:33
+#: board/i18n_fake.py:34
 msgid "email addresses"
 msgstr "이메일 주소"
 
-#: board/i18n_fake.py:34
+#: board/i18n_fake.py:35
 msgid "email confirmation"
 msgstr "이메일 인증"
 
-#: board/i18n_fake.py:35
+#: board/i18n_fake.py:36
 msgid "email confirmations"
 msgstr "이메일 인증"
 
-#: board/i18n_fake.py:37
+#: board/i18n_fake.py:38
 #, python-brace-format
 msgid "Confirmation email sent to {email}."
 msgstr "인증 메일이 {email}로 발송되었습니다."
 
-#: board/i18n_fake.py:38
+#: board/i18n_fake.py:39
 #, python-brace-format
 msgid "The code {code} is invalid."
 msgstr "{code}는 유효하지 않은 코드입니다."
 
-#: board/i18n_fake.py:39
+#: board/i18n_fake.py:40
 #, python-brace-format
 msgid "You have confirmed {email}."
 msgstr "메일 주소 {email}로 인증되었습니다."
 
-#: board/i18n_fake.py:40
+#: board/i18n_fake.py:41
 msgid "Password successfully changed."
 msgstr "성공적으로 비밀번호가 변경되었습니다."
 
-#: board/i18n_fake.py:41
+#: board/i18n_fake.py:42
 msgid "Account settings updated."
 msgstr "계정 설정 변경됨."
 
-#: board/i18n_fake.py:43
+#: board/i18n_fake.py:44
 #, python-brace-format
 msgid ""
 "Your account is now inactive and your data will be expunged in the next "
 "{expunge_hours} hours."
 msgstr ""
-"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간 이후 계정의 자료는 "
-"삭제될 예정입니다."
+"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간동안 추가 로그인이 없"
+"을 시 계정이 자동으로 삭제될 예정입니다."
 
-#: board/i18n_fake.py:45
+#: board/i18n_fake.py:46
 #, python-format
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d년"
 
-#: board/i18n_fake.py:46
+#: board/i18n_fake.py:47
 #, python-format
 msgid "%d month"
 msgid_plural "%d months"
 msgstr[0] "%d월"
 
-#: board/i18n_fake.py:47
+#: board/i18n_fake.py:48
 #, python-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] "%d주"
 
-#: board/i18n_fake.py:48
+#: board/i18n_fake.py:49
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d일"
 
-#: board/i18n_fake.py:49
+#: board/i18n_fake.py:50
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d시간"
 
-#: board/i18n_fake.py:50
+#: board/i18n_fake.py:51
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d분"
 
-#: board/i18n_fake.py:51
+#: board/i18n_fake.py:52
 msgid "0 minutes"
 msgstr "방금"
 
-#: board/i18n_fake.py:52
+#: board/i18n_fake.py:53
 msgid ", "
 msgstr " "
 
-#: board/i18n_fake.py:55
+#: board/i18n_fake.py:56
 #, python-format
 msgid ""
 "Ensure this value has at least %(limit_value)d character (it has "
@@ -241,7 +239,7 @@ msgstr[0] ""
 "입력하신 값은 최소 %(limit_value)d글자여야만 합니다. 현재 값은 %(show_value)d"
 "글자입니다."
 
-#: board/mixins.py:85
+#: board/mixins.py:89
 msgid "Wrong password"
 msgstr "잘못된 비밀번호입니다"
 
@@ -322,30 +320,30 @@ msgstr "%(site_name)s 회원가입을 환영합니다!"
 msgid "Please check your email to complete the registration process."
 msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다. 확인해 주세요."
 
-#: board/templates/account/login.html:5 board/templates/account/login.html:6
-#: board/templates/account/login.html:27 board/templates/base.html:89
+#: board/templates/account/login.html:5 board/templates/account/login.html:26
+#: board/templates/base.html:77
 msgid "Log in"
 msgstr "로그인"
 
-#: board/templates/account/login.html:31
+#: board/templates/account/login.html:30
 msgid "Do you have no account?"
 msgstr "아직 계정이 없으신가요?"
 
-#: board/templates/account/login.html:31
+#: board/templates/account/login.html:30
 #: board/templates/account/signup.html:24
 msgid "Register"
 msgstr "회원가입"
 
-#: board/templates/account/login.html:32
+#: board/templates/account/login.html:31
 msgid "Lost your password?"
 msgstr "비밀번호를 잃어버리셨나요?"
 
-#: board/templates/account/login.html:32
+#: board/templates/account/login.html:31
 msgid "Click here"
 msgstr "여기를 클릭하세요."
 
 #: board/templates/account/logout.html:4 board/templates/account/logout.html:5
-#: board/templates/account/logout.html:13 board/templates/base.html:83
+#: board/templates/account/logout.html:13 board/templates/base.html:71
 msgid "Log out"
 msgstr "로그아웃"
 
@@ -356,6 +354,7 @@ msgstr "로그아웃 하시겠습니까?"
 #: board/templates/account/password_change.html:4
 #: board/templates/account/password_change.html:5
 #: board/templates/account/password_change.html:21
+#: board/templates/account/settings.html:26
 msgid "Change password"
 msgstr "비밀번호 변경"
 
@@ -422,11 +421,11 @@ msgstr ""
 "습니다. <a href=\"%(url)s\">새로 비밀번호 초기화</a>를신청해 주세요."
 
 #: board/templates/account/settings.html:4
-#: board/templates/account/settings.html:5
+#: board/templates/account/settings.html:5 board/templates/base.html:69
 msgid "Account settings"
 msgstr "계정 설정"
 
-#: board/templates/account/settings.html:24
+#: board/templates/account/settings.html:29
 msgid "Save"
 msgstr "저장"
 
@@ -444,37 +443,12 @@ msgid "Sorry, but registration is closed at this moment. Come back later."
 msgstr ""
 "죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 시도해 주세요."
 
-#: board/templates/base.html:40 board/templates/base.html.py:68
-#: board/templates/board/post_detail.html:137
-#: board/templates/board/post_list.html:27
-#: board/templates/board/post_list.html:105
+#: board/templates/base.html:65 board/templates/board/post_detail.html:140
+#: board/templates/board/postlist/base.html:16
+#: board/templates/board/postlist/with_board.html:37
 #: board/templates/search/search.html:22
 msgid "Close"
 msgstr "닫기"
-
-#: board/templates/base.html:52
-msgid "Home"
-msgstr "홈"
-
-#: board/templates/base.html:53
-msgid "Favorites"
-msgstr "즐겨찾기"
-
-#: board/templates/base.html:54
-msgid "Notices"
-msgstr "공지사항"
-
-#: board/templates/base.html:55
-msgid "Scanlations"
-msgstr "번역"
-
-#: board/templates/base.html:81
-msgid "Submitted"
-msgstr "작성글 보기"
-
-#: board/templates/base.html:82
-msgid "Inbox"
-msgstr "쪽지함"
 
 #: board/templates/board/post_confirm_delete.html:4
 #: board/templates/board/post_confirm_delete.html:5
@@ -490,17 +464,17 @@ msgid "Then enter the password you used."
 msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력해 주세요."
 
 #: board/templates/board/post_confirm_delete.html:28
-#: board/templates/board/post_detail.html:176
-#: board/templates/board/post_detail.html:240
+#: board/templates/board/post_detail.html:179
+#: board/templates/board/post_detail.html:241
 msgid "Delete"
 msgstr "삭제"
 
-#: board/templates/board/post_detail.html:45
-#: board/templates/board/post_item.html:35
+#: board/templates/board/post_detail.html:46
+#: board/templates/board/postlist/item.html:34
 msgid "ago"
 msgstr "전"
 
-#: board/templates/board/post_detail.html:50
+#: board/templates/board/post_detail.html:51
 #, python-format
 msgid ""
 "\n"
@@ -511,7 +485,7 @@ msgstr ""
 "\t\t\t\t\t\t\t추천 <span>%(counter)s</span>개\n"
 "\t\t\t\t\t\t"
 
-#: board/templates/board/post_detail.html:58
+#: board/templates/board/post_detail.html:59
 #, python-format
 msgid ""
 "\n"
@@ -522,58 +496,62 @@ msgstr ""
 "\t\t\t\t\t\t\t조회수 <span>%(counter)s</span>\n"
 "\t\t\t\t\t\t"
 
-#: board/templates/board/post_detail.html:74
-#: board/templates/board/post_detail.html:144
+#: board/templates/board/post_detail.html:75
+#: board/templates/board/post_detail.html:147
 msgid "Upvote"
 msgstr "추천"
 
-#: board/templates/board/post_detail.html:78
-#: board/templates/board/post_detail.html:152
+#: board/templates/board/post_detail.html:79
+#: board/templates/board/post_detail.html:155
 msgid "Downvote"
 msgstr "비추천"
 
-#: board/templates/board/post_detail.html:100
+#: board/templates/board/post_detail.html:99
 #, python-format
 msgid "There is <span>%(counter)s</span> comment."
 msgid_plural "There are <span>%(counter)s</span> comments."
 msgstr[0] "<span>%(counter)s</span>개의 댓글이 달려있습니다."
 
-#: board/templates/board/post_detail.html:106
+#: board/templates/board/post_detail.html:105
 msgid "Refresh"
 msgstr "새로고침"
 
-#: board/templates/board/post_detail.html:160
+#: board/templates/board/post_detail.html:124
+msgid "Hidden"
+msgstr "숨겨짐"
+
+#: board/templates/board/post_detail.html:163
 msgid "Reply"
 msgstr "답글"
 
-#: board/templates/board/post_detail.html:168
-#: board/templates/board/post_detail.html:241
+#: board/templates/board/post_detail.html:171
+#: board/templates/board/post_detail.html:242
 msgid "Modify"
 msgstr "수정"
 
-#: board/templates/board/post_detail.html:205
+#: board/templates/board/post_detail.html:208
 msgid "Cancel"
 msgstr "취소"
 
-#: board/templates/board/post_detail.html:206
+#: board/templates/board/post_detail.html:209
 msgid "Submit comment"
 msgstr "댓글 달기"
 
-#: board/templates/board/post_detail.html:226
-#: board/templates/board/post_list.html:84
+#: board/templates/board/post_detail.html:227
+#: board/templates/board/postlist/with_board.html:16
 msgid "List"
 msgstr "목록"
 
-#: board/templates/board/post_detail.html:234
-#: board/templates/board/post_list.html:92
+#: board/templates/board/post_detail.html:235
+#: board/templates/board/postlist/with_board.html:24
 msgid "Top posts"
 msgstr "베스트"
 
-#: board/templates/board/post_detail.html:243
+#: board/templates/board/post_detail.html:244
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
-#: board/templates/board/post_form.html:90
-#: board/templates/board/post_list.html:126
+#: board/templates/board/post_form.html:100
+#: board/templates/board/postlist/with_board.html:58
 msgid "New post"
 msgstr "글쓰기"
 
@@ -581,81 +559,90 @@ msgstr "글쓰기"
 msgid "Input the password you used on this post."
 msgstr "글을 작성하실 때 사용하셨던 비밀번호를 입력해 주세요."
 
-#: board/templates/board/post_form.html:53
-#: board/templates/board/post_list.html:24
+#: board/templates/board/post_form.html:51
+#: board/templates/board/postlist/base.html:13
 msgid "Categories"
 msgstr "분류"
 
-#: board/templates/board/post_form.html:73
-#: board/templates/board/post_form.html:103
+#: board/templates/board/post_form.html:71
+#: board/templates/board/post_form.html:113
 msgid "Tags"
 msgstr "태그"
 
-#: board/templates/board/post_item.html:8
+#: board/templates/board/postlist/base.html:22
+msgid "Clear sort/filter"
+msgstr "기본 정렬"
+
+#: board/templates/board/postlist/base.html:27
+msgid "Title"
+msgstr "제목"
+
+#: board/templates/board/postlist/base.html:28
+msgid "Author"
+msgstr "글쓴이"
+
+#: board/templates/board/postlist/base.html:31
+msgid "Date"
+msgstr "날짜"
+
+#: board/templates/board/postlist/base.html:37
+msgid "Score"
+msgstr "추천"
+
+#: board/templates/board/postlist/base.html:43
+msgid "Views"
+msgstr "조회"
+
+#: board/templates/board/postlist/base.html:60
+msgid "There are no results."
+msgstr "검색 결과가 없습니다."
+
+#: board/templates/board/postlist/base.html:62
+#: board/templates/user/profile.html:87 board/templates/user/profile.html:132
+msgid "There are no posts here!"
+msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
+
+#: board/templates/board/postlist/base.html:78
+msgid "First"
+msgstr "처음"
+
+#: board/templates/board/postlist/base.html:81
+msgid "Prev"
+msgstr "이전"
+
+#: board/templates/board/postlist/base.html:89
+msgid "Next"
+msgstr "다음"
+
+#: board/templates/board/postlist/base.html:92
+msgid "Last"
+msgstr "마지막"
+
+#: board/templates/board/postlist/by_category.html:5
+msgid "Category"
+msgstr "분류"
+
+#: board/templates/board/postlist/by_tag.html:5
+msgid "Tag"
+msgstr "태그"
+
+#: board/templates/board/postlist/item.html:8
 msgid "Notice"
 msgstr "공지"
 
-#: board/templates/board/post_item.html:11
+#: board/templates/board/postlist/item.html:11
 msgid "This post has been downvoted by users."
 msgstr "사용자들의 비추천에 의해 숨겨진 글입니다."
 
-#: board/templates/board/post_list.html:9
+#: board/templates/board/postlist/with_board.html:5
 #, python-format
 msgid "Searching %(board)s"
 msgstr "%(board)s 검색"
 
-#: board/templates/board/post_list.html:33
-msgid "Clear sort/filter"
-msgstr "기본 정렬"
-
-#: board/templates/board/post_list.html:37
-msgid "Title"
-msgstr "제목"
-
-#: board/templates/board/post_list.html:38
-msgid "Author"
-msgstr "글쓴이"
-
-#: board/templates/board/post_list.html:42
-msgid "Date"
-msgstr "날짜"
-
-#: board/templates/board/post_list.html:48
-msgid "Score"
-msgstr "추천"
-
-#: board/templates/board/post_list.html:54
-msgid "Views"
-msgstr "조회"
-
-#: board/templates/board/post_list.html:71
-msgid "There are no results."
-msgstr "검색 결과가 없습니다."
-
-#: board/templates/board/post_list.html:73
-msgid "There are no posts here!"
-msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
-
-#: board/templates/board/post_list.html:98
+#: board/templates/board/postlist/with_board.html:30
 #: board/templates/search/search.html:6 board/templates/search/search.html:7
 msgid "Search"
 msgstr "검색"
-
-#: board/templates/board/post_list.html:134
-msgid "First"
-msgstr "처음"
-
-#: board/templates/board/post_list.html:137
-msgid "Prev"
-msgstr "이전"
-
-#: board/templates/board/post_list.html:145
-msgid "Next"
-msgstr "다음"
-
-#: board/templates/board/post_list.html:148
-msgid "Last"
-msgstr "마지막"
 
 #: board/templates/errors/403.html:5
 msgid "No permission"
@@ -677,14 +664,31 @@ msgstr "게시판 없음"
 msgid "There's no such board."
 msgstr "찾으시는 게시판이 없습니다."
 
-#: board/views.py:142
+#: board/templates/user/post_list.html:6 board/templates/user/profile.html:23
+#: board/templates/user/profile.html:77
+msgid "Posts"
+msgstr "글"
+
+#: board/templates/user/profile.html:24 board/templates/user/profile.html:78
+msgid "Comments"
+msgstr "댓글"
+
+#: board/templates/user/profile.html:93 board/templates/user/profile.html:138
+msgid "More..."
+msgstr "더 보기..."
+
+#: board/views.py:43
+msgid "Please confirm email."
+msgstr "이메일 주소를 인증해주세요."
+
+#: board/views.py:48
+msgid "Account restored."
+msgstr "계정이 복구되었습니다."
+
+#: board/views.py:195
 msgid "Deleted"
 msgstr "삭제되었습니다"
 
 #: hydrocarbon/settings/base.py:103
 msgid "Korean"
 msgstr "한국어"
-
-#: hydrocarbon/settings/base.py:104
-msgid "English"
-msgstr "영어"

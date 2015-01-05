@@ -25,15 +25,18 @@
 			
 			div.meta {
 				background:$grey-90; padding:5px 5%;
-				.label.meta { margin-right:5px; }
+				.label.meta {
+					margin-right:5px;
+					.no-touch &:hover { color:$black; }
+				}
 			}
 
-			@media screen and (max-device-width: $medium) {
+			@media screen and (max-width: $medium) {
 				.title h2 { font-size:18px; line-height:24px; }
 				div.meta .label.meta .text { font-size:$font-size - 1; }
 			}
 
-			@media screen and (max-device-width: $small) {
+			@media screen and (max-width: $small) {
 				.title h2 { font-size:16px; line-height:22px; }
 				div.meta .label.meta {
 					.icon { margin-right:2px; }
@@ -48,7 +51,7 @@
 		div.article {
 			width:540px; line-height:20px; margin:20px auto !important;
 
-			@media screen and (max-device-width: $medium) { width:90%; }
+			@media screen and (max-width: $medium) { width:90%; }
 
 			img { max-width:100%; }
 			li { list-style-position:inside; }
@@ -95,11 +98,12 @@
 		}
 	}
 
+	&.detail .comments-list { border-top:1px solid $grey-90; }
 	.comments-list {
-		border-top:1px solid $grey-90; margin:0 5%; padding:10px 7% 0; -webkit-tap-highlight-color: rgba(0,0,0,0);
+		margin:0 5%; padding:10px 7% 0; -webkit-tap-highlight-color: rgba(0,0,0,0);
 
-		@media screen and (max-device-width: $medium) { margin:0 2%; padding:10px 5% 0; }
-		@media screen and (max-device-width: $small) { margin:0; padding:10px 2% 0; }
+		@media screen and (max-width: $medium) { margin:0 2%; padding:10px 5% 0; }
+		@media screen and (max-width: $small) { margin:0 1%; padding:10px 2% 0; }
 
 		li.list.item,
 		li.write,
@@ -117,9 +121,14 @@
 
 					.header {
 						border-bottom:1px solid $grey-90; margin:0 10px; padding:5px 0;
+						.label.meta.handle .icon { background-position:0 -168px; }
 						.meta { display:inline-block; font-size:$font-size; vertical-align:top; }
 						.meta + .meta { margin-left:5px; }
 						.meta.timestamp { color:#808080; font-size:$font-size - 2; }
+
+						.hidden.author { display:none; }
+
+						.no-touch & a.author:hover { color:$black; }
 
 						.dropdown {
 							&.container { display:inline-block; }
@@ -145,16 +154,16 @@
 					}
 
 					.footer {
-						border-top:1px solid $grey-90; margin:0 10px; padding:5px 0 10px;
+						border-top:1px solid $grey-90; margin:0 10px; overflow:hidden; padding:5px 0 10px;
 						.nav { display:table-cell; font-size:0; line-height:0; padding:0; vertical-align:top; white-space:nowrap; }
 						.ot {
 							width:100%;
-							label { width:30%;}
+							label { width:30%; }
 							.password { width:45%; }
 						}
 					}
 
-					@media screen and (max-device-width: $medium) {
+					@media screen and (max-width: $medium) {
 						.footer {
 							label { width:40%; }
 							label + label { width:60%; }
@@ -169,7 +178,7 @@
 			}
 		}
 
-		.owned .comment {
+		.owned > .comment {
 			.bubble {
 				&.item { border-left-color:$blue; }
 				&.tip { text-align:left;
@@ -177,10 +186,27 @@
 				}
 			} 
 		}
+
+		.hidden > .comment {
+			.bubble {
+				&.item {
+					.header {
+						border:0; opacity:.5;
+						.label.meta.handle .icon { background-position:0 -156px; }
+						.hidden.author { display:inline; }
+						.label.meta.author,
+						.label.meta.score,
+						.dropdown.container { display:none; }
+					}
+					.article, .footer { display:none; }
+				}
+				&.tip { visibility:hidden; }
+			}
+		}
 	}
 
 	.nav {
 		background:$grey-95;
-		@media screen and (max-device-width: $tiny) { .button.checkbox { display:none; } }
+		@media screen and (max-width: $small) { .button.checkbox { display:none; } }
 	}
 }

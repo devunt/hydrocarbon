@@ -22,7 +22,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ATOMIC_REQUESTS': True,
+        'ATOMIC_REQUESTS': False,
     }
 }
 
@@ -38,3 +38,4 @@ MEDIA_URL = '/media/'
 # App settings
 BOARD_POST_BLIND_VOTES = -1
 BOARD_POST_BEST_VOTES = 1
+BOARD_COMMENT_BLIND_VOTES = -1

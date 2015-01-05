@@ -53,5 +53,5 @@ _('0 minutes')
 _(', ')
 
 ungettext(
-        'Ensure this value has at least %(limit_value)d character (it has %(show_value)d).',
-        'Ensure this value has at least %(limit_value)d characters (it has %(show_value)d).')
+    'Ensure this value has at least %(limit_value)d character (it has %(show_value)d).',
+    'Ensure this value has at least %(limit_value)d characters (it has %(show_value)d).')

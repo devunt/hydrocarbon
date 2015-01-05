@@ -1,10 +1,11 @@
-{% extends 'board/post_list.html' %}
+{% extends 'board/postlist/with_board.html' %}
 {% load static %}
 {% load hc %}
 {% load i18n %}
 {% load intcomma from humanize %}
 
 {% block title %}{{ post.title }} - {{ block.super }}{% endblock %}
+{% block href_back %}{% url 'board_post_list' board.slug %}{% endblock %}
 
 {% block head %}
 	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
@@ -15,7 +16,7 @@
 
 {% block post %}
 
-<div class="section article" data-id="{{ post.id }}">
+<div class="section article detail" data-id="{{ post.id }}">
 	<div class="item article">
 		<div class="header">
 			<div class="title">
@@ -30,15 +31,15 @@
 			</div>
 			<div class="meta">
 				{% if not post.announcement %}
-				<span title="{% if post.user %}{% if post.user.score >= 0 %}+{% endif %}{{ post.user.score }}{% else %}{{ post.iphash }}{% endif %}" class="label meta 
+				<a title="{% if post.user %}{% if post.user.total_score >= 0 %}+{% endif %}{{ post.user.total_score }}{% else %}{{ post.iphash }}{% endif %}" class="label meta 
 				{% if post.user %}
-					author user">
+					author user" href="{% url 'user_profile' post.user.id %}">
 				{% else %}
 					author guest">
 				{% endif %}
 					<span class="icon"></span>
 					<span class="text"><span>{{ post.author }}</span></span>
-				</span>
+				</a>
 				{% endif %}
 				<span class="label meta timestamp" title="{{ post.created_time | date:'DATE_FORMAT' }} {{ post.created_time | date:'H:i:s' }}">
 					<span class="icon"></span>
@@ -85,9 +86,7 @@
 				<a href="#tags" class="label meta tags">
 					<span class="icon"></span>
 					<span class="text">
-					{% for tag in post.tags.all %}
-						<a class="tag readonly" href="/t/{{ tag.name | urlencode:"" }}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
-					{% endfor %}
+					{% for tag in post.tags.all %}<a class="tag readonly" href="{% url 'post_list_by_tag' tag.name %}">{{ tag.name }}</a>{% endfor %}
 					</span>
 				</a>
 			</div>
@@ -119,9 +118,13 @@
 						<div class="container">
 							<div class="header clear">
 								<div class="left">
-									<span class="label meta author user">
+									<a class="dropdown fold" href="#">
+										<span class="label meta handle"><span class="icon"></span></span>
+									</a>
+									<span class="hidden author">{% trans "Hidden" %}</span>
+									<a class="label meta author user">
 										<span class="text"></span>
-									</span>
+									</a>
 									<span class="meta timestamp"></span>
 								</div>
 								<div class="right">
@@ -196,10 +199,10 @@
 					<div class="bubble item">
 						<div class="container">
 							<div class="article">{{ comment_form.contents }}</div>
-							<div class="footer clear">
+							<div class="footer">
 								<div class="ot nav">
-									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick"><input type="text" name="nick" placeholder="{% trans "Nickname" %}" value="{{ request.session.onetime_nick }}"></label>
-									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="password"><input type="password" name="password" placeholder="{% trans "Password" %}"></label>
+									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick">{{ comment_form.onetime_nick | label_as_placeholder }}</label>
+									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="password">{{ comment_form.onetime_password | label_as_placeholder }}</label>
 								</div>
 								<div class="nav">
 									<a href="#cancel" class="cancel button" style="display:none;">{% trans "Cancel" %}</a>
@@ -214,11 +217,6 @@
 		</ul>
 
 		<script>
-			var c3RhZmY = {{ user.is_staff | lower }};
-			var author = {
-				nick: '{{ user.nickname }}',
-				authed: {{ user.is_authenticated | lower }}
-			}
 			var post_id = {{ post.id }};
 			getComments({{ post.id }});
 		</script>

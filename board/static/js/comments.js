@@ -3,7 +3,7 @@ var options;
 function getComments(id) {
 	return $.ajax({
 		type: 'GET',
-		url: '/x/c/' + id
+		url: get_comment_ajax_url(id) + '?t=' + new Date().getTime()
 	})
 		.done(function(data, status, xhr) {
 			var $article = $('.section.article'), $container = $('.comments-list ul'), count = data.comments.count;
@@ -27,7 +27,7 @@ function getComments(id) {
 		});
 }
 
-function renderComment($container, v, depth) {
+function renderComment($container, v, depth, hidden) {
 	depth = typeof depth !== 'undefined' ? depth : 0;
 
 	var $c = $container.find('.list.template').clone(), date = new Date(v.created_time), contents;
@@ -40,15 +40,18 @@ function renderComment($container, v, depth) {
 				.addClass('guest')
 				.attr('title', v.iphash);
 	} else {
-		 if(v.author == author.nick) $c.addClass('owned');
-		 $c.find('.meta.author').attr('title', '+' + v.author_score);
+		 if(v.author == user.nick) $c.addClass('owned');
+		 $c.find('a.meta.author')
+			.attr('href', v.author_url)
+		 	.attr('title', '+' + v.author_total_score);
 	}
 
-	if(c3RhZmY) {
+	if(user.c3RhZmY) {
 		$c.find('.manipulate').show();
 	}
 
-	if(depth > 0) $c.css('margin-left', 2*depth+'%');
+	if(depth > 0) $c.css('margin-left', 4*depth+'%');
+	if(!hidden && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
 	$c.find('a.anchor').attr('id', 'c'+v.id);
 
@@ -85,10 +88,19 @@ function renderComment($container, v, depth) {
 		.addClass('item')
 		.removeClass('template')
 		.insertBefore($container.find('.write.template'))
-		.show();
+	
+	if(!hidden) $c.show();
 
 	if(v.subcomments) {
-		$.each(v.subcomments, function(i, v) { renderComment($container, v, depth + 1); });
+		if(v.votes.total <= COMMENT_BLIND_VOTES || hidden) {
+			$.each(v.subcomments, function(i, v) {
+				renderComment($container, v, depth + 1, true);
+			});
+		} else {
+			$.each(v.subcomments, function(i, v) {
+				renderComment($container, v, depth + 1);
+			});
+		}
 	}
 
 	return $c;
@@ -97,7 +109,7 @@ function renderComment($container, v, depth) {
 function postComments(id, databox) {
 	return $.ajax({
 		type: 'POST',
-		url: '/x/c/' + id,
+		url: get_comment_ajax_url(id),
 		data: databox
 	})
 		.fail(function(xhr, status, error) {
@@ -128,7 +140,7 @@ function postComments(id, databox) {
 function putComments(id, contents, password) {
 	return $.ajax({
 		type: 'PUT',
-		url: '/x/c/' + id,
+		url: get_comment_ajax_url(id),
 		data: { contents: contents },
 		headers: { 'X-HC-PASSWORD': password }
 	})
@@ -162,7 +174,7 @@ function putComments(id, contents, password) {
 function deleteComments(id, password) {
 	return $.ajax({
 		type: 'DELETE',
-		url: '/x/c/' + id,
+		url: get_comment_ajax_url(id),
 		headers: { 'X-HC-PASSWORD': password }
 	})
 		.fail(function(xhr, status, error) {
@@ -205,6 +217,25 @@ $(function() {
 				return false;
 			}
 		})
+		.on('click', 'a.dropdown.fold', function(e) {
+			e.preventDefault();
+			var $container = $(this).closest('ul'),
+				$item = $(this).closest('li.item'),
+				item_depth = $item.data('depth'),
+				item_index = $item.index();
+
+			$item.toggleClass('hidden');
+
+			$.each($container.find('li.item'), function(index, it) {
+				var depth = $(it).data('depth');
+
+				if(index <= item_index - 1) return true;
+				if(depth <= item_depth) return false;
+				
+				if($item.hasClass('hidden')) { $(it).hide();
+				} else { $(it).removeClass('hidden').show(); }
+			});
+		})
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
@@ -219,7 +250,7 @@ $(function() {
 					ot_password: password
 				};
 
-			if(author == '') {
+			if(!user.authenticated) {
 				if(nick == '') {
 					alert('닉네임을 입력해 주세요.');
 					return false;
@@ -247,7 +278,7 @@ $(function() {
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 			
-			if(author == '') {
+			if(!user.authenticated) {
 				if(nick == '') {
 					alert('닉네임을 입력해 주세요.');
 					return false;
@@ -327,7 +358,7 @@ $(function() {
 					$c.find('script').remove();
 
 					$c
-						.css('margin-left', $item.data('depth')*2 + 1 + '%')
+						.css('margin-left', ($item.data('depth') + 1)*4 + '%')
 						.removeAttr('data-type data-id')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
@@ -335,6 +366,8 @@ $(function() {
 						.removeClass('template')
 						.insertAfter($item)
 						.show();
+
+					$c.find('input').removeAttr('id');
 
 					$c.find('textarea').redactor(options);
 
@@ -365,11 +398,13 @@ $(function() {
 						.insertAfter($item)
 						.show();
 
-					if(c3RhZmY) { $c.find('label').remove();
+					if(user.c3RhZmY) { $c.find('label').remove();
 					} else if($item.hasClass('guest')) {
 						$c.find('label.nick').remove();
 						$c.find('label').show();
 					}
+
+					$c.find('input').removeAttr('id');
 
 					$c.find('textarea').redactor(options);
 
@@ -388,11 +423,13 @@ $(function() {
 
 					$c.appendTo($item.find('.bubble.item > .container'));
 
-					if(c3RhZmY) { $c.find('label').remove();
+					if(user.c3RhZmY) { $c.find('label').remove();
 					} else if($item.hasClass('guest')) {
 						$c.find('label.nick').remove();
 						$c.find('label').show();
 					}
+
+					$c.find('input').removeAttr('id');
 
 					$c.find('.cancel')
 						.show();

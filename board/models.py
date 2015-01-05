@@ -28,14 +28,31 @@ class User(AbstractEmailUser):
     nickname = models.CharField(max_length=16, unique=True,
         validators=[MinLengthValidator(2)])
 
-    def __str__(self):
-        return self.nickname
-
     @property
-    def score(self):
+    def total_score(self):
         post_votes = self.posts.aggregate(score=DefaultSum('_votes__vote', default=0))
         comment_votes = self.comments.aggregate(score=DefaultSum('_votes__vote', default=0))
         return post_votes['score'] + comment_votes['score']
+
+    @property
+    def score(self):
+        votes = {
+            'posts': {
+                'upvotes': Vote.objects.filter(post__in=self.posts.all(), vote=Vote.UPVOTE).count(),
+                'downvotes': Vote.objects.filter(post__in=self.posts.all(), vote=Vote.DOWNVOTE).count(),
+            },
+            'comments': {
+                'upvotes': Vote.objects.filter(comment__in=self.comments.all(), vote=Vote.UPVOTE).count(),
+                'downvotes': Vote.objects.filter(comment__in=self.comments.all(), vote=Vote.DOWNVOTE).count(),
+            },
+        }
+        return votes
+
+    def __str__(self):
+        return self.nickname
+
+    def get_absolute_url(self):
+        return reverse('user_profile', kwargs={'user': self.id})
 
 
 class OneTimeUser(models.Model):
@@ -101,7 +118,7 @@ class AuthorModelMixin:
 
 
 class Post(AuthorModelMixin, VotableModelMixin, models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='posts')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='posts', on_delete=models.SET_NULL)
     onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='post', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     board = models.ForeignKey('Board', related_name='posts')
@@ -133,7 +150,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
 class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     post = models.ForeignKey('Post', related_name='comments')
     comment = models.ForeignKey('self', related_name='subcomments', blank=True, null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='comments')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='comments', on_delete=models.SET_NULL)
     onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     contents = RedactorField()

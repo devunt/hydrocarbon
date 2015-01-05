@@ -34,7 +34,7 @@ DATABASES = {
         'PASSWORD': '***REMOVED***',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'ATOMIC_REQUESTS': True,
+        'ATOMIC_REQUESTS': False,
     }
 }
 
@@ -58,3 +58,4 @@ MEDIA_URL = 'http://uc.herocomics.kr/'
 # App settings
 BOARD_POST_BLIND_VOTES = -10
 BOARD_POST_BEST_VOTES = 10
+BOARD_COMMENT_BLIND_VOTES = -5

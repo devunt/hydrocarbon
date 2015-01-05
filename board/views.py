@@ -7,22 +7,22 @@ from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse, QueryDict
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
-from django.views.generic.base import View
+from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
 from django.views.generic.list import ListView
-from account.views import LoginView, SignupView
+from account.models import EmailAddress
+from account.views import LoginView, SettingsView, SignupView
 from haystack.query import SearchQuerySet
 from redactor.views import RedactorUploadView
 
-from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
-from board.mixins import AjaxMixin, BoardMixin, PostListMixin, PermissionMixin, UserLoggingMixin
-from board.models import DefaultSum
-from board.models import Board, Comment, OneTimeUser, Post, Tag, Vote
+from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
+from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
+from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
 
 
@@ -34,6 +34,18 @@ class IndexView(View):
 
 class HCLoginView(LoginView):
     form_class = HCLoginForm
+
+    def login_user(self, form):
+        email = EmailAddress.objects.get_primary(form.user)
+        if not email.verified:
+            self.request.session['redirect_to'] = settings.ACCOUNT_LOGIN_URL
+            messages.error(self.request, _('Please confirm email.'))
+        else:
+            acd = form.user.accountdeletion_set
+            if acd.exists():
+                acd.all().delete()
+                messages.success(self.request, _('Account restored.'))
+            super().login_user(form)
 
 
 class HCSignupView(SignupView):
@@ -53,13 +65,55 @@ class HCSignupView(SignupView):
         return user
 
 
+class HCSettingsView(SettingsView):
+    form_class = HCSettingsForm
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['nickname'] = self.request.user.nickname
+        return initial
+
+    def update_settings(self, form):
+        self.update_email(form)
+        self.update_nickname(form)
+
+    def update_nickname(self, form):
+        user = self.request.user
+        user.nickname = form.cleaned_data['nickname']
+        user.save()
+
+
 class HCRedactorUploadView(RedactorUploadView):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return FormView.dispatch(self, request, *args, **kwargs)
 
 
-class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
+class UserProfileView(UserURLMixin, DetailView):
+    model = User
+    context_object_name = 'u'
+    template_name = 'user/profile.html'
+
+    def get_object(self, queryset=None):
+        return self.user
+
+
+class UserPostListView(UserURLMixin, PostListMixin, ListView):
+    template_name = 'user/post_list.html'
+
+    def get_base_queryset(self):
+        return self.user.posts
+
+
+class UserCommentListView(UserURLMixin, ListView):
+    template_name = 'user/comment_list.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return self.user.comments.all()
+
+
+class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
     model = Post
     form_class = PostForm
 
@@ -80,8 +134,8 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs['authenticated'] = self.request.user.is_authenticated()
         kwargs['board'] = self.board
+        kwargs['show_ot_form'] = not self.request.user.is_authenticated()
         return kwargs
 
     def get_initial(self):
@@ -91,13 +145,13 @@ class PostCreateView(BoardMixin, UserLoggingMixin, CreateView):
         return initial
 
 
-class PostUpdateView(PermissionMixin, UpdateView):
+class PostUpdateView(PermissionCheckMixin, UpdateView):
     model = Post
     form_class = PostForm
 
     def get(self, request, *args, **kwargs):
         if (not kwargs.pop('authenticated', False)) and self.object.user is None:
-            self.get_context_data = self._get_context_data
+            self.show_password_form()
         return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
@@ -112,8 +166,6 @@ class PostUpdateView(PermissionMixin, UpdateView):
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['board'] = self.object.board
-        # Anonymous users can't change their OneTimeUser property once they posted
-        kwargs['authenticated'] = True
         return kwargs
 
     def get_success_url(self):
@@ -121,12 +173,12 @@ class PostUpdateView(PermissionMixin, UpdateView):
         return super().get_success_url()
 
 
-class PostDeleteView(PermissionMixin, DeleteView):
+class PostDeleteView(PermissionCheckMixin, DeleteView):
     model = Post
 
     def get(self, request, *args, **kwargs):
         if self.object.user is None:
-            self.get_context_data = self._get_context_data
+            self.show_password_form()
         return super().get(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
@@ -142,65 +194,67 @@ class PostDeleteView(PermissionMixin, DeleteView):
         messages.success(self.request, _('Deleted'))
         return reverse('board_post_list', kwargs={'board': self.object.board.slug})
 
-class PostListView(BoardMixin, PostListMixin, ListView):
-    template_name = 'board/post_list.html'
-    paginate_by = 10
-    is_best = False
 
-    def get(self, request, *args, **kwargs):
-        if kwargs.get('is_detailview', False):
-            if 'post_list_order_by' not in request.session:
-                request.session['post_list_order_by'] = '-created_time'
-        else:
-            o = kwargs.get('order_by')
-            if o is None:
-                o = '+ct'
-            d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}
-            order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
-            request.session['post_list_order_by'] = order_by
-        return super().get(request, *args, **kwargs)
+class BaseBPostListView(BoardURLMixin, BPostListMixin, ListView):
+    pass
 
-    def get_queryset(self):
-        pqs = Post.objects.filter(board=self.board, announcement=None)
-        pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
-        order_by = self.request.session.get('post_list_order_by')
-        return pqs.order_by(order_by, '-created_time')
+
+class PostListView(BaseBPostListView):
+    pass
+
+
+class PostBestListView(BaseBPostListView):
+    def queryset_post_filter(self, queryset):
+        pqs = queryset.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
+        return pqs
 
     def get_context_data(self, **kwargs):
-        order_by = self.request.session.get('post_list_order_by')
-        odict = dict()
-        if order_by.startswith('-'):
-            odict['order'] = 'asc'
-            odict['column'] = order_by[1:]
-        else:
-            odict['order'] = 'desc'
-            odict['column'] = order_by
-        kwargs['order_by'] = odict
-        kwargs['is_best'] = self.is_best
-        kwargs['BOARD_POST_BLIND_VOTES'] = settings.BOARD_POST_BLIND_VOTES
+        kwargs['best'] = True
         return super().get_context_data(**kwargs)
 
 
-class PostBestListView(PostListView):
-    is_best = True
+class PostListByCategoryView(BaseBPostListView):
+    template_name = 'board/postlist/by_category.html'
 
-    def get_queryset(self):
-        pqs = super().get_queryset()
-        pqs = pqs.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
+    def dispatch(self, request, *args, **kwargs):
+        self.category = get_object_or_404(Category, slug=kwargs.get('category'))
+        return super().dispatch(request, *args, **kwargs)
+
+    def queryset_post_filter(self, queryset):
+        pqs = queryset.filter(category=self.category)
         return pqs
 
+    def get_context_data(self, **kwargs):
+        kwargs['category'] = self.category
+        return super().get_context_data(**kwargs)
 
-class BoardSearchView(PostListView):
-    def get_queryset(self):
+
+class BoardSearchView(BaseBPostListView):
+    def queryset_post_filter(self, queryset):
         self.q = self.request.GET.get('q')
         sqs = SearchQuerySet().models(Post)
         sqs = sqs.filter(board=self.board.slug, content=self.q)
-        pqs = super().get_queryset()
-        pqs = pqs.filter(pk__in=[s.pk for s in sqs])
+        pqs = queryset.filter(pk__in=[s.pk for s in sqs])
         return pqs
 
     def get_context_data(self, **kwargs):
         kwargs['search'] = {'query': self.q}
+        return super().get_context_data(**kwargs)
+
+
+class PostListByTagView(PostListMixin, ListView):
+    template_name = 'board/postlist/by_tag.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.tag = get_object_or_404(Tag, name=kwargs.get('tag'))
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_base_queryset(self):
+        pqs = Post.objects.filter(tags=self.tag, announcement=None)
+        return pqs
+
+    def get_context_data(self, **kwargs):
+        kwargs['tag'] = self.tag
         return super().get_context_data(**kwargs)
 
 
@@ -227,12 +281,7 @@ class PostDetailView(DetailView):
         referer = self.request.META.get('HTTP_REFERER')
         p = urlparse(referer)
         request.GET = QueryDict(p.query)
-        if referer == \
-            self.request.build_absolute_uri(
-                reverse('board_post_list_best', kwargs={'board': self.board.slug})):
-            plv = PostBestListView()
-        else:
-            plv = PostListView()
+        plv = PostListView()
         plv.kwargs = dict()
         plv.request = request
         plv.dispatch(request, board=self.board.slug, is_detailview=True)
@@ -251,7 +300,7 @@ class PostDetailView(DetailView):
             elif vote.vote == Vote.DOWNVOTE:
                 voted['downvoted'] = True
         kwargs['voted'] = voted
-        f = CommentForm(authenticated=self.request.user.is_authenticated())
+        f = CommentForm(show_ot_form=True)
         if not self.request.user.is_authenticated():
             f.initial = {'onetime_nick': self.request.session.get('onetime_nick')}
         kwargs['comment_form'] = f
@@ -360,7 +409,8 @@ class CommentAjaxView(AjaxMixin, View):
                 lst.append({
                     'id': comment.id,
                     'author': comment.author,
-                    'author_score': comment.user.score if comment.user else None,
+                    'author_total_score': comment.user.total_score if comment.user else None,
+                    'author_url': comment.user.get_absolute_url() if comment.user else None,
                     'iphash': comment.iphash if not comment.user else None,
                     'contents': comment.contents,
                     'created_time': comment.created_time,
@@ -466,3 +516,15 @@ class TagAutocompleteAjaxView(AjaxMixin, View):
         sqs = sqs.models(Tag).filter(content__exact=normalize(query))
         lst = [{'value': sr.object.name, 'data': sr.object.posts.count()} for sr in sqs.all()]
         return JsonResponse({'status': 'success', 'query': query, 'suggestions': lst})
+
+
+class JSConstantsView(TemplateView):
+    template_name = 'constants.js'
+    content_type = 'application/javascript'
+
+    def get(self, request, *args, **kwargs):
+        return super().get(self, request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        kwargs['BOARD_COMMENT_BLIND_VOTES'] = settings.BOARD_COMMENT_BLIND_VOTES
+        return super().get_context_data(**kwargs)
