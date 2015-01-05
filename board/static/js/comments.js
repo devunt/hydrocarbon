@@ -41,7 +41,9 @@ function renderComment($container, v, depth, hidden) {
 				.attr('title', v.iphash);
 	} else {
 		 if(v.author == user.nick) $c.addClass('owned');
-		 $c.find('.meta.author').attr('title', '+' + v.author_total_score);
+		 $c.find('a.meta.author')
+			.attr('href', v.author_url)
+		 	.attr('title', '+' + v.author_total_score);
 	}
 
 	if(user.c3RhZmY) {
