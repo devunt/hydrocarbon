@@ -86,6 +86,7 @@ class UserPostListView(UserURLMixin, PostListMixin, ListView):
 
 class UserCommentListView(UserURLMixin, ListView):
     template_name = 'user/comment_list.html'
+    paginate_by = 10
 
     def get_queryset(self):
         return self.user.comments.all()
