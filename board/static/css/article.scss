@@ -121,7 +121,15 @@
 
 					.header {
 						border-bottom:1px solid $grey-90; margin:0 10px; padding:5px 0;
+
+						a.fold { display:inline-block; }
 						.label.meta.handle .icon { background-position:0 -168px; }
+
+						.depth {
+							color:$grey; display:inline-block; line-height:20px; 
+							i.fa { font-size:.8em; line-height:20px; }
+						}
+
 						.meta { display:inline-block; font-size:$font-size; vertical-align:top; }
 						.meta + .meta { margin-left:5px; }
 						.meta.timestamp { color:#808080; font-size:$font-size - 2; }
@@ -154,19 +162,36 @@
 					}
 
 					.footer {
-						border-top:1px solid $grey-90; margin:0 10px; overflow:hidden; padding:5px 0 10px;
-						.nav { display:table-cell; font-size:0; line-height:0; padding:0; vertical-align:top; white-space:nowrap; }
-						.ot {
-							width:100%;
-							label { width:30%; }
-							.password { width:45%; }
+						border-top:1px solid $grey-90; margin:0 10px; overflow:hidden; padding:0 0 5px;
+						.nav {
+							font-size:0; padding:0; vertical-align:top; white-space:nowrap;
+							
+							&.ot {
+								width:60%; float:left; margin:5px 0;
+
+								.nick { width:50%; }
+								.password { width:100%; }
+								.nick + .password { width:50%; }
+							}
+
+							&.clear {
+								height:30px; margin:5px 0;
+								.right { height:inherit; }
+							}
 						}
 					}
 
 					@media screen and (max-width: $medium) {
 						.footer {
-							label { width:40%; }
-							label + label { width:60%; }
+							.nav {
+								&.ot {
+									width:auto; float:none;
+								}
+
+								&.clear {
+									.right { float:none; text-align:right; }
+								}
+							}
 						}
 					}
 				}

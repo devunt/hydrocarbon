@@ -94,7 +94,7 @@
 
 	.nav.bottom + .pages { background:$grey-95; }
 
-	@media screen and (min-device-width: $medium + 1) {
+	@media screen and (min-width: $medium + 1) {
 		.item {
 			&.scanlation .cell.mark { background:$blue; color:$white; }
 			&.news .cell.mark { background:$green; color:$white; }

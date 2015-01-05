@@ -91,7 +91,9 @@
 		width:auto; background:$lightgrey; border-radius:2px; display:inline-block; font-size:$font-size; line-height:20px; overflow:hidden; padding:5px 10px; text-align:center;
 		.no-touch &:hover { background:$lightgrey-trans; color:$black; }
 		&.blue { background:$blue; color:$white; }
+		&.red { background:$red; color:$white; }
 		.no-touch &.blue:hover { background:$blue-trans; color:$white; }
+		.no-touch &.red:hover { background:$red-trans; color:$white; }
 		& + .button { margin-left:10px; }
 	}
 	@media screen and (max-width: $medium) { padding:10px 4%; }
@@ -211,7 +213,7 @@ form > .errorlist {
 		screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) { background-image:url("../img/meta_3x.png"); }
 	}
 
-	.no-touch .dropdown li a:hover & .icon,
+	.dropdown li a:hover & .icon,
 	.dropdown li.voted a & .icon,
 	.error & .icon {
 		background-image:url("../img/meta_w_1x.png");
