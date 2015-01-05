@@ -50,7 +50,18 @@ function renderComment($container, v, depth, hidden) {
 		$c.find('.manipulate').show();
 	}
 
-	if(depth > 0) $c.css('margin-left', 4*depth+'%');
+	if(depth > 0) {
+		if(depth <= 4) {
+			$c.css('margin-left', 3*depth+'%');
+		} else {
+			$c.css('margin-left', 12+'%');
+			for(i = 4; i < depth; i++) {
+				$c.find('.depth')
+					.append('<i class="fa fa-angle-right"></i>');
+			}
+		}
+	}
+
 	if(!hidden && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
 	$c.find('a.anchor').attr('id', 'c'+v.id);
@@ -120,7 +131,7 @@ function postComments(id, databox) {
 			var response = xhr.responseJSON.status;
 			switch(response) {
 				case 'badrequest':
-					var errorstr;
+					var errorstr = '';
 
 					jQuery.each(xhr.responseJSON.error_fields, function(i, v) {
 						if(v == 'contents') errorstr = errorstr +'내용을 입력해 주세요.\n';
@@ -155,7 +166,7 @@ function putComments(id, contents, password) {
 					break;
 
 				case 'BAD REQUEST':
-					var errorstr;
+					var errorstr = '';
 
 					jQuery.each(xhr.responseJSON.error_fields, function(i, v) {
 						if(v == 'contents') errorstr = errorstr +'내용을 입력해 주세요.\n';
@@ -326,7 +337,7 @@ $(function() {
 		})
 		.on('click', '.delete .cancel', function(e) {
 			e.preventDefault();
-			var $container = $(this).closest('.footer.clear');
+			var $container = $(this).closest('.footer');
 
 			$container.closest('.delete').removeClass('delete');
 			$container.remove();
@@ -362,7 +373,7 @@ $(function() {
 					$c.find('script').remove();
 
 					$c
-						.css('margin-left', ($item.data('depth') + 1)*4 + '%')
+						.css('margin-left', ($item.data('depth') + 1)*3 + '%')
 						.removeAttr('data-type data-id')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
@@ -419,6 +430,9 @@ $(function() {
 					$c.find('.cancel')
 						.show();
 
+					$c.find('.submit')
+						.text('수정');
+
 					break;
 
 				case '#delete':
@@ -441,7 +455,10 @@ $(function() {
 						.show();
 
 					$c.find('.submit')
-						.text('삭제');
+						.text('삭제')
+						.removeClass('blue')
+						.addClass('red');
+
 					break;
 
 				default:
