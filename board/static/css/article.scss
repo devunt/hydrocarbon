@@ -154,11 +154,11 @@
 					}
 
 					.footer {
-						border-top:1px solid $grey-90; margin:0 10px; padding:5px 0 10px;
+						border-top:1px solid $grey-90; margin:0 10px; overflow:hidden; padding:5px 0 10px;
 						.nav { display:table-cell; font-size:0; line-height:0; padding:0; vertical-align:top; white-space:nowrap; }
 						.ot {
 							width:100%;
-							label { width:30%;}
+							label { width:30%; }
 							.password { width:45%; }
 						}
 					}
@@ -207,6 +207,6 @@
 
 	.nav {
 		background:$grey-95;
-		@media screen and (max-device-width: $tiny) { .button.checkbox { display:none; } }
+		@media screen and (max-device-width: $small) { .button.checkbox { display:none; } }
 	}
 }

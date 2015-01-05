@@ -199,7 +199,7 @@
 					<div class="bubble item">
 						<div class="container">
 							<div class="article">{{ comment_form.contents }}</div>
-							<div class="footer clear">
+							<div class="footer">
 								<div class="ot nav">
 									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick">{{ comment_form.onetime_nick | label_as_placeholder }}</label>
 									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="password">{{ comment_form.onetime_password | label_as_placeholder }}</label>

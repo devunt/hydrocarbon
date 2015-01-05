@@ -540,8 +540,7 @@ a.anchor {
       background: url("../img/logo_kr_1x.png") no-repeat;
       background-size: 100px;
       display: inline-block;
-      font-size: 0;
-      margin: 0 5px; }
+      font-size: 0; }
       @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
         #nav .dropdown.container.menu-nav .text span.default {
           background-image: url("../img/logo_kr_2x.png"); } }
@@ -911,6 +910,7 @@ a.anchor {
     .section.article .comments-list .comment .bubble.item .footer {
       border-top: 1px solid #e5e5e5;
       margin: 0 10px;
+      overflow: hidden;
       padding: 5px 0 10px; }
       .section.article .comments-list .comment .bubble.item .footer .nav {
         display: table-cell;
@@ -963,7 +963,7 @@ a.anchor {
     visibility: hidden; }
 .section.article .nav {
   background: #f2f2f2; }
-  @media screen and (max-device-width: 359px) {
+  @media screen and (max-device-width: 419px) {
     .section.article .nav .button.checkbox {
       display: none; } }
 
@@ -1313,7 +1313,7 @@ a.anchor {
       background: none;
       border: 0;
       display: block; }
-  @media screen and (max-device-width: 599px) {
+  @media all and (max-device-width: 599px) {
     .section.article.form .item.article .header .category {
       width: 15%; }
     .section.article.form .item.article .header h2 {
@@ -1326,7 +1326,7 @@ a.anchor {
     .section.article.form .item.article .redactor-box .redactor-editor {
       min-height: 300px !important;
       padding: 20px 12.5% !important; }
-      @media screen and (max-device-width: 599px) {
+      @media all and (max-device-width: 599px) {
         .section.article.form .item.article .redactor-box .redactor-editor {
           padding: 20px 5% !important; } }
   .section.article.form .item.article .footer {
@@ -1359,10 +1359,10 @@ a.anchor {
           background: #d9d9d9; }
 .section.article.form .ot.nav label {
   width: 30%; }
-  @media screen and (max-device-width: 599px) {
+  @media all and (max-device-width: 599px) {
     .section.article.form .ot.nav label {
       width: 40%; } }
-  @media screen and (max-device-width: 419px) {
+  @media all and (max-device-width: 419px) {
     .section.article.form .ot.nav label {
       width: 50%; } }
 .section.article.form .nav.center {
