@@ -5,13 +5,14 @@ from django.utils.functional import curry
 from django.views.defaults import permission_denied
 from redactor.forms import FileForm, ImageForm
 
-from board.views import HCLoginView, HCSignupView, HCRedactorUploadView
+from board.views import HCLoginView, HCSettingsView, HCSignupView, HCRedactorUploadView
 from board.views import IndexView, JSConstantsView, PostListByTagView
 
 
 urlpatterns = patterns('',
     url(r'^account/login/$', HCLoginView.as_view(), name='account_login'),
     url(r'^account/signup/$', HCSignupView.as_view(), name='account_signup'),
+    url(r'^account/settings/$', HCSettingsView.as_view(), name='account_settings'),
     url(r'^redactor/upload/image/(?P<upload_to>.*)',
         HCRedactorUploadView.as_view(form_class=ImageForm),
         name='redactor_upload_image'),

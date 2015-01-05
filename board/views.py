@@ -17,11 +17,11 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
 from django.views.generic.list import ListView
 from account.models import EmailAddress
-from account.views import LoginView, SignupView
+from account.views import LoginView, SettingsView, SignupView
 from haystack.query import SearchQuerySet
 from redactor.views import RedactorUploadView
 
-from board.forms import CommentForm, HCLoginForm, HCSignupForm, PostForm
+from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
 from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
@@ -60,6 +60,24 @@ class HCSignupView(SignupView):
         if commit:
             user.save()
         return user
+
+
+class HCSettingsView(SettingsView):
+    form_class = HCSettingsForm
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['nickname'] = self.request.user.nickname
+        return initial
+
+    def update_settings(self, form):
+        self.update_email(form)
+        self.update_nickname(form)
+
+    def update_nickname(self, form):
+        user = self.request.user
+        user.nickname = form.cleaned_data['nickname'].strip()
+        user.save()
 
 
 class HCRedactorUploadView(RedactorUploadView):
