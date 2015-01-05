@@ -180,8 +180,8 @@ msgid ""
 "Your account is now inactive and your data will be expunged in the next "
 "{expunge_hours} hours."
 msgstr ""
-"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간동안 추가 로그인이 없"
-"을 시 계정이 자동으로 삭제될 예정입니다."
+"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간동안 로그인하지"
+"않으실 경우 계정이 자동으로 삭제될 예정입니다."
 
 #: board/i18n_fake.py:46
 #, python-format
