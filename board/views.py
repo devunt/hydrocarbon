@@ -260,12 +260,7 @@ class PostDetailView(DetailView):
         referer = self.request.META.get('HTTP_REFERER')
         p = urlparse(referer)
         request.GET = QueryDict(p.query)
-        if referer == \
-            self.request.build_absolute_uri(
-                reverse('board_post_list_best', kwargs={'board': self.board.slug})):
-            plv = PostBestListView()
-        else:
-            plv = PostListView()
+        plv = PostListView()
         plv.kwargs = dict()
         plv.request = request
         plv.dispatch(request, board=self.board.slug, is_detailview=True)
