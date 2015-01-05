@@ -88,7 +88,7 @@ class UserCommentListView(UserURLMixin, ListView):
     template_name = 'user/comment_list.html'
 
     def get_queryset(self):
-        return self.user.comments
+        return self.user.comments.all()
 
 
 class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
