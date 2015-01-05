@@ -14,7 +14,7 @@
 <div class="nav bottom clear close">
 	<div class="left">
 		<a href="{% url 'board_post_list' board.slug %}" class="button">{% trans "List" %}</a>
-		{% if is_best %}
+		{% if best %}
 			<a href="{% url 'board_post_list' board.slug %}" class="button blue checkbox checked">
 		{% else %}
 			<a href="{% url 'board_post_list_best' board.slug %}" class="button checkbox">
