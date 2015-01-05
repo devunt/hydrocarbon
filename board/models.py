@@ -52,7 +52,7 @@ class User(AbstractEmailUser):
         return self.nickname
 
     def get_absolute_url(self):
-        return reverse('user_profile', kwargs={'pk': self.id})
+        return reverse('user_profile', kwargs={'user': self.id})
 
 
 class OneTimeUser(models.Model):
