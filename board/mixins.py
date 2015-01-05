@@ -100,7 +100,7 @@ class PermissionCheckMixin:
 
 
 class PostListMixin:
-    template_name = 'board/post_list_base.html'
+    template_name = 'board/postlist/base.html'
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
@@ -142,7 +142,7 @@ class PostListMixin:
 
 
 class BPostListMixin(PostListMixin):
-    template_name = 'board/post_list_with_board.html'
+    template_name = 'board/postlist/with_board.html'
 
     def get_base_queryset(self):
         pqs = Post.objects.filter(board=self.board, announcement=None)

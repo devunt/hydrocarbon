@@ -49,12 +49,12 @@
 	<ul class="post-list">
 	{% for item in announcement_list %}
 		{% cycle 'odd' 'even' as rowclass silent %}
-		{% include "board/post_item.html" with notice=True %}
+		{% include "board/postlist/item.html" with notice=True %}
 	{% endfor %}
 
 	{% for item in post_list %}
 		{% cycle rowclass %}
-		{% include "board/post_item.html" %}
+		{% include "board/postlist/item.html" %}
 	{% empty %}
 		{% if search %}
 			<li class="empty">{% trans "There are no results." %}</li>

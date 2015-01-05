@@ -82,7 +82,7 @@ var upvote_ratio = 0
 		<ul class="post-list">
 		{% for item in u.posts.all|slice:":10" %}
 			{% cycle 'odd' 'even' as rowclass silent %}
-			{% include "board/post_item.html" %}
+			{% include "board/postlist/item.html" %}
 		{% empty %}
 			<li class="empty">{% trans "There are no posts here!" %}</li>
 		{% endfor %}

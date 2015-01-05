@@ -78,7 +78,7 @@ class UserProfileView(UserURLMixin, DetailView):
 
 
 class UserPostListView(UserURLMixin, PostListMixin, ListView):
-    template_name = 'board/post_list_by_user.html'
+    template_name = 'user/post_list.html'
 
     def get_base_queryset(self):
         return self.user.posts
@@ -192,7 +192,7 @@ class PostBestListView(BaseBPostListView):
 
 
 class PostListByCategoryView(BaseBPostListView):
-    template_name = 'board/post_list_by_category.html'
+    template_name = 'board/postlist/by_category.html'
 
     def dispatch(self, request, *args, **kwargs):
         self.category = get_object_or_404(Category, slug=kwargs.get('category'))
@@ -221,7 +221,7 @@ class BoardSearchView(BaseBPostListView):
 
 
 class PostListByTagView(PostListMixin, ListView):
-    template_name = 'board/post_list_by_tag.html'
+    template_name = 'board/postlist/by_tag.html'
 
     def dispatch(self, request, *args, **kwargs):
         self.tag = get_object_or_404(Tag, name=kwargs.get('tag'))
