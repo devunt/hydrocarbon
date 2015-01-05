@@ -88,7 +88,7 @@
 
 		& > .container { border-radius:2px; display:inline-block; overflow:hidden; }
 
-		.button { min-width:initial; border-radius:0; margin:0; padding:5px 10px; }
+		.button { height:20px; min-width:initial; border-radius:0; margin:0; padding:5px 10px; }
 		.button.current { background:$blue; color:$white; }
 	}
 
@@ -165,6 +165,7 @@
 		.close {
 			.search.button {
 				form {
+					width:30px; display:inline-block;
 					input.text { width:0; }
 					.scope { display:none; }
 				}
@@ -177,6 +178,7 @@
 			.search.button {
 				display:block; margin-left:0;
 				form {
+					width:100%; display:table;
 					.label.meta.delete { display:table-cell; }
 
 					.scope .dropdown {
@@ -205,13 +207,13 @@
 	height:30px; font-size:0; padding:0; vertical-align:top;
 
 	form {
-		width:100%; height:inherit; display:table;
+		height:inherit;
 
 		input,
 		.scope { display:table-cell; vertical-align:top; }
 
 		.search.label.meta {
-			background:none; border:0;
+			height:30px; width:30px; background:none; border:0;
 
 			.icon { margin:8px; }
 			.no-touch &:hover { background:rgba(0,0,0,.1); }
