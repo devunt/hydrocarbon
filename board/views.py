@@ -42,6 +42,10 @@ class HCLoginView(LoginView):
             self.request.session['redirect_to'] = settings.ACCOUNT_LOGIN_URL
             messages.error(self.request, _('Please confirm email.'))
         else:
+            acd = form.user.accountdeletion_set
+            if acd.exists():
+                acd.all().delete()
+                messages.success(self.request, _('Account restored.'))
             super().login_user(form)
 
 

@@ -114,6 +114,8 @@ USE_TZ = True
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
 ACCOUNT_NOTIFY_ON_PASSWORD_CHANGE = False
+ACCOUNT_DELETION_MARK_CALLBACK = 'board.callbacks.account_delete_mark'
+ACCOUNT_DELETION_EXPUNGE_CALLBACK = 'board.callbacks.account_delete_expunge'
 
 # django-wysiwyg-redactor
 REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'plugins': ['video', 'spoiler', 'krfix']}
