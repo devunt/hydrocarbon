@@ -449,10 +449,6 @@ msgstr ""
 msgid "Close"
 msgstr "닫기"
 
-#: board/templates/base.html:78
-msgid "Submitted"
-msgstr "작성글 보기"
-
 #: board/templates/base.html:79
 msgid "Inbox"
 msgstr "쪽지함"
@@ -525,7 +521,7 @@ msgstr "새로고침"
 
 #: board/templates/board/post_detail.html:123
 msgid "Hidden"
-msgstr ""
+msgstr "숨겨짐"
 
 #: board/templates/board/post_detail.html:162
 msgid "Reply"
@@ -662,25 +658,13 @@ msgstr "게시판 없음"
 msgid "There's no such board."
 msgstr "찾으시는 게시판이 없습니다."
 
-#: board/templates/user/profile.html:25
-#, python-format
-msgid "%(upvotes)s post upvotes"
-msgstr ""
+#: board/templates/user/profile.html:23
+msgid "Posts"
+msgstr "글"
 
-#: board/templates/user/profile.html:26
-#, python-format
-msgid "%(downvotes)s post downvotes"
-msgstr ""
-
-#: board/templates/user/profile.html:27
-#, python-format
-msgid "%(upvotes)s comments upvotes"
-msgstr ""
-
-#: board/templates/user/profile.html:28
-#, python-format
-msgid "%(downvotes)s comments downvotes"
-msgstr ""
+#: board/templates/user/profile.html:24
+msgid "Comments"
+msgstr "댓글"
 
 #: board/views.py:45
 msgid "Please confirm email."
