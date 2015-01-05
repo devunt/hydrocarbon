@@ -103,6 +103,10 @@ function renderComment($container, v, depth, hidden) {
 		}
 	}
 
+	if(window.location.hash.match(/^#c[0-9]+/) && v.id == window.location.hash.replace('#c', '')) {
+		$window.scrollTop($(window.location.hash).offset().top);
+	}
+
 	return $c;
 }
 
@@ -328,22 +332,22 @@ $(function() {
 			$container.remove();
 		})
 		.on('click', '.dropdown.menu li a', function(e) {
-			e.preventDefault();
-
 			$(this).closest('.dropdown.container.open').removeClass('open');
 
-			var $container = $('.comments-list ul'), action = $(this).attr('href').replace('#', '');
+			var $container = $('.comments-list ul'), action = $(this).attr('href');
 
 			switch(action) {
-				case 'upvote':
-				case 'downvote':
+				case '#upvote':
+				case '#downvote':
+					e.preventDefault();
 					var button  = $(this).closest('li.vote'),
 						$item = $(this).closest('li.item');
 					vote('c', $item.data('id'), button);
 
 					break;
 
-				case 'reply':
+				case '#reply':
+					e.preventDefault();
 					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item').not('.reply');
 
 					$item.addClass('reply');
@@ -376,7 +380,8 @@ $(function() {
 
 					break;
 
-				case 'modify':
+				case '#modify':
+					e.preventDefault();
 					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
 					$item.hide();
 
@@ -416,7 +421,8 @@ $(function() {
 
 					break;
 
-				case 'delete':
+				case '#delete':
+					e.preventDefault();
 					var $c = $container.find('.write.template .footer').clone(), $item = $(this).closest('li.item').not('.delete');
 
 					$item.addClass('delete');
