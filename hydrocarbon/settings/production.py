@@ -85,7 +85,7 @@ ELASTICSEARCH_DEFAULT_ANALYZER = 'hydrocarbon'
 
 # Raven settings
 RAVEN_CONFIG = {
-    'dsn': 'http://5df41a1d897c462f9c83b3c7e65b0355:6cad180b376946e894e703bd23f107bb@s.starks.industries/3',
+    'dsn': '***REMOVED***',
 }
 
 # App settings
