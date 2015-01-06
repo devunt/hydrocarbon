@@ -101,13 +101,7 @@
 		<input class="submit" type="submit" value="{% trans "New post" %}">
 	</div>
 	</form>
-	<script>
-		$('.section.article.form form').garlic( {
-      onRetrieve: function ( elem, retrievedValue ) {
-          console.log( 'The retrieved value for ' + elem + ' is : ' + retrievedValue );
-      }
-  } );
-	</script>
+	<script> $('.section.article.form form').garlic(); </script>
 </div>
 
 <script>
