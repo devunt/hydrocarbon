@@ -14,7 +14,7 @@
 ::-ms-reveal { display:none; }
 
 body { color:$black; font:$font-size "NanumGothic"; letter-spacing:-.03em;
-	@media screen and (mim-width: $large + 1) { overflow:initial !important; overflow-y:scroll !important; }
+	@media screen and (min-width: $large + 1) { overflow:initial !important; overflow-y:scroll !important; }
 }
 button, input, select, textarea { outline:none; }
 input { border-radius:0; }
