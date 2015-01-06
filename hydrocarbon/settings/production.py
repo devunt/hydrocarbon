@@ -70,6 +70,7 @@ ELASTICSEARCH_INDEX_SETTINGS = {
         },
     },
 }
+ELASTICSEARCH_DEFAULT_ANALYZER = 'hydrocarbon'
 
 # App settings
 BOARD_POST_BLIND_VOTES = -10
