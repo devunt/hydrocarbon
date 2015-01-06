@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-06 10:38+0900\n"
+"POT-Creation-Date: 2015-01-06 22:45+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,7 +239,7 @@ msgstr[0] ""
 "입력하신 값은 최소 %(limit_value)d글자여야만 합니다. 현재 값은 %(show_value)d"
 "글자입니다."
 
-#: board/mixins.py:89
+#: board/mixins.py:93
 msgid "Wrong password"
 msgstr "잘못된 비밀번호입니다"
 
@@ -256,12 +256,19 @@ msgstr "계정을 삭제합니다. 진행하시겠습니까?"
 msgid ""
 "If you go ahead and delete your account, your information will be "
 "<b>expunged within %(ACCOUNT_DELETION_EXPUNGE_HOURS)s hours</b>."
-msgstr "계정을 삭제하실 경우 계정에 관련된 정보는 "
-"<b>%(ACCOUNT_DELETION_EXPUNGE_HOURS)s시간 후에 삭제됩니다.</b>"
+msgstr ""
+"계정을 삭제하실 경우 계정에 관련된 정보는 <b>추가 로그인이 없을 시 "
+"%(ACCOUNT_DELETION_EXPUNGE_HOURS)s시간 후 자동으로 삭제됩니다.</b> 자동 삭제 "
+"전에 로그인을 다시 할 경우 자동 삭제가 취소됩니다."
 
 #: board/templates/account/delete.html:14
 msgid "The expunged data cannot be recovered once expunged."
-msgstr "삭제된 자료는 다시 복구가 불가능하니 주의하시길 바랍니다."
+msgstr ""
+"삭제된 자료는 다시 복구가 불가능하니 주의하시길 바랍니다. 단, <b>작성했던 모"
+"든 글과 댓글들은 수정과 삭제가 불가능한 익명 상태로 바뀌게 되며, 익명 사용자"
+"가 작성한 글과 마찬가지로 기존 탈퇴하기 전 닉네임과 사용자 고유식별주소가 계"
+"속 보이게 됩니다.</b> 추천/비추천 내역은 익명 사용자가 한 추천으로 바뀌어 남"
+"습니다."
 
 #: board/templates/account/delete.html:16
 msgid "Delete my account"
@@ -483,38 +490,6 @@ msgstr "닫기"
 msgid "View the original post"
 msgstr "본문과 같이 보기"
 
-#: board/templates/board/comment_list.html:4
-#: board/templates/board/comment_list.html:6
-#: board/templates/user/profile.html:24 board/templates/user/profile.html:78
-msgid "Comments"
-msgstr "댓글"
-
-#: board/templates/board/comment_list.html:16
-#: board/templates/board/postlist/base.html:62
-#: board/templates/user/profile.html:87 board/templates/user/profile.html:105
-msgid "There are no posts here!"
-msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
-
-#: board/templates/board/comment_list.html:26
-#: board/templates/board/postlist/base.html:78
-msgid "First"
-msgstr "처음"
-
-#: board/templates/board/comment_list.html:29
-#: board/templates/board/postlist/base.html:81
-msgid "Prev"
-msgstr "이전"
-
-#: board/templates/board/comment_list.html:37
-#: board/templates/board/postlist/base.html:89
-msgid "Next"
-msgstr "다음"
-
-#: board/templates/board/comment_list.html:40
-#: board/templates/board/postlist/base.html:92
-msgid "Last"
-msgstr "마지막"
-
 #: board/templates/board/post_confirm_delete.html:4
 #: board/templates/board/post_confirm_delete.html:5
 msgid "Delete post"
@@ -662,6 +637,32 @@ msgstr "조회"
 msgid "There are no results."
 msgstr "검색 결과가 없습니다."
 
+#: board/templates/board/postlist/base.html:62
+#: board/templates/user/comment_list.html:16
+#: board/templates/user/profile.html:87
+msgid "There are no posts here!"
+msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
+
+#: board/templates/board/postlist/base.html:78
+#: board/templates/user/comment_list.html:26
+msgid "First"
+msgstr "처음"
+
+#: board/templates/board/postlist/base.html:81
+#: board/templates/user/comment_list.html:29
+msgid "Prev"
+msgstr "이전"
+
+#: board/templates/board/postlist/base.html:89
+#: board/templates/user/comment_list.html:37
+msgid "Next"
+msgstr "다음"
+
+#: board/templates/board/postlist/base.html:92
+#: board/templates/user/comment_list.html:40
+msgid "Last"
+msgstr "마지막"
+
 #: board/templates/board/postlist/by_category.html:5
 msgid "Category"
 msgstr "분류"
@@ -708,14 +709,24 @@ msgstr "게시판 없음"
 msgid "There's no such board."
 msgstr "찾으시는 게시판이 없습니다."
 
+#: board/templates/user/comment_list.html:4
+#: board/templates/user/comment_list.html:6
+#: board/templates/user/profile.html:24 board/templates/user/profile.html:78
+msgid "Comments"
+msgstr "댓글"
+
 #: board/templates/user/post_list.html:6 board/templates/user/profile.html:23
 #: board/templates/user/profile.html:77
 msgid "Posts"
 msgstr "글"
 
-#: board/templates/user/profile.html:93 board/templates/user/profile.html:111
+#: board/templates/user/profile.html:93 board/templates/user/profile.html:112
 msgid "More..."
 msgstr "더 보기..."
+
+#: board/templates/user/profile.html:105
+msgid "There are no comments here!"
+msgstr "댓글이 없습니다!"
 
 #: board/views.py:42
 msgid "Please confirm email."

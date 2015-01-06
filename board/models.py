@@ -174,7 +174,7 @@ class Vote(models.Model):
     )
     post = models.ForeignKey('Post', blank=True, null=True, related_name='_votes')
     comment = models.ForeignKey('Comment', blank=True, null=True, related_name='_votes')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='_votes')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='_votes', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     vote = models.SmallIntegerField(choices=VOTE_CHOICES)
 
