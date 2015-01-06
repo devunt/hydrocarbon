@@ -1,5 +1,3 @@
-import os
-
 from hydrocarbon.settings.base import *
 
 
@@ -58,13 +56,21 @@ MEDIA_URL = 'http://uc.herocomics.kr/'
 # django-haystack
 ELASTICSEARCH_INDEX_SETTINGS = {
     'settings': {
-        'analysis': {
-            "analyzer": {
-                "hydrocarbon": {
-                    "type": "custom",
-                    "char_filter": ["html_strip"],
-                    "tokenizer": "kr_tokenizer",
-                    "filter" : ["trim", "kr_filter"],
+        'index': {
+            'analysis': {
+                'analyzer': {
+                    'hydrocarbon': {
+                        'type': 'custom',
+                        'char_filter': 'html_strip',
+                        'tokenizer': 'korean_query_tokenizer',
+                        'filter' : 'trim',
+                    },
+                },
+                'tokenizer': {
+                    'korean_query_tokenizer': {
+                        'type': 'mecab_ko_standard_tokenizer',
+                        'mecab_dic_dir': '/opt/mecab-ko/lib/mecab/dic/mecab-ko-dic/',
+                    },
                 },
             },
         },
