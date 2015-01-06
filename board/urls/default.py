@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^redactor/', include('redactor.urls')),
 
     url(r'^constants.js', JSConstantsView.as_view(), name='constants.js'),
-    url(r'^t/(?P<tag>\w+)/', PostListByTagView.as_view(), name='post_list_by_tag'),
+    url(r'^t/(?P<tag>.+)/', PostListByTagView.as_view(), name='post_list_by_tag'),
     url(r'^x/', include('board.urls.ajax')),
     url(r'^u/(?P<user>\d+)/', include('board.urls.user')),
     url(r'^b/(?P<board>\w+)/', include('board.urls.board')),
