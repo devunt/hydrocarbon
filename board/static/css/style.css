@@ -15,7 +15,7 @@ body {
   color: #222;
   font: 14px "NanumGothic";
   letter-spacing: -.03em; }
-  @media screen and (mim-width: 720px) {
+  @media screen and (min-width: 720px) {
     body {
       overflow: initial !important;
       overflow-y: scroll !important; } }
