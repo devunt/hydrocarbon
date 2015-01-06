@@ -859,10 +859,14 @@ a.anchor {
       padding: 10px 2% 0; } }
   .section.article .comments-list li.list.item,
   .section.article .comments-list li.write,
-  .section.article .comments-list li.modify {
+  .section.article .comments-list li.modify,
+  .section.article .comments-list li.empty {
     list-style: none; }
   .section.article .comments-list .list.item.guest .comment .bubble.item .header .dropdown li.manipulate, .section.article .comments-list .list.item.owned .comment .bubble.item .header .dropdown li.manipulate {
     display: block; }
+  .section.article .comments-list li.empty {
+    color: #666;
+    padding: 20px 0 30px; }
   .section.article .comments-list .comment .bubble.item {
     background: #f2f2f2;
     border-left: 5px solid transparent;

@@ -107,12 +107,15 @@
 
 		li.list.item,
 		li.write,
-		li.modify { list-style:none; }
+		li.modify,
+		li.empty { list-style:none; }
 		.list.item {
 			&.guest, &.owned {
 				.comment .bubble.item .header .dropdown li.manipulate { display:block; }
 			}
 		}
+
+		li.empty { color:$darkgrey; padding:20px 0 30px; }
 
 		.comment {
 			.bubble {
