@@ -125,7 +125,7 @@ REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 # django-haystack
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'ENGINE': 'board.backends.ConfigurableElasticSearchEngine',
         'URL': '127.0.0.1:9200',
         'INDEX_NAME': 'haystack',
     },

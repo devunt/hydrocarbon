@@ -1,0 +1,50 @@
+{% load hc i18n %}
+{% load intcomma from humanize %}
+
+<li class="list item{% if u = user %} owned{% endif %}">
+	<div class="comment">
+		<div class="bubble item">
+			<div class="container">
+				<div class="header clear">
+					<div class="left">
+						<a class="label meta author user">
+							<span class="text">{{ item.author }}</span>
+						</a>
+						<span class="meta timestamp">{{ item.created_time | timesince | split_first }}</span>
+					</div>
+					<div class="right">
+						<span class="label meta score">
+							<span class="icon"></span>
+							<span class="text"><span>{{ item.votes.total | intcomma }}</span></span>
+						</span>
+						<div class="dropdown container">
+							<a href="#" class="label meta more dropdown handle">
+								<span class="icon"></span>
+							</a>
+							<div class="dropdown menu">
+								<a href="#" class="close">{% trans "Close" %}</a>
+								<div class="tip top"><span></span></div>
+								<ul>
+									<li>
+										<a href="{% url 'post_detail' item.post.id %}#c{{ item.id }}">
+											<span class="label meta next">
+												<span class="icon"></span>
+												<span class="text">{% trans "View the original post" %}</span>
+											</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="article clear">
+					<div class="redactor-editor">
+						{{ item.contents | safe }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bubble tip"><span></span></div>
+	</div>
+</li>

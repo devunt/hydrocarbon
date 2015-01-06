@@ -121,6 +121,7 @@
 									<a class="dropdown fold" href="#">
 										<span class="label meta handle"><span class="icon"></span></span>
 									</a>
+									<span class="depth"></span>
 									<span class="hidden author">{% trans "Hidden" %}</span>
 									<a class="label meta author user">
 										<span class="text"></span>
@@ -204,9 +205,11 @@
 									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="nick">{{ comment_form.onetime_nick | label_as_placeholder }}</label>
 									<label {% if user.is_authenticated %}style="display:none;" {% endif %}class="password">{{ comment_form.onetime_password | label_as_placeholder }}</label>
 								</div>
-								<div class="nav">
-									<a href="#cancel" class="cancel button" style="display:none;">{% trans "Cancel" %}</a>
-									<a href="#submit" class="submit button blue">{% trans "Submit comment" %}</a>
+								<div class="nav clear">
+									<div class="right">
+										<a href="#cancel" class="cancel button" style="display:none;">{% trans "Cancel" %}</a>
+										<a href="#submit" class="submit button blue">{% trans "Submit comment" %}</a>
+									</div>
 								</div>
 							</div>
 						</div>

@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block title %}{% trans "Register for an account" %} :: {{ block.super }}{% endblock %}
+{% block href_back %}{% url 'account_login' %}{% endblock %}
 {% block pagename %}{% trans "Register for an account" %}{% endblock %}
 
 {% block content %}

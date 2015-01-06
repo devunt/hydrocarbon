@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-05 22:15+0900\n"
+"POT-Creation-Date: 2015-01-06 10:38+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -180,8 +180,8 @@ msgid ""
 "Your account is now inactive and your data will be expunged in the next "
 "{expunge_hours} hours."
 msgstr ""
-"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간동안 추가 로그인이 없"
-"을 시 계정이 자동으로 삭제될 예정입니다."
+"사용하시는 계정은 비활성화 되었으며, {expunge_hours}시간동안 로그인하지 않으"
+"실 경우 계정이 자동으로 삭제될 예정입니다."
 
 #: board/i18n_fake.py:46
 #, python-format
@@ -242,6 +242,29 @@ msgstr[0] ""
 #: board/mixins.py:89
 msgid "Wrong password"
 msgstr "잘못된 비밀번호입니다"
+
+#: board/templates/account/delete.html:4 board/templates/account/delete.html:6
+msgid "Delete Account"
+msgstr "계정 탈퇴"
+
+#: board/templates/account/delete.html:12
+msgid "We will be deleting your account. Are you sure?"
+msgstr ""
+
+#: board/templates/account/delete.html:13
+#, python-format
+msgid ""
+"If you go ahead and delete your account, your information will be "
+"<b>expunged within %(ACCOUNT_DELETION_EXPUNGE_HOURS)s hours</b>."
+msgstr ""
+
+#: board/templates/account/delete.html:14
+msgid "The expunged data cannot be recovered once expunged."
+msgstr ""
+
+#: board/templates/account/delete.html:16
+msgid "Delete my account"
+msgstr "탈퇴하기"
 
 #: board/templates/account/email/email_confirmation_message.txt:3
 #, python-format
@@ -330,7 +353,7 @@ msgid "Do you have no account?"
 msgstr "아직 계정이 없으신가요?"
 
 #: board/templates/account/login.html:30
-#: board/templates/account/signup.html:24
+#: board/templates/account/signup.html:25
 msgid "Register"
 msgstr "회원가입"
 
@@ -352,22 +375,22 @@ msgid "Are you sure you want to log out?"
 msgstr "로그아웃 하시겠습니까?"
 
 #: board/templates/account/password_change.html:4
-#: board/templates/account/password_change.html:5
-#: board/templates/account/password_change.html:21
-#: board/templates/account/settings.html:26
+#: board/templates/account/password_change.html:6
+#: board/templates/account/password_change.html:22
+#: board/templates/account/settings.html:29
 msgid "Change password"
 msgstr "비밀번호 변경"
 
 #: board/templates/account/password_reset.html:4
-#: board/templates/account/password_reset.html:5
-#: board/templates/account/password_reset.html:26
+#: board/templates/account/password_reset.html:6
+#: board/templates/account/password_reset.html:27
 #: board/templates/account/password_reset_sent.html:4
 #: board/templates/account/password_reset_sent.html:5
 #: board/templates/account/password_reset_token_fail.html:14
 msgid "Reset password"
 msgstr "비밀번호 재설정"
 
-#: board/templates/account/password_reset.html:15
+#: board/templates/account/password_reset.html:16
 msgid ""
 "Forgot your password? Enter your email in the form below and we'll send you "
 "instructions for creating a new one."
@@ -425,11 +448,15 @@ msgstr ""
 msgid "Account settings"
 msgstr "계정 설정"
 
-#: board/templates/account/settings.html:29
+#: board/templates/account/settings.html:26
+msgid "Delete account"
+msgstr "계정 탈퇴"
+
+#: board/templates/account/settings.html:32
 msgid "Save"
 msgstr "저장"
 
-#: board/templates/account/signup.html:4 board/templates/account/signup.html:5
+#: board/templates/account/signup.html:4 board/templates/account/signup.html:6
 msgid "Register for an account"
 msgstr "회원가입"
 
@@ -443,12 +470,49 @@ msgid "Sorry, but registration is closed at this moment. Come back later."
 msgstr ""
 "죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 시도해 주세요."
 
-#: board/templates/base.html:65 board/templates/board/post_detail.html:140
+#: board/templates/base.html:65 board/templates/board/comment_item.html:25
+#: board/templates/board/post_detail.html:141
 #: board/templates/board/postlist/base.html:16
 #: board/templates/board/postlist/with_board.html:37
 #: board/templates/search/search.html:22
 msgid "Close"
 msgstr "닫기"
+
+#: board/templates/board/comment_item.html:32
+msgid "View the original post"
+msgstr ""
+
+#: board/templates/board/comment_list.html:4
+#: board/templates/board/comment_list.html:6
+#: board/templates/user/profile.html:24 board/templates/user/profile.html:78
+msgid "Comments"
+msgstr "댓글"
+
+#: board/templates/board/comment_list.html:16
+#: board/templates/board/postlist/base.html:62
+#: board/templates/user/profile.html:87 board/templates/user/profile.html:105
+msgid "There are no posts here!"
+msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
+
+#: board/templates/board/comment_list.html:26
+#: board/templates/board/postlist/base.html:78
+msgid "First"
+msgstr "처음"
+
+#: board/templates/board/comment_list.html:29
+#: board/templates/board/postlist/base.html:81
+msgid "Prev"
+msgstr "이전"
+
+#: board/templates/board/comment_list.html:37
+#: board/templates/board/postlist/base.html:89
+msgid "Next"
+msgstr "다음"
+
+#: board/templates/board/comment_list.html:40
+#: board/templates/board/postlist/base.html:92
+msgid "Last"
+msgstr "마지막"
 
 #: board/templates/board/post_confirm_delete.html:4
 #: board/templates/board/post_confirm_delete.html:5
@@ -464,8 +528,8 @@ msgid "Then enter the password you used."
 msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력해 주세요."
 
 #: board/templates/board/post_confirm_delete.html:28
-#: board/templates/board/post_detail.html:179
-#: board/templates/board/post_detail.html:241
+#: board/templates/board/post_detail.html:180
+#: board/templates/board/post_detail.html:244
 msgid "Delete"
 msgstr "삭제"
 
@@ -497,12 +561,12 @@ msgstr ""
 "\t\t\t\t\t\t"
 
 #: board/templates/board/post_detail.html:75
-#: board/templates/board/post_detail.html:147
+#: board/templates/board/post_detail.html:148
 msgid "Upvote"
 msgstr "추천"
 
 #: board/templates/board/post_detail.html:79
-#: board/templates/board/post_detail.html:155
+#: board/templates/board/post_detail.html:156
 msgid "Downvote"
 msgstr "비추천"
 
@@ -516,38 +580,38 @@ msgstr[0] "<span>%(counter)s</span>개의 댓글이 달려있습니다."
 msgid "Refresh"
 msgstr "새로고침"
 
-#: board/templates/board/post_detail.html:124
+#: board/templates/board/post_detail.html:125
 msgid "Hidden"
 msgstr "숨겨짐"
 
-#: board/templates/board/post_detail.html:163
+#: board/templates/board/post_detail.html:164
 msgid "Reply"
 msgstr "답글"
 
-#: board/templates/board/post_detail.html:171
-#: board/templates/board/post_detail.html:242
+#: board/templates/board/post_detail.html:172
+#: board/templates/board/post_detail.html:245
 msgid "Modify"
 msgstr "수정"
 
-#: board/templates/board/post_detail.html:208
+#: board/templates/board/post_detail.html:210
 msgid "Cancel"
 msgstr "취소"
 
-#: board/templates/board/post_detail.html:209
+#: board/templates/board/post_detail.html:211
 msgid "Submit comment"
 msgstr "댓글 달기"
 
-#: board/templates/board/post_detail.html:227
+#: board/templates/board/post_detail.html:230
 #: board/templates/board/postlist/with_board.html:16
 msgid "List"
 msgstr "목록"
 
-#: board/templates/board/post_detail.html:235
+#: board/templates/board/post_detail.html:238
 #: board/templates/board/postlist/with_board.html:24
 msgid "Top posts"
 msgstr "베스트"
 
-#: board/templates/board/post_detail.html:244
+#: board/templates/board/post_detail.html:247
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
 #: board/templates/board/post_form.html:100
@@ -596,27 +660,6 @@ msgstr "조회"
 #: board/templates/board/postlist/base.html:60
 msgid "There are no results."
 msgstr "검색 결과가 없습니다."
-
-#: board/templates/board/postlist/base.html:62
-#: board/templates/user/profile.html:87 board/templates/user/profile.html:132
-msgid "There are no posts here!"
-msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
-
-#: board/templates/board/postlist/base.html:78
-msgid "First"
-msgstr "처음"
-
-#: board/templates/board/postlist/base.html:81
-msgid "Prev"
-msgstr "이전"
-
-#: board/templates/board/postlist/base.html:89
-msgid "Next"
-msgstr "다음"
-
-#: board/templates/board/postlist/base.html:92
-msgid "Last"
-msgstr "마지막"
 
 #: board/templates/board/postlist/by_category.html:5
 msgid "Category"
@@ -669,23 +712,19 @@ msgstr "찾으시는 게시판이 없습니다."
 msgid "Posts"
 msgstr "글"
 
-#: board/templates/user/profile.html:24 board/templates/user/profile.html:78
-msgid "Comments"
-msgstr "댓글"
-
-#: board/templates/user/profile.html:93 board/templates/user/profile.html:138
+#: board/templates/user/profile.html:93 board/templates/user/profile.html:111
 msgid "More..."
 msgstr "더 보기..."
 
-#: board/views.py:43
+#: board/views.py:42
 msgid "Please confirm email."
 msgstr "이메일 주소를 인증해주세요."
 
-#: board/views.py:48
+#: board/views.py:47
 msgid "Account restored."
 msgstr "계정이 복구되었습니다."
 
-#: board/views.py:195
+#: board/views.py:194
 msgid "Deleted"
 msgstr "삭제되었습니다"
 

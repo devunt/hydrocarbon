@@ -100,34 +100,7 @@ var upvote_ratio = 0
 		<div class="comments-list">
 			<ul>
 				{% for item in u.comments.all|slice:":5" %}
-				<li class="list item{% if u = user %} owned{% endif %}">
-					<div class="comment">
-						<div class="bubble item">
-							<div class="container">
-								<div class="header clear">
-									<div class="left">
-										<a class="label meta author user">
-											<span class="text">{{ item.author }}</span>
-										</a>
-										<span class="meta timestamp">{{ item.created_time | timesince | split_first }}</span>
-									</div>
-									<div class="right">
-										<span class="label meta score">
-											<span class="icon"></span>
-											<span class="text"><span>{{ item.votes.total }}</span></span>
-										</span>
-									</div>
-								</div>
-								<div class="article clear">
-									<div class="redactor-editor">
-										{{ item.contents | safe }}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="bubble tip"><span></span></div>
-					</div>
-				</li>
+					{% include "board/comment_item.html" %}
 				{% empty %}
 					<li class="empty">{% trans "There are no posts here!" %}</li>
 				{% endfor %}
@@ -135,7 +108,7 @@ var upvote_ratio = 0
 		</div>
 		<div class="nav bottom clear">
 			<div class="right">
-				<a href="{% url 'user_profile_posts' u.id %}" class="button">{% trans "More..." %}</a>
+				<a href="{% url 'user_profile_comments' u.id %}" class="button">{% trans "More..." %}</a>
 			</div>
 		</div>
 	</div>

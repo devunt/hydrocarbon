@@ -312,9 +312,7 @@ $.ajaxSetup({
 	}
 });
 
-function showTooltip(e) {
-	e.preventDefault();
-	
+function showTooltip(e) {	
 	var $target = $(e.target).closest('.th');
 	var position = $target.offset();
 
