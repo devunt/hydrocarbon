@@ -375,7 +375,6 @@ $(function() {
 					$c.find('script').remove();
 
 					$c
-						.css('margin-left', ($item.data('depth') + 1)*3 + '%')
 						.removeAttr('data-type data-id')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
@@ -383,6 +382,12 @@ $(function() {
 						.removeClass('template')
 						.insertAfter($item)
 						.show();
+
+					if($item.data('depth') <= 3) {
+						$c.css('margin-left', 3*($item.data('depth') + 1)+'%');
+					} else {
+						$c.css('margin-left', 12+'%');
+					}
 
 					$c.find('input').removeAttr('id');
 
@@ -466,12 +471,5 @@ $(function() {
 				default:
 					console.log(action);
 			}
-		})
-		.on('click', '.cancel', function(e) {
-			e.preventDefault();
-			var $c = $(this).closest('.write.modify');
-
-			$c.prev('li.item').show();
-			$c.hide();
 		});
 });
