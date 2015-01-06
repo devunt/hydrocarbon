@@ -11,6 +11,11 @@ TEMPLATE_DEBUG = False
 # ALLOWED HOSTS
 ALLOWED_HOSTS = ['herocomics.kr', 'beta.herocomics.kr']
 
+# Installed apps
+INSTALLED_APPS += (
+    'raven.contrib.django.raven_compat',
+)
+
 # Cache backend
 CACHES = {
     'default': {
@@ -77,6 +82,11 @@ ELASTICSEARCH_INDEX_SETTINGS = {
     },
 }
 ELASTICSEARCH_DEFAULT_ANALYZER = 'hydrocarbon'
+
+# Raven settings
+RAVEN_CONFIG = {
+    'dsn': 'http://5df41a1d897c462f9c83b3c7e65b0355:6cad180b376946e894e703bd23f107bb@s.starks.industries/3',
+}
 
 # App settings
 BOARD_POST_BLIND_VOTES = -10
