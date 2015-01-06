@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n static hc urls %}
 
-{% block title %}{{ user.nickname }} &rsaquo; {% trans "Comments" %} :: {{ block.super }}{% endblock %}
-{% block href_back %}{% url 'user_profile' user.id %}{% endblock %}
-{% block pagename %}{{ user.nickname }} &rsaquo; {% trans "Comments" %}{% endblock %}
+{% block title %}{{ u.nickname }} &rsaquo; {% trans "Comments" %} :: {{ block.super }}{% endblock %}
+{% block href_back %}{% url 'user_profile' u.id %}{% endblock %}
+{% block pagename %}{{ u.nickname }} &rsaquo; {% trans "Comments" %}{% endblock %}
 
 {% block content %}
 

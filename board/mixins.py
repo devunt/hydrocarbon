@@ -39,6 +39,10 @@ class UserURLMixin:
         else:
             return super().dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        kwargs['u'] = self.user
+        return super().get_context_data(**kwargs)
+
 
 class AjaxMixin:
     def bad_request(self):
