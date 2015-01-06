@@ -55,6 +55,22 @@ STATIC_URL = 'http://s.herocomics.kr/'
 MEDIA_ROOT = '/home/herocomics/media'
 MEDIA_URL = 'http://uc.herocomics.kr/'
 
+# django-haystack
+ELASTICSEARCH_INDEX_SETTINGS = {
+    'settings': {
+        'analysis': {
+            "analyzer": {
+                "hydrocarbon": {
+                    "type": "custom",
+                    "char_filter": ["html_strip"],
+                    "tokenizer": "kr_tokenizer",
+                    "filter" : ["trim", "kr_filter"],
+                },
+            },
+        },
+    },
+}
+
 # App settings
 BOARD_POST_BLIND_VOTES = -10
 BOARD_POST_BEST_VOTES = 10
