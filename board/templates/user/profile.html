@@ -74,8 +74,8 @@ var upvote_ratio = 0
 
 <div class="tabs">
 	<div class="tab header">
-		<a class="current" href="#board">{% trans "Posts" %}</a>
-		<a href="#article">{% trans "Comments" %}</a>
+		<a id="tab-board" class="current" href="#board">{% trans "Posts" %}</a>
+		<a id="tab-article" href="#article">{% trans "Comments" %}</a>
 	</div>
 
 	<div class="section board tab">
@@ -102,16 +102,31 @@ var upvote_ratio = 0
 				{% for item in u.comments.all|slice:":5" %}
 					{% include "board/comment_item.html" %}
 				{% empty %}
-					<li class="empty">{% trans "There are no posts here!" %}</li>
+					<li class="empty">{% trans "There are no comments here!" %}</li>
 				{% endfor %}
 			</ul>
 		</div>
+		{% if u.comments.all|length > 5 %}
 		<div class="nav bottom clear">
 			<div class="right">
 				<a href="{% url 'user_profile_comments' u.id %}" class="button">{% trans "More..." %}</a>
 			</div>
 		</div>
+		{% endif %}
 	</div>
 </div>
+
+<script>
+
+function hashchange(hash) {
+	if(hash == '') return false;
+	$('.tab.header a#tab-' + hash.substr(1)).click();
+}
+
+$(function() { hashchange(window.location.hash); });
+
+$(window).on('hashchange', function() { hashchange(window.location.hash); });
+
+</script>
 
 {% endblock %}

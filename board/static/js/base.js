@@ -287,9 +287,7 @@ $(function() {
 		});
 
 	$('.tabs')
-		.on('click', '.tab.header a:not(.current)', function(e) {
-			e.preventDefault();
-
+		.on('click', '.tab.header a:not(.current)', function() {
 			var $container = $(this).closest('.tabs'),
 				target = $(this).attr('href').replace('#', '.');
 
