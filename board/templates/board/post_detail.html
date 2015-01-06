@@ -20,7 +20,13 @@
 	<div class="item article">
 		<div class="header">
 			<div class="title">
-				<p class="category">{{ post.category }}</p>
+				<p class="category">
+					{% if post.announcement %}
+						{% trans "Notice" %}
+					{% else %}
+						{{ post.category }}
+					{% endif %}
+				</p>
 				<h2>
 					<span>{{ post.title }}</span>
 					<a href="#comments" class="label meta comments"{% if post.comments.count == 0 %} style="display:none;"{% endif %}>
