@@ -167,7 +167,7 @@ $(function() {
 		.find('.category')
 			.on('click', 'a.option', function(e) {
 				e.preventDefault();
-				$('.section.article.form .category option').filter('[value='+$(this).data('value')+']').prop('selected', true);
+				$('.section.article.form .category option').filter('[value='+$(this).data('value')+']').prop('selected', true).trigger('change');
 				$('.section.article.form .category .text').text($(this).text());
 				$(this).closest('.dropdown.container').removeClass('open');
 			})
