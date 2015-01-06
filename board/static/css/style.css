@@ -1501,6 +1501,9 @@ a.anchor {
     .redactor-editor span.spoiler:hover img {
       visibility: visible; }
 
+.redactor-placeholder:after {
+  pointer-events: none; }
+
 @media screen and (max-width: 599px) {
   .redactor-dropdown {
     left: 5% !important;
