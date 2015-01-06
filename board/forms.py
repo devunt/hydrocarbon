@@ -107,6 +107,7 @@ class PostForm(OneTimeUserFormMixin, forms.ModelForm):
         model = Post
         fields = ['category', 'title', 'contents', 'tags']
         labels = {
+            'title': _('Title'),
             'contents': '',
         }
 

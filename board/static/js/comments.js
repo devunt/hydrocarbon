@@ -30,7 +30,9 @@ function getComments(id) {
 function renderComment($container, v, depth, hidden) {
 	depth = typeof depth !== 'undefined' ? depth : 0;
 
-	var $c = $container.find('.list.template').clone(), date = new Date(v.created_time), contents;
+	var $c = $container.find('.list.template').clone(),
+		date = new Date(v.created_time), contents,
+		hash = window.location.hash;
 
 	if(v.iphash) {
 		$c
@@ -40,7 +42,7 @@ function renderComment($container, v, depth, hidden) {
 				.addClass('guest')
 				.attr('title', v.iphash);
 	} else {
-		 if(v.author == user.nick) $c.addClass('owned');
+		 if(v.author == user.nick && user.authenticated) $c.addClass('owned');
 		 $c.find('a.meta.author')
 			.attr('href', v.author_url)
 		 	.attr('title', '+' + v.author_total_score);
@@ -114,8 +116,8 @@ function renderComment($container, v, depth, hidden) {
 		}
 	}
 
-	if(window.location.hash.match(/^#c[0-9]+/) && v.id == window.location.hash.replace('#c', '')) {
-		$window.scrollTop($(window.location.hash).offset().top);
+	if(hash.match(/^#c[0-9]+/) && v.id == hash.replace('#c', '')) {
+		$window.scrollTop($(hash).offset().top);
 	}
 
 	return $c;
