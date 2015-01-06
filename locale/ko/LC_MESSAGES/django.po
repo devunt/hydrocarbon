@@ -249,18 +249,19 @@ msgstr "계정 탈퇴"
 
 #: board/templates/account/delete.html:12
 msgid "We will be deleting your account. Are you sure?"
-msgstr ""
+msgstr "계정을 삭제합니다. 진행하시겠습니까?"
 
 #: board/templates/account/delete.html:13
 #, python-format
 msgid ""
 "If you go ahead and delete your account, your information will be "
 "<b>expunged within %(ACCOUNT_DELETION_EXPUNGE_HOURS)s hours</b>."
-msgstr ""
+msgstr "계정을 삭제하실 경우 계정에 관련된 정보는 "
+"<b>%(ACCOUNT_DELETION_EXPUNGE_HOURS)s시간 후에 삭제됩니다.</b>"
 
 #: board/templates/account/delete.html:14
 msgid "The expunged data cannot be recovered once expunged."
-msgstr ""
+msgstr "삭제된 자료는 다시 복구가 불가능하니 주의하시길 바랍니다."
 
 #: board/templates/account/delete.html:16
 msgid "Delete my account"
@@ -480,7 +481,7 @@ msgstr "닫기"
 
 #: board/templates/board/comment_item.html:32
 msgid "View the original post"
-msgstr ""
+msgstr "본문과 같이 보기"
 
 #: board/templates/board/comment_list.html:4
 #: board/templates/board/comment_list.html:6
