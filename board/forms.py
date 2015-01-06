@@ -95,6 +95,7 @@ class PostForm(OneTimeUserFormMixin, forms.ModelForm):
         super().__init__(*args, **kwargs)
         cqs = Category.objects.filter(board=board)
         self.fields['category'].queryset = cqs
+        self.fields['category'].initial = cqs.first()
         if not cqs.exists():
             del self.fields['category']
 
