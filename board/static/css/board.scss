@@ -52,7 +52,7 @@
 			line-height:20px; padding:15px 0;
 
 			&.mark { height:20px; }
-			&.title span.title { display:inline-block; font-size:16px; line-height:20px; }
+			&.title span.title { max-width:calc(100% - 40px); display:inline-block; font-size:16px; line-height:20px; overflow:hidden; text-overflow:ellipsis; }
 			&.title span.title .highlight { background:#fff7cc; color:$red-base; }
 			&.title .label.meta.comments { margin-left:.5em; line-height:20px; }			
 		}
@@ -65,7 +65,7 @@
 
 		&.mark { width:3%; font-size:0; }
 		&.category { width:9%; }
-		&.title { height:20px; width:44%; text-align:left; text-overflow:ellipsis; white-space:nowrap; }
+		&.title { height:20px; width:44%; text-align:left; white-space:nowrap; }
 		&.author { width:16%; }
 		&.author .label.meta { width:100%; }
 		&.author .text { max-width:calc(100% - 20px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
