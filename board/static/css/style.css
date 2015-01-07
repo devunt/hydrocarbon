@@ -1506,7 +1506,7 @@ a.anchor {
   .redactor-editor img {
     max-width: 100%; }
   .redactor-editor iframe {
-    max-width: 100%; }
+    width: inherit; }
   .redactor-editor span.spoiler {
     background: #222;
     cursor: default; }
