@@ -298,12 +298,7 @@ $(function() {
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 			
-			if(!user.authenticated) {
-				if(nick == '') {
-					alert('닉네임을 입력해 주세요.');
-					return false;
-				}
-
+			if(!user.authenticated || $container.prev('.item').hasClass('guest')) {
 				if(password == '') {
 					alert('비밀번호를 입력해 주세요.');
 					return false;
