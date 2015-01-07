@@ -1237,7 +1237,7 @@ a.anchor {
         .section.board .item .cell.author .icon {
           display: none; }
         .section.board .item .cell.author .text {
-          max-width: none; }
+          max-width: 8em; }
         .section.board .item .cell.views {
           margin: 0; }
       .section.board .item.announcement .cell.category {
