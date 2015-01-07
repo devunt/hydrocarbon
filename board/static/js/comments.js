@@ -228,15 +228,15 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.on('keydown', function(e) {
+		.on('keydown', '.modify .redactor-editor, .write .redactor-editor', function(e) {
 			if(e.ctrlKey && e.which == 32 && !quicksubmit) {
 				quicksubmit = true;
-				$(this).closest('.comments-list').find('.write .submit').trigger('click');
+				$(this).closest('.bubble.item').find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;
 			}
 		})
-		.on('keyup', function() { quicksubmit = false; })
+		.on('keyup', '.modify .redactor-editor, .write .redactor-editor', function() { quicksubmit = false; })
 		.on('click', 'a.dropdown.fold', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('ul'),
