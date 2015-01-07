@@ -13,8 +13,8 @@
 
 body {
   color: #222;
-  font: 14px "NanumGothic";
-  letter-spacing: -.03em; }
+  font: 14px "NanumGothic", "Malgun Gothic", sans-serif;
+  letter-spacing: -.04em; }
   @media screen and (min-width: 720px) {
     body {
       overflow: initial !important;
@@ -904,8 +904,14 @@ a.anchor {
         vertical-align: top; }
       .section.article .comments-list .comment .bubble.item .header .meta + .meta {
         margin-left: 5px; }
+      .section.article .comments-list .comment .bubble.item .header .meta.author .text {
+        color: #666;
+        font-size: 12px; }
       .section.article .comments-list .comment .bubble.item .header .meta.timestamp {
-        color: #808080;
+        color: rgba(170, 170, 170, 0.9);
+        font-size: 12px; }
+      .section.article .comments-list .comment .bubble.item .header .meta.score .text {
+        color: #666;
         font-size: 12px; }
       .section.article .comments-list .comment .bubble.item .header .hidden.author {
         display: none; }

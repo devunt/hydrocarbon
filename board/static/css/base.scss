@@ -13,7 +13,7 @@
 ::-ms-clear,
 ::-ms-reveal { display:none; }
 
-body { color:$black; font:$font-size "NanumGothic"; letter-spacing:-.03em;
+body { color:$black; font:$font-size "NanumGothic", "Malgun Gothic", sans-serif; letter-spacing:-.04em;
 	@media screen and (min-width: $large + 1) { overflow:initial !important; overflow-y:scroll !important; }
 }
 button, input, select, textarea { outline:none; }
