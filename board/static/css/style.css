@@ -70,7 +70,7 @@ textarea[name=contents] {
   border: 0; }
 
 #overlay div {
-  z-index: 1054; }
+  z-index: 1053; }
 
 body {
   background: #e5e5e5; }
@@ -941,7 +941,7 @@ a.anchor {
       overflow: hidden;
       padding: 0 0 5px; }
       .section.article .comments-list .comment .bubble.item .footer .nav {
-        height: 30px;
+        max-height: 30px;
         font-size: 0;
         padding: 0;
         vertical-align: top;
@@ -1092,7 +1092,8 @@ a.anchor {
       text-align: left;
       white-space: nowrap; }
     .section.board .cell.author {
-      width: 16%; }
+      width: 16%;
+      position: relative; }
     .section.board .cell.author .label.meta {
       width: 100%; }
     .section.board .cell.author .text {
@@ -1505,18 +1506,9 @@ a.anchor {
     max-width: 100%; }
   .redactor-editor span.spoiler {
     background: #222;
-    cursor: default;
-    display: inline-block;
-    margin: 0 2px;
-    padding: 0 2px; }
-    .redactor-editor span.spoiler p {
-      display: inline; }
-    .redactor-editor span.spoiler img {
-      visibility: hidden; }
+    cursor: default; }
     .redactor-editor span.spoiler:hover {
       color: #fff; }
-    .redactor-editor span.spoiler:hover img {
-      visibility: visible; }
 
 .redactor-placeholder:after {
   pointer-events: none; }
