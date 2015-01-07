@@ -603,6 +603,7 @@ a.anchor {
         text-align: right;
         vertical-align: top; }
       #form .field label input, #form .field label select {
+        height: 30px;
         max-width: 380px;
         width: 380px;
         border: 0;
