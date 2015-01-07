@@ -235,9 +235,9 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.on('keypress', '.modify .redactor-editor, .write .redactor-editor', function(e) {
+		.on('keypress', '.modify, .write', function(e) {
 			if(e.ctrlKey && e.which == 32) {
-				$(this).closest('.bubble.item').find('.submit.button').trigger('click');
+				$(this).find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;
 			}
@@ -264,7 +264,8 @@ $(function() {
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
-				text = $container.find('textarea').val(),
+				redactor = $container.find('textarea').redactor('core.getObject'),
+				text = redactor.code.get(),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
@@ -275,7 +276,7 @@ $(function() {
 					ot_password: password
 				};
 
-			if($container.find('.redactor-editor').text() == '') {
+			if(text == '') {
 				alert('내용을 입력해 주세요.');
 				return false;
 			}
@@ -287,11 +288,12 @@ $(function() {
 		.on('click', '.modify .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.modify'),
-				text = $container.find('textarea').val(),
+				redactor = $container.find('textarea').redactor('core.getObject'),
+				text = redactor.code.get(),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 
-			if($container.find('.redactor-editor').text() == '') {
+			if(text == '') {
 				alert('내용을 입력해 주세요.');
 				return false;
 			}
@@ -345,7 +347,12 @@ $(function() {
 
 				case '#reply':
 					e.preventDefault();
-					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item').not('.reply');
+					var scroll,
+						$c = $container.find('.write.template').clone(),
+						$item = $(this).closest('li.item').not('.reply'),
+						redactor = $c.find('textarea');
+
+					$('.reply .cancel').click();
 
 					$item.addClass('reply');
 
@@ -374,20 +381,25 @@ $(function() {
 					}
 
 					$c.find('input').removeAttr('id');
+					redactor.redactor(options);
+					redactor.redactor('core.getObject').placeholder.remove();
+					redactor.redactor('core.getEditor').focus();
+					$c.find('.cancel').show();
 
-					$c.find('textarea').redactor(options);
-
-					$c.find('.cancel')
-						.show();
+					scroll = $c.offset().top - $window.height() + $c.height();
+					$('body').stop().animate({ scrollTop: scroll }, scroll/.5);
 
 					break;
 
 				case '#modify':
 					e.preventDefault();
-					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
+					var $c = $container.find('.write.template').clone(),
+						$item = $(this).closest('li.item'),
+						redactor = $c.find('textarea');
+
 					$item.hide();
 
-					$c.find('textarea')
+					redactor
 						.removeAttr('id')
 						.val('')
 						.appendTo($c.find('.article'))
@@ -412,17 +424,13 @@ $(function() {
 					}
 
 					$c.find('input').removeAttr('id');
+					redactor.redactor(options);
+					redactor.redactor('core.getObject').code.set($item.find('.article .redactor-editor').html());
+					redactor.redactor('core.getObject').placeholder.remove();
+					redactor.redactor('core.getEditor').focus();
+					$c.find('.cancel').show();
 
-					$c.find('textarea').redactor(options);
-
-					$c.find('.redactor-editor')
-						.html($item.find('.article .redactor-editor').html());
-
-					$c.find('.cancel')
-						.show();
-
-					$c.find('.submit')
-						.text('수정');
+					$c.find('.submit').text('수정');
 
 					break;
 
