@@ -394,7 +394,7 @@ class CommentAjaxView(AjaxMixin, View):
             for comment in comments:
                 subcomments = None
                 if comment.subcomments.exists():
-                    subcomments = _make_list(comment.subcomments.filter(comment=comment))
+                    subcomments = _make_list(comment.subcomments.filter(comment=comment).order_by('created_time'))
                 voted = {'upvoted': False, 'downvoted': False}
                 if request.user.is_authenticated():
                     vqs = comment._votes.filter(user=request.user)
@@ -420,7 +420,7 @@ class CommentAjaxView(AjaxMixin, View):
                 })
             lst.sort(key=lambda c: c['votes']['total'], reverse=True)
             return lst
-        lst = _make_list(post.comments.filter(comment=None))
+        lst = _make_list(post.comments.filter(comment=None).order_by('created_time'))
         return JsonResponse({'status': 'success', 'comments': {'count': post.comments.count(), 'list': lst}})
 
     def post(self, request, *args, **kwargs):
