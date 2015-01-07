@@ -93,14 +93,14 @@
 		}
 
 		.footer {
-			margin:0 5%; padding:5px 3%;
+			margin:0 5%; padding:5px 3%; -webkit-tap-highlight-color: rgba(0,0,0,0);
 			.icon { margin-right:4px; }
 		}
 	}
 
 	&.detail .comments-list { border-top:1px solid $grey-90; }
 	.comments-list {
-		margin:0 5%; padding:10px 7% 0;
+		margin:0 5%; padding:10px 7% 0; -webkit-tap-highlight-color: rgba(0,0,0,0);
 
 		@media screen and (max-width: $medium) { margin:0 2%; padding:10px 5% 0; }
 		@media screen and (max-width: $small) { margin:0 1%; padding:10px 2% 0; }
