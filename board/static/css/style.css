@@ -1288,7 +1288,7 @@ a.anchor {
     .search.button form button,
     .search.button form input,
     .search.button form .scope {
-      display: table-cell;
+      display: inline-block;
       vertical-align: top; }
     .search.button form .search.label.meta {
       height: 30px;
@@ -1300,7 +1300,7 @@ a.anchor {
       .no-touch .search.button form .search.label.meta:hover {
         background: rgba(0, 0, 0, 0.1); }
     .search.button form input[type=search] {
-      width: calc(100% - 30px);
+      width: calc(100% - 60px);
       background: transparent;
       border: 0;
       font-size: 14px;

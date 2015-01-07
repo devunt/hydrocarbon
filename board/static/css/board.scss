@@ -211,7 +211,7 @@
 
 		button,
 		input,
-		.scope { display:table-cell; vertical-align:top; }
+		.scope { display:inline-block; vertical-align:top; }
 
 		.search.label.meta {
 			height:30px; width:30px; background:none; border:0;
@@ -220,7 +220,7 @@
 			.no-touch &:hover { background:rgba(0,0,0,.1); }
 		}
 
-		input[type=search] { width:calc(100% - 30px); background:transparent; border:0; font-size:$font-size; line-height:inherit; padding:5px 0; }
+		input[type=search] { width:calc(100% - 60px); background:transparent; border:0; font-size:$font-size; line-height:inherit; padding:5px 0; }
 		
 		.scope {
 			height:30px; width:30px; background:rgba(0,0,0,.1); cursor:default; position:static;
