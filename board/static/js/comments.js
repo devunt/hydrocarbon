@@ -48,11 +48,11 @@ function renderComment($container, v, depth, hidden) {
 		 	.attr('title', '+' + v.author_total_score);
 	}
 
-	if(user.c3RhZmY) {
-		$c.find('.manipulate').show();
-	}
+	if(user.c3RhZmY) $c.find('.manipulate').show();
 
 	if(depth > 0) {
+		$c.find('.bubble.item').addClass('indent');
+
 		if(depth <= 4) {
 			$c.css('margin-left', 3*depth+'%');
 		} else {
@@ -64,9 +64,7 @@ function renderComment($container, v, depth, hidden) {
 		}
 	}
 
-	if(depth >= COMMENT_MAX_DEPTH) {
-		$c.find('li.reply').remove();
-	}
+	if(depth >= COMMENT_MAX_DEPTH) $c.find('li.reply').remove();
 
 	if(!hidden && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
@@ -382,7 +380,7 @@ $(function() {
 						.removeAttr('data-type data-id')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
-						.addClass('clone reply')
+						.addClass('clone reply indent')
 						.removeClass('template')
 						.insertAfter($item)
 						.show();
@@ -429,6 +427,8 @@ $(function() {
 						.removeClass('template write')
 						.insertAfter($item)
 						.show();
+
+					if($item.data('depth') > 0) $c.find('.bubble.item').addClass('indent');
 
 					if(user.c3RhZmY) { $c.find('label').remove();
 					} else if($item.hasClass('guest')) {

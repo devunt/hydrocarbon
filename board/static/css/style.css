@@ -12,6 +12,7 @@
   display: none; }
 
 body {
+  background: #e5e5e5;
   color: #222;
   font: 14px "NanumGothic", "Malgun Gothic", sans-serif;
   letter-spacing: -.04em; }
@@ -72,12 +73,6 @@ textarea[name=contents] {
 #overlay div {
   z-index: 1053; }
 
-body {
-  background: #e5e5e5; }
-
-@media screen and (max-width: 419px) {
-  body.hovered {
-    overflow: hidden; } }
 #wrapper {
   width: 720px;
   background: #fff;
@@ -871,6 +866,7 @@ a.anchor {
     background: #f2f2f2;
     border-left: 5px solid transparent;
     border-radius: 4px;
+    box-shadow: 0 1px 1px #d9d9d9;
     line-height: 20px;
     padding-right: 5px; }
     .section.article .comments-list .comment .bubble.item .header {
@@ -985,7 +981,9 @@ a.anchor {
       margin: 0;
       padding: 10px 0 0; }
       .section.article .comments-list .comment .bubble.item {
-        border-radius: 0; } }
+        border-radius: 0; }
+      .section.article .comments-list .comment .bubble.item.indent {
+        border-radius: 4px 0 0 4px; } }
   .section.article .comments-list .owned > .comment .bubble.item {
     border-left-color: rgba(61, 156, 204, 0.9); }
   .section.article .comments-list .owned > .comment .bubble.tip {
@@ -1245,6 +1243,8 @@ a.anchor {
           text-align: left; }
           .section.board .item .cell.meta .label.meta {
             margin-right: 10px; }
+          .section.board .item .cell.meta .label.meta.author {
+            padding-left: 0; }
           .section.board .item .cell.meta .icon {
             margin-right: 2px; }
           .section.board .item .cell.meta .text {
