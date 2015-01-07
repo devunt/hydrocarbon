@@ -1,4 +1,4 @@
-var options;
+var options, quicksubmit = false;
 
 function getComments(id) {
 	return $.ajax({
@@ -228,12 +228,15 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.on('keypress', function(e) {
-			if(e.ctrlKey && e.which == 32) {
-				$(this).closest('.comments-list').find('.write .submit').trigger('click');
+		.on('keydown', '.modify .redactor-editor, .write .redactor-editor', function(e) {
+			if(e.ctrlKey && e.which == 32 && !quicksubmit) {
+				quicksubmit = true;
+				$(this).closest('.bubble.item').find('.submit.button').trigger('click');
+				e.preventDefault();
 				return false;
 			}
 		})
+		.on('keyup', '.modify .redactor-editor, .write .redactor-editor', function() { quicksubmit = false; })
 		.on('click', 'a.dropdown.fold', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('ul'),
@@ -267,18 +270,6 @@ $(function() {
 					ot_password: password
 				};
 
-			if(!user.authenticated) {
-				if(nick == '') {
-					alert('닉네임을 입력해 주세요.');
-					return false;
-				}
-
-				if(password == '') {
-					alert('비밀번호를 입력해 주세요.');
-					return false;
-				}
-			}
-
 			if($container.find('.redactor-editor').text() == '') {
 				alert('내용을 입력해 주세요.');
 				return false;
@@ -294,18 +285,6 @@ $(function() {
 				text = $container.find('textarea').val(),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
-			
-			if(!user.authenticated) {
-				if(nick == '') {
-					alert('닉네임을 입력해 주세요.');
-					return false;
-				}
-
-				if(password == '') {
-					alert('비밀번호를 입력해 주세요.');
-					return false;
-				}
-			}
 
 			if($container.find('.redactor-editor').text() == '') {
 				alert('내용을 입력해 주세요.');
@@ -375,7 +354,6 @@ $(function() {
 					$c.find('script').remove();
 
 					$c
-						.css('margin-left', ($item.data('depth') + 1)*3 + '%')
 						.removeAttr('data-type data-id')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
@@ -383,6 +361,12 @@ $(function() {
 						.removeClass('template')
 						.insertAfter($item)
 						.show();
+
+					if($item.data('depth') <= 3) {
+						$c.css('margin-left', 3*($item.data('depth') + 1)+'%');
+					} else {
+						$c.css('margin-left', 12+'%');
+					}
 
 					$c.find('input').removeAttr('id');
 
@@ -466,12 +450,5 @@ $(function() {
 				default:
 					console.log(action);
 			}
-		})
-		.on('click', '.cancel', function(e) {
-			e.preventDefault();
-			var $c = $(this).closest('.write.modify');
-
-			$c.prev('li.item').show();
-			$c.hide();
 		});
 });

@@ -87,13 +87,12 @@
 	}
 
 	.errorlist {
-			margin:5px 10% 20px;
-			li { color:$red; list-style:square inside; margin:5px 0; }
-		}
+		margin:5px 10% 20px;
+		li { color:$red; list-style:square inside; margin:5px 0; }
+	}
 
 	.submit { width:auto; display:inline-block; margin:0 0 20px; padding:0 4em; border-radius:0 0 4px 4px; }
-	.meta { padding:10px 0; text-align:center; }
-	.meta p { margin:5px 0; }
+	.meta { line-height:1.3em; padding:15px 0; text-align:center; }
 	.meta a { display:inline-block; padding:0 .5em; }
 }
 

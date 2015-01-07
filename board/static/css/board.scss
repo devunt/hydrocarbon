@@ -52,9 +52,9 @@
 			line-height:20px; padding:15px 0;
 
 			&.mark { height:20px; }
-			&.title span.title { font-size:16px; }
+			&.title span.title { max-width:calc(100% - 40px); display:inline-block; font-size:16px; line-height:20px; overflow:hidden; text-overflow:ellipsis; }
 			&.title span.title .highlight { background:#fff7cc; color:$red-base; }
-			&.title .label.meta.comments { margin-left:.5em; }			
+			&.title .label.meta.comments { margin-left:.5em; line-height:20px; }			
 		}
 
 		br { display:none; }
@@ -65,7 +65,7 @@
 
 		&.mark { width:3%; font-size:0; }
 		&.category { width:9%; }
-		&.title { width:44%; text-align:left; text-overflow:ellipsis; white-space:nowrap; }
+		&.title { height:20px; width:44%; text-align:left; white-space:nowrap; }
 		&.author { width:16%; }
 		&.author .label.meta { width:100%; }
 		&.author .text { max-width:calc(100% - 20px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
@@ -209,8 +209,9 @@
 	form {
 		height:inherit;
 
+		button,
 		input,
-		.scope { display:table-cell; vertical-align:top; }
+		.scope { display:inline-block; vertical-align:top; }
 
 		.search.label.meta {
 			height:30px; width:30px; background:none; border:0;
@@ -219,7 +220,7 @@
 			.no-touch &:hover { background:rgba(0,0,0,.1); }
 		}
 
-		input[type=search] { width:calc(100% - 30px); background:transparent; border:0; font-size:$font-size; line-height:inherit; padding:5px 0; }
+		input[type=search] { width:calc(100% - 60px); background:transparent; border:0; font-size:$font-size; line-height:inherit; padding:5px 0; }
 		
 		.scope {
 			height:30px; width:30px; background:rgba(0,0,0,.1); cursor:default; position:static;

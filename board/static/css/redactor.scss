@@ -34,6 +34,8 @@
 	}
 }
 
+.redactor-placeholder:after { pointer-events:none; }
+
 @media screen and (max-width: $medium) {
 	.redactor-dropdown { left:5% !important; width:90% !important; }
 }
