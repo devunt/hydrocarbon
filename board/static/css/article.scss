@@ -212,6 +212,7 @@
 		@media screen and (max-width: $small) {
 			margin:0; padding:10px 0 0;
 			.comment  .bubble.item { border-radius:0; }
+			.comment  .bubble.item.indent { border-radius:4px 0 0 4px; }
 		}
 
 		.owned > .comment {

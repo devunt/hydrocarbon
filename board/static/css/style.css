@@ -986,7 +986,9 @@ a.anchor {
       margin: 0;
       padding: 10px 0 0; }
       .section.article .comments-list .comment .bubble.item {
-        border-radius: 0; } }
+        border-radius: 0; }
+      .section.article .comments-list .comment .bubble.item.indent {
+        border-radius: 4px 0 0 4px; } }
   .section.article .comments-list .owned > .comment .bubble.item {
     border-left-color: rgba(61, 156, 204, 0.9); }
   .section.article .comments-list .owned > .comment .bubble.tip {
