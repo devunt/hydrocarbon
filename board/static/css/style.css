@@ -397,6 +397,8 @@ form > .errorlist li {
   background: rgba(204, 61, 61, 0.9);
   border-radius: 2px;
   color: #fff; }
+.label.meta.author .text {
+  margin-right: 10px; }
 .label.meta.author .text:after {
   height: 4px;
   width: 4px;
@@ -1059,9 +1061,12 @@ a.anchor {
       .section.board .item .cell.mark {
         height: 20px; }
       .section.board .item .cell.title span.title {
+        max-width: calc(100% - 40px);
         display: inline-block;
         font-size: 16px;
-        line-height: 20px; }
+        line-height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis; }
       .section.board .item .cell.title span.title .highlight {
         background: #fff7cc;
         color: #cc3d3d; }
@@ -1085,7 +1090,6 @@ a.anchor {
       height: 20px;
       width: 44%;
       text-align: left;
-      text-overflow: ellipsis;
       white-space: nowrap; }
     .section.board .cell.author {
       width: 16%; }

@@ -228,6 +228,7 @@ form > .errorlist {
 
 	.error & { background:$red; border-radius:2px; color:$white; }
 
+	&.author .text { margin-right:10px; }
 	&.author .text:after { height:4px; width:4px; border-radius:2px; content:""; display:inline-block; position:absolute; margin:8px 0; margin-left:5px; vertical-align:top; }
 	&.author.user .text:after { background:$blue-base; }
 	&.author.guest .text:after { background:$grey; }
