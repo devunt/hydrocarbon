@@ -1245,6 +1245,8 @@ a.anchor {
           text-align: left; }
           .section.board .item .cell.meta .label.meta {
             margin-right: 10px; }
+          .section.board .item .cell.meta .label.meta.author {
+            padding-left: 0; }
           .section.board .item .cell.meta .icon {
             margin-right: 2px; }
           .section.board .item .cell.meta .text {

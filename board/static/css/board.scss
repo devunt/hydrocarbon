@@ -151,6 +151,7 @@
 					width:auto; display:inline-block; opacity:.4; padding:0; text-align:left;
 					
 					.label.meta { margin-right:10px; }
+					.label.meta.author { padding-left:0; }
 					.icon { margin-right:2px; }
 					.text { font-size:$font-size - 2;}
 				}
