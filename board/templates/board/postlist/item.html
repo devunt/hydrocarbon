@@ -7,6 +7,7 @@
 		<span class="cell mark">&#9654;</span>
 		<span class="cell category">{% if notice %}{% trans "Notice" %}{% else %}{{ item.category }}{% endif %}</span>
 		<span class="cell title">
+			<span class="container">
 			{% if item.votes.total <= BOARD_POST_BLIND_VOTES %}
 				<span class="title" title="{{ item.title }}">{% trans "This post has been downvoted by users." %}</span>
 			{% else %}
@@ -16,6 +17,7 @@
 					<span class="text">{{ item.comments.count }}</span>
 				</span>
 			{% endif %}
+			</span>
 		</span>
 		<br>
 		<span class="cell author meta">

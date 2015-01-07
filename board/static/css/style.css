@@ -397,9 +397,9 @@ form > .errorlist li {
   background: rgba(204, 61, 61, 0.9);
   border-radius: 2px;
   color: #fff; }
-.label.meta.author .text {
-  margin-right: 10px; }
-.label.meta.author .text:after {
+.label.meta.author {
+  padding-right: 10px; }
+.label.meta.author:after {
   height: 4px;
   width: 4px;
   border-radius: 2px;
@@ -409,11 +409,11 @@ form > .errorlist li {
   margin: 8px 0;
   margin-left: 5px;
   vertical-align: top; }
-.label.meta.author.user .text:after {
+.label.meta.author.user:after {
   background: #3d9ccc; }
-.label.meta.author.guest .text:after {
+.label.meta.author.guest:after {
   background: rgba(170, 170, 170, 0.9); }
-.label.meta.author.moderator .text:after {
+.label.meta.author.moderator:after {
   background: rgba(204, 61, 61, 0.9); }
 .label.meta.author .icon {
   background-position: 0 0; }
@@ -1044,6 +1044,8 @@ a.anchor {
     display: block; }
     .no-touch .section.board .item:hover, .no-touch .section.board .item:hover .cell a {
       color: #666; }
+    .no-touch .section.board .item:hover .label.meta.comments .icon {
+      opacity: .8; }
     .section.board .item.even {
       background: #f2f2f2; }
     .section.board .item.announcement {
@@ -1070,17 +1072,18 @@ a.anchor {
       .section.board .item .cell.mark {
         height: 20px; }
       .section.board .item .cell.title span.title {
-        max-width: calc(100% - 40px);
-        display: inline-block;
+        display: table-cell;
         font-size: 16px;
         line-height: 20px;
         overflow: hidden;
-        text-overflow: ellipsis; }
+        text-overflow: ellipsis;
+        white-space: normal; }
       .section.board .item .cell.title span.title .highlight {
         background: #fff7cc;
         color: #cc3d3d; }
       .section.board .item .cell.title .label.meta.comments {
-        margin-left: .5em;
+        display: table-cell;
+        padding-left: .5em;
         line-height: 20px; }
     .section.board .item br {
       display: none; }
@@ -1100,13 +1103,19 @@ a.anchor {
       width: 44%;
       text-align: left;
       white-space: nowrap; }
+    .section.board .cell.title .container {
+      height: inherit;
+      display: block;
+      overflow: hidden; }
     .section.board .cell.author {
       width: 16%;
       position: relative; }
     .section.board .cell.author .label.meta {
-      width: 100%; }
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 0 10px; }
     .section.board .cell.author .text {
-      max-width: calc(100% - 20px);
+      max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap; }
@@ -1223,9 +1232,8 @@ a.anchor {
           font-size: 12px;
           padding: 0 1.5%; }
         .section.board .item .cell.title {
-          width: 75%;
-          margin-left: 2%;
-          margin-right: 4%; }
+          width: 82%;
+          margin-left: 2%; }
           .section.board .item .cell.title span.title {
             font-size: 14px; }
         .section.board .item .cell.meta {
