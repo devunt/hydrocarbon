@@ -1,4 +1,4 @@
-var options;
+var options, quicksubmit = false;
 
 function getComments(id) {
 	return $.ajax({
@@ -228,12 +228,15 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.on('keypress', function(e) {
-			if(e.ctrlKey && e.which == 32) {
+		.on('keydown', function(e) {
+			if(e.ctrlKey && e.which == 32 && !quicksubmit) {
+				quicksubmit = true;
 				$(this).closest('.comments-list').find('.write .submit').trigger('click');
+				e.preventDefault();
 				return false;
 			}
 		})
+		.on('keyup', function() { quicksubmit = false; })
 		.on('click', 'a.dropdown.fold', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('ul'),
