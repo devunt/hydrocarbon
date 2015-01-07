@@ -403,6 +403,7 @@ form > .errorlist li {
   border-radius: 2px;
   content: "";
   display: inline-block;
+  position: absolute;
   margin: 8px 0;
   margin-left: 5px;
   vertical-align: top; }
@@ -879,8 +880,9 @@ a.anchor {
     padding-right: 5px; }
     .section.article .comments-list .comment .bubble.item .header {
       border-bottom: 1px solid #e5e5e5;
-      margin: 0 10px;
-      padding: 5px 0; }
+      margin: 0 10px; }
+      .section.article .comments-list .comment .bubble.item .header .left, .section.article .comments-list .comment .bubble.item .header .right {
+        padding: 5px 0; }
       .section.article .comments-list .comment .bubble.item .header a.fold {
         display: inline-block; }
       .section.article .comments-list .comment .bubble.item .header .label.meta.handle .icon {
@@ -888,7 +890,8 @@ a.anchor {
       .section.article .comments-list .comment .bubble.item .header .depth {
         color: rgba(170, 170, 170, 0.9);
         display: inline-block;
-        line-height: 20px; }
+        line-height: 20px;
+        pointer-events: none; }
         .section.article .comments-list .comment .bubble.item .header .depth i.fa {
           font-size: .8em;
           line-height: 20px; }
@@ -936,6 +939,7 @@ a.anchor {
       overflow: hidden;
       padding: 0 0 5px; }
       .section.article .comments-list .comment .bubble.item .footer .nav {
+        height: 30px;
         font-size: 0;
         padding: 0;
         vertical-align: top;
@@ -1281,9 +1285,10 @@ a.anchor {
   vertical-align: top; }
   .search.button form {
     height: inherit; }
+    .search.button form button,
     .search.button form input,
     .search.button form .scope {
-      display: table-cell;
+      display: inline-block;
       vertical-align: top; }
     .search.button form .search.label.meta {
       height: 30px;
@@ -1295,7 +1300,7 @@ a.anchor {
       .no-touch .search.button form .search.label.meta:hover {
         background: rgba(0, 0, 0, 0.1); }
     .search.button form input[type=search] {
-      width: calc(100% - 30px);
+      width: calc(100% - 60px);
       background: transparent;
       border: 0;
       font-size: 14px;
