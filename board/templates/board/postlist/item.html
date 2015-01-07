@@ -13,7 +13,6 @@
 			{% else %}
 				<span class="title">{{ item.title }}</span>
 				<span class="label meta comments"{% if item.comments.count == 0 %} style="display:none;"{% endif %}>
-					<span class="icon"></span>
 					<span class="text">{{ item.comments.count }}</span>
 				</span>
 			{% endif %}
