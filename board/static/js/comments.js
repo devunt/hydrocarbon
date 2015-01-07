@@ -53,6 +53,8 @@ function renderComment($container, v, depth, hidden) {
 	}
 
 	if(depth > 0) {
+		$c.find('.bubble.item').css('border-radius', '4px 0 0 4px');
+
 		if(depth <= 4) {
 			$c.css('margin-left', 3*depth+'%');
 		} else {
@@ -380,6 +382,7 @@ $(function() {
 
 					$c
 						.removeAttr('data-type data-id')
+						.css('border-radius', '4px 0 0 4px')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
 						.addClass('clone reply')
@@ -429,6 +432,8 @@ $(function() {
 						.removeClass('template write')
 						.insertAfter($item)
 						.show();
+
+					if($item.data('depth') > 0) $c.find('.bubble.item').css('border-radius', '4px 0 0 4px');
 
 					if(user.c3RhZmY) { $c.find('label').remove();
 					} else if($item.hasClass('guest')) {
