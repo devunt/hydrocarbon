@@ -24,6 +24,7 @@
 	p:last-of-type { margin-bottom:0; }
 	img { max-width:100%; }
 	iframe { width:inherit; }
+	li { list-style-type:disc; }
 
 	span.spoiler {
 		background:$black; cursor:default;
