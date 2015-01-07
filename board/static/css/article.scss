@@ -169,7 +169,7 @@
 					.footer {
 						border-top:1px solid $grey-90; margin:0 10px; overflow:hidden; padding:0 0 5px;
 						.nav {
-							height:30px; font-size:0; padding:0; vertical-align:top; white-space:nowrap;
+							max-height:30px; font-size:0; padding:0; vertical-align:top; white-space:nowrap;
 							
 							&.ot {
 								width:60%; float:left; margin:5px 0;

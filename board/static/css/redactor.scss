@@ -26,11 +26,8 @@
 	iframe { max-width:100%; }
 
 	span.spoiler {
-		background:$black; cursor:default; display:inline-block; margin:0 2px; padding:0 2px;
-		p { display:inline; }
-		img { visibility:hidden; }
+		background:$black; cursor:default;
 		&:hover { color:$white; }
-		&:hover img { visibility:visible; }
 	}
 }
 
