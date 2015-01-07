@@ -743,3 +743,7 @@ msgstr "삭제되었습니다"
 #: hydrocarbon/settings/base.py:103
 msgid "Korean"
 msgstr "한국어"
+
+#: board/templates/base.html:69
+msgid "Profile"
+msgstr "내 정보"
