@@ -857,14 +857,6 @@ a.anchor {
 .section.article .comments-list {
   margin: 0 5%;
   padding: 10px 7% 0; }
-  @media screen and (max-width: 599px) {
-    .section.article .comments-list {
-      margin: 0 2%;
-      padding: 10px 5% 0; } }
-  @media screen and (max-width: 419px) {
-    .section.article .comments-list {
-      margin: 0 1%;
-      padding: 10px 2% 0; } }
   .section.article .comments-list li.list.item,
   .section.article .comments-list li.write,
   .section.article .comments-list li.modify,
@@ -984,6 +976,16 @@ a.anchor {
       border-right-color: #f2f2f2;
       border-top-color: #f2f2f2;
       border-width: 10px; }
+  @media screen and (max-width: 599px) {
+    .section.article .comments-list {
+      margin: 0 2%;
+      padding: 10px 5% 0; } }
+  @media screen and (max-width: 419px) {
+    .section.article .comments-list {
+      margin: 0;
+      padding: 10px 0 0; }
+      .section.article .comments-list .comment .bubble.item {
+        border-radius: 0; } }
   .section.article .comments-list .owned > .comment .bubble.item {
     border-left-color: rgba(61, 156, 204, 0.9); }
   .section.article .comments-list .owned > .comment .bubble.tip {
