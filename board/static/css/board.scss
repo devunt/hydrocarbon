@@ -32,7 +32,6 @@
 
 		.no-touch &:hover,
 		.no-touch &:hover .cell a { color:$darkgrey; }
-		.no-touch &:hover .label.meta.comments .icon { opacity:.8; }
 
 		&.even { background:$grey-95; }
 		&.announcement { background:#fff7cc; }
@@ -55,7 +54,8 @@
 			&.mark { height:20px; }
 			&.title span.title { display:table-cell; font-size:16px; line-height:20px; overflow:hidden; text-overflow:ellipsis; white-space:normal; }
 			&.title span.title .highlight { background:#fff7cc; color:$red-base; }
-			&.title .label.meta.comments { display:table-cell; padding-left:.5em; line-height:20px; }			
+			&.title .label.meta.comments { display:table-cell; padding-left:.4em; line-height:20px;}			
+			&.title .label.meta.comments .text { font-size:$font-size - 2; opacity:.67; }			
 		}
 
 		br { display:none; }
