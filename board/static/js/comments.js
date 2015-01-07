@@ -228,15 +228,15 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.on('keydown', function(e) {
+		.on('keydown', '.modify .redactor-editor, .write .redactor-editor', function(e) {
 			if(e.ctrlKey && e.which == 32 && !quicksubmit) {
 				quicksubmit = true;
-				$(this).closest('.comments-list').find('.write .submit').trigger('click');
+				$(this).closest('.bubble.item').find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;
 			}
 		})
-		.on('keyup', function() { quicksubmit = false; })
+		.on('keyup', '.modify .redactor-editor, .write .redactor-editor', function() { quicksubmit = false; })
 		.on('click', 'a.dropdown.fold', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('ul'),
@@ -298,12 +298,7 @@ $(function() {
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 			
-			if(!user.authenticated) {
-				if(nick == '') {
-					alert('닉네임을 입력해 주세요.');
-					return false;
-				}
-
+			if(!user.authenticated || $container.prev('.item').hasClass('guest')) {
 				if(password == '') {
 					alert('비밀번호를 입력해 주세요.');
 					return false;
