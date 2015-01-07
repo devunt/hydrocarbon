@@ -14,8 +14,7 @@
 					</div>
 					<div class="right">
 						<span class="label meta score">
-							<span class="icon"></span>
-							<span class="text"><span>{{ item.votes.total | intcomma }}</span></span>
+							<span class="text"><span>{% if item.votes.total >= 0 %}+{% endif %}{{ item.votes.total | intcomma }}</span></span>
 						</span>
 						<div class="dropdown container">
 							<a href="#" class="label meta more dropdown handle">

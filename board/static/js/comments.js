@@ -76,6 +76,9 @@ function renderComment($container, v, depth, hidden) {
 	$c.find('.meta.timestamp')
 		.attr('title', date.toLocaleString('ko-kr', { hour12: false }))
 		.text($.timeago(v.created_time));
+
+	if(v.votes.total >= 0 ) v.votes.total = '+' + v.votes.total;
+	
 	$c.find('.meta.score')
 		.attr('title', '+'+v.votes.upvote+' / -'+v.votes.downvote)
 		.find('.text span').text(v.votes.total);

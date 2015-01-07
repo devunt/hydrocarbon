@@ -102,9 +102,6 @@
 	.comments-list {
 		margin:0 5%; padding:10px 7% 0;
 
-		@media screen and (max-width: $medium) { margin:0 2%; padding:10px 5% 0; }
-		@media screen and (max-width: $small) { margin:0 1%; padding:10px 2% 0; }
-
 		li.list.item,
 		li.write,
 		li.modify,
@@ -137,7 +134,10 @@
 
 						.meta { display:inline-block; font-size:$font-size; vertical-align:top; }
 						.meta + .meta { margin-left:5px; }
-						.meta.timestamp { color:#808080; font-size:$font-size - 2; }
+
+						.meta.author .text { color:$darkgrey; font-size:$font-size - 2; }
+						.meta.timestamp { color:$grey; font-size:$font-size - 2; }
+						.meta.score .text { color:$darkgrey; font-size:$font-size - 2; }
 
 						.hidden.author { display:none; }
 
@@ -206,6 +206,12 @@
 					span { border-right-color:$grey-95; border-top-color:$grey-95; border-width:10px; }
 				}
 			}
+		}
+
+		@media screen and (max-width: $medium) { margin:0 2%; padding:10px 5% 0; }
+		@media screen and (max-width: $small) {
+			margin:0; padding:10px 0 0;
+			.comment  .bubble.item { border-radius:0; }
 		}
 
 		.owned > .comment {
