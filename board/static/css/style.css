@@ -1351,15 +1351,17 @@ a.anchor {
 
 .section.article.form .item.article {
   margin-bottom: 20px; }
-  .section.article.form .item.article .header .category select {
-    width: 100%;
-    background: none;
-    border: 0;
-    text-align: right; }
-  .section.article.form .item.article .header .category .tip {
-    text-align: left; }
-  .section.article.form .item.article .header .category .dropdown.menu li a > span {
-    margin: 0 15px; }
+  .section.article.form .item.article .header .category {
+    font-size: 20px; }
+    .section.article.form .item.article .header .category select {
+      width: 100%;
+      background: none;
+      border: 0;
+      text-align: right; }
+    .section.article.form .item.article .header .category .tip {
+      text-align: left; }
+    .section.article.form .item.article .header .category .dropdown.menu li a > span {
+      margin: 0 15px; }
   .section.article.form .item.article .header h2 {
     width: 100%; }
     .section.article.form .item.article .header h2 input {
