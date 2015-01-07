@@ -435,6 +435,8 @@ class CommentAjaxView(AjaxMixin, View):
             try:
                 c.comment = Comment.objects.get(pk=self.pk)
                 c.post = c.comment.post
+                if c.depth >= 5:
+                    return self.bad_request()
             except Comment.DoesNotExist:
                 return self.not_found()
         else:
