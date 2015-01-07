@@ -269,6 +269,7 @@ $(function() {
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
+				type = $container.data('type'),
 				databox = {
 					contents: text,
 					type: $container.data('type'),
@@ -281,9 +282,16 @@ $(function() {
 				return false;
 			}
 
-			if($container.data('type') == 'c') id = $container.prev('li.item').data('id');
+			if(type == 'c') id = $container.prev('li.item').data('id');
+
 			postComments(id, databox)
-				.done(function() { getComments(post_id) });
+				.done(function() {
+					getComments(post_id)
+						.done(function() {
+							console.log(type);
+							if(type == 'c') window.location.hash = '#c' + id;
+						});
+				});
 		})
 		.on('click', '.modify .submit', function(e) {
 			e.preventDefault();
@@ -299,7 +307,12 @@ $(function() {
 			}
 
 			putComments(id, text, password)
-				.done(function() { getComments(post_id) });
+				.done(function() {
+					getComments(post_id)
+						.done(function() {
+							window.location.hash = '#c' + id;
+						});
+				});
 		})
 		.on('click', '.reply .cancel', function(e) {
 			e.preventDefault();
@@ -387,7 +400,7 @@ $(function() {
 					$c.find('.cancel').show();
 
 					scroll = $c.offset().top - $window.height() + $c.height();
-					$('body').stop().animate({ scrollTop: scroll }, scroll/.5);
+					$('body').stop().animate({ scrollTop: scroll }, scroll);
 
 					break;
 

@@ -1524,6 +1524,8 @@ a.anchor {
     max-width: 100%; }
   .redactor-editor iframe {
     width: inherit; }
+  .redactor-editor li {
+    list-style-type: disc; }
   .redactor-editor span.spoiler {
     background: #222;
     cursor: default; }
