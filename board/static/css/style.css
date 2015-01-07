@@ -12,6 +12,7 @@
   display: none; }
 
 body {
+  background: #e5e5e5;
   color: #222;
   font: 14px "NanumGothic", "Malgun Gothic", sans-serif;
   letter-spacing: -.04em; }
@@ -72,12 +73,6 @@ textarea[name=contents] {
 #overlay div {
   z-index: 1053; }
 
-body {
-  background: #e5e5e5; }
-
-@media screen and (max-width: 419px) {
-  body.hovered {
-    overflow: hidden; } }
 #wrapper {
   width: 720px;
   background: #fff;

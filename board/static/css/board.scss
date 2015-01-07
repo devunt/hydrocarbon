@@ -54,7 +54,7 @@
 			&.mark { height:20px; }
 			&.title span.title { display:table-cell; font-size:16px; line-height:20px; overflow:hidden; text-overflow:ellipsis; white-space:normal; }
 			&.title span.title .highlight { background:#fff7cc; color:$red-base; }
-			&.title .label.meta.comments { display:table-cell; padding-left:.4em; line-height:20px;}			
+			&.title .label.meta.comments { display:table-cell; padding-left:.4em; line-height:20px; }			
 			&.title .label.meta.comments .text { font-size:$font-size - 2; opacity:.67; }			
 		}
 
@@ -76,7 +76,7 @@
 		&.views { width:7%; margin-right:3%; }
 	}
 
-	.nav.bottom { background:$grey-90;  position:relative; }
+	.nav.bottom { background:$grey-90; position:relative; }
 
 	.search.button {
 		form {
