@@ -66,7 +66,7 @@
 		&.mark { width:3%; font-size:0; }
 		&.category { width:9%; }
 		&.title { height:20px; width:44%; text-align:left; white-space:nowrap; }
-		&.author { width:16%; }
+		&.author { width:16%; position:relative; }
 		&.author .label.meta { width:100%; }
 		&.author .text { max-width:calc(100% - 20px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 		&.timestamp { width:11%; white-space:nowrap; }
@@ -154,7 +154,7 @@
 				}
 				&.author { margin-left:4%; }
 				&.author .icon { display:none; }
-				&.author .text { max-width:none; }
+				&.author .text { max-width:8em; }
 				&.views { margin:0; }
 			}
 			&.announcement .cell.category { background:rgba(0,0,0,.1); }

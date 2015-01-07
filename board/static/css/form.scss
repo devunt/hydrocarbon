@@ -15,7 +15,7 @@
 			display:block; font-size:0; margin:10px 0; white-space:nowrap;
 			span { width:125px; color:$grey; display:inline-block; font-size:20px; letter-spacing:-2px; line-height:30px; text-align:right; vertical-align:top; }
 			input, select {
-				max-width:380px; width:380px; border:0; border-bottom:1px solid $lightgrey-base; box-sizing:content-box; color:$black; font-size:16px; line-height:30px; margin-left:15px; padding:0 10px;
+				height:30px; max-width:380px; width:380px; border:0; border-bottom:1px solid $lightgrey-base; box-sizing:content-box; color:$black; font-size:16px; line-height:30px; margin-left:15px; padding:0 10px;
 				&:focus { border-bottom-color:$blue-base; outline:none; }
 			}
 

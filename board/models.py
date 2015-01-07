@@ -156,6 +156,14 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     contents = RedactorField()
     created_time = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def depth(self):
+        def _depth(c, d = 0):
+            if c.comment is not None:
+                return _depth(c.comment, d + 1)
+            return d
+        return _depth(self)
+
     def save(self, *args, **kwargs):
         self.contents = bleach.clean(self.contents,
             tags=settings.BLEACH_ALLOWED_TAGS,

@@ -70,7 +70,7 @@ textarea[name=contents] {
   border: 0; }
 
 #overlay div {
-  z-index: 1054; }
+  z-index: 1053; }
 
 body {
   background: #e5e5e5; }
@@ -603,6 +603,7 @@ a.anchor {
         text-align: right;
         vertical-align: top; }
       #form .field label input, #form .field label select {
+        height: 30px;
         max-width: 380px;
         width: 380px;
         border: 0;
@@ -941,7 +942,7 @@ a.anchor {
       overflow: hidden;
       padding: 0 0 5px; }
       .section.article .comments-list .comment .bubble.item .footer .nav {
-        height: 30px;
+        max-height: 30px;
         font-size: 0;
         padding: 0;
         vertical-align: top;
@@ -1092,7 +1093,8 @@ a.anchor {
       text-align: left;
       white-space: nowrap; }
     .section.board .cell.author {
-      width: 16%; }
+      width: 16%;
+      position: relative; }
     .section.board .cell.author .label.meta {
       width: 100%; }
     .section.board .cell.author .text {
@@ -1235,7 +1237,7 @@ a.anchor {
         .section.board .item .cell.author .icon {
           display: none; }
         .section.board .item .cell.author .text {
-          max-width: none; }
+          max-width: 8em; }
         .section.board .item .cell.views {
           margin: 0; }
       .section.board .item.announcement .cell.category {
@@ -1349,15 +1351,17 @@ a.anchor {
 
 .section.article.form .item.article {
   margin-bottom: 20px; }
-  .section.article.form .item.article .header .category select {
-    width: 100%;
-    background: none;
-    border: 0;
-    text-align: right; }
-  .section.article.form .item.article .header .category .tip {
-    text-align: left; }
-  .section.article.form .item.article .header .category .dropdown.menu li a > span {
-    margin: 0 15px; }
+  .section.article.form .item.article .header .category {
+    font-size: 20px; }
+    .section.article.form .item.article .header .category select {
+      width: 100%;
+      background: none;
+      border: 0;
+      text-align: right; }
+    .section.article.form .item.article .header .category .tip {
+      text-align: left; }
+    .section.article.form .item.article .header .category .dropdown.menu li a > span {
+      margin: 0 15px; }
   .section.article.form .item.article .header h2 {
     width: 100%; }
     .section.article.form .item.article .header h2 input {
@@ -1502,21 +1506,12 @@ a.anchor {
   .redactor-editor img {
     max-width: 100%; }
   .redactor-editor iframe {
-    max-width: 100%; }
+    width: inherit; }
   .redactor-editor span.spoiler {
     background: #222;
-    cursor: default;
-    display: inline-block;
-    margin: 0 2px;
-    padding: 0 2px; }
-    .redactor-editor span.spoiler p {
-      display: inline; }
-    .redactor-editor span.spoiler img {
-      visibility: hidden; }
+    cursor: default; }
     .redactor-editor span.spoiler:hover {
       color: #fff; }
-    .redactor-editor span.spoiler:hover img {
-      visibility: visible; }
 
 .redactor-placeholder:after {
   pointer-events: none; }
