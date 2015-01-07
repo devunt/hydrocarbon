@@ -397,6 +397,8 @@ form > .errorlist li {
   background: rgba(204, 61, 61, 0.9);
   border-radius: 2px;
   color: #fff; }
+.label.meta.author .text {
+  margin-right: 10px; }
 .label.meta.author .text:after {
   height: 4px;
   width: 4px;
