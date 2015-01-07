@@ -64,6 +64,10 @@ function renderComment($container, v, depth, hidden) {
 		}
 	}
 
+	if(depth >= COMMENT_MAX_DEPTH) {
+		$c.find('li.reply').remove();
+	}
+
 	if(!hidden && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
 	$c.find('a.anchor').attr('id', 'c'+v.id);
