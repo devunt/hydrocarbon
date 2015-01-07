@@ -75,7 +75,8 @@ class HCSignupForm(NicknameFormMixin, SignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         del self.fields['username']
-        order = ('email', 'password', 'password_confirm', 'nickname', 'code')
+        del self.fields['code']
+        order = ('email', 'password', 'password_confirm', 'nickname')
         self.fields = OrderedDict((k, self.fields[k]) for k in order)
         self.fields['email'].widget = forms.EmailInput()
 
