@@ -70,15 +70,11 @@
 				screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3)  { background-image:url("../img/login_3x.png"); }
 			}
 
-			.tip { text-align:right; }
-
-			.dropdown.menu li a > span.mobile { display:none; }
-
 			@media screen and (max-width: $small) {
 				.text { display:none; }
-				.dropdown.menu li a > span.mobile { display:block; }
-				.dropdown.menu li a > span.desktop { display:none; }
 			}
+
+			.tip { text-align:right; }
 		}
 	}
 }

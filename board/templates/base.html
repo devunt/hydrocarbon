@@ -64,10 +64,7 @@
 							<a href="#" class="close">{% trans "Close" %}</a>
 							<div class="tip top"><span></span></div>
 							<ul>
-								<li><a href="{% url 'user_profile' user.id %}">
-									<span class="mobile">{{ user.nickname }}</span>
-									<span class="desktop">{% trans "Profile" %}</span>
-								</a></li>
+								<li><a href="{% url 'user_profile' user.id %}"><span>{{ user.nickname }}</span></a></li>
 								<li><a href="{% url 'account_settings' %}"><span>{% trans "Account settings" %}</span></a></li>
 								{# <li><a href="#"><span>{% trans "Inbox" %}</span></a></li> #}
 								<li><a href="{% url 'account_logout' %}"><span>{% trans "Log out" %}</span></a></li>
