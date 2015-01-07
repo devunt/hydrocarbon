@@ -566,11 +566,17 @@ a.anchor {
     @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
       #nav .dropdown.container.menu-personal .icon {
         background-image: url("../img/login_3x.png"); } }
-  @media screen and (max-width: 419px) {
-    #nav .dropdown.container.menu-personal .text {
-      display: none; } }
   #nav .dropdown.container.menu-personal .tip {
     text-align: right; }
+  #nav .dropdown.container.menu-personal .dropdown.menu li a > span.mobile {
+    display: none; }
+  @media screen and (max-width: 419px) {
+    #nav .dropdown.container.menu-personal .text {
+      display: none; }
+    #nav .dropdown.container.menu-personal .dropdown.menu li a > span.mobile {
+      display: block; }
+    #nav .dropdown.container.menu-personal .dropdown.menu li a > span.desktop {
+      display: none; } }
 
 #form {
   padding: 80px 0 0; }
@@ -805,7 +811,7 @@ a.anchor {
     color: #fff;
     display: inline-block;
     margin: 0 5px;
-    opacity: .5;
+    opacity: .3;
     padding: 5px 0;
     transition: opacity .2s ease; }
     .section.article .item.article .vote.vote-post a .icon {
