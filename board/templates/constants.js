@@ -7,6 +7,7 @@ var user = {
 
 
 var COMMENT_BLIND_VOTES = {{ BOARD_COMMENT_BLIND_VOTES }}
+var COMMENT_MAX_DEPTH = {{ BOARD_COMMENT_MAX_DEPTH }}
 
 
 var VOTE_AJAX_ENDPOINT = "{% url 'ajax_vote' %}"

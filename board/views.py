@@ -435,7 +435,7 @@ class CommentAjaxView(AjaxMixin, View):
             try:
                 c.comment = Comment.objects.get(pk=self.pk)
                 c.post = c.comment.post
-                if c.depth >= 5:
+                if c.depth > settings.BOARD_COMMENT_MAX_DEPTH:
                     return self.bad_request()
             except Comment.DoesNotExist:
                 return self.not_found()
@@ -529,4 +529,5 @@ class JSConstantsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         kwargs['BOARD_COMMENT_BLIND_VOTES'] = settings.BOARD_COMMENT_BLIND_VOTES
+        kwargs['BOARD_COMMENT_MAX_DEPTH'] = settings.BOARD_COMMENT_MAX_DEPTH
         return super().get_context_data(**kwargs)
