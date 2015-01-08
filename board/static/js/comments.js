@@ -397,8 +397,7 @@ $(function() {
 					redactor.redactor('core.getEditor').focus();
 					$c.find('.cancel').show();
 
-					scroll = $c.offset().top - $window.height() + $c.height();
-					$('body').stop().animate({ scrollTop: scroll }, scroll);
+					$('body').scrollTop($c.offset().top() - 60);
 
 					break;
 
