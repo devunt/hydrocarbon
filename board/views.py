@@ -128,8 +128,6 @@ class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
         r.POST = qdict
         v = VoteAjaxView()
         v.post(r)
-        if not self.request.user.is_authenticated():
-            self.request.session['onetime_nick'] = self.object.onetime_user.nick
         return super().get_success_url()
 
     def get_form_kwargs(self):
@@ -141,7 +139,9 @@ class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
     def get_initial(self):
         initial = super().get_initial()
         if not self.request.user.is_authenticated():
-            initial['onetime_nick'] = self.request.session.get('onetime_nick')
+            ot_user = self.request.session.get('onetime_user')
+            initial['onetime_nick'] = ot_user.get('nick')
+            initial['onetime_password'] = ot_user.get('password')
         return initial
 
 
@@ -302,7 +302,8 @@ class PostDetailView(DetailView):
         kwargs['voted'] = voted
         f = CommentForm(show_ot_form=True)
         if not self.request.user.is_authenticated():
-            f.initial = {'onetime_nick': self.request.session.get('onetime_nick')}
+            ot_user = self.request.session.get('onetime_user')
+            f.initial = {'onetime_nick': ot_user.get('nick'), 'onetime_password': ot_user.get('password')}
         kwargs['comment_form'] = f
         return super().get_context_data(**kwargs)
 
@@ -451,6 +452,7 @@ class CommentAjaxView(AjaxMixin, View):
             ot_user = OneTimeUser()
             ot_user.nick = request.POST.get('ot_nick')
             ot_user.password = request.POST.get('ot_password')
+            request.session['onetime_user'] = {'nick': ot_user.nick, 'password': ot_user.password}
             try:
                 ot_user.full_clean()
             except ValidationError as ex:
@@ -459,7 +461,6 @@ class CommentAjaxView(AjaxMixin, View):
                 ot_user.password = make_password(ot_user.password)
                 ot_user.save()
                 c.onetime_user = ot_user
-                request.session['onetime_nick'] = ot_user.nick
         c.ipaddress = request.META['REMOTE_ADDR']
         c.contents = request.POST.get('contents')
         c.save()

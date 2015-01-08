@@ -45,7 +45,7 @@ class OneTimeUserFormMixin:
         super().__init__(*args, **kwargs)
         if show_ot_form:
             self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
-            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
+            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput(render_value=True))
 
 
 class NicknameFormMixin:

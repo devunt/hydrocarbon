@@ -64,8 +64,11 @@ class UserFormMixin:
             form.instance.user = self.request.user
         else:
             ot_user = OneTimeUser()
-            ot_user.nick = form.cleaned_data['onetime_nick']
-            ot_user.password = make_password(form.cleaned_data['onetime_password'])
+            nick = form.cleaned_data['onetime_nick']
+            password = form.cleaned_data['onetime_password']
+            self.request.session['onetime_user'] = {'nick': nick, 'password': password}
+            ot_user.nick = nick
+            ot_user.password = make_password(password)
             ot_user.save()
             form.instance.onetime_user = ot_user
         form.instance.ipaddress = self.request.META['REMOTE_ADDR']
