@@ -45,7 +45,7 @@ class OneTimeUserFormMixin:
         super().__init__(*args, **kwargs)
         if show_ot_form:
             self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
-            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
+            self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput(render_value=True))
 
 
 class NicknameFormMixin:
@@ -75,7 +75,8 @@ class HCSignupForm(NicknameFormMixin, SignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         del self.fields['username']
-        order = ('email', 'password', 'password_confirm', 'nickname', 'code')
+        del self.fields['code']
+        order = ('email', 'password', 'password_confirm', 'nickname')
         self.fields = OrderedDict((k, self.fields[k]) for k in order)
         self.fields['email'].widget = forms.EmailInput()
 
