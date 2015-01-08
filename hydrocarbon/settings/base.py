@@ -118,7 +118,7 @@ ACCOUNT_DELETION_MARK_CALLBACK = 'board.callbacks.account_delete_mark'
 ACCOUNT_DELETION_EXPUNGE_CALLBACK = 'board.callbacks.account_delete_expunge'
 
 # django-wysiwyg-redactor
-REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'buttonsHide': ['horizontalrule'], 'plugins': ['video', 'spoiler', 'krfix', 'autosave_garlic']}
+REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'tabKey': False, 'buttonsHide': ['horizontalrule'], 'plugins': ['video', 'spoiler', 'krfix', 'autosave_garlic']}
 REDACTOR_UPLOAD = 'uploads/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 

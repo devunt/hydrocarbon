@@ -52,9 +52,10 @@
 			line-height:20px; padding:15px 0;
 
 			&.mark { height:20px; }
-			&.title span.title { max-width:calc(100% - 40px); display:inline-block; font-size:16px; line-height:20px; overflow:hidden; text-overflow:ellipsis; }
+			&.title span.title { display:table-cell; font-size:16px; line-height:20px; overflow:hidden; text-overflow:ellipsis; white-space:normal; }
 			&.title span.title .highlight { background:#fff7cc; color:$red-base; }
-			&.title .label.meta.comments { margin-left:.5em; line-height:20px; }			
+			&.title .label.meta.comments { display:table-cell; padding-left:.4em; line-height:20px; }			
+			&.title .label.meta.comments .text { font-size:$font-size - 2; opacity:.67; }			
 		}
 
 		br { display:none; }
@@ -66,15 +67,16 @@
 		&.mark { width:3%; font-size:0; }
 		&.category { width:9%; }
 		&.title { height:20px; width:44%; text-align:left; white-space:nowrap; }
+		&.title .container { height:inherit; display:block; overflow:hidden; }
 		&.author { width:16%; position:relative; }
-		&.author .label.meta { width:100%; }
-		&.author .text { max-width:calc(100% - 20px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+		&.author .label.meta { max-width:100%; box-sizing:border-box; padding:0 10px; }
+		&.author .text { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 		&.timestamp { width:11%; white-space:nowrap; }
 		&.score { width:7%; }
 		&.views { width:7%; margin-right:3%; }
 	}
 
-	.nav.bottom { background:$grey-90;  position:relative; }
+	.nav.bottom { background:$grey-90; position:relative; }
 
 	.search.button {
 		form {
@@ -142,13 +144,14 @@
 				&.mark { height:20px; width:4%; background:transparent; visibility:hidden; }
 				&.category { width:auto; max-width:8%; background:$grey-85; border-radius:2px; font-size:$font-size - 2; padding:0 1.5%; }
 				&.title {
-					width:75%; margin-left:2%; margin-right:4%;
+					width:82%; margin-left:2%;
 					span.title { font-size:$font-size; }
 				}
 				&.meta {
 					width:auto; display:inline-block; opacity:.4; padding:0; text-align:left;
 					
 					.label.meta { margin-right:10px; }
+					.label.meta.author { padding-left:0; }
 					.icon { margin-right:2px; }
 					.text { font-size:$font-size - 2;}
 				}

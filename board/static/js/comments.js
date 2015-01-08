@@ -1,4 +1,4 @@
-var options, quicksubmit = false;
+var options;
 
 function getComments(id) {
 	return $.ajax({
@@ -48,11 +48,11 @@ function renderComment($container, v, depth, hidden) {
 		 	.attr('title', '+' + v.author_total_score);
 	}
 
-	if(user.c3RhZmY) {
-		$c.find('.manipulate').show();
-	}
+	if(user.c3RhZmY) $c.find('.manipulate').show();
 
 	if(depth > 0) {
+		$c.find('.bubble.item').addClass('indent');
+
 		if(depth <= 4) {
 			$c.css('margin-left', 3*depth+'%');
 		} else {
@@ -64,9 +64,7 @@ function renderComment($container, v, depth, hidden) {
 		}
 	}
 
-	if(depth >= COMMENT_MAX_DEPTH) {
-		$c.find('li.reply').remove();
-	}
+	if(depth >= COMMENT_MAX_DEPTH) $c.find('li.reply').remove();
 
 	if(!hidden && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
@@ -235,15 +233,13 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.on('keydown', '.modify .redactor-editor, .write .redactor-editor', function(e) {
-			if(e.ctrlKey && e.which == 32 && !quicksubmit) {
-				quicksubmit = true;
-				$(this).closest('.bubble.item').find('.submit.button').trigger('click');
+		.on('keypress', '.modify, .write', function(e) {
+			if(e.ctrlKey && e.which == 32) {
+				$(this).find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;
 			}
 		})
-		.on('keyup', '.modify .redactor-editor, .write .redactor-editor', function() { quicksubmit = false; })
 		.on('click', 'a.dropdown.fold', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('ul'),
@@ -266,10 +262,12 @@ $(function() {
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
-				text = $container.find('textarea').val(),
+				redactor = $container.find('textarea').redactor('core.getObject'),
+				text = redactor.code.get(),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
+				type = $container.data('type'),
 				databox = {
 					contents: text,
 					type: $container.data('type'),
@@ -277,29 +275,42 @@ $(function() {
 					ot_password: password
 				};
 
-			if($container.find('.redactor-editor').text() == '') {
+			if(text == '') {
 				alert('내용을 입력해 주세요.');
 				return false;
 			}
 
-			if($container.data('type') == 'c') id = $container.prev('li.item').data('id');
+			if(type == 'c') id = $container.prev('li.item').data('id');
+
 			postComments(id, databox)
-				.done(function() { getComments(post_id) });
+				.done(function() {
+					getComments(post_id)
+						.done(function() {
+							console.log(type);
+							if(type == 'c') window.location.hash = '#c' + id;
+						});
+				});
 		})
 		.on('click', '.modify .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.modify'),
-				text = $container.find('textarea').val(),
+				redactor = $container.find('textarea').redactor('core.getObject'),
+				text = redactor.code.get(),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 
-			if($container.find('.redactor-editor').text() == '') {
+			if(text == '') {
 				alert('내용을 입력해 주세요.');
 				return false;
 			}
 
 			putComments(id, text, password)
-				.done(function() { getComments(post_id) });
+				.done(function() {
+					getComments(post_id)
+						.done(function() {
+							window.location.hash = '#c' + id;
+						});
+				});
 		})
 		.on('click', '.reply .cancel', function(e) {
 			e.preventDefault();
@@ -347,7 +358,12 @@ $(function() {
 
 				case '#reply':
 					e.preventDefault();
-					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item').not('.reply');
+					var scroll,
+						$c = $container.find('.write.template').clone(),
+						$item = $(this).closest('li.item').not('.reply'),
+						redactor = $c.find('textarea');
+
+					$('.reply .cancel').click();
 
 					$item.addClass('reply');
 
@@ -364,7 +380,7 @@ $(function() {
 						.removeAttr('data-type data-id')
 						.data('type', 'c')
 						.data('id', $item.data('id'))
-						.addClass('clone reply')
+						.addClass('clone reply indent')
 						.removeClass('template')
 						.insertAfter($item)
 						.show();
@@ -376,20 +392,24 @@ $(function() {
 					}
 
 					$c.find('input').removeAttr('id');
+					redactor.redactor(options);
+					redactor.redactor('core.getObject').placeholder.remove();
+					redactor.redactor('core.getEditor').focus();
+					$c.find('.cancel').show();
 
-					$c.find('textarea').redactor(options);
-
-					$c.find('.cancel')
-						.show();
+					$('body').scrollTop($c.offset().top() - 60);
 
 					break;
 
 				case '#modify':
 					e.preventDefault();
-					var $c = $container.find('.write.template').clone(), $item = $(this).closest('li.item');
+					var $c = $container.find('.write.template').clone(),
+						$item = $(this).closest('li.item'),
+						redactor = $c.find('textarea');
+
 					$item.hide();
 
-					$c.find('textarea')
+					redactor
 						.removeAttr('id')
 						.val('')
 						.appendTo($c.find('.article'))
@@ -407,6 +427,8 @@ $(function() {
 						.insertAfter($item)
 						.show();
 
+					if($item.data('depth') > 0) $c.find('.bubble.item').addClass('indent');
+
 					if(user.c3RhZmY) { $c.find('label').remove();
 					} else if($item.hasClass('guest')) {
 						$c.find('label.nick').remove();
@@ -414,17 +436,13 @@ $(function() {
 					}
 
 					$c.find('input').removeAttr('id');
+					redactor.redactor(options);
+					redactor.redactor('core.getObject').code.set($item.find('.article .redactor-editor').html());
+					redactor.redactor('core.getObject').placeholder.remove();
+					redactor.redactor('core.getEditor').focus();
+					$c.find('.cancel').show();
 
-					$c.find('textarea').redactor(options);
-
-					$c.find('.redactor-editor')
-						.html($item.find('.article .redactor-editor').html());
-
-					$c.find('.cancel')
-						.show();
-
-					$c.find('.submit')
-						.text('수정');
+					$c.find('.submit').text('수정');
 
 					break;
 
