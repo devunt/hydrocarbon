@@ -1501,7 +1501,7 @@ html body .froala-box .fr-trigger {
 html body .froala-box .fr-dropdown {
   width: 40px; }
 html body .froala-box .fr-bttn i.fa {
-  font-size: 1px;
+  font-size: 12px;
   line-height: 30px;
   vertical-align: top; }
 html body .froala-box .froala-editor .bttn-wrapper:not(.touch) button.fr-bttn:hover, html body .froala-box .froala-editor .froala-popup button.fr-bttn:hover, html body .froala-box .froala-editor .bttn-wrapper:not(.touch) button.fr-trigger:hover, html body .froala-box .froala-editor .froala-popup button.fr-trigger:hover {
@@ -1538,7 +1538,7 @@ html body .froala-editor {
     line-height: 20px; }
 
 html body .f-html .froala-element textarea {
-  background: #222; }
+  background: #202020; }
 
 .section.search .nav.header {
   background: #e5e5e5;
