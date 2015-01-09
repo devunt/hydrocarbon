@@ -242,13 +242,14 @@ $(function() {
 			if(!$(e.target).closest('a').length) {
 				e.preventDefault();
 				var $container = $(this).closest('.comments-list > div'),
-					$item = $(this).closest('div.item'),
+					$item = $(this).closest('div.list.item'),
 					item_depth = $item.data('depth'),
 					item_index = $item.index();
 
 				$item.toggleClass('hidden');
 
-				$.each($container.find('div.item'), function(index, it) {
+				$.each($container.find('div.list.item'), function(index, it) {
+					console.log(it);
 					var depth = $(it).data('depth');
 
 					if(index <= item_index - 1) return true;
@@ -280,7 +281,7 @@ $(function() {
 				return false;
 			}
 
-			if(type == 'c') id = $container.prev('div.item').data('id');
+			if(type == 'c') id = $container.prev('div.list.item').data('id');
 
 			postComments(id, databox)
 				.done(function() {
@@ -328,7 +329,7 @@ $(function() {
 		})
 		.on('click', '.delete .submit', function(e) {
 			e.preventDefault();
-			var $item = $(this).closest('div.item'),
+			var $item = $(this).closest('div.list.item'),
 				password = $item.find('.footer label.password input').val();
 
 			deleteComments($item.data('id'), password)
@@ -351,7 +352,7 @@ $(function() {
 				case '#downvote':
 					e.preventDefault();
 					var button  = $(this).closest('div.vote'),
-						$item = $(this).closest('div.item');
+						$item = $(this).closest('div.list.item');
 					vote('c', $item.data('id'), button);
 
 					break;
@@ -448,7 +449,7 @@ $(function() {
 
 				case '#delete':
 					e.preventDefault();
-					var $c = $container.find('.write.template .footer').clone(), $item = $(this).closest('div.item').not('.delete');
+					var $c = $container.find('.write.template .footer').clone(), $item = $(this).closest('div.list.item').not('.delete');
 
 					$item.addClass('delete');
 
