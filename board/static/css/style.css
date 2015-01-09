@@ -1500,8 +1500,8 @@ html body .froala-box .fr-trigger {
   width: 30px; }
 html body .froala-box .fr-dropdown {
   width: 40px; }
-html body .froala-box .fr-bttn i {
-  font-size: 12px;
+html body .froala-box .fr-bttn i.fa {
+  font-size: 1px;
   line-height: 30px;
   vertical-align: top; }
 html body .froala-box .froala-editor .bttn-wrapper:not(.touch) button.fr-bttn:hover, html body .froala-box .froala-editor .froala-popup button.fr-bttn:hover, html body .froala-box .froala-editor .bttn-wrapper:not(.touch) button.fr-trigger:hover, html body .froala-box .froala-editor .froala-popup button.fr-trigger:hover {
@@ -1523,6 +1523,22 @@ html body .froala-element {
     color: rgba(61, 156, 204, 0.6); }
   html body .froala-element a:visited {
     color: rgba(170, 170, 170, 0.9); }
+  html body .froala-element h1, html body .froala-element h2, html body .froala-element h3,
+  html body .froala-element .format-h1, html body .froala-element .format-h2, html body .froala-element .format-h3 {
+    font-family: "NanumGothic Light"; }
+
+html body .froala-editor {
+  font-family: "NanumGothic"; }
+  html body .froala-editor h1, html body .froala-editor h2, html body .froala-editor h3,
+  html body .froala-editor .format-h1, html body .froala-editor .format-h2, html body .froala-editor .format-h3 {
+    font-family: "NanumGothic Light"; }
+  html body .froala-editor .fr-trigger.active {
+    background: rgba(61, 156, 204, 0.9); }
+  html body .froala-editor .fr-dropdown-menu i.fa {
+    line-height: 20px; }
+
+html body .f-html .froala-element textarea {
+  background: #222; }
 
 .section.search .nav.header {
   background: #e5e5e5;
