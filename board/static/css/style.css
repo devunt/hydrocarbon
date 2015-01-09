@@ -1514,6 +1514,15 @@ html body .froala-element {
   min-height: 0; }
   html body .froala-element *:last-of-type {
     margin-bottom: 0; }
+  html body .froala-element a {
+    color: #3d9ccc; }
+  html body .froala-element a:hover {
+    color: rgba(61, 156, 204, 0.9);
+    text-decoration: underline; }
+  html body .froala-element a:active {
+    color: rgba(61, 156, 204, 0.6); }
+  html body .froala-element a:visited {
+    color: rgba(170, 170, 170, 0.9); }
 
 .section.search .nav.header {
   background: #e5e5e5;

@@ -23,4 +23,9 @@ html body .froala-popup {
 html body .froala-element {
 	min-height:0;
 	*:last-of-type { margin-bottom:0; }
+
+	a { color:$blue-base; }
+	a:hover { color:$blue; text-decoration:underline; }
+	a:active { color:$blue-trans; }
+	a:visited { color:$grey; }
 }
