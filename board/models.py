@@ -11,6 +11,7 @@ from django.db.models.sql import aggregates as sql_aggregates
 from django.utils import timezone
 from custom_user.models import AbstractEmailUser
 from redactor.fields import RedactorField
+from froala_editor.fields import FroalaField
 
 from board.utils import normalize
 
@@ -124,7 +125,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     board = models.ForeignKey('Board', related_name='posts')
     category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')
     title = models.CharField(max_length=32)
-    contents = RedactorField()
+    contents = FroalaField()
     tags = models.ManyToManyField('Tag', blank=True, null=True, related_name='posts')
     viewcount = models.PositiveIntegerField(default=0)
     created_time = models.DateTimeField(auto_now_add=True)
@@ -137,11 +138,11 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
         return reverse('post_detail', kwargs={'pk': self.id})
 
     def save(self, *args, **kwargs):
-        self.contents = bleach.clean(self.contents,
-            tags=settings.BLEACH_ALLOWED_TAGS,
-            attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
-            styles=settings.BLEACH_ALLOWED_STYLES
-        )
+        #self.contents = bleach.clean(self.contents,
+        #    tags=settings.BLEACH_ALLOWED_TAGS,
+        #    attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
+        #    styles=settings.BLEACH_ALLOWED_STYLES
+        #)
         if kwargs.pop('auto_now', True):
             self.modified_time = timezone.now()
         super().save(*args, **kwargs)
@@ -156,7 +157,7 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='comments', on_delete=models.SET_NULL)
     onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
-    contents = RedactorField()
+    contents = FroalaField()
     created_time = models.DateTimeField(auto_now_add=True)
 
     @property
@@ -168,11 +169,11 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
         return _depth(self)
 
     def save(self, *args, **kwargs):
-        self.contents = bleach.clean(self.contents,
-            tags=settings.BLEACH_ALLOWED_TAGS,
-            attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
-            styles=settings.BLEACH_ALLOWED_STYLES
-        )
+        #self.contents = bleach.clean(self.contents,
+        #    tags=settings.BLEACH_ALLOWED_TAGS,
+        #    attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
+        #    styles=settings.BLEACH_ALLOWED_STYLES
+        #)
         super().save(*args, **kwargs)
 
     class Meta:

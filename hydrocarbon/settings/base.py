@@ -28,6 +28,7 @@ INSTALLED_APPS = (
     'account',
     'custom_user',
     'redactor',
+    'froala_editor',
     'haystack',
     ) + (
     # django apps
@@ -121,6 +122,10 @@ ACCOUNT_DELETION_EXPUNGE_CALLBACK = 'board.callbacks.account_delete_expunge'
 REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'tabKey': False, 'buttonsHide': ['horizontalrule'], 'plugins': ['video', 'spoiler', 'krfix', 'autosave_garlic']}
 REDACTOR_UPLOAD = 'uploads/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
+
+# django-froala-editor
+FROALA_INCLUDE_JQUERY = False
+FROALA_EDITOR_PLUGINS = ('font_size', 'video', 'lists', 'file_upload')
 
 # django-haystack
 HAYSTACK_CONNECTIONS = {

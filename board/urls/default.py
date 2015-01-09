@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^account/', include('account.urls')),
     url(r'^search/', include('haystack.urls')),
     url(r'^redactor/', include('redactor.urls')),
+    url(r'^froala_editor/', include('froala_editor.urls')),
 
     url(r'^constants.js', JSConstantsView.as_view(), name='constants.js'),
     url(r'^t/(?P<tag>.+)/', PostListByTagView.as_view(), name='post_list_by_tag'),
