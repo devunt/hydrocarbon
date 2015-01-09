@@ -111,16 +111,12 @@ class PostListMixin:
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
-        if kwargs.get('is_detailview', False):
-            if 'post_list_order_by' not in request.session:
-                request.session['post_list_order_by'] = '-created_time'
-        else:
-            o = request.GET.get('o')
-            if o is None:
-                o = '+ct'
-            d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}
-            order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
-            request.session['post_list_order_by'] = order_by
+        o = request.GET.get('o')
+        if o is None:
+            o = '+ct'
+        d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}
+        order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
+        request.session['post_list_order_by'] = order_by
         return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -128,11 +124,12 @@ class PostListMixin:
             pqs = self.get_base_queryset()
         else:
             pqs = super().get_queryset()
+        order_by = self.request.session.get('post_list_order_by')
         pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
+        pqs = pqs.order_by(order_by, '-created_time')
         if hasattr(self, 'queryset_post_filter'):
             pqs = self.queryset_post_filter(pqs)
-        order_by = self.request.session.get('post_list_order_by')
-        return pqs.order_by(order_by, '-created_time')
+        return pqs
 
     def get_context_data(self, **kwargs):
         order_by = self.request.session.get('post_list_order_by')
