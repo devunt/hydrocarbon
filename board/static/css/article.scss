@@ -161,7 +161,8 @@
 						padding:5px 10px;
 						.froala-box {
 							.froala-editor { border-bottom:1px solid $grey-90 !important; }
-							.froala-wrapper { min-height:80px !important; background:none; padding:5px 0; }
+							.froala-wrapper .froala-element { min-height:80px !important; background:none; padding:5px 0; }
+							.fr-placeholder { margin:0; }
 						}
 					}
 
