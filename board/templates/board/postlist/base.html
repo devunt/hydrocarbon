@@ -75,7 +75,7 @@
 		<div class="pages nav">
 			<div class="container nowrap">
 				{% if page_obj.paginator.page_range|first != page_obj.number and page_obj.paginator.page_range|first != page_obj.previous_page_number%}
-					<a href="{% add_params current_url page='first' %}" class="button label meta first" title="{% trans "First" %}"><span class="icon"></span></a>
+					<a href="{% add_params current_url page=1 %}" class="button label meta first" title="{% trans "First" %}"><span class="icon"></span></a>
 				{% endif %}
 				{% if page_obj.has_previous %}
 					<a href="{% add_params current_url page=page_obj.previous_page_number %}" class="button label meta prev" title="{% trans "Prev" %}"><span class="icon"></span></a>
