@@ -159,10 +159,9 @@
 
 					.article {
 						padding:5px 10px;
-						.redactor-box {
-							background:none; margin:0;
-							.redactor-toolbar { background:none; border-bottom:1px solid $grey-90 !important; }
-							.redactor-editor { min-height:80px !important; background:none; padding:5px 0; }
+						.froala-box {
+							.froala-editor { border-bottom:1px solid $grey-90 !important; }
+							.froala-wrapper { min-height:80px !important; background:none; padding:5px 0; }
 						}
 					}
 

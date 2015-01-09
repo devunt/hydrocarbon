@@ -42,13 +42,15 @@
 			}
 		}
 
-		.redactor-box {
-			border:0;
+		.froala-box {
+			.froala-editor { background:$grey-90; padding:0 5%; }
+			.froala-element.f-basic {
+				min-height:300px; padding:20px 12.5%;
+				@media all and (max-width: $medium) { padding:20px 5% !important; }
+			}
 
-			.redactor-toolbar { background:$grey-90; padding:0 5% !important; }
-
-			.redactor-editor {
-				min-height:300px !important; padding:20px 12.5% !important;
+			.fr-placeholder {
+				margin:0; padding:20px 12.5%;
 				@media all and (max-width: $medium) { padding:20px 5% !important; }
 			}
 		}

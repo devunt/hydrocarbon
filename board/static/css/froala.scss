@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+// 	
+// 	froala.scss
+// 		froala specific styles
+// 	
+
+html body .froala-box {
+	.froala-editor { background:none; }
+	.f-basic { border:0; }
+	.f-sep { display:none; }
+	.fr-bttn,
+	.fr-trigger { height:30px; width:30px; }
+	.fr-dropdown { width:40px; }
+	.fr-bttn i { font-size:12px; line-height:30px; vertical-align:top; }
+	.froala-editor .bttn-wrapper:not(.touch) button.fr-bttn:hover, .froala-editor .froala-popup button.fr-bttn:hover, .froala-editor .bttn-wrapper:not(.touch) button.fr-trigger:hover, .froala-editor .froala-popup button.fr-trigger:hover { background:$blue-base; }
+}
+
+html body .froala-popup {
+	button.fr-p-bttn.f-ok { background:$blue-base; }
+}
