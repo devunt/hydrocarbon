@@ -15,8 +15,6 @@ function getComments(id) {
 				.find('.item.article .header .label.meta.comments .text, .item.article .footer .label.meta.comments .text span')
 				.add('.post-id-'+id+' .label.meta.comments .text')
 					.text(count);
-
-			$('.comments-list .write .redactor-editor').html('');
 		})
 		.fail(function(xhr, status, error) {
 			console.log(xhr);

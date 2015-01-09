@@ -1350,20 +1350,6 @@ a.anchor {
   .search.button:hover {
     background: rgba(204, 204, 204, 0.9) !important; }
 
-#redactor-modal,
-#redactor-modal footer button,
-.redactor-dropdown,
-.redactor-toolbar-tooltip {
-  font-family: inherit !important; }
-
-.redactor-dropdown a:hover {
-  background-color: #3d9ccc !important; }
-
-#redactor-modal footer button.redactor-modal-action-btn {
-  background-color: rgba(61, 156, 204, 0.9) !important; }
-  #redactor-modal footer button.redactor-modal-action-btn:hover {
-    background-color: #3d9ccc !important; }
-
 .section.article.form .item.article {
   margin-bottom: 20px; }
   .section.article.form .item.article .header .category {

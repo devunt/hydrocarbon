@@ -6,22 +6,6 @@
 // 		uses part of article.scss too
 // 	
 
-#redactor-modal,
-#redactor-modal footer button,
-.redactor-dropdown,
-.redactor-toolbar-tooltip { font-family:inherit !important; }
-
-.redactor-dropdown {
-	a {
-		&:hover { background-color:$blue-base !important; }
-	}
-}
-
-#redactor-modal footer button.redactor-modal-action-btn {
-	background-color:$blue !important;
-	&:hover { background-color:$blue-base !important; }
-}
-
 .section.article.form {
 	.item.article {
 		margin-bottom:20px;

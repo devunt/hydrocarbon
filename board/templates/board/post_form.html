@@ -101,7 +101,12 @@
 		<input class="submit" type="submit" value="{% trans "New post" %}">
 	</div>
 	</form>
-	<script> $('.section.article.form form').garlic(); </script>
+	<script>
+		$('.section.article.form form').garlic();
+		$('#id_contents').on('editable.contentChanged', function() {
+			$(this).trigger('change');
+		});
+	</script>
 </div>
 
 <script>
@@ -118,7 +123,7 @@
 		$tagbox.tagging('add', $tags.val().split(/,[ ]?/));
 
 		if($('#id_title').val() == '') { $('#id_title').focus();
-		} else if($('#id_contents').val() == '') { $('.redactor-editor').focus(); }
+		} else if($('#id_contents').val() == '') { $('#id_contents').editable('focus'); }
 	});
 </script>
 {% endif %}
