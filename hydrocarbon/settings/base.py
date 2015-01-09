@@ -125,8 +125,15 @@ REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 
 # django-froala-editor
 FROALA_INCLUDE_JQUERY = False
-FROALA_EDITOR_PLUGINS = ('font_size', 'video', 'lists', 'file_upload')
-FROALA_EDITOR_OPTIONS = {'language': 'ko'}
+FROALA_EDITOR_PLUGINS = ('file_upload', 'lists', 'video')
+FROALA_EDITOR_OPTIONS = {
+    'language': 'ko',
+    'buttons': ['bold', 'italic', 'underline', 'strikeThrough',
+                'formatBlock', 'align', 'insertOrderedList', 'insertUnorderedList',
+                'createLink', 'insertImage', 'insertVideo', 'uploadFile', 'html'
+    ],
+    'alwaysBlank': True,
+}
 
 # django-haystack
 HAYSTACK_CONNECTIONS = {
