@@ -19,7 +19,6 @@ from django.views.generic.list import ListView
 from account.models import EmailAddress
 from account.views import LoginView, SettingsView, SignupView
 from haystack.query import SearchQuerySet
-from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
@@ -82,12 +81,6 @@ class HCSettingsView(SettingsView):
         user = self.request.user
         user.nickname = form.cleaned_data['nickname']
         user.save()
-
-
-class HCRedactorUploadView(RedactorUploadView):
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return FormView.dispatch(self, request, *args, **kwargs)
 
 
 class UserProfileView(UserURLMixin, DetailView):

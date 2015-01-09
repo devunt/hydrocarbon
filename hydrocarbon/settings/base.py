@@ -27,7 +27,6 @@ INSTALLED_APPS = (
     # third-party apps
     'account',
     'custom_user',
-    'redactor',
     'froala_editor',
     'haystack',
     ) + (
@@ -117,11 +116,6 @@ ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
 ACCOUNT_NOTIFY_ON_PASSWORD_CHANGE = False
 ACCOUNT_DELETION_MARK_CALLBACK = 'board.callbacks.account_delete_mark'
 ACCOUNT_DELETION_EXPUNGE_CALLBACK = 'board.callbacks.account_delete_expunge'
-
-# django-wysiwyg-redactor
-REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'tabKey': False, 'buttonsHide': ['horizontalrule'], 'plugins': ['video', 'spoiler', 'krfix', 'autosave_garlic']}
-REDACTOR_UPLOAD = 'uploads/'
-REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 
 # django-froala-editor
 FROALA_INCLUDE_JQUERY = False

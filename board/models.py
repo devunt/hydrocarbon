@@ -10,7 +10,6 @@ from django.db.models import aggregates
 from django.db.models.sql import aggregates as sql_aggregates
 from django.utils import timezone
 from custom_user.models import AbstractEmailUser
-from redactor.fields import RedactorField
 from froala_editor.fields import FroalaField
 
 from board.utils import normalize

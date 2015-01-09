@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 from django.db import models, migrations
 import django.db.models.deletion
 import django.utils.timezone
-import redactor.fields
 from django.conf import settings
 
 
@@ -216,18 +215,6 @@ class Migration(migrations.Migration):
             model_name='post',
             name='onetime_user',
             field=models.OneToOneField(to='board.OneTimeUser', on_delete=django.db.models.deletion.SET_NULL, related_name='post', blank=True, null=True),
-            preserve_default=True,
-        ),
-        migrations.AlterField(
-            model_name='post',
-            name='contents',
-            field=redactor.fields.RedactorField(),
-            preserve_default=True,
-        ),
-        migrations.AlterField(
-            model_name='comment',
-            name='contents',
-            field=redactor.fields.RedactorField(),
             preserve_default=True,
         ),
         migrations.AlterField(
