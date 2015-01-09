@@ -393,6 +393,8 @@ function vote_callback(data, work, button) {
 
 	var $score = button.closest('.item').find('.meta.score');
 
+	if(button.parents('.comment').length && data.current.total  >= 0) data.current.total = '+' + data.current.total;
+
 	$score
 		.attr('title', '+'+data.current.upvote+' / -'+data.current.downvote)
 		.find('.text span').text(data.current.total);

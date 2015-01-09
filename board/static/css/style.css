@@ -871,6 +871,7 @@ a.anchor {
     padding-right: 5px; }
     .section.article .comments-list .comment .bubble.item .header {
       border-bottom: 1px solid #e5e5e5;
+      cursor: pointer;
       margin: 0 10px; }
       .section.article .comments-list .comment .bubble.item .header .left, .section.article .comments-list .comment .bubble.item .header .right {
         padding: 5px 0; }
@@ -892,14 +893,13 @@ a.anchor {
         vertical-align: top; }
       .section.article .comments-list .comment .bubble.item .header .meta + .meta {
         margin-left: 5px; }
-      .section.article .comments-list .comment .bubble.item .header .meta.author .text {
+      .section.article .comments-list .comment .bubble.item .header .meta.author .text,
+      .section.article .comments-list .comment .bubble.item .header .hidden.author,
+      .section.article .comments-list .comment .bubble.item .header .meta.score .text {
         color: #666;
         font-size: 12px; }
       .section.article .comments-list .comment .bubble.item .header .meta.timestamp {
         color: rgba(170, 170, 170, 0.9);
-        font-size: 12px; }
-      .section.article .comments-list .comment .bubble.item .header .meta.score .text {
-        color: #666;
         font-size: 12px; }
       .section.article .comments-list .comment .bubble.item .header .hidden.author {
         display: none; }

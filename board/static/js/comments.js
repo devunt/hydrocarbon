@@ -238,24 +238,26 @@ $(function() {
 				return false;
 			}
 		})
-		.on('click', 'a.dropdown.fold', function(e) {
-			e.preventDefault();
-			var $container = $(this).closest('.comments-list > div'),
-				$item = $(this).closest('div.item'),
-				item_depth = $item.data('depth'),
-				item_index = $item.index();
+		.on('click', ':not(.prerender) .header', function(e) {
+			if(!$(e.target).closest('a').length) {
+				e.preventDefault();
+				var $container = $(this).closest('.comments-list > div'),
+					$item = $(this).closest('div.item'),
+					item_depth = $item.data('depth'),
+					item_index = $item.index();
 
-			$item.toggleClass('hidden');
+				$item.toggleClass('hidden');
 
-			$.each($container.find('div.item'), function(index, it) {
-				var depth = $(it).data('depth');
+				$.each($container.find('div.item'), function(index, it) {
+					var depth = $(it).data('depth');
 
-				if(index <= item_index - 1) return true;
-				if(depth <= item_depth) return false;
-				
-				if($item.hasClass('hidden')) { $(it).hide();
-				} else { $(it).removeClass('hidden').show(); }
-			});
+					if(index <= item_index - 1) return true;
+					if(depth <= item_depth) return false;
+					
+					if($item.hasClass('hidden')) { $(it).hide();
+					} else { $(it).removeClass('hidden').show(); }
+				});
+			}
 		})
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
