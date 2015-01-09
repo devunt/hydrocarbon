@@ -140,8 +140,9 @@ class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
         initial = super().get_initial()
         if not self.request.user.is_authenticated():
             ot_user = self.request.session.get('onetime_user')
-            initial['onetime_nick'] = ot_user.get('nick')
-            initial['onetime_password'] = ot_user.get('password')
+            if ot_user:
+                initial['onetime_nick'] = ot_user.get('nick')
+                initial['onetime_password'] = ot_user.get('password')
         return initial
 
 
@@ -303,7 +304,8 @@ class PostDetailView(DetailView):
         f = CommentForm(show_ot_form=True)
         if not self.request.user.is_authenticated():
             ot_user = self.request.session.get('onetime_user')
-            f.initial = {'onetime_nick': ot_user.get('nick'), 'onetime_password': ot_user.get('password')}
+            if ot_user:
+                f.initial = {'onetime_nick': ot_user.get('nick'), 'onetime_password': ot_user.get('password')}
         kwargs['comment_form'] = f
         return super().get_context_data(**kwargs)
 
