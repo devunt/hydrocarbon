@@ -19,3 +19,8 @@ html body .froala-box {
 html body .froala-popup {
 	button.fr-p-bttn.f-ok { background:$blue-base; }
 }
+
+html body .froala-element {
+	min-height:0;
+	*:last-of-type { margin-bottom:0; }
+}

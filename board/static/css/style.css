@@ -922,10 +922,12 @@ a.anchor {
       padding: 5px 10px; }
       .section.article .comments-list .comment .bubble.item .article .froala-box .froala-editor {
         border-bottom: 1px solid #e5e5e5 !important; }
-      .section.article .comments-list .comment .bubble.item .article .froala-box .froala-wrapper {
+      .section.article .comments-list .comment .bubble.item .article .froala-box .froala-wrapper .froala-element {
         min-height: 80px !important;
         background: none;
         padding: 5px 0; }
+      .section.article .comments-list .comment .bubble.item .article .froala-box .fr-placeholder {
+        margin: 0; }
     .section.article .comments-list .comment .bubble.item .footer {
       border-top: 1px solid #e5e5e5;
       margin: 0 10px;
@@ -1517,6 +1519,11 @@ html body .froala-box .froala-editor .bttn-wrapper:not(.touch) button.fr-bttn:ho
 
 html body .froala-popup button.fr-p-bttn.f-ok {
   background: #3d9ccc; }
+
+html body .froala-element {
+  min-height: 0; }
+  html body .froala-element *:last-of-type {
+    margin-bottom: 0; }
 
 .section.search .nav.header {
   background: #e5e5e5;
