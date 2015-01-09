@@ -146,6 +146,9 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
             self.modified_time = timezone.now()
         super().save(*args, **kwargs)
 
+    class Meta:
+        ordering = ['-created_time']
+
 
 class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     post = models.ForeignKey('Post', related_name='comments')
@@ -171,6 +174,9 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
             styles=settings.BLEACH_ALLOWED_STYLES
         )
         super().save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['-created_time']
 
 
 class Vote(models.Model):
