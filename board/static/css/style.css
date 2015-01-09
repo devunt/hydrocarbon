@@ -27,9 +27,13 @@ button, input, select, textarea {
 input {
   border-radius: 0; }
 
+div {
+  -webkit-tap-highlight-color: transparent; }
+
 a {
   color: #222;
-  text-decoration: none; }
+  text-decoration: none;
+  -webkit-tap-highlight-color: initial; }
 
 .no-touch a:hover {
   color: rgba(170, 170, 170, 0.9); }

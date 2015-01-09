@@ -19,7 +19,8 @@ body { background:#e5e5e5; color:$black; font:$font-size "NanumGothic", "Malgun 
 button, input, select, textarea { outline:none; }
 input { border-radius:0; }
 
-a { color:$black; text-decoration:none; }
+div { -webkit-tap-highlight-color:transparent; }
+a { color:$black; text-decoration:none; -webkit-tap-highlight-color:initial; }
 .no-touch a:hover { color:$grey; }
 
 .button {
