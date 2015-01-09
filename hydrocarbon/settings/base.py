@@ -126,6 +126,7 @@ FROALA_EDITOR_OPTIONS = {
                 'formatBlock', 'align', 'insertOrderedList', 'insertUnorderedList',
                 'createLink', 'insertImage', 'insertVideo', 'uploadFile', 'html'
     ],
+    'inlineMode': False,
     'alwaysBlank': True,
 }
 
