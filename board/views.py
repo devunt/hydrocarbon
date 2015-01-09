@@ -1,3 +1,4 @@
+import json
 from urllib.parse import urlparse
 
 from django.conf import settings
@@ -563,5 +564,5 @@ class JSConstantsView(TemplateView):
     def get_context_data(self, **kwargs):
         kwargs['BOARD_COMMENT_BLIND_VOTES'] = settings.BOARD_COMMENT_BLIND_VOTES
         kwargs['BOARD_COMMENT_MAX_DEPTH'] = settings.BOARD_COMMENT_MAX_DEPTH
-        kwargs['FROALA_EDITOR_OPTIONS'] = settings.FROALA_EDITOR_OPTIONS
+        kwargs['FROALA_EDITOR_OPTIONS'] = json.dumps(settings.FROALA_EDITOR_OPTIONS)
         return super().get_context_data(**kwargs)
