@@ -259,6 +259,39 @@ class PostListByTagView(PostListMixin, ListView):
         return super().get_context_data(**kwargs)
 
 
+class PostListDetailView(BPostListMixin, ListView):
+    def __init__(self, *args, **kwargs):
+        self.post = kwargs.pop('post')
+        self.board = self.post.board
+
+    def get_base_queryset(self):
+        idx = (self.paginate_by - 1) // 2
+        pqs = super().get_base_queryset()
+        upper = pqs.filter(id__gt=self.post.id)
+        upper = upper.order_by('created_time')
+        upper_idx = min(upper.count(), idx)
+        lower = pqs.filter(id__lt=self.post.id)
+        lower = lower.order_by('-created_time')
+        lower_idx = min(lower.count(), idx)
+        if upper_idx < idx:
+            lower_idx += idx - upper_idx
+        elif lower_idx < idx:
+            upper_idx += idx - lower_idx
+        def _id(qs, idx):
+            if idx == 0:
+                id = self.post.id
+            else:
+                id = qs[idx - 1].id
+            return id
+        self.upper_id = _id(upper, upper_idx)
+        self.lower_id = _id(lower, lower_idx)
+        return pqs
+
+    def queryset_post_filter(self, queryset):
+        queryset = queryset.filter(id__gte=self.lower_id, id__lte=self.upper_id)
+        return queryset
+
+
 class PostDetailView(DetailView):
     model = Post
 
@@ -278,14 +311,10 @@ class PostDetailView(DetailView):
         return post
 
     def get_context_data(self, **kwargs):
-        request = self.request
-        referer = self.request.META.get('HTTP_REFERER')
-        p = urlparse(referer)
-        request.GET = QueryDict(p.query)
-        plv = PostListView()
+        plv = PostListDetailView(post=self.object)
         plv.kwargs = dict()
-        plv.request = request
-        plv.dispatch(request, board=self.board.slug, is_detailview=True)
+        plv.request = self.request
+        plv.dispatch(self.request, board=self.board.slug)
         ctx = plv.get_context_data()
         kwargs.update(ctx)
         kwargs['board'] = self.board
