@@ -35,7 +35,9 @@ var upvote_ratio = 0
 		(score.posts.upvotes
 		+ score.posts.downvotes
 		+ score.comments.upvotes
-		+ score.comments.downvotes)*100 + '%';
+		+ score.comments.downvotes)*100;
+
+		if(upvote_ratio > 88) upvote_ratio = 88;
 
 </script>
 
@@ -65,13 +67,13 @@ var upvote_ratio = 0
 
 			<script>
 				$('.upvote.bar')
-					.css('width',upvote_ratio);
+					.css('width',upvote_ratio + '%');
 
 				$('.votes.bar')
 					.attr('title', score_tooltip);
 
 				$('.score .count .total')
-					.css('left', upvote_ratio)
+					.css('left', upvote_ratio + '%')
 					.css('margin-left',  -1*$('.score .count .total').width()/2);
 			</script>
 		</div>
