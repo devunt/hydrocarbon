@@ -5,6 +5,12 @@
 {% block href_back %}{% url 'user_profile' u.id %}{% endblock %}
 {% block pagename %}{{ u.nickname }} &rsaquo; {% trans "Comments" %}{% endblock %}
 
+{% block head %}
+<link href="{% static "froala_editor/css/froala_editor.min.css" %}" type="text/css" media="all" rel="stylesheet">
+<link href="{% static "froala_editor/css/font-awesome.min.css" %}" type="text/css" media="all" rel="stylesheet">
+<link href="{% static "froala_editor/css/froala_style.min.css" %}" type="text/css" media="all" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
 <div class="section article">

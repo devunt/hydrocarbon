@@ -711,14 +711,21 @@ msgstr "찾으시는 게시판이 없습니다."
 
 #: board/templates/user/comment_list.html:4
 #: board/templates/user/comment_list.html:6
-#: board/templates/user/profile.html:24 board/templates/user/profile.html:78
+#: board/templates/user/profile.html:24
 msgid "Comments"
 msgstr "댓글"
 
 #: board/templates/user/post_list.html:6 board/templates/user/profile.html:23
-#: board/templates/user/profile.html:77
 msgid "Posts"
 msgstr "글"
+
+#: board/templates/user/profile.html:83
+msgid "%(count)s Posts"
+msgstr "글 %(count)s개"
+
+#: board/templates/user/profile.html:84
+msgid "%(count)s Comments"
+msgstr "댓글 %(count)s개"
 
 #: board/templates/user/profile.html:93 board/templates/user/profile.html:112
 msgid "More..."
