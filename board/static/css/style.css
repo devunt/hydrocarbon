@@ -1526,6 +1526,11 @@ html body .froala-element {
   html body .froala-element h1, html body .froala-element h2, html body .froala-element h3,
   html body .froala-element .format-h1, html body .froala-element .format-h2, html body .froala-element .format-h3 {
     font-family: "NanumGothic Light"; }
+  html body .froala-element span.spoiler {
+    background: #222;
+    cursor: default; }
+    html body .froala-element span.spoiler:hover {
+      color: #fff; }
 
 html body .froala-editor {
   font-family: "NanumGothic"; }
