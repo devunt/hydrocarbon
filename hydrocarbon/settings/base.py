@@ -150,7 +150,14 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # bleach
-def _filter_iframe_src(name, value):
+def _filter_a_attr(name, value):
+    if name in ('data-fr-link', 'href', 'rel', 'target'):
+        return True
+    if name == 'class' and value == 'fr-file':
+        return True
+    return False
+
+def _filter_iframe_attr(name, value):
     if name in ('allowfullscreen', 'frameborder', 'height', 'style', 'width'):
         return True
     if name == 'src':
@@ -163,24 +170,37 @@ def _filter_iframe_src(name, value):
         )
     return False
 
-def _filter_span_class(name, value):
-    if name == 'class' and value == 'spoiler':
+def _filter_img_attr(name, value):
+    if name in ('alt', 'style', 'src', 'width'):
         return True
+    if name == 'class':
+        classes = value.split(' ')
+        if len(classes) == 2:
+            if classes[0] == 'th' and classes[1] in ('fil', 'fin', 'fir'):
+                return True
+    return False
+
+def _filter_span_attr(name, value):
+    if name == 'class':
+        classes = value.split(' ')
+        print(classes)
+        if set(classes) <= {'f-video-editor', 'fr-fvn', 'spoiler'}:
+            return True
     return False
 
 BLEACH_ALLOWED_TAGS = [
-    'blockquote', 'br', 'hr', 'p', 'pre', 'span',
-    'del', 'em', 'strong',
-    'h1', 'h2', 'h3', 'h4', 'h5',
+    'blockquote', 'br', 'p', 'pre', 'span',
+    'em', 'strike', 'strong', 'u',
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
     'li', 'ol', 'ul',
     'a', 'img', 'iframe',
 ]
 BLEACH_ALLOWED_ATTRIBUTES = {
-    'a': ['href', 'target'],
-    'iframe': _filter_iframe_src,
-    'img': ['alt', 'style', 'src'],
+    'a': _filter_a_attr,
+    'iframe': _filter_iframe_attr,
+    'img': _filter_img_attr,
     'p': ['style'],
-    'span': _filter_span_class,
+    'span': _filter_span_attr,
 }
 BLEACH_ALLOWED_STYLES = [
     'display',

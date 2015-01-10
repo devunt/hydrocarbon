@@ -137,11 +137,11 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
         return reverse('post_detail', kwargs={'pk': self.id})
 
     def save(self, *args, **kwargs):
-        #self.contents = bleach.clean(self.contents,
-        #    tags=settings.BLEACH_ALLOWED_TAGS,
-        #    attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
-        #    styles=settings.BLEACH_ALLOWED_STYLES
-        #)
+        self.contents = bleach.clean(self.contents,
+            tags=settings.BLEACH_ALLOWED_TAGS,
+            attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
+            styles=settings.BLEACH_ALLOWED_STYLES
+        )
         if kwargs.pop('auto_now', True):
             self.modified_time = timezone.now()
         super().save(*args, **kwargs)
@@ -168,11 +168,11 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
         return _depth(self)
 
     def save(self, *args, **kwargs):
-        #self.contents = bleach.clean(self.contents,
-        #    tags=settings.BLEACH_ALLOWED_TAGS,
-        #    attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
-        #    styles=settings.BLEACH_ALLOWED_STYLES
-        #)
+        self.contents = bleach.clean(self.contents,
+            tags=settings.BLEACH_ALLOWED_TAGS,
+            attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
+            styles=settings.BLEACH_ALLOWED_STYLES
+        )
         super().save(*args, **kwargs)
 
     class Meta:
