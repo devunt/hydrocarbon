@@ -1,5 +1,6 @@
 import json
 from urllib.parse import urlparse
+from hashlib import md5
 
 from django.conf import settings
 from django.contrib import messages
@@ -22,7 +23,7 @@ from haystack.query import SearchQuerySet
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
-from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
+from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
 
 
@@ -545,6 +546,35 @@ class TagAutocompleteAjaxView(AjaxMixin, View):
         sqs = sqs.models(Tag).filter(content__exact=normalize(query))
         lst = [{'value': sr.object.name, 'data': sr.object.posts.count()} for sr in sqs.all()]
         return JsonResponse({'status': 'success', 'query': query, 'suggestions': lst})
+
+
+class FileUploadAjaxView(AjaxMixin, View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        upload_type = request.POST.get('type')
+        f = request.FILES.get('file')
+        if upload_type not in ('i', 'f'):
+            return self.bad_request()
+        md5obj = md5()
+        for chunk in f.chunks():
+            md5obj.update(chunk)
+        hexdigest = md5obj.hexdigest()
+        if upload_type == 'i':
+            Attachment = ImageAttachment
+        elif upload_type == 'f':
+            Attachment = FileAttachment
+        try:
+            attachment = Attachment.objects.get(checksum=hexdigest)
+        except Attachment.DoesNotExist:
+            attachment = Attachment()
+            attachment.checksum = hexdigest
+            attachment.name = f.name
+            attachment.file = f
+            attachment.save()
+        return JsonResponse({'link': attachment.file.url})
 
 
 class JSConstantsView(TemplateView):

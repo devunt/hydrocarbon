@@ -128,6 +128,11 @@ FROALA_EDITOR_OPTIONS = {
     ],
     'inlineMode': False,
     'alwaysBlank': True,
+    'imageUpload': True,
+    'imageUploadURL': '/x/f',
+    'imageUploadParams': {'type': 'i'},
+    'fileUploadURL': '/x/f',
+    'fileUploadParams': {'type': 'f'},
 }
 
 # django-haystack

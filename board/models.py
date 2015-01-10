@@ -12,7 +12,7 @@ from django.utils import timezone
 from custom_user.models import AbstractEmailUser
 from froala_editor.fields import FroalaField
 
-from board.utils import normalize
+from board.utils import get_upload_path, normalize
 
 
 class DefaultSum(aggregates.Aggregate):
@@ -196,3 +196,15 @@ class Vote(models.Model):
 class Announcement(models.Model):
     post = models.OneToOneField('Post', related_name='announcement')
     boards = models.ManyToManyField('Board', blank=True, null=True, related_name='announcements')
+
+
+class ImageAttachment(models.Model):
+    name = models.CharField(max_length=128)
+    file = models.ImageField(max_length=256, upload_to=get_upload_path)
+    checksum = models.CharField(max_length=32, unique=True)
+
+
+class FileAttachment(models.Model):
+    name = models.CharField(max_length=128)
+    file = models.FileField(max_length=256, upload_to=get_upload_path)
+    checksum = models.CharField(max_length=32, unique=True)
