@@ -161,7 +161,7 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
 
     @property
     def depth(self):
-        def _depth(c, d = 0):
+        def _depth(c, d=0):
             if c.comment is not None:
                 return _depth(c.comment, d + 1)
             return d

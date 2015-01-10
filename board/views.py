@@ -1,5 +1,4 @@
 import json
-from urllib.parse import urlparse
 from hashlib import md5
 
 from django.conf import settings
@@ -15,7 +14,7 @@ from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from account.models import EmailAddress
 from account.views import LoginView, SettingsView, SignupView
@@ -272,12 +271,14 @@ class PostListDetailView(BPostListMixin, ListView):
             lower_idx += idx - upper_idx
         elif lower_idx < idx:
             upper_idx += idx - lower_idx
+
         def _id(qs, idx):
             if idx == 0:
                 id = self.post.id
             else:
                 id = qs[idx - 1].id
             return id
+
         self.upper_id = _id(upper, upper_idx)
         self.lower_id = _id(lower, lower_idx)
         return pqs
