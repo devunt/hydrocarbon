@@ -154,6 +154,7 @@ class BPostListMixin(PostListMixin):
 
     def get_context_data(self, **kwargs):
         aqs = Announcement.objects.filter(Q(boards=self.board) | Q(boards=None))
+        aqs = aqs.order_by('-post__created_time')
         announcement_list = [announcement.post for announcement in aqs]
         kwargs['announcement_list'] = announcement_list
         return super().get_context_data(**kwargs)
