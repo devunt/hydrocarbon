@@ -351,7 +351,7 @@ $(function() {
 				case '#upvote':
 				case '#downvote':
 					e.preventDefault();
-					var button  = $(this).closest('div.vote'),
+					var button = $(this).closest('li.vote'),
 						$item = $(this).closest('div.list.item');
 					vote('c', $item.data('id'), button);
 
