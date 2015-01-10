@@ -134,6 +134,10 @@ FROALA_EDITOR_OPTIONS = {
     'fileUploadURL': '/x/f',
     'fileUploadParams': {'type': 'f'},
 }
+FROALA_EDITOR_OPTIONS_COMMENT = FROALA_EDITOR_OPTIONS.copy()
+FROALA_EDITOR_OPTIONS_COMMENT.update({
+    'placeholder': _('Press ctrl-space to submit a comment'),
+})
 
 # django-haystack
 HAYSTACK_CONNECTIONS = {

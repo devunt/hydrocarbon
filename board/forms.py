@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
 from account.forms import LoginEmailForm, SignupForm, SettingsForm
-from froala_editor.widgets import FroalaEditor
 
 from board.models import Category, Comment, Post, Tag
 from board.utils import is_empty_html

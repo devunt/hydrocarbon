@@ -17,4 +17,4 @@ function get_comment_ajax_url(id) {
 }
 
 
-var FROALA_EDITOR_OPTIONS = {{ FROALA_EDITOR_OPTIONS | safe }}
+var COMMENT_FROALA_EDITOR_OPTIONS = {{ COMMENT_FROALA_EDITOR_OPTIONS | safe }}

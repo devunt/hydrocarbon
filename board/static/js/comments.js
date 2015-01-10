@@ -394,7 +394,7 @@ $(function() {
 
 					$c.find('input').removeAttr('id');
 
-					editor.editable(FROALA_EDITOR_OPTIONS);
+					editor.editable(COMMENT_FROALA_EDITOR_OPTIONS);
 					editor.editable('focus');
 					$c.find('.cancel').show();
 
@@ -438,7 +438,7 @@ $(function() {
 
 					$c.find('input').removeAttr('id');
 
-					editor.editable(FROALA_EDITOR_OPTIONS);
+					editor.editable(COMMENT_FROALA_EDITOR_OPTIONS);
 					editor.editable('setHTML', $item.find('.article .froala-element.editor').html());
 					editor.editable('focus');
 					$c.find('.cancel').show();
