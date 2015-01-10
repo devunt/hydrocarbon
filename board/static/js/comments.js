@@ -232,7 +232,7 @@ $(function() {
 
 	$('.comments-list')
 		.on('keypress', '.modify, .write', function(e) {
-			if(e.ctrlKey && (e.which == 10 && e.which == 13)) {
+			if(e.ctrlKey && (e.which == 10 || e.which == 13)) {
 				$(this).find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;
@@ -351,7 +351,7 @@ $(function() {
 				case '#upvote':
 				case '#downvote':
 					e.preventDefault();
-					var button  = $(this).closest('div.vote'),
+					var button = $(this).closest('li.vote'),
 						$item = $(this).closest('div.list.item');
 					vote('c', $item.data('id'), button);
 
