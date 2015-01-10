@@ -232,7 +232,7 @@ $(function() {
 
 	$('.comments-list')
 		.on('keypress', '.modify, .write', function(e) {
-			if(e.ctrlKey && e.which == 32) {
+			if(e.ctrlKey && (e.which == 10 && e.which == 13)) {
 				$(this).find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;

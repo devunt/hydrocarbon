@@ -136,7 +136,7 @@ FROALA_EDITOR_OPTIONS = {
 }
 FROALA_EDITOR_OPTIONS_COMMENT = FROALA_EDITOR_OPTIONS.copy()
 FROALA_EDITOR_OPTIONS_COMMENT.update({
-    'placeholder': _('Press ctrl-space to submit a comment'),
+    'placeholder': _('Press ctrl-enter to submit a comment'),
 })
 
 # django-haystack
