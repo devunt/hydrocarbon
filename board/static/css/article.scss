@@ -120,9 +120,9 @@
 					background:$grey-95; border-left:5px solid transparent; border-radius:4px; box-shadow:0 1px 1px $grey-85; line-height:20px; padding-right:5px;
 
 					.header {
-						border-bottom:1px solid $grey-90; cursor:pointer; margin:0 10px;
+						cursor:pointer; margin:0 10px;
 
-						.left, .right { padding:5px 0; }
+						.left, .right { padding-top:5px; }
 
 						a.fold { display:inline-block; }
 						.label.meta.handle .icon { background-position:0 -168px; }
@@ -229,7 +229,7 @@
 			.bubble {
 				&.item {
 					.header {
-						border:0; opacity:.5;
+						border:0; opacity:.5; padding-bottom:5px;
 						.label.meta.handle .icon { background-position:0 -156px; }
 						.hidden.author { display:inline; }
 						.label.meta.author,

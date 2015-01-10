@@ -874,11 +874,10 @@ a.anchor {
     line-height: 20px;
     padding-right: 5px; }
     .section.article .comments-list .comment .bubble.item .header {
-      border-bottom: 1px solid #e5e5e5;
       cursor: pointer;
       margin: 0 10px; }
       .section.article .comments-list .comment .bubble.item .header .left, .section.article .comments-list .comment .bubble.item .header .right {
-        padding: 5px 0; }
+        padding-top: 5px; }
       .section.article .comments-list .comment .bubble.item .header a.fold {
         display: inline-block; }
       .section.article .comments-list .comment .bubble.item .header .label.meta.handle .icon {
@@ -995,7 +994,8 @@ a.anchor {
       border-right-color: transparent; }
   .section.article .comments-list .hidden > .comment .bubble.item .header {
     border: 0;
-    opacity: .5; }
+    opacity: .5;
+    padding-bottom: 5px; }
     .section.article .comments-list .hidden > .comment .bubble.item .header .label.meta.handle .icon {
       background-position: 0 -156px; }
     .section.article .comments-list .hidden > .comment .bubble.item .header .hidden.author {
