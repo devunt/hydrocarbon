@@ -6,7 +6,7 @@ function getComments(id) {
 		url: get_comment_ajax_url(id) + '?t=' + new Date().getTime()
 	})
 		.done(function(data, status, xhr) {
-			var $article = $('.section.article'), $container = $('.comments-list ul'), count = data.comments.count;
+			var $article = $('.section.article'), $container = $('.comments-list > div'), count = data.comments.count;
 			$container.find('.list.item, .clone').remove();
 
 			$.each(data.comments.list, function(i, v) { renderComment($container, v); });
@@ -15,8 +15,6 @@ function getComments(id) {
 				.find('.item.article .header .label.meta.comments .text, .item.article .footer .label.meta.comments .text span')
 				.add('.post-id-'+id+' .label.meta.comments .text')
 					.text(count);
-
-			$('.comments-list .write .redactor-editor').html('');
 		})
 		.fail(function(xhr, status, error) {
 			console.log(xhr);
@@ -64,7 +62,7 @@ function renderComment($container, v, depth, hidden) {
 		}
 	}
 
-	if(depth >= COMMENT_MAX_DEPTH) $c.find('li.reply').remove();
+	if(depth >= COMMENT_MAX_DEPTH) $c.find('div.reply').remove();
 
 	if(!hidden && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
@@ -82,9 +80,9 @@ function renderComment($container, v, depth, hidden) {
 		.find('.text span').text(v.votes.total);
 
 	contents = v.contents;
-	$c.find('.article .redactor-editor').html(contents);
+	$c.find('.article .editor').html(contents);
 
-	$c.find('.article .redactor-editor img').each(function() {
+	$c.find('.article .editor img').each(function() {
 		if(!$(this).parents('a').length > 0) {
 			var a = $('<a>');
 
@@ -234,36 +232,39 @@ $(function() {
 
 	$('.comments-list')
 		.on('keypress', '.modify, .write', function(e) {
-			if(e.ctrlKey && e.which == 32) {
+			if(e.ctrlKey && (e.which == 10 && e.which == 13)) {
 				$(this).find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;
 			}
 		})
-		.on('click', 'a.dropdown.fold', function(e) {
-			e.preventDefault();
-			var $container = $(this).closest('ul'),
-				$item = $(this).closest('li.item'),
-				item_depth = $item.data('depth'),
-				item_index = $item.index();
+		.on('click', ':not(.prerender) .header', function(e) {
+			if(!$(e.target).closest('a').length) {
+				e.preventDefault();
+				var $container = $(this).closest('.comments-list > div'),
+					$item = $(this).closest('div.list.item'),
+					item_depth = $item.data('depth'),
+					item_index = $item.index();
 
-			$item.toggleClass('hidden');
+				$item.toggleClass('hidden');
 
-			$.each($container.find('li.item'), function(index, it) {
-				var depth = $(it).data('depth');
+				$.each($container.find('div.list.item'), function(index, it) {
+					console.log(it);
+					var depth = $(it).data('depth');
 
-				if(index <= item_index - 1) return true;
-				if(depth <= item_depth) return false;
-				
-				if($item.hasClass('hidden')) { $(it).hide();
-				} else { $(it).removeClass('hidden').show(); }
-			});
+					if(index <= item_index - 1) return true;
+					if(depth <= item_depth) return false;
+					
+					if($item.hasClass('hidden')) { $(it).hide();
+					} else { $(it).removeClass('hidden').show(); }
+				});
+			}
 		})
 		.on('click', '.write .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
-				redactor = $container.find('textarea').redactor('core.getObject'),
-				text = redactor.code.get(),
+				editor = $container.find('textarea'),
+				text = editor.editable("getHTML"),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
@@ -280,13 +281,13 @@ $(function() {
 				return false;
 			}
 
-			if(type == 'c') id = $container.prev('li.item').data('id');
+			if(type == 'c') id = $container.prev('div.list.item').data('id');
 
 			postComments(id, databox)
 				.done(function() {
+					editor.editable('setHTML', '');
 					getComments(post_id)
 						.done(function() {
-							console.log(type);
 							if(type == 'c') window.location.hash = '#c' + id;
 						});
 				});
@@ -294,8 +295,8 @@ $(function() {
 		.on('click', '.modify .submit', function(e) {
 			e.preventDefault();
 			var $container = $(this).closest('.modify'),
-				redactor = $container.find('textarea').redactor('core.getObject'),
-				text = redactor.code.get(),
+				editor = $container.find('textarea'),
+				text = editor.editable("getHTML"),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 
@@ -328,7 +329,7 @@ $(function() {
 		})
 		.on('click', '.delete .submit', function(e) {
 			e.preventDefault();
-			var $item = $(this).closest('li.item'),
+			var $item = $(this).closest('div.list.item'),
 				password = $item.find('.footer label.password input').val();
 
 			deleteComments($item.data('id'), password)
@@ -344,14 +345,14 @@ $(function() {
 		.on('click', '.dropdown.menu li a', function(e) {
 			$(this).closest('.dropdown.container.open').removeClass('open');
 
-			var $container = $('.comments-list ul'), action = $(this).attr('href');
+			var $container = $('.comments-list > div'), action = $(this).attr('href');
 
 			switch(action) {
 				case '#upvote':
 				case '#downvote':
 					e.preventDefault();
-					var button  = $(this).closest('li.vote'),
-						$item = $(this).closest('li.item');
+					var button  = $(this).closest('div.vote'),
+						$item = $(this).closest('div.list.item');
 					vote('c', $item.data('id'), button);
 
 					break;
@@ -360,8 +361,8 @@ $(function() {
 					e.preventDefault();
 					var scroll,
 						$c = $container.find('.write.template').clone(),
-						$item = $(this).closest('li.item').not('.reply'),
-						redactor = $c.find('textarea');
+						$item = $(this).closest('div.list.item').not('.reply'),
+						editor = $c.find('textarea');
 
 					$('.reply .cancel').click();
 
@@ -373,7 +374,7 @@ $(function() {
 						.appendTo($c.find('.article'))
 						.show();
 
-					$c.find('.redactor-box').remove();
+					$c.find('.froala-box').remove();
 					$c.find('script').remove();
 
 					$c
@@ -392,30 +393,30 @@ $(function() {
 					}
 
 					$c.find('input').removeAttr('id');
-					redactor.redactor(options);
-					redactor.redactor('core.getObject').placeholder.remove();
-					redactor.redactor('core.getEditor').focus();
+
+					editor.editable(COMMENT_FROALA_EDITOR_OPTIONS);
+					editor.editable('focus');
 					$c.find('.cancel').show();
 
-					$('body').scrollTop($c.offset().top() - 60);
+					$('body').scrollTop($c.offset().top - 60);
 
 					break;
 
 				case '#modify':
 					e.preventDefault();
 					var $c = $container.find('.write.template').clone(),
-						$item = $(this).closest('li.item'),
-						redactor = $c.find('textarea');
+						$item = $(this).closest('div.list.item'),
+						editor = $c.find('textarea');
 
 					$item.hide();
 
-					redactor
+					editor
 						.removeAttr('id')
 						.val('')
 						.appendTo($c.find('.article'))
 						.show();
 
-					$c.find('.redactor-box').remove();
+					$c.find('.froala-box').remove();
 					$c.find('script').remove();
 
 					$c
@@ -436,10 +437,10 @@ $(function() {
 					}
 
 					$c.find('input').removeAttr('id');
-					redactor.redactor(options);
-					redactor.redactor('core.getObject').code.set($item.find('.article .redactor-editor').html());
-					redactor.redactor('core.getObject').placeholder.remove();
-					redactor.redactor('core.getEditor').focus();
+
+					editor.editable(COMMENT_FROALA_EDITOR_OPTIONS);
+					editor.editable('setHTML', $item.find('.article .froala-element.editor').html());
+					editor.editable('focus');
 					$c.find('.cancel').show();
 
 					$c.find('.submit').text('수정');
@@ -448,7 +449,7 @@ $(function() {
 
 				case '#delete':
 					e.preventDefault();
-					var $c = $container.find('.write.template .footer').clone(), $item = $(this).closest('li.item').not('.delete');
+					var $c = $container.find('.write.template .footer').clone(), $item = $(this).closest('div.list.item').not('.delete');
 
 					$item.addClass('delete');
 

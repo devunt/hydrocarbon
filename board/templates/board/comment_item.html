@@ -1,7 +1,7 @@
 {% load hc i18n %}
 {% load intcomma from humanize %}
 
-<li class="list item{% if u = user %} owned{% endif %}">
+<li class="list item prerender{% if u = user %} owned{% endif %}">
 	<div class="comment">
 		<div class="bubble item">
 			<div class="container">
@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class="article clear">
-					<div class="redactor-editor">
+					<div class="froala-element editor">
 						{{ item.contents | safe }}
 					</div>
 				</div>

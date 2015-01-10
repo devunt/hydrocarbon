@@ -57,7 +57,9 @@ $(function() {
 		.one('touchstart', function() {
 			$('html').removeClass('no-touch');
 
-			$document.off('mouseenter mouseleave', '.th');
+			$document
+				.off('mouseenter mouseleave', '.th')
+				.off('mouseenter', '*[title]');
 		})
 
 		.on('keypress', '.type-zone', checkEnter)
@@ -88,9 +90,7 @@ $(function() {
 
 		.on('mouseenter', '.th', showTooltip)
 		.on('mouseleave scroll', '.th', hideTooltip)
-		.on('touchstart', '.th:not(.th-active)', showTooltip)
-		.on('touchstart', '.th.th-active', hideTooltip)
-		.on('mouseenter touchstart', '*[title]', function(e) {
+		.on('mouseenter', '*[title]', function(e) {
 			if($(this).closest('.note-editor').length) return false;
 			$(this)
 				.data('title', $(this).attr('title'))
@@ -392,6 +392,8 @@ function vote_callback(data, work, button) {
 	} else { button.removeClass('voted'); }
 
 	var $score = button.closest('.item').find('.meta.score');
+
+	if(button.parents('.comment').length && data.current.total  >= 0) data.current.total = '+' + data.current.total;
 
 	$score
 		.attr('title', '+'+data.current.upvote+' / -'+data.current.downvote)

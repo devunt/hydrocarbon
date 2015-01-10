@@ -10,8 +10,8 @@
 {% block head %}
 	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
 	<script src="{% static "js/tagging.min.js" %}"></script>
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
 	{{ comment_form.media }}
+	<script src="{% static "froala_editor/js/langs/ko.js" %}"></script>
 {% endblock %}
 
 {% block post %}
@@ -70,8 +70,10 @@
 			</div>
 		</div>
 		<div class="clear">
-			<div class="article redactor-editor">
-				{{ post.contents | safe }}
+			<div class="article clear">
+				<div class="froala-element editor">
+					{{ post.contents | safe }}
+				</div>
 			</div>
 		</div>
 
@@ -116,17 +118,17 @@
 	</div>
 
 	<div class="comments-list">
-		<ul>
-			<li class="list template" style="display:none;">
+		<div>
+			<div class="list template" style="display:none;">
 				<a class="anchor"></a>
 				<div class="comment">
 					<div class="bubble item">
 						<div class="container">
 							<div class="header clear">
 								<div class="left">
-									<a class="dropdown fold" href="#">
+									<span class="dropdown fold" href="#">
 										<span class="label meta handle"><span class="icon"></span></span>
-									</a>
+									</span>
 									<span class="depth"></span>
 									<span class="hidden author">{% trans "Hidden" %}</span>
 									<a class="label meta author user">
@@ -192,15 +194,15 @@
 								</div>
 							</div>
 							<div class="article clear">
-								<div class="redactor-editor"></div>
+								<div class="froala-element editor"></div>
 							</div>
 						</div>
 					</div>
 					<div class="bubble tip"><span></span></div>
 				</div>
-			</li>
+			</div>
 
-			<li class="owned write template" data-id="{{ post.id }}" data-type="p">
+			<div class="owned write template" data-id="{{ post.id }}" data-type="p">
 				<div class="comment">
 					<div class="bubble item">
 						<div class="container">
@@ -221,8 +223,8 @@
 					</div>
 					<div class="bubble tip"><span></span></div>
 				</div>
-			</li>
-		</ul>
+			</div>
+		</div>
 
 		<script>
 			var post_id = {{ post.id }};

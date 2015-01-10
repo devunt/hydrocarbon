@@ -10,9 +10,9 @@ from django.db.models import aggregates
 from django.db.models.sql import aggregates as sql_aggregates
 from django.utils import timezone
 from custom_user.models import AbstractEmailUser
-from redactor.fields import RedactorField
+from froala_editor.fields import FroalaField
 
-from board.utils import normalize
+from board.utils import get_upload_path, normalize
 
 
 class DefaultSum(aggregates.Aggregate):
@@ -124,7 +124,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     board = models.ForeignKey('Board', related_name='posts')
     category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')
     title = models.CharField(max_length=32)
-    contents = RedactorField()
+    contents = FroalaField()
     tags = models.ManyToManyField('Tag', blank=True, null=True, related_name='posts')
     viewcount = models.PositiveIntegerField(default=0)
     created_time = models.DateTimeField(auto_now_add=True)
@@ -146,6 +146,9 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
             self.modified_time = timezone.now()
         super().save(*args, **kwargs)
 
+    class Meta:
+        ordering = ['-created_time']
+
 
 class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     post = models.ForeignKey('Post', related_name='comments')
@@ -153,12 +156,12 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='comments', on_delete=models.SET_NULL)
     onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
-    contents = RedactorField()
+    contents = FroalaField(options=settings.FROALA_EDITOR_OPTIONS_COMMENT)
     created_time = models.DateTimeField(auto_now_add=True)
 
     @property
     def depth(self):
-        def _depth(c, d = 0):
+        def _depth(c, d=0):
             if c.comment is not None:
                 return _depth(c.comment, d + 1)
             return d
@@ -171,6 +174,9 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
             styles=settings.BLEACH_ALLOWED_STYLES
         )
         super().save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['-created_time']
 
 
 class Vote(models.Model):
@@ -190,3 +196,15 @@ class Vote(models.Model):
 class Announcement(models.Model):
     post = models.OneToOneField('Post', related_name='announcement')
     boards = models.ManyToManyField('Board', blank=True, null=True, related_name='announcements')
+
+
+class ImageAttachment(models.Model):
+    name = models.CharField(max_length=128)
+    file = models.ImageField(max_length=256, upload_to=get_upload_path)
+    checksum = models.CharField(max_length=32, unique=True)
+
+
+class FileAttachment(models.Model):
+    name = models.CharField(max_length=128)
+    file = models.FileField(max_length=256, upload_to=get_upload_path)
+    checksum = models.CharField(max_length=32, unique=True)

@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
 from account.forms import LoginEmailForm, SignupForm, SettingsForm
-from redactor.widgets import RedactorEditor
 
 from board.models import Category, Comment, Post, Tag
 from board.utils import is_empty_html
@@ -121,11 +120,6 @@ class CommentForm(OneTimeUserFormMixin, forms.ModelForm):
         fields = ['contents']
         labels = {
             'contents': '',
-        }
-        widgets = {
-            'contents': RedactorEditor(
-                redactor_options={'placeholder': _('Press ctrl-space to submit a comment')},
-            ),
         }
 
 

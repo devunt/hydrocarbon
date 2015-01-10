@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+// 	
+// 	froala.scss
+// 		froala specific styles
+// 	
+
+html body .froala-box {
+	.froala-editor { background:none; }
+	.f-basic { border:0; }
+	.f-sep { display:none; }
+	.fr-bttn,
+	.fr-trigger { height:30px; width:30px; }
+	.fr-dropdown { width:40px; }
+	.fr-bttn i.fa { font-size:12px; line-height:30px; vertical-align:top; }
+	.froala-editor .bttn-wrapper:not(.touch) button.fr-bttn:hover, .froala-editor .froala-popup button.fr-bttn:hover, .froala-editor .bttn-wrapper:not(.touch) button.fr-trigger:hover, .froala-editor .froala-popup button.fr-trigger:hover { background:$blue-base; }
+}
+
+html body .froala-popup {
+	button.fr-p-bttn.f-ok { background:$blue-base; }
+}
+
+html body .froala-element {
+	min-height:0;
+	*:last-of-type { margin-bottom:0; }
+
+	a { color:$blue-base; }
+	a:hover { color:$blue; text-decoration:underline; }
+	a:active { color:$blue-trans; }
+	a:visited { color:$grey; }
+
+	h1, h2, h3,
+	.format-h1, .format-h2, .format-h3 { font-family:"NanumGothic Light"; }
+
+	span.spoiler {
+		background:$black; cursor:default;
+		&:hover { color:$white; }
+	}
+}
+
+html body .froala-editor {
+	font-family:"NanumGothic";
+
+	h1, h2, h3,
+	.format-h1, .format-h2, .format-h3 { font-family:"NanumGothic Light"; }
+	.fr-trigger.active { background:$blue; }
+
+	.fr-dropdown-menu i.fa { line-height:20px; }
+}
+
+html body .f-html {
+	.froala-element textarea { background:#202020; }
+}

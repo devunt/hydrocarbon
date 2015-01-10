@@ -1,3 +1,5 @@
+import os
+
 from urllib.parse import quote_plus, urlparse
 from hashlib import md5
 
@@ -26,6 +28,11 @@ def normalize(s):
 
 def is_empty_html(html):
     return (html2text(html).strip() == '')
+
+
+def get_upload_path(instance, filename):
+    checksum = instance.checksum
+    return os.path.join(checksum[0], checksum[:2], filename)
 
 
 # From https://bitbucket.org/monwara/django-url-tools/raw/9ce1dbd9b3609b9cebd8445ce787dff640ffedbc/url_tools/helper.py

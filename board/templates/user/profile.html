@@ -4,6 +4,12 @@
 {% block title %}{{ u.nickname }} :: {{ block.super }}{% endblock %}
 {% block pagename %}{{ u.nickname }}{% endblock %}
 
+{% block head %}
+<link href="{% static "froala_editor/css/froala_editor.min.css" %}" type="text/css" media="all" rel="stylesheet">
+<link href="{% static "froala_editor/css/font-awesome.min.css" %}" type="text/css" media="all" rel="stylesheet">
+<link href="{% static "froala_editor/css/froala_style.min.css" %}" type="text/css" media="all" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
 <script>
@@ -29,7 +35,9 @@ var upvote_ratio = 0
 		(score.posts.upvotes
 		+ score.posts.downvotes
 		+ score.comments.upvotes
-		+ score.comments.downvotes)*100 + '%';
+		+ score.comments.downvotes)*100;
+
+		if(upvote_ratio > 88) upvote_ratio = 88;
 
 </script>
 
@@ -59,13 +67,13 @@ var upvote_ratio = 0
 
 			<script>
 				$('.upvote.bar')
-					.css('width',upvote_ratio);
+					.css('width',upvote_ratio + '%');
 
 				$('.votes.bar')
 					.attr('title', score_tooltip);
 
 				$('.score .count .total')
-					.css('left', upvote_ratio)
+					.css('left', upvote_ratio + '%')
 					.css('margin-left',  -1*$('.score .count .total').width()/2);
 			</script>
 		</div>
@@ -74,8 +82,8 @@ var upvote_ratio = 0
 
 <div class="tabs">
 	<div class="tab header">
-		<a id="tab-board" class="current" href="#board">{% trans "Posts" %}</a>
-		<a id="tab-article" href="#article">{% trans "Comments" %}</a>
+		<a id="tab-board" class="current" href="#board">{% blocktrans with count=u.posts.count %}{{ count }} Posts{% endblocktrans%}</a>
+		<a id="tab-article" href="#article">{% blocktrans with count=u.comments.count %}{{ count }} Comments{% endblocktrans%}</a>
 	</div>
 
 	<div class="section board tab">

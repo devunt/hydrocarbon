@@ -27,7 +27,7 @@ INSTALLED_APPS = (
     # third-party apps
     'account',
     'custom_user',
-    'redactor',
+    'froala_editor',
     'haystack',
     ) + (
     # django apps
@@ -52,14 +52,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
-    'account.middleware.LocaleMiddleware',
-    'account.middleware.TimezoneMiddleware',
 )
 
 # Template context processor definition
 TEMPLATE_CONTEXT_PROCESSORS = (
     'board.context_processors.current_url',
-    'account.context_processors.account',
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
@@ -117,10 +114,27 @@ ACCOUNT_NOTIFY_ON_PASSWORD_CHANGE = False
 ACCOUNT_DELETION_MARK_CALLBACK = 'board.callbacks.account_delete_mark'
 ACCOUNT_DELETION_EXPUNGE_CALLBACK = 'board.callbacks.account_delete_expunge'
 
-# django-wysiwyg-redactor
-REDACTOR_OPTIONS = {'lang': 'ko', 'toolbarFixed': False, 'tabKey': False, 'buttonsHide': ['horizontalrule'], 'plugins': ['video', 'spoiler', 'krfix', 'autosave_garlic']}
-REDACTOR_UPLOAD = 'uploads/'
-REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
+# django-froala-editor
+FROALA_INCLUDE_JQUERY = False
+FROALA_EDITOR_PLUGINS = ('file_upload', 'lists', 'video', 'spoiler')
+FROALA_EDITOR_OPTIONS = {
+    'language': 'ko',
+    'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'spoiler',
+                'formatBlock', 'align', 'insertOrderedList', 'insertUnorderedList',
+                'createLink', 'insertImage', 'insertVideo', 'uploadFile', 'html'
+    ],
+    'inlineMode': False,
+    'alwaysBlank': True,
+    'imageUpload': True,
+    'imageUploadURL': '/x/f',
+    'imageUploadParams': {'type': 'i'},
+    'fileUploadURL': '/x/f',
+    'fileUploadParams': {'type': 'f'},
+}
+FROALA_EDITOR_OPTIONS_COMMENT = FROALA_EDITOR_OPTIONS.copy()
+FROALA_EDITOR_OPTIONS_COMMENT.update({
+    'placeholder': _('Press ctrl-enter to submit a comment'),
+})
 
 # django-haystack
 HAYSTACK_CONNECTIONS = {
@@ -133,7 +147,14 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # bleach
-def _filter_iframe_src(name, value):
+def _filter_a_attr(name, value):
+    if name in ('data-fr-link', 'href', 'rel', 'target'):
+        return True
+    if name == 'class' and value == 'fr-file':
+        return True
+    return False
+
+def _filter_iframe_attr(name, value):
     if name in ('allowfullscreen', 'frameborder', 'height', 'style', 'width'):
         return True
     if name == 'src':
@@ -146,24 +167,37 @@ def _filter_iframe_src(name, value):
         )
     return False
 
-def _filter_span_class(name, value):
-    if name == 'class' and value == 'spoiler':
+def _filter_img_attr(name, value):
+    if name in ('alt', 'style', 'src', 'width'):
         return True
+    if name == 'class':
+        classes = value.split(' ')
+        if len(classes) == 2:
+            if classes[0] == 'th' and classes[1] in ('fil', 'fin', 'fir'):
+                return True
+    return False
+
+def _filter_span_attr(name, value):
+    if name == 'class':
+        classes = value.split(' ')
+        print(classes)
+        if set(classes) <= {'f-video-editor', 'fr-fvn', 'spoiler'}:
+            return True
     return False
 
 BLEACH_ALLOWED_TAGS = [
-    'blockquote', 'br', 'hr', 'p', 'pre', 'span',
-    'del', 'em', 'strong',
-    'h1', 'h2', 'h3', 'h4', 'h5',
+    'blockquote', 'br', 'p', 'pre', 'span',
+    'em', 'strike', 'strong', 'u',
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
     'li', 'ol', 'ul',
     'a', 'img', 'iframe',
 ]
 BLEACH_ALLOWED_ATTRIBUTES = {
-    'a': ['href', 'target'],
-    'iframe': _filter_iframe_src,
-    'img': ['alt', 'style', 'src'],
+    'a': _filter_a_attr,
+    'iframe': _filter_iframe_attr,
+    'img': _filter_img_attr,
     'p': ['style'],
-    'span': _filter_span_class,
+    'span': _filter_span_attr,
 }
 BLEACH_ALLOWED_STYLES = [
     'display',

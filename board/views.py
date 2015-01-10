@@ -1,4 +1,5 @@
-from urllib.parse import urlparse
+import json
+from hashlib import md5
 
 from django.conf import settings
 from django.contrib import messages
@@ -13,16 +14,15 @@ from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from account.models import EmailAddress
 from account.views import LoginView, SettingsView, SignupView
 from haystack.query import SearchQuerySet
-from redactor.views import RedactorUploadView
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
-from board.models import Board, Category, Comment, OneTimeUser, Post, Tag, User, Vote
+from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize
 
 
@@ -81,12 +81,6 @@ class HCSettingsView(SettingsView):
         user = self.request.user
         user.nickname = form.cleaned_data['nickname']
         user.save()
-
-
-class HCRedactorUploadView(RedactorUploadView):
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return FormView.dispatch(self, request, *args, **kwargs)
 
 
 class UserProfileView(UserURLMixin, DetailView):
@@ -277,12 +271,14 @@ class PostListDetailView(BPostListMixin, ListView):
             lower_idx += idx - upper_idx
         elif lower_idx < idx:
             upper_idx += idx - lower_idx
+
         def _id(qs, idx):
             if idx == 0:
                 id = self.post.id
             else:
                 id = qs[idx - 1].id
             return id
+
         self.upper_id = _id(upper, upper_idx)
         self.lower_id = _id(lower, lower_idx)
         return pqs
@@ -291,6 +287,8 @@ class PostListDetailView(BPostListMixin, ListView):
         queryset = queryset.filter(id__gte=self.lower_id, id__lte=self.upper_id)
         return queryset
 
+    def get_context_data(self, **kwargs):
+        return super(PostListMixin, self).get_context_data(**kwargs)
 
 class PostDetailView(DetailView):
     model = Post
@@ -553,6 +551,35 @@ class TagAutocompleteAjaxView(AjaxMixin, View):
         return JsonResponse({'status': 'success', 'query': query, 'suggestions': lst})
 
 
+class FileUploadAjaxView(AjaxMixin, View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        upload_type = request.POST.get('type')
+        f = request.FILES.get('file')
+        if upload_type not in ('i', 'f'):
+            return self.bad_request()
+        md5obj = md5()
+        for chunk in f.chunks():
+            md5obj.update(chunk)
+        hexdigest = md5obj.hexdigest()
+        if upload_type == 'i':
+            Attachment = ImageAttachment
+        elif upload_type == 'f':
+            Attachment = FileAttachment
+        try:
+            attachment = Attachment.objects.get(checksum=hexdigest)
+        except Attachment.DoesNotExist:
+            attachment = Attachment()
+            attachment.checksum = hexdigest
+            attachment.name = f.name
+            attachment.file = f
+            attachment.save()
+        return JsonResponse({'link': attachment.file.url})
+
+
 class JSConstantsView(TemplateView):
     template_name = 'constants.js'
     content_type = 'application/javascript'
@@ -563,4 +590,5 @@ class JSConstantsView(TemplateView):
     def get_context_data(self, **kwargs):
         kwargs['BOARD_COMMENT_BLIND_VOTES'] = settings.BOARD_COMMENT_BLIND_VOTES
         kwargs['BOARD_COMMENT_MAX_DEPTH'] = settings.BOARD_COMMENT_MAX_DEPTH
+        kwargs['COMMENT_FROALA_EDITOR_OPTIONS'] = json.dumps(settings.FROALA_EDITOR_OPTIONS_COMMENT)
         return super().get_context_data(**kwargs)
