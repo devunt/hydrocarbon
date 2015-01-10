@@ -287,6 +287,8 @@ class PostListDetailView(BPostListMixin, ListView):
         queryset = queryset.filter(id__gte=self.lower_id, id__lte=self.upper_id)
         return queryset
 
+    def get_context_data(self, **kwargs):
+        return super(PostListMixin, self).get_context_data(**kwargs)
 
 class PostDetailView(DetailView):
     model = Post
