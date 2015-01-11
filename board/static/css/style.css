@@ -30,10 +30,12 @@ input {
 div {
   -webkit-tap-highlight-color: transparent; }
 
+a, button, input {
+  -webkit-tap-highlight-color: initial; }
+
 a {
   color: #222;
-  text-decoration: none;
-  -webkit-tap-highlight-color: initial; }
+  text-decoration: none; }
 
 .no-touch a:hover {
   color: rgba(170, 170, 170, 0.9); }
