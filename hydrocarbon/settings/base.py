@@ -187,7 +187,7 @@ def _filter_span_attr(name, value):
 
 BLEACH_ALLOWED_TAGS = [
     'blockquote', 'br', 'p', 'pre', 'span',
-    'em', 'strike', 'strong', 'u',
+    'b', 'em', 'i', 'strike', 'strong', 'u',
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
     'li', 'ol', 'ul',
     'a', 'img', 'iframe',
