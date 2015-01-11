@@ -256,20 +256,6 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.swipe({
-			swipeLeft:function(event, direction, distance, duration, fingerCount) {
-				var target = $(event.target).closest('.bubble.item');
-				if(target && !$('html').hasClass('no-touch')) {
-					toggleComments('hide', target);
-				}
-			},
-			swipeRight:function(event, direction, distance, duration, fingerCount) {
-				var target = $(event.target).closest('.bubble.item');
-				if(target && !$('html').hasClass('no-touch')) {
-					toggleComments('show', target);
-				}
-			}
-		})
 		.on('keypress', '.modify, .write', function(e) {
 			if(e.ctrlKey && (e.which == 10 || e.which == 13)) {
 				$(this).find('.submit.button').trigger('click');
