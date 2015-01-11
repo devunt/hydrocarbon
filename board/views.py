@@ -9,6 +9,7 @@ from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import get_object_or_404, redirect
+from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
@@ -294,6 +295,7 @@ class PostListDetailView(BPostListMixin, ListView):
 
     def get_context_data(self, **kwargs):
         return super(PostListMixin, self).get_context_data(**kwargs)
+
 
 class PostDetailView(DetailView):
     model = Post
@@ -609,6 +611,14 @@ class FileUploadAjaxView(AjaxMixin, View):
             attachment.file = f
             attachment.save()
         return JsonResponse({'link': attachment.file.url})
+
+
+class NotificationAjaxView(AjaxMixin, View):
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return self.permission_denied()
+        request.user.notifications.update(checked_time=timezone.now())
+        return self.success()
 
 
 class JSConstantsView(TemplateView):
