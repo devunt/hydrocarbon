@@ -182,6 +182,7 @@ class Vote(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='_votes', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     vote = models.SmallIntegerField(choices=VOTE_CHOICES)
+    created_time = models.DateTimeField(auto_now_add=True)
 
 
 class Announcement(models.Model):
@@ -207,6 +208,7 @@ class Notification(models.Model):
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='notifications')
     data = JSONField()
+    created_time = models.DateTimeField(auto_now_add=True)
 
     @classmethod
     def create(cls, from_user, to_user, data, **kwargs):
