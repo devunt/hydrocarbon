@@ -226,9 +226,14 @@ class PostListByCategoryView(BaseBPostListView):
 
 class BoardSearchView(BaseBPostListView):
     def queryset_post_filter(self, queryset):
+        self.target = self.request.GET.get('t')
         self.q = self.request.GET.get('q')
         sqs = SearchQuerySet().models(Post)
-        sqs = sqs.filter(board=self.board.slug, content=self.q)
+        sqs = sqs.filter(board=self.board.slug)
+        if self.target == 'author':
+            sqs = sqs.filter(author=self.q)
+        else:
+            sqs = sqs.filter(content=self.q)
         pqs = queryset.filter(pk__in=[s.pk for s in sqs])
         return pqs
 
