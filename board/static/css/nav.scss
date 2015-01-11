@@ -32,7 +32,7 @@
 		.text { font-family:"NanumGothicLight"; font-size:16px; line-height:50px; padding-right:10px; }
 
 		&.menu-nav {
-			.icon {
+			.handle .icon {
 				width:50px; background:url("../img/logo_1x.png") no-repeat; background-size:50px;
 
 				@media
@@ -53,7 +53,7 @@
 
 		&.menu-notifications {
 			.handle { position:relative; }
-			.icon {
+			.handle .icon {
 				width:50px; background:url("../img/notifications_1x.png") 50% 50% no-repeat; background-size:24px;
 
 				@media
@@ -83,9 +83,17 @@
 					}
 				}
 				li + li { border-top:1px solid $grey-95; }
-				& > a {
-					background:$blue-base; box-sizing:border-box; color:$white; display:block; font-size:$font-size; line-height:20px; padding:10px 20px; position:relative; text-align:center;
-					&:hover { background:$blue; }
+				.footer {
+					background:$blue;
+					.label.meta {
+						padding:10px;
+						.icon { margin:4px; }
+						.no-touch &:hover { background:$blue; }
+					}
+					& > a {
+						box-sizing:border-box; color:$white; display:block; font-size:$font-size; line-height:20px; margin:0 40px; padding:10px 0; text-align:center;
+						&:hover { background:$blue; }
+					}
 				}
 			}
 			

@@ -171,25 +171,30 @@ form > .errorlist {
 		.tip { padding:0 10px; position:relative; z-index:2006; }
 		.tip.top span { border-bottom-color:$white; margin-top:-5px; }
 		.tip.bottom span { border-top-color:$white; margin-bottom:-5px; }
+	
+		
+		li {
+			list-style:none;
 
-		li { list-style:none; }
-		li:hover { background:$blue; }
-		li:hover a,
-		li.voted a { color:$white; }
+			&.bottom { background:$grey-95; }
+			&:hover {
+				background:$blue;
+
+				&.scanlation { background:$blue; }
+				&.news { background:$green; }
+				&.subtitles { background:$red; }
+			}
+
+			&:hover a, &.voted a { color:$white; }
+
+			a { width:100%; box-sizing:border-box; display:inline-block; font-size:$font-size; line-height:20px; padding:10px; }
+		}
+
 		li.vote {
 			.no-touch &:hover { opacity:.9; }
 		}
 		li.downvote {
 			.no-touch &:hover { background:$red-trans; }
-		}
-		li {
-			a { width:100%; box-sizing:border-box; display:inline-block; font-size:$font-size; line-height:20px; padding:10px; }
-			&.scanlation:hover { background:$blue; }
-			&.scanlation a { border-left:10px solid $blue; padding-left:0; }
-			&.news:hover { background:$green; }
-			&.news a { border-left:10px solid $green; padding-left:0; }
-			&.subtitles:hover { background:$red; }
-			&.subtitles a { border-left:10px solid $red; padding-left:0;}
 		}
 		li a > span { display:block; margin:0 10px; white-space:nowrap; }
 
@@ -231,7 +236,8 @@ form > .errorlist {
 
 	.dropdown li a:hover & .icon,
 	.dropdown li.voted a & .icon,
-	.error & .icon {
+	.error & .icon,
+	&.white .icon {
 		background-image:url("../img/meta_w_1x.png");
 
 		@media
