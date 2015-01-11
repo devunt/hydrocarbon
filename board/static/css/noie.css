@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
+body { background:#222; }
 body > div { display:none; }
 #noie {
 	height:100%;
 	width:100%;
 
-	background:#222;
 	color:#fff;
 	display:block;
 	font-size:20px;
