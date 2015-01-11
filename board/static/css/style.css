@@ -167,6 +167,20 @@ textarea[name=contents] {
     border-radius: 6px; }
   .checkbox.large.checked .icon {
     background-position: -36px 0; }
+.checkbox.radio .icon {
+  border-radius: 6px; }
+.checkbox.medium.radio .icon {
+  border-radius: 12px; }
+.checkbox.large.radio .icon {
+  border-radius: 16px; }
+.checkbox.checked.radio .icon {
+  background-image: url("../img/radio_1x.png"); }
+  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
+    .checkbox.checked.radio .icon {
+      background-image: url("../img/radio_2x.png"); } }
+  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
+    .checkbox.checked.radio .icon {
+      background-image: url("../img/radio_3x.png"); } }
 
 .submit, .redmit, .gromit {
   width: 100%;
@@ -1135,12 +1149,6 @@ a.anchor {
   .section.board .nav.bottom {
     background: #e5e5e5;
     position: relative; }
-  .section.board .search.button form .scope .dropdown.menu ul {
-    left: -50%;
-    position: relative;
-    white-space: nowrap; }
-  .section.board .search.button form .scope .dropdown.menu li {
-    display: inline-block; }
   .section.board .pages {
     background: #e5e5e5;
     padding: 10px 0;

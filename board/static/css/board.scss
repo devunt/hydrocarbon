@@ -78,13 +78,6 @@
 
 	.nav.bottom { background:$grey-90; position:relative; }
 
-	.search.button {
-		form {
-			.scope .dropdown.menu ul { left:-50%; position:relative; white-space:nowrap; }
-			.scope .dropdown.menu li { display:inline-block; }
-		}
-	}
-
 	.pages {
 		background:$grey-90; padding:10px 0; text-align:center;
 
