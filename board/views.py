@@ -617,7 +617,7 @@ class NotificationAjaxView(AjaxMixin, View):
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated():
             return self.permission_denied()
-        request.user.notifications.update(checked_time=timezone.now())
+        request.user.recent_notifications.update(checked_time=timezone.now())
         return self.success()
 
 
