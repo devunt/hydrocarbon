@@ -119,7 +119,7 @@ FROALA_INCLUDE_JQUERY = False
 FROALA_EDITOR_PLUGINS = ('file_upload', 'lists', 'video', 'spoiler', 'icon_fix')
 FROALA_EDITOR_OPTIONS = {
     'language': 'ko',
-    'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'spoiler',
+    'buttons': ['bold', 'italic', 'underline', 'spoiler',
                 'formatBlock', 'align', 'insertOrderedList', 'insertUnorderedList',
                 'createLink', 'insertImage', 'insertVideo', 'uploadFile', 'html'
     ],
