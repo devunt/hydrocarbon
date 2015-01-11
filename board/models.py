@@ -47,6 +47,14 @@ class User(AbstractEmailUser):
         }
         return votes
 
+    @property
+    def notifications(self):
+        return self._notifications.filter(checked_time=None)
+
+    @property
+    def all_notifications(self):
+        return self._notifications.all
+
     def __str__(self):
         return self.nickname
 
@@ -206,7 +214,7 @@ class Notification(models.Model):
     from_user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='sent_notifications')
     from_onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='sent_notification')
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
-    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='notifications')
+    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='_notifications')
     data = JSONField()
     created_time = models.DateTimeField(auto_now_add=True)
     checked_time = models.DateTimeField(blank=True, null=True)
@@ -225,3 +233,6 @@ class Notification(models.Model):
 
     def checked(self):
         self.checked_time = timezone.now()
+
+    class Meta:
+        ordering = ['-created_time']
