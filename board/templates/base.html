@@ -24,6 +24,10 @@
 	<script src="{% static "js/base.js" %}"></script>
 	<link rel="stylesheet" href="{% static "css/style.css" %}">
 
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="{% static "css/noie.css" %}">
+	<![endif]-->
+
 	<title>{% block title %}{{ request.site.name }}{% endblock %}</title>
 </head>
 
@@ -113,6 +117,22 @@
 		<div class="tip bottom" style="display:none"><span></span></div>
 	</div>
 </div>
+
+<!--[if lt IE 9]>	
+<div id="noie">
+	<h2></h2>
+	<h1><span>!</span></h1>
+	<p>{% trans "This site doesn't support browser older than IE9." %}</p>
+	<p>{% trans "How about using more safe, fast, up-to-date and user-friendly browsers?" %}</p>
+	<ul>
+		<li><a href="http://www.microsoft.com/windows/internet-explorer/" target="_blank">Microsoft Internet Explorer (newer version)</a></li>
+		<li><a href="http://www.google.com/chrome/" target="_blank">Google Chrome</a></li>
+		<li><a href="http://www.mozilla.or.kr/firefox/" target="_blank">Mozilla Firefox</a></li>
+		<li><a href="http://www.apple.com/safari/" target="_blank">Apple Safari</a></li>
+		<li><a href="http://www.opera.com/browser/" target="_blank">Opera</a></li>
+	</ul>
+</div>
+<![endif]-->
 
 </body>
 
