@@ -60,6 +60,10 @@ $(function() {
 			$document
 				.off('mouseenter mouseleave', '.th')
 				.off('mouseenter', '*[title]');
+
+			$('.pscroll')
+				.perfectScrollbar('destroy')
+				.css('overflow', 'auto');
 		})
 
 		.on('keypress', '.type-zone', checkEnter)
@@ -229,7 +233,9 @@ $(function() {
 					$li.appendTo($ul);
 				});
 
-				$ul.appendTo($dropdown);
+				$('<div class="wrap">')
+					.append($ul)
+					.appendTo($dropdown);
 
 				$dropdown
 					.addClass('dropdown menu')

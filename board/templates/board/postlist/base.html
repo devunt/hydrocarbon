@@ -15,12 +15,14 @@
 			<div class="dropdown menu">
 				<a href="#" class="close">{% trans "Close" %}</a>
 				<div class="tip top"><span></span></div>
-				<ul>
-					{% for cat in board.categories.all %}
-					<li class="{{ cat.slug }}"><a href="{% url 'board_post_list_by_category' board.slug cat.slug %}"><span>{{ cat.name }}</span></a></li>
-					{% endfor %}
-					<li style="border-top:1px solid #e5e5e5;"><a href="{% url 'board_post_list' board.slug %}"><span>{% trans "Clear sort/filter" %}</span></a></li>
-				</ul>
+				<div class="wrap">
+					<ul>
+						{% for cat in board.categories.all %}
+						<li class="{{ cat.slug }}"><a href="{% url 'board_post_list_by_category' board.slug cat.slug %}"><span>{{ cat.name }}</span></a></li>
+						{% endfor %}
+						<li style="border-top:1px solid #e5e5e5;"><a href="{% url 'board_post_list' board.slug %}"><span>{% trans "Clear sort/filter" %}</span></a></li>
+					</ul>
+				</div>
 			</div>
 			{% endif %}
 		</div>

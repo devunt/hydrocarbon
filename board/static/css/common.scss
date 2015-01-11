@@ -163,6 +163,7 @@ form > .errorlist {
 		@media screen and (max-width: $large) {
 			&.open .close { top:0; left:0; height:100%; width:100%; display:block; font-size:0; position:fixed; z-index:-1; -webkit-tap-highlight-color: rgba(0,0,0,0); }
 		}
+		.count { top:6px; right:6px; height:20px; width:20px; background:$red-base; border-radius:10px; color:$white; display:block; font-size:$font-size - 2; line-height:20px; position:absolute; text-align:center; text-shadow:0 -1px 0 rgba(0,0,0,.2); -webkit-text-size-adjust:110%; }
 	}
 	&.menu {
 		display:none; margin:-30px; padding:30px; position:absolute; text-align:left; z-index:2005;
@@ -171,7 +172,6 @@ form > .errorlist {
 		.tip.top span { border-bottom-color:$white; margin-top:-5px; }
 		.tip.bottom span { border-top-color:$white; margin-bottom:-5px; }
 
-		ul { background:$white; border-radius:4px; box-shadow:0 2px 10px rgba(0,0,0,.3); overflow:hidden; }
 		li { list-style:none; }
 		li:hover { background:$blue; }
 		li:hover a,
@@ -192,6 +192,8 @@ form > .errorlist {
 			&.subtitles a { border-left:10px solid $red; padding-left:0;}
 		}
 		li a > span { display:block; margin:0 10px; white-space:nowrap; }
+
+		.wrap { background:$white; border-radius:4px; box-shadow:0 2px 10px rgba(0,0,0,.3); overflow:hidden; }
 	}
 }
 

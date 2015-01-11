@@ -19,6 +19,9 @@
 	<link rel="stylesheet" href="{% static "css/normalize.css" %}">
 	<link rel="stylesheet" href="{% static "fontface/NanumGothicLight/styles.css" %}">
 
+	<script src="{% static "js/perfect-scrollbar.min.js" %}"></script>
+	<link rel="stylesheet" href="{% static "css/perfect-scrollbar.css" %}">
+
 	{% block head %}{% endblock %}
 
 	<script src="{% static "js/base.js" %}"></script>
@@ -40,23 +43,116 @@
 				<div class="dropdown container menu-nav nodropdown">
 					<a href="{% block href_back %}/{% endblock %}" class="handle">
 						<span class="icon"></span>
-						<span class="text">{% block pagename %}<span class="default">{{ request.site.name }}</span>{% endblock %}</span>
+						<span class="text">{% block pagename %}{{ request.site.name }}{% endblock %}</span>
 					</a>
 					{% comment %}
 					<div class="dropdown menu">
 						<a href="#" class="close">{% trans "Close" %}</a>
 						<div class="tip top"><span></span></div>
-						<ul>
-							<li><a href="/"><span>{% trans "Home" %}</span></a></li>
-							<li><a href="#"><span>{% trans "Favorites" %}</span></a></li>
-							<li><a href="#"><span>{% trans "Notices" %}</span></a></li>
-							<li><a href="#"><span>{% trans "Scanlations" %}</span></a></li>
-						</ul>
+						<div class="wrap">
+							<ul>
+								<li><a href="/"><span>{% trans "Home" %}</span></a></li>
+								<li><a href="#"><span>{% trans "Favorites" %}</span></a></li>
+								<li><a href="#"><span>{% trans "Notices" %}</span></a></li>
+								<li><a href="#"><span>{% trans "Scanlations" %}</span></a></li>
+							</ul>
+						</div>
 					</div>
 					{% endcomment %}
 				</div>
 			</div>
 			<div class="right">
+				<div class="dropdown container menu-notifications">
+					<a href="#" class="handle">
+						<span class="icon">
+							<span class="count">5</span>
+						</span>
+					</a>
+					<div class="dropdown menu">
+						<a href="#" class="close">{% trans "Close" %}</a>
+						<div class="tip top"><span></span></div>
+						<div class="wrap">
+							<div class="pscroll">
+								<ul>
+									<li>
+										<a href="#">
+											<span>
+												<span class="header">
+													<span class="label meta author user">LDM</span>
+													<span class="timestamp">2m ago</span>
+													<span class="type">replied to "Hi-hihihihi"</span>
+												</span>
+												<span class="article"> wu ha ha ha ha! </span>
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span>
+												<span class="header">
+													<span class="label meta author user">LDM</span>
+													<span class="timestamp">2m ago</span>
+													<span class="type">replied to "Hi-hihihihi"</span>
+												</span>
+												<span class="article"> wu ha ha ha ha! </span>
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span>
+												<span class="header">
+													<span class="label meta author user">LDM</span>
+													<span class="timestamp">2m ago</span>
+													<span class="type">replied to "Hi-hihihihi"</span>
+												</span>
+												<span class="article"> wu ha ha ha ha! </span>
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span>
+												<span class="header">
+													<span class="label meta author user">LDM</span>
+													<span class="timestamp">2m ago</span>
+													<span class="type">replied to "Hi-hihihihi"</span>
+												</span>
+												<span class="article"> wu ha ha ha ha! </span>
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span>
+												<span class="header">
+													<span class="label meta author user">LDM</span>
+													<span class="timestamp">2m ago</span>
+													<span class="type">replied to "Hi-hihihihi"</span>
+												</span>
+												<span class="article"> wu ha ha ha ha! </span>
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span>
+												<span class="header">
+													<span class="label meta author user">LDM</span>
+													<span class="timestamp">2m ago</span>
+													<span class="type">replied to "Hi-hihihihi"</span>
+												</span>
+												<span class="article"> wu ha ha ha ha! </span>
+											</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<a href="#">{% trans "Mark all as read" %}</a>
+						</div>
+						<script> $('.dropdown.container.menu-notifications .menu .pscroll').perfectScrollbar({ supressScrollX: true }); </script>
+					</div>
+				</div>
 				<div class="dropdown container menu-personal">
 					{% if user.is_authenticated %}
 						<a href="#" class="handle">
@@ -66,15 +162,17 @@
 						<div class="dropdown menu">
 							<a href="#" class="close">{% trans "Close" %}</a>
 							<div class="tip top"><span></span></div>
-							<ul>
-								<li><a href="{% url 'user_profile' user.id %}">
-									<span class="mobile">{{ user.nickname }}</span>
-									<span class="desktop">{% trans "Profile" %}</span>
-								</a></li>
-								<li><a href="{% url 'account_settings' %}"><span>{% trans "Account settings" %}</span></a></li>
-								{# <li><a href="#"><span>{% trans "Inbox" %}</span></a></li> #}
-								<li><a href="{% url 'account_logout' %}"><span>{% trans "Log out" %}</span></a></li>
-							</ul>
+							<div class="wrap">
+								<ul>
+									<li><a href="{% url 'user_profile' user.id %}">
+										<span class="mobile">{{ user.nickname }}</span>
+										<span class="desktop">{% trans "Profile" %}</span>
+									</a></li>
+									<li><a href="#"><span>{% trans "Notifications" %}</span></a></li>
+									<li><a href="{% url 'account_settings' %}"><span>{% trans "Account settings" %}</span></a></li>
+									<li><a href="{% url 'account_logout' %}"><span>{% trans "Log out" %}</span></a></li>
+								</ul>
+							</div>
 						</div>
 					{% else %}
 						<a href="{% url 'account_login' %}" class="handle">

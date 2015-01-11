@@ -35,25 +35,27 @@
 					<div class="dropdown menu">
 					<div class="tip top"><span></span></div>
 						<a href="#" class="close">{% trans "Close" %}</a>
-						<ul class="radio-container" data-input-name="t">
-							<input type="hidden" name="t" {% if search %} value="{{ search.target }}"{% endif %}>
-							<li>
-								<a class="checkbox radio" href="#" data-input-value="">
-									<span class="label">
-										<span class="icon"></span>
-										<span class="text">{% trans "Title + Article" %}</span>
-									</span>
-								</a>
-							</li>
-							<li>
-								<a class="checkbox radio" href="#" data-input-value="author">
-									<span class="label">
-										<span class="icon"></span>
-										<span class="text">{% trans "Author" %}</span>
-									</span>
-								</a>
-							</li>
-						</ul>
+						<div class="wrap">
+							<ul class="radio-container" data-input-name="t">
+								<input type="hidden" name="t" {% if search %} value="{{ search.target }}"{% endif %}>
+								<li>
+									<a class="checkbox radio" href="#" data-input-value="">
+										<span class="label">
+											<span class="icon"></span>
+											<span class="text">{% trans "Title + Article" %}</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a class="checkbox radio" href="#" data-input-value="author">
+										<span class="label">
+											<span class="icon"></span>
+											<span class="text">{% trans "Author" %}</span>
+										</span>
+									</a>
+								</li>
+							</ul>
+						</div>
 						<script>
 							(function() {
 								var value = $('input[name=t]').val();

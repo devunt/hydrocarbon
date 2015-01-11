@@ -8,21 +8,27 @@
 #header { top:0; width:100%; position:fixed; z-index:3000; }
 
 #nav {
-	height:50px; background:$blue; color:$white; font-size:0; margin:0; 
+	height:50px; background:$blue; color:$white; font-size:0; margin:0; white-space:nowrap;
 
 
 	& > .container { width:720px; margin:0 auto; position:relative;
 		@media screen and (max-width: $large) { width:100%; }
 	}
 	.handle { height:50px; display:block; }
-	.handle span { height:50px; vertical-align:middle; }
+	.handle > span { height:50px; vertical-align:middle; }
 
 	.dropdown.container {
+		display:inline-block;
 		.handle { height:50px; color:$white; display:inline-block; }
 		.no-touch  & .handle:hover,
 		&.open .handle { background:$blue; }
 
-		.menu { margin:-30px -20px; }
+		&.menu-nav .menu,
+		&.menu-personal .menu { margin:-30px -25px; }
+		&.menu-nav,
+		&.menu-notifications,
+		&.menu-personal { .menu { margin-top:-5px; padding-top:5px; } }
+
 		.text { font-family:"NanumGothicLight"; font-size:16px; line-height:50px; padding-right:10px; }
 
 		&.menu-nav {
@@ -41,21 +47,53 @@
 			&.open .icon { background-position:0 -50px; }
 			&.nodropdown .icon { background-position:0 -100px !important; }
 
-			.text {
-				font-size:18px;
-				span.default {
-					width:100px; background:url("../img/logo_kr_1x.png") no-repeat; background-size:100px; display:inline-block; font-size:0;
+			.text { font-size:18px; }
+			.tip { width:10px; }
+		}
 
-					@media
-					screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
-					screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) { background-image:url("../img/logo_kr_2x.png"); }
-					@media
-					screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
-					screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3)  { background-image:url("../img/logo_kr_3x.png"); }
-				}
+		&.menu-notifications {
+			.handle { position:relative; }
+			.icon {
+				width:50px; background:url("../img/notifications_1x.png") 50% 50% no-repeat; background-size:24px;
+
+				@media
+				screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+				screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2)  { background-image:url("../img/notifications_2x.png"); }
+				@media
+				screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+				screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3)  { background-image:url("../img/notifications_3x.png"); }
 			}
 
-			.tip { width:10px; }
+			.menu { right:-40px; }
+
+			.tip { padding:0 60px; text-align:right; }
+
+			.wrap {
+				.pscroll { max-height:200px; width:300px; overflow:hidden; position:relative; }
+				li {
+					a {
+						padding-right:16px;
+
+						.header, .article, .footer { display:block; }
+						.header {
+							font-size:$font-size - 2;
+							.author { opacity:.8; }
+							.timestamp, .type { opacity:.4; }
+						}
+					}
+				}
+				li + li { border-top:1px solid $grey-95; }
+				& > a {
+					background:$blue-base; box-sizing:border-box; color:$white; display:block; font-size:$font-size; line-height:20px; padding:10px 20px; position:relative; text-align:center;
+					&:hover { background:$blue; }
+				}
+			}
+			
+			@media screen and (max-width: $small) {
+				.text { display:none; }
+				.dropdown.menu li a > span.mobile { display:block; }
+				.dropdown.menu li a > span.desktop { display:none; }
+			}
 		}
 
 		&.menu-personal {
