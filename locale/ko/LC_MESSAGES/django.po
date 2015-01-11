@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 13:52+0900\n"
+"POT-Creation-Date: 2015-01-11 15:39+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -496,7 +496,9 @@ msgstr "이 사이트는 IE9 이하 버전의 웹 브라우저를 지원하지 �
 
 #: board/templates/base.html:127
 msgid "How about using more safe, fast, up-to-date and user-friendly browsers?"
-msgstr "더 안전하고, 빠르고, 동시에 사용하기까지 편한 브라우저를 사용해 보시는 것은 어떤가요?"
+msgstr ""
+"더 안전하고, 빠르고, 동시에 사용하기까지 편한 브라우저를 사용해 보시는 것은 "
+"어떤가요?"
 
 #: board/templates/board/comment_item.html:31
 msgid "View the original post"
@@ -608,7 +610,7 @@ msgstr "베스트"
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
 #: board/templates/board/post_form.html:101
-#: board/templates/board/postlist/with_board.html:58
+#: board/templates/board/postlist/with_board.html:66
 msgid "New post"
 msgstr "글쓰기"
 
@@ -631,6 +633,7 @@ msgid "Clear sort/filter"
 msgstr "기본 정렬"
 
 #: board/templates/board/postlist/base.html:28
+#: board/templates/board/postlist/with_board.html:52
 msgid "Author"
 msgstr "글쓴이"
 
@@ -697,6 +700,10 @@ msgstr "%(board)s 검색"
 #: board/templates/search/search.html:6 board/templates/search/search.html:7
 msgid "Search"
 msgstr "검색"
+
+#: board/templates/board/postlist/with_board.html:44
+msgid "Title + Article"
+msgstr "제목 + 본문"
 
 #: board/templates/errors/403.html:5
 msgid "No permission"
