@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+body { background:#222; }
+body > div { display:none; }
+#noie {
+	height:100%;
+	width:100%;
+
+	color:#fff;
+	display:block;
+	font-size:20px;
+	line-height:1.3em;
+	overflow:auto;
+	padding:60px 0;
+
+	z-index:9001;
+}
+
+#noie h2 {
+	height:0;
+	width:0;
+	border:50px solid transparent;
+	border-bottom:90px solid #fff;
+	color:#222;
+	font-size:150px;
+	line-height:160px;
+	margin:0 auto;
+}
+
+#noie h1 {
+	height:0;
+	width:100px;
+	border:100px solid transparent;
+	border-bottom:180px solid #fff;
+	border-top-width:0px;
+	color:#222;
+	font-size:150px;
+	line-height:140px;
+	margin:0 auto;
+	margin-bottom:60px;
+	text-align:center;
+}
+
+#noie p {
+	width:40em;
+	margin:1em auto;
+}
+
+#noie ul {
+	width:30em;
+	margin:3em auto;
+}
+
+#noie a {
+	color:#fff;
+}

@@ -119,7 +119,7 @@ FROALA_INCLUDE_JQUERY = False
 FROALA_EDITOR_PLUGINS = ('file_upload', 'lists', 'video', 'spoiler', 'icon_fix')
 FROALA_EDITOR_OPTIONS = {
     'language': 'ko',
-    'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'spoiler',
+    'buttons': ['bold', 'italic', 'underline', 'spoiler',
                 'formatBlock', 'align', 'insertOrderedList', 'insertUnorderedList',
                 'createLink', 'insertImage', 'insertVideo', 'uploadFile', 'html'
     ],
@@ -187,7 +187,7 @@ def _filter_span_attr(name, value):
 
 BLEACH_ALLOWED_TAGS = [
     'blockquote', 'br', 'p', 'pre', 'span',
-    'em', 'strike', 'strong', 'u',
+    'b', 'em', 'i', 'strike', 'strong', 'u',
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
     'li', 'ol', 'ul',
     'a', 'img', 'iframe',

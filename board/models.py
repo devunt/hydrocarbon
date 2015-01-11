@@ -1,5 +1,3 @@
-import bleach
-
 from hashlib import sha224
 
 from django.conf import settings
@@ -12,7 +10,7 @@ from django.utils import timezone
 from custom_user.models import AbstractEmailUser
 from froala_editor.fields import FroalaField
 
-from board.utils import get_upload_path, normalize
+from board.utils import clean_html, get_upload_path, normalize
 
 
 class DefaultSum(aggregates.Aggregate):
@@ -137,11 +135,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
         return reverse('post_detail', kwargs={'pk': self.id})
 
     def save(self, *args, **kwargs):
-        self.contents = bleach.clean(self.contents,
-            tags=settings.BLEACH_ALLOWED_TAGS,
-            attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
-            styles=settings.BLEACH_ALLOWED_STYLES
-        )
+        self.contents = clean_html(self.contents)
         if kwargs.pop('auto_now', True):
             self.modified_time = timezone.now()
         super().save(*args, **kwargs)
@@ -168,11 +162,7 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
         return _depth(self)
 
     def save(self, *args, **kwargs):
-        self.contents = bleach.clean(self.contents,
-            tags=settings.BLEACH_ALLOWED_TAGS,
-            attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
-            styles=settings.BLEACH_ALLOWED_STYLES
-        )
+        self.contents = clean_html(self.contents)
         super().save(*args, **kwargs)
 
     class Meta:

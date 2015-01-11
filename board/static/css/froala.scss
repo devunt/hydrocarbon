@@ -22,7 +22,7 @@ html body .froala-popup {
 
 html body .froala-element {
 	min-height:0;
-	*:last-of-type { margin-bottom:0; }
+	*:last-child { margin-bottom:0; }
 
 	a { color:$blue-base; }
 	a:hover { color:$blue; text-decoration:underline; }
@@ -32,8 +32,13 @@ html body .froala-element {
 	h1, h2, h3,
 	.format-h1, .format-h2, .format-h3 { font-family:"NanumGothic Light"; }
 
-	span.spoiler {
-		background:$black; cursor:default;
+	h1, h2, h3, h4, h5, h6 { padding:0px 10px; }
+	h1 { border-bottom:1px solid $grey-90; margin:5px 0; padding:5px 10px; }
+
+	strike,
+	del,
+	.spoiler {
+		background:$black; color:$black; text-decoration:initial;
 		&:hover { color:$white; }
 	}
 }

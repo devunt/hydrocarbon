@@ -56,6 +56,20 @@
 		.icon { height:32px; width:32px; border-radius:6px; }
 		&.checked .icon { background-position:-36px 0; }
 	}
+
+	&.radio .icon { border-radius:6px; }
+	&.medium.radio .icon { border-radius:12px; }
+	&.large.radio .icon { border-radius:16px; }
+
+	&.checked.radio .icon {
+		background-image:url("../img/radio_1x.png");
+		@media
+		screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx),
+		screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) { background-image:url("../img/radio_2x.png"); }
+		@media
+		screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx),
+		screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) { background-image:url("../img/radio_3x.png"); }
+	}
 }
 
 // 
@@ -151,7 +165,7 @@ form > .errorlist {
 		}
 	}
 	&.menu {
-		display:none; position:absolute; text-align:left; z-index:2005;
+		display:none; margin:-30px; padding:30px; position:absolute; text-align:left; z-index:2005;
 
 		.tip { padding:0 10px; position:relative; z-index:2006; }
 		.tip.top span { border-bottom-color:$white; margin-top:-5px; }

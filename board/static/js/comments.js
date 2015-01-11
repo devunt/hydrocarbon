@@ -212,6 +212,31 @@ function deleteComments(id, password) {
 		});
 }
 
+function toggleComments(action, target) {
+	var $container = $(target).closest('.comments-list > div'),
+		$item = $(target).closest('div.list.item'),
+		item_depth = $item.data('depth'),
+		item_index = $item.index();
+
+	if(action == 'toggle') $item.toggleClass('hidden');
+	if(action == 'hide') $item.addClass('hidden');
+	if(action == 'show') $item.removeClass('hidden');
+
+	$.each($container.find('div.list.item'), function(index, it) {
+		var depth = $(it).data('depth');
+
+		if(index <= item_index - 1) return true;
+		if(depth <= item_depth) return false;
+		
+		if(action == 'toggle') {
+			if($item.hasClass('hidden')) { $(it).hide();
+			} else { $(it).removeClass('hidden').show(); }
+		}
+		if(action == 'hide') $(it).hide();
+		if(action == 'show') $(it).removeClass('hidden').show();
+	});
+}
+
 $(function() {
 	$('.section.article .item.article .footer')
 		.on('click', 'a', function(e) {
@@ -231,6 +256,20 @@ $(function() {
 		});
 
 	$('.comments-list')
+		.swipe({
+			swipeLeft:function(event, direction, distance, duration, fingerCount) {
+				var target = $(event.target).closest('.bubble.item');
+				if(target && !$('html').hasClass('no-touch')) {
+					toggleComments('hide', target);
+				}
+			},
+			swipeRight:function(event, direction, distance, duration, fingerCount) {
+				var target = $(event.target).closest('.bubble.item');
+				if(target && !$('html').hasClass('no-touch')) {
+					toggleComments('show', target);
+				}
+			}
+		})
 		.on('keypress', '.modify, .write', function(e) {
 			if(e.ctrlKey && (e.which == 10 || e.which == 13)) {
 				$(this).find('.submit.button').trigger('click');
@@ -241,23 +280,7 @@ $(function() {
 		.on('click', ':not(.prerender) .header', function(e) {
 			if(!$(e.target).closest('a').length) {
 				e.preventDefault();
-				var $container = $(this).closest('.comments-list > div'),
-					$item = $(this).closest('div.list.item'),
-					item_depth = $item.data('depth'),
-					item_index = $item.index();
-
-				$item.toggleClass('hidden');
-
-				$.each($container.find('div.list.item'), function(index, it) {
-					console.log(it);
-					var depth = $(it).data('depth');
-
-					if(index <= item_index - 1) return true;
-					if(depth <= item_depth) return false;
-					
-					if($item.hasClass('hidden')) { $(it).hide();
-					} else { $(it).removeClass('hidden').show(); }
-				});
+				toggleComments('toggle', this);
 			}
 		})
 		.on('click', '.write .submit', function(e) {
@@ -470,6 +493,8 @@ $(function() {
 						.text('삭제')
 						.removeClass('blue')
 						.addClass('red');
+
+					$('body').scrollTop($c.offset().top - 100);
 
 					break;
 

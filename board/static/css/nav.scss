@@ -5,7 +5,7 @@
 // 		#header
 // 	
 
-#header { top:0; width:100%; position:fixed; z-index:1054; }
+#header { top:0; width:100%; position:fixed; z-index:3000; }
 
 #nav {
 	height:50px; background:$blue; color:$white; font-size:0; margin:0; 
@@ -22,7 +22,7 @@
 		.no-touch  & .handle:hover,
 		&.open .handle { background:$blue; }
 
-		.menu { margin:0 10px; }
+		.menu { margin:-30px -20px; }
 		.text { font-family:"NanumGothicLight"; font-size:16px; line-height:50px; padding-right:10px; }
 
 		&.menu-nav {

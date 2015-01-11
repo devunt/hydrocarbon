@@ -20,7 +20,8 @@ button, input, select, textarea { outline:none; }
 input { border-radius:0; }
 
 div { -webkit-tap-highlight-color:transparent; }
-a { color:$black; text-decoration:none; -webkit-tap-highlight-color:initial; }
+a, button, input { -webkit-tap-highlight-color:initial; }
+a { color:$black; text-decoration:none; }
 .no-touch a:hover { color:$grey; }
 
 .button {
@@ -41,7 +42,7 @@ a { color:$black; text-decoration:none; -webkit-tap-highlight-color:initial; }
 
 textarea[name=contents] { background:transparent; border:0; }
 
-#overlay div { z-index:1053; }
+#overlay div { z-index:2500; }
 
 #wrapper { width:720px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.1); margin:0 auto; margin-top:50px;
 	@media screen and (max-width: $large) { width:100%; }

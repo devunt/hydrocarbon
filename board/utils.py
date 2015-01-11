@@ -1,13 +1,16 @@
+import bleach
 import os
+import re
 
 from urllib.parse import quote_plus, urlparse
 from hashlib import md5
 
-from html2text import html2text
-
+from django.conf import settings
 from django.http import QueryDict
 from django.utils.encoding import iri_to_uri
 
+
+RE_EMPTYHTML = re.compile(r'<p>\s*(?:(?:&nbsp;|<br\s*/?>)\s*)*</p>')
 
 FIRSTS = ('ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ')
 MIDDLES = ('ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅗㅏ', 'ㅗㅐ', 'ㅗㅣ', 'ㅛ', 'ㅜ', 'ㅜㅓ', 'ㅜㅔ', 'ㅜㅣ', 'ㅠ', 'ㅡ', 'ㅡㅣ', 'ㅣ')
@@ -26,8 +29,18 @@ def normalize(s):
     return ' '.join(map(_normalize, s))
 
 
+def clean_html(html):
+    return bleach.clean(html,
+        tags=settings.BLEACH_ALLOWED_TAGS,
+        attributes=settings.BLEACH_ALLOWED_ATTRIBUTES,
+        styles=settings.BLEACH_ALLOWED_STYLES
+    )
+
+
 def is_empty_html(html):
-    return (html2text(html).strip() == '')
+    cleaned = clean_html(html)
+    replaced = re.sub(RE_EMPTYHTML, '', cleaned)
+    return (replaced.strip() == '')
 
 
 def get_upload_path(instance, filename):

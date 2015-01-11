@@ -82,10 +82,19 @@ $(function() {
 
 			e.preventDefault();
 
-			var $checkbox = $(this).prev('input[type=checkbox]');
+			if($(this).hasClass('radio')) {
+				var $container = $(this).closest('.radio-container'),
+					$input = $container.find('input[name=' + $container.data('input-name') + ']');
 
-			$(this).toggleClass('checked');
-			$checkbox.prop('checked', !$checkbox.prop('checked'));
+				$container.find('a.radio').removeClass('checked');
+				$(this).addClass('checked');
+				$input.val($(this).data('input-value'));
+			} else {
+				var $checkbox = $(this).prev('input[type=checkbox]');
+
+				$(this).toggleClass('checked');
+				$checkbox.prop('checked', !$checkbox.prop('checked'));
+			}
 		})
 
 		.on('mouseenter', '.th', showTooltip)

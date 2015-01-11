@@ -30,10 +30,12 @@ input {
 div {
   -webkit-tap-highlight-color: transparent; }
 
+a, button, input {
+  -webkit-tap-highlight-color: initial; }
+
 a {
   color: #222;
-  text-decoration: none;
-  -webkit-tap-highlight-color: initial; }
+  text-decoration: none; }
 
 .no-touch a:hover {
   color: rgba(170, 170, 170, 0.9); }
@@ -75,7 +77,7 @@ textarea[name=contents] {
   border: 0; }
 
 #overlay div {
-  z-index: 1053; }
+  z-index: 2500; }
 
 #wrapper {
   width: 720px;
@@ -165,6 +167,20 @@ textarea[name=contents] {
     border-radius: 6px; }
   .checkbox.large.checked .icon {
     background-position: -36px 0; }
+.checkbox.radio .icon {
+  border-radius: 6px; }
+.checkbox.medium.radio .icon {
+  border-radius: 12px; }
+.checkbox.large.radio .icon {
+  border-radius: 16px; }
+.checkbox.checked.radio .icon {
+  background-image: url("../img/radio_1x.png"); }
+  @media screen and (min-resolution: 1.1dppx) and (max-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 1.1) and (-webkit-max-device-pixel-ratio: 2) {
+    .checkbox.checked.radio .icon {
+      background-image: url("../img/radio_2x.png"); } }
+  @media screen and (min-resolution: 2.1dppx) and (max-resolution: 3dppx), screen and (-webkit-min-device-pixel-ratio: 2.1) and (-webkit-max-device-pixel-ratio: 3) {
+    .checkbox.checked.radio .icon {
+      background-image: url("../img/radio_3x.png"); } }
 
 .submit, .redmit, .gromit {
   width: 100%;
@@ -300,6 +316,8 @@ form > .errorlist li {
       -webkit-tap-highlight-color: transparent; } }
 .dropdown.menu {
   display: none;
+  margin: -30px;
+  padding: 30px;
   position: absolute;
   text-align: left;
   z-index: 2005; }
@@ -494,7 +512,7 @@ a.anchor {
   top: 0;
   width: 100%;
   position: fixed;
-  z-index: 1054; }
+  z-index: 3000; }
 
 #nav {
   height: 50px;
@@ -522,7 +540,7 @@ a.anchor {
   .no-touch #nav .dropdown.container .handle:hover, #nav .dropdown.container.open .handle {
     background: rgba(61, 156, 204, 0.9); }
   #nav .dropdown.container .menu {
-    margin: 0 10px; }
+    margin: -30px -20px; }
   #nav .dropdown.container .text {
     font-family: "NanumGothicLight";
     font-size: 16px;
@@ -1131,12 +1149,6 @@ a.anchor {
   .section.board .nav.bottom {
     background: #e5e5e5;
     position: relative; }
-  .section.board .search.button form .scope .dropdown.menu ul {
-    left: -50%;
-    position: relative;
-    white-space: nowrap; }
-  .section.board .search.button form .scope .dropdown.menu li {
-    display: inline-block; }
   .section.board .pages {
     background: #e5e5e5;
     padding: 10px 0;
@@ -1512,7 +1524,7 @@ html body .froala-popup button.fr-p-bttn.f-ok {
 
 html body .froala-element {
   min-height: 0; }
-  html body .froala-element *:last-of-type {
+  html body .froala-element *:last-child {
     margin-bottom: 0; }
   html body .froala-element a {
     color: #3d9ccc; }
@@ -1526,10 +1538,21 @@ html body .froala-element {
   html body .froala-element h1, html body .froala-element h2, html body .froala-element h3,
   html body .froala-element .format-h1, html body .froala-element .format-h2, html body .froala-element .format-h3 {
     font-family: "NanumGothic Light"; }
-  html body .froala-element span.spoiler {
+  html body .froala-element h1, html body .froala-element h2, html body .froala-element h3, html body .froala-element h4, html body .froala-element h5, html body .froala-element h6 {
+    padding: 0px 10px; }
+  html body .froala-element h1 {
+    border-bottom: 1px solid #e5e5e5;
+    margin: 5px 0;
+    padding: 5px 10px; }
+  html body .froala-element strike,
+  html body .froala-element del,
+  html body .froala-element .spoiler {
     background: #222;
-    cursor: default; }
-    html body .froala-element span.spoiler:hover {
+    color: #222;
+    text-decoration: initial; }
+    html body .froala-element strike:hover,
+    html body .froala-element del:hover,
+    html body .froala-element .spoiler:hover {
       color: #fff; }
 
 html body .froala-editor {
