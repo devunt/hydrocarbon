@@ -209,6 +209,7 @@ class Notification(models.Model):
     to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='notifications')
     data = JSONField()
     created_time = models.DateTimeField(auto_now_add=True)
+    checked_time = models.DateTimeField(blank=True, null=True)
 
     @classmethod
     def create(cls, from_user, to_user, data, **kwargs):
@@ -221,3 +222,6 @@ class Notification(models.Model):
         notification.data = data
         notification.save()
         return notification
+
+    def checked(self):
+        self.checked_time = timezone.now()
