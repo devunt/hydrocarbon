@@ -1512,7 +1512,7 @@ html body .froala-popup button.fr-p-bttn.f-ok {
 
 html body .froala-element {
   min-height: 0; }
-  html body .froala-element *:last-of-type {
+  html body .froala-element *:last-child {
     margin-bottom: 0; }
   html body .froala-element a {
     color: #3d9ccc; }
@@ -1526,10 +1526,16 @@ html body .froala-element {
   html body .froala-element h1, html body .froala-element h2, html body .froala-element h3,
   html body .froala-element .format-h1, html body .froala-element .format-h2, html body .froala-element .format-h3 {
     font-family: "NanumGothic Light"; }
-  html body .froala-element span.spoiler {
+  html body .froala-element h1, html body .froala-element h2, html body .froala-element h3, html body .froala-element h4, html body .froala-element h5, html body .froala-element h6 {
+    padding: 0px 10px; }
+  html body .froala-element h1 {
+    border-bottom: 1px solid #e5e5e5;
+    margin: 5px 0;
+    padding: 5px 10px; }
+  html body .froala-element strike {
     background: #222;
-    cursor: default; }
-    html body .froala-element span.spoiler:hover {
+    color: #222; }
+    html body .froala-element strike:hover {
       color: #fff; }
 
 html body .froala-editor {
