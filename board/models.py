@@ -1,5 +1,3 @@
-import bleach
-
 from hashlib import sha224
 
 from django.conf import settings
