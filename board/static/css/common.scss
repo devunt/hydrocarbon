@@ -151,7 +151,7 @@ form > .errorlist {
 		}
 	}
 	&.menu {
-		display:none; position:absolute; text-align:left; z-index:2005;
+		display:none; margin:-30px; padding:30px; position:absolute; text-align:left; z-index:2005;
 
 		.tip { padding:0 10px; position:relative; z-index:2006; }
 		.tip.top span { border-bottom-color:$white; margin-top:-5px; }

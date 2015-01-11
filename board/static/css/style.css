@@ -302,6 +302,8 @@ form > .errorlist li {
       -webkit-tap-highlight-color: transparent; } }
 .dropdown.menu {
   display: none;
+  margin: -30px;
+  padding: 30px;
   position: absolute;
   text-align: left;
   z-index: 2005; }
@@ -524,7 +526,7 @@ a.anchor {
   .no-touch #nav .dropdown.container .handle:hover, #nav .dropdown.container.open .handle {
     background: rgba(61, 156, 204, 0.9); }
   #nav .dropdown.container .menu {
-    margin: 0 10px; }
+    margin: -30px -20px; }
   #nav .dropdown.container .text {
     font-family: "NanumGothicLight";
     font-size: 16px;

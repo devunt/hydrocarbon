@@ -22,7 +22,7 @@
 		.no-touch  & .handle:hover,
 		&.open .handle { background:$blue; }
 
-		.menu { margin:0 10px; }
+		.menu { margin:-30px -20px; }
 		.text { font-family:"NanumGothicLight"; font-size:16px; line-height:50px; padding-right:10px; }
 
 		&.menu-nav {
