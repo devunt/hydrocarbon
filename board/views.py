@@ -238,7 +238,7 @@ class BoardSearchView(BaseBPostListView):
         return pqs
 
     def get_context_data(self, **kwargs):
-        kwargs['search'] = {'query': self.q}
+        kwargs['search'] = {'query': self.q, 'target': self.target}
         return super().get_context_data(**kwargs)
 
 
