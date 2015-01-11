@@ -42,7 +42,7 @@ a { color:$black; text-decoration:none; }
 
 textarea[name=contents] { background:transparent; border:0; }
 
-#overlay div { z-index:1053; }
+#overlay div { z-index:2500; }
 
 #wrapper { width:720px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.1); margin:0 auto; margin-top:50px;
 	@media screen and (max-width: $large) { width:100%; }

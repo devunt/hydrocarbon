@@ -77,7 +77,7 @@ textarea[name=contents] {
   border: 0; }
 
 #overlay div {
-  z-index: 1053; }
+  z-index: 2500; }
 
 #wrapper {
   width: 720px;
@@ -498,7 +498,7 @@ a.anchor {
   top: 0;
   width: 100%;
   position: fixed;
-  z-index: 1054; }
+  z-index: 3000; }
 
 #nav {
   height: 50px;
