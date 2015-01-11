@@ -1534,10 +1534,15 @@ html body .froala-element {
     border-bottom: 1px solid #e5e5e5;
     margin: 5px 0;
     padding: 5px 10px; }
-  html body .froala-element strike {
+  html body .froala-element strike,
+  html body .froala-element del,
+  html body .froala-element .spoiler {
     background: #222;
-    color: #222; }
-    html body .froala-element strike:hover {
+    color: #222;
+    text-decoration: initial; }
+    html body .froala-element strike:hover,
+    html body .froala-element del:hover,
+    html body .froala-element .spoiler:hover {
       color: #fff; }
 
 html body .froala-editor {
