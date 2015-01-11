@@ -2,6 +2,7 @@ from collections import OrderedDict
 
 from django import forms
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
 from account.forms import LoginEmailForm, SignupForm, SettingsForm
@@ -9,6 +10,10 @@ from account.forms import LoginEmailForm, SignupForm, SettingsForm
 from board.models import Category, Comment, Post, Tag
 from board.utils import is_empty_html
 
+
+def validate_contents(value):
+    if is_empty_html(value):
+        raise ValidationError(message='', code='required')
 
 class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
     widget = TextInput
@@ -97,13 +102,9 @@ class PostForm(OneTimeUserFormMixin, forms.ModelForm):
         cqs = Category.objects.filter(board=board)
         self.fields['category'].queryset = cqs
         self.fields['category'].initial = cqs.first()
+        self.fields['contents'].validators.append(validate_contents)
         if not cqs.exists():
             del self.fields['category']
-
-    def clean_contents(self):
-        contents = self.cleaned_data['contents']
-        if not is_empty_html(contents):
-            return contents
 
     class Meta:
         model = Post
