@@ -52,8 +52,12 @@ class User(AbstractEmailUser):
         return self._notifications.filter(checked_time=None)
 
     @property
+    def recent_notifications(self):
+        return self.all_notifications[:10]
+
+    @property
     def all_notifications(self):
-        return self._notifications.all
+        return self._notifications.all()
 
     def __str__(self):
         return self.nickname
@@ -219,6 +223,9 @@ class Notification(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     checked_time = models.DateTimeField(blank=True, null=True)
 
+    def checked(self):
+        self.checked_time = timezone.now()
+
     @classmethod
     def create(cls, from_user, to_user, data, **kwargs):
         notification = cls(**kwargs)
@@ -230,9 +237,6 @@ class Notification(models.Model):
         notification.data = data
         notification.save()
         return notification
-
-    def checked(self):
-        self.checked_time = timezone.now()
 
     class Meta:
         ordering = ['-created_time']
