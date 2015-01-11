@@ -22,8 +22,8 @@ from haystack.query import SearchQuerySet
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
-from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, OneTimeUser, Post, Tag, User, Vote
-from board.utils import is_empty_html, normalize
+from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
+from board.utils import is_empty_html, normalize, treedict
 
 
 class IndexView(View):
@@ -461,10 +461,19 @@ class CommentAjaxView(AjaxMixin, View):
 
     def post(self, request, *args, **kwargs):
         target_type = request.POST.get('type')
+        contents = request.POST.get('contents')
+
         c = Comment()
+        n = Notification()
+        ndata = treedict()
+
         if target_type == 'p':
             try:
                 c.post = Post.objects.get(pk=self.pk)
+                n.to_user = c.post.user
+                ndata['type'] = 'COMMENT_ON_POST'
+                ndata['origin']['model'] = 'Post'
+                ndata['origin']['id'] = c.post.id
             except Post.DoesNotExist:
                 return self.not_found()
         elif target_type == 'c':
@@ -473,15 +482,21 @@ class CommentAjaxView(AjaxMixin, View):
                 c.post = c.comment.post
                 if c.depth > settings.BOARD_COMMENT_MAX_DEPTH:
                     return self.bad_request()
+                n.to_user = c.comment.user
+                ndata['type'] = 'COMMENT_ON_COMMENT'
+                ndata['parent']['model'] = 'Comment'
+                ndata['parent']['id'] = c.comment.id
             except Comment.DoesNotExist:
                 return self.not_found()
         else:
             return self.bad_request()
-        contents = request.POST.get('contents')
+
         if is_empty_html(contents):
             return JsonResponse({'status': 'badrequest', 'error_fields': ['contents']}, status=400)
+
         if request.user.is_authenticated():
             c.user = request.user
+            n.from_user = request.user
         else:
             ot_user = OneTimeUser()
             ot_user.nick = request.POST.get('ot_nick')
@@ -495,9 +510,19 @@ class CommentAjaxView(AjaxMixin, View):
                 ot_user.password = make_password(ot_user.password)
                 ot_user.save()
                 c.onetime_user = ot_user
+                n.from_onetime_user = ot_user
+
         c.ipaddress = request.META['REMOTE_ADDR']
-        c.contents = request.POST.get('contents')
+        c.contents = contents
         c.save()
+
+        if n.to_user is not None:
+            ndata['sender']['model'] = 'Comment'
+            ndata['sender']['id'] = c.id
+            n.data = ndata
+            n.ipaddress = request.META['REMOTE_ADDR']
+            n.save()
+
         qdict = QueryDict('', mutable=True)
         qdict.update({
             'type': 'c',
@@ -508,6 +533,7 @@ class CommentAjaxView(AjaxMixin, View):
         r.POST = qdict
         v = VoteAjaxView()
         v.post(r)
+
         return self.success()
 
     def put(self, request, *args, **kwargs):

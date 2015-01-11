@@ -2,8 +2,9 @@ import bleach
 import os
 import re
 
-from urllib.parse import quote_plus, urlparse
+from collections import defaultdict
 from hashlib import md5
+from urllib.parse import quote_plus, urlparse
 
 from django.conf import settings
 from django.http import QueryDict
@@ -46,6 +47,10 @@ def is_empty_html(html):
 def get_upload_path(instance, filename):
     checksum = instance.checksum
     return os.path.join(checksum[0], checksum[:2], filename)
+
+
+def treedict():
+    return defaultdict(treedict)
 
 
 # From https://bitbucket.org/monwara/django-url-tools/raw/9ce1dbd9b3609b9cebd8445ce787dff640ffedbc/url_tools/helper.py

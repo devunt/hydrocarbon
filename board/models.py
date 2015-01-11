@@ -9,6 +9,7 @@ from django.db.models.sql import aggregates as sql_aggregates
 from django.utils import timezone
 from custom_user.models import AbstractEmailUser
 from froala_editor.fields import FroalaField
+from jsonfield import JSONField
 
 from board.utils import clean_html, get_upload_path, normalize
 
@@ -198,3 +199,23 @@ class FileAttachment(models.Model):
     name = models.CharField(max_length=128)
     file = models.FileField(max_length=256, upload_to=get_upload_path)
     checksum = models.CharField(max_length=32, unique=True)
+
+
+class Notification(models.Model):
+    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='sent_notifications')
+    from_onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='sent_notification')
+    ipaddress = models.GenericIPAddressField(protocol='IPv4')
+    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='notifications')
+    data = JSONField()
+
+    @classmethod
+    def create(cls, from_user, to_user, data, **kwargs):
+        notification = cls(**kwargs)
+        if isinstance(from_user, settings.AUTH_USER_MODEL):
+            notification.from_user = from_user
+        elif isinstance(from_user, OneTimeUser):
+            notification.from_onetime_user = from_user
+        notification.to_user = to_user
+        notification.data = data
+        notification.save()
+        return notification
