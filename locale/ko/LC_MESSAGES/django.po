@@ -657,7 +657,7 @@ msgstr "검색 결과가 없습니다."
 #: board/templates/user/comment_list.html:22
 #: board/templates/user/profile.html:95
 msgid "There are no posts here!"
-msgstr "이 게시판엔 등록된 글이 아직 없습니다!"
+msgstr "아직 등록된 글이 없습니다!"
 
 #: board/templates/board/postlist/base.html:78
 #: board/templates/user/comment_list.html:32
