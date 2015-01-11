@@ -88,6 +88,7 @@ $(function() {
 
 				$container.find('a.radio').removeClass('checked');
 				$(this).addClass('checked');
+				$input.val($(this).data('input-value'));
 			} else {
 				var $checkbox = $(this).prev('input[type=checkbox]');
 
