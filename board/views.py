@@ -4,6 +4,7 @@ from hashlib import md5
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
@@ -82,6 +83,14 @@ class HCSettingsView(SettingsView):
         user = self.request.user
         user.nickname = form.cleaned_data['nickname']
         user.save()
+
+
+class NotificationView(TemplateView):
+    template_name = 'user/notification.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
 
 class UserProfileView(UserURLMixin, DetailView):
