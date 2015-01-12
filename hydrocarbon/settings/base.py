@@ -74,6 +74,11 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+# Account urls
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'account_login'
+LOGOUT_URL = 'account_logout'
+
 # Password encryption method
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
