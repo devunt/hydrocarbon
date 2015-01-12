@@ -612,7 +612,8 @@ a.anchor {
     #nav .dropdown.container.menu-notifications .wrap li + li {
       border-top: 1px solid #f2f2f2; }
     #nav .dropdown.container.menu-notifications .wrap .footer {
-      background: rgba(61, 156, 204, 0.9); }
+      background: rgba(61, 156, 204, 0.9);
+      border-top: 1px solid rgba(0, 0, 0, 0.1); }
       #nav .dropdown.container.menu-notifications .wrap .footer .label.meta {
         padding: 10px; }
         #nav .dropdown.container.menu-notifications .wrap .footer .label.meta .icon {
@@ -877,12 +878,6 @@ a.anchor {
   @media screen and (max-width: 599px) {
     .section.article .item.article div.article {
       width: 90%; } }
-  .section.article .item.article div.article img {
-    max-width: 100%; }
-  .section.article .item.article div.article li {
-    list-style-position: inside; }
-  .section.article .item.article div.article p {
-    margin: 0 0 1em; }
 .section.article .item.article .vote.vote-post {
   font-size: 0;
   margin: 30px 0;

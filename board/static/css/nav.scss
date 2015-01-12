@@ -84,7 +84,7 @@
 				}
 				li + li { border-top:1px solid $grey-95; }
 				.footer {
-					background:$blue;
+					background:$blue; border-top:1px solid rgba(0,0,0,.1);
 					.label.meta {
 						padding:10px;
 						.icon { margin:4px; }
