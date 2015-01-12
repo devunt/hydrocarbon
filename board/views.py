@@ -84,13 +84,18 @@ class HCSettingsView(SettingsView):
         user.save()
 
 
-class NotificationView(TemplateView):
+class NotificationView(ListView):
+    model = Notification
     template_name = 'user/notification.html'
+    paginate_by = 20
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         Notification.set_as_checked(request.user)
         return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return self.request.user.all_notifications.all()
 
 
 class UserProfileView(UserURLMixin, DetailView):
