@@ -68,10 +68,6 @@
 										{% for item in user.recent_notifications %}
 										<li class="notification">
 											<a href="{{ item.data.url }}">
-												<!--
-												{{ item.data | safe }}
-												
-												-->
 												<span{% if forloop.counter > user.unread_notifications.count %} class="read"{% endif %}>
 													<span class="header">
 														{% if item.from_user %}
