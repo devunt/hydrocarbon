@@ -125,6 +125,18 @@
 		if($('#id_title').val() == '') { $('#id_title').focus();
 		} else if($('#id_contents').val() == '') { $('#id_contents').editable('focus'); }
 	});
+
+	$(window).on('scroll', function(){
+		var $editor = $('.section.article.form .froala-editor'),
+			$wrapper = $('.section.article.form .froala-wrapper');
+    		if ($(this).scrollTop() > 50) {
+    			$editor.addClass('fixed');
+    			$wrapper.css('padding-top', $editor.height());
+    		} else {
+    			$editor.removeClass('fixed');
+    			$wrapper.css('padding-top', 0);
+    		}
+    	});
 </script>
 {% endif %}
 {% endblock content %}

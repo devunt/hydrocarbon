@@ -1451,7 +1451,21 @@ a.anchor {
       width: 72%; } }
   .section.article.form .item.article .froala-box .froala-editor {
     background: #e5e5e5;
-    padding: 0 5%; }
+    box-sizing: border-box; }
+    .section.article.form .item.article .froala-box .froala-editor .bttn-wrapper {
+      padding: 0 5%; }
+    .section.article.form .item.article .froala-box .froala-editor.fixed {
+      top: 50px;
+      width: 720px;
+      position: fixed; }
+    .no-touch .section.article.form .item.article .froala-box .froala-editor.fixed {
+      opacity: .9;
+      transition: opacity .2s ease; }
+    .no-touch .section.article.form .item.article .froala-box .froala-editor.fixed:hover {
+      opacity: 1; }
+    @media all and (max-width: 719px) {
+      .section.article.form .item.article .froala-box .froala-editor.fixed {
+        width: 100%; } }
   .section.article.form .item.article .froala-box .froala-element.f-basic {
     min-height: 300px;
     padding: 20px 12.5%; }
