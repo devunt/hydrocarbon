@@ -178,6 +178,9 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
         self.contents = clean_html(self.contents)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return (reverse('post_detail', kwargs={'pk': self.post.id}) + '#c{0}'.format(self.id))
+
     class Meta:
         ordering = ['-created_time']
 

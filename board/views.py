@@ -483,8 +483,7 @@ class CommentAjaxView(AjaxMixin, View):
                 c.post = Post.objects.get(pk=self.pk)
                 n.to_user = c.post.user
                 ndata['type'] = 'COMMENT_ON_POST'
-                ndata['origin']['model'] = 'Post'
-                ndata['origin']['id'] = c.post.id
+                ndata['message'] = _('Comment on "%(post)s"') % {'post': c.post.title}
             except Post.DoesNotExist:
                 return self.not_found()
         elif target_type == 'c':
@@ -495,8 +494,7 @@ class CommentAjaxView(AjaxMixin, View):
                     return self.bad_request()
                 n.to_user = c.comment.user
                 ndata['type'] = 'COMMENT_ON_COMMENT'
-                ndata['parent']['model'] = 'Comment'
-                ndata['parent']['id'] = c.comment.id
+                ndata['message'] = _('Comment on your comment of "%(post)s"') % {'post': c.post.title}
             except Comment.DoesNotExist:
                 return self.not_found()
         else:
@@ -527,9 +525,9 @@ class CommentAjaxView(AjaxMixin, View):
         c.contents = contents
         c.save()
 
-        if n.to_user is not None:
-            ndata['sender']['model'] = 'Comment'
-            ndata['sender']['id'] = c.id
+        if (n.to_user is not None) and (n.from_user != n.to_user):
+            ndata['url'] = c.get_absolute_url()
+            ndata['text'] = c.contents
             n.data = ndata
             n.ipaddress = request.META['REMOTE_ADDR']
             n.save()
