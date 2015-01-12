@@ -52,10 +52,6 @@
 			width:540px; line-height:20px; margin:20px auto !important;
 
 			@media screen and (max-width: $medium) { width:90%; }
-
-			img { max-width:100%; }
-			li { list-style-position:inside; }
-			p { margin:0 0 1em; }
 		}
 
 		.vote.vote-post {
