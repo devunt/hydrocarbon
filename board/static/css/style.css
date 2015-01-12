@@ -318,13 +318,15 @@ form > .errorlist li {
     top: 6px;
     right: 6px;
     height: 20px;
-    width: 20px;
+    min-width: 20px;
     background: #cc3d3d;
     border-radius: 10px;
+    box-sizing: border-box;
     color: #fff;
     display: block;
     font-size: 12px;
     line-height: 20px;
+    padding: 0 6px;
     position: absolute;
     text-align: center;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
@@ -367,14 +369,14 @@ form > .errorlist li {
       font-size: 14px;
       line-height: 20px;
       padding: 10px; }
+    .dropdown.menu li a > span {
+      display: block;
+      margin: 0 10px;
+      white-space: nowrap; }
   .no-touch .dropdown.menu li.vote:hover {
     opacity: .9; }
   .no-touch .dropdown.menu li.downvote:hover {
     background: rgba(204, 61, 61, 0.6); }
-  .dropdown.menu li a > span {
-    display: block;
-    margin: 0 10px;
-    white-space: nowrap; }
   .dropdown.menu .wrap {
     background: #fff;
     border-radius: 4px;
@@ -515,6 +517,37 @@ a.anchor {
   .ot .password:first-of-type input {
     border: 0; }
 
+.notification-list .notification {
+  list-style: none; }
+  .notification-list .notification a {
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px; }
+    .notification-list .notification a > span {
+      display: block;
+      margin: 0 10px;
+      overflow: hidden;
+      white-space: nowrap; }
+    .notification-list .notification a .header, .notification-list .notification a .article, .notification-list .notification a .footer {
+      display: block; }
+    .notification-list .notification a .header {
+      font-size: 12px; }
+      .notification-list .notification a .header .author {
+        opacity: .8; }
+      .notification-list .notification a .header .timestamp, .notification-list .notification a .header .message {
+        opacity: .4; }
+  .notification-list .notification .read {
+    opacity: .6; }
+  .notification-list .notification:hover {
+    background: rgba(61, 156, 204, 0.9); }
+  .notification-list .notification:hover a {
+    color: #fff; }
+.notification-list .notification + .notification {
+  border-top: 1px solid #f2f2f2; }
+
 #header {
   top: 0;
   width: 100%;
@@ -599,34 +632,17 @@ a.anchor {
       width: 300px;
       overflow: hidden;
       position: relative; }
-    #nav .dropdown.container.menu-notifications .wrap li a {
-      padding-right: 16px; }
-      #nav .dropdown.container.menu-notifications .wrap li a .header, #nav .dropdown.container.menu-notifications .wrap li a .article, #nav .dropdown.container.menu-notifications .wrap li a .footer {
-        display: block; }
-      #nav .dropdown.container.menu-notifications .wrap li a .header {
-        font-size: 12px; }
-        #nav .dropdown.container.menu-notifications .wrap li a .header .author {
-          opacity: .8; }
-        #nav .dropdown.container.menu-notifications .wrap li a .header .timestamp, #nav .dropdown.container.menu-notifications .wrap li a .header .type {
-          opacity: .4; }
-    #nav .dropdown.container.menu-notifications .wrap li + li {
-      border-top: 1px solid #f2f2f2; }
     #nav .dropdown.container.menu-notifications .wrap .footer {
       background: rgba(61, 156, 204, 0.9);
       border-top: 1px solid rgba(0, 0, 0, 0.1); }
-      #nav .dropdown.container.menu-notifications .wrap .footer .label.meta {
-        padding: 10px; }
-        #nav .dropdown.container.menu-notifications .wrap .footer .label.meta .icon {
-          margin: 4px; }
-        .no-touch #nav .dropdown.container.menu-notifications .wrap .footer .label.meta:hover {
-          background: rgba(61, 156, 204, 0.9); }
+      #nav .dropdown.container.menu-notifications .wrap .footer .notification a {
+        padding-right: 16px; }
       #nav .dropdown.container.menu-notifications .wrap .footer > a {
         box-sizing: border-box;
         color: #fff;
         display: block;
         font-size: 14px;
         line-height: 20px;
-        margin: 0 40px;
         padding: 10px 0;
         text-align: center; }
         #nav .dropdown.container.menu-notifications .wrap .footer > a:hover {
@@ -1733,5 +1749,8 @@ html body .f-html .froala-element textarea {
       z-index: 10; }
     .no-touch .tabs .tab.header a:hover {
       z-index: 11; }
+
+.section.notifications .notification-list .notification a {
+  padding: 10px 10%; }
 
 /*# sourceMappingURL=style.css.map */

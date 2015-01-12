@@ -163,7 +163,7 @@ form > .errorlist {
 		@media screen and (max-width: $large) {
 			&.open .close { top:0; left:0; height:100%; width:100%; display:block; font-size:0; position:fixed; z-index:-1; -webkit-tap-highlight-color: rgba(0,0,0,0); }
 		}
-		.count { top:6px; right:6px; height:20px; width:20px; background:$red-base; border-radius:10px; color:$white; display:block; font-size:$font-size - 2; line-height:20px; position:absolute; text-align:center; text-shadow:0 -1px 0 rgba(0,0,0,.2); -webkit-text-size-adjust:110%; }
+		.count { top:6px; right:6px; height:20px; min-width:20px; background:$red-base; border-radius:10px; box-sizing:border-box; color:$white; display:block; font-size:$font-size - 2; line-height:20px; padding:0 6px; position:absolute; text-align:center; text-shadow:0 -1px 0 rgba(0,0,0,.2); -webkit-text-size-adjust:110%; }
 	}
 	&.menu {
 		display:none; margin:-30px; padding:30px; position:absolute; text-align:left; z-index:2005;
@@ -188,6 +188,7 @@ form > .errorlist {
 			&:hover a, &.voted a { color:$white; }
 
 			a { width:100%; box-sizing:border-box; display:inline-block; font-size:$font-size; line-height:20px; padding:10px; }
+			a > span { display:block; margin:0 10px; white-space:nowrap; }
 		}
 
 		li.vote {
@@ -196,7 +197,6 @@ form > .errorlist {
 		li.downvote {
 			.no-touch &:hover { background:$red-trans; }
 		}
-		li a > span { display:block; margin:0 10px; white-space:nowrap; }
 
 		.wrap { background:$white; border-radius:4px; box-shadow:0 2px 10px rgba(0,0,0,.3); overflow:hidden; }
 	}
@@ -284,7 +284,6 @@ form > .errorlist {
 // 
 a.anchor { top:-60px; height:0; width:0; display:block; position:relative; }
 
-
 // 
 // .ot
 // 	for those who are not logged in
@@ -301,4 +300,31 @@ a.anchor { top:-60px; height:0; width:0; display:block; position:relative; }
 		&:first-of-type { border-radius:2px; }
 		&:first-of-type input { border:0; }
 	}
+}
+
+// 
+// .notification-list
+// 	notifications
+// 
+.notification-list {
+	.notification {
+		list-style:none;
+		a {
+			width:100%; box-sizing:border-box; display:inline-block; font-size:$font-size; line-height:20px; padding:10px;
+
+			& > span { display:block; margin:0 10px; overflow:hidden; white-space:nowrap; }
+
+			.header, .article, .footer { display:block; }
+			.header {
+				font-size:$font-size - 2;
+				.author { opacity:.8; }
+				.timestamp, .message { opacity:.4; }
+			}
+		}
+		.read { opacity:.6; }
+
+		&:hover { background:$blue; }
+		&:hover a { color:$white; }
+	}
+	.notification + .notification { border-top:1px solid $grey-95; }
 }

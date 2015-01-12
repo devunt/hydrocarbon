@@ -1,1 +1,58 @@
 {% extends 'base.html' %}
+{% load i18n static hc urls %}
+
+{% block title %}{{ user.nickname }} &rsaquo; {% trans "Notifications" %} :: {{ block.super }}{% endblock %}
+{% block pagename %}{{ user.nickname }} &rsaquo; {% trans "Notifications" %} {% endblock %}
+
+{% block content %}
+
+<div class="section notifications">
+	<ul class="notification-list">
+		{% for item in notification_list %}
+		<li class="notification">
+			<a href="{{ item.data.url }}">
+				<span>
+					<span class="header">
+						{% if item.from_user %}
+						<span class="label meta author user">{{ item.from_user }}</span>
+						{% elif item.from_onetime_user %}
+						<span class="label meta author guest">{{ item.from_onetime_user }}</span>
+						{% endif %}
+						<span class="timestamp" title="{{ item.created_time | date:'DATE_FORMAT' }} {{ item.created_time | date:'H:i:s' }}">{{ item.created_time | timesince | split_first }} {% trans "ago" %}</span>
+						<span class="message">{{ item.data.message }}</span>
+					</span>
+					<span class="article">{{ item.data.text | striptags }}</span>
+				</span>
+			</a>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+
+{% if is_paginated %}
+	<div class="section board">
+		<div class="pages nav">
+			<div class="container nowrap">
+				{% if page_obj.paginator.page_range|first != page_obj.number and page_obj.paginator.page_range|first != page_obj.previous_page_number%}
+					<a href="{% add_params current_url page='first' %}" class="button label meta first" title="{% trans "First" %}"><span class="icon"></span></a>
+				{% endif %}
+				{% if page_obj.has_previous %}
+					<a href="{% add_params current_url page=page_obj.previous_page_number %}" class="button label meta prev" title="{% trans "Prev" %}"><span class="icon"></span></a>
+				{% endif %}
+				{% with page_start=page_obj.number|add:"-5" page_end=page_obj.number|add:"5" %}
+					{% for page in page_obj.paginator.page_range|slice:"page_start:page_end" %}
+						<a href="{% add_params current_url page=page %}" class="button page{% if page == page_obj.number %} current{% endif %}{% if page < page_obj.number|add:"-2" or page > page_obj.number|add:"3" %} foldable{% endif %}">{{ page }}</a>
+					{% endfor %}
+				{% endwith %}
+				{% if page_obj.has_next %}
+					<a href="{% add_params current_url page=page_obj.next_page_number %}" class="button label meta next" title="{% trans "Next" %}"><span class="icon"></span></a>
+				{% endif %}
+				{% if page_obj.paginator.page_range|last != page_obj.number and page_obj.paginator.page_range|last != page_obj.next_page_number %}
+					<a href="{% add_params current_url page='last' %}" class="button label meta last" title="{% trans "Last" %}"><span class="icon"></span></a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+{% endblock %}

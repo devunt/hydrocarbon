@@ -70,28 +70,11 @@
 
 			.wrap {
 				.pscroll { max-height:200px; width:300px; overflow:hidden; position:relative; }
-				li {
-					a {
-						padding-right:16px;
-
-						.header, .article, .footer { display:block; }
-						.header {
-							font-size:$font-size - 2;
-							.author { opacity:.8; }
-							.timestamp, .type { opacity:.4; }
-						}
-					}
-				}
-				li + li { border-top:1px solid $grey-95; }
 				.footer {
 					background:$blue; border-top:1px solid rgba(0,0,0,.1);
-					.label.meta {
-						padding:10px;
-						.icon { margin:4px; }
-						.no-touch &:hover { background:$blue; }
-					}
+					.notification a { padding-right:16px; }
 					& > a {
-						box-sizing:border-box; color:$white; display:block; font-size:$font-size; line-height:20px; margin:0 40px; padding:10px 0; text-align:center;
+						box-sizing:border-box; color:$white; display:block; font-size:$font-size; line-height:20px; padding:10px 0; text-align:center;
 						&:hover { background:$blue; }
 					}
 				}

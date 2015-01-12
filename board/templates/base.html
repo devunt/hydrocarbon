@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load git %}
+{% load hc %}
 
 <!DOCTYPE html>
 <html lang="ko" class="no-touch">
@@ -40,105 +41,78 @@
 	<div id="nav">
 		<div class="container">
 			<div class="right">
+				{% if user.is_authenticated %}
 				<div class="dropdown container menu-notifications">
-					<a href="#" class="handle">
+					{% if user.unread_notifications.count and not user.unread_notifications.count > user.recent_notifications.count %}
+					<a href="#" id="notification-mark" class="handle">					
+					{% else %}
+					<a href="{% url 'notification' %}" id="notification-mark" class="handle">
+					{% endif %}
 						<span class="icon">
-							<span class="count">5</span>
+							{% if user.unread_notifications.count %}
+								{% if user.unread_notifications.count > user.recent_notifications.count %}
+								<span class="count">{{ user.recent_notifications.count }}+</span>
+								{% else %}
+								<span class="count">{{ user.unread_notifications.count }}</span>
+								{% endif %}
+							{% endif %}
 						</span>
 					</a>
-					<div class="dropdown menu">
-						<a href="#" class="close">{% trans "Close" %}</a>
-						<div class="tip top"><span></span></div>
-						<div class="wrap">
-							<div class="pscroll">
-								<ul>
-									<li>
-										<a href="#">
-											<span>
-												<span class="header">
-													<span class="label meta author user">LDM</span>
-													<span class="timestamp">2m ago</span>
-													<span class="type">replied to "Hi-hihihihi"</span>
+					{% if user.unread_notifications.count and not user.unread_notifications.count > user.recent_notifications.count %}
+						<div class="dropdown menu">
+							<a href="#" class="close">{% trans "Close" %}</a>
+							<div class="tip top"><span></span></div>
+							<div class="wrap">
+								<div class="pscroll">
+									<ul class="notification-list">
+										{% for item in user.recent_notifications %}
+										<li class="notification">
+											<a href="{{ item.data.url }}">
+												<!--
+												{{ item.data | safe }}
+												
+												-->
+												<span{% if forloop.counter > user.unread_notifications.count %} class="read"{% endif %}>
+													<span class="header">
+														{% if item.from_user %}
+														<span class="label meta author user">{{ item.from_user }}</span>
+														{% elif item.from_onetime_user %}
+														<span class="label meta author guest">{{ item.from_onetime_user }}</span>
+														{% endif %}
+														<span class="timestamp" title="{{ item.created_time | date:'DATE_FORMAT' }} {{ item.created_time | date:'H:i:s' }}">{{ item.created_time | timesince | split_first }} {% trans "ago" %}</span>
+														<span class="message">{{ item.data.message }}</span>
+													</span>
+													<span class="article">{{ item.data.text | striptags }}</span>
 												</span>
-												<span class="article"> wu ha ha ha ha! </span>
-											</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span>
-												<span class="header">
-													<span class="label meta author user">LDM</span>
-													<span class="timestamp">2m ago</span>
-													<span class="type">replied to "Hi-hihihihi"</span>
-												</span>
-												<span class="article"> wu ha ha ha ha! </span>
-											</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span>
-												<span class="header">
-													<span class="label meta author user">LDM</span>
-													<span class="timestamp">2m ago</span>
-													<span class="type">replied to "Hi-hihihihi"</span>
-												</span>
-												<span class="article"> wu ha ha ha ha! </span>
-											</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span>
-												<span class="header">
-													<span class="label meta author user">LDM</span>
-													<span class="timestamp">2m ago</span>
-													<span class="type">replied to "Hi-hihihihi"</span>
-												</span>
-												<span class="article"> wu ha ha ha ha! </span>
-											</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span>
-												<span class="header">
-													<span class="label meta author user">LDM</span>
-													<span class="timestamp">2m ago</span>
-													<span class="type">replied to "Hi-hihihihi"</span>
-												</span>
-												<span class="article"> wu ha ha ha ha! </span>
-											</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span>
-												<span class="header">
-													<span class="label meta author user">LDM</span>
-													<span class="timestamp">2m ago</span>
-													<span class="type">replied to "Hi-hihihihi"</span>
-												</span>
-												<span class="article"> wu ha ha ha ha! </span>
-											</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div class="footer">
-								<div class="left">
-									<a class="label meta more white" href="#more" title="{% trans "More..." %}"><span class="icon"></span></a>
+											</a>
+										</li>
+										{% endfor %}
+									</ul>
 								</div>
-								<div class="right">
-									<a class="label meta refresh white" href="#refresh" title="{% trans "Refresh" %}"><span class="icon"></span></a>
+								<div class="footer">
+									<a href="{% url 'notification' %}">{% trans "More..." %}</a>
 								</div>
-								<a href="#mark">{% trans "Mark all as read" %}</a>
 							</div>
+							<script> $('.dropdown.container.menu-notifications .menu .pscroll').perfectScrollbar({ suppressScrollX: true }); </script>
 						</div>
-						<script> $('.dropdown.container.menu-notifications .menu .pscroll').perfectScrollbar({ supressScrollX: true }); </script>
-					</div>
+					{% endif %}
+					<script>
+						$('#notification-mark').on('click', function(e) {
+							e.preventDefault();
+							var href = this.href;
+								post = $.ajax({
+									type: 'POST',
+									url: '/x/n'
+								});
+
+							console.log($(this).attr('href'));
+							if($(this).attr('href').charAt(0) != '#') {
+								post.done(function() { window.location.href = href; });
+							}
+						});
+					</script>
 				</div>
+				{% endif %}
 				<div class="dropdown container menu-personal">
 					{% if user.is_authenticated %}
 						<a href="#" class="handle">
