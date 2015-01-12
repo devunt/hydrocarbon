@@ -177,16 +177,14 @@ def _filter_img_attr(name, value):
         return True
     if name == 'class':
         classes = value.split(' ')
-        if len(classes) == 2:
-            if classes[0] == 'th' and classes[1] in ('fil', 'fin', 'fir'):
-                return True
+        if set(classes) <= {'th', 'fr-fil', 'fr-fin', 'fr-fir'}:
+            return True
     return False
 
 def _filter_span_attr(name, value):
     if name == 'class':
         classes = value.split(' ')
-        print(classes)
-        if set(classes) <= {'f-video-editor', 'fr-fvn', 'spoiler'}:
+        if set(classes) <= {'f-video-editor', 'fr-fvl', 'fr-fvn', 'fr-fvr', 'spoiler'}:
             return True
     return False
 
