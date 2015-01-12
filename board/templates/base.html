@@ -39,28 +39,6 @@
 <div id="header">
 	<div id="nav">
 		<div class="container">
-			<div class="left">
-				<div class="dropdown container menu-nav nodropdown">
-					<a href="{% block href_back %}/{% endblock %}" class="handle">
-						<span class="icon"></span>
-						<span class="text">{% block pagename %}{{ request.site.name }}{% endblock %}</span>
-					</a>
-					{% comment %}
-					<div class="dropdown menu">
-						<a href="#" class="close">{% trans "Close" %}</a>
-						<div class="tip top"><span></span></div>
-						<div class="wrap">
-							<ul>
-								<li><a href="/"><span>{% trans "Home" %}</span></a></li>
-								<li><a href="#"><span>{% trans "Favorites" %}</span></a></li>
-								<li><a href="#"><span>{% trans "Notices" %}</span></a></li>
-								<li><a href="#"><span>{% trans "Scanlations" %}</span></a></li>
-							</ul>
-						</div>
-					</div>
-					{% endcomment %}
-				</div>
-			</div>
 			<div class="right">
 				<div class="dropdown container menu-notifications">
 					<a href="#" class="handle">
@@ -188,6 +166,12 @@
 						</a>
 					{% endif %}
 				</div>
+			</div>
+			<div class="dropdown container menu-nav nodropdown">
+				<a href="{% block href_back %}/{% endblock %}" class="handle">
+					<span class="icon"></span>
+					<span class="text">{% block pagename %}{{ request.site.name }}{% endblock %}</span>
+				</a>
 			</div>
 		</div>
 	</div>
