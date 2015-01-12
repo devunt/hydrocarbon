@@ -226,9 +226,6 @@ class Notification(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     checked_time = models.DateTimeField(blank=True, null=True)
 
-    def checked(self):
-        self.checked_time = timezone.now()
-
     @classmethod
     def create(cls, from_user, to_user, data, **kwargs):
         notification = cls(**kwargs)
@@ -240,6 +237,10 @@ class Notification(models.Model):
         notification.data = data
         notification.save()
         return notification
+
+    @staticmethod
+    def set_as_checked(user):
+        user.unread_notifications.update(checked_time=timezone.now())
 
     class Meta:
         ordering = ['-created_time']

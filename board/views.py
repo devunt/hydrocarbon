@@ -10,7 +10,6 @@ from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import get_object_or_404, redirect
-from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
@@ -90,6 +89,7 @@ class NotificationView(TemplateView):
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
+        Notification.set_as_checked(request.user)
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -625,7 +625,7 @@ class NotificationAjaxView(AjaxMixin, View):
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated():
             return self.permission_denied()
-        request.user.recent_notifications.update(checked_time=timezone.now())
+        Notification.set_as_checked(request.user)
         return self.success()
 
 
