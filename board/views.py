@@ -481,7 +481,7 @@ class CommentAjaxView(AjaxMixin, View):
         if target_type == 'p':
             try:
                 c.post = Post.objects.get(pk=self.pk)
-                n.to_user = c.post.user
+                to_user = c.post.user
                 ndata['type'] = 'COMMENT_ON_POST'
                 ndata['message'] = _('Comment on "%(post)s"') % {'post': c.post.title}
             except Post.DoesNotExist:
@@ -492,7 +492,7 @@ class CommentAjaxView(AjaxMixin, View):
                 c.post = c.comment.post
                 if c.depth > settings.BOARD_COMMENT_MAX_DEPTH:
                     return self.bad_request()
-                n.to_user = c.comment.user
+                to_user = c.comment.user
                 ndata['type'] = 'COMMENT_ON_COMMENT'
                 ndata['message'] = _('Comment on your comment of "%(post)s"') % {'post': c.post.title}
             except Comment.DoesNotExist:
@@ -525,9 +525,10 @@ class CommentAjaxView(AjaxMixin, View):
         c.contents = contents
         c.save()
 
-        if (n.to_user is not None) and (n.from_user != n.to_user):
+        if (to_user is not None) and (n.from_user != to_user):
             ndata['url'] = c.get_absolute_url()
             ndata['text'] = c.contents
+            n.to_user = to_user
             n.data = ndata
             n.ipaddress = request.META['REMOTE_ADDR']
             n.save()
