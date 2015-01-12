@@ -48,7 +48,7 @@ class User(AbstractEmailUser):
         return votes
 
     @property
-    def notifications(self):
+    def unread_notifications(self):
         return self._notifications.filter(checked_time=None)
 
     @property
