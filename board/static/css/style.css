@@ -1106,6 +1106,8 @@ a.anchor {
       width: 45px; }
   .section.board .post-list {
     border-top: 1px solid #f2f2f2; }
+  .section.board .post-list li {
+    list-style: none; }
   .section.board.tab .post-list {
     border: 0; }
   .section.board li.empty {
