@@ -76,6 +76,9 @@ textarea[name=contents] {
   background: transparent;
   border: 0; }
 
+input[type=password] {
+  ime-mode: disabled; }
+
 #overlay div {
   z-index: 2500; }
 
