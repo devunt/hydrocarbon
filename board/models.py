@@ -76,8 +76,15 @@ class OneTimeUser(models.Model):
 
 
 class Board(models.Model):
+    TYPE_ANNOUNCEMENT = 1
+    TYPE_LIST = 2
+    TYPE_CHOICES = (
+        (TYPE_ANNOUNCEMENT, 'Announcement board'),
+        (TYPE_LIST, 'List type'),
+    )
     name = models.CharField(max_length=16)
     slug = models.SlugField()
+    type = models.PositiveSmallIntegerField(choices=TYPE_CHOICES, default=TYPE_LIST)
 
     def __str__(self):
         return self.name
