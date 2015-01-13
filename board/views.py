@@ -24,7 +24,7 @@ from haystack.query import SearchQuerySet
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
 from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
-from board.utils import is_empty_html, normalize, treedict
+from board.utils import is_empty_html, normalize, replace_tags_to_text, treedict, truncate_chars
 
 
 class IndexView(View):
@@ -487,7 +487,7 @@ class CommentAjaxView(AjaxMixin, View):
                 c.post = Post.objects.get(pk=self.pk)
                 to_user = c.post.user
                 ndata['type'] = 'COMMENT_ON_POST'
-                ndata['message'] = _('Comment on "%(post)s"') % {'post': c.post.title}
+                ndata['message'] = _('Comment on "%(post)s"') % {'post': truncate_chars(c.post.title, 12)}
             except Post.DoesNotExist:
                 return self.not_found()
         elif target_type == 'c':
@@ -498,7 +498,7 @@ class CommentAjaxView(AjaxMixin, View):
                     return self.bad_request()
                 to_user = c.comment.user
                 ndata['type'] = 'COMMENT_ON_COMMENT'
-                ndata['message'] = _('Comment on your comment of "%(post)s"') % {'post': c.post.title}
+                ndata['message'] = _('Comment on your comment of "%(post)s"') % {'post': truncate_chars(c.post.title, 8)}
             except Comment.DoesNotExist:
                 return self.not_found()
         else:
@@ -531,7 +531,8 @@ class CommentAjaxView(AjaxMixin, View):
 
         if (to_user is not None) and (from_user != to_user):
             ndata['url'] = c.get_absolute_url()
-            ndata['text'] = c.contents
+            cleaned_text = replace_tags_to_text(c.contents)
+            ndata['text'] = truncate_chars(cleaned_text, 20)
             Notification.create(from_user, to_user, ndata)
 
         qdict = QueryDict('', mutable=True)

@@ -21,7 +21,7 @@
 						<span class="timestamp" title="{{ item.created_time | date:'DATE_FORMAT' }} {{ item.created_time | date:'H:i:s' }}">{{ item.created_time | timesince | split_first }} {% trans "ago" %}</span>
 						<span class="message">{{ item.data.message }}</span>
 					</span>
-					<span class="article">{{ item.data.text | striptags }}</span>
+					<span class="article">{{ item.data.text }}</span>
 				</span>
 			</a>
 		</li>

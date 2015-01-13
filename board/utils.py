@@ -9,9 +9,14 @@ from urllib.parse import quote_plus, urlparse
 from django.conf import settings
 from django.http import QueryDict
 from django.utils.encoding import iri_to_uri
+from django.utils.html import strip_tags
+from django.utils.text import Truncator
 
 
 RE_EMPTYHTML = re.compile(r'<p>\s*(?:(?:&nbsp;|<br\s*/?>)\s*)*</p>')
+RE_IMG = re.compile(r'<img.*?>')
+RE_VIDEO = re.compile(r'<iframe.*?</iframe>')
+RE_SPOILER = re.compile(r'<strike>.*?</strike>')
 
 FIRSTS = ('ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ')
 MIDDLES = ('ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅗㅏ', 'ㅗㅐ', 'ㅗㅣ', 'ㅛ', 'ㅜ', 'ㅜㅓ', 'ㅜㅔ', 'ㅜㅣ', 'ㅠ', 'ㅡ', 'ㅡㅣ', 'ㅣ')
@@ -51,6 +56,17 @@ def get_upload_path(instance, filename):
 
 def treedict():
     return defaultdict(treedict)
+
+
+def truncate_chars(string, chars):
+    return Truncator(string).chars(chars)
+
+
+def replace_tags_to_text(html):
+    html = re.sub(RE_IMG, ' [img] ', html)
+    html = re.sub(RE_VIDEO, ' [video] ', html)
+    html = re.sub(RE_SPOILER, ' [spoiler] ', html)
+    return strip_tags(html)
 
 
 # From https://bitbucket.org/monwara/django-url-tools/raw/9ce1dbd9b3609b9cebd8445ce787dff640ffedbc/url_tools/helper.py

@@ -44,7 +44,7 @@
 				{% if user.is_authenticated %}
 				<div class="dropdown container menu-notifications">
 					{% if not user.unread_notifications.count > user.recent_notifications.count %}
-					<a href="#" id="notification-mark" class="handle">					
+					<a href="#" id="notification-mark" class="handle">
 					{% else %}
 					<a href="{% url 'notification' %}" id="notification-mark" class="handle">
 					{% endif %}
@@ -78,7 +78,7 @@
 														<span class="timestamp" title="{{ item.created_time | date:'DATE_FORMAT' }} {{ item.created_time | date:'H:i:s' }}">{{ item.created_time | timesince | split_first }} {% trans "ago" %}</span>
 														<span class="message">{{ item.data.message }}</span>
 													</span>
-													<span class="article">{{ item.data.text | striptags }}</span>
+													<span class="article">{{ item.data.text }}</span>
 												</span>
 											</a>
 										</li>
