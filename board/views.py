@@ -299,6 +299,7 @@ class PostListDetailView(BPostListMixin, ListView):
             upper_idx += idx - lower_idx
 
         def _id(qs, idx):
+            idx = min(idx, qs.count())
             if idx == 0:
                 id = self.post.id
             else:
