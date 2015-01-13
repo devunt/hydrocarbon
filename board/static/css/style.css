@@ -1172,37 +1172,18 @@ a.anchor {
         font-size: 13px; }
       .section.board .item.hidden .cell.meta {
         display: none; }
-    .section.board .item .cell {
-      line-height: 20px;
-      padding: 15px 0; }
-      .section.board .item .cell.mark {
-        height: 20px; }
-      .section.board .item .cell.title span.title {
-        display: table-cell;
-        font-size: 16px;
-        line-height: 20px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: normal; }
-      .section.board .item .cell.title span.title .highlight {
-        background: #fff7cc;
-        color: #cc3d3d; }
-      .section.board .item .cell.title .label.meta.comments {
-        display: table-cell;
-        padding-left: .4em;
-        line-height: 20px; }
-      .section.board .item .cell.title .label.meta.comments .text {
-        font-size: 12px;
-        opacity: .67; }
     .section.board .item br {
       display: none; }
   .section.board .cell {
     display: inline-block;
     font-size: 14px;
+    line-height: 20px;
     overflow: hidden;
+    padding: 15px 0;
     text-align: center;
     vertical-align: top; }
     .section.board .cell.mark {
+      height: 20px;
       width: 3%;
       font-size: 0; }
     .section.board .cell.category {
@@ -1212,10 +1193,28 @@ a.anchor {
       width: 44%;
       text-align: left;
       white-space: nowrap; }
-    .section.board .cell.title .container {
-      height: inherit;
-      display: block;
-      overflow: hidden; }
+      .section.board .cell.title .container {
+        height: inherit;
+        display: block;
+        overflow: hidden; }
+      .section.board .cell.title span.title {
+        display: table-cell;
+        font-size: 16px;
+        line-height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        white-space: normal; }
+      .section.board .cell.title span.title .highlight {
+        background: #fff7cc;
+        color: #cc3d3d; }
+      .section.board .cell.title .label.meta.comments {
+        display: table-cell;
+        padding-left: .4em;
+        line-height: 20px; }
+      .section.board .cell.title .label.meta.comments .text {
+        font-size: 12px;
+        opacity: .67; }
     .section.board .cell.author {
       width: 16%;
       position: relative; }
