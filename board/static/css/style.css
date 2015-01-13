@@ -1649,16 +1649,16 @@ html body .froala-element {
     border-bottom: 1px solid #e5e5e5;
     margin: 5px 0;
     padding: 5px 10px; }
-  html body .froala-element strike,
-  html body .froala-element del,
-  html body .froala-element .spoiler {
+  html body .froala-element strike, html body .froala-element del, html body .froala-element .spoiler {
     background: #222;
     color: #222;
     text-decoration: initial; }
-    html body .froala-element strike:hover,
-    html body .froala-element del:hover,
-    html body .froala-element .spoiler:hover {
+    html body .froala-element strike:hover, html body .froala-element del:hover, html body .froala-element .spoiler:hover {
       color: #fff; }
+  html body .froala-element blockquote, html body .froala-element pre {
+    font-style: normal;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 html body .froala-editor {
   font-family: "NanumGothic"; }
