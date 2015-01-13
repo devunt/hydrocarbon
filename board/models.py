@@ -142,7 +142,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     board = models.ForeignKey('Board', related_name='posts')
     category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')
-    title = models.CharField(max_length=32)
+    title = models.CharField(max_length=50)
     contents = FroalaField()
     tags = models.ManyToManyField('Tag', blank=True, null=True, related_name='posts')
     viewcount = models.PositiveIntegerField(default=0)
