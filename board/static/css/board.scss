@@ -48,27 +48,23 @@
 			&.title span.title { font-size:$font-size - 1; }
 			&.meta { display:none; }
 		}
-		
-		.cell {
-			line-height:20px; padding:15px 0;
-
-			&.mark { height:20px; }
-			&.title span.title { display:table-cell; font-size:16px; line-height:20px; overflow:hidden; text-overflow:ellipsis; white-space:normal; }
-			&.title span.title .highlight { background:#fff7cc; color:$red-base; }
-			&.title .label.meta.comments { display:table-cell; padding-left:.4em; line-height:20px; }			
-			&.title .label.meta.comments .text { font-size:$font-size - 2; opacity:.67; }			
-		}
 
 		br { display:none; }
 	}
 
 	.cell {
-		display:inline-block; font-size:$font-size; overflow:hidden; text-align:center; vertical-align:top;
+		display:inline-block; font-size:$font-size; line-height:20px; overflow:hidden; padding:15px 0; text-align:center; vertical-align:top;
 
-		&.mark { width:3%; font-size:0; }
+		&.mark { height:20px; width:3%; font-size:0; }
 		&.category { width:9%; }
-		&.title { height:20px; width:44%; text-align:left; white-space:nowrap; }
-		&.title .container { height:inherit; display:block; overflow:hidden; }
+		&.title {
+			height:20px; width:44%; text-align:left; white-space:nowrap;
+			.container { height:inherit; display:block; overflow:hidden; }
+			span.title { display:table-cell; font-size:16px; line-height:20px; overflow:hidden; text-overflow:ellipsis; word-break:break-all; white-space:normal; }
+			span.title .highlight { background:#fff7cc; color:$red-base; }
+			.label.meta.comments { display:table-cell; padding-left:.4em; line-height:20px; }
+			.label.meta.comments .text { font-size:$font-size - 2; opacity:.67; }
+		}
 		&.author { width:16%; position:relative; }
 		&.author .label.meta { max-width:100%; box-sizing:border-box; padding:0 10px; }
 		&.author .text { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
