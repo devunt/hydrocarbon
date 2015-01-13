@@ -532,7 +532,7 @@ class CommentAjaxView(AjaxMixin, View):
         if (to_user is not None) and (from_user != to_user):
             ndata['url'] = c.get_absolute_url()
             cleaned_text = replace_tags_to_text(c.contents)
-            ndata['text'] = truncate_chars(cleaned_text, 20)
+            ndata['text'] = truncate_chars(cleaned_text, 50)
             Notification.create(from_user, to_user, ndata)
 
         qdict = QueryDict('', mutable=True)
