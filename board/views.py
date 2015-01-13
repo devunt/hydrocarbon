@@ -280,6 +280,8 @@ class PostListByTagView(PostListMixin, ListView):
 
 
 class PostListDetailView(BPostListMixin, ListView):
+    paginate_by = 12
+
     def __init__(self, *args, **kwargs):
         self.post = kwargs.pop('post')
         self.board = self.post.board
