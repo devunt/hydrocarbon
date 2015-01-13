@@ -363,6 +363,15 @@ form > .errorlist li {
         background: rgba(133, 204, 61, 0.9); }
       .dropdown.menu li:hover.subtitles {
         background: rgba(204, 61, 61, 0.9); }
+    .dropdown.menu li.scanlation a {
+      border-left: 10px solid rgba(61, 156, 204, 0.9);
+      padding-left: 0; }
+    .dropdown.menu li.news a {
+      border-left: 10px solid rgba(133, 204, 61, 0.9);
+      padding-left: 0; }
+    .dropdown.menu li.subtitles a {
+      border-left: 10px solid rgba(204, 61, 61, 0.9);
+      padding-left: 0; }
     .dropdown.menu li:hover a, .dropdown.menu li.voted a {
       color: #fff; }
     .dropdown.menu li a {
