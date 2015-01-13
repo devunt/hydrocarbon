@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^u/(?P<user>\d+)/', include('board.urls.user')),
     url(r'^b/(?P<board>\w+)/', include('board.urls.board')),
     url(r'^(?P<pk>\d+)/', include('board.urls.post')),
-    url(r'^$', IndexView.as_view()),
+    url(r'^$', IndexView.as_view(), name='index'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler403 = curry(permission_denied, template_name='errors/403.html')
