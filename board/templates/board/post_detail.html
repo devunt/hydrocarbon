@@ -5,7 +5,13 @@
 {% load intcomma from humanize %}
 
 {% block title %}{{ post.title }} - {{ block.super }}{% endblock %}
-{% block href_back %}{% url 'board_post_list' board.slug %}{% endblock %}
+{% block href_back %}
+{% if post.announcement %}
+	{% url 'index' %}
+{% else %}
+	{% url 'board_post_list' board.slug %}
+{% endif %}
+{% endblock %}
 
 {% block head %}
 	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
