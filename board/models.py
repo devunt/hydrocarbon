@@ -1,6 +1,7 @@
 from hashlib import sha224
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.core.validators import MinLengthValidator
 from django.db import models
@@ -220,7 +221,6 @@ class FileAttachment(models.Model):
 class Notification(models.Model):
     from_user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='sent_notifications')
     from_onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='sent_notification')
-    ipaddress = models.GenericIPAddressField(protocol='IPv4')
     to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='_notifications')
     data = JSONField()
     created_time = models.DateTimeField(auto_now_add=True)
@@ -229,7 +229,7 @@ class Notification(models.Model):
     @classmethod
     def create(cls, from_user, to_user, data, **kwargs):
         notification = cls(**kwargs)
-        if isinstance(from_user, settings.AUTH_USER_MODEL):
+        if isinstance(from_user, get_user_model()):
             notification.from_user = from_user
         elif isinstance(from_user, OneTimeUser):
             notification.from_onetime_user = from_user

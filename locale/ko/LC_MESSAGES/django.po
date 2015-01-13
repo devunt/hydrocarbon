@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-13 11:54+0900\n"
+"POT-Creation-Date: 2015-01-13 13:22+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,6 +242,15 @@ msgstr[0] ""
 #: board/mixins.py:96
 msgid "Wrong password"
 msgstr "잘못된 비밀번호입니다"
+
+#: board/signals.py:23
+msgid "New site announcement"
+msgstr "새 사이트 공지"
+
+#: board/signals.py:24
+msgid ""
+"Welcome to herocomics! We strongly recommend you read the announcements."
+msgstr "히어로코믹스에 오신 것을 환영합니다! 한번 공지사항부터 읽어보시는 것은 어떨까요?"
 
 #: board/templates/account/delete.html:4 board/templates/account/delete.html:6
 msgid "Delete Account"

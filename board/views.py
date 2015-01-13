@@ -480,7 +480,6 @@ class CommentAjaxView(AjaxMixin, View):
         contents = request.POST.get('contents')
 
         c = Comment()
-        n = Notification()
         ndata = treedict()
 
         if target_type == 'p':
@@ -510,7 +509,7 @@ class CommentAjaxView(AjaxMixin, View):
 
         if request.user.is_authenticated():
             c.user = request.user
-            n.from_user = request.user
+            from_user = request.user
         else:
             ot_user = OneTimeUser()
             ot_user.nick = request.POST.get('ot_nick')
@@ -524,19 +523,16 @@ class CommentAjaxView(AjaxMixin, View):
                 ot_user.password = make_password(ot_user.password)
                 ot_user.save()
                 c.onetime_user = ot_user
-                n.from_onetime_user = ot_user
+                from_user = ot_user
 
         c.ipaddress = request.META['REMOTE_ADDR']
         c.contents = contents
         c.save()
 
-        if (to_user is not None) and (n.from_user != to_user):
+        if (to_user is not None) and (from_user != to_user):
             ndata['url'] = c.get_absolute_url()
             ndata['text'] = c.contents
-            n.to_user = to_user
-            n.data = ndata
-            n.ipaddress = request.META['REMOTE_ADDR']
-            n.save()
+            Notification.create(from_user, to_user, ndata)
 
         qdict = QueryDict('', mutable=True)
         qdict.update({
