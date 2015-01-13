@@ -1661,6 +1661,8 @@ html body .froala-element {
   html body .froala-element iframe {
     border: 0;
     margin: 10px auto; }
+  html body .froala-element ul, html body .froala-element ol {
+    margin: 10px 0; }
 
 html body .froala-editor {
   font-family: "NanumGothic"; }
