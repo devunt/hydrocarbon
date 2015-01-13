@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password, make_password
-from django.core.exceptions import ValidationError
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import get_object_or_404, redirect
@@ -125,6 +125,12 @@ class UserCommentListView(UserURLMixin, ListView):
 class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
     model = Post
     form_class = PostForm
+
+    def dispatch(self, request, *args, **kwargs):
+        board = Board.objects.filter(slug=kwargs['board']).first()
+        if (board is not None) and (board.type == Board.TYPE_ANNOUNCEMENT) and (not request.user.is_staff):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         qdict = QueryDict('', mutable=True)
