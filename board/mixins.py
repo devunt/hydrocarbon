@@ -149,7 +149,10 @@ class BPostListMixin(PostListMixin):
     template_name = 'board/postlist/with_board.html'
 
     def get_base_queryset(self):
-        pqs = Post.objects.filter(board=self.board, announcement=None)
+        if self.board.type == Board.TYPE_ANNOUNCEMENT:
+            pqs = Post.objects.filter(board=self.board)
+        else:
+            pqs = Post.objects.filter(board=self.board, announcement=None)
         return pqs
 
     def get_context_data(self, **kwargs):
