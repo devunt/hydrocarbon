@@ -70,8 +70,10 @@
 			</form>
 		</div>
 	</div>
+	{% if board.type == board.TYPE_ANNOUNCEMENT %}
 	<div class="right">
 		<a href="{% url 'board_post_create' board.slug %}" class="button blue">{% trans "New post" %}</a>
 	</div>
+	{% endif %}
 </div>
 {% endblock %}
