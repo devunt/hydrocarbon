@@ -43,7 +43,7 @@
 			<div class="right">
 				{% if user.is_authenticated %}
 				<div class="dropdown container menu-notifications">
-					{% if user.unread_notifications.count and not user.unread_notifications.count > user.recent_notifications.count %}
+					{% if not user.unread_notifications.count > user.recent_notifications.count %}
 					<a href="#" id="notification-mark" class="handle">					
 					{% else %}
 					<a href="{% url 'notification' %}" id="notification-mark" class="handle">
@@ -58,7 +58,7 @@
 							{% endif %}
 						</span>
 					</a>
-					{% if user.unread_notifications.count and not user.unread_notifications.count > user.recent_notifications.count %}
+					{% if not user.unread_notifications.count > user.recent_notifications.count %}
 						<div class="dropdown menu">
 							<a href="#" class="close">{% trans "Close" %}</a>
 							<div class="tip top"><span></span></div>
