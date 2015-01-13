@@ -68,7 +68,7 @@ ELASTICSEARCH_INDEX_SETTINGS = {
                         'type': 'custom',
                         'char_filter': 'html_strip',
                         'tokenizer': 'korean_query_tokenizer',
-                        'filter' : 'trim',
+                        'filter': 'trim',
                     },
                 },
                 'tokenizer': {

@@ -1,6 +1,7 @@
 from hashlib import sha224
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.core.validators import MinLengthValidator
 from django.db import models
@@ -9,6 +10,7 @@ from django.db.models.sql import aggregates as sql_aggregates
 from django.utils import timezone
 from custom_user.models import AbstractEmailUser
 from froala_editor.fields import FroalaField
+from jsonfield import JSONField
 
 from board.utils import clean_html, get_upload_path, normalize
 
@@ -46,6 +48,18 @@ class User(AbstractEmailUser):
         }
         return votes
 
+    @property
+    def unread_notifications(self):
+        return self._notifications.filter(checked_time=None)
+
+    @property
+    def recent_notifications(self):
+        return self.all_notifications[:10]
+
+    @property
+    def all_notifications(self):
+        return self._notifications.all()
+
     def __str__(self):
         return self.nickname
 
@@ -62,8 +76,15 @@ class OneTimeUser(models.Model):
 
 
 class Board(models.Model):
+    TYPE_ANNOUNCEMENT = 1
+    TYPE_LIST = 2
+    TYPE_CHOICES = (
+        (TYPE_ANNOUNCEMENT, 'Announcement board'),
+        (TYPE_LIST, 'List type'),
+    )
     name = models.CharField(max_length=16)
     slug = models.SlugField()
+    type = models.PositiveSmallIntegerField(choices=TYPE_CHOICES, default=TYPE_LIST)
 
     def __str__(self):
         return self.name
@@ -165,6 +186,9 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
         self.contents = clean_html(self.contents)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return (reverse('post_detail', kwargs={'pk': self.post.id}) + '#c{0}'.format(self.id))
+
     class Meta:
         ordering = ['-created_time']
 
@@ -181,6 +205,7 @@ class Vote(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='_votes', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
     vote = models.SmallIntegerField(choices=VOTE_CHOICES)
+    created_time = models.DateTimeField(auto_now_add=True)
 
 
 class Announcement(models.Model):
@@ -198,3 +223,31 @@ class FileAttachment(models.Model):
     name = models.CharField(max_length=128)
     file = models.FileField(max_length=256, upload_to=get_upload_path)
     checksum = models.CharField(max_length=32, unique=True)
+
+
+class Notification(models.Model):
+    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='sent_notifications')
+    from_onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='sent_notification')
+    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='_notifications')
+    data = JSONField()
+    created_time = models.DateTimeField(auto_now_add=True)
+    checked_time = models.DateTimeField(blank=True, null=True)
+
+    @classmethod
+    def create(cls, from_user, to_user, data, **kwargs):
+        notification = cls(**kwargs)
+        if isinstance(from_user, get_user_model()):
+            notification.from_user = from_user
+        elif isinstance(from_user, OneTimeUser):
+            notification.from_onetime_user = from_user
+        notification.to_user = to_user
+        notification.data = data
+        notification.save()
+        return notification
+
+    @staticmethod
+    def set_as_checked(user):
+        user.unread_notifications.update(checked_time=timezone.now())
+
+    class Meta:
+        ordering = ['-created_time']

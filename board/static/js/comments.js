@@ -258,6 +258,7 @@ $(function() {
 	$('.comments-list')
 		.on('keypress', '.modify, .write', function(e) {
 			if(e.ctrlKey && (e.which == 10 || e.which == 13)) {
+				$(this).find('.froala-element.f-basic').blur();
 				$(this).find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;

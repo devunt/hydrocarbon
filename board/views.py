@@ -4,8 +4,9 @@ from hashlib import md5
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password, make_password
-from django.core.exceptions import ValidationError
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse, QueryDict
 from django.shortcuts import get_object_or_404, redirect
@@ -22,8 +23,8 @@ from haystack.query import SearchQuerySet
 
 from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
-from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, OneTimeUser, Post, Tag, User, Vote
-from board.utils import is_empty_html, normalize
+from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
+from board.utils import is_empty_html, normalize, replace_tags_to_text, treedict, truncate_chars
 
 
 class IndexView(View):
@@ -83,6 +84,20 @@ class HCSettingsView(SettingsView):
         user.save()
 
 
+class NotificationView(ListView):
+    model = Notification
+    template_name = 'user/notification.html'
+    paginate_by = 20
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        Notification.set_as_checked(request.user)
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return self.request.user.all_notifications.all()
+
+
 class UserProfileView(UserURLMixin, DetailView):
     model = User
     context_object_name = 'u'
@@ -110,6 +125,12 @@ class UserCommentListView(UserURLMixin, ListView):
 class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
     model = Post
     form_class = PostForm
+
+    def dispatch(self, request, *args, **kwargs):
+        board = Board.objects.filter(slug=kwargs['board']).first()
+        if (board is not None) and (board.type == Board.TYPE_ANNOUNCEMENT) and (not request.user.is_staff):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         qdict = QueryDict('', mutable=True)
@@ -295,6 +316,7 @@ class PostListDetailView(BPostListMixin, ListView):
     def get_context_data(self, **kwargs):
         return super(PostListMixin, self).get_context_data(**kwargs)
 
+
 class PostDetailView(DetailView):
     model = Post
 
@@ -461,10 +483,17 @@ class CommentAjaxView(AjaxMixin, View):
 
     def post(self, request, *args, **kwargs):
         target_type = request.POST.get('type')
+        contents = request.POST.get('contents')
+
         c = Comment()
+        ndata = treedict()
+
         if target_type == 'p':
             try:
                 c.post = Post.objects.get(pk=self.pk)
+                to_user = c.post.user
+                ndata['type'] = 'COMMENT_ON_POST'
+                ndata['message'] = _('Comment on "%(post)s"') % {'post': truncate_chars(c.post.title, 12)}
             except Post.DoesNotExist:
                 return self.not_found()
         elif target_type == 'c':
@@ -473,15 +502,20 @@ class CommentAjaxView(AjaxMixin, View):
                 c.post = c.comment.post
                 if c.depth > settings.BOARD_COMMENT_MAX_DEPTH:
                     return self.bad_request()
+                to_user = c.comment.user
+                ndata['type'] = 'COMMENT_ON_COMMENT'
+                ndata['message'] = _('Comment on your comment of "%(post)s"') % {'post': truncate_chars(c.post.title, 8)}
             except Comment.DoesNotExist:
                 return self.not_found()
         else:
             return self.bad_request()
-        contents = request.POST.get('contents')
+
         if is_empty_html(contents):
             return JsonResponse({'status': 'badrequest', 'error_fields': ['contents']}, status=400)
+
         if request.user.is_authenticated():
             c.user = request.user
+            from_user = request.user
         else:
             ot_user = OneTimeUser()
             ot_user.nick = request.POST.get('ot_nick')
@@ -495,9 +529,18 @@ class CommentAjaxView(AjaxMixin, View):
                 ot_user.password = make_password(ot_user.password)
                 ot_user.save()
                 c.onetime_user = ot_user
+                from_user = ot_user
+
         c.ipaddress = request.META['REMOTE_ADDR']
-        c.contents = request.POST.get('contents')
+        c.contents = contents
         c.save()
+
+        if (to_user is not None) and (from_user != to_user):
+            ndata['url'] = c.get_absolute_url()
+            cleaned_text = replace_tags_to_text(c.contents)
+            ndata['text'] = truncate_chars(cleaned_text, 50)
+            Notification.create(from_user, to_user, ndata)
+
         qdict = QueryDict('', mutable=True)
         qdict.update({
             'type': 'c',
@@ -508,6 +551,7 @@ class CommentAjaxView(AjaxMixin, View):
         r.POST = qdict
         v = VoteAjaxView()
         v.post(r)
+
         return self.success()
 
     def put(self, request, *args, **kwargs):
@@ -583,6 +627,14 @@ class FileUploadAjaxView(AjaxMixin, View):
             attachment.file = f
             attachment.save()
         return JsonResponse({'link': attachment.file.url})
+
+
+class NotificationAjaxView(AjaxMixin, View):
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return self.permission_denied()
+        Notification.set_as_checked(request.user)
+        return self.success()
 
 
 class JSConstantsView(TemplateView):

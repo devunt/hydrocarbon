@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+// 	
+// 	notification.scss
+// 		notification page specific styles
+// 
+
+.section.notifications {
+	.notification-list {
+		.notification {
+			a { padding:10px 10%; }
+		}
+	}
+}

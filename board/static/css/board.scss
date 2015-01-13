@@ -23,6 +23,7 @@
 	}
 
 	.post-list { border-top:1px solid $grey-95; }
+	.post-list li { list-style:none; }
 	&.tab .post-list { border:0; }
 
 	li.empty { font-size:$font-size; line-height:20px; list-style:none; padding:15px 0; text-align:center; }

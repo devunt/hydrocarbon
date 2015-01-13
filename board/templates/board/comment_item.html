@@ -23,16 +23,18 @@
 							<div class="dropdown menu">
 								<a href="#" class="close">{% trans "Close" %}</a>
 								<div class="tip top"><span></span></div>
-								<ul>
-									<li>
-										<a href="{% url 'post_detail' item.post.id %}#c{{ item.id }}">
-											<span class="label meta next">
-												<span class="icon"></span>
-												<span class="text">{% trans "View the original post" %}</span>
-											</span>
-										</a>
-									</li>
-								</ul>
+								<div class="wrap">
+									<ul>
+										<li>
+											<a href="{% url 'post_detail' item.post.id %}#c{{ item.id }}">
+												<span class="label meta next">
+													<span class="icon"></span>
+													<span class="text">{% trans "View the original post" %}</span>
+												</span>
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>

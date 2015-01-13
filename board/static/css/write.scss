@@ -27,7 +27,18 @@
 		}
 
 		.froala-box {
-			.froala-editor { background:$grey-90; padding:0 5%; }
+			.froala-editor {
+				background:$grey-90; box-sizing:border-box;
+				.bttn-wrapper { padding:0 5%; }
+				&.fixed { top:50px; width:720px; position:fixed; }
+				.no-touch &.fixed { opacity:.9; transition:opacity .2s ease; }
+				.no-touch &.fixed:hover { opacity:1; }
+
+				@media all and (max-width: $large) {
+					&.fixed { width:100%; }
+				}
+			}
+
 			.froala-element.f-basic {
 				min-height:300px; padding:20px 12.5%;
 				@media all and (max-width: $medium) { padding:20px 5% !important; }
