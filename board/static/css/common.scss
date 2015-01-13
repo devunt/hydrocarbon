@@ -320,6 +320,7 @@ a.anchor { top:-60px; height:0; width:0; display:block; position:relative; }
 				.author { opacity:.8; }
 				.timestamp, .message { opacity:.4; }
 			}
+			.article { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 		}
 		.read { opacity:.6; }
 

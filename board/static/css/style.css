@@ -542,6 +542,10 @@ a.anchor {
         opacity: .8; }
       .notification-list .notification a .header .timestamp, .notification-list .notification a .header .message {
         opacity: .4; }
+    .notification-list .notification a .article {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
   .notification-list .notification .read {
     opacity: .6; }
   .notification-list .notification:hover {
