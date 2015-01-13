@@ -185,6 +185,10 @@ form > .errorlist {
 				&.subtitles { background:$red; }
 			}
 
+			&.scanlation a { border-left:10px solid $blue; padding-left:0; }
+			&.news a { border-left:10px solid $green; padding-left:0; }
+			&.subtitles a { border-left:10px solid $red; padding-left:0;}
+
 			&:hover a, &.voted a { color:$white; }
 
 			a { width:100%; box-sizing:border-box; display:inline-block; font-size:$font-size; line-height:20px; padding:10px; }

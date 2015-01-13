@@ -1,0 +1,5 @@
+{% extends 'error/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "No user found" %} :: {{ block.super }}{% endblock %}
+{% block message %}{% trans "There's no such user." %}{% endblock %}

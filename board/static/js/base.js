@@ -36,7 +36,6 @@ var $overlay,
 		'type': 'POST',
 		'minChars': 2,
 		'lookupLimit': 5,
-		'preserveInput': true,
 		'formatResult': function(suggestion, currentValue) {
 			return '<span class="left">' + $.Autocomplete.formatResult(suggestion, currentValue) + '</span><span class="right">' + suggestion.data + '</span>';
 		},

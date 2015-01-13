@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="notice error">
+	<img src="{% static "img/dead_2x.png" %}" alt="Death of the Endless" title="Death of the Endless\n&trade; &amp; &copy; DC Comics. All rights reserved.">
+	<p>
+		{% block message %}{% trans "Whoops! Something went wrong..." %}{% endblock %}<br>
+		{% trans "Returning to the main page..." %}
+	</p>
+</div>
+
+<script> window.setTimeout(function() { window.location = window.location.protocol+'//'+window.location.host; }, 3000); </script>
+
+{% endblock content %}

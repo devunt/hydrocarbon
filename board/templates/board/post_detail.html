@@ -249,6 +249,7 @@
 				</span>
 			</a>
 		</div>
+		{% if board.type != board.TYPE_ANNOUNCEMENT or user.is_staff %}
 		<div class="right">
 			{% if user.is_staff or user == post.user or not post.user %}
 				<a href="{% url 'post_delete' post.id %}" class="button">{% trans "Delete" %}</a>
@@ -256,6 +257,7 @@
 			{% endif %}
 			<a href="{% url 'board_post_create' board.slug %}" class="button blue">{% trans "New post" %}</a>
 		</div>
+		{% endif %}
 	</div>
 </div>
 
