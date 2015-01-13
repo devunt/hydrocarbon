@@ -177,7 +177,7 @@ def _filter_img_attr(name, value):
         return True
     if name == 'class':
         classes = value.split(' ')
-        if set(classes) <= {'th', 'fr-fil', 'fr-fin', 'fr-fir'}:
+        if set(classes) <= {'fr-tag', 'fr-fil', 'fr-fin', 'fr-fir'}:
             return True
     return False
 
