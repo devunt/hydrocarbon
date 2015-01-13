@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-13 13:22+0900\n"
+"POT-Creation-Date: 2015-01-13 17:10+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -250,7 +250,9 @@ msgstr "새 사이트 공지"
 #: board/signals.py:24
 msgid ""
 "Welcome to herocomics! We strongly recommend you read the announcements."
-msgstr "히어로코믹스에 오신 것을 환영합니다! 한번 공지사항부터 읽어보시는 것은 어떨까요?"
+msgstr ""
+"히어로코믹스에 오신 것을 환영합니다! 한번 공지사항부터 읽어보시는 것은 어떨까"
+"요?"
 
 #: board/templates/account/delete.html:4 board/templates/account/delete.html:6
 msgid "Delete Account"
@@ -540,7 +542,7 @@ msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력
 
 #: board/templates/board/post_confirm_delete.html:28
 #: board/templates/board/post_detail.html:189
-#: board/templates/board/post_detail.html:254
+#: board/templates/board/post_detail.html:255
 msgid "Delete"
 msgstr "삭제"
 
@@ -600,7 +602,7 @@ msgid "Reply"
 msgstr "답글"
 
 #: board/templates/board/post_detail.html:181
-#: board/templates/board/post_detail.html:255
+#: board/templates/board/post_detail.html:256
 msgid "Modify"
 msgstr "수정"
 
@@ -622,11 +624,11 @@ msgstr "목록"
 msgid "Top posts"
 msgstr "베스트"
 
-#: board/templates/board/post_detail.html:257
+#: board/templates/board/post_detail.html:258
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
 #: board/templates/board/post_form.html:101
-#: board/templates/board/postlist/with_board.html:74
+#: board/templates/board/postlist/with_board.html:75
 msgid "New post"
 msgstr "글쓰기"
 
@@ -725,25 +727,37 @@ msgstr "검색"
 msgid "Title + Article"
 msgstr "제목 + 본문"
 
-#: board/templates/errors/403.html:5
+#: board/templates/errors/403.html:4
 msgid "No permission"
 msgstr "권한 없음"
 
-#: board/templates/errors/403.html:12
+#: board/templates/errors/403.html:5
 msgid "You don't have the permission."
 msgstr "권한이 없습니다."
 
-#: board/templates/errors/403.html:13 board/templates/errors/board_404.html:13
+#: board/templates/errors/base.html:10
+msgid "Whoops! Something went wrong..."
+msgstr ""
+
+#: board/templates/errors/base.html:11
 msgid "Returning to the main page..."
 msgstr "잠시 후 첫 화면으로 돌아갑니다..."
 
-#: board/templates/errors/board_404.html:5
+#: board/templates/errors/board_404.html:4
 msgid "No board found"
 msgstr "게시판 없음"
 
-#: board/templates/errors/board_404.html:12
+#: board/templates/errors/board_404.html:5
 msgid "There's no such board."
 msgstr "찾으시는 게시판이 없습니다."
+
+#: board/templates/errors/user_404.html:4
+msgid "No user found"
+msgstr "사용자 없음"
+
+#: board/templates/errors/user_404.html:5
+msgid "There's no such user."
+msgstr "찾으시는 사용자가 없습니다."
 
 #: board/templates/user/comment_list.html:4
 #: board/templates/user/comment_list.html:6
@@ -782,16 +796,16 @@ msgstr "이메일 주소를 인증해주세요."
 msgid "Account restored."
 msgstr "계정이 복구되었습니다."
 
-#: board/views.py:204
+#: board/views.py:210
 msgid "Deleted"
 msgstr "삭제되었습니다"
 
-#: board/views.py:491
+#: board/views.py:497
 #, python-format
 msgid "Comment on \"%(post)s\""
 msgstr "\"%(post)s\"에 댓글"
 
-#: board/views.py:502
+#: board/views.py:508
 #, python-format
 msgid "Comment on your comment of \"%(post)s\""
 msgstr "\"%(post)s\"의 댓글에 대댓글"
