@@ -515,7 +515,7 @@ msgstr "내 정보"
 
 #: board/templates/base.html:184
 msgid "This site doesn't support browser older than IE9."
-msgstr "이 사이트는 IE9 이하 버전의 웹 브라우저를 지원하지 않습니다."
+msgstr "이 사이트는 IE9 이전 버전의 웹 브라우저를 지원하지 않습니다."
 
 #: board/templates/base.html:185
 msgid "How about using more safe, fast, up-to-date and user-friendly browsers?"
