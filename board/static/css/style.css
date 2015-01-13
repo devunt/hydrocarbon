@@ -542,6 +542,10 @@ a.anchor {
         opacity: .8; }
       .notification-list .notification a .header .timestamp, .notification-list .notification a .header .message {
         opacity: .4; }
+    .notification-list .notification a .article {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
   .notification-list .notification .read {
     opacity: .6; }
   .notification-list .notification:hover {
@@ -1614,7 +1618,8 @@ html body .froala-popup button.fr-p-bttn.f-ok {
   background: #3d9ccc; }
 
 html body .froala-element {
-  min-height: 0; }
+  min-height: 0;
+  line-height: 1.6em; }
   html body .froala-element *:last-child {
     margin-bottom: 0; }
   html body .froala-element a {

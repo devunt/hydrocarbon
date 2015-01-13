@@ -21,7 +21,7 @@ html body .froala-popup {
 }
 
 html body .froala-element {
-	min-height:0;
+	min-height:0; line-height:1.6em;
 	*:last-child { margin-bottom:0; }
 
 	a { color:$blue-base; }
