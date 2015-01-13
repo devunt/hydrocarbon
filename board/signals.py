@@ -18,9 +18,9 @@ def email_confirmation_sent_callback(sender, confirmation, **kwargs):
 def user_signed_up_callback(sender, user, form, **kwargs):
     user.is_active = True
     user.save()
-    ndata = treedict()
-    ndata['type'] = 'SITE_ANNOUNCEMENT'
-    ndata['message']  = _('New site announcement')
-    ndata['text'] = _('Welcome to herocomics! We strongly recommend you read the announcements.')
-    ndata['url'] = Board.objects.get(slug='notice').get_absolute_url()
+    data = treedict()
+    data['type'] = 'SITE_ANNOUNCEMENT'
+    data['message']  = _('New site announcement')
+    data['text'] = _('Welcome to herocomics! We strongly recommend you read the announcements.')
+    data['url'] = Board.objects.get(slug='notice').get_absolute_url()
     Notification.create(None, user, data)
