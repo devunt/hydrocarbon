@@ -156,9 +156,10 @@ class BPostListMixin(PostListMixin):
         return pqs
 
     def get_context_data(self, **kwargs):
-        if self.board.type != Board.TYPE_ANNOUNCEMENT:
+        kwargs = super().get_context_data(**kwargs)
+        if (kwargs['page_obj'].number == 1) and (self.board.type != Board.TYPE_ANNOUNCEMENT):
             aqs = Announcement.objects.filter(Q(boards=self.board) | Q(boards=None))
             aqs = aqs.order_by('-post__created_time')
             announcement_list = [announcement.post for announcement in aqs]
             kwargs['announcement_list'] = announcement_list
-        return super().get_context_data(**kwargs)
+        return kwargs
