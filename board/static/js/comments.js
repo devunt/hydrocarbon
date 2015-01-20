@@ -40,10 +40,10 @@ function renderComment($container, v, depth, hidden) {
 				.addClass('guest')
 				.attr('title', v.iphash);
 	} else {
-		 if(v.author == user.nick && user.authenticated) $c.addClass('owned');
-		 $c.find('a.meta.author')
+		if(v.author == user.nick && user.authenticated) $c.addClass('owned');
+		$c.find('a.meta.author')
 			.attr('href', v.author_url)
-		 	.attr('title', (v.votes.total >= 0) ? '+' : '' + v.author_total_score);
+			.attr('title', ((v.votes.total >= 0) ? '+' : '') + v.author_total_score);
 	}
 
 	if(user.c3RhZmY) $c.find('.manipulate').show();
