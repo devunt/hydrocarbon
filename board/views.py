@@ -317,7 +317,7 @@ class PostListDetailView(BPostListMixin, ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        return super(PostListMixin, self).get_context_data(**kwargs)
+        return PostListMixin.get_context_data(self, **kwargs)
 
 
 class PostDetailView(DetailView):
