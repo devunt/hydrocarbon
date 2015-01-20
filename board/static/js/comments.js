@@ -43,7 +43,7 @@ function renderComment($container, v, depth, hidden) {
 		 if(v.author == user.nick && user.authenticated) $c.addClass('owned');
 		 $c.find('a.meta.author')
 			.attr('href', v.author_url)
-		 	.attr('title', '+' + v.author_total_score);
+		 	.attr('title', (v.votes.total >= 0) ? '+' : '' + v.author_total_score);
 	}
 
 	if(user.c3RhZmY) $c.find('.manipulate').show();
@@ -73,7 +73,7 @@ function renderComment($container, v, depth, hidden) {
 		.attr('title', date.toLocaleString('ko-kr', { hour12: false }))
 		.text($.timeago(v.created_time));
 
-	if(v.votes.total >= 0 ) v.votes.total = '+' + v.votes.total;
+	if(v.votes.total >= 0) v.votes.total = '+' + v.votes.total;
 	
 	$c.find('.meta.score')
 		.attr('title', '+'+v.votes.upvote+' / -'+v.votes.downvote)
