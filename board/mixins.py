@@ -115,8 +115,7 @@ class PostListMixin:
         if o is None:
             o = '+ct'
         d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}
-        order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
-        request.session['post_list_order_by'] = order_by
+        self.order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
         return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -124,22 +123,20 @@ class PostListMixin:
             pqs = self.get_base_queryset()
         else:
             pqs = super().get_queryset()
-        order_by = self.request.session.get('post_list_order_by')
         pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
-        pqs = pqs.order_by(order_by, '-created_time')
+        pqs = pqs.order_by(self.order_by, '-created_time')
         if hasattr(self, 'queryset_post_filter'):
             pqs = self.queryset_post_filter(pqs)
         return pqs
 
     def get_context_data(self, **kwargs):
-        order_by = self.request.session.get('post_list_order_by')
         odict = dict()
-        if order_by.startswith('-'):
+        if self.order_by.startswith('-'):
             odict['order'] = 'asc'
-            odict['column'] = order_by[1:]
+            odict['column'] = self.order_by[1:]
         else:
             odict['order'] = 'desc'
-            odict['column'] = order_by
+            odict['column'] = self.order_by
         kwargs['order_by'] = odict
         kwargs['BOARD_POST_BLIND_VOTES'] = settings.BOARD_POST_BLIND_VOTES
         return super().get_context_data(**kwargs)
