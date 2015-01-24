@@ -460,7 +460,7 @@ msgid ""
 "used. Please request a <a href=\"%(url)s\">new password reset</a>."
 msgstr ""
 "사용하신 비밀번호 초기화 링크는 이미 사용되었거나 한 이유로 인해 유효하지 않"
-"습니다. <a href=\"%(url)s\">새로 비밀번호 초기화</a>를신청해 주세요."
+"습니다. <a href=\"%(url)s\">새로 비밀번호 초기화</a>를 신청해주세요."
 
 #: board/templates/account/settings.html:4
 #: board/templates/account/settings.html:5 board/templates/base.html:127
