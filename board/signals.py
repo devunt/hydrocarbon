@@ -1,7 +1,8 @@
 from django.contrib.sessions.models import Session
 from django.dispatch import receiver
 from django.utils.translation import ugettext as _
-from account.signals import email_confirmation_sent, user_signed_up
+from account.models import EmailAddress
+from account.signals import email_confirmation_sent, password_changed, user_signed_up
 
 from board.models import Board, Notification
 from board.utils import treedict
@@ -24,3 +25,11 @@ def user_signed_up_callback(sender, user, form, **kwargs):
     data['text'] = _('Welcome to herocomics! We strongly recommend you read the announcements.')
     data['url'] = Board.objects.get(slug='notice').get_absolute_url()
     Notification.create(None, user, data)
+
+
+@receiver(password_changed)
+def password_changed_callback(sender, user, **kwargs):
+    email = EmailAddress.objects.get_primary(user)
+    if not email.verified:
+        email.verified = True
+    email.save()
