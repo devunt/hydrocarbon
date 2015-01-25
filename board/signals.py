@@ -21,7 +21,7 @@ def user_signed_up_callback(sender, user, form, **kwargs):
     user.save()
     data = treedict()
     data['type'] = 'SITE_ANNOUNCEMENT'
-    data['message']  = _('New site announcement')
+    data['message'] = _('New site announcement')
     data['text'] = _('Welcome to herocomics! We strongly recommend you read the announcements.')
     data['url'] = Board.objects.get(slug='notice').get_absolute_url()
     Notification.create(None, user, data)

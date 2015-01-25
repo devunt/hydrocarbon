@@ -15,13 +15,13 @@ from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
 from django.views.generic.list import ListView
 from account.models import EmailAddress
 from account.views import LoginView, SettingsView, SignupView
 from haystack.query import SearchQuerySet
 
-from board.forms import CommentForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
+from board.forms import CommentForm, EmailConfirmationResendForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
 from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize, replace_tags_to_text, treedict, truncate_chars
@@ -82,6 +82,20 @@ class HCSettingsView(SettingsView):
         user = self.request.user
         user.nickname = form.cleaned_data['nickname']
         user.save()
+
+
+class EmailConfirmationResendView(FormView):
+    template_name = 'account/email_confirmation_resend.html'
+    form_class = EmailConfirmationResendForm
+
+    def form_valid(self, form):
+        email = EmailAddress.objects.get(email__iexact=form.cleaned_data['email'])
+        email.send_confirmation()
+        kwargs = {
+            'request': self.request,
+            'template': 'account/email_confirmation_sent.html',
+        }
+        return self.response_class(**kwargs)
 
 
 class NotificationView(ListView):

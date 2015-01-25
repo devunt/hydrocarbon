@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Resend email confirmation" %} :: {{ block.super }}{% endblock %}
+{% block href_back %}{% url 'account_login' %}{% endblock %}
+{% block pagename %}{% trans "Resend email confirmation" %}{% endblock %}
+
+{% block content %}
+
+{{ form.non_field_errors }}
+<div id="form">
+	<form method="post" action="">
+		{% csrf_token %}
+		<div class="notice">
+			<p>
+				{% blocktrans %}If you didn't receive your confirmation email, please enter your email in the form below and we'll resend you a confirmation email.{% endblocktrans %}
+			</p>
+		</div>
+		<ul>
+			{% for field in form %}
+			<li class="field">
+				<label{% if field.errors %} class="error"{% endif %}><span>{{ field.label }}</span>{{ field }}</label>
+				{{ field.errors }}
+			</li>
+			{% endfor %}
+		</ul>
+
+		<button type="submit" name="resend" class="submit">{% trans "Resend" %}</button>
+	</form>
+</div>
+
+{% endblock %}
