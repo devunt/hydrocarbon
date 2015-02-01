@@ -1386,7 +1386,8 @@ a.anchor {
         .section.board .open .search.button form .scope .dropdown.menu {
           width: 92%;
           right: 0;
-          margin: 0 4%; }
+          margin: -30px 4%;
+          padding: 30px 0; }
           .section.board .open .search.button form .scope .dropdown.menu .tip {
             width: auto;
             padding: 0 40px;
