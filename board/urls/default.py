@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^account/login/$', HCLoginView.as_view(), name='account_login'),
     url(r'^account/signup/$', HCSignupView.as_view(), name='account_signup'),
     url(r'^account/settings/$', HCSettingsView.as_view(), name='account_settings'),
-    url(r'^account/email/resend/$', EmailConfirmationResendView.as_view(), name='account_settings'),
+    url(r'^account/email/resend/$', EmailConfirmationResendView.as_view(), name='account_resend_confirmation_email'),
 
     url(r'^account/', include('account.urls')),
     url(r'^search/', include('haystack.urls')),

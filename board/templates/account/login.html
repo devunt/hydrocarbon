@@ -29,6 +29,7 @@
 	<div class="meta">
 		<p>{% trans "Do you have no account?" %} <a href="{% url 'account_signup' %}">{% trans "Register" %}</a></p>
 		<p>{% trans "Lost your password?" %} <a href="{% url 'account_password_reset' %}">{% trans "Click here" %}</a></p>
+		<p>{% trans "Didn't receive your confirmation email?" %} <a href="{% url 'account_resend_confirmation_email' %}">{% trans "Click here" %}</a></p>
 	</div>
 </div>
 
