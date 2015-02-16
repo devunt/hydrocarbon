@@ -5,7 +5,8 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
-from account.forms import LoginEmailForm, SignupForm, SettingsForm
+from account.forms import LoginEmailForm, PasswordResetForm, SignupForm, SettingsForm
+from account.models import EmailAddress
 
 from board.models import Category, Comment, Post, Tag
 from board.utils import is_empty_html
@@ -90,6 +91,14 @@ class HCSettingsForm(NicknameFormMixin, SettingsForm):
         super().__init__(*args, **kwargs)
         del self.fields['timezone']
         del self.fields['language']
+
+
+class EmailConfirmationResendForm(PasswordResetForm):
+    def clean_email(self):
+        value = super().clean_email()
+        if EmailAddress.objects.get(email__iexact=value).verified:
+            raise forms.ValidationError(_('This email address is already confirmed.'))
+        return value
 
 
 class PostForm(OneTimeUserFormMixin, forms.ModelForm):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-13 17:10+0900\n"
+"POT-Creation-Date: 2015-01-25 20:59+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: board/forms.py:51 board/forms.py:56
+#: board/forms.py:52 board/forms.py:57
 msgid "Nickname"
 msgstr "닉네임"
 
-#: board/forms.py:52 board/forms.py:128 board/i18n_fake.py:8
+#: board/forms.py:53 board/forms.py:137 board/i18n_fake.py:8
 msgid "Password"
 msgstr "비밀번호"
 
-#: board/forms.py:69
+#: board/forms.py:70
 msgid "This nickname is already taken. Please choose another."
 msgstr "이 닉네임은 이미 사용중입니다. 다른 닉네임을 사용해 주세요."
 
-#: board/forms.py:113 board/templates/board/postlist/base.html:29
+#: board/forms.py:100
+msgid "This email address is already confirmed."
+msgstr "이 이메일 주소는 이미 인증되어 있습니다."
+
+#: board/forms.py:122 board/templates/board/postlist/base.html:29
 msgid "Title"
 msgstr "제목"
 
@@ -243,11 +247,11 @@ msgstr[0] ""
 msgid "Wrong password"
 msgstr "잘못된 비밀번호입니다"
 
-#: board/signals.py:23
+#: board/signals.py:24
 msgid "New site announcement"
 msgstr "새 사이트 공지"
 
-#: board/signals.py:24
+#: board/signals.py:25
 msgid ""
 "Welcome to herocomics! We strongly recommend you read the announcements."
 msgstr ""
@@ -348,17 +352,31 @@ msgstr "메일 주소 <b>%(email)s</b>로 인증하시겠습니까?"
 msgid "Confirm"
 msgstr "확인"
 
+#: board/templates/account/email_confirmation_resend.html:4
+#: board/templates/account/email_confirmation_resend.html:6
+#, fuzzy
+msgid "Resend email confirmation"
+msgstr "이메일 인증 재전송"
+
+#: board/templates/account/email_confirmation_resend.html:16
+msgid ""
+"If you didn't receive your confirmation email, please enter your email in "
+"the form below and we'll resend you a confirmation email."
+msgstr ""
+"인증 이메일을 못 받으셨나요? 가입하실 때 사용하셨던 이메일 주소를 입력해주세"
+"요. 인증 이메일을 다시 보내드리겠습니다."
+
+#: board/templates/account/email_confirmation_resend.html:28
+#: board/templates/account/password_reset_sent.html:17
+msgid "Resend"
+msgstr "재발송"
+
 #: board/templates/account/email_confirmation_sent.html:4
 #: board/templates/account/email_confirmation_sent.html:5
 msgid "Activation email sent"
 msgstr "인증 메일 발송됨"
 
 #: board/templates/account/email_confirmation_sent.html:10
-#, python-format
-msgid "Welcome to %(site_name)s!"
-msgstr "%(site_name)s 회원가입을 환영합니다!"
-
-#: board/templates/account/email_confirmation_sent.html:11
 msgid "Please check your email to complete the registration process."
 msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다. 확인해 주세요."
 
@@ -380,9 +398,13 @@ msgstr "회원가입"
 msgid "Lost your password?"
 msgstr "비밀번호를 잃어버리셨나요?"
 
-#: board/templates/account/login.html:31
+#: board/templates/account/login.html:31 board/templates/account/login.html:32
 msgid "Click here"
 msgstr "여기를 클릭하세요."
+
+#: board/templates/account/login.html:32
+msgid "Didn't receive your confirmation email?"
+msgstr "인증 이메일을 못 받으셨나요?"
 
 #: board/templates/account/logout.html:4 board/templates/account/logout.html:5
 #: board/templates/account/logout.html:13 board/templates/base.html:128
@@ -430,10 +452,6 @@ msgid "If you do not receive it within a few minutes, try resending."
 msgstr ""
 "만일 신청하신 후 몇 분 후에도 메일을 받지 못하셨다면 메일을 다시 발송해보세"
 "요."
-
-#: board/templates/account/password_reset_sent.html:17
-msgid "Resend"
-msgstr "재발송"
 
 #: board/templates/account/password_reset_token.html:4
 #: board/templates/account/password_reset_token.html:5
@@ -491,14 +509,14 @@ msgstr ""
 
 #: board/templates/base.html:63 board/templates/base.html.py:119
 #: board/templates/board/comment_item.html:24
-#: board/templates/board/post_detail.html:149
+#: board/templates/board/post_detail.html:155
 #: board/templates/board/postlist/base.html:16
 #: board/templates/board/postlist/with_board.html:37
 #: board/templates/search/search.html:22
 msgid "Close"
 msgstr "닫기"
 
-#: board/templates/base.html:78 board/templates/board/post_detail.html:53
+#: board/templates/base.html:78 board/templates/board/post_detail.html:59
 #: board/templates/board/postlist/item.html:35
 #: board/templates/user/notification.html:21
 msgid "ago"
@@ -541,17 +559,17 @@ msgid "Then enter the password you used."
 msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력해 주세요."
 
 #: board/templates/board/post_confirm_delete.html:28
-#: board/templates/board/post_detail.html:189
-#: board/templates/board/post_detail.html:255
+#: board/templates/board/post_detail.html:195
+#: board/templates/board/post_detail.html:261
 msgid "Delete"
 msgstr "삭제"
 
-#: board/templates/board/post_detail.html:26
+#: board/templates/board/post_detail.html:32
 #: board/templates/board/postlist/item.html:8
 msgid "Notice"
 msgstr "공지"
 
-#: board/templates/board/post_detail.html:58
+#: board/templates/board/post_detail.html:64
 #, python-format
 msgid ""
 "\n"
@@ -562,7 +580,7 @@ msgstr ""
 "\t\t\t\t\t\t\t추천 <span>%(counter)s</span>개\n"
 "\t\t\t\t\t\t"
 
-#: board/templates/board/post_detail.html:66
+#: board/templates/board/post_detail.html:72
 #, python-format
 msgid ""
 "\n"
@@ -573,58 +591,58 @@ msgstr ""
 "\t\t\t\t\t\t\t조회수 <span>%(counter)s</span>\n"
 "\t\t\t\t\t\t"
 
-#: board/templates/board/post_detail.html:84
-#: board/templates/board/post_detail.html:157
+#: board/templates/board/post_detail.html:90
+#: board/templates/board/post_detail.html:163
 msgid "Upvote"
 msgstr "추천"
 
-#: board/templates/board/post_detail.html:88
-#: board/templates/board/post_detail.html:165
+#: board/templates/board/post_detail.html:94
+#: board/templates/board/post_detail.html:171
 msgid "Downvote"
 msgstr "비추천"
 
-#: board/templates/board/post_detail.html:108
+#: board/templates/board/post_detail.html:114
 #, python-format
 msgid "There is <span>%(counter)s</span> comment."
 msgid_plural "There are <span>%(counter)s</span> comments."
 msgstr[0] "<span>%(counter)s</span>개의 댓글이 달려있습니다."
 
-#: board/templates/board/post_detail.html:114
+#: board/templates/board/post_detail.html:120
 msgid "Refresh"
 msgstr "새로고침"
 
-#: board/templates/board/post_detail.html:134
+#: board/templates/board/post_detail.html:140
 msgid "Hidden"
 msgstr "숨겨짐"
 
-#: board/templates/board/post_detail.html:173
+#: board/templates/board/post_detail.html:179
 msgid "Reply"
 msgstr "답글"
 
-#: board/templates/board/post_detail.html:181
-#: board/templates/board/post_detail.html:256
+#: board/templates/board/post_detail.html:187
+#: board/templates/board/post_detail.html:262
 msgid "Modify"
 msgstr "수정"
 
-#: board/templates/board/post_detail.html:220
+#: board/templates/board/post_detail.html:226
 msgid "Cancel"
 msgstr "취소"
 
-#: board/templates/board/post_detail.html:221
+#: board/templates/board/post_detail.html:227
 msgid "Submit comment"
 msgstr "댓글 달기"
 
-#: board/templates/board/post_detail.html:240
+#: board/templates/board/post_detail.html:246
 #: board/templates/board/postlist/with_board.html:16
 msgid "List"
 msgstr "목록"
 
-#: board/templates/board/post_detail.html:248
+#: board/templates/board/post_detail.html:254
 #: board/templates/board/postlist/with_board.html:24
 msgid "Top posts"
 msgstr "베스트"
 
-#: board/templates/board/post_detail.html:258
+#: board/templates/board/post_detail.html:264
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
 #: board/templates/board/post_form.html:101
@@ -796,16 +814,16 @@ msgstr "이메일 주소를 인증해주세요."
 msgid "Account restored."
 msgstr "계정이 복구되었습니다."
 
-#: board/views.py:210
+#: board/views.py:224
 msgid "Deleted"
 msgstr "삭제되었습니다"
 
-#: board/views.py:497
+#: board/views.py:513
 #, python-format
 msgid "Comment on \"%(post)s\""
 msgstr "\"%(post)s\"에 댓글"
 
-#: board/views.py:508
+#: board/views.py:524
 #, python-format
 msgid "Comment on your comment of \"%(post)s\""
 msgstr "\"%(post)s\"의 댓글에 대댓글"

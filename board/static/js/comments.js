@@ -62,7 +62,7 @@ function renderComment($container, v, depth, hidden) {
 		}
 	}
 
-	if(depth >= COMMENT_MAX_DEPTH) $c.find('div.reply').remove();
+	if(depth >= COMMENT_MAX_DEPTH) $c.find('.dropdown.menu li.reply').remove();
 
 	if(!hidden && v.votes.total <= COMMENT_BLIND_VOTES) $c.addClass('hidden');
 
@@ -265,7 +265,7 @@ $(function() {
 			}
 		})
 		.on('click', ':not(.prerender) .header', function(e) {
-			if(!$(e.target).closest('a').length) {
+			if(!$(e.target).closest('a, .dropdown').length) {
 				e.preventDefault();
 				toggleComments('toggle', this);
 			}

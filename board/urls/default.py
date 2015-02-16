@@ -5,13 +5,14 @@ from django.utils.functional import curry
 from django.views.defaults import permission_denied
 
 from board.views import HCLoginView, HCSettingsView, HCSignupView
-from board.views import IndexView, JSConstantsView, NotificationView, PostListByTagView
+from board.views import EmailConfirmationResendView, IndexView, JSConstantsView, NotificationView, PostListByTagView
 
 
 urlpatterns = patterns('',
     url(r'^account/login/$', HCLoginView.as_view(), name='account_login'),
     url(r'^account/signup/$', HCSignupView.as_view(), name='account_signup'),
     url(r'^account/settings/$', HCSettingsView.as_view(), name='account_settings'),
+    url(r'^account/email/resend/$', EmailConfirmationResendView.as_view(), name='account_resend_confirmation_email'),
 
     url(r'^account/', include('account.urls')),
     url(r'^search/', include('haystack.urls')),
