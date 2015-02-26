@@ -214,13 +214,13 @@ class Announcement(models.Model):
 
 
 class ImageAttachment(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=250)
     file = models.ImageField(max_length=256, upload_to=get_upload_path)
     checksum = models.CharField(max_length=32, unique=True)
 
 
 class FileAttachment(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=250)
     file = models.FileField(max_length=256, upload_to=get_upload_path)
     checksum = models.CharField(max_length=32, unique=True)
 
