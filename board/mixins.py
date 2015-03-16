@@ -109,6 +109,7 @@ class PermissionCheckMixin:
 class PostListMixin:
     template_name = 'board/postlist/base.html'
     paginate_by = 20
+    order_by = 'created_time'
 
     def get(self, request, *args, **kwargs):
         o = request.GET.get('o')
