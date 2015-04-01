@@ -197,7 +197,7 @@ msgstr[0] "%d년"
 #, python-format
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] "%d월"
+msgstr[0] "%d개월"
 
 #: board/i18n_fake.py:48
 #, python-format
