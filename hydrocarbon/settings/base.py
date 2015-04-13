@@ -213,4 +213,7 @@ BLEACH_ALLOWED_STYLES = [
 BOARD_COMMENT_MAX_DEPTH = 7
 
 # Private settings override
-from hydrocarbon.settings.private.base import *
+try:
+    from hydrocarbon.settings.private.base import *
+except:
+    pass
