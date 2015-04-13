@@ -67,3 +67,6 @@ db.sqlite3
 
 # media files
 media/
+
+# Private files
+/hydrocarbon/settings/private/
