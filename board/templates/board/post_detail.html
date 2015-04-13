@@ -172,7 +172,7 @@
 															</span>
 														</a>
 													</li>
-													{% if post.votes.total  > BOARD_POST_BLIND_VOTES %}
+													{% if post.votes.total > BOARD_POST_BLIND_VOTES or user.is_staff %}
 													<li class="reply">
 														<a href="#reply">
 															<span class="label meta reply">
@@ -213,7 +213,7 @@
 				</div>
 			</div>
 
-			{% if post.votes.total  > BOARD_POST_BLIND_VOTES %}
+			{% if post.votes.total > BOARD_POST_BLIND_VOTES or user.is_staff %}
 			<div class="owned write template" data-id="{{ post.id }}" data-type="p">
 				<div class="comment">
 					<div class="bubble item">
