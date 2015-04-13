@@ -267,7 +267,7 @@ $(function() {
 		vote('p', $(this).parent('.vote').data('target-id'), $(this));
 	});
 
-	$('.section.board')
+	$('html:not(.no-touch) .section.board')
 		.on('click', '.search.button .label.meta.search', function(e) {
 			e.preventDefault();
 
@@ -276,7 +276,6 @@ $(function() {
 			$nav
 				.addClass('open')
 				.removeClass('close');
-
 		})
 		.on('click', '.search.button .label.meta.delete', function(e) {
 			e.preventDefault();

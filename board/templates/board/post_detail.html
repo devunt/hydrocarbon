@@ -172,6 +172,7 @@
 															</span>
 														</a>
 													</li>
+													{% if post.votes.total > BOARD_POST_BLIND_VOTES or user.is_staff %}
 													<li class="reply">
 														<a href="#reply">
 															<span class="label meta reply">
@@ -188,6 +189,7 @@
 															</span>
 														</a>
 													</li>
+													{% endif %}
 													<li class="manipulate">
 														<a href="#delete">
 															<span class="label meta delete">
@@ -211,6 +213,7 @@
 				</div>
 			</div>
 
+			{% if post.votes.total > BOARD_POST_BLIND_VOTES or user.is_staff %}
 			<div class="owned write template" data-id="{{ post.id }}" data-type="p">
 				<div class="comment">
 					<div class="bubble item">
@@ -233,6 +236,7 @@
 					<div class="bubble tip"><span></span></div>
 				</div>
 			</div>
+			{% endif %}
 		</div>
 
 		<script>
