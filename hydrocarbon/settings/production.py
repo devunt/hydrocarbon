@@ -9,7 +9,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # ALLOWED HOSTS
-ALLOWED_HOSTS = ['herocomics.kr', 'beta.herocomics.kr']
+ALLOWED_HOSTS = ['herocomics.kr']
 
 # Installed apps
 INSTALLED_APPS += (
