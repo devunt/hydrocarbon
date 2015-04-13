@@ -2,14 +2,14 @@ from hydrocarbon.settings.base import *
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '***REMOVED***'
+SECRET_KEY = None # WILL BE OVERRIDED IN PRIVATE SETTINGS
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 TEMPLATE_DEBUG = False
 
 # ALLOWED HOSTS
-ALLOWED_HOSTS = ['herocomics.kr', 'beta.herocomics.kr']
+ALLOWED_HOSTS = ['herocomics.kr']
 
 # Installed apps
 INSTALLED_APPS += (
@@ -34,7 +34,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'hydrocarbon',
         'USER': 'herocomics',
-        'PASSWORD': '***REMOVED***',
+        'PASSWORD': None, # WILL BE OVERRIDED IN PRIVATE SETTINGS
         'HOST': '127.0.0.1',
         'PORT': '5432',
         'ATOMIC_REQUESTS': False,
@@ -85,10 +85,13 @@ ELASTICSEARCH_DEFAULT_ANALYZER = 'hydrocarbon'
 
 # Raven settings
 RAVEN_CONFIG = {
-    'dsn': '***REMOVED***',
+    'dsn': None, # WILL BE OVERRIDED IN PRIVATE SETTINGS
 }
 
 # App settings
 BOARD_POST_BLIND_VOTES = -10
 BOARD_POST_BEST_VOTES = 10
 BOARD_COMMENT_BLIND_VOTES = -5
+
+# Private settings override
+from hydrocarbon.settings.private.production import *

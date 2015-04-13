@@ -89,7 +89,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.zoho.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'no-reply@herocomics.kr'
-EMAIL_HOST_PASSWORD = '***REMOVED***'
+EMAIL_HOST_PASSWORD = None # WILL BE OVERRIDED IN PRIVATE SETTINGS
 DEFAULT_FROM_EMAIL = 'no-reply@herocomics.kr'
 
 # Various settings
@@ -211,3 +211,9 @@ BLEACH_ALLOWED_STYLES = [
 
 # App settings
 BOARD_COMMENT_MAX_DEPTH = 7
+
+# Private settings override
+try:
+    from hydrocarbon.settings.private.base import *
+except:
+    pass
