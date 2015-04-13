@@ -95,3 +95,5 @@ BOARD_COMMENT_BLIND_VOTES = -5
 
 # Private settings override
 from hydrocarbon.settings.private.production import *
+DATABASES['default']['PASSWORD'] = DATABASES_PASSWORD
+RAVEN_CONFIG['dsn'] = RAVEN_CONFIG_DSN
