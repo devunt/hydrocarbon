@@ -336,8 +336,8 @@ form > .errorlist li {
     -webkit-text-size-adjust: 110%; }
 .dropdown.menu {
   display: none;
-  margin: -30px;
-  padding: 30px;
+  margin: -30px -15px;
+  padding: 30px 15px;
   position: absolute;
   text-align: left;
   z-index: 2005; }
