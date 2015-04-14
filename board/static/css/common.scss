@@ -166,7 +166,7 @@ form > .errorlist {
 		.count { top:6px; right:6px; height:20px; min-width:20px; background:$red-base; border-radius:10px; box-sizing:border-box; color:$white; display:block; font-size:$font-size - 2; line-height:20px; padding:0 6px; position:absolute; text-align:center; text-shadow:0 -1px 0 rgba(0,0,0,.2); -webkit-text-size-adjust:110%; }
 	}
 	&.menu {
-		display:none; margin:-30px; padding:30px; position:absolute; text-align:left; z-index:2005;
+		display:none; margin:-30px -15px; padding:30px 15px; position:absolute; text-align:left; z-index:2005;
 
 		.tip { padding:0 10px; position:relative; z-index:2006; }
 		.tip.top span { border-bottom-color:$white; margin-top:-5px; }
