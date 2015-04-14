@@ -59,6 +59,13 @@ MEDIA_ROOT = '/home/herocomics/media'
 MEDIA_URL = 'http://uc.herocomics.kr/'
 
 # django-haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'board.backends.ConfigurableElasticSearchEngine',
+        'URL': '127.0.0.1:9200',
+        'INDEX_NAME': 'haystack',
+    },
+}
 ELASTICSEARCH_INDEX_SETTINGS = {
     'settings': {
         'index': {
