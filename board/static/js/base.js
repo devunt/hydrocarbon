@@ -267,24 +267,28 @@ $(function() {
 		vote('p', $(this).parent('.vote').data('target-id'), $(this));
 	});
 
-	$('html:not(.no-touch) .section.board')
+	$('.section.board')
 		.on('click', '.search.button .label.meta.search', function(e) {
-			e.preventDefault();
-
 			var $nav = $(this).closest('.nav.bottom');
 
-			$nav
-				.addClass('open')
-				.removeClass('close');
+			if(!$('html').hasClass('no-touch') && $nav.hasClass('close')) {
+				e.preventDefault();
+
+				$nav
+					.addClass('open')
+					.removeClass('close');
+			}
 		})
 		.on('click', '.search.button .label.meta.delete', function(e) {
-			e.preventDefault();
-
 			var $nav = $(this).closest('.nav.bottom');
 
-			$nav
-				.removeClass('open')
-				.addClass('close');
+			if(!$('html').hasClass('no-touch') && $nav.hasClass('open')) {
+				e.preventDefault();
+
+				$nav
+					.removeClass('open')
+					.addClass('close');
+			}
 		});
 
 	$('.tabs')
