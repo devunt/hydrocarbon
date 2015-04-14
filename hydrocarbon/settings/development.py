@@ -35,6 +35,13 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'board/media')
 MEDIA_URL = '/media/'
 
+# django-haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
+
 # App settings
 BOARD_POST_BLIND_VOTES = -1
 BOARD_POST_BEST_VOTES = 1
