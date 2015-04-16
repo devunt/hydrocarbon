@@ -54,7 +54,7 @@ function renderComment($container, v, depth, hidden) {
 		if(depth <= 4) {
 			$c.css('margin-left', 3*depth+'%');
 		} else {
-			$c.css('margin-left', 12+'%');
+			$c.css('margin-left', 12+(depth-4)+'%');
 			for(i = 4; i < depth; i++) {
 				$c.find('.depth')
 					.append('<i class="fa fa-angle-right"></i>');
