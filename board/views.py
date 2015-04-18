@@ -234,6 +234,8 @@ class PostListView(BaseBPostListView):
 
 
 class PostBestListView(BaseBPostListView):
+    annotate_votes = True
+
     def queryset_post_filter(self, queryset):
         pqs = queryset.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
         return pqs
