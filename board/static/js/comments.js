@@ -274,7 +274,7 @@ $(function() {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
 				editor = $container.find('textarea'),
-				text = editor.editable("getHTML"),
+				text = Autolinker.link(editor.editable("getHTML")),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
@@ -306,7 +306,7 @@ $(function() {
 			e.preventDefault();
 			var $container = $(this).closest('.modify'),
 				editor = $container.find('textarea'),
-				text = editor.editable("getHTML"),
+				text = Autolinker.link(editor.editable("getHTML")),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 
