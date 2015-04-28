@@ -110,6 +110,7 @@ class PostListMixin:
     template_name = 'board/postlist/base.html'
     paginate_by = 20
     order_by = 'created_time'
+    annotate_votes = False
 
     def get(self, request, *args, **kwargs):
         o = request.GET.get('o')
@@ -117,6 +118,8 @@ class PostListMixin:
             o = '+ct'
         d = {'mt': 'modified_time', 'vt': 'vote', 'vc': 'viewcount'}
         self.order_by = ('-' if o[0] == '+' else '') + d.get(o[1:], 'created_time')
+        if 'vote' in self.order_by:
+            self.annotate_votes = True
         return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -124,7 +127,8 @@ class PostListMixin:
             pqs = self.get_base_queryset()
         else:
             pqs = super().get_queryset()
-        pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
+        if self.annotate_votes:
+            pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
         pqs = pqs.order_by(self.order_by, '-created_time')
         if hasattr(self, 'queryset_post_filter'):
             pqs = self.queryset_post_filter(pqs)

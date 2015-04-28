@@ -251,3 +251,23 @@ class Notification(models.Model):
 
     class Meta:
         ordering = ['-created_time']
+
+
+class Block(models.Model):
+    executor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='blocks_executed')
+    ipaddress = models.GenericIPAddressField(protocol='IPv4', unique=True)
+    created_time = models.DateTimeField(auto_now_add=True)
+    expiration_time = models.DateTimeField()
+    reason = models.CharField(max_length=256)
+
+    @staticmethod
+    def is_blocked(ipaddress):
+        try:
+            block = Block.objects.get(ipaddress=ipaddress)
+            if block.expiration_time <= timezone.now():
+                block.delete()
+                raise Block.DoesNotExist
+        except Block.DoesNotExist:
+            return False
+        else:
+            return block

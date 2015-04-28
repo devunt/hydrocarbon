@@ -23,7 +23,7 @@ from haystack.query import SearchQuerySet
 
 from board.forms import CommentForm, EmailConfirmationResendForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
-from board.models import Board, Category, Comment, FileAttachment, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
+from board.models import Block, Board, Category, Comment, FileAttachment, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
 from board.utils import is_empty_html, normalize, replace_tags_to_text, treedict, truncate_chars
 
 
@@ -142,7 +142,7 @@ class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         board = Board.objects.filter(slug=kwargs['board']).first()
-        if (board is not None) and (board.type == Board.TYPE_ANNOUNCEMENT) and (not request.user.is_staff):
+        if ((board is not None) and (board.type == Board.TYPE_ANNOUNCEMENT) and (not request.user.is_staff)) or (Block.is_blocked(request.META['REMOTE_ADDR'])):
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
 
@@ -234,6 +234,8 @@ class PostListView(BaseBPostListView):
 
 
 class PostBestListView(BaseBPostListView):
+    annotate_votes = True
+
     def queryset_post_filter(self, queryset):
         pqs = queryset.filter(vote__gte=settings.BOARD_POST_BEST_VOTES)
         return pqs
@@ -383,6 +385,9 @@ class PostDetailView(DetailView):
 
 class VoteAjaxView(AjaxMixin, View):
     def post(self, request):
+        if Block.is_blocked(request.META['REMOTE_ADDR']):
+            return JsonResponse({'status': 'no_permission'}, status=403)
+
         target_type = request.POST.get('type')
         target_id = request.POST.get('target', '')
         vote = request.POST.get('vote')
@@ -499,6 +504,9 @@ class CommentAjaxView(AjaxMixin, View):
         return JsonResponse({'status': 'success', 'comments': {'count': post.comments.count(), 'list': lst}})
 
     def post(self, request, *args, **kwargs):
+        if Block.is_blocked(request.META['REMOTE_ADDR']):
+            return JsonResponse({'status': 'no_permission'}, status=403)
+
         target_type = request.POST.get('type')
         contents = request.POST.get('contents')
 
