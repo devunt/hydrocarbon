@@ -136,6 +136,7 @@ FROALA_EDITOR_OPTIONS = {
     'fileUploadURL': '/x/f',
     'fileUploadParams': {'type': 'f'},
     'defaultImageWidth': 0,
+    'linkAutoPrefix': 'http://',
 }
 FROALA_EDITOR_OPTIONS_COMMENT = FROALA_EDITOR_OPTIONS.copy()
 FROALA_EDITOR_OPTIONS_COMMENT.update({
