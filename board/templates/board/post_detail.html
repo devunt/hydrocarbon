@@ -214,6 +214,8 @@
 				</div>
 			</div>
 
+			<div class="separator"></div>
+
 			{% if post.votes.total > BOARD_POST_BLIND_VOTES or user.is_staff %}
 			<div class="owned write template" data-id="{{ post.id }}" data-type="p">
 				<div class="comment">
