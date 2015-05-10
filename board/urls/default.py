@@ -5,7 +5,7 @@ from django.utils.functional import curry
 from django.views.defaults import permission_denied
 
 from board.views import HCLoginView, HCSettingsView, HCSignupView
-from board.views import EmailConfirmationResendView, IndexView, JSConstantsView, NotificationView, PostListByTagView
+from board.views import CSSConstantsView, EmailConfirmationResendView, IndexView, JSConstantsView, NotificationView, PostListByTagView
 
 
 urlpatterns = patterns('',
@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^account/', include('account.urls')),
     url(r'^search/', include('haystack.urls')),
 
+    url(r'^constants.css$', CSSConstantsView.as_view(), name='constants.css'),
     url(r'^constants.js$', JSConstantsView.as_view(), name='constants.js'),
     url(r'^notifications$', NotificationView.as_view(), name='notification'),
     url(r'^t/(?P<tag>.+)/', PostListByTagView.as_view(), name='post_list_by_tag'),

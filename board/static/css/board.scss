@@ -88,10 +88,6 @@
 
 	@media screen and (min-width: $medium + 1) {
 		.item {
-			&.post-scanlation .cell.mark { background:$blue; color:$white; }
-			&.post-news .cell.mark { background:$green; color:$white; }
-			&.post-subtitles .cell.mark { background:$red; color:$white; }
-
 			.cell.meta {
 				.label.meta { margin:0; }
 				.label.meta .icon { display:none; margin:0; }
@@ -124,9 +120,6 @@
 			&.currentpost .cell.mark { visibility:visible; }
 
 			&.post-announcement .cell.category { background:transparent; }
-			&.post-scanlation .cell.category { background:$blue; color:$white; }
-			&.post-news .cell.category { background:$green; color:$white; }
-			&.post-subtitles .cell.category { background:$red; color:$white; }
 
 			.cell {
 				line-height:20px; padding:0;
