@@ -1,0 +1,24 @@
+{% for cat in categories %}
+.dropdown.menu li:hover.{{ cat.slug }} {
+	background: {{ cat.color | default:'inherit' }};
+}
+
+.dropdown.menu li.{{ cat.slug }} a {
+	border-left: 10px solid {{ cat.color | default:'inherit'}};
+	padding-left: 0px;
+}
+
+@media screen and (min-width: 600px) {
+	.section.board .item.post-{{ cat.slug }} .cell.mark {
+		background: {{ cat.color | default:'inherit' }};
+		color: #fff;
+	}
+}
+
+@media screen and (max-width: 599px) {
+	.section.board .item.post-{{ cat.slug }} .cell.category {
+		background: {{ cat.color | default:'inherit' }};
+		color: #fff;
+	}
+}
+{% endfor %}

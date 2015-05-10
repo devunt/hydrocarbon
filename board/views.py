@@ -674,3 +674,12 @@ class JSConstantsView(TemplateView):
         kwargs['BOARD_COMMENT_MAX_DEPTH'] = settings.BOARD_COMMENT_MAX_DEPTH
         kwargs['COMMENT_FROALA_EDITOR_OPTIONS'] = json.dumps(settings.FROALA_EDITOR_OPTIONS_COMMENT)
         return super().get_context_data(**kwargs)
+
+
+class CSSConstantsView(TemplateView):
+    template_name = 'constants.css'
+    content_type = 'text/css'
+
+    def get_context_data(self, **kwargs):
+        kwargs['categories'] = Category.objects.all()
+        return super().get_context_data(**kwargs)
