@@ -160,7 +160,13 @@ $(function() {
 		});
 
 	$('.section.article.form form')
-		.on('submit', function() {
+		.on('submit', function(e) {
+			var editor = $('#id_contents'),
+				text = editor.editable('getHTML', false, true);
+
+			text = Autolinker.link(text);
+			editor.editable('setHTML', text);
+
 			$('#tagbox').tagging('add');
 			$tags.val($tagbox.tagging('getTags').join(','));
 		})

@@ -14,6 +14,7 @@
 {% endblock %}
 
 {% block head %}
+	<script src="{% static "js/Autolinker.min.js" %}"></script>
 	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
 	<script src="{% static "js/tagging.min.js" %}"></script>
 	<script src="{% static "js/comments.js" %}"></script>
@@ -44,7 +45,7 @@
 			</div>
 			<div class="meta">
 				{% if not post.announcement %}
-				<a title="{% if post.user %}{% if post.user.total_score >= 0 %}+{% endif %}{{ post.user.total_score }}{% else %}{{ post.iphash }}{% endif %}" class="label meta 
+				<a title="{% if post.user %}{% if post.user.total_score >= 0 %}+{% endif %}{{ post.user.total_score }}{% else %}{{ post.iphash }}{% if user.is_staff %} - {{ post.ipaddress }}{% endif %}{% endif %}" class="label meta 
 				{% if post.user %}
 					author user" href="{% url 'user_profile' post.user.id %}">
 				{% else %}
@@ -212,6 +213,8 @@
 					<div class="bubble tip"><span></span></div>
 				</div>
 			</div>
+
+			<div class="separator"></div>
 
 			{% if post.votes.total > BOARD_POST_BLIND_VOTES or user.is_staff %}
 			<div class="owned write template" data-id="{{ post.id }}" data-type="p">
