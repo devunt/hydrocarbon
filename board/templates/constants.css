@@ -1,4 +1,5 @@
 {% for cat in categories %}
+{% if cat.color %}
 .dropdown.menu li:hover.{{ cat.slug }} {
 	background: {{ cat.color | default:'inherit' }};
 }
@@ -21,4 +22,5 @@
 		color: #fff;
 	}
 }
+{% endif %}
 {% endfor %}
