@@ -97,6 +97,7 @@ class Category(models.Model):
     board = models.ForeignKey('Board', related_name='categories')
     name = models.CharField(max_length=8)
     slug = models.SlugField()
+    color = models.CharField(max_length=32, blank=True, null=True)
 
     def __str__(self):
         return self.name

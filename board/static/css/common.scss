@@ -179,15 +179,7 @@ form > .errorlist {
 			&.bottom { background:$grey-95; }
 			&:hover {
 				background:$blue;
-
-				&.scanlation { background:$blue; }
-				&.news { background:$green; }
-				&.subtitles { background:$red; }
 			}
-
-			&.scanlation a { border-left:10px solid $blue; padding-left:0; }
-			&.news a { border-left:10px solid $green; padding-left:0; }
-			&.subtitles a { border-left:10px solid $red; padding-left:0;}
 
 			&:hover a, &.voted a { color:$white; }
 

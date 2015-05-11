@@ -357,21 +357,6 @@ form > .errorlist li {
       background: #f2f2f2; }
     .dropdown.menu li:hover {
       background: rgba(61, 156, 204, 0.9); }
-      .dropdown.menu li:hover.scanlation {
-        background: rgba(61, 156, 204, 0.9); }
-      .dropdown.menu li:hover.news {
-        background: rgba(133, 204, 61, 0.9); }
-      .dropdown.menu li:hover.subtitles {
-        background: rgba(204, 61, 61, 0.9); }
-    .dropdown.menu li.scanlation a {
-      border-left: 10px solid rgba(61, 156, 204, 0.9);
-      padding-left: 0; }
-    .dropdown.menu li.news a {
-      border-left: 10px solid rgba(133, 204, 61, 0.9);
-      padding-left: 0; }
-    .dropdown.menu li.subtitles a {
-      border-left: 10px solid rgba(204, 61, 61, 0.9);
-      padding-left: 0; }
     .dropdown.menu li:hover a, .dropdown.menu li.voted a {
       color: #fff; }
     .dropdown.menu li a {
@@ -599,7 +584,7 @@ a.anchor {
     .no-touch #nav .dropdown.container .handle:hover, #nav .dropdown.container.open .handle {
       background: rgba(61, 156, 204, 0.9); }
     #nav .dropdown.container.menu-nav .menu, #nav .dropdown.container.menu-personal .menu {
-      margin: -30px -25px; }
+      margin: -30px -10px; }
     #nav .dropdown.container.menu-nav .menu, #nav .dropdown.container.menu-notifications .menu, #nav .dropdown.container.menu-personal .menu {
       margin-top: -5px;
       padding-top: 5px; }
@@ -1258,15 +1243,6 @@ a.anchor {
   .section.board .nav.bottom + .pages {
     background: #f2f2f2; }
   @media screen and (min-width: 600px) {
-    .section.board .item.post-scanlation .cell.mark {
-      background: rgba(61, 156, 204, 0.9);
-      color: #fff; }
-    .section.board .item.post-news .cell.mark {
-      background: rgba(133, 204, 61, 0.9);
-      color: #fff; }
-    .section.board .item.post-subtitles .cell.mark {
-      background: rgba(204, 61, 61, 0.9);
-      color: #fff; }
     .section.board .item .cell.meta .label.meta {
       margin: 0; }
     .section.board .item .cell.meta .label.meta .icon {
@@ -1309,15 +1285,6 @@ a.anchor {
         visibility: visible; }
       .section.board .item.post-announcement .cell.category {
         background: transparent; }
-      .section.board .item.post-scanlation .cell.category {
-        background: rgba(61, 156, 204, 0.9);
-        color: #fff; }
-      .section.board .item.post-news .cell.category {
-        background: rgba(133, 204, 61, 0.9);
-        color: #fff; }
-      .section.board .item.post-subtitles .cell.category {
-        background: rgba(204, 61, 61, 0.9);
-        color: #fff; }
       .section.board .item .cell {
         line-height: 20px;
         padding: 0; }
