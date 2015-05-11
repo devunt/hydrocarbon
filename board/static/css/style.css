@@ -584,7 +584,7 @@ a.anchor {
     .no-touch #nav .dropdown.container .handle:hover, #nav .dropdown.container.open .handle {
       background: rgba(61, 156, 204, 0.9); }
     #nav .dropdown.container.menu-nav .menu, #nav .dropdown.container.menu-personal .menu {
-      margin: -30px -25px; }
+      margin: -30px -10px; }
     #nav .dropdown.container.menu-nav .menu, #nav .dropdown.container.menu-notifications .menu, #nav .dropdown.container.menu-personal .menu {
       margin-top: -5px;
       padding-top: 5px; }
