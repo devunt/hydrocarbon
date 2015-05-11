@@ -117,11 +117,12 @@
 		$tags = $('#id_tags');
 
 		$tagbox.tagging(taggingJS_options);
+		$tagbox.tagging('add', $tags.val().split(/,[ ]?/));
 		$tagbox.find('input.type-zone')
+			.blur()
 			.attr('placeholder', '{% trans "Tags" %}')
 			.attr('maxlength', 32)
 			.autocomplete(autocomplete_options);
-		$tagbox.tagging('add', $tags.val().split(/,[ ]?/));
 
 		if($('#id_title').val() == '') { $('#id_title').focus();
 		} else if($('#id_contents').val() == '') { $('#id_contents').editable('focus'); }
