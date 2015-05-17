@@ -1,4 +1,5 @@
-var options;
+var options,
+	posting = false;
 
 function getComments(id) {
 	return $.ajax({
@@ -127,34 +128,38 @@ function renderComment($container, v, depth, hidden) {
 }
 
 function postComments(id, databox) {
-	return $.ajax({
-		type: 'POST',
-		url: get_comment_ajax_url(id),
-		data: databox
-	})
-		.fail(function(xhr, status, error) {
-			var response = xhr.responseJSON.status;
-			switch(response) {
-				case 'badrequest':
-					var errorstr = '';
+	if(!posting) {
+		posting = true;
+		return $.ajax({
+			type: 'POST',
+			url: get_comment_ajax_url(id),
+			data: databox
+		})
+			.then(function() { posting = false; })
+			.fail(function(xhr, status, error) {
+				var response = xhr.responseJSON.status;
+				switch(response) {
+					case 'badrequest':
+						var errorstr = '';
 
-					jQuery.each(xhr.responseJSON.error_fields, function(i, v) {
-						if(v == 'contents') errorstr = errorstr +'내용을 입력해 주세요.\n';
-						if(v == 'nick') errorstr = errorstr +'닉네임을 입력해 주세요.\n';
-					});
+						jQuery.each(xhr.responseJSON.error_fields, function(i, v) {
+							if(v == 'contents') errorstr = errorstr +'내용을 입력해 주세요.\n';
+							if(v == 'nick') errorstr = errorstr +'닉네임을 입력해 주세요.\n';
+						});
 
-					alert(errorstr);
+						alert(errorstr);
 
-					break;
+						break;
 
-				default:
-					alert('댓글을 등록하는 과정에서 오류가 발생했습니다.');
-					console.log(databox);
-					console.log(xhr);
-					console.log(status);
-					console.log(error);
-			}
-		});
+					default:
+						alert('댓글을 등록하는 과정에서 오류가 발생했습니다.');
+						console.log(databox);
+						console.log(xhr);
+						console.log(status);
+						console.log(error);
+				}
+			});
+	}
 }
 
 function putComments(id, contents, password) {
