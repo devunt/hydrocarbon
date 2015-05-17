@@ -1571,6 +1571,9 @@ a.anchor {
   display: block;
   border-bottom: 1px solid #000; }
 
+html body .froala-wrapper.f-basic {
+  background: none; }
+
 html body .froala-box .froala-editor {
   background: none; }
 html body .froala-box .f-basic {
