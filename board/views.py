@@ -666,9 +666,6 @@ class JSConstantsView(TemplateView):
     template_name = 'constants.js'
     content_type = 'application/javascript'
 
-    def get(self, request, *args, **kwargs):
-        return super().get(self, request, *args, **kwargs)
-
     def get_context_data(self, **kwargs):
         kwargs['BOARD_COMMENT_BLIND_VOTES'] = settings.BOARD_COMMENT_BLIND_VOTES
         kwargs['BOARD_COMMENT_MAX_DEPTH'] = settings.BOARD_COMMENT_MAX_DEPTH

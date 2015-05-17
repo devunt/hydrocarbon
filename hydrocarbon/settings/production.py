@@ -103,4 +103,5 @@ BOARD_COMMENT_BLIND_VOTES = -5
 # Private settings override
 from hydrocarbon.settings.private.production import *
 DATABASES['default']['PASSWORD'] = DATABASES_PASSWORD
+FROALA_EDITOR_OPTIONS['key'] = FROALA_ACTIVATION_KEY
 RAVEN_CONFIG['dsn'] = RAVEN_CONFIG_DSN
