@@ -5,6 +5,7 @@
 
 {% block content %}
 <div class="section board">
+	{% if not post %}
 	<div class="header{% if post %} foldable{% endif %}">
 		<div class="cell mark"></div>
 		<div class="cell category sortable dropdown container">
@@ -47,6 +48,7 @@
 			</a>
 		</div>
 	</div>
+	{% endif %}
 
 	<ul class="post-list">
 	{% for item in announcement_list %}

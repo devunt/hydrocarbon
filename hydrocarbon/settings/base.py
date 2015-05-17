@@ -201,6 +201,12 @@ BLEACH_ALLOWED_ATTRIBUTES = {
     'a': _filter_a_attr,
     'iframe': _filter_iframe_attr,
     'img': _filter_img_attr,
+    'h1': ['style'],
+    'h2': ['style'],
+    'h3': ['style'],
+    'h4': ['style'],
+    'h5': ['style'],
+    'h6': ['style'],
     'p': ['style'],
     'span': _filter_span_attr,
 }

@@ -169,6 +169,11 @@ $(function() {
 
 			$('#tagbox').tagging('add');
 			$tags.val($tagbox.tagging('getTags').join(','));
+
+			$(this).find('input, textarea').garlic('destroy');
+			$(this).on('submit', function(e) {
+				e.preventDefault();
+			});
 		})
 		.find('.category')
 			.on('click', 'a.option', function(e) {
