@@ -29,11 +29,13 @@ html body .froala-element {
 	a:active { color:$blue-trans; }
 	a:visited { color:$grey; }
 
-	h1, h2, h3,
-	.format-h1, .format-h2, .format-h3 { font-family:"NanumGothic Light"; }
+	h1, h2,
+	.format-h1, .format-h2 { font-family:"NanumGothic Light"; }
 
 	h1, h2, h3, h4, h5, h6 { padding:0px 10px; }
-	h1 { border-bottom:1px solid $grey-90; margin:5px 0; padding:5px 10px; }
+	h1, .format-h1 { border-bottom:1px solid $grey-90; font-size:24px; padding:5px 10px; }
+	h2, .format-h2 { font-size:22px; }
+	h3, .format-h3 { font-size:20px; }
 
 	strike, del, .spoiler {
 		background:$black; color:$black; text-decoration:initial;
@@ -49,8 +51,13 @@ html body .froala-element {
 html body .froala-editor {
 	font-family:"NanumGothic";
 
-	h1, h2, h3,
-	.format-h1, .format-h2, .format-h3 { font-family:"NanumGothic Light"; }
+	h1, h2,
+	.format-h1, .format-h2 { font-family:"NanumGothic Light"; }
+
+	h1, .fr-dropdown .fr-dropdown-menu li a.format-h1 { font-size:24px; }
+	h2, .fr-dropdown .fr-dropdown-menu li a.format-h2 { font-size:22px; }
+	h3, .fr-dropdown .fr-dropdown-menu li a.format-h3 { font-size:20px; }
+
 	.fr-trigger.active { background:$blue; }
 
 	.fr-dropdown-menu i.fa { line-height:20px; }
