@@ -39,7 +39,7 @@
 				}
 			}
 
-			.froala-editor.f-basic {
+			.froala-wrapper.f-basic .froala-element {
 				min-height:300px; padding:20px 12.5%;
 				@media all and (max-width: $medium) { padding:20px 5% !important; }
 			}
