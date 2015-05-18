@@ -1016,7 +1016,7 @@ a.anchor {
       padding: 5px 10px; }
       .section.article .comments-list .comment .bubble.item .article .froala-box .froala-editor {
         border-bottom: 1px solid #e5e5e5 !important; }
-      .section.article .comments-list .comment .bubble.item .article .froala-box .froala-wrapper .froala-element {
+      .section.article .comments-list .comment .bubble.item .article .froala-box .froala-wrapper .froala-view {
         min-height: 80px !important;
         background: none;
         padding: 5px 0; }
@@ -1465,11 +1465,11 @@ a.anchor {
     @media all and (max-width: 719px) {
       .section.article.form .item.article .froala-box .froala-editor.fixed {
         width: 100%; } }
-  .section.article.form .item.article .froala-box .froala-element.f-basic {
+  .section.article.form .item.article .froala-box .froala-editor.f-basic {
     min-height: 300px;
     padding: 20px 12.5%; }
     @media all and (max-width: 599px) {
-      .section.article.form .item.article .froala-box .froala-element.f-basic {
+      .section.article.form .item.article .froala-box .froala-editor.f-basic {
         padding: 20px 5% !important; } }
   .section.article.form .item.article .froala-box .fr-placeholder {
     margin: 0;
@@ -1659,7 +1659,7 @@ html body .froala-editor {
   html body .froala-editor .fr-dropdown-menu i.fa {
     line-height: 20px; }
 
-html body .f-html .froala-element textarea {
+html body .f-html .froala-view textarea {
   background: #202020; }
 
 .section.search .nav.header {
