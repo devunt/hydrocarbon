@@ -1601,6 +1601,8 @@ html body .froala-view {
   line-height: 1.6em; }
   html body .froala-view *:last-child {
     margin-bottom: 0; }
+  html body .froala-view blockquote:last-child {
+    margin-bottom: 10px; }
   html body .froala-view a {
     color: #3d9ccc; }
   html body .froala-view a:hover {
@@ -1610,6 +1612,8 @@ html body .froala-view {
     color: rgba(61, 156, 204, 0.6); }
   html body .froala-view a:visited {
     color: rgba(170, 170, 170, 0.9); }
+  html body .froala-view img {
+    max-width: 100%; }
   html body .froala-view h1, html body .froala-view h2,
   html body .froala-view .format-h1, html body .froala-view .format-h2 {
     font-family: "NanumGothic Light"; }
