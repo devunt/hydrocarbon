@@ -22,14 +22,18 @@ html body .froala-popup {
 	button.fr-p-bttn.f-ok { background:$blue-base; }
 }
 
-html body .froala-element {
+html body .froala-view {
 	min-height:0; line-height:1.6em;
 	*:last-child { margin-bottom:0; }
+	blockquote:last-child { margin-bottom:10px; }
 
 	a { color:$blue-base; }
 	a:hover { color:$blue; text-decoration:underline; }
 	a:active { color:$blue-trans; }
 	a:visited { color:$grey; }
+
+	img,
+	iframe { max-width:100%; }
 
 	h1, h2,
 	.format-h1, .format-h2 { font-family:"NanumGothic Light"; }
@@ -66,5 +70,5 @@ html body .froala-editor {
 }
 
 html body .f-html {
-	.froala-element textarea { background:#202020; }
+	.froala-view textarea { background:#202020; }
 }
