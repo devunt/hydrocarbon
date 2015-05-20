@@ -95,6 +95,19 @@
 				<span class="text">{% trans "Downvote" %}</span>
 			</a>
 		</div>
+
+		{% if google_ads %}
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="{{ google_ads.client }}"
+			 data-ad-slot="{{ google_ads.slot }}"
+			 data-ad-format="auto"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+		{% endif %}
+
 		<div class="footer clear">
 			{% if post.tags.all %}
 			<div class="tags">

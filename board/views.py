@@ -380,6 +380,11 @@ class PostDetailView(DetailView):
             if ot_user:
                 f.initial = {'onetime_nick': ot_user.get('nick'), 'onetime_password': ot_user.get('password')}
         kwargs['comment_form'] = f
+        if hasattr(settings, 'GOOGLE_ADS'):
+            kwargs['google_ads'] = {
+                'client': settings.GOOGLE_ADS['CLIENT'],
+                'slot': settings.GOOGLE_ADS['SLOT'],
+            }
         return super().get_context_data(**kwargs)
 
 
