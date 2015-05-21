@@ -45,6 +45,11 @@ input[type=password] { ime-mode: disabled; }
 
 #overlay div { z-index:2500; }
 
+.adcontainer {
+	width:540px; margin:10px auto 20px;
+	@media screen and (max-width: $medium) { width:90%; }
+}
+
 #wrapper { width:720px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,.1); margin:0 auto; margin-top:50px;
 	@media screen and (max-width: $large) { width:100%; }
 }
