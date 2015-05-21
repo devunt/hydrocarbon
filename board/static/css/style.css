@@ -82,6 +82,13 @@ input[type=password] {
 #overlay div {
   z-index: 2500; }
 
+.adcontainer {
+  width: 540px;
+  margin: 10px auto 20px; }
+  @media screen and (max-width: 599px) {
+    .adcontainer {
+      width: 90%; } }
+
 #wrapper {
   width: 720px;
   background: #fff;
