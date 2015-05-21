@@ -46,7 +46,7 @@ input[type=password] { ime-mode: disabled; }
 #overlay div { z-index:2500; }
 
 .adcontainer {
-	width:540px; margin:10px auto 20px; overflow:hidden;
+	max-height:90px; width:540px; margin:10px auto 20px; overflow:hidden;
 	@media screen and (max-width: $medium) { width:90%; }
 }
 
