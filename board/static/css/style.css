@@ -84,7 +84,8 @@ input[type=password] {
 
 .adcontainer {
   width: 540px;
-  margin: 10px auto 20px; }
+  margin: 10px auto 20px;
+  overflow: hidden; }
   @media screen and (max-width: 599px) {
     .adcontainer {
       width: 90%; } }
