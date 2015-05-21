@@ -83,7 +83,7 @@ input[type=password] {
   z-index: 2500; }
 
 .adcontainer {
-  max-height: 90px;
+  height: 80px;
   width: 540px;
   margin: 10px auto 20px;
   overflow: hidden; }
