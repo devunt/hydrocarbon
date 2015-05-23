@@ -1648,8 +1648,14 @@ html body .froala-view {
     background: #222;
     color: #222;
     text-decoration: initial; }
+    html body .froala-view strike a, html body .froala-view del a, html body .froala-view .spoiler a {
+      color: #222 !important; }
     html body .froala-view strike:hover, html body .froala-view del:hover, html body .froala-view .spoiler:hover {
       color: #fff; }
+      html body .froala-view strike:hover a, html body .froala-view del:hover a, html body .froala-view .spoiler:hover a {
+        color: #aaa !important; }
+  html body .froala-view a strike:hover, html body .froala-view a del:hover, html body .froala-view a .spoiler:hover {
+    color: #aaa; }
   html body .froala-view blockquote, html body .froala-view pre {
     font-style: normal;
     margin-top: 10px;
