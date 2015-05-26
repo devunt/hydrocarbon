@@ -6,6 +6,9 @@ var user = {
 }
 
 
+var BOARD_CATEGORIES = { {% for cat in BOARD_CATEGORIES %}{{ cat.id }}: "{{ cat.slug }}"{% if not forloop.last %}, {% endif %}{% endfor %} }
+
+
 var COMMENT_BLIND_VOTES = {{ BOARD_COMMENT_BLIND_VOTES }}
 var COMMENT_MAX_DEPTH = {{ BOARD_COMMENT_MAX_DEPTH }}
 

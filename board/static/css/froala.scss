@@ -45,7 +45,16 @@ html body .froala-view {
 
 	strike, del, .spoiler {
 		background:$black; color:$black; text-decoration:initial;
-		&:hover { color:$white; }
+		a { color:$black !important; }
+		&:hover { color:$white;
+			a { color:$grey-base !important; }
+		}
+	}
+	
+	a { 
+		strike, del, .spoiler {
+			&:hover { color:$grey-base; }
+		}
 	}
 
 	blockquote, pre { font-style:normal; margin-top:10px; margin-bottom:10px; }
