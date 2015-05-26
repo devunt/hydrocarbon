@@ -231,19 +231,9 @@ $(function() {
 						.data('value', value)
 						.appendTo($li);
 
-					switch($(this).text()) {
-						case '번역':
-							$li.addClass('scanlation');
-							break;
-						case '자막':
-							$li.addClass('subtitles');
-							break;
-						case '정보':
-							$li.addClass('news');
-							break;
-					}
-
-					$li.appendTo($ul);
+					$li
+						.addClass(BOARD_CATEGORIES[value])
+						.appendTo($ul);
 				});
 
 				$('<div class="wrap">')
