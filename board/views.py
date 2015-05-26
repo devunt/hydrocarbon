@@ -672,6 +672,7 @@ class JSConstantsView(TemplateView):
     content_type = 'application/javascript'
 
     def get_context_data(self, **kwargs):
+        kwargs['BOARD_CATEGORIES'] = Category.objects.all()
         kwargs['BOARD_COMMENT_BLIND_VOTES'] = settings.BOARD_COMMENT_BLIND_VOTES
         kwargs['BOARD_COMMENT_MAX_DEPTH'] = settings.BOARD_COMMENT_MAX_DEPTH
         kwargs['COMMENT_FROALA_EDITOR_OPTIONS'] = json.dumps(settings.FROALA_EDITOR_OPTIONS_COMMENT)
