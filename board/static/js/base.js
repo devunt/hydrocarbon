@@ -161,16 +161,19 @@ $(function() {
 
 	$('.section.article.form form')
 		.on('submit', function(e) {
-			var editor = $('#id_contents'),
-				text = editor.editable('getHTML', false, true);
-
+			var text, editor = $('#id_contents');
+				
+			text = editor.editable('getHTML', false, true);
 			text = Autolinker.link(text);
-			editor.editable('setHTML', text);
+
+			editor.editable('destroy');
+			editor.css('visibility', 'hidden');
+			editor.garlic('destroy');
+			editor.val(text);
 
 			$('#tagbox').tagging('add');
 			$tags.val($tagbox.tagging('getTags').join(','));
 
-			$(this).find('input, textarea').garlic('destroy');
 			$(this).on('submit', function(e) {
 				e.preventDefault();
 			});
@@ -228,19 +231,9 @@ $(function() {
 						.data('value', value)
 						.appendTo($li);
 
-					switch($(this).text()) {
-						case '번역':
-							$li.addClass('scanlation');
-							break;
-						case '자막':
-							$li.addClass('subtitles');
-							break;
-						case '정보':
-							$li.addClass('news');
-							break;
-					}
-
-					$li.appendTo($ul);
+					$li
+						.addClass(BOARD_CATEGORIES[value])
+						.appendTo($ul);
 				});
 
 				$('<div class="wrap">')

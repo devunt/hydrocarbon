@@ -82,6 +82,22 @@ input[type=password] {
 #overlay div {
   z-index: 2500; }
 
+.adcontainer {
+  margin: 10px auto 20px;
+  overflow: hidden; }
+  @media screen and (max-width: 319px) {
+    .adcontainer {
+      height: 60px;
+      width: 234px; } }
+  @media screen and (min-width: 320px) and (max-width: 467px) {
+    .adcontainer {
+      height: 100px;
+      width: 320px; } }
+  @media screen and (min-width: 468px) {
+    .adcontainer {
+      height: 60px;
+      width: 468px; } }
+
 #wrapper {
   width: 720px;
   background: #fff;
@@ -1632,8 +1648,14 @@ html body .froala-view {
     background: #222;
     color: #222;
     text-decoration: initial; }
+    html body .froala-view strike a, html body .froala-view del a, html body .froala-view .spoiler a {
+      color: #222 !important; }
     html body .froala-view strike:hover, html body .froala-view del:hover, html body .froala-view .spoiler:hover {
       color: #fff; }
+      html body .froala-view strike:hover a, html body .froala-view del:hover a, html body .froala-view .spoiler:hover a {
+        color: #aaa !important; }
+  html body .froala-view a strike:hover, html body .froala-view a del:hover, html body .froala-view a .spoiler:hover {
+    color: #aaa; }
   html body .froala-view blockquote, html body .froala-view pre {
     font-style: normal;
     margin-top: 10px;
