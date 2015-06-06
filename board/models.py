@@ -98,9 +98,13 @@ class Category(models.Model):
     name = models.CharField(max_length=8)
     slug = models.SlugField()
     color = models.CharField(max_length=32, blank=True, null=True)
+    index = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['index', 'color']
 
 
 class Tag(models.Model):
