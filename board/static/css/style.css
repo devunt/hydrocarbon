@@ -1566,8 +1566,10 @@ a.anchor {
   cursor: default;
   line-height: 20px;
   overflow: hidden;
-  padding: 10px 20px;
-  white-space: nowrap; }
+  padding: 10px 20px; }
+
+.autocomplete-suggestion .left {
+  white-space: normal; }
 
 .autocomplete-selected {
   background: #3d9ccc;
