@@ -133,6 +133,7 @@ FROALA_EDITOR_OPTIONS = {
     'imageUpload': True,
     'imageUploadURL': '/x/f',
     'imageUploadParams': {'type': 'i'},
+    'pasteImage': False,
     'fileUploadURL': '/x/f',
     'fileUploadParams': {'type': 'f'},
     'defaultImageWidth': 0,
