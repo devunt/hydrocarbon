@@ -112,7 +112,7 @@ $(function() {
 		});
 
 	$('.section.article.detail div.article img').each(function() {
-		if($(this).parents('a').length > 0) { return false; } else {
+		if($(this).parents('a').length > 0) { return true; } else {
 			var a = $('<a>');
 
 			a
