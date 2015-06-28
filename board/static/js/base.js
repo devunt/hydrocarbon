@@ -111,7 +111,7 @@ $(function() {
 			showTooltip(e);
 		});
 
-	$('.article img').each(function() {
+	$('.section.article.detail div.article img').each(function() {
 		if($(this).parents('a').length > 0) { return false; } else {
 			var a = $('<a>');
 
@@ -162,7 +162,7 @@ $(function() {
 	$('.section.article.form form')
 		.on('submit', function(e) {
 			var text, editor = $('#id_contents');
-				
+
 			text = editor.editable('getHTML', false, true);
 			text = Autolinker.link(text);
 
@@ -319,7 +319,7 @@ $.ajaxSetup({
 	}
 });
 
-function showTooltip(e) {	
+function showTooltip(e) {
 	var $target = $(e.target).closest('.th');
 	var position = $target.offset();
 
