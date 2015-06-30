@@ -93,22 +93,24 @@
 							<script> $('.dropdown.container.menu-notifications .menu .pscroll').perfectScrollbar({ suppressScrollX: true }); </script>
 						</div>
 					{% endif %}
-					<script>
-						$('#notification-mark').on('click', function(e) {
-							e.preventDefault();
-							var href = this.href;
-								post = $.ajax({
-									type: 'POST',
-									url: '/x/n'
-								});
+					{% if user.unread_notifications.count %}
+						<script>
+							$('#notification-mark').on('click', function(e) {
+								e.preventDefault();
+								var href = this.href,
+									post = $.ajax({
+										type: 'POST',
+										url: '/x/n'
+									});
 
-							if($(this).attr('href').charAt(0) != '#') {
-								post.done(function() { window.location.href = href; });
-							}
+								if($(this).attr('href').charAt(0) != '#') {
+									post.done(function() { window.location.href = href; });
+								}
 
-							post.done(function() { $(this).find('.icon .count').remove(); });
-						});
-					</script>
+								post.done(function() { $('#notification-mark .icon .count').remove(); });
+							});
+						</script>
+				{% endif %}
 				</div>
 				{% endif %}
 				<div class="dropdown container menu-personal">
