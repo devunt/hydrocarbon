@@ -102,10 +102,11 @@
 									url: '/x/n'
 								});
 
-							console.log($(this).attr('href'));
 							if($(this).attr('href').charAt(0) != '#') {
 								post.done(function() { window.location.href = href; });
 							}
+
+							post.done(function() { $(this).find('.icon .count').remove(); });
 						});
 					</script>
 				</div>
@@ -179,7 +180,7 @@
 	</div>
 </div>
 
-<!--[if lt IE 9]>	
+<!--[if lt IE 9]>
 <div id="noie">
 	<h2></h2>
 	<h1><span>!</span></h1>
