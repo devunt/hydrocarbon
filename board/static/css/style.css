@@ -1614,7 +1614,8 @@ html body .froala-view {
     color: rgba(61, 156, 204, 0.6); }
   html body .froala-view a:visited {
     color: rgba(170, 170, 170, 0.9); }
-  html body .froala-view li p,
+  html body .froala-view li p {
+    margin: 10px 0 0; }
   html body .froala-view li ol, html body .froala-view li ol:last-child,
   html body .froala-view li ul, html body .froala-view li ol:last-child {
     margin: 0 0 10px; }
