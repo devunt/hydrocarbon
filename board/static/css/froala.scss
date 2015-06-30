@@ -32,8 +32,9 @@ html body .froala-view {
 	a:active { color:$blue-trans; }
 	a:visited { color:$grey; }
 
-	li ol,
-	li ul { margin:0 0 10px; }
+	li p,
+	li ol, li ol:last-child,
+	li ul, li ol:last-child { margin:0 0 10px; }
 
 	img,
 	iframe { max-width:100%; }
