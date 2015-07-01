@@ -32,7 +32,7 @@ html body .froala-view {
 	a:active { color:$blue-trans; }
 	a:visited { color:$grey; }
 
-	li p { margin:10px 0 0; }
+	li p { margin:0; }
 	li ol, li ol:last-child,
 	li ul, li ol:last-child { margin:0 0 10px; }
 
