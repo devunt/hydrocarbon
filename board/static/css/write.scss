@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-// 	
+//
 // 	write.scss
 // 		write form
 // 		uses part of article.scss too
-// 	
+//
 
 .section.article.form {
 	.item.article {
@@ -49,6 +49,9 @@
 				@media all and (max-width: $medium) { padding:20px 5% !important; }
 			}
 		}
+
+		.g-recaptcha { margin:10px 0 5px; text-align:center; }
+		.g-recaptcha > div > div { display:inline-block; }
 
 		.footer {
 			border-top:1px solid $grey-90;

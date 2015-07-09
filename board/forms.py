@@ -7,6 +7,7 @@ from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
 from account.forms import LoginEmailForm, PasswordResetForm, SignupForm, SettingsForm
 from account.models import EmailAddress
+from captcha.fields import ReCaptchaField
 
 from board.models import Category, Comment, Post, Tag
 from board.utils import is_empty_html
@@ -51,6 +52,7 @@ class OneTimeUserFormMixin:
         if show_ot_form:
             self.fields['onetime_nick'] = forms.CharField(label=_('Nickname'), max_length=16)
             self.fields['onetime_password'] = forms.CharField(label=_('Password'), widget=forms.PasswordInput(render_value=True))
+            self.fields['captcha'] = ReCaptchaField()
 
 
 class NicknameFormMixin:

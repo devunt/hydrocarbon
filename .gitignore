@@ -56,6 +56,9 @@ docs/_build/
 # PyBuilder
 target/
 
+# Virualenv
+.venv
+
 # scss
 .sass-cache/
 

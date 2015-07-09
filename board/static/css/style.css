@@ -938,7 +938,7 @@ a.anchor {
     .section.article .item.article .vote.vote-post a.downvote .icon {
       background-position: 50% -20px; }
 .section.article .item.article .footer {
-  margin: 0 5%;
+  margin: 20px 5%;
   padding: 5px 3%; }
   .section.article .item.article .footer .icon {
     margin-right: 4px; }
@@ -1477,6 +1477,11 @@ a.anchor {
     @media all and (max-width: 599px) {
       .section.article.form .item.article .froala-box .fr-placeholder {
         padding: 20px 5% !important; } }
+  .section.article.form .item.article .g-recaptcha {
+    margin: 10px 0 5px;
+    text-align: center; }
+  .section.article.form .item.article .g-recaptcha > div > div {
+    display: inline-block; }
   .section.article.form .item.article .footer {
     border-top: 1px solid #e5e5e5; }
     .section.article.form .item.article .footer .tags > input {

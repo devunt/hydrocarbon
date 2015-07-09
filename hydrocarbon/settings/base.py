@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     ) + (
     # third-party apps
     'account',
+    'captcha',
     'custom_user',
     'froala_editor',
     'haystack',
@@ -154,6 +155,10 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# django-recaptcha
+RECAPTCHA_PUBLIC_KEY = '6LcJTwkTAAAAAMR1PAyaE_kpJbg1W03jzAMVDIhT'
+NOCAPTCHA = True
 
 # bleach
 def _filter_a_attr(name, value):

@@ -7,6 +7,7 @@ django-appconf==1.0.1
 django-custom-user==0.5
 django-froala-editor==1.2.4
 django-haystack==2.3.1
+django-recaptcha==1.0.4
 django-user-accounts==1.0.2
 html5lib==0.99999
 jsonfield==1.0.3
