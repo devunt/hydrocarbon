@@ -82,22 +82,6 @@ input[type=password] {
 #overlay div {
   z-index: 2500; }
 
-.adcontainer {
-  margin: 10px auto 20px;
-  overflow: hidden; }
-  @media screen and (max-width: 319px) {
-    .adcontainer {
-      height: 60px;
-      width: 234px; } }
-  @media screen and (min-width: 320px) and (max-width: 467px) {
-    .adcontainer {
-      height: 100px;
-      width: 320px; } }
-  @media screen and (min-width: 468px) {
-    .adcontainer {
-      height: 60px;
-      width: 468px; } }
-
 #wrapper {
   width: 720px;
   background: #fff;
@@ -1493,6 +1477,11 @@ a.anchor {
     @media all and (max-width: 599px) {
       .section.article.form .item.article .froala-box .fr-placeholder {
         padding: 20px 5% !important; } }
+  .section.article.form .item.article .g-recaptcha {
+    margin: 20px 0;
+    text-align: center; }
+  .section.article.form .item.article .g-recaptcha > div > div {
+    display: inline-block; }
   .section.article.form .item.article .footer {
     border-top: 1px solid #e5e5e5; }
     .section.article.form .item.article .footer .tags > input {
@@ -1566,8 +1555,10 @@ a.anchor {
   cursor: default;
   line-height: 20px;
   overflow: hidden;
-  padding: 10px 20px;
-  white-space: nowrap; }
+  padding: 10px 20px; }
+
+.autocomplete-suggestion .left {
+  white-space: normal; }
 
 .autocomplete-selected {
   background: #3d9ccc;
@@ -1628,6 +1619,11 @@ html body .froala-view {
     color: rgba(61, 156, 204, 0.6); }
   html body .froala-view a:visited {
     color: rgba(170, 170, 170, 0.9); }
+  html body .froala-view li p {
+    margin: 0; }
+  html body .froala-view li ol, html body .froala-view li ol:last-child,
+  html body .froala-view li ul, html body .froala-view li ol:last-child {
+    margin: 0 0 10px; }
   html body .froala-view img,
   html body .froala-view iframe {
     max-width: 100%; }

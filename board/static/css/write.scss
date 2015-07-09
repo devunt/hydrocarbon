@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-// 	
+//
 // 	write.scss
 // 		write form
 // 		uses part of article.scss too
-// 	
+//
 
 .section.article.form {
 	.item.article {
@@ -50,6 +50,9 @@
 			}
 		}
 
+		.g-recaptcha { margin:20px 0; text-align:center; }
+		.g-recaptcha > div > div { display:inline-block; }
+
 		.footer {
 			border-top:1px solid $grey-90;
 			.tags {
@@ -88,7 +91,8 @@
 .tag.readonly:hover { background:$blue-base; color:$white; }
 
 .autocomplete-suggestions { background:$white; box-shadow:0 2px 10px rgba(0,0,0,.3); border-radius:0 0 4px 4px; overflow: auto; }
-.autocomplete-suggestion { clear:both; cursor:default; line-height:20px; overflow:hidden; padding:10px 20px; white-space:nowrap;}
+.autocomplete-suggestion { clear:both; cursor:default; line-height:20px; overflow:hidden; padding:10px 20px; }
+.autocomplete-suggestion .left { white-space:normal; }
 .autocomplete-selected { background:$blue-base; color:$white; }
 .autocomplete-suggestions strong { font-weight:normal; color:$blue-base; }
 .autocomplete-selected strong { color:$white; }

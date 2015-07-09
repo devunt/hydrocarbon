@@ -97,17 +97,20 @@
 		</div>
 
 		{% if google_ads %}
-		<div class="adcontainer">
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<ins class="adsbygoogle"
-				 style="display:block;"
-				 data-ad-client="{{ google_ads.client }}"
-				 data-ad-slot="{{ google_ads.slot }}"
-				 data-ad-format="auto"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<style type="text/css">
+			.adcontainer { width:468px; height:60px; margin:10px auto 20px; overflow:hidden; }
+			@media screen and (max-width: 319px) { .adcontainer { height:60px; width:234px; } }
+			@media screen and (min-width: 320px) and (max-width: 467px) { .adcontainer { height:50px; width:320px; } }
+		</style>
+		<ins class="adsbygoogle adcontainer"
+			 style="display:block;"
+			 data-ad-client="{{ google_ads.client }}"
+			 data-ad-slot="{{ google_ads.slot }}"
+			 data-ad-format="horizontal"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
 		{% endif %}
 
 		<div class="footer clear">
