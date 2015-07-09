@@ -103,7 +103,8 @@ $(function() {
 		.on('mouseenter', '.th', showTooltip)
 		.on('mouseleave scroll', '.th', hideTooltip)
 		.on('mouseenter', '*[title]', function(e) {
-			if($(this).closest('.note-editor').length) return false;
+			if($(this).closest('.froala-editor').length
+				|| $(this).closest('.g-recaptcha').length) return false;
 			$(this)
 				.data('title', $(this).attr('title'))
 				.removeAttr('title')
