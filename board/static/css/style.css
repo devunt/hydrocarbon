@@ -1477,6 +1477,11 @@ a.anchor {
     @media all and (max-width: 599px) {
       .section.article.form .item.article .froala-box .fr-placeholder {
         padding: 20px 5% !important; } }
+  .section.article.form .item.article .g-recaptcha {
+    margin: 20px 0;
+    text-align: center; }
+  .section.article.form .item.article .g-recaptcha > div > div {
+    display: inline-block; }
   .section.article.form .item.article .footer {
     border-top: 1px solid #e5e5e5; }
     .section.article.form .item.article .footer .tags > input {
