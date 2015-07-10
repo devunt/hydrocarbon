@@ -1482,7 +1482,7 @@ a.anchor {
     text-align: center; }
   .section.article.form .item.article .g-recaptcha > div > div {
     display: inline-block; }
-  .section.article.form .item.article .g-recaptcha + .footer {
+  .section.article.form .item.article .errorlist + .footer {
     margin-top: 20px; }
   .section.article.form .item.article .footer {
     border-top: 1px solid #e5e5e5; }
