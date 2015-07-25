@@ -42,9 +42,9 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+SEARCH_INDEX_CLASS = 'haystack.indexes.SearchIndex'
 
 # App settings
-SEARCH_INDEX_CLASS = 'haystack.indexes.SearchIndex'
 BOARD_POST_BLIND_VOTES = -1
 BOARD_POST_BEST_VOTES = 1
 BOARD_COMMENT_BLIND_VOTES = -1
