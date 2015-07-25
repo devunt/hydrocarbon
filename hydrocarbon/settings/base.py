@@ -30,6 +30,7 @@ INSTALLED_APPS = (
     'custom_user',
     'froala_editor',
     'haystack',
+    'celery_haystack',
     ) + (
     # django apps
     'django.contrib.admin',
@@ -154,7 +155,7 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'haystack',
     },
 }
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+HAYSTACK_SIGNAL_PROCESSOR = 'celery_haystack.signals.CelerySignalProcessor'
 
 # django-recaptcha
 RECAPTCHA_PUBLIC_KEY = '6LcJTwkTAAAAAMR1PAyaE_kpJbg1W03jzAMVDIhT'
@@ -225,6 +226,7 @@ BLEACH_ALLOWED_STYLES = [
 ]
 
 # App settings
+SEARCH_INDEX_CLASS = 'celery_haystack.indexes.CelerySearchIndex'
 BOARD_COMMENT_MAX_DEPTH = 7
 
 # Private settings override
