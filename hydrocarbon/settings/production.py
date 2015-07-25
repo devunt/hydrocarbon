@@ -13,6 +13,7 @@ ALLOWED_HOSTS = ['herocomics.kr']
 
 # Installed apps
 INSTALLED_APPS += (
+    'celery_haystack',
     'raven.contrib.django.raven_compat',
 )
 
@@ -66,6 +67,8 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'haystack',
     },
 }
+HAYSTACK_SIGNAL_PROCESSOR = 'celery_haystack.signals.CelerySignalProcessor'
+SEARCH_INDEX_CLASS = 'celery_haystack.indexes.CelerySearchIndex'
 ELASTICSEARCH_INDEX_SETTINGS = {
     'settings': {
         'index': {

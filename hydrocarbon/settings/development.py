@@ -41,6 +41,8 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     },
 }
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+SEARCH_INDEX_CLASS = 'haystack.indexes.SearchIndex'
 
 # App settings
 BOARD_POST_BLIND_VOTES = -1

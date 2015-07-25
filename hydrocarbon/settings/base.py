@@ -146,16 +146,6 @@ FROALA_EDITOR_OPTIONS_COMMENT.update({
     'placeholder': _('Press ctrl-enter to submit a comment'),
 })
 
-# django-haystack
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'board.backends.ConfigurableElasticSearchEngine',
-        'URL': '127.0.0.1:9200',
-        'INDEX_NAME': 'haystack',
-    },
-}
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
-
 # django-recaptcha
 RECAPTCHA_PUBLIC_KEY = '6LcJTwkTAAAAAMR1PAyaE_kpJbg1W03jzAMVDIhT'
 NOCAPTCHA = True
