@@ -100,10 +100,13 @@ $(function() {
 			}
 		})
 
-		.on('mouseenter', '.th', showTooltip)
+		.on('mouseenter', '.th', function(e) {
+			if($(this).closest('.hc-froala-editor').length) return false;
+			 showTooltip(e);
+		})
 		.on('mouseleave scroll', '.th', hideTooltip)
 		.on('mouseenter', '*[title]', function(e) {
-			if($(this).closest('.froala-editor').length
+			if($(this).closest('.hc-froala-editor').length
 				|| $(this).closest('.g-recaptcha').length) return false;
 			$(this)
 				.data('title', $(this).attr('title'))

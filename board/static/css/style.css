@@ -938,7 +938,7 @@ a.anchor {
     .section.article .item.article .vote.vote-post a.downvote .icon {
       background-position: 50% -20px; }
 .section.article .item.article .footer {
-  margin: 20px 5%;
+  margin: 0 5%;
   padding: 5px 3%; }
   .section.article .item.article .footer .icon {
     margin-right: 4px; }
@@ -1482,6 +1482,8 @@ a.anchor {
     text-align: center; }
   .section.article.form .item.article .g-recaptcha > div > div {
     display: inline-block; }
+  .section.article.form .item.article .errorlist + .footer {
+    margin-top: 20px; }
   .section.article.form .item.article .footer {
     border-top: 1px solid #e5e5e5; }
     .section.article.form .item.article .footer .tags > input {
