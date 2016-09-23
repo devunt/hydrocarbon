@@ -130,28 +130,26 @@ ACCOUNT_DELETION_EXPUNGE_CALLBACK = 'board.callbacks.account_delete_expunge'
 
 # django-froala-editor
 FROALA_INCLUDE_JQUERY = False
-FROALA_EDITOR_PLUGINS = ('file_upload', 'lists', 'video', 'spoiler', 'icon_fix')
+FROALA_EDITOR_PLUGINS = ('align', 'code_view', 'file', 'image', 'link', 'lists', 'paragraph_format', 'video', 'spoiler', 'icon_fix')
 FROALA_EDITOR_OPTIONS = {
     'language': 'ko',
-    'buttons': ['bold', 'italic', 'underline', 'spoiler',
-                'formatBlock', 'align', 'insertOrderedList', 'insertUnorderedList',
-                'createLink', 'insertImage', 'insertVideo', 'uploadFile', 'html'
+    'toolbarButtons': ['bold', 'italic', 'underline', 'spoiler',
+                'paragraphFormat', 'align', 'formatOL', 'formatUL',
+                'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
     ],
-    'inlineMode': False,
-    'alwaysBlank': True,
-    'imageUpload': True,
+    'linkAlwaysBlank': True,
     'imageUploadURL': '/x/f',
     'imageUploadParams': {'type': 'i'},
-    'pasteImage': False,
+    'imagePaste': False,
+    'imageDefaultWidth': 0,
     'fileUploadURL': '/x/f',
     'fileUploadParams': {'type': 'f'},
-    'defaultImageWidth': 0,
     'linkAutoPrefix': 'http://',
     'editorClass': 'froala-view hc-froala-editor',
 }
 FROALA_EDITOR_OPTIONS_COMMENT = FROALA_EDITOR_OPTIONS.copy()
 FROALA_EDITOR_OPTIONS_COMMENT.update({
-    'placeholder': _('Press ctrl-enter to submit a comment'),
+    'placeholderText': _('Press ctrl-enter to submit a comment'),
 })
 
 # django-recaptcha
