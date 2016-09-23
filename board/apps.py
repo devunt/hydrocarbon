@@ -13,4 +13,4 @@ class BoardConfig(AppConfig):
     def ready(self):
         import board.signals
         django.core.paginator.Paginator = HCPaginator
-        settings.FROALA_EDITOR_OPTIONS_COMMENT['placeholder'] = str(settings.FROALA_EDITOR_OPTIONS_COMMENT['placeholder'])
+        settings.FROALA_EDITOR_OPTIONS_COMMENT['placeholderText'] = str(settings.FROALA_EDITOR_OPTIONS_COMMENT['placeholderText'])

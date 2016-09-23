@@ -5,8 +5,7 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.core.validators import MinLengthValidator
 from django.db import models
-from django.db.models import aggregates
-from django.db.models.sql import aggregates as sql_aggregates
+from django.db.models.functions import Coalesce
 from django.utils import timezone
 from custom_user.models import AbstractEmailUser
 from froala_editor.fields import FroalaField
@@ -15,23 +14,14 @@ from jsonfield import JSONField
 from board.utils import clean_html, get_upload_path, normalize
 
 
-class DefaultSum(aggregates.Aggregate):
-    name = 'DefaultSum'
-
-class SQLDefaultSum(sql_aggregates.Sum):
-    sql_template = 'COALESCE(%(function)s(%(field)s), %(default)s)'
-
-setattr(sql_aggregates, 'DefaultSum', SQLDefaultSum)
-
-
 class User(AbstractEmailUser):
     nickname = models.CharField(max_length=16, unique=True,
         validators=[MinLengthValidator(2)])
 
     @property
     def total_score(self):
-        post_votes = self.posts.aggregate(score=DefaultSum('_votes__vote', default=0))
-        comment_votes = self.comments.aggregate(score=DefaultSum('_votes__vote', default=0))
+        post_votes = self.posts.aggregate(score=Coalesce(models.Sum('_votes__vote'), 0))
+        comment_votes = self.comments.aggregate(score=Coalesce(models.Sum('_votes__vote'), 0))
         return post_votes['score'] + comment_votes['score']
 
     @property
@@ -149,7 +139,7 @@ class Post(AuthorModelMixin, VotableModelMixin, models.Model):
     category = models.ForeignKey('Category', blank=True, null=True, related_name='posts')
     title = models.CharField(max_length=50)
     contents = FroalaField()
-    tags = models.ManyToManyField('Tag', blank=True, null=True, related_name='posts')
+    tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
     viewcount = models.PositiveIntegerField(default=0)
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField()
@@ -215,7 +205,7 @@ class Vote(models.Model):
 
 class Announcement(models.Model):
     post = models.OneToOneField('Post', related_name='announcement')
-    boards = models.ManyToManyField('Board', blank=True, null=True, related_name='announcements')
+    boards = models.ManyToManyField('Board', blank=True, related_name='announcements')
 
 
 class ImageAttachment(models.Model):

@@ -8,7 +8,6 @@ from django.shortcuts import render
 from django.utils.translation import ugettext as _
 
 from board.forms import PasswordForm
-from board.models import DefaultSum
 from board.models import Announcement, Board, Post, OneTimeUser, User
 
 

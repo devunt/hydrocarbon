@@ -21,12 +21,10 @@ class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
     widget = TextInput
 
     def prepare_value(self, value):
-        lst = list()
         if isinstance(value, list):
-            for item in value:
-                lst.append(getattr(self.queryset.get(id=item), self.to_field_name))
-            value = ', '.join(lst)
-        return super().prepare_value(value)
+            return super().prepare_value(value)
+        else:
+            return ','.join(list(value.values_list(self.to_field_name, flat=True)))
 
     def clean(self, value):
         if value not in ('', None):
