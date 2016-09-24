@@ -3,6 +3,7 @@ from collections import OrderedDict
 from django import forms
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
+from django.db.models.query import QuerySet
 from django.forms.widgets import TextInput
 from django.utils.translation import ugettext_lazy as _
 from account.forms import LoginEmailForm, PasswordResetForm, SignupForm, SettingsForm
@@ -21,10 +22,10 @@ class ModelCommaSeparatedChoiceField(forms.ModelMultipleChoiceField):
     widget = TextInput
 
     def prepare_value(self, value):
-        if isinstance(value, list):
-            return super().prepare_value(value)
-        else:
+        if isinstance(value, QuerySet):
             return ','.join(list(value.values_list(self.to_field_name, flat=True)))
+        else:
+            return super().prepare_value(value)
 
     def clean(self, value):
         if value not in ('', None):
