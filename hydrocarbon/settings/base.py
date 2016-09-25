@@ -158,10 +158,12 @@ FROALA_EDITOR_OPTIONS = {
     'fileUploadParams': {'type': 'f'},
     'linkAutoPrefix': 'http://',
     'editorClass': 'froala-view hc-froala-editor',
+    'theme': 'hc',
 }
 FROALA_EDITOR_OPTIONS_COMMENT = FROALA_EDITOR_OPTIONS.copy()
 FROALA_EDITOR_OPTIONS_COMMENT.update({
     'placeholderText': _('Press ctrl-enter to submit a comment'),
+    'theme': 'hc-comment',
 })
 
 # django-recaptcha
