@@ -137,6 +137,18 @@ FROALA_EDITOR_OPTIONS = {
                 'paragraphFormat', 'align', 'formatOL', 'formatUL',
                 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
     ],
+    'toolbarButtonsMD': ['bold', 'italic', 'underline', 'spoiler',
+                'paragraphFormat', 'align', 'formatOL', 'formatUL',
+                'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
+    ],
+    'toolbarButtonsSM': ['bold', 'italic', 'underline', 'spoiler',
+                'paragraphFormat', 'align', 'formatOL', 'formatUL',
+                'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
+    ],
+    'toolbarButtonsXS': ['bold', 'italic', 'underline', 'spoiler',
+                'paragraphFormat', 'align', 'formatOL', 'formatUL',
+                'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
+    ],
     'linkAlwaysBlank': True,
     'imageUploadURL': '/x/f',
     'imageUploadParams': {'type': 'i'},
