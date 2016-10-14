@@ -149,6 +149,7 @@ FROALA_EDITOR_OPTIONS = {
                 'paragraphFormat', 'align', 'formatOL', 'formatUL',
                 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
     ],
+    'toolbarStickyOffset': 50,
     'linkAlwaysBlank': True,
     'imageUploadURL': '/x/f',
     'imageUploadParams': {'type': 'i'},
@@ -163,6 +164,7 @@ FROALA_EDITOR_OPTIONS = {
 FROALA_EDITOR_OPTIONS_COMMENT = FROALA_EDITOR_OPTIONS.copy()
 FROALA_EDITOR_OPTIONS_COMMENT.update({
     'placeholderText': _('Press ctrl-enter to submit a comment'),
+    'toolbarSticky': False,
     'theme': 'hc-comment',
 })
 
