@@ -26,6 +26,7 @@
 			}
 		}
 
+		/*
 		.froala-box {
 			.froala-editor {
 				background:$grey-90; box-sizing:border-box;
@@ -49,6 +50,7 @@
 				@media all and (max-width: $medium) { padding:20px 5% !important; }
 			}
 		}
+		*/
 
 		.g-recaptcha { margin:10px 0 5px; text-align:center; }
 		.g-recaptcha > div > div { display:inline-block; }
@@ -61,7 +63,7 @@
 
 				.tagging {
 					white-space:normal;
-					input { @extend .tag; width:200px; cursor:text !important; outline:none; position:relative; z-index:1051; }
+					input { @extend .tag; width:200px; cursor:text !important; outline:none; }
 					.tag {
 						padding-right:0;
 						.tag-i { width:20px; height:20px; background:$grey-90; color:inherit; cursor:pointer; display:inline-block; font-size:.8em; line-height:20px; margin-left:5px; text-align:center; vertical-align:top; }
