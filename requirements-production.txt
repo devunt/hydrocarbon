@@ -1,12 +1,4 @@
-amqp==1.4.6
-anyjson==0.3.3
-billiard==3.3.0.20
-celery==3.1.18
-celery-haystack==0.9
-django-celery-transactions==0.3.2
-elasticsearch==1.4.0
-psycopg2==2.6
-pylibmc==1.4.2
-raven==5.3.1
-kombu==3.0.26
-redis==2.10.3
+celery-haystack==0.10
+elasticsearch==2.4.0
+psycopg2==2.6.2
+raven==5.27.1

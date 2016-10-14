@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-// 	
+//
 // 	nav.scss
 // 		#header
-// 	
+//
 
 #header { top:0; width:100%; position:fixed; z-index:3000; }
 
@@ -11,7 +11,7 @@
 	height:50px; background:$blue; color:$white; font-size:0; margin:0; white-space:nowrap;
 
 
-	& > .container { width:720px; margin:0 auto; position:relative;
+	& > .container { width:780px; margin:0 auto; position:relative;
 		@media screen and (max-width: $large) { width:100%; }
 	}
 	.handle { height:50px; display:block; }
@@ -79,7 +79,7 @@
 					}
 				}
 			}
-			
+
 			@media screen and (max-width: $small) {
 				.text { display:none; }
 				.dropdown.menu li a > span.mobile { display:block; }
