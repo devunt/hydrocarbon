@@ -4,6 +4,9 @@
   content: "";
   height: 0;
 }
+.hc-comment-theme.fr-box.fr-basic {
+  overflow-x: hidden;
+}
 .hc-comment-theme.fr-box.fr-basic .fr-element {
   color: #000000;
   overflow-x: auto;
