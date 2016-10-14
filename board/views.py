@@ -24,6 +24,7 @@ from haystack.query import SearchQuerySet
 from board.forms import CommentForm, EmailConfirmationResendForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
 from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
 from board.models import Block, Board, Category, Comment, FileAttachment, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
+from board.pagination import HCPaginator
 from board.utils import is_empty_html, normalize, replace_tags_to_text, treedict, truncate_chars
 
 
@@ -104,6 +105,7 @@ class NotificationView(ListView):
     model = Notification
     template_name = 'user/notification.html'
     paginate_by = 20
+    paginator_class = HCPaginator
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -133,6 +135,7 @@ class UserPostListView(UserURLMixin, PostListMixin, ListView):
 class UserCommentListView(UserURLMixin, ListView):
     template_name = 'user/comment_list.html'
     paginate_by = 10
+    paginator_class = HCPaginator
 
     def get_queryset(self):
         return self.user.comments.all()

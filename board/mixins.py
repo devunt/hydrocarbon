@@ -11,6 +11,7 @@ from django.utils.translation import ugettext as _
 
 from board.forms import PasswordForm
 from board.models import Announcement, Board, Post, OneTimeUser, User
+from board.pagination import HCPaginator
 
 
 class BoardURLMixin:
@@ -110,6 +111,7 @@ class PermissionCheckMixin:
 class PostListMixin:
     template_name = 'board/postlist/base.html'
     paginate_by = 20
+    paginator_class = HCPaginator
     order_by = 'created_time'
     annotate_votes = False
 
