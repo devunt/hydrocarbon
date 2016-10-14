@@ -5,24 +5,7 @@
 // 		froala specific styles
 //
 
-html body .froala-wrapper.f-basic { background:none; }
-
-html body .froala-box {
-	.froala-editor { background:none; }
-	.f-basic { border:0; }
-	.f-sep { display:none; }
-	.fr-bttn,
-	.fr-trigger { height:30px; width:30px; }
-	.fr-dropdown { width:40px; }
-	.fr-bttn i.fa { font-size:12px; line-height:30px; vertical-align:top; }
-	.froala-editor .bttn-wrapper:not(.touch) button.fr-bttn:hover, .froala-editor .froala-popup button.fr-bttn:hover, .froala-editor .bttn-wrapper:not(.touch) button.fr-trigger:hover, .froala-editor .froala-popup button.fr-trigger:hover { background:$blue-base; }
-}
-
-html body .froala-popup {
-	button.fr-p-bttn.f-ok { background:$blue-base; }
-}
-
-html body .froala-view {
+.fr-element {
 	min-height:0; line-height:1.6em;
 	*:last-child { margin-bottom:0; }
 	blockquote:last-child { margin-bottom:10px; }
@@ -64,10 +47,10 @@ html body .froala-view {
 	blockquote, pre { font-style:normal; margin-top:10px; margin-bottom:10px; }
 	iframe { border:0; margin:10px auto; }
 
-	ul, ol { margin:10px 0; }
+	ul, ol { margin:10px 0; padding-left:25px; }
 }
 
-html body .froala-editor {
+.froala-editor {
 	font-family:"NanumGothic";
 
 	h1, h2,
@@ -80,8 +63,4 @@ html body .froala-editor {
 	.fr-trigger.active { background:$blue; }
 
 	.fr-dropdown-menu i.fa { line-height:20px; }
-}
-
-html body .f-html {
-	.froala-view textarea { background:#202020; }
 }
