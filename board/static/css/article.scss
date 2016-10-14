@@ -154,14 +154,7 @@
 						}
 					}
 
-					.article {
-						padding:5px 10px;
-						.froala-box {
-							.froala-editor { border-bottom:1px solid $grey-90 !important; }
-							.froala-wrapper .froala-view { min-height:80px !important; background:none; padding:5px 0; }
-							.fr-placeholder { margin:0; }
-						}
-					}
+					.article { padding:5px 10px; }
 
 					.footer {
 						border-top:1px solid $grey-90; margin:0 10px; overflow:hidden; padding:0 0 5px;

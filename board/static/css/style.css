@@ -1014,14 +1014,6 @@ a.anchor {
         display: none; }
     .section.article .comments-list .comment .bubble.item .article {
       padding: 5px 10px; }
-      .section.article .comments-list .comment .bubble.item .article .froala-box .froala-editor {
-        border-bottom: 1px solid #e5e5e5 !important; }
-      .section.article .comments-list .comment .bubble.item .article .froala-box .froala-wrapper .froala-view {
-        min-height: 80px !important;
-        background: none;
-        padding: 5px 0; }
-      .section.article .comments-list .comment .bubble.item .article .froala-box .fr-placeholder {
-        margin: 0; }
     .section.article .comments-list .comment .bubble.item .footer {
       border-top: 1px solid #e5e5e5;
       margin: 0 10px;
