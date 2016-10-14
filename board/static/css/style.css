@@ -1472,7 +1472,7 @@ a.anchor {
   .section.article.form .item.article .g-recaptcha {
     margin: 10px 0 5px;
     text-align: center; }
-  .section.article.form .item.article .g-recaptcha > div > div {
+  .section.article.form .item.article .g-recaptcha > div {
     display: inline-block; }
   .section.article.form .item.article .errorlist + .footer {
     margin-top: 20px; }

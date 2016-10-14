@@ -56,6 +56,7 @@ HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'board.backends.ConfigurableElasticSearchEngine',
         'URL': '127.0.0.1:9200',
+        'TIMEOUT': 300,
         'INDEX_NAME': 'haystack',
     },
 }
