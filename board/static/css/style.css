@@ -90,7 +90,8 @@ input[type=password] {
   margin-top: 50px; }
   @media screen and (max-width: 779px) {
     #wrapper {
-      width: 100%; } }
+      width: 100%;
+      overflow-x: hidden; } }
 
 #footer {
   color: #ccc;
