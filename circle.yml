@@ -5,4 +5,4 @@ deployment:
   production:
     branch: production
     commands:
-    - ssh herocomics@erinn.devunt.kr -p2201 ./deploy
+    - ssh herocomics@tachibana.devunt.kr -p2201 ./deploy
