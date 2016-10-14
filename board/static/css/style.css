@@ -16,7 +16,7 @@ body {
   color: #222;
   font: 14px "NanumGothic", "Malgun Gothic", sans-serif;
   letter-spacing: -.04em; }
-  @media screen and (min-width: 720px) {
+  @media screen and (min-width: 780px) {
     body {
       overflow: initial !important;
       overflow-y: scroll !important; } }
@@ -83,12 +83,12 @@ input[type=password] {
   z-index: 2500; }
 
 #wrapper {
-  width: 720px;
+  width: 780px;
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   margin-top: 50px; }
-  @media screen and (max-width: 719px) {
+  @media screen and (max-width: 779px) {
     #wrapper {
       width: 100%; } }
 
@@ -306,7 +306,7 @@ form > .errorlist li {
     display: block; }
   .dropdown.container .close {
     display: none; }
-  @media screen and (max-width: 719px) {
+  @media screen and (max-width: 779px) {
     .dropdown.container.open .close {
       top: 0;
       left: 0;
@@ -563,10 +563,10 @@ a.anchor {
   margin: 0;
   white-space: nowrap; }
   #nav > .container {
-    width: 720px;
+    width: 780px;
     margin: 0 auto;
     position: relative; }
-    @media screen and (max-width: 719px) {
+    @media screen and (max-width: 779px) {
       #nav > .container {
         width: 100%; } }
   #nav .handle {
@@ -889,7 +889,7 @@ a.anchor {
     .section.article .item.article .header div.meta .label.meta .text span {
       font-size: 12px; } }
 .section.article .item.article div.article {
-  width: 540px;
+  width: 600px;
   line-height: 20px;
   margin: 20px auto !important; }
   @media screen and (max-width: 599px) {
@@ -1725,7 +1725,7 @@ html body .f-html .froala-view textarea {
           .section.profile .header .meta .score .count .total {
             display: inline-block;
             position: relative; }
-    @media screen and (max-width: 719px) {
+    @media screen and (max-width: 779px) {
       .section.profile .header .icon {
         width: 80px; }
       .section.profile .header .meta h1 {
