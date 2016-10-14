@@ -127,8 +127,8 @@
   background-clip: padding-box;
 }
 .hc-theme textarea.fr-code {
-  background: #ffffff;
-  color: #000000;
+  background: #202020;
+  color: #fff;
 }
 .hc-theme.fr-box.fr-code-view.fr-inline {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -625,10 +625,6 @@
   left: 0;
   bottom: 0;
   right: 0;
-}
-.hc-theme .fr-view ul, ol {
-  margin: 10px 0;
-  padding-left: 25px;
 }
 .hc-theme .fr-view strong {
   font-weight: 700;

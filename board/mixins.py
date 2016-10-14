@@ -2,7 +2,9 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import PermissionDenied
+from django.db import models
 from django.db.models import Q
+from django.db.models.functions import Coalesce
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.translation import ugettext as _
@@ -127,7 +129,7 @@ class PostListMixin:
         else:
             pqs = super().get_queryset()
         if self.annotate_votes:
-            pqs = pqs.annotate(vote=DefaultSum('_votes__vote', default=0))
+            pqs = pqs.annotate(vote=Coalesce(models.Sum('_votes__vote', 0)))
         pqs = pqs.order_by(self.order_by, '-created_time')
         if hasattr(self, 'queryset_post_filter'):
             pqs = self.queryset_post_filter(pqs)

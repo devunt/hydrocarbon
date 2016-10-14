@@ -1570,108 +1570,137 @@ a.anchor {
   display: block;
   border-bottom: 1px solid #000; }
 
-html body .froala-wrapper.f-basic {
-  background: none; }
-
-html body .froala-box .froala-editor {
-  background: none; }
-html body .froala-box .f-basic {
-  border: 0; }
-html body .froala-box .f-sep {
-  display: none; }
-html body .froala-box .fr-bttn,
-html body .froala-box .fr-trigger {
-  height: 30px;
-  width: 30px; }
-html body .froala-box .fr-dropdown {
-  width: 40px; }
-html body .froala-box .fr-bttn i.fa {
-  font-size: 12px;
-  line-height: 30px;
-  vertical-align: top; }
-html body .froala-box .froala-editor .bttn-wrapper:not(.touch) button.fr-bttn:hover, html body .froala-box .froala-editor .froala-popup button.fr-bttn:hover, html body .froala-box .froala-editor .bttn-wrapper:not(.touch) button.fr-trigger:hover, html body .froala-box .froala-editor .froala-popup button.fr-trigger:hover {
-  background: #3d9ccc; }
-
-html body .froala-popup button.fr-p-bttn.f-ok {
-  background: #3d9ccc; }
-
-html body .froala-view {
+.fr-element,
+.froala-element {
   min-height: 0;
   line-height: 1.6em; }
-  html body .froala-view *:last-child {
+  .fr-element *:last-child,
+  .froala-element *:last-child {
     margin-bottom: 0; }
-  html body .froala-view blockquote:last-child {
+  .fr-element blockquote:last-child,
+  .froala-element blockquote:last-child {
     margin-bottom: 10px; }
-  html body .froala-view a {
+  .fr-element p,
+  .froala-element p {
+    margin: 0 0 1em; }
+  .fr-element a,
+  .froala-element a {
     color: #3d9ccc; }
-  html body .froala-view a:hover {
+  .fr-element a:hover,
+  .froala-element a:hover {
     color: rgba(61, 156, 204, 0.9);
     text-decoration: underline; }
-  html body .froala-view a:active {
+  .fr-element a:active,
+  .froala-element a:active {
     color: rgba(61, 156, 204, 0.6); }
-  html body .froala-view a:visited {
+  .fr-element a:visited,
+  .froala-element a:visited {
     color: rgba(170, 170, 170, 0.9); }
-  html body .froala-view li p {
+  .fr-element li,
+  .froala-element li {
+    margin: 0 0 3px; }
+  .fr-element li p,
+  .froala-element li p {
     margin: 0; }
-  html body .froala-view li ol, html body .froala-view li ol:last-child,
-  html body .froala-view li ul, html body .froala-view li ol:last-child {
+  .fr-element li ol, .fr-element li ol:last-child,
+  .fr-element li ul, .fr-element li ol:last-child,
+  .froala-element li ol,
+  .froala-element li ol:last-child,
+  .froala-element li ul,
+  .froala-element li ol:last-child {
     margin: 0 0 10px; }
-  html body .froala-view img,
-  html body .froala-view iframe {
+  .fr-element img,
+  .fr-element iframe,
+  .froala-element img,
+  .froala-element iframe {
     max-width: 100%; }
-  html body .froala-view h1, html body .froala-view h2,
-  html body .froala-view .format-h1, html body .froala-view .format-h2 {
+  .fr-element h1, .fr-element h2,
+  .fr-element .format-h1, .fr-element .format-h2,
+  .froala-element h1,
+  .froala-element h2,
+  .froala-element .format-h1,
+  .froala-element .format-h2 {
     font-family: "NanumGothic Light"; }
-  html body .froala-view h1, html body .froala-view h2, html body .froala-view h3, html body .froala-view h4, html body .froala-view h5, html body .froala-view h6 {
+  .fr-element h1, .fr-element h2, .fr-element h3, .fr-element h4, .fr-element h5, .fr-element h6,
+  .froala-element h1,
+  .froala-element h2,
+  .froala-element h3,
+  .froala-element h4,
+  .froala-element h5,
+  .froala-element h6 {
     padding: 0px 10px; }
-  html body .froala-view h1, html body .froala-view .format-h1 {
+  .fr-element h1, .fr-element .format-h1,
+  .froala-element h1,
+  .froala-element .format-h1 {
     border-bottom: 1px solid #e5e5e5;
     font-size: 24px;
     padding: 5px 10px; }
-  html body .froala-view h2, html body .froala-view .format-h2 {
+  .fr-element h2, .fr-element .format-h2,
+  .froala-element h2,
+  .froala-element .format-h2 {
     font-size: 22px; }
-  html body .froala-view h3, html body .froala-view .format-h3 {
+  .fr-element h3, .fr-element .format-h3,
+  .froala-element h3,
+  .froala-element .format-h3 {
     font-size: 20px; }
-  html body .froala-view strike, html body .froala-view del, html body .froala-view .spoiler {
+  .fr-element strike, .fr-element del, .fr-element .spoiler,
+  .froala-element strike,
+  .froala-element del,
+  .froala-element .spoiler {
     background: #222;
     color: #222;
     text-decoration: initial; }
-    html body .froala-view strike a, html body .froala-view del a, html body .froala-view .spoiler a {
+    .fr-element strike a, .fr-element del a, .fr-element .spoiler a,
+    .froala-element strike a,
+    .froala-element del a,
+    .froala-element .spoiler a {
       color: #222 !important; }
-    html body .froala-view strike:hover, html body .froala-view del:hover, html body .froala-view .spoiler:hover {
+    .fr-element strike:hover, .fr-element del:hover, .fr-element .spoiler:hover,
+    .froala-element strike:hover,
+    .froala-element del:hover,
+    .froala-element .spoiler:hover {
       color: #fff; }
-      html body .froala-view strike:hover a, html body .froala-view del:hover a, html body .froala-view .spoiler:hover a {
+      .fr-element strike:hover a, .fr-element del:hover a, .fr-element .spoiler:hover a,
+      .froala-element strike:hover a,
+      .froala-element del:hover a,
+      .froala-element .spoiler:hover a {
         color: #aaa !important; }
-  html body .froala-view a strike:hover, html body .froala-view a del:hover, html body .froala-view a .spoiler:hover {
+  .fr-element a strike:hover, .fr-element a del:hover, .fr-element a .spoiler:hover,
+  .froala-element a strike:hover,
+  .froala-element a del:hover,
+  .froala-element a .spoiler:hover {
     color: #aaa; }
-  html body .froala-view blockquote, html body .froala-view pre {
+  .fr-element blockquote, .fr-element pre,
+  .froala-element blockquote,
+  .froala-element pre {
     font-style: normal;
     margin-top: 10px;
     margin-bottom: 10px; }
-  html body .froala-view iframe {
+  .fr-element iframe,
+  .froala-element iframe {
     border: 0;
     margin: 10px auto; }
-  html body .froala-view ul, html body .froala-view ol {
-    margin: 10px 0; }
+  .fr-element ul, .fr-element ol,
+  .froala-element ul,
+  .froala-element ol {
+    margin: 10px 0;
+    padding-left: 25px; }
 
-html body .froala-editor {
+.froala-editor {
   font-family: "NanumGothic"; }
-  html body .froala-editor h1, html body .froala-editor h2,
-  html body .froala-editor .format-h1, html body .froala-editor .format-h2 {
+  .froala-editor h1, .froala-editor h2,
+  .froala-editor .format-h1, .froala-editor .format-h2 {
     font-family: "NanumGothic Light"; }
-  html body .froala-editor h1, html body .froala-editor .fr-dropdown .fr-dropdown-menu li a.format-h1 {
+  .froala-editor h1, .froala-editor .fr-dropdown .fr-dropdown-menu li a.format-h1 {
     font-size: 24px; }
-  html body .froala-editor h2, html body .froala-editor .fr-dropdown .fr-dropdown-menu li a.format-h2 {
+  .froala-editor h2, .froala-editor .fr-dropdown .fr-dropdown-menu li a.format-h2 {
     font-size: 22px; }
-  html body .froala-editor h3, html body .froala-editor .fr-dropdown .fr-dropdown-menu li a.format-h3 {
+  .froala-editor h3, .froala-editor .fr-dropdown .fr-dropdown-menu li a.format-h3 {
     font-size: 20px; }
-  html body .froala-editor .fr-trigger.active {
+  .froala-editor .fr-trigger.active {
     background: rgba(61, 156, 204, 0.9); }
-  html body .froala-editor .fr-dropdown-menu i.fa {
+  .froala-editor .fr-dropdown-menu i.fa {
     line-height: 20px; }
-
-html body .f-html .froala-view textarea {
-  background: #202020; }
 
 .section.search .nav.header {
   background: #e5e5e5;
