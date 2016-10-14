@@ -17,4 +17,4 @@ class HCPaginator(Paginator):
                 end += self.adjacent_pages - (self.page_num - start)
             if end == self.num_pages:
                 start -= self.adjacent_pages - (end - self.page_num)
-        return list(range(start, end + 1))
+        return range(start, end + 1)
