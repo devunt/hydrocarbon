@@ -29,7 +29,8 @@ var $overlay,
 		'no-duplicate-text': '이하의 태그는 이미 선택되어 있습니다:\n',
 		'tag-char': '',
 		'no-spacebar': true,
-		'tag-on-blur': false
+		'tag-on-blur': false,
+		'tag-input-name': 't'
 	},
 	autocomplete_options = {
 		'serviceUrl': '/x/t',
@@ -167,10 +168,10 @@ $(function() {
 		.on('submit', function(e) {
 			var text, editor = $('#id_contents');
 
-			text = editor.editable('getHTML', false, true);
+			text = editor.froalaEditor('html.get');
 			text = Autolinker.link(text);
 
-			editor.editable('destroy');
+			editor.froalaEditor('destroy');
 			editor.css('visibility', 'hidden');
 			editor.garlic('destroy');
 			editor.val(text);

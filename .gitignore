@@ -65,6 +65,9 @@ target/
 # vim
 *.sw[o-p]
 
+# PyCharm
+.idea/
+
 # database
 db.sqlite3
 

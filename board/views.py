@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse
-from django.http import JsonResponse, QueryDict
+from django.http import HttpResponse, JsonResponse, QueryDict
 from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
@@ -30,6 +30,8 @@ from board.utils import is_empty_html, normalize, replace_tags_to_text, treedict
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         board = Board.objects.first()
+        if not board:
+            return HttpResponse("Please create the default board")
         return redirect(reverse('board_post_list', kwargs={'board': board.slug}))
 
 

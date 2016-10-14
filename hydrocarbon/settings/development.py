@@ -11,7 +11,6 @@ SECRET_KEY = 'yw-x*phaeqr%i0og#%$lccg@77h7dbw786yu8vu(#6f#a_m4e7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-TEMPLATE_DEBUG = True
 
 # ALLOWED HOSTS
 ALLOWED_HOSTS = ['127.0.0.1']

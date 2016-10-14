@@ -55,18 +55,26 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
 )
 
-# Template context processor definition
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'board.context_processors.current_url',
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.request',
-)
+# Template backends
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': (
+                'board.context_processors.current_url',
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
+            )
+        }
+    },
+]
 
 # Authentication backends
 AUTH_USER_MODEL = 'board.User'
@@ -122,28 +130,40 @@ ACCOUNT_DELETION_EXPUNGE_CALLBACK = 'board.callbacks.account_delete_expunge'
 
 # django-froala-editor
 FROALA_INCLUDE_JQUERY = False
-FROALA_EDITOR_PLUGINS = ('file_upload', 'lists', 'video', 'spoiler', 'icon_fix')
+FROALA_EDITOR_PLUGINS = ('align', 'code_view', 'file', 'image', 'link', 'lists', 'paragraph_format', 'video', 'spoiler', 'icon_fix')
 FROALA_EDITOR_OPTIONS = {
     'language': 'ko',
-    'buttons': ['bold', 'italic', 'underline', 'spoiler',
-                'formatBlock', 'align', 'insertOrderedList', 'insertUnorderedList',
-                'createLink', 'insertImage', 'insertVideo', 'uploadFile', 'html'
+    'toolbarButtons': ['bold', 'italic', 'underline', 'spoiler',
+                'paragraphFormat', 'align', 'formatOL', 'formatUL',
+                'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
     ],
-    'inlineMode': False,
-    'alwaysBlank': True,
-    'imageUpload': True,
+    'toolbarButtonsMD': ['bold', 'italic', 'underline', 'spoiler',
+                'paragraphFormat', 'align', 'formatOL', 'formatUL',
+                'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
+    ],
+    'toolbarButtonsSM': ['bold', 'italic', 'underline', 'spoiler',
+                'paragraphFormat', 'align', 'formatOL', 'formatUL',
+                'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
+    ],
+    'toolbarButtonsXS': ['bold', 'italic', 'underline', 'spoiler',
+                'paragraphFormat', 'align', 'formatOL', 'formatUL',
+                'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'html'
+    ],
+    'linkAlwaysBlank': True,
     'imageUploadURL': '/x/f',
     'imageUploadParams': {'type': 'i'},
-    'pasteImage': False,
+    'imagePaste': False,
+    'imageDefaultWidth': 0,
     'fileUploadURL': '/x/f',
     'fileUploadParams': {'type': 'f'},
-    'defaultImageWidth': 0,
     'linkAutoPrefix': 'http://',
     'editorClass': 'froala-view hc-froala-editor',
+    'theme': 'hc',
 }
 FROALA_EDITOR_OPTIONS_COMMENT = FROALA_EDITOR_OPTIONS.copy()
 FROALA_EDITOR_OPTIONS_COMMENT.update({
-    'placeholder': _('Press ctrl-enter to submit a comment'),
+    'placeholderText': _('Press ctrl-enter to submit a comment'),
+    'theme': 'hc-comment',
 })
 
 # django-recaptcha

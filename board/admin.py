@@ -1,6 +1,7 @@
 from django.contrib import admin
-from django.db.models import get_models, get_app
+from django.apps import apps
 
+app = apps.get_app_config('board')
 
-for model in get_models(get_app('board')):
+for model_name, model in app.models.items():
     admin.site.register(model)
