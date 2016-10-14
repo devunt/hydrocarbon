@@ -131,7 +131,7 @@ class PostListMixin:
         else:
             pqs = super().get_queryset()
         if self.annotate_votes:
-            pqs = pqs.annotate(vote=Coalesce(models.Sum('_votes__vote', 0)))
+            pqs = pqs.annotate(vote=Coalesce(models.Sum('_votes__vote'), 0))
         pqs = pqs.order_by(self.order_by, '-created_time')
         if hasattr(self, 'queryset_post_filter'):
             pqs = self.queryset_post_filter(pqs)
