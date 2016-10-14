@@ -728,7 +728,7 @@
 }
 .hc-theme.fr-toolbar .fr-command.fr-btn.fr-dropdown.fr-active,
 .hc-theme.fr-popup .fr-command.fr-btn.fr-dropdown.fr-active {
-  color: #353535;
+  color: #ffffff;
   background: #2c82c9;
 }
 .hc-theme.fr-toolbar .fr-command.fr-btn.fr-dropdown.fr-active:hover,
@@ -741,7 +741,9 @@
 .hc-theme.fr-toolbar .fr-command.fr-btn.fr-dropdown.fr-active:hover::after,
 .hc-theme.fr-popup .fr-command.fr-btn.fr-dropdown.fr-active:hover::after,
 .hc-theme.fr-toolbar .fr-command.fr-btn.fr-dropdown.fr-active:focus::after,
-.hc-theme.fr-popup .fr-command.fr-btn.fr-dropdown.fr-active:focus::after {
+.hc-theme.fr-popup .fr-command.fr-btn.fr-dropdown.fr-active:focus::after,
+.hc-theme.fr-toolbar .fr-command.fr-btn.fr-dropdown.fr-active::after,
+.hc-theme.fr-popup .fr-command.fr-btn.fr-dropdown.fr-active::after {
   border-top-color: #ffffff !important;
 }
 .hc-theme.fr-toolbar .fr-command.fr-btn.fr-dropdown::after,
