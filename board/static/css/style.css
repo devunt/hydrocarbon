@@ -1570,63 +1570,119 @@ a.anchor {
   display: block;
   border-bottom: 1px solid #000; }
 
-.fr-element {
+.fr-element,
+.froala-element {
   min-height: 0;
   line-height: 1.6em; }
-  .fr-element *:last-child {
+  .fr-element *:last-child,
+  .froala-element *:last-child {
     margin-bottom: 0; }
-  .fr-element blockquote:last-child {
+  .fr-element blockquote:last-child,
+  .froala-element blockquote:last-child {
     margin-bottom: 10px; }
-  .fr-element a {
+  .fr-element p,
+  .froala-element p {
+    margin: 0 0 1em; }
+  .fr-element a,
+  .froala-element a {
     color: #3d9ccc; }
-  .fr-element a:hover {
+  .fr-element a:hover,
+  .froala-element a:hover {
     color: rgba(61, 156, 204, 0.9);
     text-decoration: underline; }
-  .fr-element a:active {
+  .fr-element a:active,
+  .froala-element a:active {
     color: rgba(61, 156, 204, 0.6); }
-  .fr-element a:visited {
+  .fr-element a:visited,
+  .froala-element a:visited {
     color: rgba(170, 170, 170, 0.9); }
-  .fr-element li p {
+  .fr-element li,
+  .froala-element li {
+    margin: 0 0 3px; }
+  .fr-element li p,
+  .froala-element li p {
     margin: 0; }
   .fr-element li ol, .fr-element li ol:last-child,
-  .fr-element li ul, .fr-element li ol:last-child {
+  .fr-element li ul, .fr-element li ol:last-child,
+  .froala-element li ol,
+  .froala-element li ol:last-child,
+  .froala-element li ul,
+  .froala-element li ol:last-child {
     margin: 0 0 10px; }
   .fr-element img,
-  .fr-element iframe {
+  .fr-element iframe,
+  .froala-element img,
+  .froala-element iframe {
     max-width: 100%; }
   .fr-element h1, .fr-element h2,
-  .fr-element .format-h1, .fr-element .format-h2 {
+  .fr-element .format-h1, .fr-element .format-h2,
+  .froala-element h1,
+  .froala-element h2,
+  .froala-element .format-h1,
+  .froala-element .format-h2 {
     font-family: "NanumGothic Light"; }
-  .fr-element h1, .fr-element h2, .fr-element h3, .fr-element h4, .fr-element h5, .fr-element h6 {
+  .fr-element h1, .fr-element h2, .fr-element h3, .fr-element h4, .fr-element h5, .fr-element h6,
+  .froala-element h1,
+  .froala-element h2,
+  .froala-element h3,
+  .froala-element h4,
+  .froala-element h5,
+  .froala-element h6 {
     padding: 0px 10px; }
-  .fr-element h1, .fr-element .format-h1 {
+  .fr-element h1, .fr-element .format-h1,
+  .froala-element h1,
+  .froala-element .format-h1 {
     border-bottom: 1px solid #e5e5e5;
     font-size: 24px;
     padding: 5px 10px; }
-  .fr-element h2, .fr-element .format-h2 {
+  .fr-element h2, .fr-element .format-h2,
+  .froala-element h2,
+  .froala-element .format-h2 {
     font-size: 22px; }
-  .fr-element h3, .fr-element .format-h3 {
+  .fr-element h3, .fr-element .format-h3,
+  .froala-element h3,
+  .froala-element .format-h3 {
     font-size: 20px; }
-  .fr-element strike, .fr-element del, .fr-element .spoiler {
+  .fr-element strike, .fr-element del, .fr-element .spoiler,
+  .froala-element strike,
+  .froala-element del,
+  .froala-element .spoiler {
     background: #222;
     color: #222;
     text-decoration: initial; }
-    .fr-element strike a, .fr-element del a, .fr-element .spoiler a {
+    .fr-element strike a, .fr-element del a, .fr-element .spoiler a,
+    .froala-element strike a,
+    .froala-element del a,
+    .froala-element .spoiler a {
       color: #222 !important; }
-    .fr-element strike:hover, .fr-element del:hover, .fr-element .spoiler:hover {
+    .fr-element strike:hover, .fr-element del:hover, .fr-element .spoiler:hover,
+    .froala-element strike:hover,
+    .froala-element del:hover,
+    .froala-element .spoiler:hover {
       color: #fff; }
-      .fr-element strike:hover a, .fr-element del:hover a, .fr-element .spoiler:hover a {
+      .fr-element strike:hover a, .fr-element del:hover a, .fr-element .spoiler:hover a,
+      .froala-element strike:hover a,
+      .froala-element del:hover a,
+      .froala-element .spoiler:hover a {
         color: #aaa !important; }
-  .fr-element a strike:hover, .fr-element a del:hover, .fr-element a .spoiler:hover {
+  .fr-element a strike:hover, .fr-element a del:hover, .fr-element a .spoiler:hover,
+  .froala-element a strike:hover,
+  .froala-element a del:hover,
+  .froala-element a .spoiler:hover {
     color: #aaa; }
-  .fr-element blockquote, .fr-element pre {
+  .fr-element blockquote, .fr-element pre,
+  .froala-element blockquote,
+  .froala-element pre {
     font-style: normal;
     margin-top: 10px;
     margin-bottom: 10px; }
-  .fr-element iframe {
+  .fr-element iframe,
+  .froala-element iframe {
     border: 0;
     margin: 10px auto; }
-  .fr-element ul, .fr-element ol {
+  .fr-element ul, .fr-element ol,
+  .froala-element ul,
+  .froala-element ol {
     margin: 10px 0;
     padding-left: 25px; }
 

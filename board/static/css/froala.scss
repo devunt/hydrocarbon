@@ -5,16 +5,20 @@
 // 		froala specific styles
 //
 
-.fr-element {
+.fr-element,
+.froala-element {
 	min-height:0; line-height:1.6em;
 	*:last-child { margin-bottom:0; }
 	blockquote:last-child { margin-bottom:10px; }
+
+	p { margin:0 0 1em; }
 
 	a { color:$blue-base; }
 	a:hover { color:$blue; text-decoration:underline; }
 	a:active { color:$blue-trans; }
 	a:visited { color:$grey; }
 
+	li { margin:0 0 3px; }
 	li p { margin:0; }
 	li ol, li ol:last-child,
 	li ul, li ol:last-child { margin:0 0 10px; }
