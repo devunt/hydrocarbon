@@ -1465,6 +1465,10 @@ a.anchor {
       width: 15%; }
     .section.article.form .item.article .header h2 {
       width: 72%; } }
+  @media all and (max-width: 599px) {
+    .section.article.form .item.article .hc-theme.fr-box.fr-basic .fr-element,
+    .section.article.form .item.article .hc-theme.fr-box.fr-basic .fr-placeholder {
+      padding: 20px 5% !important; } }
   .section.article.form .item.article .g-recaptcha {
     margin: 10px 0 5px;
     text-align: center; }

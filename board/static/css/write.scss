@@ -52,6 +52,11 @@
 		}
 		*/
 
+		.hc-theme.fr-box.fr-basic .fr-element,
+		.hc-theme.fr-box.fr-basic .fr-placeholder {
+			@media all and (max-width: $medium) { padding:20px 5% !important; }
+		}
+
 		.g-recaptcha { margin:10px 0 5px; text-align:center; }
 		.g-recaptcha > div > div { display:inline-block; }
 		.errorlist + .footer { margin-top:20px; }
