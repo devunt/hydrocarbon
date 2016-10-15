@@ -279,7 +279,7 @@ $(function() {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
 				editor = $container.find('textarea'),
-				text = Autolinker.link(editor.editable("getHTML")),
+				text = Autolinker.link(editor.froalaEditor("html.get")),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
@@ -300,7 +300,7 @@ $(function() {
 
 			postComments(id, databox)
 				.done(function() {
-					editor.editable('setHTML', '');
+					editor.froalaEditor('html.set', '');
 					getComments(post_id)
 						.done(function() {
 							if(type == 'c') window.location.hash = '#c' + id;
@@ -311,7 +311,7 @@ $(function() {
 			e.preventDefault();
 			var $container = $(this).closest('.modify'),
 				editor = $container.find('textarea'),
-				text = Autolinker.link(editor.editable("getHTML")),
+				text = Autolinker.link(editor.froalaEditor("html.get")),
 				id = $container.data('id'),
 				password = $container.find('.footer label.password input').val();
 
@@ -409,8 +409,8 @@ $(function() {
 
 					$c.find('input').removeAttr('id');
 
-					editor.editable(COMMENT_FROALA_EDITOR_OPTIONS);
-					editor.editable('focus');
+					editor.froalaEditor(COMMENT_FROALA_EDITOR_OPTIONS);
+					editor.froalaEditor('events.focus');
 					$c.find('.cancel').show();
 
 					$('body').scrollTop($c.offset().top - 60);
@@ -453,9 +453,9 @@ $(function() {
 
 					$c.find('input').removeAttr('id');
 
-					editor.editable(COMMENT_FROALA_EDITOR_OPTIONS);
-					editor.editable('setHTML', $item.find('.article .froala-element.editor').html());
-					editor.editable('focus');
+					editor.froalaEditor(COMMENT_FROALA_EDITOR_OPTIONS);
+					editor.froalaEditor('html.set', $item.find('.article .froala-element.editor').html());
+					editor.froalaEditor('events.focus');
 					$c.find('.cancel').show();
 
 					$c.find('.submit').text('수정');
