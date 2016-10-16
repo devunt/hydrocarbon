@@ -20,6 +20,9 @@
 	<script src="{% static "js/comments.js" %}"></script>
 	{{ comment_form.media }}
 	<script src="{% static "froala_editor/js/languages/ko.js" %}"></script>
+	<script>
+		$.FE.LANGUAGE['ko'].translation['Spoiler'] = '스포일러';
+	</script>
 {% endblock %}
 
 {% block post %}

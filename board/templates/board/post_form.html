@@ -13,6 +13,9 @@
 	<script src="{% static "js/tagging.min.js" %}"></script>
 	{{ form.media }}
 	<script src="{% static "froala_editor/js/languages/ko.js" %}"></script>
+	<script>
+		$.FE.LANGUAGE['ko'].translation['Spoiler'] = '스포일러';
+	</script>
 {% endblock %}
 
 {% block content %}
