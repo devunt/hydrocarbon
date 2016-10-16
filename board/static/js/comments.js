@@ -19,7 +19,7 @@ function getComments(id) {
 		})
 		.fail(function(xhr, status, error) {
 			console.log(xhr);
-			console.log(status);	
+			console.log(status);
 			console.log(error);
 
 			alert('댓글을 불러오는 과정에서 오류가 발생했습니다.');
@@ -75,7 +75,7 @@ function renderComment($container, v, depth, hidden) {
 		.text($.timeago(v.created_time));
 
 	if(v.votes.total >= 0) v.votes.total = '+' + v.votes.total;
-	
+
 	$c.find('.meta.score')
 		.attr('title', '+'+v.votes.upvote+' / -'+v.votes.downvote)
 		.find('.text span').text(v.votes.total);
@@ -105,7 +105,7 @@ function renderComment($container, v, depth, hidden) {
 		.addClass('item')
 		.removeClass('template')
 		.insertBefore($container.find('.separator'))
-	
+
 	if(!hidden) $c.show();
 
 	if(v.subcomments) {
@@ -232,7 +232,7 @@ function toggleComments(action, target) {
 
 		if(index <= item_index - 1) return true;
 		if(depth <= item_depth) return false;
-		
+
 		if(action == 'toggle') {
 			if($item.hasClass('hidden')) { $(it).hide();
 			} else { $(it).removeClass('hidden').show(); }
@@ -263,7 +263,7 @@ $(function() {
 	$('.comments-list')
 		.on('keypress', '.modify, .write', function(e) {
 			if(e.ctrlKey && (e.which == 10 || e.which == 13)) {
-				$(this).find('.froala-element.f-basic').blur();
+				$(this).find('.fr-element').blur();
 				$(this).find('.submit.button').trigger('click');
 				e.preventDefault();
 				return false;
@@ -279,7 +279,7 @@ $(function() {
 			e.preventDefault();
 			var $container = $(this).closest('.write'),
 				editor = $container.find('textarea'),
-				text = Autolinker.link(editor.froalaEditor("html.get")),
+				text = Autolinker.link(editor.froalaEditor('html.get')),
 				nick = $container.find('.footer label.nick input').val(),
 				password = $container.find('.footer label.password input').val(),
 				id = $container.data('id'),
@@ -389,7 +389,7 @@ $(function() {
 						.appendTo($c.find('.article'))
 						.show();
 
-					$c.find('.froala-box').remove();
+					$c.find('.fr-box').remove();
 					$c.find('script').remove();
 
 					$c
@@ -431,7 +431,7 @@ $(function() {
 						.appendTo($c.find('.article'))
 						.show();
 
-					$c.find('.froala-box').remove();
+					$c.find('.fr-box').remove();
 					$c.find('script').remove();
 
 					$c
@@ -454,7 +454,7 @@ $(function() {
 					$c.find('input').removeAttr('id');
 
 					editor.froalaEditor(COMMENT_FROALA_EDITOR_OPTIONS);
-					editor.froalaEditor('html.set', $item.find('.article .froala-element.editor').html());
+					editor.froalaEditor('html.set', $item.find('.article .fr-element').html());
 					editor.froalaEditor('events.focus');
 					$c.find('.cancel').show();
 
