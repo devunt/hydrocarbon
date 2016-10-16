@@ -242,7 +242,27 @@ function toggleComments(action, target) {
 	});
 }
 
+function frCatchEnter(e, editor) {
+	editor.events.on('keydown', function(e) {
+		if(e.ctrlKey && (e.which == $.FroalaEditor.KEYCODE.ENTER)) {
+			var list = editor.$box.closest('.item');
+		console.log(list);
+			list.find('.fr-element').blur();
+			list.find('.submit.button').trigger('click');
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			return false;
+		}
+	}, true);
+}
+
 $(function() {
+	$('#id_contents')
+		.on('froalaEditor.initialized', function(e, editor) {
+			frCatchEnter(e, editor);
+		})
+		.froalaEditor(COMMENT_FROALA_EDITOR_OPTIONS);
+
 	$('.section.article .item.article .footer')
 		.on('click', 'a', function(e) {
 			var action = $(this).attr('href').replace('#', '');
@@ -261,14 +281,6 @@ $(function() {
 		});
 
 	$('.comments-list')
-		.on('keypress', '.modify, .write', function(e) {
-			if(e.ctrlKey && (e.which == 10 || e.which == 13)) {
-				$(this).find('.fr-element').blur();
-				$(this).find('.submit.button').trigger('click');
-				e.preventDefault();
-				return false;
-			}
-		})
 		.on('click', ':not(.prerender) .header', function(e) {
 			if(!$(e.target).closest('a, .dropdown').length) {
 				e.preventDefault();
@@ -409,7 +421,11 @@ $(function() {
 
 					$c.find('input').removeAttr('id');
 
-					editor.froalaEditor(COMMENT_FROALA_EDITOR_OPTIONS);
+					editor
+						.on('froalaEditor.initialized', function(e, editor) {
+							frCatchEnter(e, editor);
+						})
+						.froalaEditor(COMMENT_FROALA_EDITOR_OPTIONS);
 					editor.froalaEditor('events.focus');
 					$c.find('.cancel').show();
 
@@ -453,8 +469,14 @@ $(function() {
 
 					$c.find('input').removeAttr('id');
 
-					editor.froalaEditor(COMMENT_FROALA_EDITOR_OPTIONS);
-					editor.froalaEditor('html.set', $item.find('.article .fr-element').html());
+					console.log($item);
+					console.log($item.find('.article .editor').html());
+					editor
+						.on('froalaEditor.initialized', function(e, editor) {
+							frCatchEnter(e, editor);
+						})
+						.froalaEditor(COMMENT_FROALA_EDITOR_OPTIONS);
+					editor.froalaEditor('html.set', $item.find('.article .editor').html());
 					editor.froalaEditor('events.focus');
 					$c.find('.cancel').show();
 
