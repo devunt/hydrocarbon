@@ -246,7 +246,6 @@ function frCatchEnter(e, editor) {
 	editor.events.on('keydown', function(e) {
 		if(e.ctrlKey && (e.which == $.FroalaEditor.KEYCODE.ENTER)) {
 			var list = editor.$box.closest('.item');
-		console.log(list);
 			list.find('.fr-element').blur();
 			list.find('.submit.button').trigger('click');
 			e.preventDefault();
@@ -469,8 +468,6 @@ $(function() {
 
 					$c.find('input').removeAttr('id');
 
-					console.log($item);
-					console.log($item.find('.article .editor').html());
 					editor
 						.on('froalaEditor.initialized', function(e, editor) {
 							frCatchEnter(e, editor);
