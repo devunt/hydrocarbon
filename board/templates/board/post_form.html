@@ -12,6 +12,10 @@
 	<script src="{% static "js/jquery.autocomplete.min.js" %}"></script>
 	<script src="{% static "js/tagging.min.js" %}"></script>
 	{{ form.media }}
+	<script src="{% static "froala_editor/js/languages/ko.js" %}"></script>
+	<script>
+		$.FE.LANGUAGE['ko'].translation['Spoiler'] = '스포일러';
+	</script>
 {% endblock %}
 
 {% block content %}
@@ -105,7 +109,7 @@
 	</form>
 	<script>
 		$('.section.article.form form').garlic();
-		$('#id_contents').on('editable.contentChanged', function() {
+		$('#id_contents').on('froalaEditor.contentChanged', function() {
 			$(this).trigger('change');
 		});
 	</script>

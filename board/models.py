@@ -166,7 +166,7 @@ class Comment(AuthorModelMixin, VotableModelMixin, models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='comments', on_delete=models.SET_NULL)
     onetime_user = models.OneToOneField('OneTimeUser', blank=True, null=True, related_name='comment', on_delete=models.SET_NULL)
     ipaddress = models.GenericIPAddressField(protocol='IPv4')
-    contents = FroalaField(options=settings.FROALA_EDITOR_OPTIONS_COMMENT)
+    contents = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
 
     @property

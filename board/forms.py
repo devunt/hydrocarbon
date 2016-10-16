@@ -2,6 +2,7 @@ from collections import OrderedDict
 
 from django import forms
 from django.contrib.auth import get_user_model
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db.models.query import QuerySet
 from django.forms.widgets import TextInput
@@ -9,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 from account.forms import LoginEmailForm, PasswordResetForm, SignupForm, SettingsForm
 from account.models import EmailAddress
 from captcha.fields import ReCaptchaField
+from froala_editor.fields import FroalaEditor
 
 from board.models import Category, Comment, Post, Tag
 from board.utils import is_empty_html
@@ -126,6 +128,9 @@ class PostForm(OneTimeUserFormMixin, forms.ModelForm):
 
 
 class CommentForm(OneTimeUserFormMixin, forms.ModelForm):
+    # For automatic media inclusions
+    _contents = forms.CharField(widget=FroalaEditor(options=settings.FROALA_EDITOR_OPTIONS_COMMENT))
+
     class Meta:
         model = Comment
         fields = ['contents']
