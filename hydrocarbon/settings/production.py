@@ -45,11 +45,11 @@ DATABASES = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 STATIC_ROOT = '/home/herocomics/static'
-STATIC_URL = 'http://s.herocomics.kr/'
+STATIC_URL = 'https://s.herocomics.kr/'
 
 # Media files
 MEDIA_ROOT = '/home/herocomics/media'
-MEDIA_URL = 'http://uc.herocomics.kr/'
+MEDIA_URL = 'https://uc.herocomics.kr/'
 
 # django-haystack
 HAYSTACK_CONNECTIONS = {
