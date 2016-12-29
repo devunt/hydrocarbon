@@ -20,7 +20,7 @@
 		</span>
 		<br>
 		<span class="cell author meta">
-			<span title="{% if item.user %}{% if item.user.total_score >= 0 %}+{% endif %}{{ item.user.total_score }}{% else %}{{ item.iphash }}{% if user.is_staff %} - {{ item.ipaddress }}{% endif %}{% endif %}" class="label meta 
+			<span title="{% if item.user %}{% if item.user.total_score >= 0 %}+{% endif %}{{ item.user.total_score }}{% else %}{{ item.iphash }}{% endif %}{% if user.is_staff %} - {{ item.ipaddress }}{% endif %}" class="label meta 
 			{% if item.user %}
 				author user" data-user-id-url="{% url 'user_profile' item.user.id %}">
 			{% else %}
