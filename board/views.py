@@ -22,8 +22,8 @@ from account.views import LoginView, SettingsView, SignupView
 from haystack.query import SearchQuerySet
 
 from board.forms import CommentForm, EmailConfirmationResendForm, HCLoginForm, HCSignupForm, HCSettingsForm, PostForm
-from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
-from board.models import Block, Board, Category, Comment, FileAttachment, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
+from board.mixins import AjaxMixin, BoardURLMixin, BPostListMixin, FilterMixin, PostListMixin, PermissionCheckMixin, UserFormMixin, UserURLMixin
+from board.models import Block, Board, Category, Comment, FileAttachment, Filter, ImageAttachment, Notification, OneTimeUser, Post, Tag, User, Vote
 from board.pagination import HCPaginator
 from board.utils import is_empty_html, normalize, replace_tags_to_text, treedict, truncate_chars
 
@@ -141,7 +141,7 @@ class UserCommentListView(UserURLMixin, ListView):
         return self.user.comments.all()
 
 
-class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
+class PostCreateView(BoardURLMixin, UserFormMixin, FilterMixin, CreateView):
     model = Post
     form_class = PostForm
 
@@ -180,7 +180,7 @@ class PostCreateView(BoardURLMixin, UserFormMixin, CreateView):
         return initial
 
 
-class PostUpdateView(PermissionCheckMixin, UpdateView):
+class PostUpdateView(PermissionCheckMixin, FilterMixin, UpdateView):
     model = Post
     form_class = PostForm
 
@@ -568,6 +568,10 @@ class CommentAjaxView(AjaxMixin, View):
 
         c.ipaddress = request.META['REMOTE_ADDR']
         c.contents = contents
+
+        if Filter.is_trigger(c):
+            return JsonResponse({'status': 'invalid'}, status=400)
+
         c.save()
 
         if (to_user is not None) and (from_user != to_user):
