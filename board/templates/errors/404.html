@@ -1,0 +1,5 @@
+{% extends 'errors/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Page not found" %} :: {{ block.super }}{% endblock %}
+{% block message %}{% trans "Page not found." %}{% endblock %}

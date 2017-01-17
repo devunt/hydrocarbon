@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.utils.functional import curry
-from django.views.defaults import permission_denied
+from django.views.defaults import bad_request, page_not_found, permission_denied, server_error
 
 from board.views import HCLoginView, HCSettingsView, HCSignupView
 from board.views import CSSConstantsView, EmailConfirmationResendView, IndexView, JSConstantsView, NotificationView, PostListByTagView
@@ -28,4 +28,7 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+handler400 = curry(bad_request, template_name='errors/400.html')
 handler403 = curry(permission_denied, template_name='errors/403.html')
+handler404 = curry(page_not_found, template_name='errors/404.html')
+handler500 = curry(server_error, template_name='errors/500.html')

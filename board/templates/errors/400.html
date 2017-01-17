@@ -1,0 +1,5 @@
+{% extends 'errors/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Bad request" %} :: {{ block.super }}{% endblock %}
+{% block message %}{% trans "Request is invalid." %}{% endblock %}
