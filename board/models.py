@@ -266,3 +266,24 @@ class Block(models.Model):
             return False
         else:
             return block
+
+
+class Filter(models.Model):
+    PROHIBIT = 1
+    BLOCK = 2
+    ACTION_CHOICES = (
+        (PROHIBIT, 'Prohibit posting the object.'),
+        (BLOCK, 'Block user or ip address indefinitely.'),
+    )
+    condition = models.TextField()
+    action = models.PositiveSmallIntegerField(choices=ACTION_CHOICES, default=PROHIBIT)
+    enabled = models.BooleanField(default=True)
+
+    @classmethod
+    def is_trigger(cls, obj):
+        if not (isinstance(obj, Post) or isinstance(obj, Comment)):
+            raise ValueError("`obj` must be either `Post` or `Comment` object.")
+        for f in cls.objects.filter(enabled=True):
+            if eval(f.condition, globals(), {'obj': obj}):
+                return True
+        return None

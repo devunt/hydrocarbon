@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password, make_password
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import models
 from django.db.models import Q
 from django.db.models.functions import Coalesce
@@ -10,7 +10,7 @@ from django.shortcuts import render
 from django.utils.translation import ugettext as _
 
 from board.forms import PasswordForm
-from board.models import Announcement, Board, Post, OneTimeUser, User
+from board.models import Announcement, Board, Filter, Post, OneTimeUser, User
 from board.pagination import HCPaginator
 
 
@@ -168,3 +168,10 @@ class BPostListMixin(PostListMixin):
             announcement_list = [announcement.post for announcement in aqs]
             kwargs['announcement_list'] = announcement_list
         return kwargs
+
+
+class FilterMixin:
+    def form_valid(self, form):
+        if Filter.is_trigger(form.instance):
+            raise ValidationError("Invalid")
+        return super().form_valid(form)

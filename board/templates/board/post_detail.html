@@ -133,7 +133,7 @@
 				<div class="left">
 					<a href="#toggle" class="label meta comments">
 						<span class="icon"></span>
-						<span class="text">{% blocktrans count counter=post.comments.count|intcomma %}There is <span>{{ counter }}</span> comment.{% plural %}There are <span>{{ counter }}</span> comments.{% endblocktrans %}</span>
+						<span class="text">{% blocktrans count counter=post.comments.count %}There is <span>{{ counter|intcomma }}</span> comment.{% plural %}There are <span>{{ counter|intcomma }}</span> comments.{% endblocktrans %}</span>
 					</a>
 				</div>
 				<div class="right">
