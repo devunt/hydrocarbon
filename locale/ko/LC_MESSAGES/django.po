@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-25 20:59+0900\n"
+"POT-Creation-Date: 2017-02-19 00:54+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: board/forms.py:52 board/forms.py:57
+#: board/forms.py:54 board/forms.py:60
 msgid "Nickname"
 msgstr "닉네임"
 
-#: board/forms.py:53 board/forms.py:137 board/i18n_fake.py:8
+#: board/forms.py:55 board/forms.py:143 board/i18n_fake.py:8
 msgid "Password"
 msgstr "비밀번호"
 
-#: board/forms.py:70
+#: board/forms.py:73
 msgid "This nickname is already taken. Please choose another."
 msgstr "이 닉네임은 이미 사용중입니다. 다른 닉네임을 사용해 주세요."
 
-#: board/forms.py:100
+#: board/forms.py:103
 msgid "This email address is already confirmed."
 msgstr "이 이메일 주소는 이미 인증되어 있습니다."
 
-#: board/forms.py:122 board/templates/board/postlist/base.html:29
+#: board/forms.py:125 board/templates/board/postlist/base.html:29
 msgid "Title"
 msgstr "제목"
 
@@ -243,7 +243,7 @@ msgstr[0] ""
 "입력하신 값은 최소 %(limit_value)d글자여야만 합니다. 현재 값은 %(show_value)d"
 "글자입니다."
 
-#: board/mixins.py:96
+#: board/mixins.py:98
 msgid "Wrong password"
 msgstr "잘못된 비밀번호입니다"
 
@@ -381,7 +381,7 @@ msgid "Please check your email to complete the registration process."
 msgstr "등록하신 이메일 주소로 확인 메일이 발송되었습니다. 확인해 주세요."
 
 #: board/templates/account/login.html:5 board/templates/account/login.html:26
-#: board/templates/base.html:135
+#: board/templates/base.html:142
 msgid "Log in"
 msgstr "로그인"
 
@@ -389,8 +389,7 @@ msgstr "로그인"
 msgid "Do you have no account?"
 msgstr "아직 계정이 없으신가요?"
 
-#: board/templates/account/login.html:30
-#: board/templates/account/signup.html:25
+#: board/templates/account/login.html:30 board/templates/account/signup.html:25
 msgid "Register"
 msgstr "회원가입"
 
@@ -407,7 +406,7 @@ msgid "Didn't receive your confirmation email?"
 msgstr "인증 이메일을 못 받으셨나요?"
 
 #: board/templates/account/logout.html:4 board/templates/account/logout.html:5
-#: board/templates/account/logout.html:13 board/templates/base.html:128
+#: board/templates/account/logout.html:13 board/templates/base.html:135
 msgid "Log out"
 msgstr "로그아웃"
 
@@ -481,7 +480,7 @@ msgstr ""
 "습니다. <a href=\"%(url)s\">새로 비밀번호 초기화</a>를 신청해주세요."
 
 #: board/templates/account/settings.html:4
-#: board/templates/account/settings.html:5 board/templates/base.html:127
+#: board/templates/account/settings.html:5 board/templates/base.html:134
 msgid "Account settings"
 msgstr "계정 설정"
 
@@ -507,35 +506,35 @@ msgid "Sorry, but registration is closed at this moment. Come back later."
 msgstr ""
 "죄송합니다. 현재 회원가입을 받고 있지 않습니다. 나중에 다시 시도해 주세요."
 
-#: board/templates/base.html:63 board/templates/base.html.py:119
+#: board/templates/base.html:67 board/templates/base.html:126
 #: board/templates/board/comment_item.html:24
-#: board/templates/board/post_detail.html:155
+#: board/templates/board/post_detail.html:177
 #: board/templates/board/postlist/base.html:16
 #: board/templates/board/postlist/with_board.html:37
 #: board/templates/search/search.html:22
 msgid "Close"
 msgstr "닫기"
 
-#: board/templates/base.html:78 board/templates/board/post_detail.html:59
+#: board/templates/base.html:82 board/templates/board/post_detail.html:63
 #: board/templates/board/postlist/item.html:35
 #: board/templates/user/notification.html:21
 msgid "ago"
 msgstr "전"
 
-#: board/templates/base.html:89 board/templates/user/profile.html:101
+#: board/templates/base.html:93 board/templates/user/profile.html:101
 #: board/templates/user/profile.html:120
 msgid "More..."
 msgstr "더 보기..."
 
-#: board/templates/base.html:125
+#: board/templates/base.html:132
 msgid "Profile"
 msgstr "내 정보"
 
-#: board/templates/base.html:184
+#: board/templates/base.html:192
 msgid "This site doesn't support browser older than IE9."
 msgstr "이 사이트는 IE9 이전 버전의 웹 브라우저를 지원하지 않습니다."
 
-#: board/templates/base.html:185
+#: board/templates/base.html:193
 msgid "How about using more safe, fast, up-to-date and user-friendly browsers?"
 msgstr ""
 "더 안전하고, 빠르고, 동시에 사용하기까지 편한 브라우저를 사용해 보시는 것은 "
@@ -559,17 +558,17 @@ msgid "Then enter the password you used."
 msgstr "삭제하시려면 글을 쓸 때 사용하셨던 비밀번호를 입력해 주세요."
 
 #: board/templates/board/post_confirm_delete.html:28
-#: board/templates/board/post_detail.html:195
-#: board/templates/board/post_detail.html:261
+#: board/templates/board/post_detail.html:219
+#: board/templates/board/post_detail.html:291
 msgid "Delete"
 msgstr "삭제"
 
-#: board/templates/board/post_detail.html:32
+#: board/templates/board/post_detail.html:36
 #: board/templates/board/postlist/item.html:8
 msgid "Notice"
 msgstr "공지"
 
-#: board/templates/board/post_detail.html:64
+#: board/templates/board/post_detail.html:68
 #, python-format
 msgid ""
 "\n"
@@ -580,7 +579,7 @@ msgstr ""
 "\t\t\t\t\t\t\t추천 <span>%(counter)s</span>개\n"
 "\t\t\t\t\t\t"
 
-#: board/templates/board/post_detail.html:72
+#: board/templates/board/post_detail.html:76
 #, python-format
 msgid ""
 "\n"
@@ -591,76 +590,76 @@ msgstr ""
 "\t\t\t\t\t\t\t조회수 <span>%(counter)s</span>\n"
 "\t\t\t\t\t\t"
 
-#: board/templates/board/post_detail.html:90
-#: board/templates/board/post_detail.html:163
+#: board/templates/board/post_detail.html:94
+#: board/templates/board/post_detail.html:185
 msgid "Upvote"
 msgstr "추천"
 
-#: board/templates/board/post_detail.html:94
-#: board/templates/board/post_detail.html:171
+#: board/templates/board/post_detail.html:98
+#: board/templates/board/post_detail.html:193
 msgid "Downvote"
 msgstr "비추천"
 
-#: board/templates/board/post_detail.html:114
+#: board/templates/board/post_detail.html:136
 #, python-format
-msgid "There is <span>%(counter)s</span> comment."
-msgid_plural "There are <span>%(counter)s</span> comments."
-msgstr[0] "<span>%(counter)s</span>개의 댓글이 달려있습니다."
+msgid "There is <span>%(counter|intcomma)s</span> comment."
+msgid_plural "There are <span>%(counter|intcomma)s</span> comments."
+msgstr[0] "<span>%(counter|intcomma)s</span>개의 댓글이 달려있습니다."
 
-#: board/templates/board/post_detail.html:120
+#: board/templates/board/post_detail.html:142
 msgid "Refresh"
 msgstr "새로고침"
 
-#: board/templates/board/post_detail.html:140
+#: board/templates/board/post_detail.html:162
 msgid "Hidden"
 msgstr "숨겨짐"
 
-#: board/templates/board/post_detail.html:179
+#: board/templates/board/post_detail.html:202
 msgid "Reply"
 msgstr "답글"
 
-#: board/templates/board/post_detail.html:187
-#: board/templates/board/post_detail.html:262
+#: board/templates/board/post_detail.html:210
+#: board/templates/board/post_detail.html:292
 msgid "Modify"
 msgstr "수정"
 
-#: board/templates/board/post_detail.html:226
+#: board/templates/board/post_detail.html:255
 msgid "Cancel"
 msgstr "취소"
 
-#: board/templates/board/post_detail.html:227
+#: board/templates/board/post_detail.html:256
 msgid "Submit comment"
 msgstr "댓글 달기"
 
-#: board/templates/board/post_detail.html:246
+#: board/templates/board/post_detail.html:276
 #: board/templates/board/postlist/with_board.html:16
 msgid "List"
 msgstr "목록"
 
-#: board/templates/board/post_detail.html:254
+#: board/templates/board/post_detail.html:284
 #: board/templates/board/postlist/with_board.html:24
 msgid "Top posts"
 msgstr "베스트"
 
-#: board/templates/board/post_detail.html:264
+#: board/templates/board/post_detail.html:294
 #: board/templates/board/post_form.html:6
 #: board/templates/board/post_form.html:7
-#: board/templates/board/post_form.html:101
+#: board/templates/board/post_form.html:107
 #: board/templates/board/postlist/with_board.html:75
 msgid "New post"
 msgstr "글쓰기"
 
-#: board/templates/board/post_form.html:24
+#: board/templates/board/post_form.html:28
 msgid "Input the password you used on this post."
 msgstr "글을 작성하실 때 사용하셨던 비밀번호를 입력해 주세요."
 
-#: board/templates/board/post_form.html:52
+#: board/templates/board/post_form.html:56
 #: board/templates/board/postlist/base.html:13
 msgid "Categories"
 msgstr "분류"
 
-#: board/templates/board/post_form.html:72
-#: board/templates/board/post_form.html:120
+#: board/templates/board/post_form.html:78
+#: board/templates/board/post_form.html:128
 msgid "Tags"
 msgstr "태그"
 
@@ -685,35 +684,35 @@ msgstr "추천"
 msgid "Views"
 msgstr "조회"
 
-#: board/templates/board/postlist/base.html:62
+#: board/templates/board/postlist/base.html:63
 msgid "There are no results."
 msgstr "검색 결과가 없습니다."
 
-#: board/templates/board/postlist/base.html:64
+#: board/templates/board/postlist/base.html:65
 #: board/templates/user/comment_list.html:22
 #: board/templates/user/profile.html:95
 msgid "There are no posts here!"
 msgstr "아직 등록된 글이 없습니다!"
 
-#: board/templates/board/postlist/base.html:80
+#: board/templates/board/postlist/base.html:81
 #: board/templates/user/comment_list.html:32
 #: board/templates/user/notification.html:37
 msgid "First"
 msgstr "처음"
 
-#: board/templates/board/postlist/base.html:83
+#: board/templates/board/postlist/base.html:84
 #: board/templates/user/comment_list.html:35
 #: board/templates/user/notification.html:40
 msgid "Prev"
 msgstr "이전"
 
-#: board/templates/board/postlist/base.html:91
+#: board/templates/board/postlist/base.html:92
 #: board/templates/user/comment_list.html:43
 #: board/templates/user/notification.html:48
 msgid "Next"
 msgstr "다음"
 
-#: board/templates/board/postlist/base.html:94
+#: board/templates/board/postlist/base.html:95
 #: board/templates/user/comment_list.html:46
 #: board/templates/user/notification.html:51
 msgid "Last"
@@ -745,6 +744,16 @@ msgstr "검색"
 msgid "Title + Article"
 msgstr "제목 + 본문"
 
+#: board/templates/errors/400.html:4
+msgid "Bad request"
+msgstr "요청이 잘못되었습니다"
+
+#: board/templates/errors/400.html:5
+#, fuzzy
+#| msgid "The code {code} is invalid."
+msgid "Request is invalid."
+msgstr "{code}는 유효하지 않은 코드입니다."
+
 #: board/templates/errors/403.html:4
 msgid "No permission"
 msgstr "권한 없음"
@@ -753,13 +762,25 @@ msgstr "권한 없음"
 msgid "You don't have the permission."
 msgstr "권한이 없습니다."
 
+#: board/templates/errors/404.html:4
+msgid "Page not found"
+msgstr "페이지 없음"
+
+#: board/templates/errors/404.html:5
+msgid "Page not found."
+msgstr "페이지를 찾을 수 없습니다."
+
+#: board/templates/errors/500.html:4
+msgid "Server error"
+msgstr "서버 문제"
+
+#: board/templates/errors/500.html:5
+msgid "A server error occurred."
+msgstr "서버에 문제가 일어난 것 같습니다."
+
 #: board/templates/errors/base.html:10
 msgid "Whoops! Something went wrong..."
-msgstr ""
-
-#: board/templates/errors/base.html:11
-msgid "Returning to the main page..."
-msgstr "잠시 후 첫 화면으로 돌아갑니다..."
+msgstr "앗! 무엇인가 잘못된 것 같은데요..."
 
 #: board/templates/errors/board_404.html:4
 msgid "No board found"
@@ -806,32 +827,32 @@ msgstr "댓글 %(count)s개"
 msgid "There are no comments here!"
 msgstr "댓글이 없습니다!"
 
-#: board/views.py:43
+#: board/views.py:46
 msgid "Please confirm email."
 msgstr "이메일 주소를 인증해주세요."
 
-#: board/views.py:48
+#: board/views.py:51
 msgid "Account restored."
 msgstr "계정이 복구되었습니다."
 
-#: board/views.py:224
+#: board/views.py:229
 msgid "Deleted"
 msgstr "삭제되었습니다"
 
-#: board/views.py:513
+#: board/views.py:531
 #, python-format
 msgid "Comment on \"%(post)s\""
 msgstr "\"%(post)s\"에 댓글"
 
-#: board/views.py:524
+#: board/views.py:542
 #, python-format
 msgid "Comment on your comment of \"%(post)s\""
 msgstr "\"%(post)s\"의 댓글에 대댓글"
 
-#: hydrocarbon/settings/base.py:105
+#: hydrocarbon/settings/base.py:114
 msgid "Korean"
 msgstr "한국어"
 
-#: hydrocarbon/settings/base.py:141
+#: hydrocarbon/settings/base.py:166
 msgid "Press ctrl-enter to submit a comment"
 msgstr "컨트롤-엔터 키를 이용해 댓글을 달 수 있습니다"
