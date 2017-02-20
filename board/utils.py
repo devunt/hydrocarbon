@@ -22,6 +22,7 @@ FIRSTS = ('ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 
 MIDDLES = ('ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅗㅏ', 'ㅗㅐ', 'ㅗㅣ', 'ㅛ', 'ㅜ', 'ㅜㅓ', 'ㅜㅔ', 'ㅜㅣ', 'ㅠ', 'ㅡ', 'ㅡㅣ', 'ㅣ')
 LASTS = ('', 'ㄱ', 'ㄲ', 'ㄱㅅ', 'ㄴ', 'ㄴㅈ', 'ㄴㅎ', 'ㄷ', 'ㄹ', 'ㄹㄱ', 'ㄹㅁ', 'ㄹㅂ', 'ㄹㅅ', 'ㄹㅌ', 'ㄹㅍ', 'ㄹㅎ', 'ㅁ', 'ㅂ', 'ㅂㅅ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ')
 
+
 def _normalize(c):
     if '가' <= c <= '힣':
         offset = ord(c) - ord('가')
@@ -31,8 +32,13 @@ def _normalize(c):
         return '{0} {1} {2}'.format(first, middle, last)
     return c
 
+
 def normalize(s):
     return ' '.join(map(_normalize, s))
+
+
+def clean_html_all(html):
+    return bleach.clean(html, tags=[], attributes={}, styles=[], strip=True)
 
 
 def clean_html(html):

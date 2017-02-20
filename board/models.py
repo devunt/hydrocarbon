@@ -1,3 +1,4 @@
+import re
 from hashlib import sha224
 
 from django.conf import settings
@@ -11,8 +12,12 @@ from custom_user.models import AbstractEmailUser
 from froala_editor.fields import FroalaField
 from jsonfield import JSONField
 
-from board.utils import clean_html, get_upload_path, normalize
+from board.utils import clean_html, clean_html_all, get_upload_path, normalize
 
+try:
+    from raven.contrib.django.raven_compat.models import client as ravenClient
+except ImportError:
+    ravenClient = None
 
 class User(AbstractEmailUser):
     nickname = models.CharField(max_length=16, unique=True,
@@ -277,6 +282,7 @@ class Filter(models.Model):
     )
     condition = models.TextField()
     action = models.PositiveSmallIntegerField(choices=ACTION_CHOICES, default=PROHIBIT)
+    regex = models.BooleanField(default=True)
     enabled = models.BooleanField(default=True)
 
     @classmethod
@@ -284,6 +290,18 @@ class Filter(models.Model):
         if not (isinstance(obj, Post) or isinstance(obj, Comment)):
             raise ValueError("`obj` must be either `Post` or `Comment` object.")
         for f in cls.objects.filter(enabled=True):
-            if eval(f.condition, globals(), {'obj': obj}):
-                return True
+            try:
+                if f.regex:
+                    haystack = clean_html_all(obj.contents)
+                    haystack += getattr(obj, 'title', '')
+                    if re.search(f.condition, haystack):
+                        return f
+                else:
+                    if eval(f.condition, globals(), {'obj': obj}):
+                        return f
+            except Exception as e:
+                if ravenClient is None:
+                    raise e
+                else:
+                    ravenClient.captureException()
         return None

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-19 00:54+0900\n"
+"POT-Creation-Date: 2017-02-20 18:00+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,6 +247,11 @@ msgstr[0] ""
 msgid "Wrong password"
 msgstr "잘못된 비밀번호입니다"
 
+#: board/mixins.py:177
+#, python-format
+msgid "Filter #%(id)d triggered."
+msgstr "#%(id)d 필터가 동작하였습니다."
+
 #: board/signals.py:24
 msgid "New site announcement"
 msgstr "새 사이트 공지"
@@ -354,7 +359,6 @@ msgstr "확인"
 
 #: board/templates/account/email_confirmation_resend.html:4
 #: board/templates/account/email_confirmation_resend.html:6
-#, fuzzy
 msgid "Resend email confirmation"
 msgstr "이메일 인증 재전송"
 
@@ -749,10 +753,8 @@ msgid "Bad request"
 msgstr "요청이 잘못되었습니다"
 
 #: board/templates/errors/400.html:5
-#, fuzzy
-#| msgid "The code {code} is invalid."
 msgid "Request is invalid."
-msgstr "{code}는 유효하지 않은 코드입니다."
+msgstr "유효하지 않은 요청입니다."
 
 #: board/templates/errors/403.html:4
 msgid "No permission"

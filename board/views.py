@@ -569,8 +569,9 @@ class CommentAjaxView(AjaxMixin, View):
         c.ipaddress = request.META['REMOTE_ADDR']
         c.contents = contents
 
-        if Filter.is_trigger(c):
-            return JsonResponse({'status': 'invalid'}, status=400)
+        f = Filter.is_trigger(c)
+        if f:
+            return JsonResponse({'status': 'filtered', 'filter': f.id}, status=400)
 
         c.save()
 
@@ -609,6 +610,11 @@ class CommentAjaxView(AjaxMixin, View):
         if is_empty_html(contents):
             return JsonResponse({'status': 'badrequest', 'error_fields': ['contents']}, status=400)
         c.contents = contents
+
+        f = Filter.is_trigger(c)
+        if f:
+            return JsonResponse({'status': 'filtered', 'filter': f.id}, status=400)
+
         c.save()
         return self.success()
 
