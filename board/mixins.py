@@ -172,6 +172,8 @@ class BPostListMixin(PostListMixin):
 
 class FilterMixin:
     def form_valid(self, form):
-        if Filter.is_trigger(form.instance):
-            raise ValidationError("Invalid")
+        f = Filter.is_trigger(form.instance)
+        if f:
+            messages.error(self.request, _('Filter #%(id)d triggered.') % {'id': f.id})
+            return self.form_invalid(form)
         return super().form_valid(form)

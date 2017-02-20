@@ -151,6 +151,10 @@ function postComments(id, databox) {
 
 						break;
 
+					case 'filtered':
+						alert('#' + xhr.responseJSON.filter + ' 필터가 동작하였습니다.');
+						break;
+
 					default:
 						alert('댓글을 등록하는 과정에서 오류가 발생했습니다.');
 						console.log(databox);
@@ -158,6 +162,7 @@ function postComments(id, databox) {
 						console.log(status);
 						console.log(error);
 				}
+				posting = false;
 			});
 	}
 }
@@ -170,12 +175,13 @@ function putComments(id, contents, password) {
 		headers: { 'X-HC-PASSWORD': password }
 	})
 		.fail(function(xhr, status, error) {
-			switch(error) {
-				case 'FORBIDDEN':
+            var response = xhr.responseJSON.status;
+			switch(response) {
+				case 'permissiondenied':
 					alert('이 댓글을 수정할 권한이 없습니다. 비밀번호를 잘못 입력하셨나요?');
 					break;
 
-				case 'BAD REQUEST':
+				case 'badrequest':
 					var errorstr = '';
 
 					jQuery.each(xhr.responseJSON.error_fields, function(i, v) {
@@ -186,6 +192,10 @@ function putComments(id, contents, password) {
 					alert(errorstr);
 
 					break;
+
+                case 'filtered':
+                    alert('#' + xhr.responseJSON.filter + ' 필터가 동작하였습니다.');
+                    break;
 
 				default:
 					console.log(xhr);
