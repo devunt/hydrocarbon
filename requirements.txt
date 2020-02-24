@@ -1,5 +1,5 @@
 bcrypt==3.1.1
-bleach==1.4.3
+bleach==3.1.1
 cffi==1.8.3
 Django==1.10.1
 django-appconf==1.0.2
