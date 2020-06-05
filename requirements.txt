@@ -1,7 +1,7 @@
 bcrypt==3.1.1
 bleach==1.4.3
 cffi==1.8.3
-Django==1.10.1
+Django==1.11.29
 django-appconf==1.0.2
 django-custom-user==0.6
 git+https://github.com/froala/django-froala-editor
